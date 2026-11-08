@@ -14,6 +14,7 @@
 	import { InputGroup, InputGroupAddon, InputGroupInput } from '#lib/components/ui/input-group/index.js';
 	import { Label } from '#lib/components/ui/label/index.js';
 	import ScanProgress from '#lib/components/app/scan-progress.svelte';
+	import ScanFeedback from '#lib/components/app/scan-feedback.svelte';
 	import { Spinner } from '#lib/components/ui/spinner/index.js';
 	import {
 		LAZADA_ONLY,
@@ -126,7 +127,7 @@
 						bind:value={query}
 						onkeydown={nameEnter}
 						disabled={scan.busy}
-						aria-invalid={unsupported}
+						aria-invalid={unsupported || (otherMarket && !match)}
 						aria-describedby="query-hint"
 					/>
 					<InputGroupAddon align="inline-end" class="max-md:hidden"><Kbd title="Press / to jump here">/</Kbd></InputGroupAddon>
@@ -180,13 +181,7 @@
 				{/if}
 			</div>
 
-			{#if scan.feedback}
-				<Alert variant={scan.feedback.kind === 'error' ? 'destructive' : 'default'} class={scan.feedback.kind === 'warning' ? 'tone-caution border-(--tone)/50 bg-(--tone-soft) *:[svg]:text-(--tone)' : ''}>
-					<CircleAlertIcon />
-					<AlertTitle>{scan.feedback.title}</AlertTitle>
-					<AlertDescription>{scan.feedback.message}</AlertDescription>
-				</Alert>
-			{/if}
+			<ScanFeedback />
 
 			{#if running}
 				<div class="bg-muted/50 grid gap-3 rounded-lg border p-4" role="status" aria-live="polite">
@@ -198,7 +193,7 @@
 									? `${MARKETPLACES[scan.summary.platform as Marketplace] ?? scan.summary.platform} live scan`
 									: 'Live scan running'}
 							</b>
-							<span class="text-muted-foreground text-xs tabular-nums">{scan.elapsed}</span>
+							<span class="text-muted-foreground text-xs tabular-nums" aria-hidden="true">{scan.elapsed}</span>
 						</div>
 					</div>
 					{#if scan.summary?.needs_you}
