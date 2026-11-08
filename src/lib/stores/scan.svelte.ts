@@ -54,6 +54,7 @@ class Scan {
 
 	#token = 0;
 	#timer: ReturnType<typeof setInterval> | null = null;
+	#pollTimer: ReturnType<typeof setTimeout> | null = null;
 
 	/** Pick up a scan that was running when the page was reloaded. */
 	restore() {
@@ -62,6 +63,10 @@ class Scan {
 			if (saved && typeof saved === 'object' && ['running', 'complete', 'error', 'attention'].includes(saved.state)) {
 				this.summary = saved;
 				if (saved.state === 'running' && saved.id) this.#poll(saved.id, saved);
+				if (saved.state === 'attention' && saved.id) {
+					this.busy = true;
+					this.#connectionLost(saved.message);
+				}
 			}
 		} catch {
 			/* no saved scan */
@@ -71,6 +76,7 @@ class Scan {
 	/** Forget the last scan, for example when the person who ran it signs out. */
 	reset() {
 		this.#token += 1;
+		this.#stopPolling();
 		this.#stopClock();
 		this.summary = null;
 		this.busy = false;
@@ -106,6 +112,27 @@ class Scan {
 	#stopClock() {
 		if (this.#timer) clearInterval(this.#timer);
 		this.#timer = null;
+	}
+
+	#stopPolling() {
+		if (this.#pollTimer) clearTimeout(this.#pollTimer);
+		this.#pollTimer = null;
+	}
+
+	#connectionLost(message?: string) {
+		this.feedback = {
+			title: 'Scan connection interrupted',
+			message: `${message || 'Could not read scan progress.'} The scan may still be running. Reconnect to check its progress without starting another scan.`,
+			kind: 'warning'
+		};
+	}
+
+	/** Rejoin the same server job. Reconnecting never submits another scan or uses a free scan. */
+	reconnect() {
+		const current = this.summary;
+		if (current?.state !== 'attention' || !current.id) return;
+		this.feedback = null;
+		return this.#poll(current.id, { ...current, state: 'running', message: 'Reconnecting to your scan…' });
 	}
 
 	/**
@@ -154,6 +181,7 @@ class Scan {
 			}
 		}
 		this.busy = true;
+		const token = ++this.#token;
 		let started = false;
 		try {
 			const data = await api('/api/search', json('POST', {
@@ -163,6 +191,7 @@ class Scan {
 				product_count: context.platform ? 1 : options.productCount,
 				review_count: options.reviewCount
 			}));
+			if (this.#token !== token) return;
 			// Only a guest's free-scan count changes here. It must never sign a signed-in person out.
 			if (data.guest && !auth.user) auth.apply({ user: null, guest: data.guest });
 			if (data.job) {
@@ -184,6 +213,7 @@ class Scan {
 			if (context.isUrl && products.length === 1) await goto(reportHref(products[0].link));
 			else await goto('/app/products');
 		} catch (error) {
+			if (this.#token !== token) return;
 			const failure = error as ApiError;
 			if (failure.body?.limit_reached) {
 				auth.apply({ user: null, guest: failure.body.guest });
@@ -194,7 +224,7 @@ class Scan {
 				this.feedback = { title: 'Scan could not start', message: failure.message, kind: 'error' };
 			}
 		} finally {
-			if (!started) this.busy = false;
+			if (!started && this.#token === token) this.busy = false;
 		}
 	}
 
@@ -210,9 +240,11 @@ class Scan {
 		if (this.busy) return { failure: 'Another check is still running. Wait for it to finish, then try again.' };
 		this.feedback = null;
 		this.busy = true;
+		const token = ++this.#token;
 		let started = false;
 		try {
 			const data = await api('/api/extension/check', json('POST', { product }));
+			if (this.#token !== token) return { failure: 'This check was interrupted. Reopen it to continue.' };
 			if (data.existing) return { saved: data.existing };
 			if (!data.job) return { failure: 'The check could not start. Please try again.' };
 			started = true;
@@ -221,21 +253,26 @@ class Scan {
 		} catch (error) {
 			return { failure: (error as Error).message || 'The check could not start. Please try again.' };
 		} finally {
-			if (!started) this.busy = false;
+			if (!started && this.#token === token) this.busy = false;
 		}
 	}
 
 	async #poll(id: string, initial: Partial<Job> = {}) {
 		const token = ++this.#token;
+		this.#stopPolling();
 		this.busy = true;
 		const base: ScanSummary = { ...initial, id, state: 'running' };
 		this.#set(base);
 		this.#startClock(initial.created_at);
 
 		const tick = async () => {
+			if (this.#token !== token) return;
 			try {
-				const update = await api<Job>(`/api/jobs/${id}`);
+				const update = await api<Job>(`/api/jobs/${encodeURIComponent(id)}`);
 				if (this.#token !== token) return;
+				if (update.id !== id || !['running', 'complete', 'error'].includes(update.state)) {
+					throw new ApiError('The server returned an unreadable scan status.', 502, {});
+				}
 				const job: ScanSummary = { ...base, ...update, id };
 
 				if (job.state === 'complete') {
@@ -303,16 +340,19 @@ class Scan {
 					}
 				}
 				this.#set(job);
-				setTimeout(tick, POLL_MS);
+				this.#pollTimer = setTimeout(tick, POLL_MS);
 			} catch (error) {
 				if (this.#token !== token) return;
 				this.#stopClock();
+				if (error instanceof ApiError && error.status === 404) {
+					const message = 'This scan is no longer available. It may have expired after a server restart. Check your saved reports before starting a new scan.';
+					this.busy = false;
+					this.#set({ ...(this.summary ?? base), state: 'error', message });
+					this.feedback = { title: 'Scan is no longer available', message, kind: 'warning' };
+					return;
+				}
 				this.#set({ ...(this.summary ?? base), state: 'attention', message: (error as Error).message });
-				this.feedback = {
-					title: 'Could not read scan progress',
-					message: (error as Error).message,
-					kind: 'error'
-				};
+				this.#connectionLost((error as Error).message);
 			}
 		};
 		return tick();
@@ -364,7 +404,7 @@ class Scan {
 			return goto('/app/products');
 		}
 		await goto(onGuestScreen() ? '/scan' : '/app/analyze');
-		if (scan.state === 'attention' && scan.id) this.#poll(scan.id, scan as Partial<Job>);
+		if (scan.state === 'attention' && scan.id) this.reconnect();
 		if (scan.state === 'error') {
 			this.markSeen();
 			this.feedback = {

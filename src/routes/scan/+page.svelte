@@ -6,6 +6,7 @@
 	import LinkIcon from '@lucide/svelte/icons/link';
 	import { onMount } from 'svelte';
 	import ScanProgress from '#lib/components/app/scan-progress.svelte';
+	import ScanFeedback from '#lib/components/app/scan-feedback.svelte';
 	import ScanStatus from '#lib/components/app/scan-status.svelte';
 	import { Alert, AlertDescription, AlertTitle } from '#lib/components/ui/alert/index.js';
 	import { Badge } from '#lib/components/ui/badge/index.js';
@@ -115,9 +116,11 @@
 						bind:value={query}
 						disabled={scan.busy}
 						aria-invalid={notALink || unsupported || refused}
+						aria-describedby="guest-query-hint"
 					/>
 					<InputGroupAddon align="inline-end" class="max-md:hidden"><Kbd title="Press / to jump here">/</Kbd></InputGroupAddon>
 				</InputGroup>
+				<div id="guest-query-hint" class="contents">
 				{#if notALink}
 					<p class="text-destructive flex items-center gap-1.5 text-sm" aria-live="polite">
 						<CircleAlertIcon class="size-4" /> That is not a link. Paste the product page's address.
@@ -144,6 +147,7 @@
 						Uses 1 free scan. We read up to {LAZADA_REVIEWS_PER_STAR} reviews from each star level.
 					</p>
 				{/if}
+				</div>
 			</div>
 
 			{#if blocked}
@@ -164,16 +168,7 @@
 				</Button>
 			{/if}
 
-			{#if scan.feedback}
-				<Alert
-					variant={scan.feedback.kind === 'error' ? 'destructive' : 'default'}
-					class={scan.feedback.kind === 'warning' ? 'tone-caution border-(--tone)/50 bg-(--tone-soft) *:[svg]:text-(--tone)' : ''}
-				>
-					<CircleAlertIcon />
-					<AlertTitle>{scan.feedback.title}</AlertTitle>
-					<AlertDescription>{scan.feedback.message}</AlertDescription>
-				</Alert>
-			{/if}
+			<ScanFeedback />
 
 			{#if running}
 				<div class="bg-muted/50 grid gap-3 rounded-lg border p-4" role="status" aria-live="polite">
@@ -185,7 +180,7 @@
 									? `${MARKETPLACES[scan.summary.platform as Marketplace] ?? scan.summary.platform} live scan`
 									: 'Live scan running'}
 							</b>
-							<span class="text-muted-foreground text-xs tabular-nums">{scan.elapsed}</span>
+							<span class="text-muted-foreground text-xs tabular-nums" aria-hidden="true">{scan.elapsed}</span>
 						</div>
 					</div>
 					{#if scan.summary?.needs_you}

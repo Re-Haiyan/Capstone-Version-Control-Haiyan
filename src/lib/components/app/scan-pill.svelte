@@ -26,7 +26,7 @@
 </script>
 
 {#if pill}
-	<Button variant="outline" size="sm" class="rounded-full" title="{pill.text}. Open it" onclick={() => scan.open()}>
+	<Button variant="outline" size="sm" class="rounded-full" title="{pill.text}. Open it" aria-label={pill.kind === 'running' ? 'Scan running. View progress' : `${pill.text}. Open it`} onclick={() => scan.open()}>
 		{#if pill.kind === 'running'}<Spinner />
 		{:else if pill.kind === 'ready'}<CircleCheckIcon class="pop" />
 		{:else if pill.kind === 'stopped'}<OctagonXIcon class="text-destructive" />
