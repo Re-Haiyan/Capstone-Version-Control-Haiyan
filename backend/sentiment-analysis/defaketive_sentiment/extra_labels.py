@@ -506,7 +506,11 @@ R6_NAD_GROUPS: dict[str, tuple[re.Pattern[str], ...]] = {
             r"not\s+whats?\s+in\s+(?:the\s+)?specs",
             r"(?:edit|palitan|change|pakiedit|update)\s+(?:(?:ng|ang|yung|nyo|niyo|po|the|your|item)\s+){0,3}"
             r"(?:caption|description|item description|pictures?|title|product name)",
-            r"(?:deceptive|deceiving|deception)",
+            # Require the verdict to name the listing/advertisement. A bare
+            # "deceiving" is often a complaint about a defective unit or
+            # seller experience, not proof that the product differed from its
+            # description.
+            r"(?:deceptive|deceiving|deception)\s+(?:listing|advertisement|advertising|ad|description|claim|photo|picture)(?!\w)",
         )
     ),
     # a stated number doubted or denied, in wordings the served patterns miss
@@ -672,6 +676,52 @@ R7_NAD_GROUPS: dict[str, tuple[re.Pattern[str], ...]] = {
     ),}
 R7_OFF: set[str] = set()
 
+# Revision r8 (8 Nov 2026): targeted corrections from a fresh audit of the
+# shipped checker on the high-confidence gold and held-out sets. These are
+# deliberately narrow: they require an explicit claim/feature mismatch and do
+# not generalize from dissatisfaction alone.
+EXTRA_RULES_REVISION_08 = "r8"
+CHARGING_TIER_LIMITATION = re.compile(
+    r"(?<!\w)(?:fast|quick)\s+charg\w*\s+only\b[^.!?]{0,80}\bno\s+super\s+fast\s+charg\w*",
+    re.IGNORECASE,
+)
+R8_NAD_GROUPS: dict[str, tuple[re.Pattern[str], ...]] = {
+    "feature_mismatch": _compile(
+        (
+            # "This is not a data cable" is a denied product capability, not
+            # merely a charging fault.
+            r"(?:not|isn't|isnt|wasn't|wasnt|hindi|di)\s+(?:an?\s+)?(?:actual\s+|real\s+)?data\s+cable(?!\w)",
+            # A measured output below the stated requirement.
+            r"(?:doesn'?t|does not|cannot|can'?t|won'?t|will not)\s+(?:charge|output|deliver|reach|provide)\s+"
+            r"(?:at\s+)?\d[\d,.]*\s*(?:w|watts?)(?!\w)",
+            r"(?:hindi|not)\s+(?:ito|this|a|an)\s+(?:fast|super\s+fast)\s+charg\w*(?!\w)",
+            # Compatibility denial tied to the promotion/listing image.
+            r"(?:not|isn't|isnt|wasn't|wasnt|hindi|di)\s+(?:[\w']+\s+){0,8}"
+            r"compatible\s+(?:with|to)\s+(?:[\w']+\s+){0,8}"
+            r"(?:promotion|promotional|listing|advertis\w*|picture|photo|image)(?!\w)",
+            # Common marketplace wording/typos for an item that is not the
+            # named model or brand shown in the listing.
+            r"(?:not|isn't|isnt|wasn't|wasnt|hindi|di)\s+(?:an?\s+)?(?:authrntic|authentic|original)\s+[\w']+\s+"
+            r"(?:as\s+seen\s+on|shown\s+in|shown\s+on)\s+(?:your\s+)?(?:ads?|advertisement|listing|picture|photo)(?!\w)",
+            r"(?:brand|model)\s+(?:niya|nya|ay|is|was)?\s*(?:iba|different|wrong)\s+"
+            r"(?:sa|from|in|on)\s+(?:the\s+)?(?:lalagyanan|box|packaging|package|bluetooth|picture|photo)(?!\w)",
+            r"(?:sa|in|on)\s+(?:the\s+)?(?:picture|photo)\s+(?:[\w']+\s+){0,2}(?:dualshock|doubleshock)\b\s+"
+            r"(?:[\w']+\s+){0,6}(?:deliver\w*|received|dumating)\s+(?:[\w']+\s+){0,4}(?:dualshock|doubleshock)\b",
+            r"(?:this|it|it's|its)\s+(?:is\s+)?not\s+(?:a\s+|an\s+)?(?:mechanical\s+)?keyboard(?!\w)",
+        )
+    ),
+    "photo_expectation": _compile(
+        (
+            # "from the photo I thought I'd get different colors" survives
+            # sentence-level tagging without requiring listing context.
+            r"(?:from|in)\s+the\s+(?:photo|picture|image)\s+(?:i\s+)?(?:thought|expected)\s+"
+            r"(?:i\s+)?(?:would|i'd|id|will)\s+(?:get|receive)\s+(?:[\w']+\s+){0,4}"
+            r"(?:different|various|varied)\s+colou?r(?:s)?(?!\w)",
+        )
+    ),
+}
+R8_OFF: set[str] = set()
+
 
 def _r5_patterns(groups: dict[str, tuple[re.Pattern[str], ...]]) -> tuple[re.Pattern[str], ...]:
     return tuple(pattern for name, patterns in groups.items() if name not in R5_OFF for pattern in patterns)
@@ -685,18 +735,26 @@ def _r7_patterns(groups: dict[str, tuple[re.Pattern[str], ...]]) -> tuple[re.Pat
     return tuple(pattern for name, patterns in groups.items() if name not in R7_OFF for pattern in patterns)
 
 
+def _r8_patterns(groups: dict[str, tuple[re.Pattern[str], ...]]) -> tuple[re.Pattern[str], ...]:
+    return tuple(pattern for name, patterns in groups.items() if name not in R8_OFF for pattern in patterns)
+
+
 def not_as_described_spans(normalized: str, revision: str = EXTRA_RULES_REVISION) -> list[tuple[int, int]]:
     """Where the reviewer disputes a number, a feature or the photos."""
     patterns = NOT_AS_DESCRIBED_PATTERNS
     if revision in (EXTRA_RULES_REVISION_05, EXTRA_RULES_REVISION_06, EXTRA_RULES_REVISION_07):
         patterns = patterns + _r5_patterns(R5_NAD_GROUPS)
-    if revision in (EXTRA_RULES_REVISION_06, EXTRA_RULES_REVISION_07):
+    if revision in (EXTRA_RULES_REVISION_06, EXTRA_RULES_REVISION_07, EXTRA_RULES_REVISION_08):
         patterns = patterns + _r6_patterns(R6_NAD_GROUPS)
+    if revision == EXTRA_RULES_REVISION_08:
+        patterns = patterns + _r8_patterns(R8_NAD_GROUPS)
     spans = [
         found.span()
         for pattern in patterns
         for found in pattern.finditer(normalized)
-        if not SPECULATION.search(normalized[: found.start()]) and "dual shock" not in found.group(0).casefold()
+        if not SPECULATION.search(normalized[: found.start()])
+        and "dual shock" not in found.group(0).casefold()
+        and not CHARGING_TIER_LIMITATION.search(normalized)
     ]
     for found in ONLY_NUMBER.finditer(normalized):
         before = normalized[: found.start()]

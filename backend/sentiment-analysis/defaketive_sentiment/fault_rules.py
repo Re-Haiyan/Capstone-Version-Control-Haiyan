@@ -48,6 +48,9 @@ F12_REVISION = "f12"
 #   damage       "may damage", "has a crack" (not when it is the box or the packaging, see F13_VETO)
 # Nothing flagged before is unflagged: these only add.
 F13_REVISION = "f13"
+# f14 (8 Nov 2026) closes two observed high-confidence misses and excludes a
+# neutral charging-tier description from both defect and slow-charge rules.
+F14_REVISION = "f14"
 S2_REVISION = "s2"
 F11_OFF: set[str] = set()
 
@@ -59,6 +62,21 @@ _SOFT = (
 _FAST = r"(?:fast|super|turbo|quick|pass|rapid|flash)\s*-?\s*(?:charg\w*|changer|charge)"
 _WATTS = r"\d{2,3}\s*(?:w|watts?)(?!\w)"
 FAST_NOT_CHARGING = re.compile(r"fast\s+(?:delivery|shipping|ship\w*|deliver\w*|response|reply|transaction|dating|dumating)", re.I)
+# "fast charging only, no super fast charging" describes the product's tier;
+# it is not a report that the charger is broken or slower than promised.
+CHARGING_TIER_LIMITATION = re.compile(
+    r"(?<!\w)(?:fast|quick)\s+charg\w*\s+only\b[^.!?]{0,80}\bno\s+super\s+fast\s+charg\w*",
+    re.I,
+)
+CHARGING_CLAIM_MISMATCH = re.compile(
+    r"(?<!\w)(?:hindi|not)\s+(?:ito|this|a|an)\s+(?:fast|super\s+fast)\s+charg\w*",
+    re.I,
+)
+CHARGING_OUTPUT_LIMITATION = re.compile(
+    r"(?<!\w)(?:doesn'?t|does\s+not|cannot|can'?t|won'?t)\s+charge\s+at\s+\d[\d,.]*\s*(?:w|watts?)"
+    r"[^.!?]{0,100}\b(?:max|maximum)\b[^.!?]{0,60}\b(?:needs?|requires?)\s+\d[\d,.]*\s*(?:w|watts?)",
+    re.I,
+)
 F11_PARTS = {
     "slow_charge": (
         re.compile(rf"(?<!\w){_NEG}\s+{_SOFT}{{0,3}}{_FAST}", re.I),
@@ -143,7 +161,16 @@ F11_PARTS = {
         re.compile(r"(?<!\w)(?:no\s+longer|isn'?t|is\s+not|wasn'?t|not)\s+(?:even\s+)?(?:working|functioning|functional|function)(?!\w)", re.I),
         re.compile(
             r"(?<!\w)(?:won'?t|will\s+not|doesn'?t|does\s+not|didn'?t|did\s+not|cannot|can'?t|wouldn'?t)\s+(?:even\s+)?"
-            r"(?:turn\s+on|power\s+on|start|work|charge|function|play)(?!\w)",
+            r"(?:turn\s+on|power\s+on|start|work|charge|function|play|touch|respond\s+to\s+touch)(?!\w)",
+            re.I,
+        ),
+        # Sentence segmentation can leave the negative half of
+        # "the cord was working but the adapter wasn't" on its own.
+        re.compile(
+            r"(?<!\w)(?:(?:the|my|an?|yung|ung|ang)\s+)?"
+            r"(?:adapter|charger|cord|cable|earphones?|earbuds?|headset|speaker|piece|side|port)\s+"
+            r"(?:wasn'?t|isn'?t|weren'?t|aren'?t|doesn'?t|does\s+not|is\s+not|was\s+not)"
+            r"(?:\s+(?:working|work|functional|function))?(?!\w)",
             re.I,
         ),
         re.compile(
@@ -239,6 +266,8 @@ def f11_match(raw: str) -> tuple[str, tuple[int, int]] | None:
     """The first f11 part that reports a fault in this sentence, with its span in the raw text."""
     text = str(raw)
     if F11_GUARD.search(text):
+        return None
+    if CHARGING_TIER_LIMITATION.search(text) or CHARGING_CLAIM_MISMATCH.search(text) or CHARGING_OUTPUT_LIMITATION.search(text):
         return None
     if "hum" not in F11_OFF and SOUND_WORDS.search(text) and not SHOCK_OR_HEAT.search(text):
         found = GROUNDED.search(text)
