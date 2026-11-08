@@ -1,5 +1,6 @@
 {
 	"recommendations": [
+		"ms-python.python",
 		"svelte.svelte-vscode",
 		"bradlc.vscode-tailwindcss"
 	]

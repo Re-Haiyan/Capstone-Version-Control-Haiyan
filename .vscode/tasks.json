@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "DeFaketive: Setup (first run)",
+			"type": "process",
+			"command": "cmd.exe",
+			"args": ["/d", "/c", "setup.cmd"],
+			"options": { "cwd": "${workspaceFolder}" },
+			"problemMatcher": [],
+			"presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
+		},
+		{
+			"label": "DeFaketive: Start",
+			"type": "process",
+			"command": "cmd.exe",
+			"args": ["/d", "/c", "start.cmd"],
+			"options": { "cwd": "${workspaceFolder}" },
+			"problemMatcher": [],
+			"presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
+		},
+		{
+			"label": "DeFaketive: Develop (live updates)",
+			"type": "process",
+			"command": "cmd.exe",
+			"args": ["/d", "/c", "dev.cmd"],
+			"options": { "cwd": "${workspaceFolder}" },
+			"problemMatcher": [],
+			"presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
+		}
+	]
+}

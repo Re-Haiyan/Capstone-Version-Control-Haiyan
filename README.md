@@ -4,6 +4,10 @@ Haiyan's scan recovery and accessibility improvements are described in
 [the enhancement notes](docs/haiyan-enhancements.md), including their research
 alignment and verification commands.
 
+For Windows and VS Code, follow [the local setup guide](docs/vscode-windows.md).
+The included VS Code tasks run setup, start the updated app at
+`http://localhost:5173`, or enable live development updates.
+
 A second face for DeFaketive, built with [shadcn-svelte](https://shadcn-svelte.com) (SvelteKit, Tailwind v4,
 Lucide icons, the plain **neutral** look with brand colours, deep navy blue and burnt mustard yellow). The original app in
 `../Capstone-Version-Control-Version-1.1` is not touched.
