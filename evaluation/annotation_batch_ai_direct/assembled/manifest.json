@@ -1,0 +1,56 @@
+{
+  "rows": 10000,
+  "labels": {
+    "positive": 3619,
+    "negative": 4050,
+    "mixed": 2075,
+    "unclear": 78,
+    "neutral": 178
+  },
+  "confidence": {
+    "high": 8839,
+    "medium": 1107,
+    "low": 54
+  },
+  "aspect_mentions": {
+    "quality": 5297,
+    "functionality": 6855,
+    "seller_service": 2106,
+    "delivery": 1072,
+    "packaging": 728,
+    "price": 1627
+  },
+  "original_splits": {
+    "train": 7740,
+    "test_candidate": 939,
+    "legacy_exposed": 300,
+    "validation": 1021
+  },
+  "needs_adjudication": 3715,
+  "disagreements_with_previous_proposals": 3178,
+  "human_approved": 0,
+  "method": "Direct parallel AI review of full review text; no ratings or proposed labels shown",
+  "created_at": "2026-11-08T23:45:42.871514+00:00",
+  "source_sha256": "39c4028c7ba6df75503c8218c52ec8cb6392c5ef042cff51f14884f2e2e1f05d",
+  "original_queue_sha256": "89e8f99b3014b4da174b0e5cb1e3b4c617442fd956b671a7cf9f0295f96a0ef7",
+  "part_sha256": {
+    "part_1.tsv": "366b45f8615a7f8ebfe972eff0241c0e9eae8bc173f1796530397ae31887c492",
+    "part_2.tsv": "e2109faef9291c2a4edf7d913e9dade46341c7903950449a63036d006e05544c",
+    "part_3.tsv": "54b3fbbc3cee895940efdb0ab0c4f5371c5682c024bf42c8128549163bdd9e7b",
+    "part_4.tsv": "2474ad83fec93762fc17dd164a9e6be1e4cb702babaca36d7484284ac3b3ed62",
+    "part_5.tsv": "30e56700ba674d3d6693d0d6fa906c005d891a71ae3fc3e94a651ecf63cb2442",
+    "part_6.tsv": "b522fb404699b99be454ccf138d20a4e46e93feb6f568409964878e7212b2a2d",
+    "part_7.tsv": "c79b72d73e3eaedcf3ac9711a16fb5729c813ae8877c71d53e923cbbd5594400",
+    "part_8.tsv": "d297cb3f4b0ed9c31a431b4d47adfc65204568ab10ead884c73e5c64e1068038",
+    "part_9.tsv": "27a395ebf20441e4e1ed21c05fe0cf7b32b579545876c9f80ccb2c5d13765f33",
+    "part_10.tsv": "80195f96a74c28e48d9c4be80c04c7f0df997626b65584c335a8807e6d7b1323"
+  },
+  "limitations": [
+    "AI annotations are fallible silver labels, not human gold.",
+    "Confidence is annotator judgment, not a calibrated probability.",
+    "Aspect labels do not include independently annotated evidence spans.",
+    "This copy labels former blind rows; it is not an untouched evaluation benchmark.",
+    "Human adjudication and a fresh independent test are needed before accuracy claims.",
+    "No production model weights were changed."
+  ]
+}

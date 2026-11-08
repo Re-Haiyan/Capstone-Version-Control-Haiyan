@@ -47,3 +47,6 @@ __pycache__/
 /dist-extension
 /dist-extension.zip
 /static/downloads
+
+# Local annotation queues may contain review text and reviewer identities.
+/evaluation/annotation_batch*/
