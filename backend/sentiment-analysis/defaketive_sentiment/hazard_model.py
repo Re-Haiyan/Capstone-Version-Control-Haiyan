@@ -33,6 +33,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from . import hazard_taxonomy as taxonomy
 from . import text_norm
+from .aspects import VERSION as ASPECT_VERSION, analyze_aspects
 from .extra_labels import (
     EXTRA_RULES_REVISION,
     EXTRA_RULES_REVISION_04,
@@ -1725,6 +1726,7 @@ class HazardBadgeModel:
         parameters_version = (getattr(self.aggregator, "parameters", None) or {}).get("version")
         if parameters_version:
             self.model_version = f"{self.model_version}+{parameters_version}"
+        self.model_version += f"+{ASPECT_VERSION}"
 
     def fingerprint(self, review: object) -> str:
         return self.sentiment.fingerprint(review)
@@ -1757,6 +1759,26 @@ class HazardBadgeModel:
         ]
         explanation = self.sentiment.analyze(review, rating)
         label = explanation.get("label")
+        classifier_output = explanation.get("classifier") or {}
+        # Only classifiers carrying the review heads return these (the default
+        # "xlmr" with extras, or "xlmr_heads"); without them nothing is added.
+        learned = {}
+        if "mixed" in classifier_output:
+            from .review_heads import is_template, star_conflict
+
+            learned = {
+                "sentiment_extra": {
+                    "mixed": classifier_output["mixed"],
+                    "base_probabilities": classifier_output.get("base_probabilities")
+                    or classifier_output.get("probabilities") or {},
+                    "extras_version": classifier_output.get("extras_version", ""),
+                },
+                "aspect_sentiment_learned": classifier_output.get("aspects") or {},
+                "review_signals": {
+                    "is_template": is_template(review),
+                    "star_text_conflict": star_conflict(classifier_output.get("label"), rating),
+                },
+            }
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
@@ -1776,6 +1798,8 @@ class HazardBadgeModel:
             },
             "label": label,
             "review_excerpt": str(review or "").strip()[:240],
+            "aspect_sentiment": analyze_aspects(review),
+            **learned,
         }
 
     def analyze_batch(

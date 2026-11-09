@@ -1,0 +1,119 @@
+{
+  "built_at": "2026-11-09T00:03:19.648653+00:00",
+  "script": "scripts/build_enhanced_dataset.py",
+  "source_ref": "origin/Version-1.2",
+  "input_sha256": {
+    "firecs_train": "9ca5ef80b8f93836f5966a1db8d017ebbd474e4b615468269cb0ba9d3778eb39",
+    "firecs_test": "6c172b8a52ad5d320d445bcf2229557de103587673582767cc59f8fc42754875",
+    "sentitaglish": "5b86d2a5a8e04eac053343a1f3cf9f19ae1508607f3eb35fa87c66cf0cadf5ba",
+    "review_pool_10000.csv": "39c4028c7ba6df75503c8218c52ec8cb6392c5ef042cff51f14884f2e2e1f05d",
+    "assembled_annotations.csv": "9fa9373b95a6239e652eaab0518e59845ad16fe4e2fa62bd88a86f6451fbd10d",
+    "live_predictions": "7482df3e4748578cc79bdf21e5fe21565d295692144bb80e05fff3c9e505df70"
+  },
+  "live_model_version": "defaketive-hazard-lexicon-0.3.0+rules0.4g1n1f1f2f3f4f5f6f7f8af9f10s1f11f12f13f14o1q1s2s3+hazard-learned-6.0.0-safety-defect-34a2ad69+r1b+c2r8+extra-labels-1.0.0-quality-not_as_described-f8d08961+lc1+lc2+lc3+defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2+reference-baselines-2.0.0+hazard-parameters-1.1.0+aspects-cues-1",
+  "combined": {
+    "rows": 20525,
+    "splits": {
+      "validation": 1768,
+      "train": 14372,
+      "test_firecs": 3147,
+      "test_pool": 938,
+      "legacy_exposed": 300
+    },
+    "label4": {
+      "negative": 7462,
+      "positive": 7065,
+      "mixed": 5471,
+      "neutral": 449,
+      "unclear": 78
+    },
+    "label3": {
+      "negative": 7462,
+      "positive": 7065,
+      "neutral": 5920,
+      "": 78
+    },
+    "label_quality": {
+      "human": 10526,
+      "ai_silver": 9999
+    },
+    "label4_by_split": {
+      "validation": {
+        "negative": 658,
+        "positive": 607,
+        "mixed": 453,
+        "neutral": 37,
+        "unclear": 13
+      },
+      "train": {
+        "negative": 5251,
+        "positive": 4992,
+        "mixed": 3770,
+        "neutral": 303,
+        "unclear": 56
+      },
+      "test_firecs": {
+        "positive": 1033,
+        "negative": 1027,
+        "mixed": 1004,
+        "neutral": 83
+      },
+      "test_pool": {
+        "negative": 397,
+        "positive": 344,
+        "mixed": 169,
+        "neutral": 20,
+        "unclear": 8
+      },
+      "legacy_exposed": {
+        "negative": 129,
+        "positive": 89,
+        "mixed": 75,
+        "neutral": 6,
+        "unclear": 1
+      }
+    },
+    "texts_in_more_than_one_source": 10459,
+    "sources_disagree": 1,
+    "language": {
+      "taglish": 8121,
+      "tagalog": 6513,
+      "english": 5743,
+      "unknown": 148
+    }
+  },
+  "pool_enriched": {
+    "rows": 10000,
+    "language": {
+      "english": 5129,
+      "tagalog": 2420,
+      "taglish": 2318,
+      "unknown": 133
+    },
+    "is_template": {
+      "False": 8840,
+      "True": 1160
+    },
+    "star_text_mismatch": {
+      "False": 9614,
+      "True": 386
+    },
+    "live_agrees": {
+      "True": 8199,
+      "False": 1723,
+      "": 78
+    }
+  },
+  "rules": {
+    "label3": "mixed -> neutral (FiReCS convention); FiReCS label wins when present",
+    "label4": "SentiTaglish > FiReCS > pool annotation",
+    "dedup": "NFKC, lowercase, punctuation stripped, whitespace collapsed",
+    "leakage": "no train/validation text appears in test_firecs, test_pool or legacy_exposed",
+    "language": "heuristic stopword counts; tagalog >= 80% Tagalog hits, english <= 20%"
+  },
+  "limitations": [
+    "Pool labels are AI silver labels, not human gold.",
+    "test_pool rows were labelled in this copy; they are not an untouched benchmark.",
+    "Language and template flags are heuristics."
+  ]
+}

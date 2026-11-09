@@ -1,0 +1,36 @@
+{
+  "version": "sentiment-blend-1.0.0",
+  "built_at": "2026-11-09T01:03:49.069738+00:00",
+  "encoder_model_version": "defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2",
+  "recipe": "label = argmax((1-w)*shipped + w*head) on text with form fields rewritten as sentences",
+  "weight": 0.4,
+  "C": 0.03,
+  "template_style": "sentences",
+  "training_rows": 6632,
+  "training_rows_rewritten": 0,
+  "training_labels": "human only (FiReCS train / SentiTaglish), label3",
+  "selection": {
+    "report": "evaluation/sentiment_boost_v1/report.json",
+    "candidate": "blend_human+tmpl_sentences",
+    "results": {
+      "firecs": 0.8383,
+      "pool": 0.8025,
+      "team_all": 0.8441,
+      "team_high": 0.8902,
+      "team_text_only": 0.7817,
+      "human_validation": 0.9149
+    },
+    "shipped": {
+      "firecs": 0.833,
+      "pool": 0.7836,
+      "team_all": 0.8183,
+      "team_high": 0.8677,
+      "team_text_only": 0.7581,
+      "human_validation": 0.9064
+    },
+    "rule": ", fixed before any result was seen: a candidate replaces the shipped\nlabel only if, versus the shipped model,\n  1. FiReCS test macro F1 (human, 3,147) is not lower, AND\n  2. team-labelled marketplace macro F1 (gold 200 + held-out 100, all rows, with\n     the app's star rule) is not lower, AND\n  3. at least one of those two is higher by >= 0.01."
+  },
+  "files": {
+    "head.joblib": "85c85e108c7e40c7538e517c1d0c691ae76949c4a78c2e38a7d210766ffc3559"
+  }
+}

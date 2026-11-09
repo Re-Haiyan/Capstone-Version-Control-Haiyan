@@ -47,3 +47,9 @@ __pycache__/
 /dist-extension
 /dist-extension.zip
 /static/downloads
+
+# Local annotation queues may contain review text and reviewer identities.
+/evaluation/annotation_batch*/
+# Regenerable embedding cache (57 MB) and human-review sheets with full review text.
+/evaluation/enhanced_dataset_v1/embeddings_cache.npz
+/evaluation/human_review_round*/

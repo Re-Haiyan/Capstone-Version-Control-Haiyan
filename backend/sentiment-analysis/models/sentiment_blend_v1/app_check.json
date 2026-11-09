@@ -1,0 +1,72 @@
+{
+  "shipped_model_version": "defaketive-hazard-lexicon-0.3.0+rules0.4g1n1f1f2f3f4f5f6f7f8af9f10s1f11f12f13f14o1q1s2s3+hazard-learned-6.0.0-safety-defect-34a2ad69+r1b+c2r8+extra-labels-1.0.0-quality-not_as_described-f8d08961+lc1+lc2+lc3+defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2+reference-baselines-2.0.0+hazard-parameters-1.1.0+aspects-cues-1",
+  "blend_model_version": "defaketive-hazard-lexicon-0.3.0+rules0.4g1n1f1f2f3f4f5f6f7f8af9f10s1f11f12f13f14o1q1s2s3+hazard-learned-6.0.0-safety-defect-34a2ad69+r1b+c2r8+extra-labels-1.0.0-quality-not_as_described-f8d08961+lc1+lc2+lc3+defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2+sentiment-blend-1.0.0-85c85e10+reference-baselines-2.0.0+hazard-parameters-1.1.0+aspects-cues-1",
+  "sets": {
+    "gold_labels_200.csv": {
+      "rows": 200,
+      "shipped_macro_f1": 0.8271,
+      "blend_macro_f1": 0.8529,
+      "difference_95ci": [
+        -0.0055,
+        0.0617
+      ],
+      "label_changes": {
+        "neutral->negative": 2,
+        "positive->neutral": 4,
+        "negative->neutral": 1,
+        "neutral->positive": 1
+      }
+    },
+    "heldout_labels_100.csv": {
+      "rows": 100,
+      "shipped_macro_f1": 0.8005,
+      "blend_macro_f1": 0.8269,
+      "difference_95ci": [
+        -0.0192,
+        0.0839
+      ],
+      "label_changes": {
+        "neutral->positive": 1,
+        "positive->neutral": 2,
+        "negative->neutral": 2
+      }
+    },
+    "test_pool_ai_labels": {
+      "rows": 931,
+      "shipped_macro_f1": 0.789,
+      "blend_macro_f1": 0.811,
+      "difference_95ci": [
+        0.0101,
+        0.0352
+      ],
+      "label_changes": {
+        "positive->neutral": 10,
+        "negative->neutral": 4,
+        "neutral->positive": 3,
+        "positive->negative": 2,
+        "neutral->negative": 3
+      }
+    },
+    "test_firecs_text_only": {
+      "rows": 3147,
+      "shipped_macro_f1": 0.833,
+      "blend_macro_f1": 0.8383,
+      "difference_95ci": [
+        0.0005,
+        0.01
+      ]
+    },
+    "team_combined": {
+      "rows": 300,
+      "shipped_macro_f1": 0.8183,
+      "blend_macro_f1": 0.8441,
+      "difference_95ci": [
+        -0.0019,
+        0.054
+      ]
+    }
+  },
+  "hazard_flag_differences": 0,
+  "hazard_examples": [],
+  "hazard_unchanged": true
+}

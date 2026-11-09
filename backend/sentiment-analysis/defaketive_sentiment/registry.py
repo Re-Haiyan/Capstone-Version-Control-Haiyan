@@ -50,7 +50,10 @@ MODEL_MODES = (HAZARD_BADGES, HYBRID_MANUSCRIPT, MANUSCRIPT, LEGACY_HYBRID)
 # baseline. Neither is ever substituted for the other when one fails to load.
 XLMR_SENTIMENT = "xlmr"
 TFIDF_SENTIMENT = "tfidf"
-SENTIMENT_MODELS = (XLMR_SENTIMENT, TFIDF_SENTIMENT)
+# The same encoder with learned heads (models/review_heads_v1): marketplace-
+# adapted sentiment plus mixed and aspect outputs. Opt-in; see review_heads.py.
+XLMR_HEADS_SENTIMENT = "xlmr_heads"
+SENTIMENT_MODELS = (XLMR_SENTIMENT, TFIDF_SENTIMENT, XLMR_HEADS_SENTIMENT)
 SENTIMENT_ENVIRONMENT_VARIABLE = "DEFAKETIVE_SENTIMENT_MODEL"
 DEFAULT_SENTIMENT = XLMR_SENTIMENT
 
@@ -144,7 +147,15 @@ def _hazard_tagger(choice: str, sentiment_model: Any) -> Any:
     embedder = getattr(classifier, "embed", None) if scorer.needs_embedding else None
     # The gated defect model asks how the app's sentiment model reads one
     # sentence (no star rating), exactly as when its threshold was set.
-    reader = (lambda text: sentiment_model.analyze(text)["label"]) if scorer.needs_sentiment else None
+    # With the review heads, the defect threshold still reads the base model's
+    # label: that is the reader it was calibrated against, so hazard flags stay
+    # exactly as shipped whichever sentiment head decides the review label.
+    reading_model = sentiment_model
+    if hasattr(classifier, "base_view"):
+        from .model import DefaketiveSentimentModel
+
+        reading_model = DefaketiveSentimentModel(classifier=classifier.base_view())
+    reader = (lambda text: reading_model.analyze(text)["label"]) if scorer.needs_sentiment else None
     # Each model folder names the keyword rules it was built for. The label
     # rules run after the models, so one set serves every folder.
     return LexiconHazardTagger.for_scorer(
@@ -170,7 +181,35 @@ def _sentiment_model(choice: str) -> Any:
     if choice == XLMR_SENTIMENT:
         from .transformer_sentiment import TransformerSentimentClassifier
 
+        # Default: the shipped encoder with the sentiment blend (template fields
+        # rewritten, blended with a human-label head; its own model_version, so
+        # saved reports are redone) plus the mixed/aspect extras.
+        # DEFAKETIVE_SENTIMENT_BLEND=0 keeps the shipped label (extras only);
+        # DEFAKETIVE_REVIEW_EXTRAS=0 as well serves the plain shipped model.
+        # Missing add-on files step down to the next option with a warning.
+        import logging
+
+        log = logging.getLogger(__name__)
+        extras = os.environ.get("DEFAKETIVE_REVIEW_EXTRAS", "1").strip() != "0"
+        if extras and os.environ.get("DEFAKETIVE_SENTIMENT_BLEND", "1").strip() != "0":
+            try:
+                from .review_heads import BlendedTransformerSentimentClassifier
+
+                return DefaketiveSentimentModel(classifier=BlendedTransformerSentimentClassifier())
+            except Exception as error:  # noqa: BLE001 - the add-ons are optional
+                log.warning("Sentiment blend unavailable, using the shipped label: %s", error)
+        if extras:
+            try:
+                from .review_heads import ExtrasTransformerSentimentClassifier
+
+                return DefaketiveSentimentModel(classifier=ExtrasTransformerSentimentClassifier())
+            except Exception as error:  # noqa: BLE001
+                log.warning("Review extras unavailable: %s", error)
         return DefaketiveSentimentModel(classifier=TransformerSentimentClassifier())
+    if choice == XLMR_HEADS_SENTIMENT:
+        from .review_heads import HeadedTransformerSentimentClassifier
+
+        return DefaketiveSentimentModel(classifier=HeadedTransformerSentimentClassifier())
     raise ModelUnavailableError(
         f"Unknown sentiment model {choice!r}. Set {SENTIMENT_ENVIRONMENT_VARIABLE} "
         f"to one of: {', '.join(SENTIMENT_MODELS)}."

@@ -1,0 +1,249 @@
+{
+  "version": "review-heads-1.0.0",
+  "built_at": "2026-11-09T00:16:46.296450+00:00",
+  "encoder_model_version": "defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2",
+  "training_data": {
+    "firecs_train": "9ca5ef80b8f93836f5966a1db8d017ebbd474e4b615468269cb0ba9d3778eb39",
+    "firecs_test": "6c172b8a52ad5d320d445bcf2229557de103587673582767cc59f8fc42754875",
+    "sentitaglish": "5b86d2a5a8e04eac053343a1f3cf9f19ae1508607f3eb35fa87c66cf0cadf5ba",
+    "review_pool_10000.csv": "39c4028c7ba6df75503c8218c52ec8cb6392c5ef042cff51f14884f2e2e1f05d",
+    "assembled_annotations.csv": "9fa9373b95a6239e652eaab0518e59845ad16fe4e2fa62bd88a86f6451fbd10d",
+    "live_predictions": "7482df3e4748578cc79bdf21e5fe21565d295692144bb80e05fff3c9e505df70"
+  },
+  "training_rows": {
+    "validation": 1755,
+    "train": 14316,
+    "test_firecs": 3147,
+    "test_pool": 930,
+    "legacy_exposed": 299
+  },
+  "features": "768-d mean last hidden layer + log base-model probabilities, standardized",
+  "weights": "human 1.0; AI label high 1.0 / medium 0.6 / low 0.3; template reviews x0.5",
+  "sentiment_C_search": {
+    "0.03": 0.8673,
+    "0.1": 0.8684,
+    "0.3": 0.8649,
+    "1.0": 0.8586
+  },
+  "sentiment_C": 0.1,
+  "mixed_C": 0.03,
+  "mixed_threshold": 0.54,
+  "aspect_thresholds": {
+    "delivery": 0.7,
+    "packaging": 0.74,
+    "seller_service": 0.66,
+    "price": 0.8,
+    "quality": 0.36,
+    "functionality": 0.26
+  },
+  "evaluation": {
+    "test_firecs": {
+      "rows": 3147,
+      "current_macro_f1": 0.833,
+      "candidate_macro_f1": 0.8355,
+      "current_per_class": {
+        "negative": {
+          "precision": 0.8659,
+          "recall": 0.8491,
+          "f1": 0.8574,
+          "support": 1027
+        },
+        "neutral": {
+          "precision": 0.7882,
+          "recall": 0.7259,
+          "f1": 0.7557,
+          "support": 1087
+        },
+        "positive": {
+          "precision": 0.8446,
+          "recall": 0.9313,
+          "f1": 0.8858,
+          "support": 1033
+        }
+      },
+      "candidate_per_class": {
+        "negative": {
+          "precision": 0.8556,
+          "recall": 0.8481,
+          "f1": 0.8518,
+          "support": 1027
+        },
+        "neutral": {
+          "precision": 0.7567,
+          "recall": 0.7755,
+          "f1": 0.766,
+          "support": 1087
+        },
+        "positive": {
+          "precision": 0.8966,
+          "recall": 0.8809,
+          "f1": 0.8887,
+          "support": 1033
+        }
+      },
+      "mixed": {
+        "rows": 3142,
+        "precision": 0.7079,
+        "recall": 0.8376,
+        "f1": 0.7673
+      }
+    },
+    "test_pool": {
+      "rows": 930,
+      "current_macro_f1": 0.7836,
+      "candidate_macro_f1": 0.8348,
+      "current_per_class": {
+        "negative": {
+          "precision": 0.9503,
+          "recall": 0.7708,
+          "f1": 0.8512,
+          "support": 397
+        },
+        "neutral": {
+          "precision": 0.5439,
+          "recall": 0.6878,
+          "f1": 0.6075,
+          "support": 189
+        },
+        "positive": {
+          "precision": 0.8618,
+          "recall": 0.9244,
+          "f1": 0.892,
+          "support": 344
+        }
+      },
+      "candidate_per_class": {
+        "negative": {
+          "precision": 0.9167,
+          "recall": 0.8866,
+          "f1": 0.9014,
+          "support": 397
+        },
+        "neutral": {
+          "precision": 0.6768,
+          "recall": 0.709,
+          "f1": 0.6925,
+          "support": 189
+        },
+        "positive": {
+          "precision": 0.9052,
+          "recall": 0.9157,
+          "f1": 0.9104,
+          "support": 344
+        }
+      },
+      "mixed": {
+        "rows": 930,
+        "precision": 0.654,
+        "recall": 0.8166,
+        "f1": 0.7263
+      }
+    },
+    "validation": {
+      "rows": 1755,
+      "current_macro_f1": 0.8495,
+      "candidate_macro_f1": 0.8684,
+      "current_per_class": {
+        "negative": {
+          "precision": 0.9358,
+          "recall": 0.8191,
+          "f1": 0.8736,
+          "support": 658
+        },
+        "neutral": {
+          "precision": 0.7321,
+          "recall": 0.7918,
+          "f1": 0.7608,
+          "support": 490
+        },
+        "positive": {
+          "precision": 0.8844,
+          "recall": 0.9456,
+          "f1": 0.914,
+          "support": 607
+        }
+      },
+      "candidate_per_class": {
+        "negative": {
+          "precision": 0.8955,
+          "recall": 0.886,
+          "f1": 0.8908,
+          "support": 658
+        },
+        "neutral": {
+          "precision": 0.7769,
+          "recall": 0.7959,
+          "f1": 0.7863,
+          "support": 490
+        },
+        "positive": {
+          "precision": 0.9319,
+          "recall": 0.9242,
+          "f1": 0.928,
+          "support": 607
+        }
+      },
+      "mixed": {
+        "rows": 1755,
+        "precision": 0.7471,
+        "recall": 0.8609,
+        "f1": 0.8
+      }
+    }
+  },
+  "aspects_test_pool": {
+    "delivery": {
+      "mention_precision": 0.5289,
+      "mention_recall": 0.6337,
+      "mention_f1": 0.5766,
+      "polarity_accuracy": 0.9206
+    },
+    "packaging": {
+      "mention_precision": 0.5051,
+      "mention_recall": 0.7042,
+      "mention_f1": 0.5882,
+      "polarity_accuracy": 0.86
+    },
+    "seller_service": {
+      "mention_precision": 0.6562,
+      "mention_recall": 0.7119,
+      "mention_f1": 0.6829,
+      "polarity_accuracy": 0.9603
+    },
+    "price": {
+      "mention_precision": 0.7619,
+      "mention_recall": 0.7179,
+      "mention_f1": 0.7393,
+      "polarity_accuracy": 0.9519
+    },
+    "quality": {
+      "mention_precision": 0.7214,
+      "mention_recall": 0.8988,
+      "mention_f1": 0.8004,
+      "polarity_accuracy": 0.8224
+    },
+    "functionality": {
+      "mention_precision": 0.8542,
+      "mention_recall": 0.9134,
+      "mention_f1": 0.8828,
+      "polarity_accuracy": 0.8222
+    }
+  },
+  "gate": {
+    "rule": "test_firecs macro F1 >= current AND test_pool macro F1 >= current + 0.02",
+    "firecs_ok": true,
+    "marketplace_ok": true,
+    "passed": true
+  },
+  "qualified_for_integration": true,
+  "files": {
+    "sentiment.joblib": "69e109ec24f06371d85bc2de3bb86b3d8b6b9b0d6e1f20327e065632eac3cc42",
+    "mixed.joblib": "1227616366fefd6df71873f3614033c6ca8f43340592fa2f1e2c19c6047193d1",
+    "aspects.joblib": "9891ea0a389782746dd131b50abb198e5749c0defa9044d9ccfb4194284d1157"
+  },
+  "caveats": [
+    "test_pool labels are AI silver labels, not human gold.",
+    "Current-model scores here are text-only (no star-rating adjustment).",
+    "Hazard flags must be re-checked with scripts/check_review_heads.py."
+  ]
+}

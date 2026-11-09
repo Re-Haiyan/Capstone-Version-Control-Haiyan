@@ -88,6 +88,12 @@ export interface Review {
 	is_duplicate?: boolean;
 	included_in_analysis?: boolean;
 	sentiment_analysis?: {
+		aspect_sentiment?: {
+			version: string;
+			status: 'experimental';
+			mixed_evidence: boolean;
+			evidence: { aspect: string; label: 'positive' | 'negative' | 'mixed'; text: string; span: [number, number]; method: string }[];
+		};
 		label?: string;
 		review_tags?: string[];
 		review_extra_tags?: string[];

@@ -1,0 +1,453 @@
+{
+  "rule": ", fixed before any result was seen: a candidate replaces the shipped\nlabel only if, versus the shipped model,\n  1. FiReCS test macro F1 (human, 3,147) is not lower, AND\n  2. team-labelled marketplace macro F1 (gold 200 + held-out 100, all rows, with\n     the app's star rule) is not lower, AND\n  3. at least one of those two is higher by >= 0.01.",
+  "results": {
+    "shipped": {
+      "firecs": 0.833,
+      "pool": 0.7836,
+      "team_all": 0.8183,
+      "team_high": 0.8677,
+      "team_text_only": 0.7581,
+      "human_validation": 0.9064
+    },
+    "heads_all": {
+      "firecs": 0.8376,
+      "pool": 0.8376,
+      "team_all": 0.799,
+      "team_high": 0.8319,
+      "team_text_only": 0.78,
+      "human_validation": 0.8955
+    },
+    "gate_all": {
+      "firecs": 0.8422,
+      "pool": 0.8157,
+      "team_all": 0.8303,
+      "team_high": 0.8672,
+      "team_text_only": 0.7992,
+      "human_validation": 0.9147
+    },
+    "blend_all": {
+      "firecs": 0.8374,
+      "pool": 0.8134,
+      "team_all": 0.832,
+      "team_high": 0.8738,
+      "team_text_only": 0.7824,
+      "human_validation": 0.9187
+    },
+    "heads_human": {
+      "firecs": 0.8449,
+      "pool": 0.7898,
+      "team_all": 0.8213,
+      "team_high": 0.869,
+      "team_text_only": 0.759,
+      "human_validation": 0.9076
+    },
+    "gate_human": {
+      "firecs": 0.8393,
+      "pool": 0.7996,
+      "team_all": 0.8272,
+      "team_high": 0.8738,
+      "team_text_only": 0.7631,
+      "human_validation": 0.916
+    },
+    "blend_human": {
+      "firecs": 0.8383,
+      "pool": 0.7928,
+      "team_all": 0.832,
+      "team_high": 0.8738,
+      "team_text_only": 0.7705,
+      "human_validation": 0.9149
+    },
+    "shipped+tmpl_strip": {
+      "firecs": 0.833,
+      "pool": 0.7893,
+      "team_all": 0.8264,
+      "team_high": 0.8681,
+      "team_text_only": 0.7835,
+      "human_validation": 0.9064
+    },
+    "heads_all+tmpl_strip": {
+      "firecs": 0.8376,
+      "pool": 0.8408,
+      "team_all": 0.8098,
+      "team_high": 0.8553,
+      "team_text_only": 0.7899,
+      "human_validation": 0.9007
+    },
+    "gate_all+tmpl_strip": {
+      "firecs": 0.8414,
+      "pool": 0.8345,
+      "team_all": 0.8365,
+      "team_high": 0.8708,
+      "team_text_only": 0.8117,
+      "human_validation": 0.9147
+    },
+    "blend_all+tmpl_strip": {
+      "firecs": 0.8391,
+      "pool": 0.823,
+      "team_all": 0.8256,
+      "team_high": 0.8662,
+      "team_text_only": 0.7949,
+      "human_validation": 0.9134
+    },
+    "heads_human+tmpl_strip": {
+      "firecs": 0.8449,
+      "pool": 0.8038,
+      "team_all": 0.809,
+      "team_high": 0.858,
+      "team_text_only": 0.762,
+      "human_validation": 0.9076
+    },
+    "gate_human+tmpl_strip": {
+      "firecs": 0.8393,
+      "pool": 0.8085,
+      "team_all": 0.8278,
+      "team_high": 0.8691,
+      "team_text_only": 0.782,
+      "human_validation": 0.916
+    },
+    "blend_human+tmpl_strip": {
+      "firecs": 0.8383,
+      "pool": 0.8047,
+      "team_all": 0.8344,
+      "team_high": 0.8728,
+      "team_text_only": 0.7872,
+      "human_validation": 0.9149
+    },
+    "shipped+tmpl_sentences": {
+      "firecs": 0.833,
+      "pool": 0.7915,
+      "team_all": 0.8312,
+      "team_high": 0.8847,
+      "team_text_only": 0.7666,
+      "human_validation": 0.9064
+    },
+    "heads_all+tmpl_sentences": {
+      "firecs": 0.8395,
+      "pool": 0.8431,
+      "team_all": 0.8201,
+      "team_high": 0.8583,
+      "team_text_only": 0.7999,
+      "human_validation": 0.898
+    },
+    "gate_all+tmpl_sentences": {
+      "firecs": 0.8405,
+      "pool": 0.8249,
+      "team_all": 0.8305,
+      "team_high": 0.8778,
+      "team_text_only": 0.7966,
+      "human_validation": 0.9174
+    },
+    "blend_all+tmpl_sentences": {
+      "firecs": 0.8374,
+      "pool": 0.8159,
+      "team_all": 0.8438,
+      "team_high": 0.8894,
+      "team_text_only": 0.7993,
+      "human_validation": 0.9148
+    },
+    "heads_human+tmpl_sentences": {
+      "firecs": 0.8449,
+      "pool": 0.8004,
+      "team_all": 0.8233,
+      "team_high": 0.872,
+      "team_text_only": 0.7625,
+      "human_validation": 0.9076
+    },
+    "gate_human+tmpl_sentences": {
+      "firecs": 0.8393,
+      "pool": 0.8079,
+      "team_all": 0.8333,
+      "team_high": 0.8755,
+      "team_text_only": 0.7659,
+      "human_validation": 0.916
+    },
+    "blend_human+tmpl_sentences": {
+      "firecs": 0.8383,
+      "pool": 0.8025,
+      "team_all": 0.8441,
+      "team_high": 0.8902,
+      "team_text_only": 0.7817,
+      "human_validation": 0.9149
+    }
+  },
+  "qualified": {
+    "shipped": false,
+    "heads_all": false,
+    "gate_all": true,
+    "blend_all": true,
+    "heads_human": true,
+    "gate_human": false,
+    "blend_human": true,
+    "shipped+tmpl_strip": false,
+    "heads_all+tmpl_strip": false,
+    "gate_all+tmpl_strip": true,
+    "blend_all+tmpl_strip": false,
+    "heads_human+tmpl_strip": false,
+    "gate_human+tmpl_strip": false,
+    "blend_human+tmpl_strip": true,
+    "shipped+tmpl_sentences": true,
+    "heads_all+tmpl_sentences": false,
+    "gate_all+tmpl_sentences": true,
+    "blend_all+tmpl_sentences": true,
+    "heads_human+tmpl_sentences": true,
+    "gate_human+tmpl_sentences": true,
+    "blend_human+tmpl_sentences": true
+  },
+  "best_qualified": "blend_human+tmpl_sentences",
+  "choices": {
+    "heads_all": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.8955,
+        "0.1": 0.8942,
+        "0.3": 0.8942,
+        "1.0": 0.89
+      }
+    },
+    "heads_human": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.9076,
+        "0.1": 0.9036,
+        "0.3": 0.8969,
+        "1.0": 0.8831
+      }
+    },
+    "gate_all": {
+      "t": 0.75,
+      "search": {
+        "0.5": 0.8927,
+        "0.55": 0.8965,
+        "0.6": 0.9057,
+        "0.65": 0.9109,
+        "0.7": 0.9121,
+        "0.75": 0.9147,
+        "0.8": 0.9133,
+        "0.85": 0.912,
+        "0.9": 0.9079,
+        "0.95": 0.9065
+      }
+    },
+    "blend_all": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9064,
+        "0.2": 0.9078,
+        "0.3": 0.9134,
+        "0.4": 0.9187,
+        "0.5": 0.9122,
+        "0.6": 0.9095,
+        "0.7": 0.9084,
+        "0.8": 0.9018,
+        "0.9": 0.8954,
+        "1.0": 0.8955
+      }
+    },
+    "gate_human": {
+      "t": 0.8,
+      "search": {
+        "0.5": 0.9076,
+        "0.55": 0.9086,
+        "0.6": 0.9125,
+        "0.65": 0.9138,
+        "0.7": 0.9122,
+        "0.75": 0.9148,
+        "0.8": 0.916,
+        "0.85": 0.9093,
+        "0.9": 0.9078,
+        "0.95": 0.9078
+      }
+    },
+    "blend_human": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9104,
+        "0.2": 0.9104,
+        "0.3": 0.912,
+        "0.4": 0.9149,
+        "0.5": 0.9149,
+        "0.6": 0.9123,
+        "0.7": 0.9111,
+        "0.8": 0.906,
+        "0.9": 0.9062,
+        "1.0": 0.9076
+      }
+    },
+    "heads_all+tmpl_strip": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.9007,
+        "0.1": 0.8913,
+        "0.3": 0.8897,
+        "1.0": 0.8856
+      }
+    },
+    "heads_human+tmpl_strip": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.9076,
+        "0.1": 0.9036,
+        "0.3": 0.8969,
+        "1.0": 0.8831
+      }
+    },
+    "gate_all+tmpl_strip": {
+      "t": 0.75,
+      "search": {
+        "0.5": 0.9006,
+        "0.55": 0.9032,
+        "0.6": 0.9031,
+        "0.65": 0.9083,
+        "0.7": 0.9108,
+        "0.75": 0.9147,
+        "0.8": 0.912,
+        "0.85": 0.9093,
+        "0.9": 0.9079,
+        "0.95": 0.9065
+      }
+    },
+    "blend_all+tmpl_strip": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9064,
+        "0.2": 0.9078,
+        "0.3": 0.9107,
+        "0.4": 0.9134,
+        "0.5": 0.9081,
+        "0.6": 0.9082,
+        "0.7": 0.903,
+        "0.8": 0.9019,
+        "0.9": 0.9006,
+        "1.0": 0.9007
+      }
+    },
+    "gate_human+tmpl_strip": {
+      "t": 0.8,
+      "search": {
+        "0.5": 0.9076,
+        "0.55": 0.9086,
+        "0.6": 0.9125,
+        "0.65": 0.9138,
+        "0.7": 0.9122,
+        "0.75": 0.9148,
+        "0.8": 0.916,
+        "0.85": 0.9093,
+        "0.9": 0.9078,
+        "0.95": 0.9078
+      }
+    },
+    "blend_human+tmpl_strip": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9104,
+        "0.2": 0.9104,
+        "0.3": 0.912,
+        "0.4": 0.9149,
+        "0.5": 0.9149,
+        "0.6": 0.9123,
+        "0.7": 0.9111,
+        "0.8": 0.906,
+        "0.9": 0.9062,
+        "1.0": 0.9076
+      }
+    },
+    "heads_all+tmpl_sentences": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.898,
+        "0.1": 0.8858,
+        "0.3": 0.8845,
+        "1.0": 0.8857
+      }
+    },
+    "heads_human+tmpl_sentences": {
+      "C": 0.03,
+      "human_validation_search": {
+        "0.03": 0.9076,
+        "0.1": 0.9036,
+        "0.3": 0.8969,
+        "1.0": 0.8831
+      }
+    },
+    "gate_all+tmpl_sentences": {
+      "t": 0.75,
+      "search": {
+        "0.5": 0.8979,
+        "0.55": 0.898,
+        "0.6": 0.9044,
+        "0.65": 0.9057,
+        "0.7": 0.9134,
+        "0.75": 0.9174,
+        "0.8": 0.9147,
+        "0.85": 0.9093,
+        "0.9": 0.9079,
+        "0.95": 0.9065
+      }
+    },
+    "blend_all+tmpl_sentences": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9051,
+        "0.2": 0.9078,
+        "0.3": 0.9134,
+        "0.4": 0.9148,
+        "0.5": 0.9069,
+        "0.6": 0.9084,
+        "0.7": 0.9031,
+        "0.8": 0.9032,
+        "0.9": 0.9021,
+        "1.0": 0.898
+      }
+    },
+    "gate_human+tmpl_sentences": {
+      "t": 0.8,
+      "search": {
+        "0.5": 0.9076,
+        "0.55": 0.9086,
+        "0.6": 0.9125,
+        "0.65": 0.9138,
+        "0.7": 0.9122,
+        "0.75": 0.9148,
+        "0.8": 0.916,
+        "0.85": 0.9093,
+        "0.9": 0.9078,
+        "0.95": 0.9078
+      }
+    },
+    "blend_human+tmpl_sentences": {
+      "w": 0.4,
+      "search": {
+        "0.0": 0.9064,
+        "0.1": 0.9104,
+        "0.2": 0.9104,
+        "0.3": 0.912,
+        "0.4": 0.9149,
+        "0.5": 0.9149,
+        "0.6": 0.9123,
+        "0.7": 0.9111,
+        "0.8": 0.906,
+        "0.9": 0.9062,
+        "1.0": 0.9076
+      }
+    }
+  },
+  "template_rows_rewritten": {
+    "strip": {
+      "combined_rows": 2773,
+      "team_rows": 87
+    },
+    "sentences": {
+      "combined_rows": 2729,
+      "team_rows": 87
+    }
+  },
+  "notes": [
+    "firecs and team_* are human labels; pool is AI labels.",
+    "team_all applies the app star rule; team_text_only does not."
+  ]
+}

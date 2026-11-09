@@ -89,6 +89,7 @@
 	let sheetOpen = $state(false);
 	const activeCount = $derived((filter !== 'all' ? 1 : 0) + (tag ? 1 : 0) + (word ? 1 : 0));
 	const sentimentText: Record<string, string> = { positive: 'Positive', negative: 'Negative', uncertain: 'Mixed or unclear', unanalyzed: 'Not analyzed' };
+	const aspectNames: Record<string, string> = { delivery: 'Delivery', packaging: 'Packaging', seller_service: 'Seller service', price: 'Price', quality: 'Quality', functionality: 'Functionality' };
 </script>
 
 {#snippet filterControls()}
@@ -136,6 +137,17 @@
 					{#if review.time || review.date}<time class="text-muted-foreground">{review.time || review.date}</time>{/if}
 				</header>
 				<p class="text-sm"><Highlighted pieces={highlightReview(review)} /></p>
+				{#if review.sentiment_analysis?.aspect_sentiment?.evidence?.length}
+					<details class="rounded-md bg-muted/40 p-3 text-sm">
+						<summary class="cursor-pointer font-medium">Opinions by topic · Preview{review.sentiment_analysis.aspect_sentiment.mixed_evidence ? ' · Mixed opinions' : ''}</summary>
+						<p class="text-muted-foreground mt-2 text-xs">Suggested topic labels from these phrases. They do not change safety or defect warnings.</p>
+						<ul class="mt-2 grid gap-2">
+							{#each review.sentiment_analysis.aspect_sentiment.evidence as item, i (i)}
+								<li><span class="font-medium">{aspectNames[item.aspect] ?? item.aspect}: {item.label}</span><blockquote class="mt-1"><mark class="bg-warning/20 text-foreground rounded px-1">{item.text}</mark></blockquote></li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
 				{#if reported.length || matched.length}
 					<div class="flex flex-wrap gap-1.5">
 						{#each reported as tag (tag.category)}<Badge variant="outline" class="{tag.category === 'safety' && serious ? 'tone-safety' : 'tone-caution'} border-(--tone)/45 bg-(--tone-soft) text-foreground [&>svg]:text-(--tone)">{tag.label}</Badge>{/each}

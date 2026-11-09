@@ -1,0 +1,55 @@
+{
+  "base_model_version": "defaketive-hazard-lexicon-0.3.0+rules0.4g1n1f1f2f3f4f5f6f7f8af9f10s1f11f12f13f14o1q1s2s3+hazard-learned-6.0.0-safety-defect-34a2ad69+r1b+c2r8+extra-labels-1.0.0-quality-not_as_described-f8d08961+lc1+lc2+lc3+defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2+reference-baselines-2.0.0+hazard-parameters-1.1.0+aspects-cues-1",
+  "heads_model_version": "defaketive-hazard-lexicon-0.3.0+rules0.4g1n1f1f2f3f4f5f6f7f8af9f10s1f11f12f13f14o1q1s2s3+hazard-learned-6.0.0-safety-defect-34a2ad69+r1b+c2r8+extra-labels-1.0.0-quality-not_as_described-f8d08961+lc1+lc2+lc3+defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2+review-heads-1.0.0-69e109ec+reference-baselines-2.0.0+hazard-parameters-1.1.0+aspects-cues-1",
+  "sets": {
+    "gold_labels_200.csv": {
+      "rows": 200,
+      "scored_high_confidence": 150,
+      "base_accuracy": 0.8867,
+      "heads_accuracy": 0.88,
+      "base_macro_f1": 0.8724,
+      "heads_macro_f1": 0.8605,
+      "label_changes": {
+        "neutral->negative": 6,
+        "positive->negative": 1,
+        "positive->neutral": 4
+      },
+      "mixed_detected": 63
+    },
+    "heldout_labels_100.csv": {
+      "rows": 100,
+      "scored_high_confidence": 76,
+      "base_accuracy": 0.8947,
+      "heads_accuracy": 0.8289,
+      "base_macro_f1": 0.8489,
+      "heads_macro_f1": 0.759,
+      "label_changes": {
+        "positive->neutral": 6,
+        "neutral->negative": 4,
+        "negative->neutral": 1,
+        "positive->negative": 1,
+        "neutral->positive": 1
+      },
+      "mixed_detected": 28
+    },
+    "test_pool": {
+      "rows": 931,
+      "scored_high_confidence": 830,
+      "base_accuracy": 0.859,
+      "heads_accuracy": 0.8807,
+      "base_macro_f1": 0.8047,
+      "heads_macro_f1": 0.8334,
+      "label_changes": {
+        "positive->neutral": 28,
+        "negative->neutral": 4,
+        "neutral->negative": 34,
+        "positive->negative": 6,
+        "neutral->positive": 14
+      },
+      "mixed_detected": 211
+    }
+  },
+  "hazard_flag_differences": 0,
+  "hazard_examples": [],
+  "hazard_unchanged": true
+}
