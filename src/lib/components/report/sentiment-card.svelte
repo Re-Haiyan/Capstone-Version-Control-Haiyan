@@ -29,18 +29,18 @@
 	const summary = $derived(rows.map((r) => `${r.percent.toFixed(0)}% ${r.key}`).join(', '));
 </script>
 
-<Card>
+<Card class="min-w-0 [overflow-wrap:anywhere]">
 	<CardHeader>
 		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Sentiment distribution</p>
-		<CardTitle class="text-xl">Review sentiment</CardTitle>
+		<CardTitle><h2 class="text-xl font-semibold">Review sentiment</h2></CardTitle>
 		<CardDescription>
 			{weighted
 				? 'We read extra low-star reviews on purpose, so the percentages are adjusted to reflect the whole listing.'
 				: 'How the reviews lean. Shown for context; it does not change the result.'}
 		</CardDescription>
 	</CardHeader>
-	<CardContent class="flex-1 flex-row flex-wrap content-center items-center gap-6">
-		<div class="size-40 shrink-0" role="img" aria-label="Sentiment: {summary}">
+	<CardContent class="flex-1 flex-col items-stretch gap-6 sm:flex-row sm:flex-wrap sm:items-center">
+		<div class="mx-auto size-40 max-w-full shrink-0" role="img" aria-label="Sentiment: {summary}">
 			<Chart.Container {config} class="aspect-square size-full">
 				<PieChart
 					data={rows}
@@ -63,7 +63,7 @@
 				</PieChart>
 			</Chart.Container>
 		</div>
-		<ul class="grid flex-1 gap-3 text-sm">
+		<ul class="grid min-w-0 flex-1 gap-3 text-sm">
 			{#each rows as row (row.key)}
 				<li class="flex items-center gap-3">
 					<i class="size-3 shrink-0 rounded-full border" style="background: {row.color}" aria-hidden="true"></i>

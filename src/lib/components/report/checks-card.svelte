@@ -31,8 +31,8 @@
 
 {#snippet block(badge: Badge, index: number)}
 	{@const quote = badge.evidence?.[0]}
-	<div class="reveal grid content-start gap-2" style="--i:{index}">
-		<div class="flex items-baseline justify-between gap-3">
+	<div class="reveal grid min-w-0 content-start gap-2" style="--i:{index}">
+		<div class="flex flex-wrap items-baseline justify-between gap-2">
 			<span class="font-medium">{badge.label}</span>
 			<b class="text-sm tabular-nums"><CountUp value={badge.mentions} /> review{badge.mentions === 1 ? '' : 's'}</b>
 		</div>
@@ -53,17 +53,17 @@
 					</small>
 				{/if}
 			</blockquote>
-			<Button variant="link" size="sm" class="w-fit px-0" onclick={() => onread(badge.category)}>
+			<Button variant="link" size="sm" class="h-auto min-h-11 max-w-full justify-self-start whitespace-normal px-0" aria-label="Read all {badge.mentions} reviews for {badge.label}" onclick={() => onread(badge.category)}>
 				Read all {badge.mentions} <ArrowRightIcon />
 			</Button>
 		{/if}
 	</div>
 {/snippet}
 
-<Card id="report-findings" tabindex={-1}>
+<Card id="report-findings" tabindex={-1} class="min-w-0 [overflow-wrap:anywhere]">
 	<CardHeader>
 		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">What reviewers reported</p>
-		<CardTitle class="text-xl">Each check, in their own words</CardTitle>
+		<CardTitle><h2 class="text-xl font-semibold">Each check, in their own words</h2></CardTitle>
 		<CardDescription>The sentences the check flagged, with the words it matched highlighted.</CardDescription>
 	</CardHeader>
 	<CardContent class="grid gap-6">

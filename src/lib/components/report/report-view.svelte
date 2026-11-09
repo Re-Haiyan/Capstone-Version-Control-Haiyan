@@ -232,6 +232,7 @@
 		tab = 'similar';
 		await tick();
 		document.getElementById('report-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		document.querySelector<HTMLElement>('#report-tabs [role="tab"][data-state="active"]')?.focus({ preventScroll: true });
 	}
 	/** The explanation of the four labels sits at the bottom of the first tab. */
 	async function showGuide() {
@@ -367,10 +368,10 @@
 		{/snippet}
 	</EmptyState>
 {:else}
-	<Card class="gap-0 overflow-hidden py-0">
+	<Card class="min-w-0 gap-0 py-0 [overflow-wrap:anywhere] [&_button]:h-auto [&_button]:min-h-11 [&_button]:whitespace-normal [&_button]:py-2 [&_a]:h-auto [&_a]:min-h-11 [&_a]:whitespace-normal [&_a]:py-2">
 		<div class="grid gap-4 p-5 md:p-6">
 			<!-- Which product this is, kept short: the verdict comes straight after, on the first screen of a phone too. -->
-			<div class="grid grid-cols-[4.5rem_1fr] items-start gap-x-4 gap-y-3 sm:grid-cols-[7rem_1fr] sm:gap-x-5">
+			<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] items-start gap-x-3 gap-y-3 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-x-5">
 				{#if image}
 					<button
 						type="button"
@@ -479,8 +480,8 @@
 
 	{@render accountNote()}
 
-	<Tabs bind:value={tab} id="report-tabs" class="scroll-mt-20 gap-6">
-		<TabsList class="w-full sm:w-fit">
+	<Tabs bind:value={tab} id="report-tabs" class="min-w-0 scroll-mt-20 gap-6 [overflow-wrap:anywhere]">
+		<TabsList aria-label="Report sections" class="h-auto min-h-12 w-full sm:w-fit [&_button]:min-h-11 [&_button]:whitespace-normal">
 			<TabsTrigger value="overview">Summary</TabsTrigger>
 			<!-- One span per label: the tab's own spacing would otherwise open a gap inside it. -->
 			<TabsTrigger value="evidence"><span>Reviews<span class="hidden sm:inline">&nbsp;· {flagged.length} flagged</span></span></TabsTrigger>

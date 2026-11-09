@@ -139,21 +139,21 @@
 			</nav>
 
 			<div class="flex min-w-0 flex-1 flex-col">
-				<div class="page-view flex flex-1 flex-col gap-6 px-4 pt-6 pb-24 md:px-6 md:pb-8 lg:px-8">
+				<main id="main-content" tabindex="-1" class="page-view flex min-w-0 flex-1 flex-col gap-6 px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] md:px-6 md:pb-8 lg:px-8">
 					<div class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6">
 						{@render children()}
 					</div>
-				</div>
+				</main>
 				<div data-print="hide"><SiteFooter compact /></div>
 			</div>
 		</div>
 
 		<!-- On a phone the icons run along the bottom. -->
-		<nav data-print="hide" aria-label="Main" class="bg-background/95 fixed inset-x-0 bottom-0 z-30 flex justify-start gap-0.5 overflow-x-auto border-t px-1 py-2 backdrop-blur min-[380px]:gap-1 min-[380px]:px-2 md:hidden">
+		<nav data-print="hide" aria-label="Main" class="bg-background/95 fixed inset-x-0 bottom-0 z-30 flex justify-start gap-0.5 overflow-x-auto border-t px-1 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] backdrop-blur min-[380px]:gap-1 min-[380px]:px-2 md:hidden">
 			{#each items as item (item.href)}
 				<a href={item.href} aria-current={active(item.href) ? 'page' : undefined} class="focus-visible:ring-ring flex min-w-0 flex-1 flex-col items-center gap-1 rounded-lg py-1 outline-none focus-visible:ring-2">
 					<span class="grid size-9 place-items-center rounded-full border {active(item.href) ? 'bg-foreground text-background border-foreground' : 'bg-background'}"><item.icon class="size-4" /></span>
-					<span class="font-mono text-[8px] tracking-tight uppercase min-[380px]:text-[9px] min-[380px]:tracking-wider {active(item.href) ? 'text-foreground' : 'text-muted-foreground'}">{item.label}</span>
+					<span class="text-center text-[10px] leading-tight {active(item.href) ? 'text-foreground' : 'text-muted-foreground'}">{item.label}</span>
 				</a>
 			{/each}
 		</nav>

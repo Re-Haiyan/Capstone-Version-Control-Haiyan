@@ -17,9 +17,23 @@ try {
       counts: {}, badges: [], labels: [] },
     comments: [{ content, rating: 3, sentiment_analysis: {
       label: 'neutral', review_tags: [], sentences: [],
+      sentiment_extra: { mixed: { detected: true, probability: 0.4123, threshold: 0.3 } },
+      aspect_sentiment_learned: {
+        delivery: { label: 'positive', confidence: 0.7123, mention_probability: 0.8456 },
+        functionality: { label: 'mixed', confidence: 0.6123, mention_probability: 0.9345 },
+        quality: { label: 'neutral' }
+      },
       aspect_sentiment: { version: 'aspects-cues-1', status: 'experimental', mixed_evidence: true,
         evidence: [{ aspect: 'delivery', label: 'positive', text: 'Mabilis delivery', span: [0,16], method: 'aspects-cues-1' },
           { aspect: 'functionality', label: 'negative', text: 'isang earbud lang gumagana', span: [31,57], method: 'aspects-cues-1' }] }
+    } },
+    { content: 'Legacy review without extras.', rating: 3, sentiment_analysis: { label: 'neutral' } },
+    { content: 'Mixed detector only.', rating: 3, sentiment_analysis: {
+      label: 'neutral', aspect_sentiment_learned: {},
+      sentiment_extra: { mixed: { detected: false, probability: 0.8, threshold: 0.9 } }
+    } },
+    { content: 'Empty optional extras.', sentiment_analysis: {
+      aspect_sentiment_learned: null, sentiment_extra: null
     } }]
   };
   await page.route('**/api/**', async (route) => {
@@ -38,8 +52,32 @@ try {
   await summary.click();
   assert.match(await page.locator('details[open]').innerText(), /Functionality: negative/);
   assert.equal(await page.locator('details[open] mark').first().innerText(), 'Mabilis delivery');
+  assert.match(await page.locator('details[open]').innerText(), /Rule-based topic labels with exact review quotes/);
+  const learned = page.getByTestId('learned-sentiment');
+  assert.equal(await learned.count(), 2);
+  await learned.first().locator('summary').click();
+  const predictions = await learned.first().innerText();
+  assert.match(predictions, /Experimental AI sentiment predictions/);
+  assert.match(predictions, /Scores are not calibrated accuracy/);
+  assert.match(predictions, /Mixed opinions: Predicted · Model score: 0.4123/);
+  assert.match(predictions, /Functionality: mixed/);
+  assert.match(predictions, /Quality: neutral/);
+  assert.match(predictions, /Polarity model score: 0.7123 · Topic mention model score: 0.8456/);
+  assert.match(predictions, /Polarity model score: Unavailable/);
+  assert.equal(await learned.locator('blockquote, mark').count(), 0);
+  assert.doesNotMatch(predictions, /Mabilis delivery|isang earbud|threshold|%/);
+  const firstReview = page.locator('#report-evidence article').first();
+  assert.match(await firstReview.locator('header').innerText(), /Neutral/);
+  assert.doesNotMatch(await firstReview.locator('header').innerText(), /Mixed/);
+  await learned.nth(1).locator('summary').click();
+  assert.match(await learned.nth(1).innerText(), /Mixed opinions: Not predicted · Model score: 0.8/);
+  const legacy = page.locator('#report-evidence article').filter({ hasText: 'Legacy review without extras.' });
+  assert.equal(await legacy.locator('details').count(), 0);
+  assert.match(await legacy.locator('header').innerText(), /Neutral/);
+  assert.equal(await page.locator('#report-evidence article').filter({ hasText: 'Empty optional extras.' }).locator('details').count(), 0);
+  assert.equal(await page.getByRole('group', { name: 'Result' }).getByText('Not enough reviews to judge').count(), 1);
   assert.deepEqual(errors, []);
-  console.log('PASS: aspect preview, evidence text and mixed-opinion indicator render without browser errors');
+  console.log('PASS: exact quotes, experimental learned scores, neutral/mixed distinction and legacy reviews');
 } finally {
   await browser.close();
 }

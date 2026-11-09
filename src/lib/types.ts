@@ -88,6 +88,16 @@ export interface Review {
 	is_duplicate?: boolean;
 	included_in_analysis?: boolean;
 	sentiment_analysis?: {
+		/** Experimental learned predictions, separate from exact rule-based evidence. */
+		aspect_sentiment_learned?: Record<string, {
+			label: 'positive' | 'negative' | 'neutral' | 'mixed';
+			confidence?: number | null;
+			mention_probability?: number | null;
+		}> | null;
+		sentiment_extra?: {
+			mixed?: { detected?: boolean; probability?: number | null; threshold?: number | null } | null;
+			extras_version?: string;
+		} | null;
 		aspect_sentiment?: {
 			version: string;
 			status: 'experimental';

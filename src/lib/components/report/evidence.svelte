@@ -87,29 +87,32 @@
 		limit = 6;
 	}
 	let sheetOpen = $state(false);
-	const activeCount = $derived((filter !== 'all' ? 1 : 0) + (tag ? 1 : 0) + (word ? 1 : 0));
+	const activeCount = $derived((filter !== 'all' ? 1 : 0) + (tag ? 1 : 0) + (word ? 1 : 0) + (query.trim() ? 1 : 0));
 	const sentimentText: Record<string, string> = { positive: 'Positive', negative: 'Negative', uncertain: 'Mixed or unclear', unanalyzed: 'Not analyzed' };
 	const aspectNames: Record<string, string> = { delivery: 'Delivery', packaging: 'Packaging', seller_service: 'Seller service', price: 'Price', quality: 'Quality', functionality: 'Functionality' };
+	function modelScore(value: number | null | undefined): string {
+		return typeof value === 'number' && Number.isFinite(value) ? String(value) : 'Unavailable';
+	}
 </script>
 
 {#snippet filterControls()}
-			<ToggleGroup type="single" variant="outline" value={filter} onValueChange={pickType} aria-label="Filter reviews" class="flex-wrap">
+			<ToggleGroup type="single" variant="outline" spacing={2} value={filter} onValueChange={pickType} aria-label="Filter reviews" class="max-w-full flex-wrap">
 				{#each types as [value, label] (value)}
-					<ToggleGroupItem {value}>{label} · {counts[value]}</ToggleGroupItem>
+					<ToggleGroupItem {value} class="h-auto min-h-11 whitespace-normal px-3 py-2">{label} · {counts[value]}</ToggleGroupItem>
 				{/each}
 			</ToggleGroup>
 {/snippet}
 
-<Card bind:ref={el} id="report-evidence" tabindex={-1} class="scroll-mt-20">
+<Card bind:ref={el} id="report-evidence" tabindex={-1} aria-labelledby="evidence-heading" class="min-w-0 scroll-mt-20 [overflow-wrap:anywhere]">
 	<CardHeader class="gap-4">
 		<div class="flex flex-wrap items-end justify-between gap-3">
 			<div>
-				<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Review evidence</p>
+				<h2 id="evidence-heading" class="text-xl font-semibold">Review evidence</h2>
 				<p class="text-muted-foreground text-sm" aria-live="polite">
 					Showing {visible.length} of {filtered.length} matching review{filtered.length === 1 ? '' : 's'}{narrowed ? ` for ${narrowed}` : ''}{ranked ? ', most serious first' : ''}.
 				</p>
 			</div>
-			<InputGroup class="w-full sm:w-64">
+			<InputGroup class="min-h-11 w-full sm:w-64">
 				<InputGroupAddon><SearchIcon /></InputGroupAddon>
 				<InputGroupInput type="search" placeholder="Filter by word..." autocomplete="off" aria-label="Filter reviews by word" bind:value={query} oninput={() => (limit = 6)} />
 			</InputGroup>
@@ -119,33 +122,57 @@
 			{@render filterControls()}
 		</div>
 		<div class="sm:hidden">
-			<Button variant="outline" onclick={() => (sheetOpen = true)}>
+			<Button variant="outline" class="min-h-11" aria-haspopup="dialog" aria-expanded={sheetOpen} onclick={() => (sheetOpen = true)}>
 				<SlidersHorizontalIcon /> Filters
 				{#if activeCount}<Badge variant="secondary">{activeCount}</Badge>{/if}
 			</Button>
 		</div>
+		{#if activeCount}
+			<div class="flex flex-wrap items-center gap-2">
+				<p class="text-muted-foreground text-sm">{activeCount} active filter{activeCount === 1 ? '' : 's'}{narrowed ? `: ${narrowed}` : ''}</p>
+				<Button variant="outline" class="h-auto min-h-11 whitespace-normal" onclick={() => pickType('all')}>Clear all filters</Button>
+			</div>
+		{/if}
 	</CardHeader>
 	<CardContent class="grid gap-3">
 		{#each visible as review, index (index)}
 			{@const reported = reviewTags(review).map((t) => ({ category: t, label: labelNames[t] })).filter((t) => t.label).sort((a, b) => categoryPlace(a.category) - categoryPlace(b.category))}
 			{@const matched = [...matchedWords(review).keys()].slice(0, 4)}
 			{@const sentiment = sentimentLabel(review)}
-			<article class="reveal grid gap-2 rounded-lg border p-4" style="--i:{index % 6}">
+			{@const learnedAspects = Object.entries(review.sentiment_analysis?.aspect_sentiment_learned ?? {})}
+			{@const mixed = review.sentiment_analysis?.sentiment_extra?.mixed}
+			<article class="reveal grid min-w-0 gap-2 rounded-lg border p-3 sm:p-4 [&_[data-slot=badge]]:max-w-full [&_[data-slot=badge]]:whitespace-normal" style="--i:{index % 6}" aria-label="Review {index + 1}">
 				<header class="flex flex-wrap items-center gap-3 text-xs">
 					<Stars value={review.rating} />
-					<Badge variant="outline">{sentimentText[sentiment] ?? sentiment}</Badge>
+					<Badge variant="outline">{review.sentiment_analysis?.label?.toLowerCase() === 'neutral' ? 'Neutral' : sentimentText[sentiment] ?? sentiment}</Badge>
 					{#if review.time || review.date}<time class="text-muted-foreground">{review.time || review.date}</time>{/if}
 				</header>
 				<p class="text-sm"><Highlighted pieces={highlightReview(review)} /></p>
 				{#if review.sentiment_analysis?.aspect_sentiment?.evidence?.length}
 					<details class="rounded-md bg-muted/40 p-3 text-sm">
-						<summary class="cursor-pointer font-medium">Opinions by topic · Preview{review.sentiment_analysis.aspect_sentiment.mixed_evidence ? ' · Mixed opinions' : ''}</summary>
-						<p class="text-muted-foreground mt-2 text-xs">Suggested topic labels from these phrases. They do not change safety or defect warnings.</p>
+						<summary class="min-h-11 cursor-pointer rounded-sm py-3 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Opinions by topic · Preview{review.sentiment_analysis.aspect_sentiment.mixed_evidence ? ' · Mixed opinions' : ''}</summary>
+						<p class="text-muted-foreground mt-2 text-xs">Rule-based topic labels with exact review quotes. They do not change safety or defect warnings.</p>
 						<ul class="mt-2 grid gap-2">
 							{#each review.sentiment_analysis.aspect_sentiment.evidence as item, i (i)}
 								<li><span class="font-medium">{aspectNames[item.aspect] ?? item.aspect}: {item.label}</span><blockquote class="mt-1"><mark class="bg-warning/20 text-foreground rounded px-1">{item.text}</mark></blockquote></li>
 							{/each}
 						</ul>
+					</details>
+				{/if}
+				{#if learnedAspects.length || mixed}
+					<details class="rounded-md border p-3 text-sm" data-testid="learned-sentiment">
+						<summary class="min-h-11 cursor-pointer rounded-sm py-3 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Experimental AI sentiment predictions</summary>
+						<p class="text-muted-foreground mt-2 text-xs">These are learned model predictions, not exact quote evidence. Scores are not calibrated accuracy. They do not change the overall sentiment label or safety and defect warnings. Neutral and mixed are distinct: mixed predicts both positive and negative opinions.</p>
+						{#if mixed}
+							<p class="mt-2" data-testid="mixed-prediction">Mixed opinions: {mixed.detected === true ? 'Predicted' : mixed.detected === false ? 'Not predicted' : 'Unavailable'} · Model score: {modelScore(mixed.probability)}</p>
+						{/if}
+						{#if learnedAspects.length}
+							<ul class="mt-2 grid gap-2">
+								{#each learnedAspects as [aspect, prediction] (aspect)}
+									<li><span class="font-medium">{aspectNames[aspect] ?? aspect}: {prediction.label}</span><p class="text-muted-foreground text-xs">Polarity model score: {modelScore(prediction.confidence)} · Topic mention model score: {modelScore(prediction.mention_probability)}</p></li>
+								{/each}
+							</ul>
+						{/if}
 					</details>
 				{/if}
 				{#if reported.length || matched.length}
@@ -159,7 +186,7 @@
 			<p class="text-muted-foreground text-sm">No reviews match these filters.</p>
 		{/each}
 		{#if visible.length < filtered.length}
-			<Button variant="outline" class="mx-auto" onclick={() => (limit += 6)}>
+			<Button variant="outline" class="mx-auto h-auto min-h-11 max-w-full whitespace-normal" onclick={() => (limit += 6)}>
 				View {Math.min(6, filtered.length - visible.length)} more reviews
 			</Button>
 		{/if}
@@ -172,9 +199,12 @@
 			<SheetTitle>Filter reviews</SheetTitle>
 			<SheetDescription>Pick a kind of review.</SheetDescription>
 		</SheetHeader>
-		<div class="grid gap-4 overflow-y-auto px-4">{@render filterControls()}</div>
+		<div class="grid min-h-0 gap-4 overflow-y-auto px-4">
+			{@render filterControls()}
+			{#if activeCount}<Button variant="outline" class="min-h-11" onclick={() => pickType('all')}>Clear all filters</Button>{/if}
+		</div>
 		<SheetFooter>
-			<Button onclick={() => (sheetOpen = false)}>Show {filtered.length} review{filtered.length === 1 ? '' : 's'}</Button>
+			<Button class="h-auto min-h-11 whitespace-normal" onclick={() => (sheetOpen = false)}>Show {filtered.length} review{filtered.length === 1 ? '' : 's'}</Button>
 		</SheetFooter>
 	</SheetContent>
 </Sheet>
