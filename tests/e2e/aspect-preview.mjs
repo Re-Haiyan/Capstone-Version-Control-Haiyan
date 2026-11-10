@@ -43,6 +43,11 @@ try {
     await route.fulfill({ json });
   });
   await page.goto(`http://localhost:5173/scan/report?link=${encodeURIComponent(product.link)}`);
+  await page.getByRole('group', { name: 'What to do next' }).waitFor();
+  const primary = page.getByRole('group', { name: 'What to do next' });
+  const secondary = page.getByRole('group', { name: 'Product actions' });
+  assert.ok(await primary.evaluate(el => Boolean(el.compareDocumentPosition(document.querySelector('[aria-label="Product actions"]')) & Node.DOCUMENT_POSITION_FOLLOWING)));
+  assert.ok(await secondary.getByRole('button', { name: 'Save', exact: true }).isVisible());
   const summary = page.locator('summary').filter({ hasText: 'Opinions by topic' });
   // Some report layouts initially show a different tab.
   await page.getByRole('group', { name: 'Result' }).waitFor();

@@ -20,7 +20,30 @@ try {
     await nav.waitFor();
     await page.evaluate(() => document.fonts.ready);
     const links = nav.getByRole('link');
-    assert.equal(await links.count(), 7);
+    assert.equal(await links.count(), width < 768 ? 4 : 7);
+    if (width < 768) {
+      assert.deepEqual(await links.allTextContents().then(labels => labels.map(label => label.trim())), ['Home', 'Check', 'Products', 'Saved']);
+      const more = nav.getByRole('button', { name: 'More navigation' });
+      await more.focus();
+      await page.keyboard.press('Enter');
+      const menu = page.getByRole('menu');
+      await menu.waitFor();
+      for (const name of ['History', 'About', 'FAQ']) {
+        const item = menu.getByRole('menuitem', { name, exact: true });
+        assert.ok(await item.isVisible());
+        assert.equal(await item.getAttribute('href'), '/app/' + name.toLowerCase());
+      }
+      assert.equal(await menu.getByRole('menuitem', { name: 'About', exact: true }).getAttribute('aria-current'), 'page');
+      await page.keyboard.press('Escape');
+      await menu.waitFor({ state: 'hidden' });
+      assert.ok(await more.evaluate(el => el === document.activeElement));
+      await more.click();
+      await page.getByRole('menuitem', { name: 'FAQ', exact: true }).click();
+      await page.waitForURL('**/app/faq');
+      await menu.waitFor({ state: 'hidden' });
+    } else {
+      assert.equal(await page.getByRole('button', { name: 'More navigation' }).isVisible(), false);
+    }
     const labels = await links.evaluateAll(items => items.map(link => {
       const text = link.lastElementChild;
       const box = text.getBoundingClientRect();

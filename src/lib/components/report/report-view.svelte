@@ -397,17 +397,6 @@
 						<span class="text-muted-foreground">{identity}</span>
 					</div>
 				</div>
-				<!-- Under the photo on a phone, under the name on anything wider. -->
-				<div class="col-span-2 flex flex-wrap gap-2 sm:col-span-1 sm:col-start-2">
-					<Button variant="outline" size="sm" aria-pressed={saved} disabled={!listing} onclick={save}>
-						<HeartIcon class={saved ? 'fill-current' : ''} /> {saved ? 'Saved' : 'Save'}
-					</Button>
-					{#if listing}
-						<Button variant="outline" size="sm" href={listing} target="_blank" rel="noreferrer">
-							{listingLabel(product)} <ExternalLinkIcon />
-						</Button>
-					{/if}
-				</div>
 			</div>
 			<VerdictBlock {product} />
 			{#if lifted}
@@ -436,39 +425,49 @@
 			<!-- One thing to do next, chosen by the verdict. -->
 			<div class="flex flex-wrap items-center gap-2" role="group" aria-label="What to do next">
 				{#if group === 'safety' || group === 'caution'}
-					<!-- Someone who has been warned mostly wants a safer choice: with some to show, those come first. -->
+					<Button onclick={() => showReviews(flagged.length ? 'reported' : 'all')}>
+						{flagged.length === 1 ? 'Read the flagged review' : flagged.length ? `Read the ${flagged.length} flagged reviews` : 'Read the reviews'}
+						<ArrowRightIcon />
+					</Button>
 					{#if recommendations.length}
-						<Button onclick={showSimilar}>
+						<Button variant="outline" onclick={showSimilar}>
 							See {recommendations.length} similar product{recommendations.length === 1 ? '' : 's'} with no warnings
 							<ArrowRightIcon />
 						</Button>
 					{/if}
-					<Button variant={recommendations.length ? 'outline' : 'default'} onclick={() => showReviews(flagged.length ? 'reported' : 'all')}>
-						{flagged.length === 1 ? 'Read the flagged review' : flagged.length ? `Read the ${flagged.length} flagged reviews` : 'Read the reviews'}
-						<ArrowRightIcon />
-					</Button>
 				{:else if group === 'clear'}
 					<!-- No warning is not the same as no complaint: point at what there is to read. -->
 					{#if flagged.length}
-						<Button variant="outline" onclick={() => showReviews('reported')}>
+						<Button variant="default" onclick={() => showReviews('reported')}>
 							{flagged.length === 1 ? 'Read the flagged review' : `Read the ${flagged.length} flagged reviews`} <ArrowRightIcon />
 						</Button>
 					{:else if negativeCount}
-						<Button variant="outline" onclick={() => showReviews('negative')}>
+						<Button variant="default" onclick={() => showReviews('negative')}>
 							{negativeCount === 1 ? 'Read the negative review' : `Read the ${negativeCount} negative reviews`} <ArrowRightIcon />
 						</Button>
 					{:else if reviews.length}
-						<Button variant="outline" onclick={() => showReviews('all')}>Read all reviews <ArrowRightIcon /></Button>
+						<Button variant="default" onclick={() => showReviews('all')}>Read all reviews <ArrowRightIcon /></Button>
 					{/if}
 				{:else if flagged.length}
 					<!-- No result yet, but the few reviews there are still say something: lead to those. -->
-					<Button variant="outline" onclick={() => showReviews('reported')}>
+					<Button variant="default" onclick={() => showReviews('reported')}>
 						{flagged.length === 1 ? 'Read the flagged review' : `Read the ${flagged.length} flagged reviews`} <ArrowRightIcon />
 					</Button>
 				{:else if reviews.length}
-					<Button variant="outline" onclick={() => showReviews('all')}>Read the reviews we have <ArrowRightIcon /></Button>
+					<Button variant="default" onclick={() => showReviews('all')}>Read the reviews we have <ArrowRightIcon /></Button>
 				{/if}
 				<Button variant="link" size="sm" class="text-muted-foreground" onclick={showGuide}>What do these labels mean?</Button>
+			</div>
+
+			<div class="flex flex-wrap gap-2 border-t pt-4" role="group" aria-label="Product actions">
+				<Button variant="outline" size="sm" aria-pressed={saved} disabled={!listing} onclick={save}>
+					<HeartIcon class={saved ? 'fill-current' : ''} /> {saved ? 'Saved' : 'Save'}
+				</Button>
+				{#if listing}
+					<Button variant="outline" size="sm" href={listing} target="_blank" rel="noreferrer">
+						{listingLabel(product)} <ExternalLinkIcon />
+					</Button>
+				{/if}
 			</div>
 		</div>
 		<!-- The numbers behind the report. Useful, but never ahead of the verdict. -->
