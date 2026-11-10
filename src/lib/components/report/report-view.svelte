@@ -192,10 +192,14 @@
 		limit = 6;
 	});
 
+	function scrollBehavior(): ScrollBehavior {
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+	}
+
 	async function showEvidence() {
 		tab = 'evidence';
 		await tick();
-		evidenceEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		evidenceEl?.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
 		evidenceEl?.focus({ preventScroll: true });
 	}
 	function readAll(category: string) {
@@ -231,7 +235,7 @@
 	async function showSimilar() {
 		tab = 'similar';
 		await tick();
-		document.getElementById('report-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		document.getElementById('report-tabs')?.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
 		document.querySelector<HTMLElement>('#report-tabs [role="tab"][data-state="active"]')?.focus({ preventScroll: true });
 	}
 	/** The explanation of the four labels sits at the bottom of the first tab. */
@@ -239,7 +243,7 @@
 		tab = 'overview';
 		await tick();
 		const guide = document.getElementById('report-guide');
-		guide?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		guide?.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
 		guide?.focus({ preventScroll: true });
 	}
 
@@ -502,6 +506,8 @@
 			<Evidence
 				{reviews}
 				{labelNames}
+				checkHref={checkable ? checkHref : ''}
+				analyzeHref={guest ? '/scan' : '/app/analyze'}
 				serious={chipFor(product).kind === 'safety'}
 				bind:filter
 				bind:tag

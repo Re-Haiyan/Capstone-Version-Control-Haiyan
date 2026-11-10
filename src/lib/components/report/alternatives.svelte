@@ -49,7 +49,8 @@
 				{/each}
 			</div>
 		{:else}
-			<p class="text-muted-foreground text-sm">No similar product with enough reviews and no warnings has been checked yet.</p>
+			<p class="text-muted-foreground text-sm">No similar product with enough reviews and no warnings is available in this report. Check another listing to compare its reviews and warnings.</p>
+			<Button variant="outline" class="mt-3" href={guest ? '/scan' : '/app/analyze'}>Check another product</Button>
 		{/if}
 	</CardContent>
 </Card>

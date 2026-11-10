@@ -16,6 +16,8 @@
 		reviews,
 		labelNames,
 		serious = false,
+		checkHref = '',
+		analyzeHref = '/scan',
 		filter = $bindable<EvidenceFilter>('all'),
 		tag = $bindable(''),
 		word = $bindable(''),
@@ -27,6 +29,8 @@
 		labelNames: Record<string, string>;
 		/** True when this product's safety reports are serious or repeated. Only then are safety tags red. */
 		serious?: boolean;
+		checkHref?: string;
+		analyzeHref?: string;
 		filter?: EvidenceFilter;
 		tag?: string;
 		word?: string;
@@ -90,6 +94,7 @@
 	const activeCount = $derived((filter !== 'all' ? 1 : 0) + (tag ? 1 : 0) + (word ? 1 : 0) + (query.trim() ? 1 : 0));
 	const sentimentText: Record<string, string> = { positive: 'Positive', negative: 'Negative', uncertain: 'Mixed or unclear', unanalyzed: 'Not analyzed' };
 	const aspectNames: Record<string, string> = { delivery: 'Delivery', packaging: 'Packaging', seller_service: 'Seller service', price: 'Price', quality: 'Quality', functionality: 'Functionality' };
+	const learnedLabels: Record<string, string> = { positive: 'Positive opinion', negative: 'Negative opinion', neutral: 'Neutral opinion', mixed: 'Both positive and negative opinions' };
 	function modelScore(value: number | null | undefined): string {
 		return typeof value === 'number' && Number.isFinite(value) ? String(value) : 'Unavailable';
 	}
@@ -164,15 +169,25 @@
 						<summary class="min-h-11 cursor-pointer rounded-sm py-3 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Experimental AI sentiment predictions</summary>
 						<p class="text-muted-foreground mt-2 text-xs">These are learned model predictions, not exact quote evidence. Scores are not calibrated accuracy. They do not change the overall sentiment label or safety and defect warnings. Neutral and mixed are distinct: mixed predicts both positive and negative opinions.</p>
 						{#if mixed}
-							<p class="mt-2" data-testid="mixed-prediction">Mixed opinions: {mixed.detected === true ? 'Predicted' : mixed.detected === false ? 'Not predicted' : 'Unavailable'} · Model score: {modelScore(mixed.probability)}</p>
+							<p class="mt-2" data-testid="mixed-prediction">Mixed opinions: {mixed.detected === true ? 'Predicted' : mixed.detected === false ? 'Not predicted' : 'Unavailable'}</p>
 						{/if}
 						{#if learnedAspects.length}
 							<ul class="mt-2 grid gap-2">
 								{#each learnedAspects as [aspect, prediction] (aspect)}
-									<li><span class="font-medium">{aspectNames[aspect] ?? aspect}: {prediction.label}</span><p class="text-muted-foreground text-xs">Polarity model score: {modelScore(prediction.confidence)} · Topic mention model score: {modelScore(prediction.mention_probability)}</p></li>
+									<li><span class="font-medium">{aspectNames[aspect] ?? aspect}: {learnedLabels[prediction.label] ?? prediction.label}</span></li>
 								{/each}
 							</ul>
 						{/if}
+						<details class="mt-3 rounded-md bg-muted/40 p-3" data-testid="learned-technical">
+							<summary class="min-h-11 cursor-pointer rounded-sm py-3 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Technical details</summary>
+							<p class="text-muted-foreground text-xs">Raw model scores are uncalibrated and do not measure accuracy or certainty.</p>
+							{#if mixed}<p class="mt-2">Mixed opinions model score: {modelScore(mixed.probability)}</p>{/if}
+							<ul class="mt-2 grid gap-2">
+								{#each learnedAspects as [aspect, prediction] (aspect)}
+									<li>{aspectNames[aspect] ?? aspect}: <span class="text-muted-foreground">Polarity model score: {modelScore(prediction.confidence)}; Topic mention model score: {modelScore(prediction.mention_probability)}</span></li>
+								{/each}
+							</ul>
+						</details>
 					</details>
 				{/if}
 				{#if reported.length || matched.length}
@@ -183,7 +198,18 @@
 				{/if}
 			</article>
 		{:else}
-			<p class="text-muted-foreground text-sm">No reviews match these filters.</p>
+			<div class="grid justify-items-start gap-3 rounded-lg border p-4">
+				{#if reviews.length}
+					<p class="text-sm">No reviews match these filters. Clear them to see all available reviews.</p>
+					<Button variant="outline" onclick={() => pickType('all')}>Clear all filters</Button>
+				{:else}
+					<p class="text-sm">No review text is available in this report. Check another listing{checkHref ? ', or check this product again' : ''}.</p>
+					<div class="flex flex-wrap gap-2">
+						{#if checkHref}<Button variant="outline" href={checkHref}>Check this product again</Button>{/if}
+						<Button variant="outline" href={analyzeHref}>Check another product</Button>
+					</div>
+				{/if}
+			</div>
 		{/each}
 		{#if visible.length < filtered.length}
 			<Button variant="outline" class="mx-auto h-auto min-h-11 max-w-full whitespace-normal" onclick={() => (limit += 6)}>

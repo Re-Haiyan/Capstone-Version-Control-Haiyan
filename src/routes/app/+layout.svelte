@@ -133,7 +133,7 @@
 						<span class="group-focus-visible:ring-ring grid size-12 place-items-center rounded-full border shadow-sm transition group-hover:-translate-y-0.5 group-focus-visible:ring-2 {active(item.href) ? 'bg-foreground text-background border-foreground shadow-md' : 'bg-background text-foreground/80'}">
 							<item.icon class="size-5" />
 						</span>
-						<span class="font-mono text-[10px] tracking-widest uppercase {active(item.href) ? 'text-foreground' : 'text-muted-foreground'}">{item.label}</span>
+						<span class="px-1 text-center text-xs leading-snug {active(item.href) ? 'font-semibold text-foreground' : 'text-muted-foreground'}">{item.label}</span>
 					</a>
 				{/each}
 			</nav>
@@ -151,9 +151,9 @@
 		<!-- On a phone the icons run along the bottom. -->
 		<nav data-print="hide" aria-label="Main" class="bg-background/95 fixed inset-x-0 bottom-0 z-30 flex justify-start gap-0.5 overflow-x-auto border-t px-1 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] backdrop-blur min-[380px]:gap-1 min-[380px]:px-2 md:hidden">
 			{#each items as item (item.href)}
-				<a href={item.href} aria-current={active(item.href) ? 'page' : undefined} class="focus-visible:ring-ring flex min-w-0 flex-1 flex-col items-center gap-1 rounded-lg py-1 outline-none focus-visible:ring-2">
+				<a href={item.href} aria-current={active(item.href) ? 'page' : undefined} class="focus-visible:ring-ring flex min-w-fit flex-1 flex-col items-center gap-1 rounded-lg px-1 py-1 outline-none focus-visible:ring-2">
 					<span class="grid size-9 place-items-center rounded-full border {active(item.href) ? 'bg-foreground text-background border-foreground' : 'bg-background'}"><item.icon class="size-4" /></span>
-					<span class="text-center text-[10px] leading-tight {active(item.href) ? 'text-foreground' : 'text-muted-foreground'}">{item.label}</span>
+					<span class="text-center text-xs leading-snug {active(item.href) ? 'font-semibold text-foreground' : 'text-muted-foreground'}">{item.label}</span>
 				</a>
 			{/each}
 		</nav>
