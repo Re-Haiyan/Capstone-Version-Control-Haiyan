@@ -5,6 +5,8 @@
     ... --split test         score only the half kept back for testing (tune the rules on --split dev)
     ... --misses             also list every false positive and false negative
 
+Give several batch files (part 1 and part 2) to score them together.
+
 The file is the batch after labelling: columns id, stars, product, review_text, sentiment, flags, confidence.
 flags is ';'-separated from defect, counterfeit, safety, not_as_described, quality, or "none".
 Only rows labelled confidence=high are scored, as in score.py. The key file (same name + _key.csv) says each row's
@@ -43,16 +45,18 @@ def table(title, counts):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("batch")
+    parser.add_argument("batch", nargs="+")
     parser.add_argument("--split", choices=("dev", "test"))
     parser.add_argument("--no-category", action="store_true")
     parser.add_argument("--misses", action="store_true")
     args = parser.parse_args()
 
-    path = pathlib.Path(args.batch)
-    key_path = path.with_name(path.stem + "_key.csv")
-    key = {r["id"]: r for r in csv.DictReader(open(key_path, encoding="utf-8-sig"))}
-    rows = list(csv.DictReader(open(path, encoding="utf-8-sig")))
+    paths = [pathlib.Path(name) for name in args.batch]
+    key: dict[str, dict] = {}
+    rows: list[dict] = []
+    for path in paths:
+        key.update({r["id"]: r for r in csv.DictReader(open(path.with_name(path.stem + "_key.csv"), encoding="utf-8-sig"))})
+        rows += list(csv.DictReader(open(path, encoding="utf-8-sig")))
     unlabelled = [r for r in rows if not r["flags"].strip() or not r["sentiment"].strip()]
     if unlabelled:
         print(f"{len(unlabelled)} of {len(rows)} rows have no sentiment or flags yet and are skipped.")
@@ -89,7 +93,8 @@ def main():
                 misses.append(f"{flag} {outcome} [{key[row['id']]['category']}] {row['review_text'][:110]}")
 
     mode = "no category (old behaviour)" if args.no_category else "with the product category"
-    print(f"{path.name}: {len(rows)} high-confidence rows, {mode}" + (f", split {args.split}" if args.split else ""))
+    names = ", ".join(p.name for p in paths)
+    print(f"{names}: {len(rows)} high-confidence rows, {mode}" + (f", split {args.split}" if args.split else ""))
     print(f"sentiment accuracy {right}/{len(rows)} = {right / len(rows):.3f}")
     table("ALL", overall)
     for group in sorted(by_group):

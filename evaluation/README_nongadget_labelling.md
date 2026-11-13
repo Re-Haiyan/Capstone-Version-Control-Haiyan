@@ -2,7 +2,9 @@
 
 **Files**
 - `label_batch_nongadget.csv` – 289 reviews of non-gadget products (clothes, bags, beauty, food, home, motorcycle parts, sports, stationery). You fill the three empty columns.
-- `label_batch_nongadget_key.csv` – category, source and split of each row. **Do not open it while labelling.** It says how each review was picked, and that can steer your judgement.
+- `label_batch_nongadget_key.csv` (and `..._part2_key.csv`) – category, source and split of each row. **Do not open it while labelling.** It says how each review was picked, and that can steer your judgement.
+
+**Two parts.** Label `label_batch_nongadget.csv` (289 reviews) first. It is a fair mix and is enough for a first read on `defect`. `label_batch_nongadget_part2.csv` (281 reviews, ids start with `P`) is the same format but is mostly complaints and mismatches, added so that `quality`, `counterfeit` and `not_as_described` get enough positives to score. Label it if you can: together the two parts give about 570 rows. Neither part repeats a review from the other.
 
 **Columns you fill**
 
@@ -48,9 +50,9 @@ Label what the reviewer reports **about the product itself**. Do not flag the co
 ## Scoring it
 
 ```
-backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv --split dev
-backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv --split test
-backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv --no-category   # old behaviour, for comparison
+backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv evaluation/label_batch_nongadget_part2.csv --split dev
+backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv evaluation/label_batch_nongadget_part2.csv --split test
+backend/.venv/Scripts/python.exe evaluation/score_nongadget.py evaluation/label_batch_nongadget.csv evaluation/label_batch_nongadget_part2.csv --no-category   # old behaviour, for comparison
 ```
 
 A label with fewer than 5 true positives in a group is marked in the output: its score is too noisy to quote.
@@ -59,4 +61,4 @@ A label with fewer than 5 true positives in a group is marked in the output: its
 
 - The reviews come from only **48 products** (food 3, sports 1, stationery 1). Reviews of one product resemble each other, so the scores say how the rules behave on these products, not on every product in a category.
 - About a third of the rows were picked because they contain a complaint or hazard word, so that rare labels have positives. The rest are random. The `source` column in the key lets you score the two parts separately.
-- Rare hazards (choking, spoiled food, brakes) will still have few positives. For those, scan more products before quoting a number.
+- **Safety will still have almost no positives.** The scanned reviews contain only about 20 safety-type reports among 21,000 non-gadget reviews, so even 570 rows cannot score it. Report safety as examples, not as F1, until more non-gadget products are scanned.
