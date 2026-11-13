@@ -1,0 +1,9 @@
+# Phrases that are NOT a report for this kind of product (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | unless | reason
+#   term    regular expression that must match the whole flagged phrase
+#   label   quality, defect, counterfeit, safety or not_as_described
+#   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
+#   reason  shown in the audit trail
+# A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
+sobrang init|ang init|init|very hot|gets? hot|burn hot|too hot	safety	rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|sugat|paso|napaso|burn\w*|smoke|usok|spark\w*|short|kuryente|nakuryente|namaga|swollen|amoy	heat is the weather or hot water on skin and hair care, not a hazard
+burn	safety	rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|sugat|paso|napaso|burn\w*|skin|balat|mukha|face|eye|eyes|mata|sensation|hapdi|chemical|acid|peel|fire|smoke|usok|smell|amoy|plug|wire|cord|kuryente|spark\w*	burn is fat burning on a supplement; still a hazard beside skin, eyes or wiring

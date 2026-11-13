@@ -1,0 +1,10 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+injur(?:y|ed|ies)|nasugatan|sprain\w*|na\s?sprain|nahulog ako|nadulas ako|nadislocate	safety	2	an injury while using sports gear
+collaps\w+|bumigay habang|natumba|snapped while|broke under	safety	2	gear giving way while it is used

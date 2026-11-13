@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
+import category_copy
+
 
 ROOT = Path(__file__).resolve().parent
 
@@ -671,7 +673,7 @@ VERDICT_HEADLINES = {
     "possible_counterfeit_or_defect": "Reviewers report fakes or defects",
     "reviews_may_be_unreliable": "These reviews may not be trustworthy",
     "insufficient_evidence": "Not enough reviews to judge",
-    "no_warning_signs": "No warning signs found",
+    "no_warning_signs": category_copy.NO_RED_FLAGS,
 }
 
 HAZARD_LABELS = {
@@ -744,6 +746,16 @@ def is_badge_summary(summary: Any) -> bool:
 
 def _reviews(count: int) -> str:
     return f"{count} review{'' if count == 1 else 's'}"
+
+
+def _badge_copy(category: str, words: dict[str, Any] | None) -> dict[str, Any]:
+    """The label's fixed words, with the helper, claim and "none" lines of the product's group."""
+    return {**BADGE_COPY[category], **((words or {}).get("badges") or {}).get(category, {})}
+
+
+def _labels(words: dict[str, Any] | None) -> list[dict[str, Any]]:
+    """BADGE_LABELS, with each helper line worded for the product's group."""
+    return [{**item, "helper": _badge_copy(item["category"], words)["helper"]} for item in BADGE_LABELS]
 
 
 def _report_phrase(category: str, mentions: int, claim: str) -> str:
@@ -819,13 +831,14 @@ def _hazard_phrase(safety: dict[str, Any]) -> str:
     return f"{phrase}, and other hazards" if len(ranked) > 1 else phrase
 
 
-def _safety_badge(safety: dict[str, Any], usable: int) -> dict[str, Any]:
+def _safety_badge(safety: dict[str, Any], usable: int, words: dict[str, Any] | None = None) -> dict[str, Any]:
     mentions = int(safety.get("flagged_reviews") or 0)
     evidence, more = _evidence_items(safety.get("evidence"))
+    copy_text = _badge_copy("safety", words)
     return {
         "category": "safety",
-        "label": BADGE_COPY["safety"]["label"],
-        "helper": BADGE_COPY["safety"]["helper"],
+        "label": copy_text["label"],
+        "helper": copy_text["helper"],
         "informs_only": False,
         "mentions": mentions,
         "reviews_analyzed": usable,
@@ -833,18 +846,18 @@ def _safety_badge(safety: dict[str, Any], usable: int) -> dict[str, Any]:
         "summary": (
             f"{_reviews(mentions)} {_report_phrase('safety', mentions, _hazard_phrase(safety))}"
             if mentions
-            else BADGE_COPY["safety"]["none"]
+            else copy_text["none"]
         ),
         "evidence": evidence,
         "more_evidence": more,
     }
 
 
-def _flag_badge(category: str, flag: Any, usable: int) -> dict[str, Any]:
+def _flag_badge(category: str, flag: Any, usable: int, words: dict[str, Any] | None = None) -> dict[str, Any]:
     flag = flag if isinstance(flag, dict) else {}
     mentions = int(flag.get("flagged_reviews") or 0)
     evidence, more = _evidence_items(flag.get("evidence"))
-    copy_text = BADGE_COPY[category]
+    copy_text = _badge_copy(category, words)
     phrase = _report_phrase(category, mentions, copy_text["claim"])
     return {
         "category": category,
@@ -925,28 +938,19 @@ def _sentiment_shares(summary: dict[str, Any]) -> dict[str, float] | None:
 
 # The words of the conclusion card: a lead sentence, a short paragraph that names how many reviews raised each
 # kind of problem, and the label shown beside it. Counts only; nothing here promises that a product is safe.
-CONCLUSION_ASSESSMENT = {
-    "recommended": "Recommended",
-    "mixed": "Mixed",
-    "caution": "Caution",
-    "not_recommended": "Not recommended",
-    "not_enough": "Not enough reviews",
-}
-# Order and wording of the problems named in the paragraph (safety last, since it is the one to read closely).
-CONCLUSION_ISSUES = (
-    ("defect", "product defects"),
-    ("quality", "weak or poor build quality"),
-    ("not_as_described", "differences from the product description"),
-    ("counterfeit", "possible authenticity concerns"),
-)
+CONCLUSION_ASSESSMENT = category_copy.ASSESSMENT
+# Order of the problems named in the paragraph (safety last, since it is the one to read closely). Each kind of product
+# words them its own way (category_copy).
+CONCLUSION_ISSUES = ("defect", "quality", "not_as_described", "counterfeit")
 
 
 def _review_count(count: int) -> str:
     return f"{count} review" if count == 1 else f"{count} reviews"
 
 
-def _issue_phrases(mentions: dict[str, int]) -> list[str]:
-    phrases = [f"{label} ({_review_count(mentions[key])})" for key, label in CONCLUSION_ISSUES if mentions.get(key)]
+def _issue_phrases(mentions: dict[str, int], words: dict[str, Any] | None = None) -> list[str]:
+    names = (words or category_copy.profile(None))["issues"]
+    phrases = [f"{names[key]} ({_review_count(mentions[key])})" for key in CONCLUSION_ISSUES if mentions.get(key)]
     safety = mentions.get("safety", 0)
     if safety:
         phrases.append(
@@ -963,29 +967,36 @@ def _join_phrases(phrases: list[str]) -> str:
     return ", ".join(phrases[:-1]) + ", and " + phrases[-1]
 
 
-def _conclusion_words(decision: str, usable: int, positive: float | None, mentions: dict[str, int], closing: str | None) -> dict[str, str]:
+def _conclusion_words(
+    decision: str,
+    usable: int,
+    positive: float | None,
+    mentions: dict[str, int],
+    closing: str | None,
+    words: dict[str, Any] | None = None,
+) -> dict[str, str]:
     """The lead sentence, paragraph and side note of the conclusion card."""
-    issues = _issue_phrases(mentions)
+    issues = _issue_phrases(mentions, words)
     happy = positive is not None and positive >= CONCLUSION_RECOMMEND_SHARE
     if decision == "not_enough":
         lead = "There are not enough reviews to say whether this product is worth buying."
-        note = "Too few reviews to judge."
+        note = category_copy.ASSESSMENT_NOTE["not_enough"]
     elif decision == "recommended":
         lead = "According to the reviews, this product is generally well-received."
-        note = "Mostly positive, no warning signs found."
+        note = category_copy.ASSESSMENT_NOTE["recommended"]
     elif decision == "mixed":
         lead = "According to the reviews, opinions on this product are mixed."
-        note = "Mixed opinions."
+        note = category_copy.ASSESSMENT_NOTE["mixed"]
     elif decision == "not_recommended":
         lead = "According to the reviews, this product is not recommended."
-        note = "Most reviewers were unhappy or reported serious problems."
+        note = category_copy.ASSESSMENT_NOTE["not_recommended"]
     else:
         lead = (
             "According to the reviews, this product is generally well-received, but some concerns were reported."
             if happy
             else "According to the reviews, think twice before buying this product."
         )
-        note = "Mostly positive, with reported concerns." if happy else "Reported concerns."
+        note = category_copy.ASSESSMENT_NOTE["caution_happy" if happy else "caution_unhappy"]
     if decision == "not_enough":
         paragraph = f"Only {_review_count(usable)} could be analyzed, which is too few to say whether this product is worth buying."
     elif positive is None:
@@ -1010,18 +1021,21 @@ def _conclusion_words(decision: str, usable: int, positive: float | None, mentio
     return {"lead": lead, "summary": paragraph, "assessment": CONCLUSION_ASSESSMENT[decision], "assessment_note": note}
 
 
-def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]], usable: int) -> dict[str, Any] | None:
+def _conclusion(
+    summary: dict[str, Any], state: str, badges: list[dict[str, Any]], usable: int, words: dict[str, Any] | None = None
+) -> dict[str, Any] | None:
     """What the reviews add up to, in one decision and a plain sentence beginning "Based on the reviews"."""
     shares = _sentiment_shares(summary)
     mentions = {badge["category"]: int(badge.get("mentions") or 0) for badge in badges}
     reviews = _reviews(usable)
+    words = words or category_copy.profile(None)
 
     def build(decision: str, headline: str, text: str, points: list[str], closing: str | None = None) -> dict[str, Any]:
         return {
             "decision": decision,
             "headline": headline,
             "text": text,
-            **_conclusion_words(decision, usable, positive, mentions, closing),
+            **_conclusion_words(decision, usable, positive, mentions, closing, words),
             "points": points,
             "basis": {
                 "reviews": usable,
@@ -1050,7 +1064,7 @@ def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]
             "not_recommended",
             "Not recommended",
             "Based on the reviews of this product, we advise against buying it: reviewers report safety problems "
-            "such as fire, smoke, burning smells or overheating.",
+            f"such as {words['hazards']}.",
             points + [f"{mentions.get('safety', 0)} review{'s' if mentions.get('safety', 0) != 1 else ''} mention a safety problem"],
         )
     if state == "possible_safety_issue":
@@ -1107,15 +1121,15 @@ def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]
         return build(
             "recommended",
             "Looks okay to buy",
-            f"Based on the reviews of this product, it looks okay to buy: {mood}, and no safety, fake or defect "
-            "problem stood out.",
+            f"Based on the reviews of this product, it looks okay to buy: {mood}, and no {words['watch']} "
+            "stood out.",
             points + ["No warning signs found"],
         )
     if positive >= CONCLUSION_MIXED_SHARE:
         return build(
             "mixed",
             "Mixed reviews",
-            f"Based on the reviews of this product, opinions are mixed: {mood}. Nothing dangerous stood out, but read "
+            f"Based on the reviews of this product, opinions are mixed: {mood}. Nothing alarming stood out, but read "
             "the complaints before you decide.",
             points + ["No warning signs found"],
         )
@@ -1125,6 +1139,23 @@ def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]
         f"Based on the reviews of this product, we advise against buying it: {mood}.",
         points,
     )
+
+
+def product_group(product: dict[str, Any]) -> str | None:
+    """The group of products this one belongs to (electronics, fashion, food_grocery ...), read from its title.
+
+    A report saved after rules pc3 carries it; an older one is read again from its name, which needs no new analysis.
+    """
+    group = product.get("product_group")
+    if group:
+        return str(group)
+    try:
+        _ensure_sentiment_path()
+        from defaketive_sentiment.product_category import classify_listing, group_of
+
+        return group_of(classify_listing({"name": str(product.get("name") or "")}))
+    except Exception:  # the wording falls back to the general profile; a report is never lost over it
+        return None
 
 
 def badge_view(product: dict[str, Any]) -> dict[str, Any]:
@@ -1147,6 +1178,7 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
     usable = _usable_reviews(summary)
     verdict = summary.get("verdict") or {}
     state = str(verdict.get("state") or "insufficient_evidence")
+    words = category_copy.profile(product_group(product))
     flags = summary.get("flags") or {}
     # "reports" is present only when the checker ran the five-label rules. A
     # label that was not checked gets no badge, so it never reads "0 reviews".
@@ -1157,9 +1189,9 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
         **(reports if isinstance(reports, dict) else {}),
     }
     badges = [
-        _safety_badge(summary.get("safety") or {}, usable)
+        _safety_badge(summary.get("safety") or {}, usable, words)
         if category == "safety"
-        else _flag_badge(category, found[category], usable)
+        else _flag_badge(category, found[category], usable, words)
         for category in BADGE_COPY
         if category == "safety" or category in found
     ]
@@ -1167,15 +1199,15 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
         "available": True,
         "state": state,
         "tone": VERDICT_TONES.get(state, "unknown"),
-        "headline": VERDICT_HEADLINES.get(state, "Not enough reviews to judge"),
+        "headline": words["fake_defect"] if state == "possible_counterfeit_or_defect" else VERDICT_HEADLINES.get(state, "Not enough reviews to judge"),
         "detail": _verdict_detail(state, verdict, badges, usable),
         "reviews_analyzed": usable,
         "counts": {badge["category"]: badge["mentions"] for badge in badges},
         "badges": badges,
-        "labels": BADGE_LABELS,
+        "labels": _labels(words),
         "limits_notice": summary.get("limits_notice"),
         "safety_check_accuracy": SAFETY_CHECK_ACCURACY,
-        "conclusion": _conclusion(summary, state, badges, usable),
+        "conclusion": _conclusion(summary, state, badges, usable, words),
     }
 
 

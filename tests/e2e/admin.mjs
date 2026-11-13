@@ -236,7 +236,7 @@ await context.request.put(base + '/api/admin/limits', { data: before });
 	check(true, 'filters: the admin saves the choices');
 
 	// Turning every choice off is refused on the page.
-	for (const name of ['All products', 'Caution or safety reports', 'Safety reports', 'Caution', 'No warnings']) {
+	for (const name of ['All products', 'Some concerns or safety reports', 'Safety reports', 'Some concerns', 'No red flags']) {
 		await page.getByRole('checkbox', { name, exact: true }).click();
 	}
 	check((await page.getByText('Keep at least one choice on.').count()) === 1 && (await page.getByRole('button', { name: 'Save choices' }).isDisabled()), 'filters: no choice left is refused before it is sent');

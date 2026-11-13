@@ -87,8 +87,8 @@ export type ChipKind = 'safety' | 'caution' | 'clear' | 'unknown';
  * The sentence under a chip (the verdict headline) is the server's and says why.
  */
 export const GROUP_NAMES: Record<ChipKind, string> = {
-	clear: 'No warnings',
-	caution: 'Caution',
+	clear: 'No red flags',
+	caution: 'Some concerns',
 	safety: 'Safety reports',
 	unknown: 'No result yet'
 };
@@ -96,7 +96,7 @@ export const GROUP_NAMES: Record<ChipKind, string> = {
 /**
  * Which group a product is in. The colour follows the level the checker decided (its "tone"):
  * red is only for serious or repeated safety reports. A safety mention below that level still lifts a product
- * to Caution, so one report is never hidden behind "No warnings" or "No result yet".
+ * to "Some concerns", so one report is never hidden behind "No red flags" or "No result yet".
  */
 export function chipFor(product?: Product | null): { kind: ChipKind; label: string } {
 	const t = tone(product);
@@ -113,7 +113,7 @@ export function chipFor(product?: Product | null): { kind: ChipKind; label: stri
 export const behindChecker = (product?: Product | null) =>
 	product?.checked_with_current === false && view(product).state !== 'not_analyzed';
 
-/** True when a product is shown as Caution only because of a safety mention, not because of its verdict. */
+/** True when a product is shown as "Some concerns" only because of a safety mention, not because of its verdict. */
 export const liftedBySafety = (product?: Product | null) =>
 	chipFor(product).kind === 'caution' && tone(product) !== 'moderate';
 
@@ -458,11 +458,11 @@ export function accuracyBrief(accuracy?: SafetyCheckAccuracy | null): string {
 
 /** In the order the server tests them. The wording matches dashboard_utils.VERDICT_HEADLINES. */
 export const VERDICT_GUIDE: { state: string; tone: string; label: string; meaning: string }[] = [
-	{ state: 'safety_warning', tone: 'high', label: 'Reviewers report safety problems', meaning: 'Two or more separate reports of fire, explosion or electric shock, or safety problems that are common in the reviews' },
-	{ state: 'possible_safety_issue', tone: 'moderate', label: 'Some reviewers mention safety concerns', meaning: 'One report of fire, explosion or electric shock, or a few less severe safety reports' },
+	{ state: 'safety_warning', tone: 'high', label: 'Reviewers report safety problems', meaning: 'Two or more separate reports of a serious hazard (fire, burns, choking, a harmful reaction or spoiled food, depending on the product), or safety problems that are common in the reviews' },
+	{ state: 'possible_safety_issue', tone: 'moderate', label: 'Some reviewers mention safety concerns', meaning: 'One report of a serious hazard, or a few less severe safety reports' },
 	{ state: 'possible_counterfeit_or_defect', tone: 'moderate', label: 'Reviewers report fakes or defects', meaning: 'More fake or breakage reports than is typical for the product type' },
 	{ state: 'reviews_may_be_unreliable', tone: 'unknown', label: 'These reviews may not be trustworthy', meaning: 'Many reviews look duplicated or generic' },
-	{ state: 'no_warning_signs', tone: 'low', label: 'No warning signs found', meaning: 'Enough reviews, and no problem reaches a warning level. This is not proof that a product is safe' },
+	{ state: 'no_warning_signs', tone: 'low', label: 'No red flags found', meaning: 'Enough reviews, and no problem reaches a warning level. This is not proof that a product is safe' },
 	{ state: 'insufficient_evidence', tone: 'unknown', label: 'Not enough reviews to judge', meaning: 'Too few reviews for an overall result; any reports are still shown' }
 ];
 
@@ -474,10 +474,10 @@ export const groupOfTone = (value: string): ChipKind =>
 export const VERDICT_GROUPS: { kind: ChipKind; label: string; meaning: string }[] = [
 	{ kind: 'clear', label: GROUP_NAMES.clear, meaning: "Enough reviews and nothing at a warning level. Not proof it's safe." },
 	{ kind: 'caution', label: GROUP_NAMES.caution, meaning: 'More fakes or defects than usual, or a safety concern, even from one reviewer.' },
-	{ kind: 'safety', label: GROUP_NAMES.safety, meaning: 'Two or more reports of fire, explosion or shock, or safety problems that are common.' },
+	{ kind: 'safety', label: GROUP_NAMES.safety, meaning: 'Two or more reports of a serious hazard, or safety problems that are common.' },
 	{ kind: 'unknown', label: GROUP_NAMES.unknown, meaning: 'Too few reviews, reviews that may not be trustworthy, or not analyzed yet.' }
 ];
 
 /** Said wherever the verdicts are listed against their groups. */
 export const SAFETY_LIFT_NOTE =
-	'A product with any safety mention is shown as Caution at least, whatever its result, so one report is never hidden.';
+	'A product with any safety mention is shown as "Some concerns" at least, whatever its result, so one report is never hidden.';

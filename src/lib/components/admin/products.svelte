@@ -22,7 +22,7 @@
 	let platform = $state('');
 
 	const RESULTS: Record<string, string> = {
-		no_warning_signs: 'No warning signs',
+		no_warning_signs: 'No red flags',
 		possible_safety_issue: 'Safety mentions',
 		safety_warning: 'Safety reports',
 		possible_counterfeit_or_defect: 'Fakes or defects',

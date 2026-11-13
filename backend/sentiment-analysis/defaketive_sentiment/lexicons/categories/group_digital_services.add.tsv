@@ -1,0 +1,10 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+invalid code|code\s+(?:is\s+)?(?:invalid|already used|already redeemed|expired|not working|doesn'?t work|did not work)|already\s+(?:used|redeemed)	defect	2	a code that does not work
+hindi\s+(?:pumasok|dumating|gumana)(?:\s+ang)?\s+(?:load|code|voucher|account|pin)|walang\s+(?:dumating|pumasok)(?:\s+na)?\s+(?:load|code)|not received|never received|di pumasok	defect	2	a load or code that never arrived

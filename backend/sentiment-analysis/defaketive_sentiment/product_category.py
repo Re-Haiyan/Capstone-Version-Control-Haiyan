@@ -22,11 +22,21 @@ the matches that are NOT a complaint for that kind of product:
              3 words either side of the phrase matches it, the exception does not apply
     reason   why, for the audit trail
 
+A file is named for a category (phone.tsv) or for a whole group (group_fashion.tsv, read for every category of
+the group). Exceptions apply to any label (quality, defect, counterfeit, safety, not_as_described): "init" is a
+heat hazard on a power bank and the weather on a shirt. A second kind of file, <name>.add.tsv, goes the other way
+and lists what reviewers of THAT kind of product report that the general lists do not know: a rash on a face
+cream, a spoiled seal on food, a sharp edge on a toy. Its columns are: term | label | severity | reason, where the
+term is a regular expression read against the normalized sentence and severity is 1 (minor) to 3. Added safety
+terms are read as an unspecified safety concern, which the taxonomy caps at severity 2, so they are counted and
+quoted but cannot raise an alert by themselves.
+
 Every doubt falls back to the old behaviour: a title no rule recognizes is "other",
 a category with no file has no exceptions, and an `unless` word cancels the
-exception ("manipis na plastic" is still a complaint on a phone). So this module
-can only REMOVE a flag the old rules would have raised, never add one, and only
-for a phrase listed in a category file.
+exception ("manipis na plastic" is still a complaint on a phone). So an
+exception can only REMOVE a flag the old rules would have raised, and only for a phrase listed in a category
+file; an addition can only ADD a flag, and only for a category whose own add file lists the phrase. A product
+in "other" or in a category with no file is read exactly as before.
 
 The title is read, not the description: descriptions list compatible devices and
 accessories, which would put a phone case in the phone category. Within the title only
@@ -58,7 +68,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"online course|event tickets?|concert tickets?|load promo|gcash)\b"),
     # --- things that are not the device they name ---
     ("stationery_books", "office_media",
-     r"\b(?:pencil cases?|pens?(?! ?drive)|pencils?|markers?|highlighters?|erasers?|staplers?|sticky notes|crayons?|"
+     r"^(?!.*\b(?:stylus|touch ?screen)\b).*?\b(?:pencil cases?|pens?(?! ?drive)|pencils?|markers?|highlighters?|erasers?|staplers?|sticky notes|crayons?|"
      r"sketch ?books?|journals?|planners?|notebooks? (?:paper|journal)|spiral notebooks?|books?|novels?|textbooks?|"
      r"workbooks?|manga|magazines?|bible|art supplies|folders?|scissors)\b"),
     ("home_textile", "home_living",
@@ -276,16 +286,23 @@ def classify_listing(listing: Any) -> str:
     return OTHER
 
 
-@lru_cache(maxsize=None)
-def _exceptions(category: str) -> tuple[tuple[re.Pattern[str], str, re.Pattern[str] | None, str], ...]:
-    path = CATEGORY_DIR / f"{category}.tsv"
-    if not path.is_file():
-        return ()
-    rows = []
+def _files(category: str, suffix: str) -> tuple[Path, ...]:
+    """The files that apply to a category: its own, then its group's."""
+    names = (category, f"group_{group_of(category)}")
+    return tuple(path for path in (CATEGORY_DIR / f"{name}{suffix}" for name in names) if path.is_file())
+
+
+def _rows(path: Path, width: int) -> list[list[str]]:
     with path.open("r", encoding="utf-8", newline="") as file:
         lines = (line for line in file if line.strip() and not line.startswith("#"))
-        for values in csv.reader(lines, delimiter="\t"):
-            term, label, unless, reason = (values + ["", "", "", ""])[:4]
+        return [(values + [""] * width)[:width] for values in csv.reader(lines, delimiter="	")]
+
+
+@lru_cache(maxsize=None)
+def _exceptions(category: str) -> tuple[tuple[re.Pattern[str], str, re.Pattern[str] | None, str], ...]:
+    rows = []
+    for path in _files(category, ".tsv"):
+        for term, label, unless, reason in _rows(path, 4):
             try:
                 rows.append(
                     (
@@ -300,9 +317,33 @@ def _exceptions(category: str) -> tuple[tuple[re.Pattern[str], str, re.Pattern[s
     return tuple(rows)
 
 
+@lru_cache(maxsize=None)
+def _additions(category: str) -> tuple[tuple[str, str, int, re.Pattern[str], str], ...]:
+    rows = []
+    for path in _files(category, ".add.tsv"):
+        for term, label, severity, reason in _rows(path, 4):
+            try:
+                pattern = re.compile(rf"(?<!\w)(?:{term.strip()})(?!\w)")
+                rows.append((term.strip(), label.strip(), int(severity or 1), pattern, reason.strip()))
+            except (re.error, ValueError) as error:
+                raise ValueError(f"{path.name}: bad row for {term!r}: {error}") from error
+    return tuple(rows)
+
+
+def added_terms(category: str | None, label: str) -> tuple[tuple[str, int, re.Pattern[str]], ...]:
+    """What reviewers of this kind of product report under `label` that the general lists do not know.
+
+    Returned as (term, severity, pattern), the shape the hazard tagger reads its own terms in.
+    """
+    if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
+        return ()
+    return tuple((term, severity, pattern) for term, row_label, severity, pattern, _reason in _additions(category) if row_label == label)
+
+
 def clear_cache() -> None:
     """Forget the category files, e.g. after one was edited in a test."""
     _exceptions.cache_clear()
+    _additions.cache_clear()
 
 
 def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3) -> str | None:

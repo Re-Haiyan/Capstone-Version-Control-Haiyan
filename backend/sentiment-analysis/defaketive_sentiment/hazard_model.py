@@ -965,7 +965,9 @@ class LexiconHazardTagger:
             occupied: list[tuple[int, int]] = []
             total = 0.0
             severity = 0
-            for term, term_severity, pattern in entries:
+            # Rules pc3: what reviewers of this kind of product report that the general lists do not know.
+            added = product_category.added_terms(product_kind, category) if product_kind and self.rules == "0.4" else ()
+            for term, term_severity, pattern in (*entries, *added):
                 repeated: dict[str, Any] = {}
                 for match in pattern.finditer(normalized):
                     if any(
@@ -984,6 +986,15 @@ class LexiconHazardTagger:
                     repeated = {"end": match.end(), "negated": negated}
                     raw_span = self._raw_span(match.span(), spans)
                     reason = self._excluded(category, term, normalized, match.span(), name_spans)
+                    # Rules pc3: a phrase the product category's file lists is not a report on that kind of product
+                    # ("init" is a heat hazard on a power bank and the weather on a shirt).
+                    if (
+                        reason is None
+                        and product_kind
+                        and self.rules == "0.4"
+                        and category_exemption(product_kind, category, normalized, match.span())
+                    ):
+                        reason = "category"
                     if (
                         reason is None
                         and self.rules == "0.4"
@@ -1079,6 +1090,11 @@ class LexiconHazardTagger:
                         # or mistaken; the model may not put the flag back. Plain
                         # negation is NOT blocked: on the labelled rounds that cost
                         # three real reports ("wla na, sira na") for two false flags.
+                        if self.rules == "0.4" and any(
+                            match["category"] == category and match.get("excluded") == "category" for match in matches
+                        ):
+                            gated[category] = "category_exempt"
+                            continue
                         if self.rules == "0.4" and self.block_denied and any(
                             match["category"] == category and match.get("excluded") in DENIED_REASONS
                             for match in matches
@@ -1432,10 +1448,17 @@ class LexiconHazardTagger:
         terms: list[dict[str, Any]] = []
         # Rules pc1: a phrase listed in the product category's file is not a complaint on that kind of product.
         exempt: list[dict[str, Any]] = []
-        for label, found in ((QUALITY, quality_spans(normalized, self.extra_revision)), (NOT_AS_DESCRIBED, described)):
+        def with_added(label: str, found: Sequence[tuple[int, int]]) -> list[tuple[int, int]]:
+            extra = [m.span() for _term, _severity, pattern in product_category.added_terms(product_kind, label) for m in pattern.finditer(normalized)]
+            return [*found, *extra] if self.rules == "0.4" else list(found)
+
+        for label, found in (
+            (QUALITY, with_added(QUALITY, quality_spans(normalized, self.extra_revision))),
+            (NOT_AS_DESCRIBED, with_added(NOT_AS_DESCRIBED, described)),
+        ):
             for start, end in _merged(found):
                 where = self._raw_span((start, end), spans)
-                reason = category_exemption(product_kind, label, normalized, (start, end)) if label == QUALITY else None
+                reason = category_exemption(product_kind, label, normalized, (start, end))
                 if reason:
                     exempt.append(
                         {"ngram": normalized[start:end], "category": label, "product_category": product_kind,

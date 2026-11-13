@@ -33,7 +33,7 @@
 	const stats = $derived([
 		{ value: products.length, label: 'Products checked' },
 		{ value: products.reduce((total, p) => total + reviewCount(p), 0), label: 'Reviews analyzed' },
-		{ value: attention.length, label: 'With warnings' },
+		{ value: attention.length, label: 'With concerns' },
 		{ value: library.wishlist.length, label: 'In your wishlist' }
 	]);
 
@@ -61,7 +61,7 @@
 	const steps = [
 		['Paste a link', 'Copy any product link from Lazada PH and paste it into the bar above.'],
 		['We read the reviews', 'A Filipino-aware language model reads each review and looks for reports of fakes, defects and safety problems.'],
-		['Get your result', "No warnings, caution, or safety reports, with the reviewers' own words."]
+		['Get your result', "No red flags, some concerns, or safety reports, with the reviewers' own words."]
 	];
 	const tips = [
 		['Check seller ratings first', 'Prefer sellers with high ratings and many completed orders before buying electronics.'],
@@ -119,7 +119,7 @@
 					<h2 class="text-destructive text-sm font-bold">{safety.length} product{safety.length === 1 ? ' has' : 's have'} safety reports</h2>
 					<p class="text-muted-foreground text-sm">Reviewers described fire, smoke, shocks or overheating.</p>
 				{:else}
-					<h2 class="text-sm font-bold">{caution.length} product{caution.length === 1 ? ' needs' : 's need'} caution</h2>
+					<h2 class="text-sm font-bold">{caution.length} product{caution.length === 1 ? ' has' : 's have'} some concerns</h2>
 					<p class="text-muted-foreground text-sm">Reviewers reported problems worth a look before you buy.</p>
 				{/if}
 			</div>
@@ -181,7 +181,7 @@
 			{:else if products.length}
 				<p class="flex items-start gap-2 border-t p-4 text-sm">
 					<CircleCheckIcon class="tone-clear mt-0.5 size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					<span>Nothing needs a look right now. <span class="text-muted-foreground">No warning is not proof that a product is safe.</span></span>
+					<span>Nothing needs a look right now. <span class="text-muted-foreground">No red flags is not proof that a product is safe.</span></span>
 				</p>
 			{:else}
 				<p class="text-muted-foreground border-t p-4 text-sm">

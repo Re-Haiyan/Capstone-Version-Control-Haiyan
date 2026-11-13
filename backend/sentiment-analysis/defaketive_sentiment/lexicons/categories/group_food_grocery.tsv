@@ -1,0 +1,8 @@
+# Phrases that are NOT a report for this kind of product (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | unless | reason
+#   term    regular expression that must match the whole flagged phrase
+#   label   quality, defect, counterfeit, safety or not_as_described
+#   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
+#   reason  shown in the audit trail
+# A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
+burn|sunog|amoy sunog|burn smell|smell of burn|smoke|usok|spark|explode|amoy keso|init|ang init|sobrang init|very hot|too hot|gets? hot|burn hot|paso|grounded	safety	packaging|plastic|plastik|balot|box|kahon|seal|wrapper|bote|lata|expired|panis|amag|uod|ipis|sakit|tiyan|suka|lbm|nasuka|nagtae	burnt or smoky is the taste of food, spicy is hot, and cheese smells; still a hazard beside packaging or illness

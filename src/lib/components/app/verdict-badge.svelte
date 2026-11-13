@@ -9,7 +9,7 @@
 	import { cn } from '#lib/utils.js';
 
 	// Give it a product to show that product's group, or a `kind` to show a group by itself (in a legend). `label`
-	// renames it where a page uses its own word for the group (the DTI view calls Caution "Safety mentions").
+	// renames it where a page uses its own word for the group (the DTI view calls "Some concerns" "Safety mentions").
 	let {
 		product,
 		kind,

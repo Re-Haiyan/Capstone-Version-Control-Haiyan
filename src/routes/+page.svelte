@@ -26,15 +26,15 @@
 
 	const features = [
 		{ icon: LanguagesIcon, title: 'Taglish-aware sentiment', text: 'A language model trained on Filipino and English reviews sorts each review as positive, negative, or mixed or unclear.' },
-		{ icon: FileSearchIcon, title: 'Separate warnings', text: 'Safety, fake and defect reports are checked one by one, so good reviews never average away a fire report.' },
+		{ icon: FileSearchIcon, title: 'Separate warnings', text: 'Safety, fake and defect reports are checked one by one, so good reviews never average away a serious safety report.' },
 		{ icon: GlobeIcon, title: 'Lazada PH and Shopee PH', text: 'Reads public reviews from Lazada PH product pages (up to 200 from each star level) and, with the extension, from Shopee PH product pages (every written review that has a comment).' },
-		{ icon: BoxesIcon, title: 'Similar products', text: 'When reviewers report problems, see similar products whose reviews raised no warnings.' }
+		{ icon: BoxesIcon, title: 'Similar products', text: 'When reviewers report problems, see similar products whose reviews raised no red flags.' }
 	];
 	const steps = [
 		['Paste link', 'Copy any gadget link from Lazada PH.'],
 		['We read the reviews', 'We collect the reviews and read every one, looking for words like peke, sira and umusok.'],
 		['Read the result', 'A plain result on safety, fakes and defects, with the exact reviews behind it.'],
-		['Shop smarter', 'If reviewers report problems, compare similar products with no warnings.']
+		['Shop smarter', 'If reviewers report problems, compare similar products with no red flags.']
 	];
 	const platforms = ['Lazada PH', 'Shopee PH'];
 </script>

@@ -1,0 +1,15 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+expired|already expired|nagexpire|expir(?:y|ation)\s+date\s+(?:passed|already|na)|paso na (?:ang |sa )?(?:expiry|expiration)	safety	2	an expired item sold as new
+spoiled|panis|bulok|rotten|rancid|moldy|mouldy|may amag|amag|nagamag|sira na ang lasa	safety	2	food that has gone off
+may\s+uod|uod|may\s+ipis|ipis|langgam|insects?\s+(?:inside|in)|worms?\s+(?:inside|in)|bugs?\s+(?:inside|in)	safety	2	an insect or worm found in the food
+food poisoning|nalason|sumakit(?:\s+ang)?\s+tiyan|sakit ng tiyan|nagtae|lbm|diarrhea|nagsuka|nasuka|vomit(?:ed|ing)?	safety	2	an upset stomach or sickness after eating
+allergic reaction|(?:nagka|nag)\s?allerg\w*|allergic\s+(?:to|sa|ako|kami)	safety	2	an allergic reaction to food
+broken seal|open na ang seal|walang seal|unsealed|already opened|nabuksan na|tampered|tumagas|tumatagas|leaking|leaked	defect	2	a broken seal or a leak on food, which makes it unsafe to eat
+kulang ang (?:laman|timbang|bilang)|(?:less|short)\s+(?:than|in)\s+(?:the\s+)?(?:quantity|amount|weight)|konti lang ang laman|iba ang flavou?r|wrong flavou?r|hindi pareho ang flavou?r	not_as_described	1	the amount or flavor is not what was listed

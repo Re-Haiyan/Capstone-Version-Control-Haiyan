@@ -87,7 +87,7 @@ class ConclusionTests(unittest.TestCase):
             {"category": "not_as_described", "mentions": 8},
         ]
         result = decide("possible_safety_issue", summary(476, 10, 26, 0.9), found, usable=512)
-        self.assertEqual(result["assessment"], "Caution")
+        self.assertEqual(result["assessment"], "Some concerns")
         self.assertIn("According to the 512 customer reviews analyzed", result["summary"])
         for phrase in ("(93%)", "product defects (82 reviews)", "weak or poor build quality (46 reviews)",
                        "differences from the product description (8 reviews)", "possible authenticity concerns (3 reviews)",
@@ -102,7 +102,7 @@ class ConclusionTests(unittest.TestCase):
 
     def test_too_few_reviews_gives_no_percentage(self) -> None:
         result = decide("insufficient_evidence", summary(3, 0, 0), usable=3)
-        self.assertEqual(result["assessment"], "Not enough reviews")
+        self.assertEqual(result["assessment"], "Too few reviews")
         self.assertNotIn("%", result["summary"])
 
 

@@ -200,8 +200,16 @@ class ExemptionTests(unittest.TestCase):
         self.assertTrue(files)
         for path in files:
             with self.subTest(file=path.name):
-                self.assertIn(path.stem, product_category.CATEGORIES)
-                product_category._exceptions(path.stem)
+                # A file is named for a category (phone.tsv, phone.add.tsv) or a group (group_fashion.tsv); the
+                # rules read both, so the check is that every file belongs to something and loads (pc3).
+                stem = path.name[: -len('.add.tsv')] if path.name.endswith('.add.tsv') else path.stem
+                groups = {product_category.group_of(name) for name in product_category.CATEGORIES}
+                self.assertTrue(
+                    stem in product_category.CATEGORIES or (stem.startswith('group_') and stem[len('group_'):] in groups), stem
+                )
+        for name in product_category.CATEGORIES:
+            product_category._exceptions(name)
+            product_category._additions(name)
 
     def test_a_bad_pattern_names_its_file(self) -> None:
         import tempfile

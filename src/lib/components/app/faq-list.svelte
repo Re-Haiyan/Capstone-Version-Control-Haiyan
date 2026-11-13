@@ -24,7 +24,7 @@
 		},
 		{
 			q: 'What happens if reviewers report a problem?',
-			a: "You'll see a warning with the reviewers' own words highlighted. Read them, then compare similar products with no warnings before you buy."
+			a: "You'll see a warning with the reviewers' own words highlighted. Read them, then compare similar products with no red flags before you buy."
 		},
 		{
 			q: 'How accurate is the check?',

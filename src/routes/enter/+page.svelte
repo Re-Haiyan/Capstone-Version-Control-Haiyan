@@ -13,7 +13,7 @@
 	import { Button } from '#lib/components/ui/button/index.js';
 
 	const points = [
-		{ icon: ShieldCheckIcon, title: 'Safety warnings first', text: 'Reports of fire, burns and shocks are checked on their own, so good reviews never hide them.' },
+		{ icon: ShieldCheckIcon, title: 'Safety warnings first', text: 'Reports of fire, burns, injury or a harmful reaction are checked on their own, so good reviews never hide them.' },
 		{ icon: LanguagesIcon, title: 'Reads Taglish', text: 'Reviews in Filipino and English are read the way shoppers write them.' },
 		{ icon: FileSearchIcon, title: 'See the proof', text: 'Every warning shows the exact reviews behind it, in the reviewers’ own words.' }
 	];

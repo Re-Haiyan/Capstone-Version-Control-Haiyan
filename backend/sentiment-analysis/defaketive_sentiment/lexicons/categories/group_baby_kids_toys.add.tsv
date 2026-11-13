@@ -1,0 +1,16 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+allergic reaction|(?:nagka|nag)\s?allerg\w*|allergic\s+(?:to|sa|ako|kami)|allerg(?:y|ies)	safety	2	an allergic reaction to a product used on skin or eaten
+(?:nag)?ka?\s?rash\w*|rash(?:es)?|pantal\w*	safety	2	a rash after using the product
+namumula(?:\s+ang)?\s+(?:mukha|balat|mata|kamay|labi)|namamaga(?:\s+ang)?\s+(?:mukha|mata|labi|balat)	safety	2	red or swollen skin after using the product
+chok(?:e|ed|ing)|choking hazard|nabilaukan|nalunok|swallow(?:ed)?\s+(?:a|the)?\s*(?:small|part|piece|battery)	safety	3	a child choking or swallowing a part
+small parts?\s+(?:came off|come off|fell off|fall off|detach\w*|broke off|natanggal)|natanggal ang maliit	safety	2	small parts coming loose on something a child handles
+sharp edges?|matalim|matulis ang (?:dulo|gilid)|splinters?|nasugatan|nahiwa|nagkasugat|nasaktan ang bata	safety	2	a sharp edge or splinter on something a child handles
+toxic|may lead|lead paint|nakakalason|chemical smell|amoy kemikal|amoy chemical	safety	2	a toxic material or smell on something a child handles
+tipped over|bumagsak ang (?:crib|stroller|upuan)|nabali ang (?:crib|stroller|upuan)|baby fell|nahulog ang bata|collaps\w+	safety	3	a crib, stroller or seat giving way under a child

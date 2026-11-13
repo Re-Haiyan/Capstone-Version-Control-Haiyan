@@ -1,0 +1,12 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+(?:brakes?|preno)\s+(?:failed|fail|failure|not working|stopped)|brake failure|walang preno|nawalan ng preno|nasira ang preno	safety	3	brakes failing on a vehicle part
+nahulog ang gulong|wheel\s+(?:came|fell|flew)\s+off|lumuwag ang gulong	safety	3	a wheel coming off
+helmet\s+(?:cracked|broke)|nabasag ang helmet|basag ang helmet|nabasag ang visor	safety	2	a cracked helmet or visor
+blade\s+(?:broke|snapped|flew)|disc\s+(?:broke|shattered)|tumilapon ang|sumabog ang disc	safety	3	a blade or disc breaking in use

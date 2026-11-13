@@ -72,7 +72,7 @@ await page.screenshot({ path: `${out}/flow_analyze_match.png` });
 
 await page.getByRole('button', { name: /Open report/ }).click();
 await page.waitForURL(/\/app\/report\?link=/);
-await page.getByRole('heading', { level: 2, name: /No warning signs found/ }).waitFor();
+await page.getByRole('heading', { level: 2, name: /No red flags found/ }).waitFor();
 check(true, 'saved report opens with its result');
 
 // --- Save to wishlist ----------------------------------------------------------------

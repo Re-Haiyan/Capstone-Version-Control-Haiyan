@@ -16,7 +16,7 @@
 <Card class="min-w-0 [overflow-wrap:anywhere] [&_a]:h-auto [&_a]:min-h-11 [&_a]:whitespace-normal [&_a]:py-2">
 	<CardHeader>
 		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Other options</p>
-		<CardTitle><h2 class="text-xl font-semibold">Similar products with no warnings</h2></CardTitle>
+		<CardTitle><h2 class="text-xl font-semibold">Similar products with no red flags</h2></CardTitle>
 		<CardDescription>Enough reviews, and not a single safety report.</CardDescription>
 	</CardHeader>
 	<CardContent>
@@ -49,7 +49,7 @@
 				{/each}
 			</div>
 		{:else}
-			<p class="text-muted-foreground text-sm">No similar product with enough reviews and no warnings is available in this report. Check another listing to compare its reviews and warnings.</p>
+			<p class="text-muted-foreground text-sm">No similar product with enough reviews and no red flags is available in this report. Check another listing to compare its reviews and warnings.</p>
 			<Button variant="outline" class="mt-3" href={guest ? '/scan' : '/app/analyze'}>Check another product</Button>
 		{/if}
 	</CardContent>

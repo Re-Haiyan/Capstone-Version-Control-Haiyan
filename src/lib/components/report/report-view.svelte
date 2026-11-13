@@ -434,7 +434,7 @@
 					<!-- Someone who has been warned mostly wants a safer choice: with some to show, those come first. -->
 					{#if recommendations.length}
 						<Button onclick={showSimilar}>
-							See {recommendations.length} similar product{recommendations.length === 1 ? '' : 's'} with no warnings
+							See {recommendations.length} similar product{recommendations.length === 1 ? '' : 's'} with no red flags
 							<ArrowRightIcon />
 						</Button>
 					{/if}
@@ -443,7 +443,7 @@
 						<ArrowRightIcon />
 					</Button>
 				{:else if group === 'clear'}
-					<!-- No warning is not the same as no complaint: point at what there is to read. -->
+					<!-- No red flag is not the same as no complaint: point at what there is to read. -->
 					{#if flagged.length}
 						<Button variant="outline" onclick={() => showReviews('reported')}>
 							{flagged.length === 1 ? 'Read the flagged review' : `Read the ${flagged.length} flagged reviews`} <ArrowRightIcon />

@@ -1,0 +1,16 @@
+# What reviewers of this kind of product report that the general lists do not know (rules pc3; read by product_category.py).
+# Columns, separated by TABS: term | label | severity | reason
+#   term      regular expression read against the normalized sentence, as whole words
+#   label     safety, defect, counterfeit, quality or not_as_described
+#   severity  1 minor, 2 material, 3 critical. An added safety term is an unspecified safety concern: counted and quoted,
+#             never an alert by itself.
+#   reason    why it is a report on this kind of product
+# A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+allergic reaction|(?:nagka|nag)\s?allerg\w*|allergic\s+(?:to|sa|ako|kami)|allerg(?:y|ies)	safety	2	an allergic reaction to a product used on skin or eaten
+(?:nag)?ka?\s?rash\w*|rash(?:es)?|pantal\w*	safety	2	a rash after using the product
+namumula(?:\s+ang)?\s+(?:mukha|balat|mata|kamay|labi)|namamaga(?:\s+ang)?\s+(?:mukha|mata|labi|balat)	safety	2	red or swollen skin after using the product
+chemical burn|burn sensation|hapdi|humapdi|nahapdi|skin irritation|irritat(?:ed|ion|es)(?:\s+my)?\s+(?:skin|face|eyes?)	safety	2	burning or irritated skin
+nagbalat|peeling skin|skin peel(?:ed|ing)	safety	2	skin peeling after using the product
+makati|nangati|nangangati|itch(?:y|ing)	safety	1	itching on the skin
+(?:nag\s?)?break\s?out|breakouts?|nagka\s?pimples?|tigyawat	safety	1	a breakout after using the product
+expired|already expired|nagexpire|expir(?:y|ation)\s+date\s+(?:passed|already|na)|paso na (?:ang |sa )?(?:expiry|expiration)	safety	2	an expired item sold as new
