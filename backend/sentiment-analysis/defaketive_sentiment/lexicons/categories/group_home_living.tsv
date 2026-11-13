@@ -8,3 +8,5 @@
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
 flimsy|cheap(?:\s+looking)?|poor|weak	quality		the reviewer says it is NOT flimsy, cheap or weak	doesn|don|didn|isn|wasn|never|hindi|di|walang|wala|not
 scratch\w*|scratches	quality		no scratches, or a scratch-free finish	weren|wasn|aren|isn|free|walang|wala|no|not|without|never
+dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality
+mabilis(?:\s+lang)?(?:\s+ma)?\s*lowbat\w*|(?:ma)?lowbat\w*|laowbat|drains?\s+(?:fast|quickly)|mabilis\s+maubos(?:\s+ang)?\s+battery	defect		a battery that runs down fast is a performance complaint (quality) here, not a defect

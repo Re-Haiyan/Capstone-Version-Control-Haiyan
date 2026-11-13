@@ -169,6 +169,50 @@ class MergedRulesStayUsefulOffGadgets(unittest.TestCase):
                 self.assertFalse(flagged(sentence, kind, label), sentence)
 
 
+class TunedOnTeamLabels(unittest.TestCase):
+    """Rule families written from the dev half of the team-labelled non-gadget batch. Each is tested both ways: the
+    report is flagged, and the praise, denial or other-product case with the same words is not."""
+
+    FLAGGED = (
+        ("apparel", NOT_AS_DESCRIBED, "Wrong item received, I ordered a shirt"),
+        ("makeup", NOT_AS_DESCRIBED, "foundation order tapos lipstick dumating"),
+        ("home_textile", NOT_AS_DESCRIBED, "ang gagaling niyo mag sinungali mga buy 6 get 6 daw"),
+        ("bags", DEFECT, "the bag arrived dented"),
+        ("kitchen_dining", DEFECT, "there were dents. hope you do better"),
+        ("motorcycle", DEFECT, "May damage siya, paki ayos nalng ng packaging"),
+        ("haircare", QUALITY, "mabilis lang ma lowbatt"),
+        ("apparel", QUALITY, "the fabric is a bit itchy"),
+        ("home_living_item", QUALITY, "kinalawang na yung iba"),
+    )
+    NOT_FLAGGED = (
+        ("apparel", NOT_AS_DESCRIBED, "the size and color are exactly as shown"),
+        ("apparel", DEFECT, "Received item with no damage, tama po ang color and size"),
+        ("small_appliance", DEFECT, "May yupi yung box pero okay lang yung item"),
+        ("home_decor_lighting", DEFECT, "maganda sya wlng sira mabilis pa dumating"),
+        ("haircare", DEFECT, "Medyo mabilis lang ma lowbatt"),
+        ("furniture", QUALITY, "Non-rust aluminum frame, durable plastic construction"),
+    )
+
+    def test_each_family_is_flagged_on_its_own_kind_of_product(self) -> None:
+        for kind, label, sentence in self.FLAGGED:
+            kind = "kitchen_dining" if kind == "home_living_item" else kind
+            with self.subTest(kind=kind, sentence=sentence):
+                self.assertTrue(flagged(sentence, kind, label), sentence)
+
+    def test_denials_other_products_and_the_box_are_not_flagged(self) -> None:
+        for kind, label, sentence in self.NOT_FLAGGED:
+            with self.subTest(kind=kind, sentence=sentence):
+                self.assertFalse(flagged(sentence, kind, label), sentence)
+
+    def test_a_battery_that_drains_fast_is_still_a_defect_on_a_gadget(self) -> None:
+        self.assertTrue(flagged("Medyo mabilis lang ma lowbatt", "phone", DEFECT))
+
+    def test_wlng_is_read_as_walang_everywhere(self) -> None:
+        for kind in (None, "phone", "audio", "apparel"):
+            with self.subTest(kind=kind):
+                self.assertFalse(flagged("wlng sira", kind, DEFECT))
+
+
 class FilesAreValid(unittest.TestCase):
     def test_every_file_loads_and_names_a_category_or_a_group(self) -> None:
         product_category.clear_cache()

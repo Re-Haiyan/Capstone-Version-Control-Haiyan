@@ -7,3 +7,4 @@
 #   when    optional regular expression, matched as whole words; the exception applies ONLY when one of the 3 words either side matches it
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
 burn|sunog|amoy sunog|burn smell|smell of burn|smoke|usok|spark|explode|amoy keso|init|ang init|sobrang init|very hot|too hot|gets? hot|burn hot|paso|grounded	safety	packaging|plastic|plastik|balot|box|kahon|seal|wrapper|bote|lata|expired|panis|amag|uod|ipis|sakit|tiyan|suka|lbm|nasuka|nagtae	burnt or smoky is the taste of food, spicy is hot, and cheese smells; still a hazard beside packaging or illness
+dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality

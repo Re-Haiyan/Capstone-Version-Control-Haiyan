@@ -979,7 +979,9 @@ class LexiconHazardTagger:
             severity = 0
             # Rules pc3: what reviewers of this kind of product report that the general lists do not know.
             added = product_category.added_terms(product_kind, category) if product_kind and self.rules == "0.4" else ()
-            for term, term_severity, pattern in (*entries, *added):
+            # The category's own terms are read first, so a report such as "dented" or "arrived damaged" counts on a
+            # product where the general list would have set the same words aside as a shipping matter.
+            for term, term_severity, pattern in (*added, *entries):
                 repeated: dict[str, Any] = {}
                 for match in pattern.finditer(normalized):
                     if any(
@@ -1173,7 +1175,7 @@ class LexiconHazardTagger:
                 normalized, spans, matches, tags, scores, severities, confidence, filtered, safety_at,
                 about_the_product, suppressed,
             )
-            self._round19_rules(raw, spans, matches, tags, scores, severities, confidence, about_the_product, suppressed)
+            self._round19_rules(raw, spans, matches, tags, scores, severities, confidence, about_the_product, suppressed, product_kind)
 
         described: list[tuple[int, int]] = []
         if self.counterfeit_rules in COUNTERFEIT_RULE_SETS:
@@ -1345,9 +1347,12 @@ class LexiconHazardTagger:
         confidence: dict[str, bool],
         about_the_product: bool,
         suppressed: dict[str, str],
+        product_kind: str | None = None,
     ) -> None:
         """Rules f11 (a fault the word list misses) and s2 (a "grounded" hum is not
         safety), fault_rules.py. Works in place on the result."""
+        # A label the product category set aside in this sentence is not these rules' to put back from the raw text.
+        exempt = {match["category"] for match in matches if match.get("excluded") == "category"}
         if DEFECT in tags and (
             CHARGING_CLAIM_MISMATCH.search(raw)
             or CHARGING_OUTPUT_LIMITATION.search(raw)
@@ -1358,8 +1363,10 @@ class LexiconHazardTagger:
             severities.pop(DEFECT, None)
             confidence.pop(DEFECT, None)
             suppressed[DEFECT] = "claim_or_capability_description"
-        if not F11_OFF and DEFECT not in tags:
+        if not F11_OFF and DEFECT not in tags and DEFECT not in exempt:
             found = f11_match(raw)
+            if found is not None and product_kind and category_exemption(product_kind, DEFECT, raw.casefold(), found[1]):
+                found = None  # the product category sets this fault wording aside (a fast-draining battery on a hair tool)
             if found is not None:
                 part, (start, end) = found
                 matches.append(
@@ -1390,7 +1397,7 @@ class LexiconHazardTagger:
                 severities.pop(SAFETY, None)
                 confidence.pop(SAFETY, None)
                 suppressed[SAFETY] = f"{S3_REVISION}:" + "+".join(sorted(parts))
-        elif not S3_RULES_OFF and SAFETY not in suppressed:
+        elif not S3_RULES_OFF and SAFETY not in suppressed and SAFETY not in exempt:
             part = s3_adds(raw)
             if part is not None:
                 matches.append(
@@ -1597,8 +1604,13 @@ class LexiconHazardTagger:
         if model is not None:
             for item, segment in zip(tagged, segments):
                 decided = model.decide(segment)
-                if item.get("category_exempt"):
-                    decided = {label: value for label, value in decided.items() if label != QUALITY}
+                # A label the product category set aside in this sentence (a keyword it exempted) is not the label
+                # model's to put back.
+                exempt = {entry["category"] for entry in item.get("category_exempt") or []} | {
+                    term["category"] for term in item.get("terms") or [] if term.get("excluded") == "category"
+                }
+                if exempt:
+                    decided = {label: value for label, value in decided.items() if label not in exempt}
                 self._transformer_labels(item, decided)
         return tagged
 

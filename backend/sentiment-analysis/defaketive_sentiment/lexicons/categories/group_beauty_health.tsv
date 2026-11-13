@@ -8,3 +8,6 @@
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
 sobrang init|ang init|init|very hot|gets? hot|burn hot|too hot	safety	rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|sugat|paso|napaso|burn\w*|smoke|usok|spark\w*|short|kuryente|nakuryente|namaga|swollen|amoy|takot|nakakatakot|natatakot|scary|afraid|worried|delikado|baka|bka|\w*charg\w*	heat is the weather or hot water on skin and hair care, not a hazard
 burn	safety	rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|sugat|paso|napaso|burn\w*|skin|balat|mukha|face|eye|eyes|mata|sensation|hapdi|chemical|acid|peel|fire|smoke|usok|smell|amoy|plug|wire|cord|kuryente|spark\w*	burn is fat burning on a supplement; still a hazard beside skin, eyes or wiring
+dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality
+mabilis(?:\s+lang)?(?:\s+ma)?\s*lowbat\w*|(?:ma)?lowbat\w*|laowbat|drains?\s+(?:fast|quickly)|mabilis\s+maubos(?:\s+ang)?\s+battery	defect		a battery that runs down fast is a performance complaint (quality) here, not a defect
+expired	safety		it expired in the reviewer's own slow use, not on arrival	because|bec|dahil|kasi|every\s?day|everyday|don.?t|do not|haha|ubos

@@ -10,3 +10,5 @@ sobrang init|ang init|init|very hot|gets? hot|burn hot|too hot	safety	burn\w*|pa
 mumurahin|mukhang mura|cheap(?:\s+looking)?|looks cheap	quality		the reviewer compares it with cheap ones, or says it does not look cheap	hindi|di|not|doesn|don|never|tulad|unlike|walang|wala|hindi mukhang|tulad|unlike
 noisy|maingay|(?:napaka|sobrang)?\s*ingay|too loud	quality		the reviewer says it is NOT noisy	hindi|di|not|doesn|don|never|tulad|unlike|walang|wala|hindi mukhang
 burn	safety	skin|balat|hand|hands|kamay|mukha|face|eye|eyes|mata|pain|sakit|hapdi|sensation|fire|apoy|smoke|usok|smell|amoy|motor|wire|plug|battery|charger|treadmill|machine|cord|cable|kuryente|sunog|rash|paso	burn is exercise (burn fat, burn calories); still a hazard beside skin, wiring or a machine
+dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality
+mabilis(?:\s+lang)?(?:\s+ma)?\s*lowbat\w*|(?:ma)?lowbat\w*|laowbat|drains?\s+(?:fast|quickly)|mabilis\s+maubos(?:\s+ang)?\s+battery	defect		a battery that runs down fast is a performance complaint (quality) here, not a defect
