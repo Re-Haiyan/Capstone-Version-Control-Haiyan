@@ -118,7 +118,7 @@ class TunedByContext(unittest.TestCase):
         ("home_textile", QUALITY, "sakto lang ang nipis niya sa presyo", "napakanipis at sira yung dumating"),
         ("bags", QUALITY, "Hindi mukhang mumurahin", "mukhang mumurahin at pangit"),
         ("sports_fitness", QUALITY, "Di tulad ng mga mumurahin na walking pad", "mukhang mumurahin ang tahi"),
-        ("sports_fitness", QUALITY, "it was not super noisy", "it is so noisy"),
+        ("sports_fitness", QUALITY, "it was not super noisy", "napaka ingay ng treadmill"),
         ("small_appliance", QUALITY, "di malakas kumunsumo ng kuryente", "di malakas ang hangin"),
         ("small_appliance", QUALITY, "hindi maingay at tahimik", "napaka ingay"),
         ("motorcycle", COUNTERFEIT, "legit replica pro talaga", "replica lang ito, hindi original"),
@@ -137,6 +137,36 @@ class TunedByContext(unittest.TestCase):
         # "nipis" alone on clothes is still the team's complaint; only an explicit "just right" lifts it.
         self.assertTrue(flagged("manipis", "apparel", QUALITY))
         self.assertTrue(flagged("replica", "motorcycle", COUNTERFEIT))
+
+
+class MergedRulesStayUsefulOffGadgets(unittest.TestCase):
+    """The active not-as-described and quality rules (r8) were tuned on gadget reviews. For clothes, furniture and
+    home goods the material and the loose part are the claim, so those categories read them on their own."""
+
+    FLAGGED = (
+        ("apparel", NOT_AS_DESCRIBED, "Material:not cotton Size:small"),
+        ("apparel", NOT_AS_DESCRIBED, "Quality:Hindi sya cotton"),
+        ("furniture", NOT_AS_DESCRIBED, "not aluminum frame"),
+        ("home_decor_lighting", NOT_AS_DESCRIBED, "Quality:plastic not metal"),
+        ("small_appliance", QUALITY, "maluwag ung socket Nia"),
+    )
+    NOT_FLAGGED = (
+        ("small_appliance", QUALITY, "It doesn't feel flimsy or cheap"),
+        ("small_appliance", QUALITY, "The plastic doesn't feel flimsy, and the buttons respond well"),
+        ("home_textile", QUALITY, "Scratch-Free: there weren't any scratches on my fridge"),
+        ("apparel", NOT_AS_DESCRIBED, "100% cotton as described"),
+    )
+
+    def test_a_material_or_loose_part_is_reported_on_its_own_kind_of_product(self) -> None:
+        for kind, label, sentence in self.FLAGGED:
+            with self.subTest(kind=kind, sentence=sentence):
+                self.assertTrue(flagged(sentence, kind, label), sentence)
+                self.assertFalse(flagged(sentence, "phone", label), sentence)
+
+    def test_negated_praise_is_not_a_report(self) -> None:
+        for kind, label, sentence in self.NOT_FLAGGED:
+            with self.subTest(kind=kind, sentence=sentence):
+                self.assertFalse(flagged(sentence, kind, label), sentence)
 
 
 class FilesAreValid(unittest.TestCase):

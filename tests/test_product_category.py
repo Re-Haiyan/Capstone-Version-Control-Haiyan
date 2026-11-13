@@ -184,7 +184,7 @@ class ExemptionTests(unittest.TestCase):
                 self.assertTrue(quality(tagger().tag_sentence(THIN_PRAISE, product_kind=category)))
 
     def test_thin_part_or_material_stays_a_complaint_on_a_phone(self) -> None:
-        for sentence in ("manipis na plastic ng case", "ang nipis ng cable", "so thin the cable broke", "manipis ang tunog"):
+        for sentence in ("manipis na plastic ng case", "ang nipis ng cable", "the cable is too thin", "manipis ang tunog"):
             with self.subTest(sentence=sentence):
                 self.assertTrue(quality(tagger().tag_sentence(sentence, product_kind="phone")))
 

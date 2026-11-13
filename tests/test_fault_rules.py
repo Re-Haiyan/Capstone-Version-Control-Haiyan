@@ -19,6 +19,8 @@ FAULTS = [
     "Accuracy:not accurate pabago bgo nalabas na timbang",
     "Alam nyu nman na May Damaged yung item nyu",
     "good handling but not working",
+    "it lights but it won't touch",
+    "the adapter wasn't",
 ]
 NOT_FAULTS = [
     "The colors are not accurate to the pictures but I like them",  # not-as-described, not a defect
@@ -26,6 +28,9 @@ NOT_FAULTS = [
     "akala ko may sira yung isa pero okay naman pala",  # a mistake that was cleared up
     "no damage at all, works great",
     "Very accurate and easy to connect",
+    "fast charging only no super fast charging",
+    "hindi ito fast charging",
+    "this does not charge at 140watts 100watts max, my device needs 120watts",
 ]
 
 

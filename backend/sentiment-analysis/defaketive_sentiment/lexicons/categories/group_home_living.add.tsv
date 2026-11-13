@@ -6,6 +6,9 @@
 #             never an alert by itself.
 #   reason    why it is a report on this kind of product
 # A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+(?:not|hindi|di|isn.t|is not)\s+(?:sya\s+|siya\s+|naman\s+|a\s+|real\s+|genuine\s+|pure\s+)?(?:100%\s*)?(?:cotton|leather|metal|alumin(?:i?um)|stainless|steel|silk|wool|polyester|wood|wooden|bakal|kahoy)	not_as_described	1	the material is not the one the listing named
+(?:plastic|plastik)\s+(?:not|hindi|di)\s+(?:metal|steel|alumin(?:i?um)|wood|bakal)|(?:i|we)\s+thought\s+(?:it was\s+)?(?:metal|steel|alumin(?:i?um)|wood|leather)	not_as_described	1	plastic where the listing said metal
+maluwag(?:\s+(?:ang|ung|yung|na))?\s+(?:switch|socket|turnilyo|screws?|hawakan|handle|takip|lid|button|buttons)|loose\s+(?:switch|socket|screws?|handle|joints?|button|buttons)|wobbl\w+|umiindayog	quality	1	a loose or wobbling part
 sharp edges?|matalim ang (?:gilid|dulo|edge)|matulis ang dulo|nahiwa|nasugatan|cut (?:my|myself|me)|nagkasugat|splinters?	safety	2	a sharp edge that cuts
 collaps\w+|bumagsak|natumba|gumuho|tumagilid|tipped over	safety	2	furniture or a fixture giving way
 gas leak\w*|leak(?:ing|s|ed)?\s+gas|amoy gas|tumatagas ang gas|tagas ng gas|tumagas ang gas	safety	3	a gas leak from a stove, heater or regulator

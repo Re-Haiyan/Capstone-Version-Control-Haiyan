@@ -6,6 +6,8 @@
 #             never an alert by itself.
 #   reason    why it is a report on this kind of product
 # A file named group_<group>.add.tsv applies to every category of the group. Restart the server after editing.
+(?:not|hindi|di|isn.t|is not)\s+(?:sya\s+|siya\s+|naman\s+|a\s+|real\s+|genuine\s+|pure\s+)?(?:100%\s*)?(?:cotton|leather|metal|alumin(?:i?um)|stainless|steel|silk|wool|polyester|wood|wooden|bakal|kahoy)	not_as_described	1	the material is not the one the listing named
+(?:plastic|plastik)\s+(?:not|hindi|di)\s+(?:metal|steel|alumin(?:i?um)|wood|bakal)|(?:i|we)\s+thought\s+(?:it was\s+)?(?:metal|steel|alumin(?:i?um)|wood|leather)	not_as_described	1	plastic where the listing said metal
 nangati|nangangati|makati|(?:nag)?ka?\s?rash\w*|rash(?:es)?|pantal\w*|allergic reaction|(?:nagka|nag)\s?allerg\w*	safety	2	a rash or itching from fabric, a shoe or a piece of jewelry
 green skin|nagkulay green ang balat|nangitim ang balat|nagkasugat ang balat	safety	1	jewelry or a dye marking the skin
 blisters?|nagkapaltos|paltos|nagsugat ang paa|nagkasugat ang paa	quality	1	shoes that blister the foot

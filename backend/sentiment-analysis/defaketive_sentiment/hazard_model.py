@@ -39,13 +39,25 @@ from .extra_labels import (
     EXTRA_RULES_REVISION_05,
     EXTRA_RULES_REVISION_06,
     EXTRA_RULES_REVISION_07,
+    EXTRA_RULES_REVISION_08,
     EXTRA_TAGS,
     NOT_AS_DESCRIBED,
     QUALITY,
     not_as_described_spans,
     quality_spans,
 )
-from .fault_rules import F11_REVISION, F12_REVISION, F13_REVISION, S2_REVISION, f11_match, s2_removes
+from .fault_rules import (
+    CHARGING_CLAIM_MISMATCH,
+    CHARGING_OUTPUT_LIMITATION,
+    CHARGING_TIER_LIMITATION,
+    F11_REVISION,
+    F12_REVISION,
+    F13_REVISION,
+    F14_REVISION,
+    S2_REVISION,
+    f11_match,
+    s2_removes,
+)
 from .safety_lookalikes import S3_REVISION, S4_REVISION, S5_REVISION, s3_adds, s3_removes
 from .listing_context import LC2_REVISION, LC2F_REVISION, LC3_REVISION, LISTING_CONTEXT_REVISION, lc2_rules, lc2f_rules, lc3_rules
 from .listing_context import review_rules as listing_review_rules
@@ -1077,6 +1089,9 @@ class LexiconHazardTagger:
             star_bars = getattr(self.learned, "high_star_threshold", {}) if is_high_star(rating) else {}
             for category, (on, probability) in self.learned.decide(normalized, kw, embedding).items():
                 learned[category] = round(probability, 4)
+                if category == DEFECT and CHARGING_TIER_LIMITATION.search(normalized):
+                    gated[category] = "charging_tier_limitation"
+                    continue
                 if combine.get(category) == "or_gated":
                     bar = star_bars.get(category)
                     if on and category not in tags and bar is not None and probability < bar:
@@ -1333,6 +1348,16 @@ class LexiconHazardTagger:
     ) -> None:
         """Rules f11 (a fault the word list misses) and s2 (a "grounded" hum is not
         safety), fault_rules.py. Works in place on the result."""
+        if DEFECT in tags and (
+            CHARGING_CLAIM_MISMATCH.search(raw)
+            or CHARGING_OUTPUT_LIMITATION.search(raw)
+            or CHARGING_TIER_LIMITATION.search(raw)
+        ):
+            tags.remove(DEFECT)
+            scores.pop(DEFECT, None)
+            severities.pop(DEFECT, None)
+            confidence.pop(DEFECT, None)
+            suppressed[DEFECT] = "claim_or_capability_description"
         if not F11_OFF and DEFECT not in tags:
             found = f11_match(raw)
             if found is not None:
@@ -1409,7 +1434,7 @@ class LexiconHazardTagger:
     @property
     def extra_revision(self) -> str:
         """Which revision of the two newer labels' patterns this checker reads."""
-        return EXTRA_RULES_REVISION_07 if self.rules == "0.4" else EXTRA_RULES_REVISION
+        return EXTRA_RULES_REVISION_08 if self.rules == "0.4" else EXTRA_RULES_REVISION
 
     def _not_as_described(self, normalized: str) -> list[tuple[int, int]]:
         """Spans where the reviewer disputes a number, a feature or the photos."""
@@ -1484,6 +1509,8 @@ class LexiconHazardTagger:
         if addon is not None and extra_kw is not None:
             for category, (on, probability) in addon.decide(normalized, extra_kw, None).items():
                 if on and category not in present:
+                    if category == NOT_AS_DESCRIBED and CHARGING_TIER_LIMITATION.search(normalized):
+                        continue
                     # q1 (2 Nov 2026): the model adds "poor quality" to praise headed "Sound Quality:" (the word
                     # "quality" alone). It may not add it to a sentence the sentiment reader calls positive; keyword
                     # patterns above are not affected, and the complaints it found in a 1,500-review sample are not positive.
@@ -1581,6 +1608,8 @@ class LexiconHazardTagger:
         that nothing flagged, possible fake as a badge category and the other two
         as extra labels."""
         present = set(item["tags"]) | set(item.get("extra_tags") or [])
+        if CHARGING_TIER_LIMITATION.search(item.get("text_normalized", "")):
+            decided = {label: probability for label, probability in decided.items() if label not in (DEFECT, NOT_AS_DESCRIBED)}
         added = {label: probability for label, probability in decided.items() if label not in present}
         if not added:
             return
@@ -1694,6 +1723,7 @@ class HazardBadgeModel:
                 + ("" if F11_OFF else F11_REVISION)
                 + ("" if F11_OFF else F12_REVISION)
                 + ("" if F11_OFF else F13_REVISION)
+                + ("" if F11_OFF else F14_REVISION)
                 + OWN_ACTION_REVISION
                 + QUALITY_PRAISE_REVISION
                 + ("" if S2_OFF else S2_REVISION)
