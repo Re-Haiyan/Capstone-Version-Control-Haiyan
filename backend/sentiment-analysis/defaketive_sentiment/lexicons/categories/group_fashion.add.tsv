@@ -30,3 +30,6 @@ may\s+damage(?:\s+(?:siya|sya|po|ito))?|item\s+(?:is\s+)?dented|has\s+(?:a\s+)?m
 can.?t\s+be\s+used|cannot\s+be\s+used|(?:di|hindi)\s+na\s+magamit	defect	2	the product cannot be used
 itchy|rough|scratchy|magaspang|matigas\s+ang\s+tela|mhina(?:ng)?\s+klase|mahina(?:ng)?\s+klase	quality	1	itchy or rough fabric, or a weak kind
 malaki\s+ang\s+pagkakaiba\s+sa\s+original|(?:iba|ibang)\s+sa\s+original|(?:hindi|di)\s+(?:kapareho|kagaya|katulad)\s+(?:ng|sa)\s+original|not\s+like\s+the\s+original	counterfeit	3	the reviewer says it differs from the original
+(?:\d?x{1,2}l|[sml]|xl|size\s*\d+)\s+(?:yung\s+|ung\s+)?(?:pang|para\s+sa)\s+(?:small|medium|large|maliit|bata|kids?|extra\s+small)|(?:pang|good\s+for)\s+(?:small|maliit|bata|kids?)\s+(?:lang|naman|pala|to)	not_as_described	1	a size labelled bigger that fits as a smaller one
+(?:kala|akala)\s+ko\s+(?:ba\s+)?(?:maxi|long|mahaba|malaki|medium|large)|(?:maikli|iksi|ikli)\s+(?:pa\s+)?(?:ang|yung|ung)\s+(?:dress|palda|skirt|pants|pantalon)|(?:sobrang|sobra)\s+sikip	not_as_described	1	the length or fit is not what the listing said
+mali\s+mali\s+\w*\s*(?:mong\s+)?(?:size|kulay|item)	not_as_described	1	the wrong size or colour arrived

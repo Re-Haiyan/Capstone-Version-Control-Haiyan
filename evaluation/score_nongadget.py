@@ -44,6 +44,7 @@ def table(title, counts):
 
 
 def main():
+    sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser()
     parser.add_argument("batch", nargs="+")
     parser.add_argument("--split", choices=("dev", "test"))
