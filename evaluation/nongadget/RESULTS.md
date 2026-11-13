@@ -44,3 +44,25 @@ Defect 0.84, counterfeit 1.00, not as advertised 0.83, quality 0.76. The drop fr
 ## Next step if more tuning is wanted
 
 The test half is now used. A fresh batch of reviews, from products not scanned yet, is the only clean test of further changes.
+
+## Fresh batch (clean test): 310 reviews from 69 products scanned after the tuning
+
+Labelled by the team (`evaluation/fresh/label_batch_fresh.csv`, 293 high-confidence rows). Scored once, with no tuning on it, using `score_nongadget.py`. Products and reviews were not in any earlier batch. Positives are few: defect 11, counterfeit 7, safety 3, not as advertised 22, quality 5.
+
+| Label | Positives | No category: P / R / F1 | Tuned: P / R / F1 |
+|---|---|---|---|
+| Defect | 11 | 0.86 / 0.55 / 0.67 | 0.55 / 0.55 / 0.55 |
+| Counterfeit | 7 | 0.88 / 1.00 / 0.93 | 0.88 / 1.00 / 0.93 |
+| Not as advertised | 22 | 1.00 / 0.32 / 0.48 | 0.81 / 0.59 / 0.68 |
+| Quality | 5 | 0.29 / 0.40 / 0.33 | 0.20 / 0.40 / 0.27 |
+| Safety | 3 | 0.00 / 0.00 / n/a | 0.33 / 0.67 / n/a |
+
+Sentiment accuracy 0.901 (264 of 293).
+
+What it says:
+- **Not as advertised improved on unseen products** (recall 0.32 to 0.59, F1 0.48 to 0.68). This is the clearest gain.
+- **Counterfeit holds** (7 of 7 found).
+- **Defect precision got worse with the category** (0.86 to 0.55): 5 false alarms against 1. Several are reviews that deny a problem ("received without any damage", with a typo; "the box had dents but the contents weren't damaged"). The arrived-damaged rules for non-gadget groups are too eager on these.
+- **Safety has 3 positives**, so no score is quoted. It found 2 of 3 but raised 4 false alarms, including praise ("Safe and non-toxic for babies") and "nagbalat" (skin peeling after sunburn).
+- **Quality has 5 positives**; do not read the score.
+- These false-alarm types were not seen in the earlier tuning. Fixing them is legitimate, but any later score on this batch is no longer clean.
