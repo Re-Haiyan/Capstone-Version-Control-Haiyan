@@ -444,6 +444,16 @@ class DefaketiveSentimentModel:
                     "rating": rating_value,
                     "reason": "low_rating_with_negative_evidence",
                 }
+        elif rating_value is not None and abs(rating_value - 3) < 1e-9 and label == "positive":
+            # A three-star rating is the middle of the scale: text read as positive is lowered to
+            # neutral. Added from the labelled sets (3-star "just right for the price", "ok nmn"),
+            # where the model called five neutral reviews positive; only confirmed on those sets.
+            label = "neutral"
+            label_adjustment = {
+                "source": "rating_context",
+                "rating": rating_value,
+                "reason": "middle_rating_positive_text",
+            }
         if label_adjustment is not None:
             label_source = f"{label_source}+rating_context"
 
