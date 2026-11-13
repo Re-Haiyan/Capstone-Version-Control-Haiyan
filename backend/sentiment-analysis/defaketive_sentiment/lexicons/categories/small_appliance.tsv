@@ -1,8 +1,11 @@
 # Phrases that are NOT a report for this kind of product (rules pc3; read by product_category.py).
-# Columns, separated by TABS: term | label | unless | reason
+# Columns, separated by TABS: term | label | unless | reason | when
 #   term    regular expression that must match the whole flagged phrase
 #   label   quality, defect, counterfeit, safety or not_as_described
 #   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
 #   reason  shown in the audit trail
+#   when    optional regular expression, matched as whole words; the exception applies ONLY when one of the 3 words either side matches it
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
 sobrang init|ang init|init	safety	motor|plug|wire|wires|cord|kordon|saksakan|socket|base|body|katawan|casing|handle|hawakan|umiinit|uminit|tuloy|burn\w*|paso|napaso|nakakapaso|sunog|nasunog|smoke|usok|umusok|spark\w*|short|kuryente|nakuryente|rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|namaga|swollen|amoy|takot|nakakatakot|natatakot|scary|afraid|worried|delikado|dangerous|baka|bka|might|\w*charg\w*	on a fan or an air conditioner the heat is the weather; still a hazard beside the motor, plug or body
+di malakas|hindi malakas|not powerful	quality		not powerful on the electricity bill is praise, not a weak motor	kuryente|kumunsumo|kumokonsumo|konsumo|electric\w*|consum\w*|bill|watts?
+noisy|maingay|(?:napaka|sobrang)?\s*ingay|too loud	quality		the reviewer says it is NOT noisy	hindi|di|not|doesn|don|never|tulad|unlike|walang|wala|hindi mukhang

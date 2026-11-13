@@ -20,6 +20,9 @@ the matches that are NOT a complaint for that kind of product:
     label    the label it applies to (quality)
     unless   optional regular expression, matched as whole words; when one of the
              3 words either side of the phrase matches it, the exception does not apply
+    when     optional regular expression, matched as whole words; the exception applies
+             ONLY when one of the 3 words either side of the phrase matches it ("sakto lang
+             ang nipis" is not a complaint; "manipis" alone still is)
     reason   why, for the audit trail
 
 A file is named for a category (phone.tsv) or for a whole group (group_fashion.tsv, read for every category of
@@ -299,10 +302,12 @@ def _rows(path: Path, width: int) -> list[list[str]]:
 
 
 @lru_cache(maxsize=None)
-def _exceptions(category: str) -> tuple[tuple[re.Pattern[str], str, re.Pattern[str] | None, str], ...]:
+def _exceptions(
+    category: str,
+) -> tuple[tuple[re.Pattern[str], str, re.Pattern[str] | None, str, re.Pattern[str] | None], ...]:
     rows = []
     for path in _files(category, ".tsv"):
-        for term, label, unless, reason in _rows(path, 4):
+        for term, label, unless, reason, when in _rows(path, 5):
             try:
                 rows.append(
                     (
@@ -310,6 +315,7 @@ def _exceptions(category: str) -> tuple[tuple[re.Pattern[str], str, re.Pattern[s
                         label.strip(),
                         re.compile(rf"\b(?:{unless.strip()})\b", re.I) if unless.strip() else None,
                         reason.strip(),
+                        re.compile(rf"\b(?:{when.strip()})\b", re.I) if when.strip() else None,
                     )
                 )
             except re.error as error:
@@ -357,10 +363,12 @@ def exemption(category: str | None, label: str, normalized: str, span: tuple[int
     start, end = span
     phrase = normalized[start:end].strip()
     nearby = " ".join(normalized[:start].split()[-reach:] + normalized[end:].split()[:reach])
-    for term, row_label, unless, reason in _exceptions(category):
+    for term, row_label, unless, reason, when in _exceptions(category):
         if row_label != label or not term.fullmatch(phrase):
             continue
         if unless is not None and unless.search(nearby):
+            continue
+        if when is not None and not when.search(nearby):
             continue
         return reason or f"not a complaint on a {category}"
     return None

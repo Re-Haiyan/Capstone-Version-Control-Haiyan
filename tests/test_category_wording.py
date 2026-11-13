@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "backend" / "sentiment-analysis"))
 import category_copy  # noqa: E402
 from dashboard_utils import BADGE_COPY, _badge_copy, _conclusion, _labels, product_group  # noqa: E402
 from defaketive_sentiment import product_category  # noqa: E402
-from defaketive_sentiment.hazard_model import DEFECT, NOT_AS_DESCRIBED, SAFETY, LexiconHazardTagger  # noqa: E402
+from defaketive_sentiment.hazard_model import COUNTERFEIT, DEFECT, NOT_AS_DESCRIBED, QUALITY, SAFETY, LexiconHazardTagger  # noqa: E402
 
 
 def tagger() -> LexiconHazardTagger:
@@ -106,6 +106,37 @@ class WhatEachKindOfProductReports(unittest.TestCase):
         # An unspecified safety concern is capped at severity 2 by the taxonomy.
         result = tagger().tag_sentence("nagka rashes ako pagkagamit", product_kind="skincare")
         self.assertEqual(result.get("hazard_subtype"), "safety_unspecified")
+
+
+class TunedByContext(unittest.TestCase):
+    """The same word is praise in one sentence and a complaint in the next: an exception applies only where the words
+    around it say so (the `when` column), and a plain complaint stays flagged."""
+
+    # (kind, label, praise that is NOT a report, complaint that IS one)
+    CASES = (
+        ("apparel", QUALITY, "sakto lang ang nipis nya, presko sa katawan", "sobrang nipis ng tela"),
+        ("home_textile", QUALITY, "sakto lang ang nipis niya sa presyo", "napakanipis at sira yung dumating"),
+        ("bags", QUALITY, "Hindi mukhang mumurahin", "mukhang mumurahin at pangit"),
+        ("sports_fitness", QUALITY, "Di tulad ng mga mumurahin na walking pad", "mukhang mumurahin ang tahi"),
+        ("sports_fitness", QUALITY, "it was not super noisy", "it is so noisy"),
+        ("small_appliance", QUALITY, "di malakas kumunsumo ng kuryente", "di malakas ang hangin"),
+        ("small_appliance", QUALITY, "hindi maingay at tahimik", "napaka ingay"),
+        ("motorcycle", COUNTERFEIT, "legit replica pro talaga", "replica lang ito, hindi original"),
+        ("makeup", QUALITY, "loose powder to set the foundation", "loose ang takip at nabasag"),
+        ("accessory", QUALITY, "my tablet is now safe in scratches and dust", "may scratches ang case pagdating"),
+    )
+
+    def test_praise_is_not_a_report_and_a_complaint_still_is(self) -> None:
+        for kind, label, praise, complaint in self.CASES:
+            with self.subTest(kind=kind, sentence=praise):
+                self.assertFalse(flagged(praise, kind, label), praise)
+            with self.subTest(kind=kind, sentence=complaint):
+                self.assertTrue(flagged(complaint, kind, label), complaint)
+
+    def test_a_when_row_never_applies_without_its_context(self) -> None:
+        # "nipis" alone on clothes is still the team's complaint; only an explicit "just right" lifts it.
+        self.assertTrue(flagged("manipis", "apparel", QUALITY))
+        self.assertTrue(flagged("replica", "motorcycle", COUNTERFEIT))
 
 
 class FilesAreValid(unittest.TestCase):
