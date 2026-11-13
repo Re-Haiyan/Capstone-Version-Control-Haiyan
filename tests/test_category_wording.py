@@ -279,3 +279,31 @@ class WordsFollowTheProduct(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DenialsAndPraiseAreNotReports(unittest.TestCase):
+    """Found on the team's fresh batch: reviews that deny a problem, or praise, were flagged."""
+
+    def flags(self, product, text):
+        from defaketive_sentiment import registry
+
+        analysis = registry.load_model().analyze_batch([text], [5], listing={"name": product})[0]
+        return set(analysis.get("review_tags") or [])
+
+    def test_no_damage_even_with_a_typo(self):
+        self.assertNotIn("defect", self.flags("Silicone Spatula Set", "Properly packed, received withoy any damage. Fast deliver."))
+
+    def test_non_toxic_praise_is_not_safety(self):
+        self.assertNotIn("safety", self.flags("Baby Feeding Bottle 240ml", "Safe and non-toxic for babies, high-quality PPSU material."))
+
+    def test_far_expiry_is_not_safety(self):
+        self.assertNotIn("safety", self.flags("Vitamin C 500mg", "mabilis dumating maayos packaging safe na safe 2028 pa yung expired"))
+
+    def test_peeling_after_sunburn_is_not_safety(self):
+        self.assertNotIn("safety", self.flags("Aloe Vera Gel 99%", "nagbalat ung skin ko, natangal nya ung dead skin ko due to sunburn"))
+
+    def test_a_real_damage_report_still_counts(self):
+        self.assertIn("defect", self.flags("Silicone Spatula Set", "Dumating na basag at may yupi ang item."))
+
+    def test_not_working_on_a_hair_tool_still_counts(self):
+        self.assertIn("defect", self.flags("Mini Hair Straightener Cordless", "Not working.. the seller doesn't agree to return."))

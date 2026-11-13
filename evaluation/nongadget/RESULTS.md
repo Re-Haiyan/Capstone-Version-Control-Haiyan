@@ -66,3 +66,14 @@ What it says:
 - **Safety has 3 positives**, so no score is quoted. It found 2 of 3 but raised 4 false alarms, including praise ("Safe and non-toxic for babies") and "nagbalat" (skin peeling after sunburn).
 - **Quality has 5 positives**; do not read the score.
 - These false-alarm types were not seen in the earlier tuning. Fixing them is legitimate, but any later score on this batch is no longer clean.
+
+### After the fix for denials and praise (fresh batch is no longer a clean test)
+
+A guard was added in `product_category.denied()`: a review that says nothing was damaged ("received without any damage", typos included), praise ("safe and non-toxic"), a far expiry date, peeling after sunburn, and "did not work" as an effect on a skin or health product are no longer read as defect or safety reports. It was written after reading the fresh batch's false alarms, so **the numbers below are not a clean test**; quote the table above for the unseen-product result and this one as the effect of the fix.
+
+| Fresh batch | Before fix P / R | After fix P / R |
+|---|---|---|
+| Defect | 0.55 / 0.55 (5 false alarms) | 0.86 / 0.55 (1 false alarm) |
+| Safety | 0.33 / 0.67 (4 false alarms) | 0.67 / 0.67 (1 false alarm) |
+
+Dev and test halves of the first batches are unchanged by the fix (defect 33 of 36 and 32 of 41 found), so the guard did not cost recall there. A first version of the guard was too broad (it hid real defects when a denial appeared elsewhere in the sentence, and "no" matched inside "ano"); it was narrowed after those two halves showed the loss. 185 tests pass, 6 of them new.

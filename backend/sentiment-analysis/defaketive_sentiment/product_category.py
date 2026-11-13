@@ -352,6 +352,45 @@ def clear_cache() -> None:
     _additions.cache_clear()
 
 
+# A review that says nothing went wrong, or praises the product, is not a report, whatever words it uses ("received
+# without any damage", "safe and non-toxic"). Read on the sentence, for the labels the category rules add.
+_W = r"(?:[a-z']+\s+){0,2}"
+_NO = r"\b(?:(?:weren|wasn|isn|aren|didn|doesn|don)['’]?t|not|no|never|without|withoy|withot|walang|wala|hindi|di)"
+_DENIED_DAMAGE = re.compile(
+    _NO + r"\s+(?:any\s+|naman\s+|po\s+)?" + _W + r"(?:damag\w*|dents?|dented|broke\w*|basag|sira\w*|yupi\w*|leak\w*|tagas|cracks?|cracked)"
+)
+_PRAISE_SAFE = re.compile(
+    r"non[- ]?toxic|not toxic|bpa[- ]?free|(?:free|walang)\s+(?:from|of|ng)?\s*(?:toxic|chemicals?|lead)|safe(?:\s+(?:and|for|na|to|po|ang|sa)|\s*$)|"
+    r"(?:20[2-9]\d)\s+pa\s+(?:yung\s+)?expir|expir\w*\s+(?:date\s+)?(?:is\s+|pa\s+)?(?:in\s+|on\s+|until\s+|hanggang\s+)?20[2-9]\d|"
+    r"(?:not|hindi|di|walang)\s+(?:expired|panis|spoiled)"
+)
+_SUNBURN_PEEL = re.compile(r"sunburn|dead skin|exfoliat|natangal|natanggal ang dead|nasunog sa araw")
+_NOT_EFFECTIVE = re.compile(r"^(?:hindi|di|not)\s+(?:po\s+)?(?:gumana|umepekto|tumalab|effective)\b")
+
+
+DEFECT_LABEL, SAFETY_LABEL = "defect", "safety"
+
+
+def denied(category: str | None, label: str, normalized: str, span: tuple[int, int]) -> str | None:
+    """The reason a flagged phrase is a denial, praise or an effect rather than a report, or None."""
+    if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
+        return None
+    phrase = normalized[span[0]:span[1]].strip()
+    if label == DEFECT_LABEL:
+        for denial in _DENIED_DAMAGE.finditer(normalized):
+            covers = denial.start() < span[1] and span[0] < denial.end()
+            if covers:
+                return "the review says nothing was damaged"
+    if label == SAFETY_LABEL:
+        if _PRAISE_SAFE.search(normalized) and not re.search(r"rash|allerg|pantal|nangati|makati|sumakit|nagtae|sugat|burn|paso|usok|smoke", normalized):
+            return "praise or a safe date, not a hazard"
+        if _SUNBURN_PEEL.search(normalized) and re.search(r"balat|peel", phrase):
+            return "peeling after sun is not a reaction"
+    if label == DEFECT_LABEL and group_of(category) == "beauty_health" and _NOT_EFFECTIVE.match(phrase):
+        return "an effect that did not show, not a fault in the product"
+    return None
+
+
 def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3) -> str | None:
     """The reason a flagged phrase is not a complaint in this category, or None.
 
@@ -361,6 +400,9 @@ def exemption(category: str | None, label: str, normalized: str, span: tuple[int
     if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
         return None
     start, end = span
+    reason = denied(category, label, normalized, span)
+    if reason:
+        return reason
     phrase = normalized[start:end].strip()
     nearby = " ".join(normalized[:start].split()[-reach:] + normalized[end:].split()[:reach])
     for term, row_label, unless, reason, when in _exceptions(category):
