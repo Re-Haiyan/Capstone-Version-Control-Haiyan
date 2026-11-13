@@ -9,6 +9,10 @@
   (by adding an account as an admin); *Make admin* / *Remove admin* and `scripts/admin_accounts.py` are gone.
 
 ### Added
+- A conclusion on every report, as the review panel asked: "Based on the reviews of this product, it looks okay to
+  buy / opinions are mixed / think twice / we advise against buying it", with the reviewers' positive and negative
+  share. It follows the verdict (a safety warning is never "okay to buy", however happy the reviews) and says it is a
+  guide, not proof. Worked out when the report is opened from the saved result, so nothing is re-analysed.
 - The admin can add an account (name, email, password, shopper or admin) from the Manage accounts tab.
 - The landing page's header shows an Admin button while the admin is signed in.
 

@@ -15,6 +15,7 @@
 	import ChecksCard from '#lib/components/report/checks-card.svelte';
 	import Evidence from '#lib/components/report/evidence.svelte';
 	import SentimentCard from '#lib/components/report/sentiment-card.svelte';
+	import ConclusionBlock from '#lib/components/report/conclusion-block.svelte';
 	import VerdictBlock from '#lib/components/report/verdict-block.svelte';
 	import VerdictGuide from '#lib/components/report/verdict-guide.svelte';
 	import WordsCard from '#lib/components/report/words-card.svelte';
@@ -405,6 +406,7 @@
 				</div>
 			</div>
 			<VerdictBlock {product} />
+			<ConclusionBlock {product} />
 			{#if lifted}
 				<!-- The verdict alone would not be orange: say why this product is. -->
 				<p class="bg-muted rounded-lg px-3 py-2 text-sm">
