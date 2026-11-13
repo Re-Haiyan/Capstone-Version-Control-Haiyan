@@ -1,8 +1,8 @@
 """Rules pc2: read the product's category from its title, so a word that is a complaint for one kind of product is not one for another.
 
-pc1 had ten categories, mostly electronics. pc2 covers the marketplace: 39 categories in 10 groups (electronics, home
+pc1 had ten categories, mostly electronics. pc2 covers the marketplace: 49 categories in 11 groups (electronics, home
 and living, fashion, beauty and health, baby and toys, sports and outdoor, pets, food and grocery, automotive and tools,
-office and media), in the order the rules are checked. A category changes what the checker does only when it has a file
+office and media, digital services), in the order the rules are checked. A category changes what the checker does only when it has a file
 in lexicons/categories/; the rest only label the product, and `group_of` says which group it is in.
 
 WHY THIS EXISTS
@@ -42,7 +42,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc2"
+PRODUCT_CATEGORY_REVISION = "pc3"
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -52,6 +52,10 @@ OTHER = "other"
 # "Samsung refrigerator" an appliance before a brand-only phone match, and a phone titled with its camera
 # spec ("108MP camera") a phone before a camera. A title no rule recognizes is OTHER, which behaves as before.
 _RULES: tuple[tuple[str, str, str], ...] = (
+    # --- not a physical product at all ---
+    ("digital_goods", "digital_services",
+     r"\b(?:e-?load|gift cards?|vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
+     r"online course|event tickets?|concert tickets?|load promo|gcash)\b"),
     # --- things that are not the device they name ---
     ("stationery_books", "office_media",
      r"\b(?:pencil cases?|pens?(?! ?drive)|pencils?|markers?|highlighters?|erasers?|staplers?|sticky notes|crayons?|"
@@ -80,9 +84,16 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"\b(?:smart ?phones?|cell ?phones?|mobile phones?|android phones?|keypad phones?|cp|iphone|galaxy [asmz]\d+|"
      r"pixel \d+|(?:redmi|realme|infinix|tecno|poco|oppo|vivo|xiaomi|huawei|honor|nokia|oneplus|samsung galaxy|galaxy)\s+"
      r"(?:note|narzo|hot|spark|camon|pova|reno|find|nord|play|[a-z]\d{1,3}))\b"),
+    ("phone", "electronics",
+     r"^(?!.*\b(?:tablets?|ipad|laptops?|notebook|pad|tv|watch|projector|box|router|dash ?cam)\b).*?"
+     r"\b(?:\d+ ?gb ?(?:ram|rom)|\d+ ?\+ ?\d+ ?gb|helio|dimensity|snapdragon|exynos|unisoc|mediatek|dual sim|"
+     r"5g (?:smart)?phone)\b"),
     ("gaming", "electronics",
      r"\b(?:game ?pads?|controllers?|joysticks?|consoles?|ps[2-5]|playstation|xbox|nintendo|switch lite|steam deck|"
      r"dual ?shock|double ?shock|dual ?sense|gaming chairs?)\b"),
+    ("eyewear", "fashion",
+     r"\b(?:sunglasses|eye ?glasses|reading glasses|contact lens(?:es)?|eyewear|spectacles|blue ?light glasses|"
+     r"anti-?radiation glasses|prescription glasses|eyeglass(?:es)? frames?)\b"),
     ("camera", "electronics",
      r"\b(?:cameras?|dash ?cams?|cctv|gopro|action cam|web ?cams?|camcorders?|drones?|binoculars?|lens(?:es)?)\b"),
     ("tv_display", "electronics",
@@ -106,7 +117,17 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"\b(?:keyboards?|mouse|mice|printers?|scanners?|routers?|modems?|flash ?drives?|pen ?drives?|usb drives?|"
      r"memory cards?|sd cards?|micro ?sd|hard (?:disk|drive)s?|hdd|ssd|webcam|graphics cards?|gpu|motherboards?|"
      r"power supply|psu|pc (?:case|fan)|cooling pads?|capture cards?|docking stations?|kvm|ink|toner|"
-     r"stylus|drawing tablets?|card readers?)\b"),
+     r"stylus|drawing tablets?|card readers?|processors?|cpu|ryzen|intel core|core i[3579]|ddr[345]|so-?dimm|"
+     r"wi-?fi (?:extenders?|repeaters?|boosters?|dongles?|adapters?)|mesh wi-?fi|pocket wi-?fi|home wi-?fi|"
+     r"wi-?fi router|lte router|access points?|network switch|ethernet)\b"),
+    ("battery_solar", "electronics",
+     r"\b(?:lifepo4|lithium (?:ion )?batter(?:y|ies)|batter(?:y|ies) (?:packs?|cells?)|(?:car|motorcycle|solar|deep cycle|"
+     r"rechargeable|aa|aaa|9v) batter(?:y|ies)|\d+ ?v ?\d+ ?ah|18650|solar (?:inverters?|chargers?|generators?|"
+     r"power|batter(?:y|ies)|panel (?:kits?|sets?|systems?))|inverters?|generators?|power stations?|battery chargers?)\b"),
+    ("motorcycle", "automotive_tools",
+     r"\b(?:mufflers?|exhaust|handlebars?|bar ?ends?|side mirrors?|tail ?lights?|sprockets?|"
+     r"drive chain|clutch (?:lever|cable|plate|cover)|brake pads?|scooter parts?|mio (?:sporty|soul|i)|nmax|aerox|click ?125|xrm|power ?pipe|"
+     r"e-?bikes?|electric (?:bike|scooter)s?|riding gloves|fairings?|top ?box|crash guards?)\b"),
     # --- the home and the family ---
     ("baby", "baby_kids_toys",
      r"\b(?:baby|babies|infants?|newborns?|toddlers?|diapers?|strollers?|cribs?|pacifiers?|feeding bottles?|nursing|"
@@ -194,7 +215,27 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     ("food_beverage", "food_grocery",
      r"\b(?:coffee|tea|snacks?|noodles?|chocolates?|biscuits?|cookies?|candy|candies|sauce|spices?|milk|juice|cereals?|"
      r"instant|canned|crackers?|chips|dried (?:mango|fruit)|honey|jam|pasta|flour|sugar|salt|seasoning|syrup|"
-     r"condiments?|rice|oil|vinegar|nuts|oats|granola|cheese|butter|bread|cake|dessert|beverage|drink mix|pancit)\b"),
+     r"condiments?|rice|oil|vinegar|nuts|oats|granola|cheese|butter|bread|cake|dessert|beverage|drink mix|pancit|"
+     r"frozen|meat|dried fish|eggs?|vegetables?|fruits?|bagoong|longganisa|tocino|dried squid|tuyo)\b"),
+    # --- the long tail: only titles nothing above recognizes ---
+    ("collectibles_hobbies", "baby_kids_toys",
+     r"\b(?:trading cards?|pok[eé]mon|yu-?gi-?oh|funko|collectibles?|blind box(?:es)?|pop ?mart|labubu|gundam|"
+     r"anime|k-?pop|photo ?cards?|light ?sticks?|comic|coins?|stamps?|hot wheels|figures?|merch)\b"),
+    ("crafts_diy", "office_media",
+     r"\b(?:crochet|yarn|knitting|cross ?stitch|embroidery|beads?|sewing|craft(?:s| supplies| kit)?|resin|clay|canvas|"
+     r"paint(?:ing)? (?:set|kit|brush)|watercolou?rs?|acrylic paint|glitter|diy|origami|scrapbook|washi|wool)\b"),
+    ("party_gifts", "office_media",
+     r"\b(?:balloons?|party|gift (?:wrap|box|bags?|sets?)|souvenirs?|greeting cards?|birthday|wedding|christmas|"
+     r"giveaways?|confetti|banners?|lootbags?|loot bags?|pasko|costumes? party)\b"),
+    ("office_equipment", "office_media",
+     r"\b(?:calculators?|bond paper|printer paper|whiteboards?|shredders?|laminators?|label makers?|"
+     r"barcode scanners?|cash registers?|binders?|envelopes?|id (?:lace|holders?)|badge holders?|thermal paper|receipt paper)\b"),
+    ("bath_plumbing", "home_living",
+     r"\b(?:shower ?heads?|faucets?|bidets?|toilets?|sinks?|water filters?|pipes?|drains?|bathroom|towel racks?|"
+     r"soap dispensers?|water pumps?|plumbing)\b"),
+    ("electrical_supplies", "automotive_tools",
+     r"\b(?:electrical wires?|wires?|circuit breakers?|outlets?|wall switch(?:es)?|junction box|conduit|terminal blocks?|"
+     r"fuses?|electrical tape|cable ties|wire connectors?|sockets?|lighting fixtures?)\b"),
 )
 _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in _RULES)
 # The head of a title ends at the first of these: what follows is what the product comes with or fits.

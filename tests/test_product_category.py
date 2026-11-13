@@ -108,6 +108,52 @@ def quality(result: dict) -> bool:
     return QUALITY in (result.get("extra_tags") or [])
 
 
+# pc3: the rest of the marketplace sections (digital goods, eyewear, motorcycles, collectibles, crafts, party, office, plumbing, electrical).
+PC3_TITLES = {
+    "Netflix Premium 1 month account": "digital_goods",
+    "Mobile Legends game credits": "digital_goods",
+    "Ray-Ban Style Sunglasses UV400": "eyewear",
+    "Acuvue contact lenses monthly": "eyewear",
+    "Mio Sporty Powerpipe": "motorcycle",
+    "Motorcycle Side Mirror pair": "motorcycle",
+    "Electric Bike 48V": "motorcycle",
+    "PowMr 12V 100AH LiFePo4 Battery Solar Battery": "battery_solar",
+    "Solar Inverter 3000W": "battery_solar",
+    "Pokemon trading cards booster": "collectibles_hobbies",
+    "Labubu blind box": "collectibles_hobbies",
+    "Crochet yarn 100g": "crafts_diy",
+    "Acrylic paint set 24 colors": "crafts_diy",
+    "Birthday party balloons set": "party_gifts",
+    "Casio scientific calculator": "office_equipment",
+    "Shower head high pressure": "bath_plumbing",
+    "Circuit breaker 20A": "electrical_supplies",
+    "Intel Core i5 12400F Processor": "computer_peripheral",
+    "TP-Link wifi extender": "computer_peripheral",
+    "Redmi 13C 6GB RAM 128GB ROM": "phone",
+    "A3x 5G 12+512GB Screen 6.67-inch Mediatek Dimensity 6300": "phone",
+    # a word from a new category must not take a title from one that has its own exceptions
+    "Tablet 8GB RAM 256GB ROM Helio G99": "tablet",
+    "Asus Laptop Snapdragon X 16GB RAM": "laptop",
+    "Birthday dress for girls": "apparel",
+    "Cotton t-shirt party": "apparel",
+    "Women clutch bag": "bags",
+    "solar light 50000W Solar Led Outdoor Flood Light Street Lamp": "home_decor_lighting",
+    "Motorcycle Bluetooth headset": "audio",
+}
+
+
+class MarketplaceScopeTests(unittest.TestCase):
+    def test_new_sections(self) -> None:
+        for title, expected in PC3_TITLES.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing({"name": title}), expected)
+
+    def test_every_category_has_a_group(self) -> None:
+        for name in product_category.CATEGORIES:
+            self.assertTrue(product_category.group_of(name))
+        self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 categories and "other"
+
+
 class ClassifyTests(unittest.TestCase):
     def test_titles(self) -> None:
         for title, expected in TITLES.items():
