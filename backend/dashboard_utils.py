@@ -897,6 +897,147 @@ def _verdict_detail(state: str, verdict: dict[str, Any], badges: list[dict[str, 
     return f"{detail}." if detail else ""
 
 
+# The buying conclusion (panel recommendation, Nov 2026): "based on the reviews of this product ...".
+# It is worked out from the saved summary when the product is served, so it needs no new analysis and
+# changes no stored result. The cut-offs are the team's to confirm; they are not validated against
+# shoppers' outcomes, which is why the wording says what reviewers report and never promises anything.
+CONCLUSION_RECOMMEND_SHARE = 0.75  # at least this share of reviewers positive ...
+CONCLUSION_RECOMMEND_BOUND = 0.65  # ... and the lower bound of that share (small samples) at least this
+CONCLUSION_MIXED_SHARE = 0.5  # below this, most reviewers were not happy
+CONCLUSION_NOTICE = "This is a guide from public reviews, not proof or a guarantee."
+
+
+def _sentiment_shares(summary: dict[str, Any]) -> dict[str, float] | None:
+    """Positive, uncertain and negative shares of the reviews, weighted when the sample was."""
+    shares = summary.get("sentiment_shares")
+    if isinstance(shares, dict) and shares:
+        values = {name: float(shares.get(name) or 0.0) for name in ("positive", "uncertain", "negative")}
+    else:
+        counts = summary.get("sentiment_counts") or {}
+        values = {
+            "positive": float(counts.get("positive") or 0),
+            "uncertain": float(counts.get("uncertain") or 0) + float(counts.get("neutral") or 0),
+            "negative": float(counts.get("negative") or 0),
+        }
+    total = sum(values.values())
+    return {name: value / total for name, value in values.items()} if total > 0 else None
+
+
+def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]], usable: int) -> dict[str, Any] | None:
+    """What the reviews add up to, in one decision and a plain sentence beginning "Based on the reviews"."""
+    shares = _sentiment_shares(summary)
+    mentions = {badge["category"]: int(badge.get("mentions") or 0) for badge in badges}
+    reviews = _reviews(usable)
+
+    def build(decision: str, headline: str, text: str, points: list[str]) -> dict[str, Any]:
+        return {
+            "decision": decision,
+            "headline": headline,
+            "text": text,
+            "points": points,
+            "basis": {
+                "reviews": usable,
+                **({name: round(value * 100) for name, value in shares.items()} if shares else {}),
+            },
+            "notice": CONCLUSION_NOTICE,
+        }
+
+    positive = shares["positive"] if shares else None
+    negative = shares["negative"] if shares else None
+    mood = (
+        f"{round(positive * 100)}% of reviewers were positive and {round(negative * 100)}% negative"
+        if shares
+        else None
+    )
+    points = [f"{reviews} analyzed"] + ([mood] if mood else [])
+    if state == "insufficient_evidence":
+        return build(
+            "not_enough",
+            "Not enough reviews to advise",
+            f"Based on the reviews of this product, there are too few to say whether it is worth buying ({reviews} usable).",
+            points,
+        )
+    if state == "safety_warning":
+        return build(
+            "not_recommended",
+            "Not recommended",
+            "Based on the reviews of this product, we advise against buying it: reviewers report safety problems "
+            "such as fire, smoke, burning smells or overheating.",
+            points + [f"{mentions.get('safety', 0)} review{'s' if mentions.get('safety', 0) != 1 else ''} mention a safety problem"],
+        )
+    if state == "possible_safety_issue":
+        found = points + [f"{mentions.get('safety', 0)} review{'s' if mentions.get('safety', 0) != 1 else ''} mention a safety problem"]
+        if positive is not None and positive < CONCLUSION_MIXED_SHARE:
+            return build(
+                "not_recommended",
+                "Not recommended",
+                "Based on the reviews of this product, we advise against buying it: most reviewers were not happy and "
+                "some report possible safety problems.",
+                found,
+            )
+        return build(
+            "caution",
+            "Think twice before buying",
+            "Based on the reviews of this product, think carefully before buying it: some reviewers report possible "
+            "safety problems. Read them first.",
+            points + [f"{mentions.get('safety', 0)} review{'s' if mentions.get('safety', 0) != 1 else ''} mention a safety problem"],
+        )
+    if state == "possible_counterfeit_or_defect":
+        problems = [
+            f"{mentions[name]} report{'s' if mentions[name] != 1 else ''} of {label}"
+            for name, label in (("counterfeit", "a fake or not-original item"), ("defect", "a defect"))
+            if mentions.get(name)
+        ]
+        if positive is not None and positive < CONCLUSION_MIXED_SHARE:
+            return build(
+                "not_recommended",
+                "Not recommended",
+                "Based on the reviews of this product, we advise against buying it: most reviewers were not happy and "
+                "many report a fake item or a defect.",
+                points + problems,
+            )
+        return build(
+            "caution",
+            "Think twice before buying",
+            "Based on the reviews of this product, think carefully before buying it: many reviewers report a fake item "
+            "or a defect, even though some are happy with it.",
+            points + problems,
+        )
+    if state == "reviews_may_be_unreliable":
+        return build(
+            "caution",
+            "Reviews may not be a fair guide",
+            "Based on the reviews of this product, we cannot give clear advice: many of the reviews look copied or "
+            "generic, so they may not reflect real buyers.",
+            points,
+        )
+    if state != "no_warning_signs" or positive is None:
+        return None
+    lower_bound = float(summary.get("positive_ratio_lower_bound") or 0.0)
+    if positive >= CONCLUSION_RECOMMEND_SHARE and lower_bound >= CONCLUSION_RECOMMEND_BOUND:
+        return build(
+            "recommended",
+            "Looks okay to buy",
+            f"Based on the reviews of this product, it looks okay to buy: {mood}, and no safety, fake or defect "
+            "problem stood out.",
+            points + ["No warning signs found"],
+        )
+    if positive >= CONCLUSION_MIXED_SHARE:
+        return build(
+            "mixed",
+            "Mixed reviews",
+            f"Based on the reviews of this product, opinions are mixed: {mood}. Nothing dangerous stood out, but read "
+            "the complaints before you decide.",
+            points + ["No warning signs found"],
+        )
+    return build(
+        "not_recommended",
+        "Not recommended",
+        f"Based on the reviews of this product, we advise against buying it: {mood}.",
+        points,
+    )
+
+
 def badge_view(product: dict[str, Any]) -> dict[str, Any]:
     """Turn a product's badge summary into what the screen shows."""
     summary = product.get("sentiment_summary") or {}
@@ -911,6 +1052,7 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
             "counts": {"safety": 0, "counterfeit": 0, "defect": 0},
             "badges": [],
             "labels": BADGE_LABELS,
+            "conclusion": None,
         }
 
     usable = _usable_reviews(summary)
@@ -944,6 +1086,7 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
         "labels": BADGE_LABELS,
         "limits_notice": summary.get("limits_notice"),
         "safety_check_accuracy": SAFETY_CHECK_ACCURACY,
+        "conclusion": _conclusion(summary, state, badges, usable),
     }
 
 

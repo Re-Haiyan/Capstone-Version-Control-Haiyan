@@ -50,6 +50,18 @@ export interface SafetyCheckAccuracy {
 	flags_confirmed: number;
 }
 
+/** What the reviews add up to, in words ("Based on the reviews of this product ..."). Worked out by the server. */
+export type ConclusionDecision = 'recommended' | 'mixed' | 'caution' | 'not_recommended' | 'not_enough';
+
+export interface Conclusion {
+	decision: ConclusionDecision;
+	headline: string;
+	text: string;
+	points: string[];
+	basis: { reviews: number; positive?: number; uncertain?: number; negative?: number };
+	notice: string;
+}
+
 export interface BadgeView {
 	available: boolean;
 	state: VerdictState;
@@ -62,6 +74,8 @@ export interface BadgeView {
 	labels: LabelInfo[];
 	limits_notice?: string | null;
 	safety_check_accuracy?: SafetyCheckAccuracy;
+	/** Null when the product was not analyzed, or when there is nothing to base a conclusion on. */
+	conclusion?: Conclusion | null;
 }
 
 export interface Term {
