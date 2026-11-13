@@ -923,17 +923,105 @@ def _sentiment_shares(summary: dict[str, Any]) -> dict[str, float] | None:
     return {name: value / total for name, value in values.items()} if total > 0 else None
 
 
+# The words of the conclusion card: a lead sentence, a short paragraph that names how many reviews raised each
+# kind of problem, and the label shown beside it. Counts only; nothing here promises that a product is safe.
+CONCLUSION_ASSESSMENT = {
+    "recommended": "Recommended",
+    "mixed": "Mixed",
+    "caution": "Caution",
+    "not_recommended": "Not recommended",
+    "not_enough": "Not enough reviews",
+}
+# Order and wording of the problems named in the paragraph (safety last, since it is the one to read closely).
+CONCLUSION_ISSUES = (
+    ("defect", "product defects"),
+    ("quality", "weak or poor build quality"),
+    ("not_as_described", "differences from the product description"),
+    ("counterfeit", "possible authenticity concerns"),
+)
+
+
+def _review_count(count: int) -> str:
+    return f"{count} review" if count == 1 else f"{count} reviews"
+
+
+def _issue_phrases(mentions: dict[str, int]) -> list[str]:
+    phrases = [f"{label} ({_review_count(mentions[key])})" for key, label in CONCLUSION_ISSUES if mentions.get(key)]
+    safety = mentions.get("safety", 0)
+    if safety:
+        phrases.append(
+            "one review mentioning a potential safety concern"
+            if safety == 1
+            else f"{safety} reviews mentioning a potential safety concern"
+        )
+    return phrases
+
+
+def _join_phrases(phrases: list[str]) -> str:
+    if len(phrases) <= 2:
+        return " and ".join(phrases)
+    return ", ".join(phrases[:-1]) + ", and " + phrases[-1]
+
+
+def _conclusion_words(decision: str, usable: int, positive: float | None, mentions: dict[str, int], closing: str | None) -> dict[str, str]:
+    """The lead sentence, paragraph and side note of the conclusion card."""
+    issues = _issue_phrases(mentions)
+    happy = positive is not None and positive >= CONCLUSION_RECOMMEND_SHARE
+    if decision == "not_enough":
+        lead = "There are not enough reviews to say whether this product is worth buying."
+        note = "Too few reviews to judge."
+    elif decision == "recommended":
+        lead = "According to the reviews, this product is generally well-received."
+        note = "Mostly positive, no warning signs found."
+    elif decision == "mixed":
+        lead = "According to the reviews, opinions on this product are mixed."
+        note = "Mixed opinions."
+    elif decision == "not_recommended":
+        lead = "According to the reviews, this product is not recommended."
+        note = "Most reviewers were unhappy or reported serious problems."
+    else:
+        lead = (
+            "According to the reviews, this product is generally well-received, but some concerns were reported."
+            if happy
+            else "According to the reviews, think twice before buying this product."
+        )
+        note = "Mostly positive, with reported concerns." if happy else "Reported concerns."
+    if decision == "not_enough":
+        paragraph = f"Only {_review_count(usable)} could be analyzed, which is too few to say whether this product is worth buying."
+    elif positive is None:
+        paragraph = f"According to the {usable} customer reviews analyzed, the reviews could not be summarized as positive or negative."
+    else:
+        feeling = "predominantly positive" if happy else ("mixed" if positive >= CONCLUSION_MIXED_SHARE else "mostly negative")
+        paragraph = f"According to the {usable} customer reviews analyzed, this product has received {feeling} feedback ({round(positive * 100)}%)."
+    if issues:
+        paragraph += (" However, some" if happy else " Some") + f" reviewers reported issues such as {_join_phrases(issues)}."
+    default_closing = {
+        "recommended": "Overall, the reviews suggest a satisfactory experience for most users.",
+        "mixed": "Overall, opinions are mixed, so read the reported issues before deciding.",
+        "caution": "Overall, the reviews suggest a satisfactory experience for most users, but potential buyers are encouraged to review the reported issues before purchasing."
+        if happy
+        else "Overall, potential buyers are encouraged to review the reported issues before purchasing.",
+        "not_recommended": "Overall, the reviews advise against buying this product.",
+        "not_enough": "",
+    }[decision]
+    closing = default_closing if closing is None else closing
+    if closing:
+        paragraph += " " + closing
+    return {"lead": lead, "summary": paragraph, "assessment": CONCLUSION_ASSESSMENT[decision], "assessment_note": note}
+
+
 def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]], usable: int) -> dict[str, Any] | None:
     """What the reviews add up to, in one decision and a plain sentence beginning "Based on the reviews"."""
     shares = _sentiment_shares(summary)
     mentions = {badge["category"]: int(badge.get("mentions") or 0) for badge in badges}
     reviews = _reviews(usable)
 
-    def build(decision: str, headline: str, text: str, points: list[str]) -> dict[str, Any]:
+    def build(decision: str, headline: str, text: str, points: list[str], closing: str | None = None) -> dict[str, Any]:
         return {
             "decision": decision,
             "headline": headline,
             "text": text,
+            **_conclusion_words(decision, usable, positive, mentions, closing),
             "points": points,
             "basis": {
                 "reviews": usable,
@@ -1010,6 +1098,7 @@ def _conclusion(summary: dict[str, Any], state: str, badges: list[dict[str, Any]
             "Based on the reviews of this product, we cannot give clear advice: many of the reviews look copied or "
             "generic, so they may not reflect real buyers.",
             points,
+            closing="Many of the reviews look copied or generic, so treat this summary with care.",
         )
     if state != "no_warning_signs" or positive is None:
         return None

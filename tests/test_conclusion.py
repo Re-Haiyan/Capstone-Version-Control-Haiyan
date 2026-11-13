@@ -78,5 +78,33 @@ class ConclusionTests(unittest.TestCase):
         self.assertIsNone(decide("no_warning_signs", {"sentiment_counts": {}}))
 
 
+    def test_the_paragraph_counts_the_reviews_behind_each_concern(self) -> None:
+        found = [
+            {"category": "safety", "mentions": 1},
+            {"category": "counterfeit", "mentions": 3},
+            {"category": "defect", "mentions": 82},
+            {"category": "quality", "mentions": 46},
+            {"category": "not_as_described", "mentions": 8},
+        ]
+        result = decide("possible_safety_issue", summary(476, 10, 26, 0.9), found, usable=512)
+        self.assertEqual(result["assessment"], "Caution")
+        self.assertIn("According to the 512 customer reviews analyzed", result["summary"])
+        for phrase in ("(93%)", "product defects (82 reviews)", "weak or poor build quality (46 reviews)",
+                       "differences from the product description (8 reviews)", "possible authenticity concerns (3 reviews)",
+                       "one review mentioning a potential safety concern"):
+            self.assertIn(phrase, result["summary"])
+        self.assertEqual(result["lead"], "According to the reviews, this product is generally well-received, but some concerns were reported.")
+
+    def test_a_product_with_no_concerns_names_none_and_never_says_it_is_safe(self) -> None:
+        result = decide("no_warning_signs", summary(85, 5, 10, 0.78), badges())
+        self.assertNotIn("However", result["summary"])
+        self.assertNotIn("safe", result["summary"].replace("potential safety", ""))
+
+    def test_too_few_reviews_gives_no_percentage(self) -> None:
+        result = decide("insufficient_evidence", summary(3, 0, 0), usable=3)
+        self.assertEqual(result["assessment"], "Not enough reviews")
+        self.assertNotIn("%", result["summary"])
+
+
 if __name__ == "__main__":
     unittest.main()

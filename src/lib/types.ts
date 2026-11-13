@@ -57,6 +57,11 @@ export interface Conclusion {
 	decision: ConclusionDecision;
 	headline: string;
 	text: string;
+	/** The card's lead sentence, a paragraph that counts the reviews behind each concern, and the label beside it. */
+	lead?: string;
+	summary?: string;
+	assessment?: string;
+	assessment_note?: string;
 	points: string[];
 	basis: { reviews: number; positive?: number; uncertain?: number; negative?: number };
 	notice: string;
