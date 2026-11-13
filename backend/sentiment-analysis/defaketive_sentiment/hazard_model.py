@@ -559,6 +559,8 @@ COUNTERFEIT_PHRASES = tuple(
     for pattern in (
         # "hindi rin original", "nd sia orig", "di ito yung original"
         rf"{_NOT}\s+(?:{_FILLER}\s+){{1,3}}{_REAL}",
+        # "not authentic", "not authrntic JBL", "isn't a genuine one" (no filler word between)
+        rf"{_NOT}\s+(?:an?\s+)?(?:{_REAL}|auth\w{{3,8}})",
         # "not 100% original"
         rf"{_NOT}\s+\d+\s*%?\s*{_REAL}",
         # "no longer original"

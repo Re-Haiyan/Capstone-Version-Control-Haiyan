@@ -514,7 +514,7 @@ R6_NAD_GROUPS: dict[str, tuple[re.Pattern[str], ...]] = {
             r"not\s+whats?\s+in\s+(?:the\s+)?specs",
             r"(?:edit|palitan|change|pakiedit|update)\s+(?:(?:ng|ang|yung|nyo|niyo|po|the|your|item)\s+){0,3}"
             r"(?:caption|description|item description|pictures?|title|product name)",
-            r"(?:deceptive|deceiving|deception)",
+            r"(?:deceptive|(?<!can be )(?<!may be )deceiving|deception)",
         )
     ),
     # a stated number doubted or denied, in wordings the served patterns miss
@@ -672,6 +672,22 @@ R7_NAD_GROUPS: dict[str, tuple[re.Pattern[str], ...]] = {
             rf"(?:kahit|although|even though)\s+{_FILL}{{0,1}}(?:3|4|5)\s*in\s*1",
         )
     ),
+    "mismatch_r7b": _compile(
+        (
+            # "this is NOT a data cable", "is not a genuine one"
+            r"(?:is|was)\s+not\s+(?:a|an)\s+(?:data|genuine|original|real|true)\s+[\w']+",
+            # "from the photo I thought I'd get different colors, but they all came in white"
+            r"(?:i|we)\s+(?:thought|expected|assumed)\s+(?:i'?d|i would|we'?d|we would|it would)\s+(?:get|receive|come)\s+[^.;!?]{0,50}?(?:but|pero)(?!\w)",
+            # "does not charge at 140watts", "can't reach 65w"
+            rf"(?:does not|do not|did not|not|cannot|can not)\s+(?:charge|output|deliver|support|reach|give|provide)\s+(?:at\s+|up to\s+|a full\s+)?{_NUM_06}\s*{_UNIT}(?!\w)",
+            # "not compatible to the base on the promotion picture"
+            rf"{_NOT}\s+(?:compatible|fit|fits|match|matching)\s+{_FILL}{{0,8}}(?:pictures?|pics?|photos?|ads?|promotion|promo|description|listing|post)(?!\w)",
+            # "not authrntic JBL as seen on your ads" (misspellings tolerated)
+            rf"{_NOT}\s+(?:an?\s+)?(?:auth\w{{3,8}}|origin\w{{2,5}}|genuine)\s+{_FILL}{{0,3}}(?:as seen|as shown|as advertised|in the ads?|on your ads?|sa ads?)(?!\w)",
+            # "ung brand iba sa lalagyanan"
+            r"brand\s+(?:is\s+|ay\s+)?(?:iba|different)\s+(?:sa|from|than)(?!\w)",
+        )
+    ),
     "fake_feature": _compile(
         (
             r"(?:display(?: board)?|meter|read ?out|battery meter|percentage|percent)\s+(?:is\s+|nya\s+)?(?:fake|peke)|fake\s+(?:display|meter|battery meter|read ?out|percent\w*)",
@@ -700,6 +716,9 @@ def not_as_described_spans(normalized: str, revision: str = EXTRA_RULES_REVISION
         patterns = patterns + _r5_patterns(R5_NAD_GROUPS)
     if revision in (EXTRA_RULES_REVISION_06, EXTRA_RULES_REVISION_07):
         patterns = patterns + _r6_patterns(R6_NAD_GROUPS)
+    if revision == EXTRA_RULES_REVISION_07:
+        # Only the mismatch_r7b group is read; the other R7_NAD_GROUPS stay unread (see the r7 note above).
+        patterns = patterns + R7_NAD_GROUPS["mismatch_r7b"]
     spans = [
         found.span()
         for pattern in patterns
