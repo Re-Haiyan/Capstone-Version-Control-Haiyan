@@ -13,6 +13,19 @@
   buy / opinions are mixed / think twice / we advise against buying it", with the reviewers' positive and negative
   share. It follows the verdict (a safety warning is never "okay to buy", however happy the reviews) and says it is a
   guide, not proof. Worked out when the report is opened from the saved result, so nothing is re-analysed.
+- Products are placed in one of 39 categories from their title, in 10 groups: electronics (phone, laptop, tablet, audio,
+  charger or cable, power bank, smartwatch, camera, gaming, TV, computer parts, smart home, accessory), home and living
+  (appliances, kitchen, furniture, decor and lighting, cleaning, textiles, garden), fashion (clothes, shoes, bags,
+  jewellery), beauty and health, baby and toys, sports, pets, food, automotive and tools, and office and media. A word
+  that is a complaint for one kind of product is not for another. A category only changes what the checker does when it
+  has a file in `lexicons/categories/`; so far "manipis" and "too thin" are no longer a poor-quality flag on a phone,
+  laptop, tablet, computer keyboard or mouse, TV, power bank or smartwatch, but
+  still are beside a part or material ("manipis na plastic", "manipis ang cable") and on everything else. The lists
+  are one file per category in `lexicons/categories/`. Saved products are re-analysed once (model version `+pc1`).
+- Safety rules s5: fire ("ignites a fire", "caught fire"), melting wires or cables, a swollen or bloated battery and a
+  misspelt "short circuit" are now flagged; "grounded po ang cord" (a grounded plug) no longer reads as an electric
+  shock; "sunog siya kanina" is no longer read as burnt rice ("kanin" matched the start of "kanina"). Checked on the
+  10,000-review pool: 8 reviews change (6 added, 2 removed), none by accident, and the 300 labelled reviews are unchanged.
 - The admin can add an account (name, email, password, shopper or admin) from the Manage accounts tab.
 - The landing page's header shows an Admin button while the admin is signed in.
 

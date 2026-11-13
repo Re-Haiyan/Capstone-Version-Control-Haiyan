@@ -83,8 +83,11 @@ PARTS = {
         re.compile(r"\bmaga[-\s]+(?:sound|da\b|nda)", re.I),
         re.compile(r"spark\s+(?:of|joy)|tecno\s+spark|spark\s+\d+", re.I),
         re.compile(r"burnt\s+(?:orange|sienna|umber|ang\s+order|shade|color)|(?:tan|shade|color|kulay)\s+(?:\w+\s+){0,2}burnt|burn\s+(?:alkaline|slimming|coffee)|fat\s+burn\w*", re.I),
-        re.compile(r"(?:lasang\s+)?sunog\s+(?:na\s+)?(?:sunog\s+)?(?:\w+\s+){0,2}?(?:parchment|steak|pork\w*|meat|rice|kanin|pagkain|ulam)|lasang\s+sunog|pagkain\s+sunog", re.I),
+        re.compile(r"(?:lasang\s+)?sunog\s+(?:na\s+)?(?:sunog\s+)?(?:\w+\s+){0,2}?(?:parchment|steak|pork\w*|meat|rice|kanin|pagkain|ulam)(?![a-z])|lasang\s+sunog|pagkain\s+sunog", re.I),
         re.compile(r"sumabog\s+(?:agad\s+)?(?:yung\s+|ang\s+)?(?:amoy|bango|scent|smell)", re.I),
+        # s5: a grounded plug is a three-pin plug, not a shock: "grounded po ang cord", "grounded yung lightning pin"
+        re.compile(r"grounded\s+(?:po\s+|naman\s+|na\s+)?(?:ang\s+|yung\s+|ung\s+)?(?:cord|plug|wire|outlet|socket|extension|pin|lightning|usb)"
+                   r"|(?:cord|plug|wire|outlet|socket)\s+(?:is\s+|are\s+|po\s+)?grounded", re.I),
     ],
     "fragile": [
         re.compile(r"delikado\w*(?=(?:\W+\w+){0,8}?\W+(?:mabagsak|bagsak|masira|masisira|nasisira|maipit|matabig|maligwak|balot|bubble|buble|packaging|cartoon|carton|bata|kids?|wire))"
@@ -112,7 +115,15 @@ SPELLING = [
     re.compile(r"(?<![a-z])(?:nag\s*o+\s*)?over\s+(?:heat|hit)\w*", re.I),
     re.compile(r"(?<![a-z])(?:maiinit|nangangainit|nangainit)(?![a-z])", re.I),
     re.compile(r"(?<![a-z])(?:became|becomes|become|gets|got|getting|went|goes|turned|turns)\s+(?:(?!not\b)\w+\s+){0,2}hot(?![a-z])", re.I),
+    # s5 (appended, so the numbers above are unchanged): fire, melting, a swelling battery, a misspelt short circuit
+    re.compile(r"(?<![a-z])(?:ignit\w*|caught|catch(?:es|ing)?|causes?|caused|causing)\s+(?:a\s+|an\s+|the\s+)?fire(?![a-z])|(?<![a-z])nag-?\s?liyab", re.I),
+    re.compile(r"(?<![a-z])(?:wires?|cables?|cords?|plug|prongs?|charger|adapter|adaptor|casing)(?:\s+(?!(?:not|no|never|won'?t|wouldn'?t|doesn'?t|don'?t|didn'?t|can'?t|cannot|hindi|di|walang)(?![\w']))[\w']+){0,5}?\s+(?:also\s+)?(?:melt(?:s|ed|ing)?|natunaw|tumunaw)(?![a-z])"
+               r"|(?<![a-z])melt(?:s|ed|ing)?\s+(?:the\s+|my\s+|its\s+)?(?:wires?|cables?|cords?|plug|prongs?|charger|adapter|adaptor)(?![a-z])", re.I),
+    re.compile(r"(?<![a-z])batter(?:y|ies)\s+(?:[\w']+\s+){0,7}?(?:bloat\w*|swell\w*|swollen)(?![a-z])"
+               r"|(?<![a-z])(?:bloated|swollen|swelling)\s+(?:[\w']+\s+)?batter(?:y|ies)", re.I),
+    re.compile(r"(?<![a-z])(?:shrt|shotr|shor|shot)[\s-]?circuit|(?<![a-z])short[\s-]?(?:sirkit|sircuit)|(?<![a-z])shortcircuit", re.I),
 ]
+S5_REVISION = "s5"
 S4_REVISION = "s4"
 PREVIOUS_UNIT = re.compile(
     r"(?<![a-z])(?:the|my|our)\s+(?:very\s+)?(?:first|previous|old|older|last|former)"
@@ -126,7 +137,7 @@ THIS_ONE_TOO = re.compile(
     r"(?:new|second|2nd|replacement)\s+(?:one|unit|item|pair))(?![a-z])",
     re.I,
 )
-NEGATED_BEFORE = re.compile(r"(?<![a-z])(?:no|not|never|without|walang|wala|hindi|di|d|haven'?t|didn'?t|doesn'?t|don'?t|sana|baka|might|hope)\s+(?:\w+\s+){0,3}$", re.I)
+NEGATED_BEFORE = re.compile(r"(?<![a-z])(?:no|not|never|without|walang|wala|hindi|di|d|haven'?t|didn'?t|doesn'?t|don'?t|won'?t|wouldn'?t|can'?t|cannot|sana|baka|might|hope)\s+(?:\w+\s+){0,3}$", re.I)
 
 
 def s3_removes(raw: str, previous: bool = False) -> set[str]:

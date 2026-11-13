@@ -1,0 +1,8 @@
+# Phrases that are NOT a complaint for this kind of product (rules pc1; read by product_category.py).
+# Columns, separated by TABS: term | label | unless | reason
+#   term    regular expression that must match the whole flagged phrase
+#   label   the label it applies to (quality)
+#   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
+#   reason  shown in the audit trail
+# Restart the server after editing.
+# Nothing listed: on clothes, fabric, bedding and the like a thin item is a complaint, so "manipis" stays flagged.
