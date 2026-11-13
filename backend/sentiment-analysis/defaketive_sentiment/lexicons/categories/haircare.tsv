@@ -5,4 +5,4 @@
 #   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
 #   reason  shown in the audit trail
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
-ang init|init|gets? hot	safety	sobra|sobrang|too|very|hawak|hawakan|handle|plug|wire|cord|kordon|scalp|anit|ulo|burn\w*|paso|napaso|nakakapaso|sunog|nasunog|smoke|usok|umusok|spark\w*|short|kuryente|nakuryente|rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|namaga|swollen|amoy	a hair tool heats up on purpose; plain heat is its job, still a hazard when too hot or beside a burn
+ang init|init|gets? hot	safety	sobra|sobrang|too|very|hawak|hawakan|handle|plug|wire|cord|kordon|scalp|anit|ulo|burn\w*|paso|napaso|nakakapaso|sunog|nasunog|smoke|usok|umusok|spark\w*|short|kuryente|nakuryente|rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|namaga|swollen|amoy|takot|nakakatakot|natatakot|scary|afraid|worried|delikado|dangerous|baka|bka|might|\w*charg\w*	a hair tool heats up on purpose; plain heat is its job, still a hazard when too hot or beside a burn

@@ -5,5 +5,5 @@
 #   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
 #   reason  shown in the audit trail
 # A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
-sobrang init|ang init|init|very hot|gets? hot|burn hot|too hot	safety	burn\w*|paso|napaso|nakakapaso|sunog|nasunog|smoke|usok|umusok|spark\w*|short|kuryente|nakuryente|rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|namaga|swollen|amoy	heat is the weather or the sun on plants, not a hazard
+sobrang init|ang init|init|very hot|gets? hot|burn hot|too hot	safety	burn\w*|paso|napaso|nakakapaso|sunog|nasunog|smoke|usok|umusok|spark\w*|short|kuryente|nakuryente|rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|namaga|swollen|amoy|takot|nakakatakot|natatakot|scary|afraid|worried|delikado|dangerous|baka|bka|might|\w*charg\w*	heat is the weather or the sun on plants, not a hazard
 burn|sunog|nasunog	safety	kuryente|plug|wire|cord|spark|lamp|light|grow|electric|bulb|usok|smoke	burnt leaves are sun or fertilizer damage, not a fire hazard
