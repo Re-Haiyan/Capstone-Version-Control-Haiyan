@@ -1,0 +1,9 @@
+# Phrases that are NOT a complaint for this kind of product (rules pc1; read by product_category.py).
+# Columns, separated by TABS: term | label | unless | reason
+#   term    regular expression that must match the whole flagged phrase
+#   label   the label it applies to (quality)
+#   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
+#   reason  shown in the audit trail
+# Restart the server after editing.
+(?:ma|ka|napaka)?nipis\w*	quality	plastic|plastik|material|materials|casing|case|cover|cable|kable|wire|wires|cord|kordon|charger|adapter|box|kahon|packaging|pakete|strap|band|protector|tunog|sound|boses|audio|speaker|mic|volume|signal|battery|keys?|keycaps?|keycap|buttons?|switch|switches|receiver|dongle|ports?|pad	thin is a selling point on a computer keyboard or mouse; still a complaint beside a part or material
+(?:too|so|very|super)\s+thin	quality	plastic|plastik|material|materials|casing|case|cover|cable|kable|wire|wires|cord|kordon|charger|adapter|box|kahon|packaging|pakete|strap|band|protector|tunog|sound|boses|audio|speaker|mic|volume|signal|battery|keys?|keycaps?|keycap|buttons?|switch|switches|receiver|dongle|ports?|pad	thin is a selling point on a computer keyboard or mouse; still a complaint beside a part or material

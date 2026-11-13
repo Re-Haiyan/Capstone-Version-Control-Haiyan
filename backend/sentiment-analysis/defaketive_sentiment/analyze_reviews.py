@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from .model import DefaketiveSentimentModel, ModelSetupError
+from .product_category import classify_listing, group_of
 from .manuscript import HybridManuscriptRiskModel
 
 
@@ -438,6 +439,9 @@ def analyze_product_json(
         # Prefer a batch call where the model offers one. With the review cap
         # removed a single product can carry thousands of reviews, and scoring
         # them one at a time is about twelve times slower.
+        # Rules pc1: the category the checker read from the title, kept so a report can show it.
+        product["product_category"] = classify_listing({"name": str(product.get("name") or "")})
+        product["product_group"] = group_of(product["product_category"])
         analyses = _analyze_all(
             model,
             [text for _index, _comment, text in pending],

@@ -46,10 +46,12 @@ from .extra_labels import (
     quality_spans,
 )
 from .fault_rules import F11_REVISION, F12_REVISION, F13_REVISION, S2_REVISION, f11_match, s2_removes
-from .safety_lookalikes import S3_REVISION, S4_REVISION, s3_adds, s3_removes
+from .safety_lookalikes import S3_REVISION, S4_REVISION, S5_REVISION, s3_adds, s3_removes
 from .listing_context import LC2_REVISION, LC2F_REVISION, LC3_REVISION, LISTING_CONTEXT_REVISION, lc2_rules, lc2f_rules, lc3_rules
 from .listing_context import review_rules as listing_review_rules
 from .model import DefaketiveSentimentModel
+from .product_category import PRODUCT_CATEGORY_REVISION, classify_listing, exemption as category_exemption
+from . import product_category
 from .product_badges import (
     CATEGORIES,
     COUNTERFEIT,
@@ -939,7 +941,7 @@ class LexiconHazardTagger:
                 return cue_class
         return None
 
-    def tag_sentence(self, raw: str, rating: object = None) -> dict[str, Any]:
+    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None) -> dict[str, Any]:
         normalized, spans = text_norm.normalize_with_spans(raw)
         scores: dict[str, float] = {}
         tags: list[str] = []
@@ -1216,7 +1218,7 @@ class LexiconHazardTagger:
             **({"learned": learned} if learned else {}),
             **({"gate_sentiment": gated} if gated else {}),
             **(
-                self._extra_labels(raw, normalized, matches, described, spans, extra_kw)
+                self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind)
                 if self.counterfeit_rules == EXTRA_RULES
                 else {}
             ),
@@ -1420,16 +1422,26 @@ class LexiconHazardTagger:
         described: Sequence[tuple[int, int]],
         spans: Sequence[text_norm.TokenSpan],
         extra_kw: Any = None,
+        product_kind: str | None = None,
     ) -> dict[str, Any]:
         """The two labels of guide 1.4 for one sentence, with the words behind
         them. Kept apart from "tags" and "terms": the badge categories, the
         keyword features and the learned models never see them."""
         terms: list[dict[str, Any]] = []
-        for category, found in ((QUALITY, quality_spans(normalized, self.extra_revision)), (NOT_AS_DESCRIBED, described)):
+        # Rules pc1: a phrase listed in the product category's file is not a complaint on that kind of product.
+        exempt: list[dict[str, Any]] = []
+        for label, found in ((QUALITY, quality_spans(normalized, self.extra_revision)), (NOT_AS_DESCRIBED, described)):
             for start, end in _merged(found):
                 where = self._raw_span((start, end), spans)
+                reason = category_exemption(product_kind, label, normalized, (start, end)) if label == QUALITY else None
+                if reason:
+                    exempt.append(
+                        {"ngram": normalized[start:end], "category": label, "product_category": product_kind,
+                         "reason": reason, "span": list(where) if where else None}
+                    )
+                    continue
                 terms.append(
-                    {"ngram": normalized[start:end], "category": category, "span": list(where) if where else None}
+                    {"ngram": normalized[start:end], "category": label, "span": list(where) if where else None}
                 )
         # "hindi legit na 20k mAh": a disputed number the keywords read as "legit".
         # Listed once: skipped when a pattern above already covers the same words.
@@ -1452,11 +1464,15 @@ class LexiconHazardTagger:
                     # patterns above are not affected, and the complaints it found in a 1,500-review sample are not positive.
                     if self.rules == "0.4" and category == QUALITY and self.sentiment_label(raw) == "positive":
                         continue
+                    # pc1: the keyword was set aside for this product category; the model may not bring it back.
+                    if category == QUALITY and any(item["category"] == QUALITY for item in exempt):
+                        continue
                     present.add(category)
                     added[category] = round(probability, 4)
         return {
             "extra_tags": [tag for tag in EXTRA_TAGS if tag in present], "extra_terms": terms,
             **({"extra_learned": added} if added else {}),
+            **({"category_exempt": exempt} if exempt else {}),
         }
 
     @staticmethod
@@ -1499,9 +1515,10 @@ class LexiconHazardTagger:
         are also read against the listing (its "name" and "description") and the
         next sentence. A caller without a listing still gets the next-sentence part."""
         segments = list(text_norm.segment_sentences(text))
+        kind = classify_listing(listing) if listing is not None and self.listing_context else None
         tagged = []
         for index, sentence in enumerate(segments):
-            result = self.tag_sentence(sentence, rating)
+            result = self.tag_sentence(sentence, rating, product_kind=kind) if kind else self.tag_sentence(sentence, rating)
             result["index"] = index
             tagged.append(result)
         if self.listing_context:
@@ -1527,7 +1544,10 @@ class LexiconHazardTagger:
         model = self.label_transformer
         if model is not None:
             for item, segment in zip(tagged, segments):
-                self._transformer_labels(item, model.decide(segment))
+                decided = model.decide(segment)
+                if item.get("category_exempt"):
+                    decided = {label: value for label, value in decided.items() if label != QUALITY}
+                self._transformer_labels(item, decided)
         return tagged
 
     @staticmethod
@@ -1654,6 +1674,7 @@ class HazardBadgeModel:
                 + ("" if S2_OFF else S2_REVISION)
                 + ("" if S3_RULES_OFF else S3_REVISION)
                 + ("" if S3_RULES_OFF or S4_RULES_OFF else S4_REVISION)
+                + ("" if S3_RULES_OFF else S5_REVISION)
             )
         hazard_version = base_version
         if learned is not None:
@@ -1674,6 +1695,7 @@ class HazardBadgeModel:
                 hazard_version = f"{hazard_version}+{LISTING_CONTEXT_REVISION}"
                 hazard_version += ("" if LC2_OFF else f"+{LC2_REVISION}") + ("" if LC2F_OFF else f"+{LC2F_REVISION}")
                 hazard_version += "" if LC3_OFF else f"+{LC3_REVISION}"
+                hazard_version += "" if product_category.PRODUCT_CATEGORY_OFF else f"+{PRODUCT_CATEGORY_REVISION}"
             transformer_version = getattr(self.tagger, "label_transformer_version", "")
             if transformer_version:
                 hazard_version = f"{hazard_version}+{transformer_version}"
