@@ -1,5 +1,8 @@
 # Baseline comparison
 
+> **Label provenance caveat.** Every score in this folder is a score against *team-supplied labels of unverified provenance*. The labels returned in the 2026-11-13/14 rounds came back far faster than row-by-row manual labelling allows (0.3 to 1.5 seconds per review), and the repository holds no annotator record. They are silver labels until a human-labelled subset confirms them. See `annotation_provenance.md`.
+
+
 All numbers come from saved result files in `research/results/` and can be regenerated with the scripts named. **Cross-validation (CV)** = product-grouped 5-fold on the 3,946 training rows (rare flags spread across folds); thresholds and hyper-parameters are chosen on the out-of-fold predictions, so CV scores are slightly optimistic. **Historical test** = the 846-row file inspected during earlier development; it is *reported*, never used to choose anything here. Intervals are 95% product-level bootstrap (resampling products, not reviews).
 
 ## 1. The systems compared
@@ -11,7 +14,7 @@ All numbers come from saved result files in `research/results/` and can be regen
 | Embedding | Frozen multilingual encoder embeddings + logistic regression (`exp_embed.py`) |
 | Embedding + rules | The same, with the rule decisions as extra input features |
 | Fusions | Rules OR / AND the sparse model; a regularised stacker over the rule decision and the out-of-fold sparse probability (`evaluate_all.py`, `exp_stacking.py`) |
-| Weak labels | Gold training rows plus weakly labelled unlabelled reviews (`weak_supervision.py`) |
+| Weak labels | Team-supplied training labels plus weakly labelled unlabelled reviews (`weak_supervision.py`) |
 
 ## 2. Experiment A: sparse text baselines (CV macro F1 over six flags, best of 18 configurations)
 
@@ -59,8 +62,8 @@ Embeddings alone are clearly **worse than the sparse baseline** (0.525 against 0
 ## 6. Weak supervision (Part 7)
 
 * 250 labeling functions fire (every row of the shared and group addition files); 816 of their same-flag pairs overlap by Jaccard >= 0.8. The group files repeat the same shared wording, so these are not independent evidence and were not counted as such.
-* A precision-weighted vote has high precision and low recall against the human labels (defect 0.80 / 0.37; counterfeit 1.00 / 0.02; safety 1.00 / 0.01; not-as-advertised 0.90 / 0.70; quality 0.79 / 0.06): the counterfeit and safety vocabulary lives in the core lexicon, not in the addition files that were turned into functions. It abstains on 56% of training rows.
-* **Adding weakly labelled reviews did not help.** Grouped-CV macro F1 (five flags): gold only 0.625; gold + 500 weak rows 0.620; gold + 2,000 weak rows 0.623. The weak rows come from the same rule patterns the model already learns from the gold data. Inconclusive at best; gold-only is retained.
+* A precision-weighted vote has high precision and low recall against the team-supplied labels (defect 0.80 / 0.37; counterfeit 1.00 / 0.02; safety 1.00 / 0.01; not-as-advertised 0.90 / 0.70; quality 0.79 / 0.06): the counterfeit and safety vocabulary lives in the core lexicon, not in the addition files that were turned into functions. It abstains on 56% of training rows.
+* **Adding weakly labelled reviews did not help.** Grouped-CV macro F1 (five flags): team-supplied labels only 0.625; gold + 500 weak rows 0.620; gold + 2,000 weak rows 0.623. The weak rows come from the same rule patterns the model already learns from the gold data. Inconclusive at best; the team-supplied labels alone are retained.
 
 ## 7. Conclusion
 

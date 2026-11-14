@@ -1,5 +1,8 @@
 # DeFaketive: project history of the review-classification work
 
+> **Label provenance caveat.** Every score in this folder is a score against *team-supplied labels of unverified provenance*. The labels returned in the 2026-11-13/14 rounds came back far faster than row-by-row manual labelling allows (0.3 to 1.5 seconds per review), and the repository holds no annotator record. They are silver labels until a human-labelled subset confirms them. See `annotation_provenance.md`.
+
+
 A chronological record of the work done in the development sessions of 2026-11-13 and 2026-11-14, with the commit that holds each step. Numbers are the ones recorded at the time in the documents named next to them. For the research round (audits, baselines, evaluation), start at `research/README.md`.
 
 ## 1. System, in one paragraph

@@ -7,7 +7,7 @@
 | Inter-annotator agreement | Needs two independent completed annotation sheets | `research/agreement.py` (sheets, kappa, AC1, positive/negative agreement, intervals, bootstrap), 300 review sheets in `research/agreement/`, math unit-tested on hand-computed cases; `score` refuses to run on fewer than 30 reviews labelled in both |
 | A fresh final test set | No untouched, product-disjoint labelled data exists | `research/active_learning_candidates.csv` (200 reviews from 129 products) and the existing scan tooling |
 | Product-conclusion accuracy | No independently labelled conclusions | Scenario tests of the verdict logic; thresholds unchanged |
-| Adjudicated labels | Needs a policy decision and annotators | `annotation_audit.md` / `annotation_audit_queue.csv` (534 suspicions, 29 high priority), `suspected_label_errors.csv` (192, 129 high), `annotation_policy_proposal.md` |
+| Adjudicated labels | Needs a policy decision and annotators | `annotation_audit.md` / `annotation_audit_queue.csv` (285 suspicion entries over 280 reviews, 16 high priority), `suspected_label_errors.csv` (192, 129 high), `annotation_policy_proposal.md` |
 | Measuring active learning on new labels | Needs a labelling round | A simulation on existing labels (E07) |
 
 ## Scientific limits of what was measured

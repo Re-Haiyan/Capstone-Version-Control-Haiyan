@@ -2,7 +2,7 @@
 
     D:\\defaketive-train\\Scripts\\python.exe research\\annotation_audit.py
 
-Checks use the human labels and plain word lists only; no model output. Every row is a SUSPICION for a human to
+Checks use the team-supplied labels (provenance unverified, see research/annotation_provenance.md) and plain word lists only; no model output. Every row is a SUSPICION for a human to
 adjudicate. Nothing is relabelled. Writes research/annotation_audit.md and research/annotation_audit_queue.csv.
 """
 import collections, csv, pathlib, re, sys
@@ -23,7 +23,12 @@ def add(r, issue, reason, proposal, needs_listing, priority):
                   "proposed_interpretation_unverified": proposal, "needs_listing_context": needs_listing, "priority": priority})
 
 
-HAZ = re.compile(r"umusok|usok|smok|sunog|nasunog|masunog|sumabog|pumutok|sparks?|nag-?spark|short circuit|nakuryente|kuryente|burn(?:ed|t)|nagkasugat|sugat|pantal|rash|nag-?allerg|allergy|namaga|namumula|nagtae|nagsuka|vomit|diarrh|nabilaukan|choke|expired|panis|amag|uod|hinihingal|nahilo|nakakahilo|bloat", re.I)
+HAZ = re.compile(r"(?<![a-z])(?:umusok|usok|smok|sunog|nasunog|masunog|sumabog|pumutok|sparks?|nag-?spark|short circuit|nakuryente|kinuryente|burn(?:ed|t)|nagkasugat|sugat|pantal|rash|nag-?allerg|allergy|namaga|namumula|nagtae|nagsuka|vomit|diarrh|nabilaukan|choke|expired|panis|amag|uod|hinihingal|nahilo|nakakahilo|bloat)", re.I)
+# Hazard words in a benign context: electricity bills, burning calories, a test, or a device the reviewer no longer has.
+BENIGN = re.compile(
+    r"(?:tipid|bill|konsumo|consumption|savings?|nakakatipid|mura|mababa)\W+(?:\w+\W+){0,4}kuryente|kuryente\W+(?:\w+\W+){0,4}(?:bill|tipid|consumption|konsumo|mura|mababa)"
+    r"|burn(?:ed|t|s|ing)?\s+(?:\w+\s+){0,2}(?:calories?|fat|fats|belly|weight)|calories?\W+(?:\w+\W+){0,2}burn\w*|burn[- ]?(?:test|in)|sparks?\s+joy"
+    r"|(?:dati|old|previous|luma|nakaraang|last)\W+(?:\w+\W+){0,3}(?:charger|phone|device|unit|cable|battery|powerbank|power bank|power supply|adaptor|adapter|air fryer)|(?:charger|phone|device|unit|cable|battery|power supply)\W+(?:\w+\W+){0,2}(?:ko\W+)?(?:dati|luma|noon)", re.I)
 HAZ_FEAR = re.compile(r"nakakatakot|delikado|dangerous|baka sumabog|baka masunog|nangamoy sunog|amoy sunog|burning smell", re.I)
 COMPLAINT = re.compile(r"hindi (?:gumana|gumagana|umandar|nag-?on)|di (?:gumana|gumagana)|not working|doesn.t work|stopped working|sira|basag|broken|defect|peke|fake|mali ang|wrong|kulang|missing|pangit|poor quality|bad quality", re.I)
 PRAISE = re.compile(r"maganda|ganda|bagay|sulit|worth|love|recommend|galing|satisfied|great|good|nice|perfect|thank", re.I)
@@ -33,7 +38,7 @@ PKG = re.compile(r"box|kahon|packag|packing|parcel|pouch|plastic|balot|bubble ?w
 for r in train:
     g, text = G(r), r["text"]
     # 1 hazard report labelled none / without safety
-    if HAZ.search(text) and "safety" not in g and re.search(r"\b(?:ko|namin|ang akin|my|we|nag|naging|naka|nang|habang)\b", text, re.I) and not re.search(r"\b(?:no|walang|wala|hindi|di|not)\s+(?:\w+\s+){0,2}(?:rash|usok|smoke|burn|sunog|allerg)", text, re.I):
+    if HAZ.search(text) and not BENIGN.search(text) and "safety" not in g and re.search(r"\b(?:ko|namin|ang akin|my|we|nag|naging|naka|nang|habang)\b", text, re.I) and not re.search(r"\b(?:no|walang|wala|hindi|di|not)\s+(?:\w+\s+){0,2}(?:rash|usok|smoke|burn|sunog|allerg)", text, re.I):
         word = HAZ.search(text).group(0).lower()
         strong = re.search(r"usok|smok|sunog|sumabog|pumutok|spark|short circuit|kuryente|burn", word)
         skin_food = re.search(r"rash|pantal|allerg|namaga|namumula|sugat|nagtae|nagsuka|vomit|diarrh|expired|panis|amag|uod|bloat|nabilaukan|choke", word)
@@ -88,7 +93,19 @@ md = ["# Annotation audit: review queue for human adjudication", "",
       "No label was changed. Full queue: `research/annotation_audit_queue.csv`.", "",
       "## Counts by suspected inconsistency", "", "| Suspected inconsistency | Rows |", "|---|---:|"]
 md += [f"| {k} | {v} |" for k, v in counts.most_common()]
-md += ["", f"Total distinct queue rows: {len({q['id'] for q in rows})} of {len(train)} training rows.", "",
+ids_all = {q["id"] for q in rows}
+multi = sum(1 for i in ids_all if sum(1 for q in rows if q["id"] == i) > 1)
+hi_ids = {q["id"] for q in rows if q["priority"] == 3}
+listing_ids = {q["id"] for q in rows if q["needs_listing_context"] == "yes"}
+md += ["", "## What the numbers mean", "", "| Count | Value |", "|---|---:|",
+       f"| Suspicion entries (one per review per suspicion type; the CSV has one row each) | {len(rows)} |",
+       f"| Unique flagged reviews | {len(ids_all)} of {len(train)} training rows |",
+       f"| Reviews with more than one suspicion | {multi} |",
+       f"| High-priority entries (priority 3) | {sum(1 for q in rows if q['priority'] == 3)} |",
+       f"| Unique high-priority reviews | {len(hi_ids)} |",
+       f"| Reviews needing the listing to decide (needs_listing_context = yes) | {len(listing_ids)} |",
+       f"| Reviews needing manual adjudication | all {len(ids_all)}: the audit never relabels, every entry is a suspicion for a human |", "",
+       "**Correction.** The first version of this audit reported 534 entries over 502 reviews. The difference between the two numbers was real (32 reviews carried more than one suspicion), but 219 of the hazard entries came from a substring bug: the stem \"amag\" (mold) matched inside \"damage\", \"magnetic\" and similar words. The word list now requires a word start and excludes benign contexts (electricity bills, calories burned, a device the reviewer no longer has). All 219 removed rows were checked: none contains the standalone word.", "",
        "Exact-text duplicates with conflicting labels: 0 (see `research/data_audit.json`). Near-duplicate pairs (cosine >= 0.85) with different labels are listed under the near-duplicate heading.", "",
        "## Highest-priority rows (priority 3 first; the first 80)", "",
        "| ID | Product | Review | Labels | Suspected inconsistency | Reason | Proposed (unverified) | Needs listing | Prio |", "|---|---|---|---|---|---|---|---|---:|"]

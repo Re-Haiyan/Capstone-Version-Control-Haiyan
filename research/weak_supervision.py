@@ -4,10 +4,10 @@
 
 Labeling functions (LFs): every row of the shared and group addition files (all.add.tsv, group_*.add.tsv) votes POSITIVE
 for its flag when its regular expression matches; one PRAISE function votes NEGATIVE (4-5 stars, praise words, no
-complaint word) for every flag; everything else abstains. Per LF: coverage, precision and recall against the HUMAN labels
+complaint word) for every flag; everything else abstains. Per LF: coverage, precision and recall against the team-supplied labels
 of the training file, conflicts, and highly correlated pairs (Jaccard on the rows they fire on, which must not be counted
 as independent evidence). A precision-weighted vote combines them. Experiment: does adding weak-labelled UNLABELLED
-reviews (from research/cache/al_pool.csv) to the gold training rows improve a sparse model on held-out PRODUCTS?
+reviews (from research/cache/al_pool.csv) to the team-supplied training rows improve a sparse model on held-out PRODUCTS?
 Weak labels keep their provenance: every added row is marked weak=1 and the LF names that voted are recorded.
 """
 import collections, csv, json, pathlib, re, sys
@@ -70,7 +70,7 @@ score_tr, _, _ = weak_votes([r["text"] for r in train], stars)
 weak_pred = (score_tr > 0.5).astype(int); weak_eval = {f: prf(Y[:, k], weak_pred[:, k]) for k, f in enumerate(FLAGS5)}
 abstain = float(((score_tr == 0).all(axis=1)).mean())
 
-# experiment: gold-only versus gold + weak-labelled unlabelled reviews (grouped CV, evaluation on gold rows only)
+# experiment: labels-only versus labels + weak-labelled unlabelled reviews (grouped CV, evaluation on the supplied-label rows only)
 pool = list(csv.DictReader(open(ROOT / "research/cache/al_pool.csv", encoding="utf-8-sig")))
 score_pool, praise_pool, prov = weak_votes([r["review_text"] for r in pool], [int(r["stars"]) for r in pool])
 decisive = [i for i in range(len(pool)) if (score_pool[i] > 2.0).any() or praise_pool[i]]
@@ -93,6 +93,6 @@ out = {"labeling_functions": len(rows), "per_lf": rows, "praise_lf_negative_prec
        "abstain_rate_on_train": round(abstain, 3), "pool_decisive_rows": len(decisive), "experiment_cv_macro_f1": summary}
 json.dump(out, open(ROOT / "research" / "results" / "weak_supervision.json", "w"), indent=1)
 print(f"{len(rows)} labeling functions that fire; {len(corr)} correlated pairs; abstain on {abstain:.0%} of training rows")
-print("weighted vote vs human labels (train):", {f: (round(weak_eval[f]['precision'], 2), round(weak_eval[f]['recall'], 2)) for f in FLAGS5})
+print("weighted vote vs team-supplied labels (train):", {f: (round(weak_eval[f]['precision'], 2), round(weak_eval[f]['recall'], 2)) for f in FLAGS5})
 print("top LFs by coverage:", [(r["lf"], r["flag"], r["coverage"], r["precision"]) for r in sorted(rows, key=lambda r: -r["coverage"])[:8]])
 print("experiment (grouped CV macro F1, 5 flags):", {k: v["macro_f1"] for k, v in summary.items()}, "pool decisive rows:", len(decisive))

@@ -1,5 +1,8 @@
 # Evaluation report
 
+> **Label provenance caveat.** Every score in this folder is a score against *team-supplied labels of unverified provenance*. The labels returned in the 2026-11-13/14 rounds came back far faster than row-by-row manual labelling allows (0.3 to 1.5 seconds per review), and the repository holds no annotator record. They are silver labels until a human-labelled subset confirms them. See `annotation_provenance.md`.
+
+
 ## 0. Which numbers mean what
 
 | Kind | Meaning | Used to choose things? |

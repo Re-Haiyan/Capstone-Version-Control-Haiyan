@@ -5,7 +5,7 @@
 Per binary flag: out-of-fold probabilities from two rule-independent models (word+char TF-IDF logistic regression and
 logistic regression on frozen multilingual-e5-small embeddings, unweighted so probabilities are usable), averaged;
 Cleanlab ranks suspected label issues. The deployed rules are shown next to each suspect for context only: they are
-NOT used as evidence that a human label is wrong. Nothing is relabelled. Writes research/suspected_label_errors.csv.
+NOT used as evidence that a team-supplied label is wrong. Nothing is relabelled. Writes research/suspected_label_errors.csv.
 """
 import csv, json, pathlib, sys
 import numpy as np
