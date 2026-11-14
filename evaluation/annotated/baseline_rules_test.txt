@@ -1,0 +1,74 @@
+test_all.csv: 766 high-confidence rows, with the product category
+sentiment accuracy 507/766 = 0.662
+
+ALL
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect              60   48   49   12        0.49   0.80  0.61
+  counterfeit         52   49    3    3        0.94   0.94  0.94
+  safety              12   11   16    1        0.41   0.92  0.56
+  not_as_described    60   30    9   30        0.77   0.50  0.61
+  quality             52   48   29    4        0.62   0.92  0.74
+
+group automotive_tools
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               2    2    0    0        1.00   1.00  1.00   (fewer than 5 positives: do not read the score)
+  counterfeit          0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  safety               0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  not_as_described     1    1    0    0        1.00   1.00  1.00   (fewer than 5 positives: do not read the score)
+  quality              0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+
+group baby_kids_toys
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               4    2    0    2        1.00   0.50  0.67   (fewer than 5 positives: do not read the score)
+  counterfeit          1    1    0    0        1.00   1.00  1.00   (fewer than 5 positives: do not read the score)
+  safety               0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  not_as_described     7    5    0    2        1.00   0.71  0.83
+  quality              1    0    3    1        0.00   0.00   nan   (fewer than 5 positives: do not read the score)
+
+group beauty_health
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect              12    5   13    7        0.28   0.42  0.33
+  counterfeit         23   22    1    1        0.96   0.96  0.96
+  safety               2    2    2    0        0.50   1.00  0.67   (fewer than 5 positives: do not read the score)
+  not_as_described    11    3    1    8        0.75   0.27  0.40
+  quality              0    0    8    0        0.00    nan   nan   (fewer than 5 positives: do not read the score)
+
+group electronics
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               9    9   18    0        0.33   1.00  0.50
+  counterfeit          8    7    0    1        1.00   0.88  0.93
+  safety               7    7    7    0        0.50   1.00  0.67
+  not_as_described     6    3    2    3        0.60   0.50  0.55
+  quality              2    1    1    1        0.50   0.50  0.50   (fewer than 5 positives: do not read the score)
+
+group fashion
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               2    2    1    0        0.67   1.00  0.80   (fewer than 5 positives: do not read the score)
+  counterfeit          0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  safety               0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  not_as_described     4    0    2    4        0.00   0.00   nan   (fewer than 5 positives: do not read the score)
+  quality             23   23    3    0        0.88   1.00  0.94
+
+group food_grocery
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               2    1    2    1        0.33   0.50  0.40   (fewer than 5 positives: do not read the score)
+  counterfeit          9    9    0    0        1.00   1.00  1.00
+  safety               2    1    1    1        0.50   0.50  0.50   (fewer than 5 positives: do not read the score)
+  not_as_described    11    6    0    5        1.00   0.55  0.71
+  quality              3    3    0    0        1.00   1.00  1.00   (fewer than 5 positives: do not read the score)
+
+group home_living
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect              29   27   14    2        0.66   0.93  0.77
+  counterfeit         11   10    2    1        0.83   0.91  0.87
+  safety               1    1    6    0        0.14   1.00  0.25   (fewer than 5 positives: do not read the score)
+  not_as_described    19   11    3    8        0.79   0.58  0.67
+  quality             23   21   14    2        0.60   0.91  0.72
+
+group pets
+  label               n+   tp   fp   fn   precision  recall   F1
+  defect               0    0    1    0        0.00    nan   nan   (fewer than 5 positives: do not read the score)
+  counterfeit          0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  safety               0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)
+  not_as_described     1    1    1    0        0.50   1.00  0.67   (fewer than 5 positives: do not read the score)
+  quality              0    0    0    0         nan    nan   nan   (fewer than 5 positives: do not read the score)

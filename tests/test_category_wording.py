@@ -347,3 +347,24 @@ class WrongOrMissingItemsOnEveryKindOfProduct(unittest.TestCase):
 
     def test_a_correct_delivery_is_not_flagged(self):
         self.assertFalse(self.nad("Cat Food 1kg", "Complete ang delivery, same as advertised, my cat loves it"))
+
+
+class HeatIsSafetyNotAlsoDefect(unittest.TestCase):
+    def tags(self, product, text):
+        from defaketive_sentiment import registry
+
+        analysis = registry.load_model().analyze_batch([text], [2], listing={"name": product})[0]
+        return set(analysis.get("review_tags") or [])
+
+    def test_smoke_is_safety_only(self):
+        tags = self.tags("Hair Dryer 2000W", "sa pang pitong gamit, biglang umusok sa likod yung unit.")
+        self.assertIn("safety", tags)
+        self.assertNotIn("defect", tags)
+
+    def test_smoke_and_a_dead_unit_is_both(self):
+        tags = self.tags("Hair Dryer 2000W", "umusok tapos namatay na, hindi na gumagana ang unit")
+        self.assertIn("safety", tags)
+        self.assertIn("defect", tags)
+
+    def test_a_feature_claim_is_not_a_report(self):
+        self.assertNotIn("safety", self.tags("Silicone Baby Feeding Bottle 240ml", "Leak-proof design for travel, ribbed texture prevents collapse."))

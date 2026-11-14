@@ -364,6 +364,12 @@ _PRAISE_SAFE = re.compile(
     r"(?:20[2-9]\d)\s+pa\s+(?:yung\s+)?expir|expir\w*\s+(?:date\s+)?(?:is\s+|pa\s+)?(?:in\s+|on\s+|until\s+|hanggang\s+)?20[2-9]\d|"
     r"(?:not|hindi|di|walang)\s+(?:expired|panis|spoiled)"
 )
+# "Ribbed texture prevents collapse", "leak-proof design", "anti-slip": a feature of the product, not a report.
+_FEATURE_CLAIM = re.compile(
+    r"(?:prevent\w*|resist\w*|anti[- ]?|stops?|avoids?)\s+(?:\w+\s+)?(?:leak\w*|spill\w*|collaps\w+|crack\w*|break\w*|burn\w*|slip\w*|overheat\w*|rust\w*)"
+    r"|(?:leak|spill|burn|shock|crack|break|collapse|slip|heat|rust|scratch)[- ]?(?:proof|resistant|free)"
+)
+
 _SUNBURN_PEEL = re.compile(r"sunburn|dead skin|exfoliat|natangal|natanggal ang dead|nasunog sa araw")
 _NOT_EFFECTIVE = re.compile(r"^(?:hindi|di|not)\s+(?:po\s+)?(?:gumana|umepekto|tumalab|effective)\b")
 
@@ -376,6 +382,10 @@ def denied(category: str | None, label: str, normalized: str, span: tuple[int, i
     if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
         return None
     phrase = normalized[span[0]:span[1]].strip()
+    if label in (SAFETY_LABEL, DEFECT_LABEL):
+        for claim in _FEATURE_CLAIM.finditer(normalized):
+            if claim.start() < span[1] and span[0] < claim.end():
+                return "a feature of the product, not a report"
     if label == DEFECT_LABEL:
         for denial in _DENIED_DAMAGE.finditer(normalized):
             covers = denial.start() < span[1] and span[0] < denial.end()

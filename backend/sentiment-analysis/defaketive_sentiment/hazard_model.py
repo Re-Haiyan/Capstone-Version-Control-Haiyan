@@ -831,6 +831,8 @@ def hazard_subtype(matched_terms: Iterable[str]) -> str:
     return best
 
 
+HEAT_OR_SMOKE = re.compile(r"init|usok|smok|sunog|nasunog|burn|overheat|mainit|spark|apoy|fire|hot|melt|natunaw", re.I)
+
 class LexiconHazardTagger:
     """Tag review sentences with safety, defect and counterfeit categories."""
 
@@ -1103,6 +1105,20 @@ class LexiconHazardTagger:
                     # never to a sentence read as praise. The sentiment model
                     # runs only for the sentences where that is in question.
                     if on and category not in tags:
+                        # Rules pc4: heat or smoke already flagged as a safety report is not also a defect; the
+                        # team's labels put it under safety. Real defect words in the sentence still count.
+                        if (
+                            self.rules == "0.4"
+                            and category == DEFECT
+                            and SAFETY in tags
+                            and any(
+                                match["category"] == SAFETY and not match.get("excluded") and HEAT_OR_SMOKE.search(match["ngram"])
+                                for match in matches
+                            )
+                            and not any(match["category"] == DEFECT and not match.get("excluded") for match in matches)
+                        ):
+                            gated[category] = "heat_is_safety"
+                            continue
                         # Rules 0.4: the keywords read a defect word here as imagined
                         # or mistaken; the model may not put the flag back. Plain
                         # negation is NOT blocked: on the labelled rounds that cost
