@@ -833,6 +833,9 @@ def hazard_subtype(matched_terms: Iterable[str]) -> str:
 
 HEAT_OR_SMOKE = re.compile(r"init|usok|smok|sunog|nasunog|burn|overheat|mainit|spark|apoy|fire|hot|melt|natunaw", re.I)
 
+FEARED_FAKE = re.compile(r"(?:akala|inakala|thought|expected|kala)" + r"\W+(?:ko|i|namin)?\W*(?:\w+\W+){0,2}?(?:peke|fake|scam)", re.I)
+FAKE_RESOLVED = re.compile(r"^\W*(?:pero|but|though|kaso|however)\W+(?:\w+\W+){0,3}?(?:original|legit|totoo|authentic|genuine)|(?:original|legit|totoo|authentic|genuine)\s+pala", re.I)
+
 class LexiconHazardTagger:
     """Tag review sentences with safety, defect and counterfeit categories."""
 
@@ -1617,6 +1620,8 @@ class LexiconHazardTagger:
             result = self.tag_sentence(sentence, rating, product_kind=kind) if kind else self.tag_sentence(sentence, rating)
             result["index"] = index
             tagged.append(result)
+        if self.rules == "0.4":
+            self._feared_not_fake(segments, tagged)
         if self.listing_context:
             for index, labels in listing_review_rules(segments, tagged, listing).items():
                 item = tagged[index]
@@ -1650,6 +1655,27 @@ class LexiconHazardTagger:
                     decided = {label: value for label, value in decided.items() if label not in exempt}
                 self._transformer_labels(item, decided)
         return tagged
+
+    @staticmethod
+    def _feared_not_fake(segments: Sequence[str], tagged: list[dict[str, Any]]) -> None:
+        """"akala ko peke, pero original pala": the reviewer feared a fake and found it genuine (rules pc4).
+
+        The segmenter splits at "pero", so the sentence with the keyword cannot see the resolution. A sentence whose only
+        counterfeit evidence is a feared fake, resolved in the same or the next sentence, loses the counterfeit tag.
+        """
+        for index, item in enumerate(tagged):
+            if COUNTERFEIT not in item["tags"]:
+                continue
+            fear = FEARED_FAKE.search(segments[index])
+            if not fear:
+                continue
+            tail = segments[index + 1] if index + 1 < len(segments) else ""
+            if not (FAKE_RESOLVED.search(segments[index][fear.end():]) or FAKE_RESOLVED.search(tail)):
+                continue
+            spans = [term.get("span") for term in item.get("terms") or [] if term.get("category") == COUNTERFEIT and not term.get("excluded")]
+            if all(span and fear.start() <= span[0] and span[1] <= fear.end() for span in spans):
+                item["tags"] = [tag for tag in item["tags"] if tag != COUNTERFEIT]
+                item.setdefault("suppressed", {})[COUNTERFEIT] = "feared_not_fake"
 
     @staticmethod
     def _transformer_labels(item: dict[str, Any], decided: Mapping[str, float]) -> None:

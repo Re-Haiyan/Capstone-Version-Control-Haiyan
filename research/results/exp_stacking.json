@@ -1,0 +1,152 @@
+{
+ "defect": {
+  "cv_f1": 0.746,
+  "C": 0.1,
+  "threshold": 0.75,
+  "historical_test": {
+   "tp": 52,
+   "fp": 26,
+   "fn": 16,
+   "tn": 752,
+   "precision": 0.667,
+   "recall": 0.765,
+   "f1": 0.712,
+   "support": 68,
+   "predicted": 78
+  },
+  "f1_ci95": [
+   0.6,
+   0.79
+  ],
+  "rules_f1": 0.685,
+  "f1_minus_rules_ci95": [
+   -0.045,
+   0.084
+  ],
+  "coef_rule_prob_stars": [
+   2.77,
+   3.96,
+   -1.06
+  ]
+ },
+ "counterfeit": {
+  "cv_f1": 0.914,
+  "C": 0.1,
+  "threshold": 0.4,
+  "historical_test": {
+   "tp": 52,
+   "fp": 3,
+   "fn": 1,
+   "tn": 790,
+   "precision": 0.945,
+   "recall": 0.981,
+   "f1": 0.963,
+   "support": 53,
+   "predicted": 55
+  },
+  "f1_ci95": [
+   0.911,
+   1.0
+  ],
+  "rules_f1": 0.943,
+  "f1_minus_rules_ci95": [
+   0.0,
+   0.06
+  ],
+  "coef_rule_prob_stars": [
+   4.41,
+   3.46,
+   -1.11
+  ]
+ },
+ "safety": {
+  "cv_f1": 0.638,
+  "C": 0.1,
+  "threshold": 0.7,
+  "historical_test": {
+   "tp": 12,
+   "fp": 17,
+   "fn": 4,
+   "tn": 813,
+   "precision": 0.414,
+   "recall": 0.75,
+   "f1": 0.533,
+   "support": 16,
+   "predicted": 29
+  },
+  "f1_ci95": [
+   0.293,
+   0.667
+  ],
+  "rules_f1": 0.533,
+  "f1_minus_rules_ci95": [
+   0.0,
+   0.0
+  ],
+  "coef_rule_prob_stars": [
+   3.9,
+   2.16,
+   -1.71
+  ]
+ },
+ "not_as_described": {
+  "cv_f1": 0.778,
+  "C": 0.1,
+  "threshold": 0.75,
+  "historical_test": {
+   "tp": 47,
+   "fp": 17,
+   "fn": 13,
+   "tn": 769,
+   "precision": 0.734,
+   "recall": 0.783,
+   "f1": 0.758,
+   "support": 60,
+   "predicted": 64
+  },
+  "f1_ci95": [
+   0.656,
+   0.843
+  ],
+  "rules_f1": 0.717,
+  "f1_minus_rules_ci95": [
+   -0.024,
+   0.105
+  ],
+  "coef_rule_prob_stars": [
+   2.91,
+   3.89,
+   -1.19
+  ]
+ },
+ "quality": {
+  "cv_f1": 0.722,
+  "C": 1.0,
+  "threshold": 0.85,
+  "historical_test": {
+   "tp": 51,
+   "fp": 29,
+   "fn": 6,
+   "tn": 760,
+   "precision": 0.637,
+   "recall": 0.895,
+   "f1": 0.745,
+   "support": 57,
+   "predicted": 80
+  },
+  "f1_ci95": [
+   0.496,
+   0.835
+  ],
+  "rules_f1": 0.731,
+  "f1_minus_rules_ci95": [
+   -0.046,
+   0.105
+  ],
+  "coef_rule_prob_stars": [
+   2.85,
+   5.49,
+   -0.75
+  ]
+ }
+}

@@ -38,7 +38,7 @@ P = (P_tfidf + P_emb) / 2
 rows, summary = [], {}
 for k, f in enumerate(FLAGS6):
     labels = Y[:, k]; probs = np.stack([1 - P[:, k], P[:, k]], axis=1)
-    issues = find_label_issues(labels, probs, filter_by="prune_by_noise_rate", return_indices_ranked_by="self_confidence")
+    issues = find_label_issues(labels, probs, filter_by="prune_by_noise_rate", return_indices_ranked_by="self_confidence", n_jobs=1)
     quality = get_label_quality_scores(labels, probs)
     summary[f] = {"positives": int(labels.sum()), "suspected_issues": int(len(issues)),
                   "suspected_positive_labels_that_may_be_negative": int(sum(labels[i] == 1 for i in issues)),

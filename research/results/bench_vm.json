@@ -1,0 +1,26 @@
+{
+ "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+ "cpus": 2,
+ "cold_start_seconds": 2.34,
+ "rss_after_load_mb": 369.7,
+ "rss_before_mb": 12.6,
+ "single_review_ms": {
+  "median": 61.9,
+  "p95": 133.3,
+  "mean": 65.0
+ },
+ "batch_200_seconds": 13.93,
+ "batch_reviews_per_second": 14.4,
+ "peak_rss_mb": 376.9,
+ "rss_end_mb": 377.0,
+ "model_artifacts_mb": {
+  "extra_labels_v1/quality.joblib": 1.25,
+  "extra_labels_v1/not_as_described.joblib": 1.25,
+  "hazard_classifier_v6/safety.joblib": 1.03,
+  "hazard_classifier_v6/defect.joblib": 0.95,
+  "sentiment_onnx/xlmr_firecs_v1/tokenizer.json": 0.67,
+  "sentiment_onnx/xlmr_firecs_v1/model.onnx": 95.15
+ },
+ "model_total_mb": 100.3,
+ "sentiment_calibrator": "module not present in this checkout"
+}

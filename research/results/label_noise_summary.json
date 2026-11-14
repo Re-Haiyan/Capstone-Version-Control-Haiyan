@@ -1,0 +1,38 @@
+{
+ "defect": {
+  "positives": 399,
+  "suspected_issues": 51,
+  "suspected_positive_labels_that_may_be_negative": 43,
+  "suspected_negative_labels_that_may_be_positive": 8
+ },
+ "counterfeit": {
+  "positives": 121,
+  "suspected_issues": 1,
+  "suspected_positive_labels_that_may_be_negative": 0,
+  "suspected_negative_labels_that_may_be_positive": 1
+ },
+ "safety": {
+  "positives": 78,
+  "suspected_issues": 14,
+  "suspected_positive_labels_that_may_be_negative": 14,
+  "suspected_negative_labels_that_may_be_positive": 0
+ },
+ "not_as_described": {
+  "positives": 412,
+  "suspected_issues": 69,
+  "suspected_positive_labels_that_may_be_negative": 39,
+  "suspected_negative_labels_that_may_be_positive": 30
+ },
+ "quality": {
+  "positives": 249,
+  "suspected_issues": 38,
+  "suspected_positive_labels_that_may_be_negative": 30,
+  "suspected_negative_labels_that_may_be_positive": 8
+ },
+ "delivery": {
+  "positives": 272,
+  "suspected_issues": 19,
+  "suspected_positive_labels_that_may_be_negative": 13,
+  "suspected_negative_labels_that_may_be_positive": 6
+ }
+}

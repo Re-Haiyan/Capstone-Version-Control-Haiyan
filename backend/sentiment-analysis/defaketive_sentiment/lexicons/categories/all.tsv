@@ -3,3 +3,4 @@
 (?:\w+\s+){0,2}(?:ma\s?)?(?:low\s?bat\w*|lobat\w*)(?:\s+\w+){0,2}|(?:\w+\s+){0,2}mabilis\s+(?:ma)?ubos(?:\s+\w+){0,2}	defect		fast battery drain is a performance remark, not a defect, in every kind of product	
 (?:\w+\s+){0,2}burn\w*(?:\s+\w+){0,2}	safety		burning calories or a burn test is not a fire hazard	(?:calorie|calories|fat|test|workout|exercise|steps)
 (?:\w+\s+){0,2}(?:itch\w*|makati|kati|nangati|rash\w*)(?:\s+\w+){0,2}	safety		what the product treats, not a reaction to it	(?:relieve|relieves|stops|stop|treat|treats|cures|cure|soothes|nakakawala|nawala|pampawala|pang)
+(?:\w+\s+){0,3}(?:peke|fake|pekeng|scam)(?:\s+\w+){0,6}	counterfeit		'akala ko peke pero original pala': the reviewer feared a fake and found it genuine	(?:legit|original|totoo|authentic|genuine)\s+pala|(?:pero|but|though|kaso)\s+(?:\w+\s+)?(?:original|legit|totoo|authentic|genuine)

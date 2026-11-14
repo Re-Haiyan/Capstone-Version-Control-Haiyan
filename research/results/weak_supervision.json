@@ -1,0 +1,2063 @@
+{
+ "labeling_functions": 250,
+ "per_lf": [
+  {
+   "lf": "group_beauty_health.add.tsv#26",
+   "flag": "counterfeit",
+   "coverage": 3,
+   "precision": 1.0,
+   "recall": 0.025
+  },
+  {
+   "lf": "group_fashion.add.tsv#23",
+   "flag": "counterfeit",
+   "coverage": 3,
+   "precision": 1.0,
+   "recall": 0.025
+  },
+  {
+   "lf": "group_office_media.add.tsv#10",
+   "flag": "defect",
+   "coverage": 60,
+   "precision": 0.383,
+   "recall": 0.058
+  },
+  {
+   "lf": "all.add.tsv#15",
+   "flag": "defect",
+   "coverage": 51,
+   "precision": 0.765,
+   "recall": 0.098
+  },
+  {
+   "lf": "all.add.tsv#14",
+   "flag": "defect",
+   "coverage": 36,
+   "precision": 0.917,
+   "recall": 0.083
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#15",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#19",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#19",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_fashion.add.tsv#17",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#18",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_home_living.add.tsv#17",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_office_media.add.tsv#26",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_pets.add.tsv#15",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#13",
+   "flag": "defect",
+   "coverage": 30,
+   "precision": 0.7,
+   "recall": 0.053
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#18",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#22",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#22",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_fashion.add.tsv#20",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#21",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_home_living.add.tsv#20",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_office_media.add.tsv#13",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_office_media.add.tsv#29",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_pets.add.tsv#18",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#16",
+   "flag": "defect",
+   "coverage": 28,
+   "precision": 1.0,
+   "recall": 0.07
+  },
+  {
+   "lf": "all.add.tsv#13",
+   "flag": "defect",
+   "coverage": 24,
+   "precision": 0.792,
+   "recall": 0.048
+  },
+  {
+   "lf": "all.add.tsv#16",
+   "flag": "defect",
+   "coverage": 20,
+   "precision": 0.9,
+   "recall": 0.045
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#17",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#21",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#21",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_fashion.add.tsv#19",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#20",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_home_living.add.tsv#19",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_office_media.add.tsv#11",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.8,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_office_media.add.tsv#12",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_office_media.add.tsv#28",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_pets.add.tsv#17",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#15",
+   "flag": "defect",
+   "coverage": 15,
+   "precision": 0.333,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#16",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#20",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#20",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_fashion.add.tsv#18",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#5",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.929,
+   "recall": 0.033
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#19",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_home_living.add.tsv#18",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_office_media.add.tsv#27",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_pets.add.tsv#16",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#14",
+   "flag": "defect",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.03
+  },
+  {
+   "lf": "medical_devices.add.tsv#0",
+   "flag": "defect",
+   "coverage": 5,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_digital_services.add.tsv#0",
+   "flag": "defect",
+   "coverage": 3,
+   "precision": 0.667,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#19",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#23",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#23",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_digital_services.add.tsv#1",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_fashion.add.tsv#21",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#22",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_home_living.add.tsv#21",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_office_media.add.tsv#14",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_office_media.add.tsv#30",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_pets.add.tsv#19",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#17",
+   "flag": "defect",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "all.add.tsv#0",
+   "flag": "not_as_described",
+   "coverage": 180,
+   "precision": 0.928,
+   "recall": 0.405
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#4",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_fashion.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_home_living.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_office_media.add.tsv#0",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_office_media.add.tsv#15",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_pets.add.tsv#4",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#2",
+   "flag": "not_as_described",
+   "coverage": 83,
+   "precision": 0.988,
+   "recall": 0.199
+  },
+  {
+   "lf": "all.add.tsv#1",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.9,
+   "recall": 0.066
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_fashion.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_home_living.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_office_media.add.tsv#1",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_office_media.add.tsv#16",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_pets.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#3",
+   "flag": "not_as_described",
+   "coverage": 30,
+   "precision": 0.967,
+   "recall": 0.07
+  },
+  {
+   "lf": "all.add.tsv#4",
+   "flag": "not_as_described",
+   "coverage": 29,
+   "precision": 0.828,
+   "recall": 0.058
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_fashion.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_home_living.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_office_media.add.tsv#2",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_office_media.add.tsv#17",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_pets.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#4",
+   "flag": "not_as_described",
+   "coverage": 23,
+   "precision": 0.87,
+   "recall": 0.049
+  },
+  {
+   "lf": "all.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 22,
+   "precision": 0.955,
+   "recall": 0.051
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_fashion.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_home_living.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_office_media.add.tsv#3",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_office_media.add.tsv#18",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_pets.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 19,
+   "precision": 0.947,
+   "recall": 0.044
+  },
+  {
+   "lf": "all.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 18,
+   "precision": 0.944,
+   "recall": 0.041
+  },
+  {
+   "lf": "all.add.tsv#3",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#22",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#26",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#29",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_fashion.add.tsv#29",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#25",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_home_living.add.tsv#26",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_office_media.add.tsv#33",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_pets.add.tsv#22",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#22",
+   "flag": "not_as_described",
+   "coverage": 14,
+   "precision": 0.857,
+   "recall": 0.029
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#23",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#27",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#30",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_fashion.add.tsv#30",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#26",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_home_living.add.tsv#27",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_office_media.add.tsv#34",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_pets.add.tsv#23",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#23",
+   "flag": "not_as_described",
+   "coverage": 12,
+   "precision": 0.917,
+   "recall": 0.027
+  },
+  {
+   "lf": "all.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#15",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#15",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_fashion.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#14",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_home_living.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_office_media.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_office_media.add.tsv#22",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_pets.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 11,
+   "precision": 1.0,
+   "recall": 0.027
+  },
+  {
+   "lf": "all.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#21",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#25",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#28",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_fashion.add.tsv#28",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#24",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_home_living.add.tsv#25",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_office_media.add.tsv#32",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_pets.add.tsv#21",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#21",
+   "flag": "not_as_described",
+   "coverage": 8,
+   "precision": 1.0,
+   "recall": 0.019
+  },
+  {
+   "lf": "all.add.tsv#2",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 1.0,
+   "recall": 0.017
+  },
+  {
+   "lf": "all.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.714,
+   "recall": 0.012
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#14",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#18",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#18",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_fashion.add.tsv#0",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.857,
+   "recall": 0.015
+  },
+  {
+   "lf": "group_fashion.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.714,
+   "recall": 0.012
+  },
+  {
+   "lf": "group_fashion.add.tsv#16",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#17",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_home_living.add.tsv#0",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.857,
+   "recall": 0.015
+  },
+  {
+   "lf": "group_home_living.add.tsv#16",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_office_media.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_office_media.add.tsv#25",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_pets.add.tsv#14",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 7,
+   "precision": 0.429,
+   "recall": 0.007
+  },
+  {
+   "lf": "all.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 1.0,
+   "recall": 0.015
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#20",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#24",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#27",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_fashion.add.tsv#27",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#23",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_home_living.add.tsv#24",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_office_media.add.tsv#31",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_pets.add.tsv#20",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#20",
+   "flag": "not_as_described",
+   "coverage": 6,
+   "precision": 0.667,
+   "recall": 0.01
+  },
+  {
+   "lf": "group_fashion.add.tsv#25",
+   "flag": "not_as_described",
+   "coverage": 3,
+   "precision": 0.333,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_fashion.add.tsv#26",
+   "flag": "not_as_described",
+   "coverage": 3,
+   "precision": 1.0,
+   "recall": 0.007
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 3,
+   "precision": 1.0,
+   "recall": 0.007
+  },
+  {
+   "lf": "all.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "all.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#14",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#14",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_fashion.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_home_living.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_office_media.add.tsv#5",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_office_media.add.tsv#21",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_pets.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.005
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_automotive_tools.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#17",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#17",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_fashion.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_fashion.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_fashion.add.tsv#15",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_fashion.add.tsv#24",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#12",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#16",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_home_living.add.tsv#10",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_home_living.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_home_living.add.tsv#15",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_office_media.add.tsv#4",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_office_media.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_office_media.add.tsv#19",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_office_media.add.tsv#20",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_office_media.add.tsv#24",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_pets.add.tsv#8",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_pets.add.tsv#9",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_pets.add.tsv#13",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#6",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#7",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#11",
+   "flag": "not_as_described",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.002
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#24",
+   "flag": "quality",
+   "coverage": 54,
+   "precision": 0.13,
+   "recall": 0.028
+  },
+  {
+   "lf": "group_home_living.add.tsv#22",
+   "flag": "quality",
+   "coverage": 54,
+   "precision": 0.13,
+   "recall": 0.028
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#18",
+   "flag": "quality",
+   "coverage": 54,
+   "precision": 0.13,
+   "recall": 0.028
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#25",
+   "flag": "quality",
+   "coverage": 19,
+   "precision": 0.263,
+   "recall": 0.02
+  },
+  {
+   "lf": "group_home_living.add.tsv#23",
+   "flag": "quality",
+   "coverage": 13,
+   "precision": 0.769,
+   "recall": 0.04
+  },
+  {
+   "lf": "group_fashion.add.tsv#22",
+   "flag": "quality",
+   "coverage": 9,
+   "precision": 0.889,
+   "recall": 0.032
+  },
+  {
+   "lf": "group_home_living.add.tsv#2",
+   "flag": "quality",
+   "coverage": 3,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#19",
+   "flag": "quality",
+   "coverage": 2,
+   "precision": 1.0,
+   "recall": 0.008
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#6",
+   "flag": "safety",
+   "coverage": 27,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_home_living.add.tsv#4",
+   "flag": "safety",
+   "coverage": 27,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#7",
+   "flag": "safety",
+   "coverage": 26,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#1",
+   "flag": "safety",
+   "coverage": 26,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#0",
+   "flag": "safety",
+   "coverage": 24,
+   "precision": 0.083,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#0",
+   "flag": "safety",
+   "coverage": 24,
+   "precision": 0.083,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_fashion.add.tsv#2",
+   "flag": "safety",
+   "coverage": 14,
+   "precision": 0.357,
+   "recall": 0.064
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#5",
+   "flag": "safety",
+   "coverage": 13,
+   "precision": 0.308,
+   "recall": 0.051
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#1",
+   "flag": "safety",
+   "coverage": 12,
+   "precision": 0.583,
+   "recall": 0.09
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#7",
+   "flag": "safety",
+   "coverage": 8,
+   "precision": 0.25,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#0",
+   "flag": "safety",
+   "coverage": 8,
+   "precision": 0.25,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#3",
+   "flag": "safety",
+   "coverage": 8,
+   "precision": 0.5,
+   "recall": 0.051
+  },
+  {
+   "lf": "group_pets.add.tsv#0",
+   "flag": "safety",
+   "coverage": 8,
+   "precision": 0.25,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_pets.add.tsv#1",
+   "flag": "safety",
+   "coverage": 7,
+   "precision": 0.571,
+   "recall": 0.051
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#6",
+   "flag": "safety",
+   "coverage": 5,
+   "precision": 0.4,
+   "recall": 0.026
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#1",
+   "flag": "safety",
+   "coverage": 4,
+   "precision": 0.25,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#1",
+   "flag": "safety",
+   "coverage": 4,
+   "precision": 0.25,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#5",
+   "flag": "safety",
+   "coverage": 3,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#2",
+   "flag": "safety",
+   "coverage": 3,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_pets.add.tsv#2",
+   "flag": "safety",
+   "coverage": 2,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_baby_kids_toys.add.tsv#3",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#3",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_beauty_health.add.tsv#4",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_food_grocery.add.tsv#4",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_home_living.add.tsv#3",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  {
+   "lf": "group_pets.add.tsv#3",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 1.0,
+   "recall": 0.013
+  },
+  {
+   "lf": "group_sports_outdoor.add.tsv#0",
+   "flag": "safety",
+   "coverage": 1,
+   "precision": 0.0,
+   "recall": 0.0
+  }
+ ],
+ "praise_lf_negative_precision": {
+  "defect": 0.996,
+  "counterfeit": 1.0,
+  "safety": 0.991,
+  "not_as_described": 0.977,
+  "quality": 0.948
+ },
+ "correlated_pairs_jaccard>=0.8": [
+  {
+   "a": "group_beauty_health.add.tsv#26",
+   "b": "group_fashion.add.tsv#23",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_baby_kids_toys.add.tsv#19",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_beauty_health.add.tsv#19",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_fashion.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_food_grocery.add.tsv#18",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_home_living.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#15",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_beauty_health.add.tsv#19",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_fashion.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_food_grocery.add.tsv#18",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_home_living.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_baby_kids_toys.add.tsv#19",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_fashion.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_food_grocery.add.tsv#18",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_home_living.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_beauty_health.add.tsv#19",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_fashion.add.tsv#17",
+   "b": "group_food_grocery.add.tsv#18",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_fashion.add.tsv#17",
+   "b": "group_home_living.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_fashion.add.tsv#17",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_fashion.add.tsv#17",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_fashion.add.tsv#17",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_food_grocery.add.tsv#18",
+   "b": "group_home_living.add.tsv#17",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_food_grocery.add.tsv#18",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_food_grocery.add.tsv#18",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_food_grocery.add.tsv#18",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_home_living.add.tsv#17",
+   "b": "group_office_media.add.tsv#26",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_home_living.add.tsv#17",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_home_living.add.tsv#17",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_office_media.add.tsv#26",
+   "b": "group_pets.add.tsv#15",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_office_media.add.tsv#26",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_pets.add.tsv#15",
+   "b": "group_sports_outdoor.add.tsv#13",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#18",
+   "b": "group_baby_kids_toys.add.tsv#22",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#18",
+   "b": "group_beauty_health.add.tsv#22",
+   "jaccard": 1.0
+  },
+  {
+   "a": "group_automotive_tools.add.tsv#18",
+   "b": "group_fashion.add.tsv#20",
+   "jaccard": 1.0
+  }
+ ],
+ "n_correlated_pairs": 816,
+ "praise_conflicts_per_flag": {
+  "defect": 2,
+  "counterfeit": 0,
+  "safety": 12,
+  "not_as_described": 57,
+  "quality": 7
+ },
+ "weighted_vote_vs_gold_on_train": {
+  "defect": {
+   "tp": 146,
+   "fp": 36,
+   "fn": 253,
+   "tn": 3511,
+   "precision": 0.802,
+   "recall": 0.366,
+   "f1": 0.503,
+   "support": 399,
+   "predicted": 182
+  },
+  "counterfeit": {
+   "tp": 3,
+   "fp": 0,
+   "fn": 118,
+   "tn": 3825,
+   "precision": 1.0,
+   "recall": 0.025,
+   "f1": 0.048,
+   "support": 121,
+   "predicted": 3
+  },
+  "safety": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 77,
+   "tn": 3868,
+   "precision": 1.0,
+   "recall": 0.013,
+   "f1": 0.025,
+   "support": 78,
+   "predicted": 1
+  },
+  "not_as_described": {
+   "tp": 288,
+   "fp": 31,
+   "fn": 124,
+   "tn": 3503,
+   "precision": 0.903,
+   "recall": 0.699,
+   "f1": 0.788,
+   "support": 412,
+   "predicted": 319
+  },
+  "quality": {
+   "tp": 15,
+   "fp": 4,
+   "fn": 234,
+   "tn": 3693,
+   "precision": 0.789,
+   "recall": 0.06,
+   "f1": 0.112,
+   "support": 249,
+   "predicted": 19
+  }
+ },
+ "abstain_rate_on_train": 0.559,
+ "pool_decisive_rows": 4277,
+ "experiment_cv_macro_f1": {
+  "gold_only": {
+   "macro_f1": 0.6253,
+   "per_flag": [
+    0.703,
+    0.806,
+    0.271,
+    0.69,
+    0.658
+   ]
+  },
+  "gold+weak_500": {
+   "macro_f1": 0.6202,
+   "per_flag": [
+    0.697,
+    0.818,
+    0.24,
+    0.693,
+    0.653
+   ]
+  },
+  "gold+weak_2000": {
+   "macro_f1": 0.6234,
+   "per_flag": [
+    0.711,
+    0.818,
+    0.228,
+    0.7,
+    0.661
+   ]
+  }
+ }
+}
