@@ -1,0 +1,42 @@
+Some weights of XLMRobertaForSequenceClassification were not initialized from the model checkpoint at cardiffnlp/twitter-xlm-roberta-base-sentiment and are newly initialized because the shapes did not match:
+- classifier.out_proj.weight: found shape torch.Size([3, 768]) in the checkpoint and torch.Size([5, 768]) in the model instantiated
+- classifier.out_proj.bias: found shape torch.Size([3]) in the checkpoint and torch.Size([5]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+train 3328  validation 377  test 766
+train positives: {'defect': np.int64(324), 'counterfeit': np.int64(121), 'safety': np.int64(65), 'not_as_described': np.int64(370), 'quality': np.int64(215)}
+{'epoch': 1, 'loss': 0.646, 'validation_macro_f1': 0.433, 'minutes': 21.0}
+{'epoch': 2, 'loss': 0.4018, 'validation_macro_f1': 0.575, 'minutes': 41.7}
+{'epoch': 3, 'loss': 0.2822, 'validation_macro_f1': 0.666, 'minutes': 62.4}
+{'epoch': 4, 'loss': 0.227, 'validation_macro_f1': 0.646, 'minutes': 83.2}
+{
+  "defect": {
+    "positives": 60,
+    "precision": 0.507,
+    "recall": 0.617,
+    "f1": 0.556
+  },
+  "counterfeit": {
+    "positives": 52,
+    "precision": 0.923,
+    "recall": 0.692,
+    "f1": 0.791
+  },
+  "safety": {
+    "positives": 12,
+    "precision": 0.171,
+    "recall": 0.5,
+    "f1": 0.255
+  },
+  "not_as_described": {
+    "positives": 60,
+    "precision": 0.562,
+    "recall": 0.75,
+    "f1": 0.643
+  },
+  "quality": {
+    "positives": 52,
+    "precision": 0.635,
+    "recall": 0.769,
+    "f1": 0.696
+  }
+}
