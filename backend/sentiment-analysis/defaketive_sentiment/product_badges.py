@@ -725,6 +725,7 @@ class ProductBadgeAggregator:
         product_type: str | None = None,
         coverage: Mapping[str, Any] | None = None,
         reviews_unreliable: bool = False,
+        _shadow_pass: bool = False,
     ) -> dict[str, Any]:
         records = [record for record in analyses if isinstance(record, Mapping)]
         usable = len(records)
@@ -825,8 +826,30 @@ class ProductBadgeAggregator:
                 **({"sentiment_shares": shadow_shares} if shadow_shares else {}),
             }}
 
+        # Opt-in shadow of the evidence policy (DEFAKETIVE_EVIDENCE_POLICY=shadow): the verdict and flag counts the product would
+        # have if flags without supporting words were not counted, beside the real ones. Present only when something would be dropped.
+        evidence_shadow: dict[str, Any] = {}
+        if not _shadow_pass and any(record.get("review_evidence_would_drop") for record in records):
+            from .evidence import strip_flags
+
+            stripped = [strip_flags(record, list(record.get("review_evidence_would_drop") or []), EXTRA_TAGS) for record in records]
+            again = self.summarize(stripped, reviews_available=reviews_available, product_type=product_type, coverage=coverage, reviews_unreliable=reviews_unreliable, _shadow_pass=True)
+            dropped_counts: Counter = Counter()
+            for record in records:
+                for item in record.get("review_evidence_would_drop") or []:
+                    dropped_counts[item["flag"]] += 1
+            evidence_shadow = {"shadow_evidence_policy": {
+                "verdict_state": (again.get("verdict") or {}).get("state"),
+                "flagged_reviews": {name: flag.get("flagged_reviews") for name, flag in (again.get("flags") or {}).items()},
+                "reports": {name: (item or {}).get("mentions") if isinstance(item, dict) else item for name, item in (again.get("reports") or {}).items()},
+                "safety_flagged_reviews": (again.get("safety") or {}).get("flagged_reviews"),
+                "reviews_with_a_dropped_flag": sum(1 for record in records if record.get("review_evidence_would_drop")),
+                "dropped_flags": dict(dropped_counts),
+            }}
+
         return {
             **shadow_block,
+            **evidence_shadow,
             "schema_version": SCHEMA_VERSION,
             "taxonomy_version": taxonomy.TAXONOMY_VERSION,
             "parameters_version": self.parameters.get("version"),

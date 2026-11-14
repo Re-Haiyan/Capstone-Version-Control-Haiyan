@@ -1,0 +1,86 @@
+{
+ "defect|train": {
+  "would_drop": 68,
+  "of_which_team_labelled_true": 4,
+  "triage_(count, labelled_true)": {
+   "possible_missed_evidence": [
+    18,
+    3
+   ],
+   "denial_or_praise": [
+    4,
+    1
+   ],
+   "no_specific_problem_stated": [
+    28,
+    0
+   ],
+   "complaint_about_something_else": [
+    18,
+    0
+   ]
+  }
+ },
+ "defect|test": {
+  "would_drop": 18,
+  "of_which_team_labelled_true": 0,
+  "triage_(count, labelled_true)": {
+   "complaint_about_something_else": [
+    6,
+    0
+   ],
+   "possible_missed_evidence": [
+    3,
+    0
+   ],
+   "no_specific_problem_stated": [
+    7,
+    0
+   ],
+   "denial_or_praise": [
+    2,
+    0
+   ]
+  }
+ },
+ "quality|train": {
+  "would_drop": 15,
+  "of_which_team_labelled_true": 3,
+  "triage_(count, labelled_true)": {
+   "-": [
+    15,
+    3
+   ]
+  }
+ },
+ "quality|test": {
+  "would_drop": 3,
+  "of_which_team_labelled_true": 0,
+  "triage_(count, labelled_true)": {
+   "-": [
+    3,
+    0
+   ]
+  }
+ },
+ "not_as_described|train": {
+  "would_drop": 2,
+  "of_which_team_labelled_true": 0,
+  "triage_(count, labelled_true)": {
+   "-": [
+    2,
+    0
+   ]
+  }
+ },
+ "not_as_described|test": {
+  "would_drop": 1,
+  "of_which_team_labelled_true": 0,
+  "triage_(count, labelled_true)": {
+   "-": [
+    1,
+    0
+   ]
+  }
+ }
+}

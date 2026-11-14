@@ -118,11 +118,52 @@ def evidence_for_review(
 # than an unverified one, and counterfeit has no model-only cases.
 POLICY_ENV = "DEFAKETIVE_EVIDENCE_POLICY"
 POLICY_REQUIRE = "require"
+POLICY_SHADOW = "shadow"
 DROPPABLE = ("defect", "quality", "not_as_described")
 
 
 def policy() -> str:
     return os.environ.get(POLICY_ENV, "keep").strip().lower() or "keep"
+
+
+def droppable(evidence: Mapping[str, Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """The flags the 'require' policy would not count: model-only defect, quality and not-as-advertised (never safety)."""
+    return [
+        {"flag": flag, "reason": "model_only_no_supporting_words", "sentences": list(entry.get("sentences") or []), "model_score": entry.get("model_score")}
+        for flag, entry in evidence.items()
+        if entry.get("state") == MODEL_ONLY and flag in DROPPABLE
+    ]
+
+
+def would_drop(evidence: Mapping[str, Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """Shadow mode: what 'require' would drop, reported without dropping anything. Empty unless the policy is 'shadow'."""
+    return droppable(evidence) if policy() == POLICY_SHADOW else []
+
+
+def strip_flags(record: Mapping[str, Any], dropped: list[dict[str, Any]], extra_order: Sequence[str]) -> dict[str, Any]:
+    """A copy of an analysis with the dropped flags removed from the sentences it names, as 'require' would have left it."""
+    import copy
+
+    clone = copy.deepcopy(dict(record))
+    by_sentence: dict[int, set[str]] = {}
+    for item in dropped:
+        for index in item.get("sentences") or []:
+            by_sentence.setdefault(int(index), set()).add(item["flag"])
+    for position, sentence in enumerate(clone.get("sentences") or []):
+        gone = by_sentence.get(int(sentence.get("index", position)), set())
+        if not gone:
+            continue
+        sentence["tags"] = [tag for tag in sentence.get("tags") or () if tag not in gone]
+        if "extra_tags" in sentence:
+            sentence["extra_tags"] = [tag for tag in sentence.get("extra_tags") or () if tag not in gone]
+        if "high_confidence" in sentence:
+            sentence["high_confidence"] = {k: v for k, v in (sentence.get("high_confidence") or {}).items() if k not in gone}
+    sentences = clone.get("sentences") or []
+    clone["review_tags"] = sorted({tag for s in sentences for tag in s.get("tags") or ()})
+    if "review_extra_tags" in clone:
+        clone["review_extra_tags"] = [tag for tag in extra_order if any(tag in (s.get("extra_tags") or ()) for s in sentences)]
+    clone.pop("review_evidence_would_drop", None)
+    return clone
 
 
 def apply_policy(
@@ -134,11 +175,7 @@ def apply_policy(
     """Remove model-only defect, quality and not-as-advertised flags when the policy is 'require'. Returns the new tags and the dropped list."""
     if policy() != POLICY_REQUIRE:
         return review_tags, extra_tags, []
-    dropped = [
-        {"flag": flag, "reason": "model_only_no_supporting_words", "sentences": list(entry.get("sentences") or []), "model_score": entry.get("model_score")}
-        for flag, entry in evidence.items()
-        if entry.get("state") == MODEL_ONLY and flag in DROPPABLE
-    ]
+    dropped = droppable(evidence)
     if not dropped:
         return review_tags, extra_tags, []
     gone = {item["flag"] for item in dropped}

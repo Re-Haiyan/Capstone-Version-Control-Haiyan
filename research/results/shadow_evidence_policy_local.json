@@ -1,0 +1,1764 @@
+{
+ "summary": {
+  "products": 60,
+  "errors": 0,
+  "platforms": {
+   "lazada": 60
+  },
+  "products_with_something_to_drop": 54,
+  "verdict_state_changed": 3,
+  "conclusion_card_changed": 3,
+  "shadow_block_equals_the_require_result": "54 of 54",
+  "safety_counts_changed": 0,
+  "state_transitions": {
+   "possible_counterfeit_or_defect -> no_warning_signs": 3
+  },
+  "decision_transitions": {
+   "caution -> mixed": 2,
+   "caution -> recommended": 1
+  },
+  "defect_flagged_reviews_total": [
+   1792,
+   1151
+  ]
+ },
+ "products": [
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5138982361.html",
+   "platform": "lazada",
+   "name": "XIUXIU 30W PD Fast Type C Charger compatible For i",
+   "comments": 71,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 8
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4365189470.html",
+   "platform": "lazada",
+   "name": "Mouse Wireless for laptop Bluetooth Silent Tablet ",
+   "comments": 80,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 9
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5166282734.html",
+   "platform": "lazada",
+   "name": "Jiditech Laptop Stand 360\u00b0 With Fan and Tablet Hol",
+   "comments": 65,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4449705580.html",
+   "platform": "lazada",
+   "name": "Logitech M330 wireless mouse silent mouse free mou",
+   "comments": 130,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 14,
+    "defect": 28
+   },
+   "flags_require": {
+    "counterfeit": 14,
+    "defect": 18
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 14,
+    "defect": 18
+   },
+   "dropped": {
+    "defect": 10
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5099682126.html",
+   "platform": "lazada",
+   "name": "Qualcomm 3.0 & 35W Accessories Orig 4USB Color Wal",
+   "comments": 68,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "no_warning_signs",
+   "decision_keep": "caution",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 11
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 5
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5158160354.html",
+   "platform": "lazada",
+   "name": "Samsung Watch 8 Bluetooth",
+   "comments": 62,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5184191214.html",
+   "platform": "lazada",
+   "name": "\u30103C Certification\u3011Vention 45W 20000mAh Powerbank F",
+   "comments": 89,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 11
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "safety_keep": 2,
+   "safety_require": 2,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 6
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5249925664-s31137449814.html",
+   "platform": "lazada",
+   "name": "Y12 Pro Motorcycle Helmet Bluetooth Intercom Dista",
+   "comments": 65,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 8
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5022661183.html",
+   "platform": "lazada",
+   "name": "Outdoor Magnetic Bluetooth Speaker G200 Wireless M",
+   "comments": 76,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 9
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 6
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 3,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4350507483.html",
+   "platform": "lazada",
+   "name": "DAFA Original Type C Charger Set 480w 240w 120W ch",
+   "comments": 296,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 8,
+    "defect": 127
+   },
+   "flags_require": {
+    "counterfeit": 8,
+    "defect": 58
+   },
+   "safety_keep": 14,
+   "safety_require": 14,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 8,
+    "defect": 58
+   },
+   "dropped": {
+    "defect": 69,
+    "not_as_described": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3748593559.html",
+   "platform": "lazada",
+   "name": "Portable Wireless Bluetooth TWS PRO 6 Earphone Wit",
+   "comments": 300,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 105
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 67
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 67
+   },
+   "dropped": {
+    "defect": 38,
+    "quality": 7
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4442695519.html",
+   "platform": "lazada",
+   "name": "M25 Wireless Bluetooth Earphone with Emergency Pow",
+   "comments": 109,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 29
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 25
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 25
+   },
+   "dropped": {
+    "defect": 4
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3626751806-s19094066174.html",
+   "platform": "lazada",
+   "name": "V380 PRO Q16S Smart Camera Bulb 1080P HD Night Vis",
+   "comments": 212,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 56
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 30
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 30
+   },
+   "dropped": {
+    "defect": 26,
+    "not_as_described": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4578043495-s26385163838.html",
+   "platform": "lazada",
+   "name": "100W 3 in 1 Super Charging Cable 6A Type C Fast Ch",
+   "comments": 146,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 52
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 25
+   },
+   "safety_keep": 2,
+   "safety_require": 2,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 25
+   },
+   "dropped": {
+    "defect": 27
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5065504475.html",
+   "platform": "lazada",
+   "name": "[NEW] Sony WH-1000XM6 / WH 1000XM6 Wireless Best N",
+   "comments": 64,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4870327065.html",
+   "platform": "lazada",
+   "name": "UGREEN 20000mAh Powerbank 22.5W PD20W 74Wh Fast Ch",
+   "comments": 74,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "dropped": {
+    "defect": 5
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3081203554.html",
+   "platform": "lazada",
+   "name": "FIREWOLF Mice Wireless Mouse 2.4GHz USB Optical Mo",
+   "comments": 102,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 27
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 18
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 18
+   },
+   "dropped": {
+    "defect": 9,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5077555904.html",
+   "platform": "lazada",
+   "name": "Original GT Bluetooth Call Smart Digital Watch for",
+   "comments": 55,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "possible_counterfeit_or_defect",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 21
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 13
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_counterfeit_or_defect",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 13
+   },
+   "dropped": {
+    "defect": 8
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4471484698-s25457827080.html",
+   "platform": "lazada",
+   "name": "K12 Mini High End Wireless Audio Mini Home With 1 ",
+   "comments": 202,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "no_warning_signs",
+   "decision_keep": "caution",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 82
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 71
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 71
+   },
+   "dropped": {
+    "defect": 11,
+    "quality": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5346643993.html",
+   "platform": "lazada",
+   "name": "Infinix 33W GaN Fast Charger | Two-in-one USB-C Po",
+   "comments": 66,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 8
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 3
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 3
+   },
+   "dropped": {
+    "defect": 5
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i1484376710.html",
+   "platform": "lazada",
+   "name": "2 in 1 Universal Dual Ports USB Wall Charger Adapt",
+   "comments": 81,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 11
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 10
+   },
+   "safety_keep": 4,
+   "safety_require": 4,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 10
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4510212749.html",
+   "platform": "lazada",
+   "name": "2026 Original H9 Max 2.03\"HD Screen Smart Watch Me",
+   "comments": 94,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 8
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4975131258.html",
+   "platform": "lazada",
+   "name": "BLUESKY 10000mah Magnetic Powerbank Original 20W f",
+   "comments": 120,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 37
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 14
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 14
+   },
+   "dropped": {
+    "defect": 23
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4825404229.html",
+   "platform": "lazada",
+   "name": "Zeus K-55 RGB Gaming Keyboard 104 Keys Backlight W",
+   "comments": 59,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i509504028.html",
+   "platform": "lazada",
+   "name": "2.4GHz Wireless Optical Gaming Mouse Game Wireless",
+   "comments": 174,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 47
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 33
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 33
+   },
+   "dropped": {
+    "defect": 14,
+    "quality": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4483385251.html",
+   "platform": "lazada",
+   "name": "ATO 2.4G Bluetooth Wireless Mouse Rechargeable Blu",
+   "comments": 68,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 1,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i2313989346-s10483987214.html",
+   "platform": "lazada",
+   "name": "Realme RAM-130 20000mAh Universal Compatibility Po",
+   "comments": 293,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 11,
+    "defect": 81
+   },
+   "flags_require": {
+    "counterfeit": 11,
+    "defect": 35
+   },
+   "safety_keep": 2,
+   "safety_require": 2,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 11,
+    "defect": 35
+   },
+   "dropped": {
+    "defect": 46,
+    "not_as_described": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4495459414-s25675568835.html",
+   "platform": "lazada",
+   "name": "Buy 1 take 1 YS SAMSG Universal Headset with Micro",
+   "comments": 127,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 35
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 26
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 26
+   },
+   "dropped": {
+    "defect": 9,
+    "quality": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4382617587-s31891484844.html",
+   "platform": "lazada",
+   "name": "Original LCD For Infinix Smart 8 / Smart 8 HD / Sm",
+   "comments": 96,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 20
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 17
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 17
+   },
+   "dropped": {
+    "defect": 3,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4584110073-s26378214035.html",
+   "platform": "lazada",
+   "name": "Essager 2.5W Apple Watch Wireless Chargers Fast Ch",
+   "comments": 92,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 18
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 13
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 13
+   },
+   "dropped": {
+    "defect": 5
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i2310520201-s24895520153.html",
+   "platform": "lazada",
+   "name": "UGREEN 20000mAh 25000mAh Powerbank PD 145W Fast Ch",
+   "comments": 227,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 84
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 37
+   },
+   "safety_keep": 5,
+   "safety_require": 5,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 37
+   },
+   "dropped": {
+    "defect": 47,
+    "not_as_described": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3987174956.html",
+   "platform": "lazada",
+   "name": "FIREWOLF K82 mixed ledlight 94 key contrast color ",
+   "comments": 210,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 34
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 25
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 25
+   },
+   "dropped": {
+    "defect": 9,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/essager-10w-usb-charger-portable-dual-usb-ports-travel-charger-adapter-wall-charger-for-huawei-xiaomi-phone-charging-for-iphone-samsung-i3408401105-s17423442017.html",
+   "platform": "lazada",
+   "name": "Essager 10W USB Charger Portable Dual USB Ports Tr",
+   "comments": 88,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 14
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "safety_keep": 4,
+   "safety_require": 4,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 9
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i2222189713.html",
+   "platform": "lazada",
+   "name": "\u3010\ud835\udc03\ud835\udc2e\ud835\udc1a\ud835\udc25 \ud835\udc0c\ud835\udc28\ud835\udc1d\ud835\udc1e\u3011Wireless Bluetooth Mouse Rechargeable M",
+   "comments": 240,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 78
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 57
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 57
+   },
+   "dropped": {
+    "defect": 21,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4558170277.html",
+   "platform": "lazada",
+   "name": "\u30103Years Warranty\u3011Wireless Bluetooth Microphone Wit",
+   "comments": 76,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 10
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 5,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4438825585-s28647533233.html",
+   "platform": "lazada",
+   "name": "DANYCASE Stylus Pen 3 in 1 Universal Pencil for Mo",
+   "comments": 91,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4535743775.html",
+   "platform": "lazada",
+   "name": "Zeus 35 Keys One-handed Gaming keyboard Ergonomic ",
+   "comments": 65,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4154195074.html",
+   "platform": "lazada",
+   "name": "Pro6 Bluetooth Earbuds with Touch Control, Waterpr",
+   "comments": 85,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 19
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 14
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 14
+   },
+   "dropped": {
+    "defect": 5,
+    "quality": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3982729270.html",
+   "platform": "lazada",
+   "name": "Gamer 2.4GHz Wireless Mouse Office Mice 2000DPI Ba",
+   "comments": 68,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 5
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5298146786.html",
+   "platform": "lazada",
+   "name": "UGREEN 65W USB-C & USB-A Robot GaN Charger Fast PD",
+   "comments": 61,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "dropped": {
+    "defect": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5246060610-s31099995054.html",
+   "platform": "lazada",
+   "name": "Type C Fast Charging Cable 120W Super Charge Angle",
+   "comments": 105,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 7
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i1120920366-s3883420275.html",
+   "platform": "lazada",
+   "name": "Vention Cat 6 Ethernet Cable Lan Cable 20 10 Meter",
+   "comments": 152,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 17
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 10
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 10
+   },
+   "dropped": {
+    "defect": 7
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5038689113.html",
+   "platform": "lazada",
+   "name": "HGH 200W PD Super Fast Charger 3USB+ 1PD Port Port",
+   "comments": 93,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 23
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 14
+   },
+   "safety_keep": 4,
+   "safety_require": 4,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 14
+   },
+   "dropped": {
+    "defect": 9
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4963379453.html",
+   "platform": "lazada",
+   "name": "USB C to Lightning Cable Fast Charger Cable, Power",
+   "comments": 57,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 2
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 2
+   },
+   "dropped": {
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3430740731.html",
+   "platform": "lazada",
+   "name": "M10 TWS Bluetooth Headphone Waterproof With Changi",
+   "comments": 242,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 79
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 67
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 67
+   },
+   "dropped": {
+    "defect": 12,
+    "quality": 4
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i1912584078.html",
+   "platform": "lazada",
+   "name": "\u2705100% Original UME Headphone XB-450 Extra BassHead",
+   "comments": 299,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 5,
+    "defect": 91
+   },
+   "flags_require": {
+    "counterfeit": 5,
+    "defect": 72
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 5,
+    "defect": 72
+   },
+   "dropped": {
+    "defect": 19,
+    "quality": 6
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5211290661-s30884518178.html",
+   "platform": "lazada",
+   "name": "HUABAO | Wireless Lapel Microphone Speaker Amplifi",
+   "comments": 128,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i1210362142.html",
+   "platform": "lazada",
+   "name": "Headset Gaming headset with Mic online Class Netwo",
+   "comments": 194,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 49
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 40
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 40
+   },
+   "dropped": {
+    "defect": 9,
+    "quality": 2,
+    "not_as_described": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5235073360.html",
+   "platform": "lazada",
+   "name": "UGREEN Dots Bluetooth 6.0 TWS Earphones 4-Mic Supp",
+   "comments": 62,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i2188293291.html",
+   "platform": "lazada",
+   "name": "4in1 For Realme C21Y phone case anti-fall color mo",
+   "comments": 63,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i527362407-s7642718627.html",
+   "platform": "lazada",
+   "name": "\u3010Local seller +COD\u30113D Movies/Games VR Box Immersiv",
+   "comments": 114,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 18
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 13
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 13
+   },
+   "dropped": {
+    "defect": 5
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4964385200.html",
+   "platform": "lazada",
+   "name": "Zeus K-19 Wired Membrane Gaming Keyboard 98 Keys 3",
+   "comments": 66,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4507172427-s25784906580.html",
+   "platform": "lazada",
+   "name": "MISN Doorbell Wireless With Camera Waterproof Remo",
+   "comments": 74,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 10
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 4
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i15500547760.html",
+   "platform": "lazada",
+   "name": "WOMINGTE | Silent Rechargeable Bluetooth Mouse",
+   "comments": 73,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4709331196.html",
+   "platform": "lazada",
+   "name": "HGH 100% Original tecno Fast Charger Charger Micro",
+   "comments": 83,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 13
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 6
+   },
+   "safety_keep": 3,
+   "safety_require": 3,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 6
+   },
+   "dropped": {
+    "defect": 7
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3252473210-s16378997359.html",
+   "platform": "lazada",
+   "name": "PORTABLE MK-102 SUPER BASS BLUETOOTH WIRELESS SPEA",
+   "comments": 199,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "possible_counterfeit_or_defect",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 75
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 56
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_counterfeit_or_defect",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 56
+   },
+   "dropped": {
+    "quality": 3,
+    "defect": 19
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4693560169.html",
+   "platform": "lazada",
+   "name": "Fast Charging KC58 20000mAh Battery Capacity Power",
+   "comments": 299,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "no_warning_signs",
+   "decision_keep": "caution",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 4,
+    "defect": 96
+   },
+   "flags_require": {
+    "counterfeit": 4,
+    "defect": 44
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 4,
+    "defect": 44
+   },
+   "dropped": {
+    "defect": 52,
+    "not_as_described": 2,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5233328698.html",
+   "platform": "lazada",
+   "name": "4 IN 1 Spring Cable Ultra Fast Charging 65W for IO",
+   "comments": 140,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 28
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 21
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 21
+   },
+   "dropped": {
+    "defect": 7
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3169275025.html",
+   "platform": "lazada",
+   "name": "\u2705100% Original AMZ 2 Inch ZQS-1202 Multicolor Lumi",
+   "comments": 277,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 6,
+    "defect": 61
+   },
+   "flags_require": {
+    "counterfeit": 6,
+    "defect": 41
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 6,
+    "defect": 41
+   },
+   "dropped": {
+    "quality": 6,
+    "defect": 20,
+    "not_as_described": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4136508203.html",
+   "platform": "lazada",
+   "name": "KIMP Pro 6 TWS Wireless Earphones Bluetooth Game H",
+   "comments": 290,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 94
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 68
+   },
+   "safety_keep": 2,
+   "safety_require": 2,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 68
+   },
+   "dropped": {
+    "defect": 26,
+    "not_as_described": 1,
+    "quality": 6
+   }
+  }
+ ]
+}
