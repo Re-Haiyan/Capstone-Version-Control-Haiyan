@@ -307,3 +307,23 @@ class DenialsAndPraiseAreNotReports(unittest.TestCase):
 
     def test_not_working_on_a_hair_tool_still_counts(self):
         self.assertIn("defect", self.flags("Mini Hair Straightener Cordless", "Not working.. the seller doesn't agree to return."))
+
+
+class DeniedCategoryTermsAreNotComplaints(unittest.TestCase):
+    def flags(self, product, text):
+        from defaketive_sentiment import registry
+
+        analysis = registry.load_model().analyze_batch([text], [5], listing={"name": product})[0]
+        return set(analysis.get("review_tags") or []) | set(analysis.get("review_extra_tags") or [])
+
+    def test_not_sticky_is_not_quality(self):
+        self.assertNotIn("quality", self.flags("Sunscreen SPF50 Lotion", "ok naman hindi malagkit wala xiang amoy"))
+
+    def test_packing_quality_is_not_product_quality(self):
+        self.assertNotIn("quality", self.flags("Moisturizer Lotion 200ml", "Packing quality is awful, it was opened"))
+
+    def test_feared_thin_but_not_so(self):
+        self.assertNotIn("quality", self.flags("Dress for Women", "una ineezpect ko na manipis ang tela niya, perooo hindi pala"))
+
+    def test_real_thin_complaint_still_counts(self):
+        self.assertIn("quality", self.flags("Dress for Women", "sobrang nipis ng tela, parang papel"))

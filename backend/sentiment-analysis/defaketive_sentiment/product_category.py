@@ -368,7 +368,7 @@ _SUNBURN_PEEL = re.compile(r"sunburn|dead skin|exfoliat|natangal|natanggal ang d
 _NOT_EFFECTIVE = re.compile(r"^(?:hindi|di|not)\s+(?:po\s+)?(?:gumana|umepekto|tumalab|effective)\b")
 
 
-DEFECT_LABEL, SAFETY_LABEL = "defect", "safety"
+DEFECT_LABEL, SAFETY_LABEL, QUALITY_LABEL = "defect", "safety", "quality"
 
 
 def denied(category: str | None, label: str, normalized: str, span: tuple[int, int]) -> str | None:
@@ -381,6 +381,11 @@ def denied(category: str | None, label: str, normalized: str, span: tuple[int, i
             covers = denial.start() < span[1] and span[0] < denial.end()
             if covers:
                 return "the review says nothing was damaged"
+    if label == QUALITY_LABEL:
+        if "quality" in phrase and re.search(r"pack(?:ing|aging)\s+quality", normalized):
+            return "about the packing, not the product"
+        if re.match(r"\W*(?:[a-z']+[\s,]+){0,5}?(?:hindi|di)\s+pala", normalized[span[1]:]):
+            return "the reviewer feared it and it was not so"
     if label == SAFETY_LABEL:
         if _PRAISE_SAFE.search(normalized) and not re.search(r"rash|allerg|pantal|nangati|makati|sumakit|nagtae|sugat|burn|paso|usok|smoke", normalized):
             return "praise or a safe date, not a hazard"

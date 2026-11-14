@@ -1481,7 +1481,13 @@ class LexiconHazardTagger:
         # Rules pc1: a phrase listed in the product category's file is not a complaint on that kind of product.
         exempt: list[dict[str, Any]] = []
         def with_added(label: str, found: Sequence[tuple[int, int]]) -> list[tuple[int, int]]:
-            extra = [m.span() for _term, _severity, pattern in product_category.added_terms(product_kind, label) for m in pattern.finditer(normalized)]
+            # "hindi malagkit", "wala xiang amoy": a category term that is denied is not a complaint.
+            extra = [
+                m.span()
+                for _term, _severity, pattern in product_category.added_terms(product_kind, label)
+                for m in pattern.finditer(normalized)
+                if text_norm.starts_with_negator(m.group(0)) or not self._is_negated(normalized, m.start())
+            ]
             return [*found, *extra] if self.rules == "0.4" else list(found)
 
         for label, found in (

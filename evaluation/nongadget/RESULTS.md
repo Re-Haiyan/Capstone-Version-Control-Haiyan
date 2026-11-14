@@ -77,3 +77,11 @@ A guard was added in `product_category.denied()`: a review that says nothing was
 | Safety | 0.33 / 0.67 (4 false alarms) | 0.67 / 0.67 (1 false alarm) |
 
 Dev and test halves of the first batches are unchanged by the fix (defect 33 of 36 and 32 of 41 found), so the guard did not cost recall there. A first version of the guard was too broad (it hid real defects when a denial appeared elsewhere in the sentence, and "no" matched inside "ano"); it was narrowed after those two halves showed the loss. 185 tests pass, 6 of them new.
+
+### Second fix: denied category terms and packing quality
+
+Category terms for quality and not as advertised were never checked for negation ("hindi malagkit", "wala xiang amoy" counted as complaints). They now are. The guard also sets aside "packing quality is awful" (the packing, not the product) and "manipis ... hindi pala" (feared, not so). Written after reading the fresh batch's quality false alarms, so the fresh batch stays a non-clean test.
+
+Fresh batch quality false alarms went from 8 to 4 (precision 0.20 to 0.33, recall unchanged at 0.40; 5 positives, so do not read the score). Dev and test halves of the first batches are unchanged, except dev not as advertised 0.86 to 0.88. 189 tests pass.
+
+A second fresh scan (pets, appliances, bedding, bags, lipstick, shampoo) was started and stopped: Lazada returned no listings for any search after the earlier day's scan. The scanner never answers a verification, so it was left alone. Try again later, with fewer searches per run.
