@@ -32,6 +32,8 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 from . import hazard_taxonomy as taxonomy
+from .evidence import apply_policy as apply_evidence_policy
+from .evidence import evidence_for_review
 from . import text_norm
 from .extra_labels import (
     EXTRA_RULES_REVISION,
@@ -836,6 +838,54 @@ HEAT_OR_SMOKE = re.compile(r"init|usok|smok|sunog|nasunog|burn|overheat|mainit|s
 FEARED_FAKE = re.compile(r"(?:akala|inakala|thought|expected|kala)" + r"\W+(?:ko|i|namin)?\W*(?:\w+\W+){0,2}?(?:peke|fake|scam)", re.I)
 FAKE_RESOLVED = re.compile(r"^\W*(?:pero|but|though|kaso|however)\W+(?:\w+\W+){0,3}?(?:original|legit|totoo|authentic|genuine)|(?:original|legit|totoo|authentic|genuine)\s+pala", re.I)
 
+# --- clause-level context (rules pc4) ---
+CONTRAST_START = re.compile(r"^\W*(?:pero|but|though|although|kaso|however|subalit|ngunit)\b", re.I)
+CONTRAST_INSIDE = re.compile(r"\b(?:pero|but|though|although|kaso|however|subalit|ngunit)\b", re.I)
+SOFT_HEAT = re.compile(r"(?:\w*init\w*|hot|warm|painit)", re.I)
+SOFT_THIN = re.compile(r"(?:\w*nipis\w*|thin|payat|light\w*|gaan)", re.I)
+ALARM_WORDS = re.compile(r"(?:nakakatakot|natakot|takot|delikado|dangerous|worried|nag-?alala|pangamba|sobra|sobrang|masyado|masyadong|grabe|too|very|super|extremely|baka|sumabog|sunog|masunog|usok|smok|burn|spark|shock|kuryente|namatay|namamatay|hindi\s+normal|abnormal)", re.I)
+COMPLAINT_JUDGEMENT = re.compile(r"(?:sobra|sobrang|masyado|masyadong|grabe|ang\s+nipis|too|very|super|extremely|pangit|panget|cheap|mumurahin|flimsy|poor|bad|papel|parang|disappoint|nadismaya|sayang|hindi\s+(?:maganda|okay|ok|worth)|d\s+maganda|madaling|easily|nasira|sira|basag|punit)", re.I)
+BENIGN_WORDS = re.compile(r"(?:okay|ok|oks|okey|ayos|goods?|fine|normal|sulit|maganda|ganda|worth|sakto|pwede|acceptable|tolerable|walang\s+problema|no\s+problem|not\s+a\s+problem|nothing\s+serious|naman|lang|narin|na\s+rin|keri|tama\s+lang)", re.I)
+NOT_BENIGN = re.compile(r"(?:pangit|panget|cheap|mumurahin|poor|bad|sira|basag|kulang|mali|wrong|disappoint|nadismaya|sayang|madaling|easily|hindi\s+(?:maganda|okay|ok|normal|worth|sakto)|d\s+maganda|not\s+(?:good|okay|ok|normal|worth)|mahina|problema|problem|issue|peke|fake)", re.I)
+
+
+CLAUSE_ENV = "DEFAKETIVE_CLAUSE_RESOLVE"
+
+
+def _clause_flags() -> frozenset[str]:
+    """Flags a contrast clause may resolve, from DEFAKETIVE_CLAUSE_RESOLVE (comma-separated: safety, quality). Empty by default:
+    on the team-supplied training labels, resolving mild heat cost 0.012 safety F1 and resolving "manipis pero ok" cost 0.031
+    quality F1 (the labels call the latter a complaint about 59% of the time), so the owner decides under the annotation policy."""
+    import os
+
+    return frozenset(part.strip().lower() for part in os.environ.get(CLAUSE_ENV, "").split(",") if part.strip().lower() in (SAFETY, QUALITY))
+
+
+def _benign_resolution(clause: str, tagged_clause: Mapping[str, Any]) -> bool:
+    """The clause after a contrast says it is fine: a positive or normal remark and no complaint, tag or negative judgement."""
+    if tagged_clause.get("tags") or tagged_clause.get("extra_tags"):
+        return False
+    return bool(BENIGN_WORDS.search(clause)) and not NOT_BENIGN.search(clause)
+
+
+def _only_soft_terms(item: Mapping[str, Any], flag: str, soft: "re.Pattern[str]", strong: "re.Pattern[str]", raw: str) -> bool:
+    """Every keyword that raised `flag` in this sentence is a soft one, and the sentence has no alarm or negative judgement before the contrast."""
+    terms = [
+        term for term in [*(item.get("terms") or ()), *(item.get("extra_terms") or ())]
+        if term.get("category") == flag and not term.get("excluded") and not term.get("negated")
+    ]
+    if not terms:
+        return False
+    for term in terms:
+        span = term.get("span")
+        words = raw[span[0]:span[1]].strip().split() if span else []
+        if not words or not soft.fullmatch(words[-1]):
+            return False
+    inside = CONTRAST_INSIDE.search(raw)
+    before_contrast = raw[: inside.start()] if inside else raw
+    return not strong.search(before_contrast)
+
+
 class LexiconHazardTagger:
     """Tag review sentences with safety, defect and counterfeit categories."""
 
@@ -1622,6 +1672,7 @@ class LexiconHazardTagger:
             tagged.append(result)
         if self.rules == "0.4":
             self._feared_not_fake(segments, tagged)
+            self._resolved_by_contrast(segments, tagged)
         if self.listing_context:
             for index, labels in listing_review_rules(segments, tagged, listing).items():
                 item = tagged[index]
@@ -1676,6 +1727,45 @@ class LexiconHazardTagger:
             if all(span and fear.start() <= span[0] and span[1] <= fear.end() for span in spans):
                 item["tags"] = [tag for tag in item["tags"] if tag != COUNTERFEIT]
                 item.setdefault("suppressed", {})[COUNTERFEIT] = "feared_not_fake"
+
+    @staticmethod
+    def _resolved_by_contrast(segments: Sequence[str], tagged: list[dict[str, Any]]) -> None:
+        """A soft statement followed by "pero ... okay" is resolved by the contrast (rules pc4, a reusable pattern).
+
+        "Mainit pero normal lang", "manipis pero okay naman": the segmenter splits at the contrast marker, so the clause with
+        the keyword cannot see that the next clause settles it. Only a SOFT statement can be resolved: mild warmth, a plain
+        thickness description, no alarm or intensifier or negative judgement. A genuine complaint is never soft, and a
+        complaint in the clause after the contrast ("maganda pero madaling masira", "okay naman pero kulang ang laman") is
+        never touched. The same test runs inside one sentence when the splitter kept it whole.
+        """
+        enabled = _clause_flags()
+        if not enabled:
+            return
+        for index, item in enumerate(tagged):
+            soft = []
+            if SAFETY in enabled and SAFETY in item["tags"] and _only_soft_terms(item, SAFETY, SOFT_HEAT, ALARM_WORDS, segments[index]):
+                soft.append(SAFETY)
+            if QUALITY in enabled and QUALITY in (item.get("extra_tags") or ()) and _only_soft_terms(item, QUALITY, SOFT_THIN, COMPLAINT_JUDGEMENT, segments[index]):
+                soft.append(QUALITY)
+            if not soft:
+                continue
+            tail = segments[index + 1] if index + 1 < len(segments) else ""
+            resolved = False
+            if CONTRAST_START.match(tail):
+                resolved = _benign_resolution(tail, tagged[index + 1] if index + 1 < len(tagged) else {})
+            else:
+                inside = CONTRAST_INSIDE.search(segments[index])
+                if inside:
+                    resolved = _benign_resolution(segments[index][inside.end():], {})
+            if not resolved:
+                continue
+            for flag in soft:
+                if flag == SAFETY:
+                    item["tags"] = [tag for tag in item["tags"] if tag != SAFETY]
+                    item["high_confidence"] = {k: v for k, v in (item.get("high_confidence") or {}).items() if k != SAFETY}
+                else:
+                    item["extra_tags"] = [tag for tag in item.get("extra_tags") or () if tag != flag]
+                item.setdefault("suppressed", {})[flag] = "resolved_by_contrast"
 
     @staticmethod
     def _transformer_labels(item: dict[str, Any], decided: Mapping[str, float]) -> None:
@@ -1877,6 +1967,11 @@ class HazardBadgeModel:
             for item in sentences
             if item.get("hazard_subtype") and item["high_confidence"].get(SAFETY)
         ]
+        evidence = evidence_for_review(review, sentences, review_tags, extra_tags if five_labels else ())
+        review_tags, extra_tags, dropped = apply_evidence_policy(sentences, review_tags, extra_tags, evidence)
+        if dropped:
+            confident = [tag for tag in confident if tag in review_tags]
+            evidence = {flag: entry for flag, entry in evidence.items() if flag in review_tags or flag in extra_tags}
         explanation = self.sentiment.analyze(review, rating)
         label = explanation.get("label")
         return {
@@ -1888,6 +1983,8 @@ class HazardBadgeModel:
             "sentences": sentences,
             "review_tags": review_tags,
             **({"review_extra_tags": extra_tags} if five_labels else {}),
+            "review_evidence": evidence,
+            **({"review_evidence_dropped": dropped} if dropped else {}),
             "review_high_confidence": confident,
             "max_severity": max(
                 (taxonomy.SEVERITY.get(name, 0) for name in subtypes), default=0

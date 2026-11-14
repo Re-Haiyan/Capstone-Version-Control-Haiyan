@@ -1,0 +1,52 @@
+{
+ "counterfeit|keyword_span": {
+  "flags_raised": 182,
+  "team_label_agrees": 164,
+  "precision": 0.901
+ },
+ "defect|keyword_span": {
+  "flags_raised": 439,
+  "team_label_agrees": 348,
+  "precision": 0.793
+ },
+ "defect|model_only": {
+  "flags_raised": 101,
+  "team_label_agrees": 17,
+  "precision": 0.168
+ },
+ "not_as_described|keyword_span": {
+  "flags_raised": 427,
+  "team_label_agrees": 340,
+  "precision": 0.796
+ },
+ "not_as_described|listing_context": {
+  "flags_raised": 19,
+  "team_label_agrees": 9,
+  "precision": 0.474
+ },
+ "not_as_described|model_only": {
+  "flags_raised": 3,
+  "team_label_agrees": 0,
+  "precision": 0.0
+ },
+ "quality|keyword_span": {
+  "flags_raised": 395,
+  "team_label_agrees": 248,
+  "precision": 0.628
+ },
+ "quality|model_only": {
+  "flags_raised": 18,
+  "team_label_agrees": 3,
+  "precision": 0.167
+ },
+ "safety|keyword_span": {
+  "flags_raised": 138,
+  "team_label_agrees": 71,
+  "precision": 0.514
+ },
+ "safety|model_only": {
+  "flags_raised": 1,
+  "team_label_agrees": 1,
+  "precision": 1.0
+ }
+}

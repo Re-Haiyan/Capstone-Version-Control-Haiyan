@@ -1,0 +1,96 @@
+{
+ "train": {
+  "defect": {
+   "keep_f1": 0.733,
+   "require_f1": 0.767,
+   "keep_precision": 0.686,
+   "require_precision": 0.792,
+   "keep_recall": 0.787,
+   "require_recall": 0.744,
+   "dropped": 83
+  },
+  "counterfeit": {
+   "keep_f1": 0.912,
+   "require_f1": 0.912,
+   "keep_precision": 0.884,
+   "require_precision": 0.884,
+   "keep_recall": 0.942,
+   "require_recall": 0.942,
+   "dropped": 0
+  },
+  "safety": {
+   "keep_f1": 0.638,
+   "require_f1": 0.638,
+   "keep_precision": 0.545,
+   "require_precision": 0.545,
+   "keep_recall": 0.769,
+   "require_recall": 0.769,
+   "dropped": 0
+  },
+  "not_as_described": {
+   "keep_f1": 0.764,
+   "require_f1": 0.766,
+   "keep_precision": 0.787,
+   "require_precision": 0.791,
+   "keep_recall": 0.743,
+   "require_recall": 0.743,
+   "dropped": 2
+  },
+  "quality": {
+   "keep_f1": 0.691,
+   "require_f1": 0.699,
+   "keep_precision": 0.611,
+   "require_precision": 0.631,
+   "keep_recall": 0.795,
+   "require_recall": 0.783,
+   "dropped": 15
+  }
+ },
+ "test": {
+  "defect": {
+   "keep_f1": 0.68,
+   "require_f1": 0.773,
+   "keep_precision": 0.622,
+   "require_precision": 0.797,
+   "keep_recall": 0.75,
+   "require_recall": 0.75,
+   "dropped": 18
+  },
+  "counterfeit": {
+   "keep_f1": 0.943,
+   "require_f1": 0.943,
+   "keep_precision": 0.943,
+   "require_precision": 0.943,
+   "keep_recall": 0.943,
+   "require_recall": 0.943,
+   "dropped": 0
+  },
+  "safety": {
+   "keep_f1": 0.533,
+   "require_f1": 0.533,
+   "keep_precision": 0.414,
+   "require_precision": 0.414,
+   "keep_recall": 0.75,
+   "require_recall": 0.75,
+   "dropped": 0
+  },
+  "not_as_described": {
+   "keep_f1": 0.717,
+   "require_f1": 0.723,
+   "keep_precision": 0.717,
+   "require_precision": 0.729,
+   "keep_recall": 0.717,
+   "require_recall": 0.717,
+   "dropped": 1
+  },
+  "quality": {
+   "keep_f1": 0.726,
+   "require_f1": 0.741,
+   "keep_precision": 0.596,
+   "require_precision": 0.616,
+   "keep_recall": 0.93,
+   "require_recall": 0.93,
+   "dropped": 3
+  }
+ }
+}

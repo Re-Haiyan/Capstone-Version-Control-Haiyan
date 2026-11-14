@@ -1,0 +1,43 @@
+{
+ "reviews": 4792,
+ "flags_raised": 1723,
+ "by_flag_state": {
+  "quality": {
+   "keyword_span": 395,
+   "model_only": 18
+  },
+  "defect": {
+   "keyword_span": 439,
+   "model_only": 101
+  },
+  "safety": {
+   "keyword_span": 138,
+   "model_only": 1
+  },
+  "not_as_described": {
+   "keyword_span": 427,
+   "listing_context": 19,
+   "model_only": 3
+  },
+  "counterfeit": {
+   "keyword_span": 182
+  }
+ },
+ "no_span_by_layer": {
+  "defect|model_only": {
+   "keyword_or_learned_layer": 101
+  },
+  "quality|model_only": {
+   "extra_label_layer": 18
+  },
+  "not_as_described|listing_context": {
+   "extra_label_layer": 19
+  },
+  "not_as_described|model_only": {
+   "extra_label_layer": 3
+  },
+  "safety|model_only": {
+   "keyword_or_learned_layer": 1
+  }
+ }
+}
