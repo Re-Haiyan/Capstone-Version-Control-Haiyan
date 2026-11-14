@@ -1,0 +1,295 @@
+{
+ "training_rows": 3946,
+ "battery_kinds": {
+  "subjective dissatisfaction": {
+   "rows": 55,
+   "labels": {
+    "none": 32,
+    "defect": 15,
+    "quality": 6,
+    "not_as_described": 4,
+    "counterfeit": 3,
+    "delivery": 1,
+    "safety": 1
+   }
+  },
+  "abnormally rapid discharge": {
+   "rows": 2,
+   "labels": {
+    "none": 1,
+    "defect": 1
+   }
+  },
+  "other battery or charging mention": {
+   "rows": 167,
+   "labels": {
+    "none": 106,
+    "defect": 24,
+    "safety": 22,
+    "not_as_described": 13,
+    "delivery": 8,
+    "quality": 8,
+    "counterfeit": 7
+   }
+  },
+  "charging failure": {
+   "rows": 17,
+   "labels": {
+    "defect": 10,
+    "none": 4,
+    "delivery": 3,
+    "counterfeit": 3,
+    "safety": 1
+   }
+  },
+  "normal consumption / praise": {
+   "rows": 7,
+   "labels": {
+    "none": 5,
+    "defect": 1,
+    "quality": 1
+   }
+  },
+  "no longer holds a charge": {
+   "rows": 2,
+   "labels": {
+    "none": 2
+   }
+  }
+ },
+ "effect_complaints": {
+  "rows": 11,
+  "labels": {
+   "counterfeit": 8,
+   "none": 3,
+   "quality": 1
+  },
+  "where_the_flags_land": "see labels",
+  "by_group": {
+   "beauty_health": 11
+  },
+  "examples": [
+   "first time ko omorder nkka disappoint di sya bumubula at hndi maganda Amoy nya 😔😔",
+   "peke nmn di mn lng bumubula scammer kyo",
+   "Hindi bumubula it's a fake",
+   "The shampoo is sulfate-free but it is very concerning to see that it made use of a lot of chemicals as ingredi",
+   "fake po yung sabon.. nakakadismaya po.. hindi po siya bomubola.. hindi po siya kagaya ng ibang sabon",
+   "fake po yung sabon.. nakakadismaya po.. hindi po siya bomubola.. hindi po siya kagaya ng ibang sabon"
+  ]
+ },
+ "fear_of_fire": {
+  "fear wording, no stated abnormal condition (hypothetical)": {
+   "rows": 16,
+   "labels": {
+    "none": 6,
+    "safety": 5,
+    "defect": 3,
+    "delivery": 2,
+    "not_as_described": 1
+   }
+  },
+  "fear wording with a stated abnormal condition": {
+   "rows": 5,
+   "labels": {
+    "none": 4,
+    "safety": 1
+   }
+  }
+ },
+ "probes_current_rules": {
+  "A packaging damage": [
+   {
+    "text": "Yupi yupi ang box pero okay ang item",
+    "product": "Rice Cooker 1.8L",
+    "flags": []
+   },
+   {
+    "text": "Yupi ang box at basag ang takip ng rice cooker",
+    "product": "Rice Cooker 1.8L",
+    "flags": []
+   },
+   {
+    "text": "Late dumating at basang basa ang kahon",
+    "product": "Shampoo 340ml",
+    "flags": []
+   }
+  ],
+  "B battery": [
+   {
+    "text": "Mabilis malowbat",
+    "product": "Handheld Fan",
+    "flags": []
+   },
+   {
+    "text": "Hindi na nagcha-charge, ayaw na mag-on",
+    "product": "Handheld Fan",
+    "flags": [
+     "defect"
+    ]
+   },
+   {
+    "text": "From 100% to 20% in 10 minutes lang",
+    "product": "Power Bank 10000mAh",
+    "flags": [
+     "defect"
+    ]
+   },
+   {
+    "text": "Hindi na nag-hold ng charge pagkatapos ng isang linggo",
+    "product": "Wireless Earbuds",
+    "flags": [
+     "defect"
+    ]
+   }
+  ],
+  "C size": [
+   {
+    "text": "Masyadong maliit sa akin, medium ako",
+    "product": "Dress for Women",
+    "flags": []
+   },
+   {
+    "text": "Large ang inorder ko pero small ang dumating",
+    "product": "Dress for Women",
+    "flags": [
+     "not_as_described"
+    ]
+   },
+   {
+    "text": "Size 42 ang order ko, 43 ang pinadala",
+    "product": "Running Shoes",
+    "flags": [
+     "not_as_described"
+    ]
+   }
+  ],
+  "D freebies": [
+   {
+    "text": "Walang freebie na kasama",
+    "product": "Shampoo 340ml",
+    "flags": []
+   },
+   {
+    "text": "Nakalagay sa listing may free tumbler pero wala",
+    "product": "Protein Powder 1lb",
+    "flags": [
+     "defect",
+     "not_as_described"
+    ]
+   }
+  ],
+  "E half-empty": [
+   {
+    "text": "Kalahati lang ang laman ng pack",
+    "product": "Shampoo 340ml",
+    "flags": []
+   },
+   {
+    "text": "Buy 1 take 1 pero tig kalahati lang ang laman",
+    "product": "Shampoo 340ml",
+    "flags": []
+   },
+   {
+    "text": "Tumagas at kalahati na lang ang laman",
+    "product": "Lotion 200ml",
+    "flags": [
+     "defect"
+    ]
+   }
+  ],
+  "F fear of fire": [
+   {
+    "text": "Baka sumabog yung charger",
+    "product": "Phone Charger 20W",
+    "flags": [
+     "defect"
+    ]
+   },
+   {
+    "text": "Umiinit habang nagchacharge, nakakatakot",
+    "product": "Phone Charger 20W",
+    "flags": [
+     "safety"
+    ]
+   },
+   {
+    "text": "Umusok na at nakakatakot",
+    "product": "Phone Charger 20W",
+    "flags": [
+     "safety"
+    ]
+   }
+  ],
+  "G thin": [
+   {
+    "text": "Manipis pero okay naman",
+    "product": "Bedsheet Set",
+    "flags": [
+     "quality"
+    ]
+   },
+   {
+    "text": "Sobrang manipis, parang papel",
+    "product": "Bedsheet Set",
+    "flags": [
+     "quality"
+    ]
+   },
+   {
+    "text": "Manipis pero pwede na",
+    "product": "Bedsheet Set",
+    "flags": [
+     "quality"
+    ]
+   }
+  ],
+  "H safety+defect": [
+   {
+    "text": "Umusok at hindi na gumana",
+    "product": "Phone Charger 20W",
+    "flags": [
+     "defect",
+     "safety"
+    ]
+   },
+   {
+    "text": "Umusok ang charger",
+    "product": "Phone Charger 20W",
+    "flags": [
+     "safety"
+    ]
+   }
+  ],
+  "I counterfeit+defect": [
+   {
+    "text": "Peke at sira agad",
+    "product": "Wireless Earbuds",
+    "flags": [
+     "counterfeit",
+     "defect"
+    ]
+   },
+   {
+    "text": "Peke ito",
+    "product": "Wireless Earbuds",
+    "flags": [
+     "counterfeit"
+    ]
+   }
+  ],
+  "J effectiveness": [
+   {
+    "text": "Hindi umepekto sa akin ang serum",
+    "product": "Whitening Serum",
+    "flags": []
+   },
+   {
+    "text": "Walang epekto, hindi pumuti",
+    "product": "Whitening Serum",
+    "flags": [
+     "defect"
+    ]
+   }
+  ]
+ }
+}

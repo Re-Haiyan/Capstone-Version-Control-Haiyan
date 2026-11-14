@@ -801,7 +801,32 @@ class ProductBadgeAggregator:
                 },
             }
 
+        # Opt-in shadow of the sentiment calibrator: the same counts, shares and bound computed from the calibrated labels,
+        # beside (never instead of) the real ones. Present only when the calibrator ran.
+        shadow_labels = [str((record.get("sentiment") or {}).get("calibrated", {}).get("label") or "") for record in records]
+        shadow_block: dict[str, Any] = {}
+        if records and all(shadow_labels):
+            counted = Counter(shadow_labels)
+            shadow_bound = wilson_lower_bound(counted.get("positive", 0), usable)
+            shadow_shares: dict[str, float] = {}
+            if weight_by_key:
+                weights_s = [float(record.get("sampling_weight") or 0.0) for record in records]
+                total_s = sum(weights_s)
+                n_eff_s = self.effective_sample_size(weights_s)
+                shares_s: Counter = Counter()
+                for label, weight in zip(shadow_labels, weights_s):
+                    shares_s["uncertain" if label == "neutral" else label] += weight
+                share_pos = shares_s.get("positive", 0.0) / total_s if total_s else 0.0
+                shadow_bound = wilson_interval(min(n_eff_s, share_pos * n_eff_s), n_eff_s)[0] if n_eff_s else 0.0
+                shadow_shares = {name: round(shares_s.get(name, 0.0) / total_s, 6) if total_s else 0.0 for name in ("positive", "uncertain", "negative")}
+            shadow_block = {"shadow_sentiment": {
+                "sentiment_counts": {"positive": counted.get("positive", 0), "uncertain": counted.get("uncertain", 0) + counted.get("neutral", 0), "negative": counted.get("negative", 0)},
+                "positive_ratio_lower_bound": round(shadow_bound, 6),
+                **({"sentiment_shares": shadow_shares} if shadow_shares else {}),
+            }}
+
         return {
+            **shadow_block,
             "schema_version": SCHEMA_VERSION,
             "taxonomy_version": taxonomy.TAXONOMY_VERSION,
             "parameters_version": self.parameters.get("version"),

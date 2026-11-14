@@ -373,9 +373,12 @@ _FEATURE_CLAIM = re.compile(
 # "yupi yupi ang box", "damaged, no bubble wrap": the team files damage to the packing under delivery, not defect.
 _DAMAGE = r"(?:yupi\w*|nayupi|dent\w*|damag\w*|crush\w*|crumpl\w*|butas|punit|sira\w*|basag|broken|leak\w*|tagas|natapon)"
 _PACK = r"(?:box|boxes|kahon|packag\w*|packing|pouch|plastic|balot|bubble\s?wrap|wrapper|envelope|carton|sachet)"
+# the words allowed between a damage word and a packing word are never a conjunction: "box at basag" is two statements
+_BRIDGE = r"(?:(?!(?:at|and|pati|saka|tsaka|tapos|pero|but|kaso|also|with)\b)\w+\s+){0,2}?"
 _PACKING_DAMAGE = re.compile(
-    _DAMAGE + r"(?:\s+|[,.]\s*)(?:\w+\s+){0,2}?" + _PACK + r"|" + _PACK + r"\s+(?:\w+\s+){0,2}?(?:is\s+|was\s+|are\s+|ay\s+)?" + _DAMAGE
+    _DAMAGE + r"(?:\s+|[,.]\s*)" + _BRIDGE + _PACK + r"|" + _PACK + r"\s+" + _BRIDGE + r"(?:is\s+|was\s+|are\s+|ay\s+)?" + _DAMAGE
 )
+_DAMAGE_WORD = re.compile(_DAMAGE)
 _PACKING = re.compile(r"$^")  # the damage word and the packing word must be together (see _PACKING_DAMAGE)
 
 _SUNBURN_PEEL = re.compile(r"sunburn|dead skin|exfoliat|natangal|natanggal ang dead|nasunog sa araw")
@@ -390,8 +393,12 @@ def denied(category: str | None, label: str, normalized: str, span: tuple[int, i
     if not category or PRODUCT_CATEGORY_OFF:
         return None
     phrase = normalized[span[0]:span[1]].strip()
-    if label == DEFECT_LABEL and _PACKING_DAMAGE.search(normalized):
-        return "damage to the box or packing is a delivery matter, not a fault in the product"
+    if label == DEFECT_LABEL:
+        # only the damage word attached to the packing is a delivery matter; another damage word in the same sentence
+        # ("yupi ang box at basag ang takip") still reports the product itself
+        for packing in _PACKING_DAMAGE.finditer(normalized):
+            if packing.start() < span[1] and span[0] < packing.end():
+                return "damage to the box or packing is a delivery matter, not a fault in the product"
     if label in (SAFETY_LABEL, DEFECT_LABEL):
         for claim in _FEATURE_CLAIM.finditer(normalized):
             if claim.start() < span[1] and span[0] < claim.end():
@@ -424,7 +431,7 @@ def sentence_exempt(category: str | None, label: str, normalized: str) -> str | 
     """
     if not category or PRODUCT_CATEGORY_OFF:
         return None
-    if label == DEFECT_LABEL and _PACKING_DAMAGE.search(normalized):
+    if label == DEFECT_LABEL and _PACKING_DAMAGE.search(normalized) and not _DAMAGE_WORD.search(_PACKING_DAMAGE.sub(" ", normalized)):
         return "damage to the box or packing is a delivery matter, not a fault in the product"
     for term, row_label, unless, reason, when in _exceptions(category):
         if row_label != label:

@@ -38,11 +38,19 @@ class SentimentCalibrator:
         from scipy.sparse import csr_matrix, hstack
 
         probs = [probabilities[c] for c in CLASSES] if isinstance(probabilities, dict) else list(probabilities)
-        dense = np.array([probs + [1.0 if int(stars) == s else 0.0 for s in range(1, 6)]], dtype=float)
+        try:
+            star = int(stars)
+        except (TypeError, ValueError):
+            star = 0  # no rating: every star indicator is 0
+        dense = np.array([probs + [1.0 if star == s else 0.0 for s in range(1, 6)]], dtype=float)
         features = hstack([self.word.transform([text]), self.char.transform([text]), csr_matrix(dense)]).tocsr()
         out = self.classifier.predict_proba(features)[0]
         scores = {c: float(p) for c, p in zip(self.classes, out)}
         return max(scores, key=scores.get), scores
+
+
+MODE_ENV = "DEFAKETIVE_SENTIMENT_CALIBRATOR_MODE"
+_LOADED: dict[str, SentimentCalibrator | None] = {}
 
 
 def load_default() -> SentimentCalibrator | None:
@@ -50,7 +58,27 @@ def load_default() -> SentimentCalibrator | None:
     path = os.environ.get(ENV, "").strip()
     if not path or not Path(path).is_file():
         return None
-    try:
-        return SentimentCalibrator.load(path)
-    except Exception:  # noqa: BLE001 - a bad artifact must never break a scan
+    if path not in _LOADED:
+        try:
+            _LOADED[path] = SentimentCalibrator.load(path)
+        except Exception:  # noqa: BLE001 - a bad artifact must never break a scan
+            _LOADED[path] = None
+    return _LOADED[path]
+
+
+def mode() -> str:
+    """"shadow" (default when a calibrator is configured): record the calibrated sentiment beside the model's, change nothing;
+    "on": the calibrated label replaces the model's. With no calibrator configured, nothing happens in either mode."""
+    return "on" if os.environ.get(MODE_ENV, "shadow").strip().lower() == "on" else "shadow"
+
+
+def calibrated_sentiment(text: str, stars: Any, probabilities: dict[str, float] | None) -> dict[str, Any] | None:
+    """{"mode", "calibrated": {"label", "probabilities"}} or None (not configured, no probabilities, or any problem)."""
+    calibrator = load_default()
+    if calibrator is None or not probabilities or any(c not in probabilities for c in CLASSES):
         return None
+    try:
+        label, scores = calibrator.predict(text, stars, probabilities)
+    except Exception:  # noqa: BLE001
+        return None
+    return {"mode": mode(), "calibrated": {"label": label, "probabilities": {k: round(v, 6) for k, v in scores.items()}}}

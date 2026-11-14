@@ -34,6 +34,7 @@ from typing import Any, Iterable, Mapping, Sequence
 from . import hazard_taxonomy as taxonomy
 from .evidence import apply_policy as apply_evidence_policy
 from .evidence import evidence_for_review
+from .sentiment_calibration import calibrated_sentiment
 from . import text_norm
 from .extra_labels import (
     EXTRA_RULES_REVISION,
@@ -848,6 +849,13 @@ COMPLAINT_JUDGEMENT = re.compile(r"(?:sobra|sobrang|masyado|masyadong|grabe|ang\
 BENIGN_WORDS = re.compile(r"(?:okay|ok|oks|okey|ayos|goods?|fine|normal|sulit|maganda|ganda|worth|sakto|pwede|acceptable|tolerable|walang\s+problema|no\s+problem|not\s+a\s+problem|nothing\s+serious|naman|lang|narin|na\s+rin|keri|tama\s+lang)", re.I)
 NOT_BENIGN = re.compile(r"(?:pangit|panget|cheap|mumurahin|poor|bad|sira|basag|kulang|mali|wrong|disappoint|nadismaya|sayang|madaling|easily|hindi\s+(?:maganda|okay|ok|normal|worth|sakto)|d\s+maganda|not\s+(?:good|okay|ok|normal|worth)|mahina|problema|problem|issue|peke|fake)", re.I)
 
+
+# "Large ang inorder ko pero small ang dumating": the splitter cuts at "pero", so an order clause and an arrival clause that differ
+# are never in one sentence. Joined here, and only with a concrete difference token, so "inorder ko pero dumating agad" is not a mismatch.
+ORDER_CLAUSE = re.compile(r"(?:ordered|order\s+ko|inorder|oorder|nag-?order|binili\s+ko|ang\s+order)", re.I)
+ARRIVAL_WORD = re.compile(r"\b(?:dumating|pinadala|ipinadala|binigay|natanggap|nakuha|received|delivered|sent|got|gave)\b", re.I)
+DIFFERENCE_TOKEN = re.compile(r"\b(?:xxs|xs|xxl|\d?xl|small|medium|large|maliit|malaki|black|white|pink|blue|red|green|brown|gray|grey|beige|yellow|purple|orange|itim|puti|pula|asul|berde|dilaw|iba|ibang|mali|different|wrong|other|\d+(?:\s?(?:ml|g|kg|l|pcs|pc|inch|in))?)\b", re.I)
+SPEED_OR_TIME = re.compile(r"\b(?:agad|kaagad|ngayon|kahapon|maaga|mabilis|bukas|late|tagal|days?|araw|oras|hours?|na\s+rin|din)\b", re.I)
 
 CLAUSE_ENV = "DEFAKETIVE_CLAUSE_RESOLVE"
 
@@ -1673,6 +1681,7 @@ class LexiconHazardTagger:
         if self.rules == "0.4":
             self._feared_not_fake(segments, tagged)
             self._resolved_by_contrast(segments, tagged)
+            self._joined_mismatch(segments, tagged)
         if self.listing_context:
             for index, labels in listing_review_rules(segments, tagged, listing).items():
                 item = tagged[index]
@@ -1727,6 +1736,22 @@ class LexiconHazardTagger:
             if all(span and fear.start() <= span[0] and span[1] <= fear.end() for span in spans):
                 item["tags"] = [tag for tag in item["tags"] if tag != COUNTERFEIT]
                 item.setdefault("suppressed", {})[COUNTERFEIT] = "feared_not_fake"
+
+    @staticmethod
+    def _joined_mismatch(segments: Sequence[str], tagged: list[dict[str, Any]]) -> None:
+        """An order clause followed, after a contrast marker, by an arrival clause that names a different size, colour or item (rules pc4)."""
+        for index in range(len(segments) - 1):
+            first, second = segments[index], segments[index + 1]
+            if not (CONTRAST_START.match(second) and ORDER_CLAUSE.search(first)):
+                continue
+            arrival = ARRIVAL_WORD.search(second)
+            if not arrival or SPEED_OR_TIME.search(second) or not DIFFERENCE_TOKEN.search(second):
+                continue
+            if any(NOT_AS_DESCRIBED in (tagged[i].get("extra_tags") or ()) for i in (index, index + 1)):
+                continue
+            item = tagged[index + 1]
+            item["extra_tags"] = [tag for tag in EXTRA_TAGS if tag in (set(item.get("extra_tags") or ()) | {NOT_AS_DESCRIBED})]
+            item.setdefault("extra_terms", []).append({"ngram": arrival.group(0).lower(), "category": NOT_AS_DESCRIBED, "span": [arrival.start(), arrival.end()], "source": "order_arrival_contrast"})
 
     @staticmethod
     def _resolved_by_contrast(segments: Sequence[str], tagged: list[dict[str, Any]]) -> None:
@@ -1974,6 +1999,13 @@ class HazardBadgeModel:
             evidence = {flag: entry for flag, entry in evidence.items() if flag in review_tags or flag in extra_tags}
         explanation = self.sentiment.analyze(review, rating)
         label = explanation.get("label")
+        sentiment_block: dict[str, Any] = {"label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
+        shadow = calibrated_sentiment(str(review or ""), rating, sentiment_block["probabilities"])
+        if shadow:  # opt-in (DEFAKETIVE_SENTIMENT_CALIBRATOR); "shadow" records it, "on" lets it decide
+            sentiment_block["calibrated"] = shadow["calibrated"]
+            if shadow["mode"] == "on":
+                sentiment_block["deployed_label"] = label
+                label = sentiment_block["label"] = shadow["calibrated"]["label"]
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
@@ -1989,10 +2021,7 @@ class HazardBadgeModel:
             "max_severity": max(
                 (taxonomy.SEVERITY.get(name, 0) for name in subtypes), default=0
             ),
-            "sentiment": {
-                "label": label,
-                "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {},
-            },
+            "sentiment": sentiment_block,
             "label": label,
             "review_excerpt": str(review or "").strip()[:240],
         }

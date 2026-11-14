@@ -67,5 +67,46 @@ class ClauseContext(unittest.TestCase):
         self.assertEqual(hazard_model._clause_flags(), frozenset())
 
 
+class OrderAndArrivalAcrossAContrast(unittest.TestCase):
+    """The splitter cuts at "pero"; an order clause and a different arrival clause still make a mismatch, and speed or time does not."""
+
+    @classmethod
+    def setUpClass(cls):
+        os.environ.pop(hazard_model.CLAUSE_ENV, None)
+        cls.model = registry.load_model()
+
+    def test_a_different_size_or_colour_that_arrived_is_a_mismatch(self):
+        self.assertIn("not_as_described", flags(self.model, "Large ang inorder ko pero small ang dumating", "Dress for Women"))
+        self.assertIn("not_as_described", flags(self.model, "Black ang inorder ko pero pink ang dumating", "Handheld Fan"))
+        self.assertIn("not_as_described", flags(self.model, "Size 42 ang order ko, 43 ang pinadala", "Running Shoes"))
+
+    def test_speed_and_time_are_not_a_mismatch(self):
+        self.assertNotIn("not_as_described", flags(self.model, "Inorder ko kahapon pero dumating na ngayon", "Dress for Women"))
+        self.assertNotIn("not_as_described", flags(self.model, "Inorder ko pero dumating agad, ang bilis", "Dress for Women"))
+
+    def test_the_quoted_evidence_is_a_real_word_of_the_review(self):
+        text = "Black ang inorder ko pero pink ang dumating"
+        a = self.model.analyze_batch([text], [3], listing={"name": "Handheld Fan"})[0]
+        span = a["review_evidence"]["not_as_described"]["spans"][0]
+        self.assertEqual(text[span["review_start"]:span["review_end"]], span["text"])
+
+
+class PackingDamageIsAboutThePacking(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.model = registry.load_model()
+
+    def test_damage_to_the_box_alone_is_not_a_defect(self):
+        self.assertNotIn("defect", flags(self.model, "Yupi yupi ang box pero okay ang item", "Rice Cooker 1.8L"))
+
+    def test_the_item_itself_damaged_in_the_same_review_still_is(self):
+        self.assertIn("defect", flags(self.model, "The box was dented but the item is broken", "Rice Cooker 1.8L"))
+
+    def test_a_conjunction_does_not_attach_a_damage_word_to_the_box(self):
+        from defaketive_sentiment import product_category as pc
+        self.assertFalse(pc._PACKING_DAMAGE.search("box at basag"))
+        self.assertTrue(pc._PACKING_DAMAGE.search("yupi ang box"))
+
+
 if __name__ == "__main__":
     unittest.main()

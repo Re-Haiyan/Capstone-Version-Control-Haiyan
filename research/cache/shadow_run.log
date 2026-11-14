@@ -1,0 +1,58 @@
+60 saved products sampled (of those with at least 60 written reviews)
+{
+ "products_compared": 60,
+ "skipped": 0,
+ "decisions_changed": 15,
+ "more_favourable": 2,
+ "less_favourable": 13,
+ "changed_to_or_from_not_enough": 0,
+ "mean_shares": {
+  "positive": [
+   0.8015,
+   0.7091
+  ],
+  "neutral": [
+   0.1173,
+   0.2035
+  ],
+  "negative": [
+   0.0812,
+   0.0874
+  ]
+ },
+ "transitions_deployed_to_calibrated": {
+  "caution -> caution": 21,
+  "recommended -> recommended": 13,
+  "recommended -> mixed": 12,
+  "not_recommended -> not_recommended": 8,
+  "mixed -> mixed": 3,
+  "mixed -> recommended": 1,
+  "caution -> not_recommended": 1,
+  "not_recommended -> caution": 1
+ },
+ "decision_counts": {
+  "deployed": {
+   "not_recommended": 9,
+   "recommended": 25,
+   "mixed": 4,
+   "caution": 22
+  },
+  "calibrated": {
+   "not_recommended": 9,
+   "recommended": 14,
+   "mixed": 15,
+   "caution": 22
+  }
+ },
+ "by_group": {
+  "electronics": {
+   "products": 60,
+   "changed": 15,
+   "mean_positive": [
+    0.802,
+    0.709
+   ]
+  }
+ },
+ "verdict_states_untouched": true
+}

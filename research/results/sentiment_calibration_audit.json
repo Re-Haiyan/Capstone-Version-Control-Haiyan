@@ -1,0 +1,141 @@
+{
+ "ablation": {
+  "probs": {
+   "cv_macro_f1": 0.605,
+   "historical_test_macro_f1": 0.569,
+   "cv_neutral_f1": 0.219
+  },
+  "probs+stars": {
+   "cv_macro_f1": 0.622,
+   "historical_test_macro_f1": 0.593,
+   "cv_neutral_f1": 0.254
+  },
+  "probs+text": {
+   "cv_macro_f1": 0.707,
+   "historical_test_macro_f1": 0.72,
+   "cv_neutral_f1": 0.459
+  },
+  "probs+stars+text": {
+   "cv_macro_f1": 0.718,
+   "historical_test_macro_f1": 0.717,
+   "cv_neutral_f1": 0.477
+  },
+  "stars": {
+   "cv_macro_f1": 0.564,
+   "historical_test_macro_f1": 0.539,
+   "cv_neutral_f1": 0.169
+  },
+  "text": {
+   "cv_macro_f1": 0.707,
+   "historical_test_macro_f1": 0.734,
+   "cv_neutral_f1": 0.488
+  },
+  "deployed_argmax": {
+   "cv_macro_f1": 0.605,
+   "historical_test_macro_f1": 0.57,
+   "cv_neutral_f1": 0.244
+  }
+ },
+ "by_group": {
+  "automotive_tools": {
+   "rows": 305,
+   "deployed_macro_f1": 0.586,
+   "calibrated_macro_f1": 0.711,
+   "calibrated_neutral_f1": 0.447
+  },
+  "baby_kids_toys": {
+   "rows": 253,
+   "deployed_macro_f1": 0.651,
+   "calibrated_macro_f1": 0.687,
+   "calibrated_neutral_f1": 0.487
+  },
+  "beauty_health": {
+   "rows": 742,
+   "deployed_macro_f1": 0.63,
+   "calibrated_macro_f1": 0.73,
+   "calibrated_neutral_f1": 0.505
+  },
+  "electronics": {
+   "rows": 378,
+   "deployed_macro_f1": 0.605,
+   "calibrated_macro_f1": 0.69,
+   "calibrated_neutral_f1": 0.433
+  },
+  "fashion": {
+   "rows": 524,
+   "deployed_macro_f1": 0.597,
+   "calibrated_macro_f1": 0.679,
+   "calibrated_neutral_f1": 0.365
+  },
+  "food_grocery": {
+   "rows": 53,
+   "deployed_macro_f1": 0.611,
+   "calibrated_macro_f1": 0.827,
+   "calibrated_neutral_f1": 0.8
+  },
+  "home_living": {
+   "rows": 1002,
+   "deployed_macro_f1": 0.607,
+   "calibrated_macro_f1": 0.703,
+   "calibrated_neutral_f1": 0.412
+  },
+  "office_media": {
+   "rows": 61,
+   "deployed_macro_f1": 0.457,
+   "calibrated_macro_f1": 0.499,
+   "calibrated_neutral_f1": 0.0
+  },
+  "other": {
+   "rows": 241,
+   "deployed_macro_f1": 0.594,
+   "calibrated_macro_f1": 0.718,
+   "calibrated_neutral_f1": 0.523
+  },
+  "pets": {
+   "rows": 321,
+   "deployed_macro_f1": 0.565,
+   "calibrated_macro_f1": 0.764,
+   "calibrated_neutral_f1": 0.62
+  },
+  "sports_outdoor": {
+   "rows": 66,
+   "deployed_macro_f1": 0.478,
+   "calibrated_macro_f1": 0.671,
+   "calibrated_neutral_f1": 0.615
+  }
+ },
+ "shares": {
+  "gold": [
+   0.305,
+   0.183,
+   0.511
+  ],
+  "deployed": [
+   0.246,
+   0.156,
+   0.599
+  ],
+  "calibrated": [
+   0.304,
+   0.146,
+   0.55
+  ],
+  "order": [
+   "negative",
+   "neutral",
+   "positive"
+  ]
+ },
+ "star_contradicting": {
+  "rows": 425,
+  "deployed_accuracy": 0.398,
+  "calibrated_accuracy": 0.576
+ },
+ "delivery_only": {
+  "rows": 101,
+  "deployed_accuracy": 0.554,
+  "calibrated_accuracy": 0.644,
+  "gold_share_positive": 0.198,
+  "calibrated_share_positive": 0.149
+ }
+}

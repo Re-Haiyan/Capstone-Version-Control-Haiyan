@@ -22,3 +22,4 @@ defective|depektibo|may\s+depekto|depekto|deffect	defect	2	a defect reported in 
 ayaw\s+(?:na\s+|pa\s+|po\s+)?(?:gumana|umandar|mag-?on|gumagana|mag-?charge|bumukas|mag-?start|umilaw)	defect	2	the product refuses to work
 (?:no|walang)\s+(?:input|response|signal|power|display)|on\s+and\s+off|on-and-off|putol[- ]putol|isa\s+(?:lang|lng)\s+ang\s+gumagana|yung\s+isa\s+(?:ay\s+)?(?:hindi|di)\s+gumagana	defect	2	an intermittent or partial failure
 (?:may\s+)?pag-?ka-?(?:nipis|manipis)|too\s+thin|material\s+(?:is\s+)?too\s+thin|not\s+as\s+durable|(?:hindi|di)\s+(?:masyadong\s+)?matibay	quality	1	thin or not durable
+(?:xxs|xs|xxl|\d?xl|small|medium|large|maliit|malaki|black|white|pink|blue|red|green|brown|gray|grey|beige|yellow|purple|orange|itim|puti|pula|asul|berde|dilaw|\d+)\s+(?:na\s+)?(?:ang|yung|ung)\s+(?:pinadala|ipinadala|dumating|binigay|natanggap|nadeliver)	not_as_described	1	a different size, colour or count arrived
