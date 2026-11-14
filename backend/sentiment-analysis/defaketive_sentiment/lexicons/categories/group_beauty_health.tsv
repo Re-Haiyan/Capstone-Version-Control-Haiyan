@@ -11,3 +11,4 @@ burn	safety	rash\w*|allerg\w*|irritat\w*|makati|nangati|pantal|sugat|paso|napaso
 dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality
 mabilis(?:\s+lang)?(?:\s+ma)?\s*lowbat\w*|(?:ma)?lowbat\w*|laowbat|drains?\s+(?:fast|quickly)|mabilis\s+maubos(?:\s+ang)?\s+battery	defect		a battery that runs down fast is a performance complaint (quality) here, not a defect
 expired	safety		it expired in the reviewer's own slow use, not on arrival	because|bec|dahil|kasi|every\s?day|everyday|don.?t|do not|haha|ubos
+damaged\s+(?:hair|skin|nails?|ends)|(?:dry|frizzy)\s+(?:and\s+)?damaged|hair\s+damage|skin\s+damage|damage\s+(?:repair|control)	defect		damage to hair or skin is what the product treats, not a fault in it

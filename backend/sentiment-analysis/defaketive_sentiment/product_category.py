@@ -291,7 +291,7 @@ def classify_listing(listing: Any) -> str:
 
 def _files(category: str, suffix: str) -> tuple[Path, ...]:
     """The files that apply to a category: its own, then its group's."""
-    names = (category, f"group_{group_of(category)}")
+    names = (category, f"group_{group_of(category)}", "all")  # "all" holds what reviewers say about any kind of product
     return tuple(path for path in (CATEGORY_DIR / f"{name}{suffix}" for name in names) if path.is_file())
 
 
@@ -341,7 +341,7 @@ def added_terms(category: str | None, label: str) -> tuple[tuple[str, int, re.Pa
 
     Returned as (term, severity, pattern), the shape the hazard tagger reads its own terms in.
     """
-    if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
+    if not category or PRODUCT_CATEGORY_OFF:
         return ()
     return tuple((term, severity, pattern) for term, row_label, severity, pattern, _reason in _additions(category) if row_label == label)
 
@@ -361,7 +361,7 @@ _DENIED_DAMAGE = re.compile(
 )
 _PRAISE_SAFE = re.compile(
     r"non[- ]?toxic|not toxic|bpa[- ]?free|(?:free|walang)\s+(?:from|of|ng)?\s*(?:toxic|chemicals?|lead)|safe(?:\s+(?:and|for|na|to|po|ang|sa)|\s*$)|"
-    r"(?:20[2-9]\d)\s+pa\s+(?:yung\s+)?expir|expir\w*\s+(?:date\s+)?(?:is\s+|pa\s+)?(?:in\s+|on\s+|until\s+|hanggang\s+)?20[2-9]\d|"
+    r"(?:20[2-9]\d)\s+pa\s+(?:yung\s+)?expir|expir\w*\s+(?:date\s+)?(?:is\s+|pa\s+)?(?:in\s+|on\s+|until\s+|hanggang\s+)?(?:[a-z]+\s+)?(?:\d+\s+)?20[2-9]\d|"
     r"(?:not|hindi|di|walang)\s+(?:expired|panis|spoiled)"
 )
 # "Ribbed texture prevents collapse", "leak-proof design", "anti-slip": a feature of the product, not a report.
@@ -369,6 +369,14 @@ _FEATURE_CLAIM = re.compile(
     r"(?:prevent\w*|resist\w*|anti[- ]?|stops?|avoids?)\s+(?:\w+\s+)?(?:leak\w*|spill\w*|collaps\w+|crack\w*|break\w*|burn\w*|slip\w*|overheat\w*|rust\w*)"
     r"|(?:leak|spill|burn|shock|crack|break|collapse|slip|heat|rust|scratch)[- ]?(?:proof|resistant|free)"
 )
+
+# "yupi yupi ang box", "damaged, no bubble wrap": the team files damage to the packing under delivery, not defect.
+_DAMAGE = r"(?:yupi\w*|nayupi|dent\w*|damag\w*|crush\w*|crumpl\w*|butas|punit|sira\w*|basag|broken|leak\w*|tagas|natapon)"
+_PACK = r"(?:box|boxes|kahon|packag\w*|packing|pouch|plastic|balot|bubble\s?wrap|wrapper|envelope|carton|sachet)"
+_PACKING_DAMAGE = re.compile(
+    _DAMAGE + r"(?:\s+|[,.]\s*)(?:\w+\s+){0,2}?" + _PACK + r"|" + _PACK + r"\s+(?:\w+\s+){0,2}?(?:is\s+|was\s+|are\s+|ay\s+)?" + _DAMAGE
+)
+_PACKING = re.compile(r"$^")  # the damage word and the packing word must be together (see _PACKING_DAMAGE)
 
 _SUNBURN_PEEL = re.compile(r"sunburn|dead skin|exfoliat|natangal|natanggal ang dead|nasunog sa araw")
 _NOT_EFFECTIVE = re.compile(r"^(?:hindi|di|not)\s+(?:po\s+)?(?:gumana|umepekto|tumalab|effective)\b")
@@ -379,9 +387,11 @@ DEFECT_LABEL, SAFETY_LABEL, QUALITY_LABEL = "defect", "safety", "quality"
 
 def denied(category: str | None, label: str, normalized: str, span: tuple[int, int]) -> str | None:
     """The reason a flagged phrase is a denial, praise or an effect rather than a report, or None."""
-    if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
+    if not category or PRODUCT_CATEGORY_OFF:
         return None
     phrase = normalized[span[0]:span[1]].strip()
+    if label == DEFECT_LABEL and _PACKING_DAMAGE.search(normalized):
+        return "damage to the box or packing is a delivery matter, not a fault in the product"
     if label in (SAFETY_LABEL, DEFECT_LABEL):
         for claim in _FEATURE_CLAIM.finditer(normalized):
             if claim.start() < span[1] and span[0] < claim.end():
@@ -406,13 +416,38 @@ def denied(category: str | None, label: str, normalized: str, span: tuple[int, i
     return None
 
 
+def sentence_exempt(category: str | None, label: str, normalized: str) -> str | None:
+    """Whether a whole sentence is one the category's exceptions explain, for the learned model, which has no phrase.
+
+    Used where no keyword found the report: the model may not add a flag the category file sets aside
+    ("madali malowbat" on a fan) or one that is only damage to the packing.
+    """
+    if not category or PRODUCT_CATEGORY_OFF:
+        return None
+    if label == DEFECT_LABEL and _PACKING_DAMAGE.search(normalized):
+        return "damage to the box or packing is a delivery matter, not a fault in the product"
+    for term, row_label, unless, reason, when in _exceptions(category):
+        if row_label != label:
+            continue
+        found = term.search(normalized)
+        if not found:
+            continue
+        nearby = " ".join(normalized[: found.start()].split()[-3:] + normalized[found.end():].split()[:3])
+        if unless is not None and unless.search(nearby):
+            continue
+        if when is not None and not when.search(nearby):
+            continue
+        return reason or f"not a complaint on a {category}"
+    return None
+
+
 def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3) -> str | None:
     """The reason a flagged phrase is not a complaint in this category, or None.
 
     `normalized` is the sentence the span was found in. Words within `reach`
     words of the phrase are checked against the row's `unless` pattern.
     """
-    if not category or category == OTHER or PRODUCT_CATEGORY_OFF:
+    if not category or PRODUCT_CATEGORY_OFF:
         return None
     start, end = span
     reason = denied(category, label, normalized, span)

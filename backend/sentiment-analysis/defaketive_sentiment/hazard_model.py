@@ -1105,6 +1105,21 @@ class LexiconHazardTagger:
                     # never to a sentence read as praise. The sentiment model
                     # runs only for the sentences where that is in question.
                     if on and category not in tags:
+                        # Rules pc4: a sentence the keywords read as a fake is not also a defect the model may add (the team
+                        # labels 1 in 10 fakes as a defect too); a lexicon defect word still counts.
+                        if (
+                            self.rules == "0.4"
+                            and category == DEFECT
+                            and COUNTERFEIT in tags
+                            and not any(match["category"] == DEFECT and not match.get("excluded") for match in matches)
+                        ):
+                            gated[category] = "counterfeit_not_defect"
+                            continue
+                        # Rules pc4: a phrase the category file sets aside, or damage to the packing, is not a defect
+                        # the model may add (the keywords found nothing to cancel).
+                        if self.rules == "0.4" and product_kind and category == DEFECT and product_category.sentence_exempt(product_kind, category, normalized):
+                            gated[category] = "category_exempt"
+                            continue
                         # Rules pc4: heat or smoke already flagged as a safety report is not also a defect; the
                         # team's labels put it under safety. Real defect words in the sentence still count.
                         if (

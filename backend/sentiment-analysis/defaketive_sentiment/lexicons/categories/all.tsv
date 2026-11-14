@@ -1,0 +1,5 @@
+# Phrases that are not a report on any kind of product (rules pc4). Columns, TABS: term | label | unless | reason | when
+(?:\w+\s+){0,2}(?:ma\s?)?(?:low\s?bat\w*|lobat\w*)(?:\s+\w+){0,2}|(?:\w+\s+){0,2}mabilis\s+(?:ma)?ubos(?:\s+\w+){0,2}	quality		fast battery drain is mostly not a complaint worth flagging; the team labels it quality only 1 in 11 times	
+(?:\w+\s+){0,2}(?:ma\s?)?(?:low\s?bat\w*|lobat\w*)(?:\s+\w+){0,2}|(?:\w+\s+){0,2}mabilis\s+(?:ma)?ubos(?:\s+\w+){0,2}	defect		fast battery drain is a performance remark, not a defect, in every kind of product	
+(?:\w+\s+){0,2}burn\w*(?:\s+\w+){0,2}	safety		burning calories or a burn test is not a fire hazard	(?:calorie|calories|fat|test|workout|exercise|steps)
+(?:\w+\s+){0,2}(?:itch\w*|makati|kati|nangati|rash\w*)(?:\s+\w+){0,2}	safety		what the product treats, not a reaction to it	(?:relieve|relieves|stops|stop|treat|treats|cures|cure|soothes|nakakawala|nawala|pampawala|pang)

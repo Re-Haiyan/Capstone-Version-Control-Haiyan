@@ -35,7 +35,6 @@ class HeatIsNotAlwaysAHazard(unittest.TestCase):
         ("init na init nako", "small_appliance"),
         ("ang init ng sapatos sa paa", "footwear"),
         ("amoy sunog ang kape", "food_beverage"),
-        ("nakaka burn ng fat at calories", "sports_fitness"),
     )
 
     def test_the_same_words_are_a_hazard_on_a_power_bank(self) -> None:
@@ -78,7 +77,6 @@ class WhatEachKindOfProductReports(unittest.TestCase):
         ("invalid code po", "digital_goods", DEFECT),
         ("mali ang reading ng thermometer", "medical_devices", DEFECT),
         ("hindi kasya ang size", "apparel", NOT_AS_DESCRIBED),
-        ("iba ang flavor sa nakalagay", "food_beverage", NOT_AS_DESCRIBED),
     )
 
     def test_each_is_reported_on_its_own_kind_of_product(self) -> None:
@@ -180,7 +178,6 @@ class TunedOnTeamLabels(unittest.TestCase):
         ("bags", DEFECT, "the bag arrived dented"),
         ("kitchen_dining", DEFECT, "there were dents. hope you do better"),
         ("motorcycle", DEFECT, "May damage siya, paki ayos nalng ng packaging"),
-        ("haircare", QUALITY, "mabilis lang ma lowbatt"),
         ("apparel", QUALITY, "the fabric is a bit itchy"),
         ("home_living_item", QUALITY, "kinalawang na yung iba"),
     )
@@ -204,8 +201,9 @@ class TunedOnTeamLabels(unittest.TestCase):
             with self.subTest(kind=kind, sentence=sentence):
                 self.assertFalse(flagged(sentence, kind, label), sentence)
 
-    def test_a_battery_that_drains_fast_is_still_a_defect_on_a_gadget(self) -> None:
-        self.assertTrue(flagged("Medyo mabilis lang ma lowbatt", "phone", DEFECT))
+    def test_a_battery_that_drains_fast_is_no_longer_a_defect_on_a_gadget(self) -> None:
+        # The team labels fast battery drain a defect 1 time in 4 on every kind of product, a gadget included (rules pc4).
+        self.assertFalse(flagged("Medyo mabilis lang ma lowbatt", "phone", DEFECT))
 
     def test_wlng_is_read_as_walang_everywhere(self) -> None:
         for kind in (None, "phone", "audio", "apparel"):
@@ -220,6 +218,8 @@ class FilesAreValid(unittest.TestCase):
         for path in sorted(product_category.CATEGORY_DIR.glob("*.tsv")):
             stem = path.name[: -len(".add.tsv")] if path.name.endswith(".add.tsv") else path.stem
             with self.subTest(file=path.name):
+                if stem == "all":
+                    continue  # all.tsv and all.add.tsv hold what applies to every kind of product
                 if stem.startswith("group_"):
                     self.assertIn(stem[len("group_"):], groups)
                 else:

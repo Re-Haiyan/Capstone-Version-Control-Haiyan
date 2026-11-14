@@ -205,7 +205,7 @@ class ExemptionTests(unittest.TestCase):
                 stem = path.name[: -len('.add.tsv')] if path.name.endswith('.add.tsv') else path.stem
                 groups = {product_category.group_of(name) for name in product_category.CATEGORIES}
                 self.assertTrue(
-                    stem in product_category.CATEGORIES or (stem.startswith('group_') and stem[len('group_'):] in groups), stem
+                    stem == 'all' or stem in product_category.CATEGORIES or (stem.startswith('group_') and stem[len('group_'):] in groups), stem
                 )
         for name in product_category.CATEGORIES:
             product_category._exceptions(name)
