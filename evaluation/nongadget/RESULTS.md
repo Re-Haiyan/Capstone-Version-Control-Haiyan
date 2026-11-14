@@ -85,3 +85,22 @@ Category terms for quality and not as advertised were never checked for negation
 Fresh batch quality false alarms went from 8 to 4 (precision 0.20 to 0.33, recall unchanged at 0.40; 5 positives, so do not read the score). Dev and test halves of the first batches are unchanged, except dev not as advertised 0.86 to 0.88. 189 tests pass.
 
 A second fresh scan (pets, appliances, bedding, bags, lipstick, shampoo) was started and stopped: Lazada returned no listings for any search after the earlier day's scan. The scanner never answers a verification, so it was left alone. Try again later, with fewer searches per run.
+
+## Second fresh batch (clean test of the rules as deployed at d74589a)
+
+270 reviews from 75 products scanned after the second round of fixes (pets, small appliances, bedding, hair care, bags, kitchen, toys). Labelled by the team (253 high-confidence rows), scored once before any change. Products overlap with no earlier batch.
+
+| Label | Positives | No category: P / R / F1 | Tuned: P / R / F1 |
+|---|---|---|---|
+| Defect | 29 | 0.73 / 0.66 / 0.69 | 0.73 / 0.66 / 0.69 |
+| Not as advertised | 36 | 0.86 / 0.17 / 0.28 | 0.86 / 0.33 / 0.48 |
+| Quality | 16 | 0.62 / 0.62 / 0.62 | 0.73 / 0.50 / 0.59 |
+| Counterfeit | 2 | n/a | n/a |
+| Safety | 1 | n/a | n/a |
+
+Sentiment accuracy 0.905 (229 of 253). Counterfeit (2) and safety (1) have too few positives to score.
+
+- **Not as advertised is still the weak spot:** it finds 12 of 36. Most misses are the wrong item delivered ("dogfood imbis na catfood", "lipbalm not lipstick"), missing items ("8 bedsheets ang order pero puro pillow case", "pack of 2, isa lang"), and a size or material that differs ("hindi cotton"). The first fresh batch had the same weakness in fashion; the size and wrong-item rules there were never written for home, pet, toy and appliance groups.
+- **Defect is flat against no category** (the category adds nothing here). Many misses are "arrived dented or scratched" on small appliances, a policy the team labels as a defect.
+- **Quality dropped in recall** against no category (0.62 to 0.50) while precision rose.
+- The category work helps most where the general rules have no words for a kind of complaint, and little where they already do.
