@@ -327,3 +327,23 @@ class DeniedCategoryTermsAreNotComplaints(unittest.TestCase):
 
     def test_real_thin_complaint_still_counts(self):
         self.assertIn("quality", self.flags("Dress for Women", "sobrang nipis ng tela, parang papel"))
+
+
+class WrongOrMissingItemsOnEveryKindOfProduct(unittest.TestCase):
+    def nad(self, product, text):
+        from defaketive_sentiment import registry
+
+        analysis = registry.load_model().analyze_batch([text], [2], listing={"name": product})[0]
+        return "not_as_described" in (set(analysis.get("review_tags") or []) | set(analysis.get("review_extra_tags") or []))
+
+    def test_wrong_item_delivered(self):
+        self.assertTrue(self.nad("Cat Food 1kg", "Wrong delivery po. Dogfood ang dineliver imbis na catfood"))
+
+    def test_missing_items(self):
+        self.assertTrue(self.nad("Bedsheet Set 8pcs", "walang bedsheet sa deliver, puro pillow case lang po ang dumating"))
+
+    def test_fewer_in_the_pack(self):
+        self.assertTrue(self.nad("Shampoo Pack of 2", "scam kayo sabi nio pack of 2, isa lng talaga laman ng box"))
+
+    def test_a_correct_delivery_is_not_flagged(self):
+        self.assertFalse(self.nad("Cat Food 1kg", "Complete ang delivery, same as advertised, my cat loves it"))
