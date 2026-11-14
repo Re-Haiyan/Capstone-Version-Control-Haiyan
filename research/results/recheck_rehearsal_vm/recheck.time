@@ -1,0 +1,24 @@
+[0;93m2026-11-14 15:12:46.939277698 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+	Command being timed: "./backend/.venv/bin/python scripts/recheck_products.py --apply --max-reviews 900 --duty 50 --max-load 1.9 --list 5"
+	User time (seconds): 62.62
+	System time (seconds): 2.49
+	Percent of CPU this job got: 50%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:09.37
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 675764
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 73
+	Minor (reclaiming a frame) page faults: 250542
+	Voluntary context switches: 18591
+	Involuntary context switches: 1210
+	Swaps: 0
+	File system inputs: 947144
+	File system outputs: 1935304
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

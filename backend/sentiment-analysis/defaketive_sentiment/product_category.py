@@ -364,9 +364,16 @@ _PRAISE_SAFE = re.compile(
     r"(?:20[2-9]\d)\s+pa\s+(?:yung\s+)?expir|expir\w*\s+(?:date\s+)?(?:is\s+|pa\s+)?(?:in\s+|on\s+|until\s+|hanggang\s+)?(?:[a-z]+\s+)?(?:\d+\s+)?20[2-9]\d|"
     r"(?:not|hindi|di|walang)\s+(?:expired|panis|spoiled)"
 )
+# A date can make a review harmless ("expiry date 2027 pa"), but not when the same sentence says the item itself is expired ("already expired",
+# "expired yung natanggap ko", "expired when it arrived"): the noun "expired date" is not such a report, the adjective is.
+_EXPIRED_REPORT = re.compile(
+    r"\b(?:already|was|were|is|are|came|arrived|received|na|nag)\s*-?\s*expire[ds]?\b(?!\s+date)"
+    r"|\bexpired\s+(?:na|already|yung|ung|ang|po)\b(?!\s+date)|\bexpired\s+(?:item|product|goods|food|when|upon|pagdating|on arrival)\b"
+    r"|\bnag-?expire\w*"
+)
 # "Ribbed texture prevents collapse", "leak-proof design", "anti-slip": a feature of the product, not a report.
 _FEATURE_CLAIM = re.compile(
-    r"(?:prevent\w*|resist\w*|anti[- ]?|stops?|avoids?)\s+(?:\w+\s+)?(?:leak\w*|spill\w*|collaps\w+|crack\w*|break\w*|burn\w*|slip\w*|overheat\w*|rust\w*)"
+    r"(?:prevents|resists|resistant|stops|avoids|anti[- ]?)\s+(?:(?!(?:that|this|the|a|my|your|it|these|those)\b)\w+\s+)?(?:leak\w*|spill\w*|collaps\w+|crack\w*|break\w*|burn\w*|slip\w*|overheat\w*|rust\w*)"
     r"|(?:leak|spill|burn|shock|crack|break|collapse|slip|heat|rust|scratch)[- ]?(?:proof|resistant|free)"
 )
 
@@ -414,7 +421,11 @@ def denied(category: str | None, label: str, normalized: str, span: tuple[int, i
         if re.match(r"\W*(?:[a-z']+[\s,]+){0,5}?(?:hindi|di)\s+pala", normalized[span[1]:]):
             return "the reviewer feared it and it was not so"
     if label == SAFETY_LABEL:
-        if _PRAISE_SAFE.search(normalized) and not re.search(r"rash|allerg|pantal|nangati|makati|sumakit|nagtae|sugat|burn|paso|usok|smoke", normalized):
+        if (
+            _PRAISE_SAFE.search(normalized)
+            and not re.search(r"rash|allerg|pantal|nangati|makati|sumakit|nagtae|sugat|burn|paso|usok|smoke", normalized)
+            and not _EXPIRED_REPORT.search(normalized)
+        ):
             return "praise or a safe date, not a hazard"
         if _SUNBURN_PEEL.search(normalized) and re.search(r"balat|peel", phrase):
             return "peeling after sun is not a reaction"

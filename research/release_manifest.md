@@ -1,6 +1,6 @@
 # Release manifest, deployment checklist, smoke-test plan and rollback
 
-**Nothing described here has been deployed, pushed or merged.** The production VM is still at `d74589a` (verified read-only: `git log` and a clean tree). This document prepares a release for the owner's explicit approval.
+**Nothing described here has been deployed, pushed or merged.** The blocker checks (safety regression, saved-report migration, default admin password) are in `release_blocker_checks.md`; after them the release candidate gained a safety fix (`product_category.py`) and a gradual re-check tool (`scripts/recheck_products.py`), so the recommended commit named below is the one that contains both. The production VM is still at `d74589a` (verified read-only: `git log` and a clean tree). This document prepares a release for the owner's explicit approval.
 
 ## 1. What is being compared
 
@@ -43,7 +43,8 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 
 * The model version stamp changed from `...+pc3+...` to `...+pc4+...` (the rules changed; the old release kept `pc3` although its behaviour had moved, so saved reports could not be told apart). `tests/test_release_version.py` fixes this.
 * **After deployment every saved report is shown as stored, with the app's existing notice that it predates the current checker, until it is re-checked** (`scripts/recheck_products.py`). Nothing is re-analysed automatically for the saved-report screens; the app keeps serving. Verified locally: the app answers every checked route with the same status codes and latencies after the stamp change.
-* **Re-check cost on the VM:** the daily backup of 2026-11-14 holds 396 products (325 Lazada, 64 Shopee, 7 Temu) and 71,690 reviews. At the measured 14.3 reviews per second that is about **84 minutes of CPU on both cores**; run it off-peak with `--apply` (it backs the database up first and saves at the end). Until it runs, the saved verdicts are those of the old rules.
+* **Do not re-check everything at once.** Use the gradual, limited, journalled `scripts/recheck_products.py` (`release_blocker_checks.md` section 2): `--max-minutes 90 --duty 50 --max-load 1.5`, with `nice -n 19`; each product is saved on its own and can be rolled back from a journal.
+* **Re-check cost on the VM:** the daily backup of 2026-11-14 holds 396 products (325 Lazada, 64 Shopee, 7 Temu) and 71,690 reviews. One thread does about 15 reviews per second, so it is about **84 minutes of one core** when working all the time, or about **2.7 hours at `--duty 50`** (measured on a copy of the production database, peak memory 676 MB); run it off-peak in limited windows. Until it runs, the saved verdicts are those of the old rules.
 
 ## 5. Deployment checklist (every step needs the owner's go-ahead)
 
@@ -52,7 +53,7 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 2. `backend/.venv/Scripts/python.exe -m unittest discover -s tests` passes (274 tests at `825de6d`).
 3. Record the baseline on the live site: `python scripts/smoke_test.py https://defaketive.duckdns.org --save-baseline before.json`.
 4. On the VM: note the running commit (`git -C ~/defaketive log --oneline -1`, expect `d74589a`), `systemctl is-active defaketive`, and `systemctl show defaketive -p Environment` (expect no `DEFAKETIVE_` switch).
-5. Back up both databases: `~/defaketive/backend/.venv/bin/python scripts/backup_databases.py` (or confirm today's file under `~/defaketive/backups/daily/`).
+5. Run `python scripts/check_admin_default.py` on the VM (expect: not active). Back up both databases: `~/defaketive/backend/.venv/bin/python scripts/backup_databases.py` (or confirm today's file under `~/defaketive/backups/daily/`).
 6. Build the bundle on the PC: `git bundle create release.bundle d74589a..825de6d`.
 
 **Deploy** (the procedure used for earlier releases)
@@ -65,7 +66,8 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 11. Run the manual smoke checks of section 6.
 12. Watch `journalctl -u defaketive -n 100 --no-pager` and `free -m` for 15 minutes (expect about 380 MB for the model process).
 13. Schedule the off-peak re-check (section 4); afterwards run the smoke test again and review the changed cards.
-14. Optional, with approval: set `DEFAKETIVE_EVIDENCE_POLICY=shadow` in the service environment to collect the evidence-policy shadow data.
+14. Run `scripts/check_admin_default.py` again; never restore a backup older than 2026-11-10 without running it on the backup first.
+15. Optional, with approval: set `DEFAKETIVE_EVIDENCE_POLICY=shadow` in the service environment to collect the evidence-policy shadow data.
 
 ## 6. Smoke-test plan
 
@@ -87,7 +89,7 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 
 1. On the VM: `cd ~/defaketive && git reset --hard d74589a && bash deploy/setup-server.sh` (rebuilds and restarts on the old code, no database change).
 2. Check: `systemctl is-active defaketive`, HTTP 200, and `python scripts/smoke_test.py https://defaketive.duckdns.org --compare before.json` (the picks equal the baseline).
-3. If the re-check had been applied, restore the databases from the backup the re-check script made (`backups/` under the project, named in its output) with the service stopped: `sudo systemctl stop defaketive; cp <backup>/defaketive.db ~/defaketive/backend/defaketive.db; sudo systemctl start defaketive`. The old code reads old reports as current again (the stamp is back to `pc3`).
+3. If the re-check had been applied: undo it product by product with `scripts/recheck_products.py --rollback backups/recheck-journal-<time>.jsonl --apply` (the site may keep running), or restore the databases from the backup the re-check script made (`backups/` under the project, named in its output) with the service stopped: `sudo systemctl stop defaketive; cp <backup>/defaketive.db ~/defaketive/backend/defaketive.db; sudo systemctl start defaketive`. The old code reads old reports as current again (the stamp is back to `pc3`).
 4. Nothing else needs undoing: no dependency, model, schema or environment change was made, and the three switches were never set.
 
 **Time to roll back:** about 3 to 5 minutes (the site rebuild dominates). The release changes no stored data, so step 3 is needed only after a re-check.

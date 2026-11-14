@@ -8,6 +8,7 @@ The research round of the review-classification work. Start with `final_implemen
 | Document | What it answers |
 |---|---|
 | `release_manifest.md` | **Release audit**: what differs from production, switches, deployment checklist, smoke tests, rollback (nothing deployed) |
+| `release_blocker_checks.md` | Safety regression audit of the 29 lost flags, saved-report migration strategy and rehearsal, default admin password check |
 | `release_validation.md` | Tests, API compatibility, quotation, aggregation, VM benchmark, behaviour diff for the release candidate |
 | `evidence_policy_decision.md` | Audit of the evidence-required policy: dropped flags, category and product effects, shadow rollout, why it stays off |
 | `policy_owner_decisions.md` | One-page decision sheet for the owner (freebies, thin reviews and the rest) |

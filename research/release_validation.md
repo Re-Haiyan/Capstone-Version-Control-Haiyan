@@ -6,7 +6,7 @@ Everything here is of the release-candidate **code at `27598e4`** (documentation
 
 ## 1. Test suite
 
-`backend/.venv/Scripts/python.exe -m unittest discover -s tests`: all tests pass (270 at `27598e4`, plus `tests/test_agreement_check.py`; the final count is in the closing report of the round). `tests/test_release_version.py` fixes the model-version stamp (`pc4`).
+`backend/.venv/Scripts/python.exe -m unittest discover -s tests`: all tests pass (286 after the blocker checks: 270 at `27598e4`, then the agreement-check, safety-regression and saved-report tests). `tests/test_release_version.py` fixes the model-version stamp (`pc4`).
 
 ## 2. What changes for users (behaviour of the RC against production, same inputs)
 
@@ -58,6 +58,10 @@ Latency and throughput are equal within run-to-run noise (about 1%). Memory is a
 * The live service sets no `DEFAKETIVE_` variable (checked read-only on the VM), so the three disabled features stay off. A `git pull` adds about 17 MB of files that nothing imports.
 * `research/artifacts/sentiment_calibrator_v1.joblib` is inert unless an environment variable names it.
 
-## 8. Not verified here
+## 8. Added after the blocker checks
+
+`release_blocker_checks.md`: the 29 lost safety flags audited one by one, two safety regressions found by unlabelled scans and fixed, a gradual re-check tool rehearsed on a copy of the production database, and the default-admin-password check. The behaviour diff of section 2 was re-run on the final code: the same 362 reviews change, 0 sentiment changes, defect F1 0.642 to 0.740 (train) and 0.613 to 0.693 (historical benchmark).
+
+## 9. Not verified here
 
 A deployment, a live new-link scan, a live extension submission, a front-end change in the browser (none was made) and the re-check run (about 84 minutes) were not performed; they need the owner's approval and are in the checklist.

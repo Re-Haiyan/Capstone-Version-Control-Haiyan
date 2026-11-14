@@ -1,0 +1,36 @@
+baseline /api/picks (live site, before):
+0.358002 0.356102 0.351357 0.350430 0.351131 
+load 0.06, available 2213 MB
+recheck wall 1794669161..1794669290 = 129 s
+To re-check:
+    65 reviews  Lazada PH   Princess Dress with halter neck with slit F…  older checker version
+   241 reviews  Lazada PH   Mr Ric Spout Lid Accessories Wave Rubber fo…  older checker version
+   300 reviews  Lazada PH   YOWXII 🔥 stand Fan floor fan 14/16-inch ele…  older checker version
+   245 reviews  Lazada PH   3 pcs Hanes Round Neck White T-Shirt 100% C…  older checker version
+    88 reviews  Lazada PH   Essager 10W USB Charger Portable Dual USB P…  older checker version
+  ... and 389 more
+
+Rough time: 155 minute(s), plus loading the model.
+
+Backup written and checked: /tmp/vre/backups/defaketive-before-recheck-20261114-151249.db
+  [1/394] Princess Dress with halter neck with slit FREESIZ… (65 reviews) ... No red flags found (3.9s)
+  [2/394] Mr Ric Spout Lid Accessories Wave Rubber for Wide… (241 reviews) ... Reviewers report fakes or defects (17.5s)
+  [3/394] YOWXII 🔥 stand Fan floor fan 14/16-inch electric … (300 reviews) ... Reviewers report safety problems (23.1s)
+  [4/394] 3 pcs Hanes Round Neck White T-Shirt 100% Cotton … (245 reviews) ... No red flags found (12.6s)
+
+Stopped because the next product would pass --max-reviews 900. 4 products (851 reviews) re-checked in 114 seconds.
+
+390 saved products are still from an older checker (run again to continue).
+Row counts: {'products': 396, 'reviews': 71690} (before: {'products': 396, 'reviews': 71690}).
+To undo this run, product by product: python scripts/recheck_products.py --rollback /tmp/vre/backups/recheck-journal-20261114-151254.jsonl --apply
+To undo everything: close both apps, then copy
+  /tmp/vre/backups/defaketive-before-recheck-20261114-151249.db
+over
+  /tmp/vre/backend/defaketive.db
+	Percent of CPU this job got: 50%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:09.37
+	Maximum resident set size (kbytes): 675764
+samples during the run (load, available MB, /api/picks seconds):
+n=38 load avg 0.44 max 0.61 | min available 1792 MB | picks mean 0.376s max 2.438s
+baseline after:
+1.268448 0.148314 0.146491 

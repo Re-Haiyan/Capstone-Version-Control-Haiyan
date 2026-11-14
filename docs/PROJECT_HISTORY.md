@@ -38,7 +38,7 @@ DeFaketive reads Lazada and Shopee reviews and says whether a listing shows sign
 
 ## 4. How to reproduce
 
-* Tests: `backend\.venv\Scripts\python.exe -m unittest discover -s tests` (the suite in `tests/`; 274 at the release audit).
+* Tests: `backend\.venv\Scripts\python.exe -m unittest discover -s tests` (the suite in `tests/`; 286 after the blocker checks).
 * Score the rules: `evaluation/score_nongadget.py`, `training/rules_eval.py`, `research/evaluate_all.py`.
 * Training environment: `D:\defaketive-train` (CPU PyTorch, transformers, scikit-learn, sentence-transformers, cleanlab); runs are not committed (`training/runs/` is ignored).
 * Everything that touches labels uses product-grouped folds (`research/common.py`).
