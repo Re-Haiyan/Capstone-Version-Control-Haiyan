@@ -55,7 +55,7 @@ for p in eligible:
     listed = {int(k): float(v) for k, v in (dist[p]["review_star_distribution"] or {}).items() if str(k).isdigit()}
     in_pool = collections.Counter(r["stars"] for r in pool[p])
     for r in sample:
-        w_star = (listed.get(r["stars"], 0.0) / in_pool[r["stars"]]) if in_pool[r["stars"]] and listed else 1.0
+        w_star = (max(listed.get(r["stars"], 0.0), 1.0) / in_pool[r["stars"]]) if in_pool[r["stars"]] and listed else 1.0  # a star level that exists in the pool never gets weight 0, even if the listing reports none
         rows.append({"product": p, "stars": r["stars"], "text": r["text"], "role": "representative", "sampling_weight": round(w_star * len(pool[p]) / len(sample), 4)})
     hazard = [r for r in rest if HAZ.search(r["text"])]
     for r in hazard[:3]:
