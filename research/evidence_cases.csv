@@ -1,43 +1,31 @@
 ﻿id,flag,state,layers,model_score,quote
 G0128,defect,model_only,keyword_or_learned_layer,0.5,"after eating, it wasn't on my lips."
 G0139,defect,model_only,keyword_or_learned_layer,0.6359,ang panget po ng design na napunta sakin then may himulmul po ung binigay hindi po sya makinis na bedsheets sayang lang ung pera hays
-G0257,defect,model_only,keyword_or_learned_layer,0.7809,"hindi rin magamit ng ayos kusang nababa, nag ooff agad d makaluto ng ayos nakaka bwesit lang gamitin"
-H0095,defect,model_only,keyword_or_learned_layer,0.5124,damage n few days use only disposable
-H0106,defect,model_only,keyword_or_learned_layer,0.6093,DO NOT BUY!
 H0125,defect,model_only,keyword_or_learned_layer,0.7157,Wala leak and damage
 H0192,defect,model_only,keyword_or_learned_layer,0.755,nakaka pangamba kasi baka nalng sumabog.
-H0197,defect,model_only,keyword_or_learned_layer,0.93,Yung remote lng may problima gumana sya sa ompisa sa Bluetooth sa pangalawang connect ayaw na....
-H0209,defect,model_only,keyword_or_learned_layer,0.8242,sabi fast charger nong ginamit imbis magcharge nagbabawas pa battery naka off naman magdamag chinarge 10% lang
+H0231,defect,model_only,keyword_or_learned_layer,0.9241,charge ko cia magdamag tapus wala pang ilang menuto gusko Wala na lowbat na agad...
 H0232,defect,model_only,keyword_or_learned_layer,0.5173,if you want a spare money to throw then this is the perfect item for you....it says 10000mah...i charge it just took 1hr...and charge my 5000mah phone and put a 10% juice...so this powerbank is not 10000mah its only 500mah...another thing w
 H0253,defect,model_only,keyword_or_learned_layer,0.8276,My phone did not get fully charged when i used it.
 H0261,defect,model_only,keyword_or_learned_layer,0.6695,"This item was expired , not so sure why still sell it to your loyalty customer,"
 N0024,defect,model_only,keyword_or_learned_layer,0.8658,hindi na naka antay kaya kahit pa take off na sa ride hindi pa nag papigil ikabit agad.
 N0027,defect,model_only,keyword_or_learned_layer,0.8446,ayaw pa bumula😆😤
-N0045,defect,model_only,keyword_or_learned_layer,0.5477,Di magagamit sana mabenta pa.
 N0053,defect,model_only,keyword_or_learned_layer,0.6492,hindi po siya bomubola..
 N0060,defect,model_only,keyword_or_learned_layer,0.5167,"NAG SABON PA AKO NG SAFEGUARD BAKA DAHIL SA pawis KO, AYAW PA RIN BUMULA."
-N0066,defect,model_only,keyword_or_learned_layer,0.8068,Design:nicd Hindi p nagagamit putol ung hook .
 N0074,defect,model_only,keyword_or_learned_layer,0.6492,hindi po siya bomubola..
 N0095,defect,model_only,keyword_or_learned_layer,0.5167,"NAG SABON PA AKO NG SAFEGUARD BAKA DAHIL SA pawis KO, AYAW PA RIN BUMULA."
-N0173,defect,model_only,keyword_or_learned_layer,0.7827,sayang lang pera ayw nman gumana
 N0249,defect,model_only,keyword_or_learned_layer,0.8446,ayaw pa bumula😆😤
-N0270,defect,model_only,keyword_or_learned_layer,0.6628,May delay tsaka napuputol putol salita. | Walang notification kung naconnect na mga kasama mo same kapag nadisconnect.
 P0008,defect,model_only,keyword_or_learned_layer,0.5916,Battery Life:weak mabilis mawala ilaw.. 😔😔
 P0032,defect,model_only,keyword_or_learned_layer,0.7607,I think pag fully charge nag lalast lang sya ng 2 hours (if straight use mo sya)
-P0042,defect,model_only,keyword_or_learned_layer,0.8554,Hindi xa umiinit Hindi rin nag charge sad sayang ang.
 P0224,defect,model_only,keyword_or_learned_layer,0.6491,does not last longer than 3 hrs for the entire day charging
 T10135,defect,model_only,keyword_or_learned_layer,0.695,bakit nakakahilo after gamitin?
 T20245,defect,model_only,keyword_or_learned_layer,0.5699,ngayon ayaw nila kainin
 T20328,defect,model_only,keyword_or_learned_layer,0.7567,2 1/2 hours ang charging.
 T20373,defect,model_only,keyword_or_learned_layer,0.9037,"Nagtae isang cat ko siguro dahil change of food, gradual naman ginawa ko sa pagpalit kasi naka mix, yung dalawa naman hindi."
-T30050,defect,model_only,keyword_or_learned_layer,0.7316,nag leak yung shampoo
 T30259,defect,model_only,keyword_or_learned_layer,0.7339,Bago nyo ipadala ung item icheck nyo I charge nyo... | Ung dumating samin magdamag ng naka charge tpos pag ginamit wala pang 10 mins.
-T30261,defect,model_only,keyword_or_learned_layer,0.9358,hindi po magamit.
 T30287,defect,model_only,keyword_or_learned_layer,0.5298,Doesn't lock properly.
 T30384,defect,model_only,keyword_or_learned_layer,0.5699,ngayon ayaw nila kainin
 T40032,defect,model_only,keyword_or_learned_layer,0.6339,di finctional ang pinadala nyo sa akin di man lang uminit ..nakaka dismaya sayang langvyong pera ko dito
 T40062,defect,model_only,keyword_or_learned_layer,0.8343,the socket is grounded. | pero hindi nag-o-on
-T40223,defect,model_only,keyword_or_learned_layer,0.6224,Putol na naman.
 T40384,defect,model_only,keyword_or_learned_layer,0.6752,SIGNAL NO. 1 ➡️ Kindergarten ONLY ang WALANG PASOK. 🔴
 T50022,defect,model_only,keyword_or_learned_layer,0.5948,pero kalahati lang laman ng bawat lalagyanan..dapat pinag isa nyo nalang hindi yung gumagawa pa kayo ng gimik na dalawa
 T50024,defect,model_only,keyword_or_learned_layer,0.7437,"with a quick charge cable, it takes about thirty minutes to fully charge."
@@ -47,7 +35,6 @@ T50067,defect,model_only,keyword_or_learned_layer,0.4935,while ung isa kapos.
 T50098,defect,model_only,keyword_or_learned_layer,0.9338,nawawala ung isang O😂
 T50143,defect,model_only,keyword_or_learned_layer,0.7674,Kahit naka charge lang sya at di ginagamit .
 T50166,defect,model_only,keyword_or_learned_layer,0.8168,⚠️ One thing I don’t like are the sharp edges!
-T50181,defect,model_only,keyword_or_learned_layer,0.6403,napunit agad wala pang 2 weeks.
 T50212,defect,model_only,keyword_or_learned_layer,0.9875,Batteries were easily depleted even when its full charge One battery bloated
 T50225,defect,model_only,keyword_or_learned_layer,0.7906,expired na yun product nung dinilever sa akin Omg feb 2021 pa . | grabeh ndi man lang check .
 T50282,defect,model_only,keyword_or_learned_layer,0.567,"however after weeks of using, after cooking rice, instead of going keep warm, it will switch itself to a different function."
@@ -69,10 +56,10 @@ T60296,defect,model_only,keyword_or_learned_layer,0.6864,pero may battery po sya
 T60336,defect,model_only,keyword_or_learned_layer,0.6891,Buti na lng gumagana pa din ang item and hindi nadamage in transit.
 T60350,defect,model_only,keyword_or_learned_layer,0.5297,nakakatakot icharge ung iphone ko dto ...
 T70067,defect,model_only,keyword_or_learned_layer,0.7142,"Hindi ma read ang USB CAM, error ang result, tried 2 diffrent PC"
-T70078,defect,model_only,keyword_or_learned_layer,0.6954,Sana mas inaayos ang packaging para hindi ma damage kasi Bali agad ang laki panmn nito tapos hindi magagamit ng maayos ung pump.
 T70085,defect,model_only,keyword_or_learned_layer,0.5579,Mura lng tlg yung powerbank
 T70088,defect,model_only,keyword_or_learned_layer,0.537,ano to bakit Mali yong pinadala nyo nakakadismaya color dalawa sa akiN Isa lang naabit ko.
 T70129,defect,model_only,keyword_or_learned_layer,0.5679,DO NOT BUY.
+T70135,defect,model_only,keyword_or_learned_layer,0.7272,"Performance:In terms of battery life, nung first week mabilis sya malowbat umaabot lang around 4-5 hours from 95-25%"
 T70174,defect,model_only,keyword_or_learned_layer,0.4897,not even in the packaging.
 T70184,defect,model_only,keyword_or_learned_layer,0.8099,Then hindi po tlga cya fast charging.
 T70196,defect,model_only,keyword_or_learned_layer,0.6599,only got 1

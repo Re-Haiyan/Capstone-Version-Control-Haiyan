@@ -1,0 +1,601 @@
+{
+ "summary": {
+  "products": 20,
+  "errors": 0,
+  "platforms": {
+   "shopee": 10,
+   "lazada": 10
+  },
+  "products_with_something_to_drop": 18,
+  "verdict_state_changed": 0,
+  "conclusion_card_changed": 0,
+  "shadow_block_equals_the_require_result": "18 of 18",
+  "safety_counts_changed": 0,
+  "state_transitions": {},
+  "decision_transitions": {},
+  "defect_flagged_reviews_total": [
+   441,
+   309
+  ]
+ },
+ "products": [
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i5077555904.html",
+   "platform": "lazada",
+   "name": "Original GT Bluetooth Call Smart Digital Watch for",
+   "comments": 55,
+   "state_keep": "possible_counterfeit_or_defect",
+   "state_require": "possible_counterfeit_or_defect",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 21
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 13
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_counterfeit_or_defect",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 13
+   },
+   "dropped": {
+    "defect": 8
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i509504028.html",
+   "platform": "lazada",
+   "name": "2.4GHz Wireless Optical Gaming Mouse Game Wireless",
+   "comments": 174,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 47
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 33
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 33
+   },
+   "dropped": {
+    "defect": 14,
+    "quality": 2
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4349768636.html",
+   "platform": "lazada",
+   "name": "alaiya Original Type C Charger Set 120W 240W 480W ",
+   "comments": 182,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 4,
+    "defect": 75
+   },
+   "flags_require": {
+    "counterfeit": 4,
+    "defect": 39
+   },
+   "safety_keep": 6,
+   "safety_require": 6,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 4,
+    "defect": 39
+   },
+   "dropped": {
+    "defect": 36,
+    "not_as_described": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/new-poco-f9-pro-smartphone-12gb256gb12gb512gb-snapdragon-8-elite-gen-5-v-series-659-185hz-ultra-bright-amoled-display-100w-wired-and-50w-wireless-hypercharge-200mp-ultra-clear-main-camera-with-ois-sound-by-bose-i15580657648-s133482097767.html",
+   "platform": "lazada",
+   "name": "New POCO F9 Pro Smartphone | 12GB+256GB/12GB+512GB",
+   "comments": 65,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 3,
+   "safety_require": 3,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4382617587-s31891484844.html",
+   "platform": "lazada",
+   "name": "Original LCD For Infinix Smart 8 / Smart 8 HD / Sm",
+   "comments": 96,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 20
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 17
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 17
+   },
+   "dropped": {
+    "defect": 3,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/freedconn-wireless-helmet-headset-motorcycle-intercom-bluetooth-music-fm-waterproof-moto-headphones-intercumonicators-earphone-i4826146498-s27933445521.html",
+   "platform": "lazada",
+   "name": "FreedConn Wireless Helmet Headset Motorcycle Inter",
+   "comments": 66,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "dropped": {
+    "defect": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i2222189713.html",
+   "platform": "lazada",
+   "name": "\u3010\ud835\udc03\ud835\udc2e\ud835\udc1a\ud835\udc25 \ud835\udc0c\ud835\udc28\ud835\udc1d\ud835\udc1e\u3011Wireless Bluetooth Mouse Rechargeable M",
+   "comments": 240,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 79
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 57
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 57
+   },
+   "dropped": {
+    "defect": 22,
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i1810-s16818914262.html",
+   "platform": "lazada",
+   "name": "Weighing Scale Digital LCD Electronic Tempered Gla",
+   "comments": 300,
+   "state_keep": "insufficient_evidence",
+   "state_require": "insufficient_evidence",
+   "decision_keep": "not_enough",
+   "decision_require": "not_enough",
+   "flags_keep": {
+    "counterfeit": 3,
+    "defect": 95
+   },
+   "flags_require": {
+    "counterfeit": 3,
+    "defect": 86
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "insufficient_evidence",
+   "shadow_flags": {
+    "counterfeit": 3,
+    "defect": 86
+   },
+   "dropped": {
+    "not_as_described": 1,
+    "defect": 9,
+    "quality": 3
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i3436452687-s132488247576.html",
+   "platform": "lazada",
+   "name": "Harman JBL Partybox Encore 2 2025 Version 2 / Enco",
+   "comments": 206,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 1
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 0
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://www.lazada.com.ph/products/pdp-i4442695519.html",
+   "platform": "lazada",
+   "name": "M25 Wireless Bluetooth Earphone with Emergency Pow",
+   "comments": 109,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 29
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 25
+   },
+   "safety_keep": 1,
+   "safety_require": 1,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 25
+   },
+   "dropped": {
+    "defect": 4
+   }
+  },
+  {
+   "link": "https://shopee.ph/NORTH-EDGE-MARS-Shockproof-Military-Tactical-Watch-For-Man-Digital-Sports-Watch-50M-Waterproof-Outdoor-Pedometer-Alarm-Countdown-Dual-Time-Stopwatch-Men's-Watch-i.178149241.7947391780",
+   "platform": "shopee",
+   "name": "NORTH EDGE MARS Shockproof Military Tactical Watch",
+   "comments": 119,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "dropped": {
+    "quality": 1
+   }
+  },
+  {
+   "link": "https://shopee.ph/Samsung-Galaxy-Tab-A11-5G-i.57465664.57854948056",
+   "platform": "shopee",
+   "name": "Samsung Galaxy Tab A11+ 5G",
+   "comments": 129,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://shopee.ph/A3x-5G-12-512GB-Screen-6.67-inch-Mediatek-Dimensity-6300-Battery-5100mAh-18W-Fast-Charging-i.805034251.57402908259",
+   "platform": "shopee",
+   "name": "A3x 5G 12+512GB Screen 6.67-inch Mediatek Dimensit",
+   "comments": 45,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "dropped": {
+    "defect": 2
+   }
+  },
+  {
+   "link": "https://shopee.ph/DOSEN-Pro-Original-PD-66w-Power-Bank-50000mAh-fast-charge-30000mah-Powerbank-heavy-duty-10000mAh-i.608028683.56351605189",
+   "platform": "shopee",
+   "name": "DOSEN Pro Original PD 66w Power Bank 50000mAh fast",
+   "comments": 59,
+   "state_keep": "safety_warning",
+   "state_require": "safety_warning",
+   "decision_keep": "not_recommended",
+   "decision_require": "not_recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 8
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "safety_keep": 2,
+   "safety_require": 2,
+   "had_something_to_drop": true,
+   "shadow_state": "safety_warning",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 4
+   }
+  },
+  {
+   "link": "https://shopee.ph/V6-plus-Bluetooth-Motorcycle-Helmet-Intercom-Headset-with-1200M-BT-Interphone-Communicator-for-6-Riders-Waterproof-i.1320601792.29007407308",
+   "platform": "shopee",
+   "name": "V6 plus Bluetooth Motorcycle Helmet Intercom Heads",
+   "comments": 54,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "mixed",
+   "decision_require": "mixed",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 9
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 8
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 8
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://shopee.ph/Apple-iPhone-18-Pro-Max-i.1275798143.43984778542",
+   "platform": "shopee",
+   "name": "Apple iPhone 18 Pro Max",
+   "comments": 355,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 2,
+    "defect": 21
+   },
+   "flags_require": {
+    "counterfeit": 2,
+    "defect": 4
+   },
+   "safety_keep": 3,
+   "safety_require": 3,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 2,
+    "defect": 4
+   },
+   "dropped": {
+    "defect": 17
+   }
+  },
+  {
+   "link": "https://shopee.ph/-LIVESTREAM-EXCLUSIVE-OPPO-A6t-12GB-(4-8)-128GB-6500mAh-Battery-Snapdragon-685-4G-120Hz-i.24681653.56056282612",
+   "platform": "shopee",
+   "name": "[LIVESTREAM EXCLUSIVE] OPPO A6t | 12GB (4+8)+128GB",
+   "comments": 57,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 3
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "dropped": {
+    "defect": 1
+   }
+  },
+  {
+   "link": "https://shopee.ph/Vone-USB-Ceiling-Fan-6-blade-ceiling-fan-USB-Cable-Fan-Household-Hanging-Fan-Foldable-Portable-Fan-i.1763710023.54606844590",
+   "platform": "shopee",
+   "name": "Vone USB Ceiling Fan 6 blade ceiling fan USB Cable",
+   "comments": 503,
+   "state_keep": "possible_safety_issue",
+   "state_require": "possible_safety_issue",
+   "decision_keep": "caution",
+   "decision_require": "caution",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 9
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "safety_keep": 3,
+   "safety_require": 3,
+   "had_something_to_drop": true,
+   "shadow_state": "possible_safety_issue",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "dropped": {
+    "quality": 2,
+    "defect": 4
+   }
+  },
+  {
+   "link": "https://shopee.ph/Anker-soundcore-Liberty-5-Pro-Pro-Max-Guinness-World-Records-Certified-Call-Quality-ANC-Wireless-Earbuds-with-Dolby-Audio-Anker-Thus-AI-Chip-8-Mics-Real-Time-ANC-Touchscreen-Case-AI-Notetaker-(Pro-Max-Only)-D1203-i.1067124429.44760359890",
+   "platform": "shopee",
+   "name": "Anker soundcore Liberty 5 Pro & Pro Max, Guinness ",
+   "comments": 118,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "flags_require": {
+    "counterfeit": 0,
+    "defect": 2
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": false,
+   "shadow_state": null,
+   "shadow_flags": null,
+   "dropped": null
+  },
+  {
+   "link": "https://shopee.ph/Multipurpose-Plush-Wax-Polish-Cloth-%E2%80%93-High-Absorption-Car-Cleaning-Towel-i.1510782793.44402871654",
+   "platform": "shopee",
+   "name": "Multipurpose Plush Wax Polish Cloth \u2013 High Absorpt",
+   "comments": 316,
+   "state_keep": "no_warning_signs",
+   "state_require": "no_warning_signs",
+   "decision_keep": "recommended",
+   "decision_require": "recommended",
+   "flags_keep": {
+    "counterfeit": 1,
+    "defect": 7
+   },
+   "flags_require": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "safety_keep": 0,
+   "safety_require": 0,
+   "had_something_to_drop": true,
+   "shadow_state": "no_warning_signs",
+   "shadow_flags": {
+    "counterfeit": 1,
+    "defect": 5
+   },
+   "dropped": {
+    "defect": 2,
+    "quality": 1
+   }
+  }
+ ]
+}

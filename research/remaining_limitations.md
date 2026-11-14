@@ -36,7 +36,7 @@
 * **No independent non-gadget test can be built from the current pool**: every non-gadget product scanned so far was already labelled or inspected (`research/fresh_eval/README.md`). Safety and counterfeit cannot be powered by a random sample at any plausible size; a two-phase weighted design is proposed.
 * **The sentiment calibrator would move 15 of 60 saved-product conclusions** (12 Well reviewed to Mixed reviews) by turning no-opinion reviews into "uncertain"; not activated; the saved products used are all gadgets.
 * **Clause-level resolution of "pero okay" costs F1** on the supplied labels (quality 0.691 to 0.660), so it is a switch.
-* **A model-only flag is right 17% of the time** (defect, quality); the evidence policy that stops counting them is opt-in and awaits approval.
+* **A model-only flag is right about 7% of the time on training rows (5 of 70) and 0 of 18 on the historical test, final code** (defect, quality); the evidence policy that stops counting them is opt-in and awaits approval.
 * **Known rule gaps against policy v2:** item damage beside packing words (the core lexicon's shipping rule), no `delivery` flag in the rules, a hypothetical fear flagged as defect, an effect complaint flagged as defect, stated quantities (`annotation_policy_v2.md`).
 * **Conclusion accuracy remains unmeasured** until two annotators judge the 100 products in `research/conclusion_eval/`.
 * **The brief for this round ended at "## 11."**; whatever it asked there was not received and not done.

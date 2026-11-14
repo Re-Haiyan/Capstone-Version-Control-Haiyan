@@ -1,7 +1,7 @@
 {
  "labelled_reviews": {
   "reviews": 4792,
-  "spans": 1945,
+  "spans": 1979,
   "bad_review_offset": 0,
   "bad_sentence_offset": 0,
   "no_review_offset": 7,
@@ -10,7 +10,7 @@
  },
  "saved_lazada_reviews": {
   "reviews": 1294,
-  "spans": 453,
+  "spans": 463,
   "bad_review_offset": 0,
   "bad_sentence_offset": 0,
   "no_review_offset": 1,
@@ -20,7 +20,7 @@
  "served_to_the_app": {
   "products": 10,
   "quotes": 145,
-  "highlights": 163,
+  "highlights": 164,
   "highlight_outside_quote": 0,
   "highlight_empty": 0
  }

@@ -1,15 +1,15 @@
 {
  "reviews": 4792,
- "reviews_with_changed_flags": 363,
+ "reviews_with_changed_flags": 362,
  "flags_gained": {
   "not_as_described": 160,
-  "defect": 41,
+  "defect": 46,
   "quality": 4
  },
  "flags_lost": {
   "safety": 29,
   "quality": 29,
-  "defect": 116,
+  "defect": 109,
   "not_as_described": 9
  },
  "sentiment_labels_changed": 0,
@@ -22,11 +22,11 @@
   "train": {
    "defect": {
     "old_f1": 0.642,
-    "new_f1": 0.736,
+    "new_f1": 0.74,
     "old_precision": 0.57,
-    "new_precision": 0.686,
+    "new_precision": 0.684,
     "old_recall": 0.734,
-    "new_recall": 0.794
+    "new_recall": 0.807
    },
    "counterfeit": {
     "old_f1": 0.912,
@@ -64,11 +64,11 @@
   "test": {
    "defect": {
     "old_f1": 0.613,
-    "new_f1": 0.68,
+    "new_f1": 0.693,
     "old_precision": 0.505,
-    "new_precision": 0.622,
+    "new_precision": 0.624,
     "old_recall": 0.779,
-    "new_recall": 0.75
+    "new_recall": 0.779
    },
    "counterfeit": {
     "old_f1": 0.943,
@@ -338,17 +338,6 @@
    "text": "grabe naman, sa halagang 158 may ganitong klaseng bag ka na, napanalo ang quality, ang ganda talaga niya as in"
   },
   {
-   "id": "T60192",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [
-    "defect"
-   ],
-   "text": "Product Quality:umiinit kapag naka charge tapus wala pang 1 min lowbat agad ang powerbank"
-  },
-  {
    "id": "T70010",
    "gained": [],
    "lost": [
@@ -421,18 +410,6 @@
    ],
    "gold": [],
    "text": "⚡Performance:Okay namn yung phone kaso na stress lang ako kasi sabi sa mga review di gaanong umiinit pero yung"
-  },
-  {
-   "id": "Y0255",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [
-    "counterfeit",
-    "defect"
-   ],
-   "text": "peke po ito wag kayo maniwala. nalowbat siya chinarge ko and then nung full ginamit ko wala pang 30mins lowbat"
   },
   {
    "id": "T20258",
@@ -848,6 +825,17 @@
    "text": "Far from the picture, a different product arrived."
   },
   {
+   "id": "T40289",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Products arrived in a box but inside the products were crushed. Toothpaste boxes were crushed. Good thing the "
+  },
+  {
    "id": "T40477",
    "gained": [],
    "lost": [
@@ -1160,17 +1148,6 @@
     "not_as_described"
    ],
    "text": "super Ganda , nagustuhan Ng anak ko , super worth it , mabilis lang din dumating, mukang matibay at tatagal , "
-  },
-  {
-   "id": "T70195",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [
-    "safety"
-   ],
-   "text": "sabi sa review ok nman kaya npa order ako kaso umiinit sya pag nag cha charge cguro dahil sa mura sya pero say"
   },
   {
    "id": "N0045",
@@ -2208,6 +2185,15 @@
    "text": "I requested for a specific color tumbler which they confirm is available but I still got a different color. Al"
   },
   {
+   "id": "T40015",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "grabe npaka liut pla nyang rice cooker kla nmin ksya ung 2-3 cupa 1 cup lang pla pde pdeng return kc sayang nm"
+  },
+  {
    "id": "T40329",
    "gained": [
     "defect"
@@ -2271,17 +2257,6 @@
     "counterfeit"
    ],
    "text": "fake d man lang makacharge kahit 10 %"
-  },
-  {
-   "id": "H0231",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [
-    "defect"
-   ],
-   "text": "gusko nmn kala ko makakTipid Ako Ang mahal ng items tapus kabilis lng din ma lowbat 🤨 aanhin ko pa to kung kab"
   },
   {
    "id": "Y0164",
@@ -2974,15 +2949,6 @@
    "text": "Quality:5 Suitability:5 Appearance:7 Lacking parts, damaged item when arrived but replaced a new. But still la"
   },
   {
-   "id": "X0204",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [],
-   "text": "Packaging:in original package cat loves it, mabilis maubos Flavor Variety:1 flavor available only, sana meron "
-  },
-  {
    "id": "T10306",
    "gained": [
     "defect"
@@ -3109,6 +3075,17 @@
    "text": "scam kayo Sabi nio pack of 2. isa lng talaga laman Ng box"
   },
   {
+   "id": "H0236",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "package handling hindi maganda nayupi ang box at damaged ang headset sa loob isang pair lang ang tumutunog pap"
+  },
+  {
    "id": "X0109",
    "gained": [
     "not_as_described"
@@ -3153,6 +3130,17 @@
     "not_as_described"
    ],
    "text": "WALANG KWENTA. WAG NA KAYO BIBILI S SHOP NA TO. IBA NA DESIGN PINADALA MALI PA SIZE. MGA BOGUS SELLER WALANG K"
+  },
+  {
+   "id": "T10409",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "putol na dumating.. disappointed 😥"
   },
   {
    "id": "T20175",
@@ -3404,15 +3392,6 @@
    "text": "Ok Naman pero kulang ung order ko ng Isa. Pero ok na din dahil mura k lng nakuha."
   },
   {
-   "id": "T70135",
-   "gained": [],
-   "lost": [
-    "defect"
-   ],
-   "gold": [],
-   "text": "Performance:In terms of battery life, nung first week mabilis sya malowbat umaabot lang around 4-5 hours from "
-  },
-  {
    "id": "T70185",
    "gained": [],
    "lost": [
@@ -3544,6 +3523,17 @@
    "text": "hindi compatible sa Samsung S10 8hrs charging !!! 😑🙄 magaan kala ko mabigat hindi rin Fast charging ... ma's m"
   },
   {
+   "id": "N0069",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Long-lasting coverage, Provides a flawless complexion, maganda mabilisiship may problem lang kasi kulang pinad"
+  },
+  {
    "id": "H0002",
    "gained": [],
    "lost": [
@@ -3587,7 +3577,6 @@
    "id": "Y0066",
    "gained": [],
    "lost": [
-    "defect",
     "quality"
    ],
    "gold": [

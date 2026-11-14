@@ -56,7 +56,7 @@ if __name__ == "__main__":
     con = sqlite3.connect(f"file:{DB.as_posix()}?mode=ro", uri=True); products = []
     for raw, platform in con.execute("select raw_json, platform from products where raw_json is not null"):
         p = json.loads(raw)
-        if isinstance(p.get("comments"), list) and len(p["comments"]) >= 40:
+        if isinstance(p.get("comments"), list) and 40 <= len(p["comments"]) <= int(os.environ.get("COMPAT_MAX_COMMENTS") or 10**9):
             products.append((platform, p))
     random.Random(31).shuffle(products)
     quota = {}

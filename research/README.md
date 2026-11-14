@@ -7,9 +7,16 @@ The research round of the review-classification work. Start with `final_implemen
 
 | Document | What it answers |
 |---|---|
+| `release_manifest.md` | **Release audit**: what differs from production, switches, deployment checklist, smoke tests, rollback (nothing deployed) |
+| `release_validation.md` | Tests, API compatibility, quotation, aggregation, VM benchmark, behaviour diff for the release candidate |
+| `evidence_policy_decision.md` | Audit of the evidence-required policy: dropped flags, category and product effects, shadow rollout, why it stays off |
+| `policy_owner_decisions.md` | One-page decision sheet for the owner (freebies, thin reviews and the rest) |
+| `annotation_execution_guide.md` | How two human annotators label and how provenance and adjudication are recorded |
+| `conclusion_policy_review.md` | Product conclusion policies P0 to P3 compared on scenario tests |
+| `final_research_integrity_audit.md` | Evidence classes, what each result may be called, corrections, claims that cannot be made |
 | `finalization_round_summary.md` | **Start here for the latest round**: what was implemented, run, demonstrated, uncertain, blocked and ready |
 | `annotation_policy_v2.md` | The ten owner decisions compared with v1, the label data and the current rules (supersedes `annotation_policy_proposal.md`) |
-| `evidence_completeness.md` | Evidence states, why model-only flags are 17% right, the opt-in evidence policy |
+| `evidence_completeness.md` | Evidence states, why model-only flags are rarely right (5 of 70 train, 0 of 18 historical test), the opt-in evidence policy (not recommended for activation) |
 | `clause_context.md` | Clause-level context: the mechanism, its switch and its measured cost |
 | `sentiment_calibration_review.md` | Calibrator audit, shortcut test, shadow-mode effect on 60 products |
 | `product_conclusion_evaluation_protocol.md` | How to judge product conclusions independently (sheets in `conclusion_eval/`) |
