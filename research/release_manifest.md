@@ -1,6 +1,6 @@
 # Release manifest, deployment checklist, smoke-test plan and rollback
 
-**Nothing described here has been deployed, pushed or merged.** The blocker checks (safety regression, saved-report migration, default admin password) are in `release_blocker_checks.md`; after them the release candidate gained a safety fix (`product_category.py`) and a gradual re-check tool (`scripts/recheck_products.py`), so the recommended commit named below is the one that contains both. The production VM is still at `d74589a` (verified read-only: `git log` and a clean tree). This document prepares a release for the owner's explicit approval.
+**Deployed on 2026-11-14 (22:33 UTC) with the owner's approval: the production VM runs `2c6e056`** (pre-deployment backup `~/predeploy-d74589a-20261114-223143` on the VM and `D:/defaketive-backups/` off the VM; smoke tests 12 of 12 pass; no bulk re-check was run; the three switches are unset). Not pushed or merged. The blocker checks (safety regression, saved-report migration, default admin password) are in `release_blocker_checks.md`; after them the release candidate gained a safety fix (`product_category.py`) and a gradual re-check tool (`scripts/recheck_products.py`), so the recommended commit named below is the one that contains both. The production VM is still at `d74589a` (verified read-only: `git log` and a clean tree). This document prepares a release for the owner's explicit approval.
 
 ## 1. What is being compared
 
