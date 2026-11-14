@@ -47,3 +47,4 @@ __pycache__/
 /dist-extension
 /dist-extension.zip
 /static/downloads
+training/runs/
