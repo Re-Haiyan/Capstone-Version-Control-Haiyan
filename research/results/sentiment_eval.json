@@ -1,0 +1,177 @@
+{
+ "train": {
+  "rows": 3946,
+  "negative": {
+   "precision": 0.837,
+   "recall": 0.736,
+   "f1": 0.783,
+   "support": 1205
+  },
+  "neutral": {
+   "precision": 0.287,
+   "recall": 0.218,
+   "f1": 0.248,
+   "support": 724
+  },
+  "positive": {
+   "precision": 0.773,
+   "recall": 0.894,
+   "f1": 0.829,
+   "support": 2017
+  },
+  "macro_f1": 0.62,
+  "accuracy": 0.722,
+  "macro_f1_ci95_product_bootstrap": [
+   0.605,
+   0.638
+  ],
+  "confusion_gold_by_pred": {
+   "negative": {
+    "negative": 887,
+    "neutral": 197,
+    "positive": 121
+   },
+   "neutral": {
+    "negative": 156,
+    "neutral": 158,
+    "positive": 410
+   },
+   "positive": {
+    "negative": 17,
+    "neutral": 196,
+    "positive": 1804
+   }
+  },
+  "by_stars": {
+   "1": {
+    "rows": 570,
+    "accuracy": 0.916
+   },
+   "2": {
+    "rows": 145,
+    "accuracy": 0.834
+   },
+   "3": {
+    "rows": 219,
+    "accuracy": 0.479
+   },
+   "4": {
+    "rows": 282,
+    "accuracy": 0.539
+   },
+   "5": {
+    "rows": 2730,
+    "accuracy": 0.714
+   }
+  },
+  "by_group_macro_f1": {
+   "automotive_tools": 0.618,
+   "baby_kids_toys": 0.651,
+   "beauty_health": 0.647,
+   "electronics": 0.606,
+   "fashion": 0.615,
+   "food_grocery": 0.611,
+   "home_living": 0.626,
+   "office_media": 0.457,
+   "other": 0.59,
+   "pets": 0.584,
+   "sports_outdoor": 0.478
+  },
+  "accuracy_with_issue_flag": 0.725,
+  "accuracy_without_issue_flag": 0.721,
+  "delivery_only_reviews": {
+   "rows": 101,
+   "accuracy": 0.554
+  },
+  "positive_reviews_with_issue_flag": {
+   "rows": 20,
+   "predicted_positive": 16
+  }
+ },
+ "test": {
+  "rows": 846,
+  "negative": {
+   "precision": 0.829,
+   "recall": 0.729,
+   "f1": 0.776,
+   "support": 240
+  },
+  "neutral": {
+   "precision": 0.242,
+   "recall": 0.162,
+   "f1": 0.194,
+   "support": 191
+  },
+  "positive": {
+   "precision": 0.716,
+   "recall": 0.875,
+   "f1": 0.787,
+   "support": 415
+  },
+  "macro_f1": 0.586,
+  "accuracy": 0.673,
+  "macro_f1_ci95_product_bootstrap": [
+   0.548,
+   0.627
+  ],
+  "confusion_gold_by_pred": {
+   "negative": {
+    "negative": 175,
+    "neutral": 47,
+    "positive": 18
+   },
+   "neutral": {
+    "negative": 34,
+    "neutral": 31,
+    "positive": 126
+   },
+   "positive": {
+    "negative": 2,
+    "neutral": 50,
+    "positive": 363
+   }
+  },
+  "by_stars": {
+   "1": {
+    "rows": 119,
+    "accuracy": 0.916
+   },
+   "2": {
+    "rows": 31,
+    "accuracy": 0.871
+   },
+   "3": {
+    "rows": 40,
+    "accuracy": 0.425
+   },
+   "4": {
+    "rows": 65,
+    "accuracy": 0.292
+   },
+   "5": {
+    "rows": 591,
+    "accuracy": 0.672
+   }
+  },
+  "by_group_macro_f1": {
+   "automotive_tools": 0.436,
+   "baby_kids_toys": 0.607,
+   "beauty_health": 0.643,
+   "electronics": 0.719,
+   "fashion": 0.422,
+   "food_grocery": 0.538,
+   "home_living": 0.537,
+   "pets": 0.653
+  },
+  "accuracy_with_issue_flag": 0.694,
+  "accuracy_without_issue_flag": 0.665,
+  "delivery_only_reviews": {
+   "rows": 9,
+   "accuracy": 0.778
+  },
+  "positive_reviews_with_issue_flag": {
+   "rows": 2,
+   "predicted_positive": 1
+  }
+ }
+}

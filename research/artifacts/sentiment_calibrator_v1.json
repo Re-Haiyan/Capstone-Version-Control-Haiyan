@@ -1,0 +1,15 @@
+{
+ "artifact": "sentiment_calibrator_v1.joblib",
+ "sha256": "e866e276cbf08261401cc9c5f07321340383d04fbf0029ac6114c18fe3326202",
+ "trained_on_rows": 3946,
+ "scikit_learn": "1.9.0",
+ "historical_test_macro_f1": 0.717,
+ "historical_test_per_class_f1": {
+  "negative": 0.834,
+  "neutral": 0.489,
+  "positive": 0.829
+ },
+ "wired_by_default": false,
+ "enable_with_env": "DEFAKETIVE_SENTIMENT_CALIBRATOR",
+ "size_bytes": 1469431
+}

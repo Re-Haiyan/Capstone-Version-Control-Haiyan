@@ -1,0 +1,1964 @@
+{
+ "cv": {
+  "e5-small|ctx=0|emb|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 242,
+     "fp": 315,
+     "fn": 157,
+     "tn": 3232,
+     "precision": 0.43447037701974867,
+     "recall": 0.606516290726817,
+     "f1": 0.506276150627615,
+     "support": 399,
+     "predicted": 557,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 78,
+     "fp": 47,
+     "fn": 43,
+     "tn": 3778,
+     "precision": 0.624,
+     "recall": 0.6446280991735537,
+     "f1": 0.6341463414634145,
+     "support": 121,
+     "predicted": 125,
+     "threshold": 0.7
+    },
+    "safety": {
+     "tp": 37,
+     "fp": 95,
+     "fn": 41,
+     "tn": 3773,
+     "precision": 0.2803030303030303,
+     "recall": 0.47435897435897434,
+     "f1": 0.35238095238095235,
+     "support": 78,
+     "predicted": 132,
+     "threshold": 0.7
+    },
+    "not_as_described": {
+     "tp": 273,
+     "fp": 253,
+     "fn": 139,
+     "tn": 3281,
+     "precision": 0.5190114068441065,
+     "recall": 0.662621359223301,
+     "f1": 0.5820895522388061,
+     "support": 412,
+     "predicted": 526,
+     "threshold": 0.65
+    },
+    "quality": {
+     "tp": 119,
+     "fp": 289,
+     "fn": 130,
+     "tn": 3408,
+     "precision": 0.2916666666666667,
+     "recall": 0.4779116465863454,
+     "f1": 0.36225266362252667,
+     "support": 249,
+     "predicted": 408,
+     "threshold": 0.65
+    },
+    "delivery": {
+     "tp": 165,
+     "fp": 178,
+     "fn": 107,
+     "tn": 3496,
+     "precision": 0.48104956268221577,
+     "recall": 0.6066176470588235,
+     "f1": 0.5365853658536585,
+     "support": 272,
+     "predicted": 343,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.4956218376978288
+  },
+  "e5-small|ctx=0|emb|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 258,
+     "fp": 307,
+     "fn": 141,
+     "tn": 3240,
+     "precision": 0.45663716814159294,
+     "recall": 0.6466165413533834,
+     "f1": 0.5352697095435686,
+     "support": 399,
+     "predicted": 565,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 80,
+     "fp": 38,
+     "fn": 41,
+     "tn": 3787,
+     "precision": 0.6779661016949152,
+     "recall": 0.6611570247933884,
+     "f1": 0.6694560669456067,
+     "support": 121,
+     "predicted": 118,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 19,
+     "fp": 26,
+     "fn": 59,
+     "tn": 3842,
+     "precision": 0.4222222222222222,
+     "recall": 0.24358974358974358,
+     "f1": 0.3089430894308943,
+     "support": 78,
+     "predicted": 45,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 254,
+     "fp": 184,
+     "fn": 158,
+     "tn": 3350,
+     "precision": 0.5799086757990868,
+     "recall": 0.616504854368932,
+     "f1": 0.5976470588235294,
+     "support": 412,
+     "predicted": 438,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 116,
+     "fp": 211,
+     "fn": 133,
+     "tn": 3486,
+     "precision": 0.3547400611620795,
+     "recall": 0.46586345381526106,
+     "f1": 0.4027777777777778,
+     "support": 249,
+     "predicted": 327,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 187,
+     "fp": 202,
+     "fn": 85,
+     "tn": 3472,
+     "precision": 0.480719794344473,
+     "recall": 0.6875,
+     "f1": 0.5658093797276853,
+     "support": 272,
+     "predicted": 389,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.5133171803748436
+  },
+  "e5-small|ctx=0|emb|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 220,
+     "fp": 202,
+     "fn": 179,
+     "tn": 3345,
+     "precision": 0.5213270142180095,
+     "recall": 0.5513784461152882,
+     "f1": 0.535931790499391,
+     "support": 399,
+     "predicted": 422,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 82,
+     "fp": 29,
+     "fn": 39,
+     "tn": 3796,
+     "precision": 0.7387387387387387,
+     "recall": 0.6776859504132231,
+     "f1": 0.706896551724138,
+     "support": 121,
+     "predicted": 111,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 22,
+     "fp": 39,
+     "fn": 56,
+     "tn": 3829,
+     "precision": 0.36065573770491804,
+     "recall": 0.28205128205128205,
+     "f1": 0.31654676258992803,
+     "support": 78,
+     "predicted": 61,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 262,
+     "fp": 201,
+     "fn": 150,
+     "tn": 3333,
+     "precision": 0.5658747300215983,
+     "recall": 0.6359223300970874,
+     "f1": 0.598857142857143,
+     "support": 412,
+     "predicted": 463,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 125,
+     "fp": 222,
+     "fn": 124,
+     "tn": 3475,
+     "precision": 0.36023054755043227,
+     "recall": 0.5020080321285141,
+     "f1": 0.4194630872483222,
+     "support": 249,
+     "predicted": 347,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 203,
+     "fp": 234,
+     "fn": 69,
+     "tn": 3440,
+     "precision": 0.4645308924485126,
+     "recall": 0.7463235294117647,
+     "f1": 0.5726375176304656,
+     "support": 272,
+     "predicted": 437,
+     "threshold": 0.65
+    }
+   },
+   "macro_f1": 0.5250554754248979
+  },
+  "e5-small|ctx=0|emb+struct|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 303,
+     "fp": 121,
+     "fn": 96,
+     "tn": 3426,
+     "precision": 0.714622641509434,
+     "recall": 0.7593984962406015,
+     "f1": 0.7363304981773998,
+     "support": 399,
+     "predicted": 424,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 57,
+     "fp": 47,
+     "fn": 21,
+     "tn": 3821,
+     "precision": 0.5480769230769231,
+     "recall": 0.7307692307692307,
+     "f1": 0.6263736263736265,
+     "support": 78,
+     "predicted": 104,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 307,
+     "fp": 85,
+     "fn": 105,
+     "tn": 3449,
+     "precision": 0.7831632653061225,
+     "recall": 0.7451456310679612,
+     "f1": 0.763681592039801,
+     "support": 412,
+     "predicted": 392,
+     "threshold": 0.75
+    },
+    "quality": {
+     "tp": 194,
+     "fp": 116,
+     "fn": 55,
+     "tn": 3581,
+     "precision": 0.6258064516129033,
+     "recall": 0.7791164658634538,
+     "f1": 0.6940966010733453,
+     "support": 249,
+     "predicted": 310,
+     "threshold": 0.85
+    },
+    "delivery": {
+     "tp": 173,
+     "fp": 264,
+     "fn": 99,
+     "tn": 3410,
+     "precision": 0.39588100686498856,
+     "recall": 0.6360294117647058,
+     "f1": 0.4880112834978843,
+     "support": 272,
+     "predicted": 437,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.7034156001936762
+  },
+  "e5-small|ctx=0|emb+struct|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 295,
+     "fp": 104,
+     "fn": 104,
+     "tn": 3443,
+     "precision": 0.7393483709273183,
+     "recall": 0.7393483709273183,
+     "f1": 0.7393483709273183,
+     "support": 399,
+     "predicted": 399,
+     "threshold": 0.8
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 57,
+     "fp": 46,
+     "fn": 21,
+     "tn": 3822,
+     "precision": 0.5533980582524272,
+     "recall": 0.7307692307692307,
+     "f1": 0.6298342541436465,
+     "support": 78,
+     "predicted": 103,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 315,
+     "fp": 98,
+     "fn": 97,
+     "tn": 3436,
+     "precision": 0.7627118644067796,
+     "recall": 0.7645631067961165,
+     "f1": 0.7636363636363637,
+     "support": 412,
+     "predicted": 413,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 196,
+     "fp": 116,
+     "fn": 53,
+     "tn": 3581,
+     "precision": 0.6282051282051282,
+     "recall": 0.7871485943775101,
+     "f1": 0.6987522281639929,
+     "support": 249,
+     "predicted": 312,
+     "threshold": 0.75
+    },
+    "delivery": {
+     "tp": 188,
+     "fp": 235,
+     "fn": 84,
+     "tn": 3439,
+     "precision": 0.4444444444444444,
+     "recall": 0.6911764705882353,
+     "f1": 0.5410071942446043,
+     "support": 272,
+     "predicted": 423,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.7140964018526542
+  },
+  "e5-small|ctx=0|emb+struct|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 296,
+     "fp": 120,
+     "fn": 103,
+     "tn": 3427,
+     "precision": 0.7115384615384616,
+     "recall": 0.7418546365914787,
+     "f1": 0.7263803680981594,
+     "support": 399,
+     "predicted": 416,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 55,
+     "fp": 46,
+     "fn": 23,
+     "tn": 3822,
+     "precision": 0.5445544554455446,
+     "recall": 0.7051282051282052,
+     "f1": 0.6145251396648044,
+     "support": 78,
+     "predicted": 101,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 309,
+     "fp": 97,
+     "fn": 103,
+     "tn": 3437,
+     "precision": 0.7610837438423645,
+     "recall": 0.75,
+     "f1": 0.7555012224938875,
+     "support": 412,
+     "predicted": 406,
+     "threshold": 0.75
+    },
+    "quality": {
+     "tp": 197,
+     "fp": 120,
+     "fn": 52,
+     "tn": 3577,
+     "precision": 0.6214511041009464,
+     "recall": 0.7911646586345381,
+     "f1": 0.696113074204947,
+     "support": 249,
+     "predicted": 317,
+     "threshold": 0.65
+    },
+    "delivery": {
+     "tp": 203,
+     "fp": 230,
+     "fn": 69,
+     "tn": 3444,
+     "precision": 0.46882217090069284,
+     "recall": 0.7463235294117647,
+     "f1": 0.5758865248226951,
+     "support": 272,
+     "predicted": 433,
+     "threshold": 0.65
+    }
+   },
+   "macro_f1": 0.7134010548807489
+  },
+  "e5-small|ctx=1|emb|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 183,
+     "fp": 199,
+     "fn": 216,
+     "tn": 3348,
+     "precision": 0.4790575916230366,
+     "recall": 0.45864661654135336,
+     "f1": 0.46862996158770803,
+     "support": 399,
+     "predicted": 382,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 72,
+     "fp": 30,
+     "fn": 49,
+     "tn": 3795,
+     "precision": 0.7058823529411765,
+     "recall": 0.5950413223140496,
+     "f1": 0.6457399103139014,
+     "support": 121,
+     "predicted": 102,
+     "threshold": 0.65
+    },
+    "safety": {
+     "tp": 22,
+     "fp": 42,
+     "fn": 56,
+     "tn": 3826,
+     "precision": 0.34375,
+     "recall": 0.28205128205128205,
+     "f1": 0.3098591549295775,
+     "support": 78,
+     "predicted": 64,
+     "threshold": 0.75
+    },
+    "not_as_described": {
+     "tp": 274,
+     "fp": 461,
+     "fn": 138,
+     "tn": 3073,
+     "precision": 0.3727891156462585,
+     "recall": 0.6650485436893204,
+     "f1": 0.4777680906713165,
+     "support": 412,
+     "predicted": 735,
+     "threshold": 0.55
+    },
+    "quality": {
+     "tp": 137,
+     "fp": 277,
+     "fn": 112,
+     "tn": 3420,
+     "precision": 0.3309178743961353,
+     "recall": 0.5502008032128514,
+     "f1": 0.41327300150829566,
+     "support": 249,
+     "predicted": 414,
+     "threshold": 0.6
+    },
+    "delivery": {
+     "tp": 181,
+     "fp": 273,
+     "fn": 91,
+     "tn": 3401,
+     "precision": 0.3986784140969163,
+     "recall": 0.6654411764705882,
+     "f1": 0.4986225895316805,
+     "support": 272,
+     "predicted": 454,
+     "threshold": 0.6
+    }
+   },
+   "macro_f1": 0.46898211809041324
+  },
+  "e5-small|ctx=1|emb|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 215,
+     "fp": 244,
+     "fn": 184,
+     "tn": 3303,
+     "precision": 0.4684095860566449,
+     "recall": 0.5388471177944862,
+     "f1": 0.5011655011655013,
+     "support": 399,
+     "predicted": 459,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 72,
+     "fp": 13,
+     "fn": 49,
+     "tn": 3812,
+     "precision": 0.8470588235294118,
+     "recall": 0.5950413223140496,
+     "f1": 0.6990291262135924,
+     "support": 121,
+     "predicted": 85,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 27,
+     "fp": 72,
+     "fn": 51,
+     "tn": 3796,
+     "precision": 0.2727272727272727,
+     "recall": 0.34615384615384615,
+     "f1": 0.3050847457627119,
+     "support": 78,
+     "predicted": 99,
+     "threshold": 0.75
+    },
+    "not_as_described": {
+     "tp": 247,
+     "fp": 332,
+     "fn": 165,
+     "tn": 3202,
+     "precision": 0.4265975820379965,
+     "recall": 0.5995145631067961,
+     "f1": 0.4984863773965691,
+     "support": 412,
+     "predicted": 579,
+     "threshold": 0.6
+    },
+    "quality": {
+     "tp": 130,
+     "fp": 210,
+     "fn": 119,
+     "tn": 3487,
+     "precision": 0.38235294117647056,
+     "recall": 0.5220883534136547,
+     "f1": 0.44142614601018676,
+     "support": 249,
+     "predicted": 340,
+     "threshold": 0.65
+    },
+    "delivery": {
+     "tp": 178,
+     "fp": 223,
+     "fn": 94,
+     "tn": 3451,
+     "precision": 0.44389027431421446,
+     "recall": 0.6544117647058824,
+     "f1": 0.5289747399702823,
+     "support": 272,
+     "predicted": 401,
+     "threshold": 0.65
+    }
+   },
+   "macro_f1": 0.49569443941980734
+  },
+  "e5-small|ctx=1|emb|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 226,
+     "fp": 246,
+     "fn": 173,
+     "tn": 3301,
+     "precision": 0.4788135593220339,
+     "recall": 0.5664160401002506,
+     "f1": 0.5189437428243399,
+     "support": 399,
+     "predicted": 472,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 76,
+     "fp": 10,
+     "fn": 45,
+     "tn": 3815,
+     "precision": 0.8837209302325582,
+     "recall": 0.628099173553719,
+     "f1": 0.7342995169082126,
+     "support": 121,
+     "predicted": 86,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 43,
+     "fp": 147,
+     "fn": 35,
+     "tn": 3721,
+     "precision": 0.22631578947368422,
+     "recall": 0.5512820512820513,
+     "f1": 0.3208955223880597,
+     "support": 78,
+     "predicted": 190,
+     "threshold": 0.6
+    },
+    "not_as_described": {
+     "tp": 248,
+     "fp": 328,
+     "fn": 164,
+     "tn": 3206,
+     "precision": 0.4305555555555556,
+     "recall": 0.6019417475728155,
+     "f1": 0.5020242914979757,
+     "support": 412,
+     "predicted": 576,
+     "threshold": 0.6
+    },
+    "quality": {
+     "tp": 120,
+     "fp": 181,
+     "fn": 129,
+     "tn": 3516,
+     "precision": 0.39867109634551495,
+     "recall": 0.4819277108433735,
+     "f1": 0.4363636363636364,
+     "support": 249,
+     "predicted": 301,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 199,
+     "fp": 277,
+     "fn": 73,
+     "tn": 3397,
+     "precision": 0.4180672268907563,
+     "recall": 0.7316176470588235,
+     "f1": 0.5320855614973262,
+     "support": 272,
+     "predicted": 476,
+     "threshold": 0.6
+    }
+   },
+   "macro_f1": 0.5074353785799252
+  },
+  "e5-small|ctx=1|emb+struct|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 286,
+     "fp": 91,
+     "fn": 113,
+     "tn": 3456,
+     "precision": 0.7586206896551724,
+     "recall": 0.7167919799498746,
+     "f1": 0.7371134020618556,
+     "support": 399,
+     "predicted": 377,
+     "threshold": 0.85
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 57,
+     "fp": 48,
+     "fn": 21,
+     "tn": 3820,
+     "precision": 0.5428571428571428,
+     "recall": 0.7307692307692307,
+     "f1": 0.6229508196721311,
+     "support": 78,
+     "predicted": 105,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 314,
+     "fp": 94,
+     "fn": 98,
+     "tn": 3440,
+     "precision": 0.7696078431372549,
+     "recall": 0.7621359223300971,
+     "f1": 0.7658536585365854,
+     "support": 412,
+     "predicted": 408,
+     "threshold": 0.65
+    },
+    "quality": {
+     "tp": 192,
+     "fp": 112,
+     "fn": 57,
+     "tn": 3585,
+     "precision": 0.631578947368421,
+     "recall": 0.7710843373493976,
+     "f1": 0.6943942133815552,
+     "support": 249,
+     "predicted": 304,
+     "threshold": 0.85
+    },
+    "delivery": {
+     "tp": 156,
+     "fp": 303,
+     "fn": 116,
+     "tn": 3371,
+     "precision": 0.33986928104575165,
+     "recall": 0.5735294117647058,
+     "f1": 0.426812585499316,
+     "support": 272,
+     "predicted": 459,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.6931874465252404
+  },
+  "e5-small|ctx=1|emb+struct|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 284,
+     "fp": 89,
+     "fn": 115,
+     "tn": 3458,
+     "precision": 0.7613941018766756,
+     "recall": 0.7117794486215538,
+     "f1": 0.7357512953367876,
+     "support": 399,
+     "predicted": 373,
+     "threshold": 0.85
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 57,
+     "fp": 49,
+     "fn": 21,
+     "tn": 3819,
+     "precision": 0.5377358490566038,
+     "recall": 0.7307692307692307,
+     "f1": 0.6195652173913043,
+     "support": 78,
+     "predicted": 106,
+     "threshold": 0.8
+    },
+    "not_as_described": {
+     "tp": 315,
+     "fp": 96,
+     "fn": 97,
+     "tn": 3438,
+     "precision": 0.7664233576642335,
+     "recall": 0.7645631067961165,
+     "f1": 0.7654921020656136,
+     "support": 412,
+     "predicted": 411,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 196,
+     "fp": 115,
+     "fn": 53,
+     "tn": 3582,
+     "precision": 0.6302250803858521,
+     "recall": 0.7871485943775101,
+     "f1": 0.7000000000000001,
+     "support": 249,
+     "predicted": 311,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 166,
+     "fp": 245,
+     "fn": 106,
+     "tn": 3429,
+     "precision": 0.40389294403892945,
+     "recall": 0.6102941176470589,
+     "f1": 0.486090775988287,
+     "support": 272,
+     "predicted": 411,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.7031498984636654
+  },
+  "e5-small|ctx=1|emb+struct|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 288,
+     "fp": 100,
+     "fn": 111,
+     "tn": 3447,
+     "precision": 0.7422680412371134,
+     "recall": 0.7218045112781954,
+     "f1": 0.7318932655654384,
+     "support": 399,
+     "predicted": 388,
+     "threshold": 0.8
+    },
+    "counterfeit": {
+     "tp": 115,
+     "fp": 15,
+     "fn": 6,
+     "tn": 3810,
+     "precision": 0.8846153846153846,
+     "recall": 0.9504132231404959,
+     "f1": 0.9163346613545816,
+     "support": 121,
+     "predicted": 130,
+     "threshold": 0.7
+    },
+    "safety": {
+     "tp": 60,
+     "fp": 61,
+     "fn": 18,
+     "tn": 3807,
+     "precision": 0.49586776859504134,
+     "recall": 0.7692307692307693,
+     "f1": 0.6030150753768845,
+     "support": 78,
+     "predicted": 121,
+     "threshold": 0.6
+    },
+    "not_as_described": {
+     "tp": 311,
+     "fp": 101,
+     "fn": 101,
+     "tn": 3433,
+     "precision": 0.7548543689320388,
+     "recall": 0.7548543689320388,
+     "f1": 0.7548543689320388,
+     "support": 412,
+     "predicted": 412,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 191,
+     "fp": 105,
+     "fn": 58,
+     "tn": 3592,
+     "precision": 0.6452702702702703,
+     "recall": 0.7670682730923695,
+     "f1": 0.7009174311926605,
+     "support": 249,
+     "predicted": 296,
+     "threshold": 0.75
+    },
+    "delivery": {
+     "tp": 186,
+     "fp": 266,
+     "fn": 86,
+     "tn": 3408,
+     "precision": 0.41150442477876104,
+     "recall": 0.6838235294117647,
+     "f1": 0.5138121546961325,
+     "support": 272,
+     "predicted": 452,
+     "threshold": 0.65
+    }
+   },
+   "macro_f1": 0.7034711595196228
+  },
+  "minilm|ctx=0|emb|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 231,
+     "fp": 338,
+     "fn": 168,
+     "tn": 3209,
+     "precision": 0.40597539543058,
+     "recall": 0.5789473684210527,
+     "f1": 0.4772727272727273,
+     "support": 399,
+     "predicted": 569,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 73,
+     "fp": 23,
+     "fn": 48,
+     "tn": 3802,
+     "precision": 0.7604166666666666,
+     "recall": 0.6033057851239669,
+     "f1": 0.6728110599078342,
+     "support": 121,
+     "predicted": 96,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 24,
+     "fp": 209,
+     "fn": 54,
+     "tn": 3659,
+     "precision": 0.10300429184549356,
+     "recall": 0.3076923076923077,
+     "f1": 0.15434083601286175,
+     "support": 78,
+     "predicted": 233,
+     "threshold": 0.7
+    },
+    "not_as_described": {
+     "tp": 206,
+     "fp": 181,
+     "fn": 206,
+     "tn": 3353,
+     "precision": 0.5322997416020672,
+     "recall": 0.5,
+     "f1": 0.5156445556946183,
+     "support": 412,
+     "predicted": 387,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 116,
+     "fp": 306,
+     "fn": 133,
+     "tn": 3391,
+     "precision": 0.27488151658767773,
+     "recall": 0.46586345381526106,
+     "f1": 0.3457526080476901,
+     "support": 249,
+     "predicted": 422,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 111,
+     "fp": 110,
+     "fn": 161,
+     "tn": 3564,
+     "precision": 0.502262443438914,
+     "recall": 0.40808823529411764,
+     "f1": 0.4503042596348884,
+     "support": 272,
+     "predicted": 221,
+     "threshold": 0.8
+    }
+   },
+   "macro_f1": 0.43602100776177005
+  },
+  "minilm|ctx=0|emb|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 216,
+     "fp": 282,
+     "fn": 183,
+     "tn": 3265,
+     "precision": 0.43373493975903615,
+     "recall": 0.5413533834586466,
+     "f1": 0.4816053511705685,
+     "support": 399,
+     "predicted": 498,
+     "threshold": 0.7
+    },
+    "counterfeit": {
+     "tp": 80,
+     "fp": 36,
+     "fn": 41,
+     "tn": 3789,
+     "precision": 0.6896551724137931,
+     "recall": 0.6611570247933884,
+     "f1": 0.6751054852320676,
+     "support": 121,
+     "predicted": 116,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 24,
+     "fp": 202,
+     "fn": 54,
+     "tn": 3666,
+     "precision": 0.10619469026548672,
+     "recall": 0.3076923076923077,
+     "f1": 0.15789473684210525,
+     "support": 78,
+     "predicted": 226,
+     "threshold": 0.7
+    },
+    "not_as_described": {
+     "tp": 227,
+     "fp": 256,
+     "fn": 185,
+     "tn": 3278,
+     "precision": 0.4699792960662526,
+     "recall": 0.5509708737864077,
+     "f1": 0.5072625698324023,
+     "support": 412,
+     "predicted": 483,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 135,
+     "fp": 419,
+     "fn": 114,
+     "tn": 3278,
+     "precision": 0.24368231046931407,
+     "recall": 0.5421686746987951,
+     "f1": 0.336239103362391,
+     "support": 249,
+     "predicted": 554,
+     "threshold": 0.65
+    },
+    "delivery": {
+     "tp": 123,
+     "fp": 145,
+     "fn": 149,
+     "tn": 3529,
+     "precision": 0.458955223880597,
+     "recall": 0.4522058823529412,
+     "f1": 0.45555555555555555,
+     "support": 272,
+     "predicted": 268,
+     "threshold": 0.8
+    }
+   },
+   "macro_f1": 0.43561046699918177
+  },
+  "minilm|ctx=0|emb|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 198,
+     "fp": 232,
+     "fn": 201,
+     "tn": 3315,
+     "precision": 0.4604651162790698,
+     "recall": 0.49624060150375937,
+     "f1": 0.4776839565741858,
+     "support": 399,
+     "predicted": 430,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 87,
+     "fp": 44,
+     "fn": 34,
+     "tn": 3781,
+     "precision": 0.6641221374045801,
+     "recall": 0.71900826446281,
+     "f1": 0.6904761904761906,
+     "support": 121,
+     "predicted": 131,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 17,
+     "fp": 120,
+     "fn": 61,
+     "tn": 3748,
+     "precision": 0.12408759124087591,
+     "recall": 0.21794871794871795,
+     "f1": 0.15813953488372093,
+     "support": 78,
+     "predicted": 137,
+     "threshold": 0.8
+    },
+    "not_as_described": {
+     "tp": 214,
+     "fp": 216,
+     "fn": 198,
+     "tn": 3318,
+     "precision": 0.49767441860465117,
+     "recall": 0.5194174757281553,
+     "f1": 0.5083135391923991,
+     "support": 412,
+     "predicted": 430,
+     "threshold": 0.75
+    },
+    "quality": {
+     "tp": 123,
+     "fp": 335,
+     "fn": 126,
+     "tn": 3362,
+     "precision": 0.2685589519650655,
+     "recall": 0.4939759036144578,
+     "f1": 0.34794908062234803,
+     "support": 249,
+     "predicted": 458,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 112,
+     "fp": 134,
+     "fn": 160,
+     "tn": 3540,
+     "precision": 0.45528455284552843,
+     "recall": 0.4117647058823529,
+     "f1": 0.4324324324324324,
+     "support": 272,
+     "predicted": 246,
+     "threshold": 0.85
+    }
+   },
+   "macro_f1": 0.4358324556968795
+  },
+  "minilm|ctx=0|emb+struct|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 289,
+     "fp": 105,
+     "fn": 110,
+     "tn": 3442,
+     "precision": 0.733502538071066,
+     "recall": 0.7243107769423559,
+     "f1": 0.728877679697352,
+     "support": 399,
+     "predicted": 394,
+     "threshold": 0.8
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 17,
+     "fn": 7,
+     "tn": 3808,
+     "precision": 0.8702290076335878,
+     "recall": 0.9421487603305785,
+     "f1": 0.9047619047619049,
+     "support": 121,
+     "predicted": 131,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 56,
+     "fp": 54,
+     "fn": 22,
+     "tn": 3814,
+     "precision": 0.509090909090909,
+     "recall": 0.717948717948718,
+     "f1": 0.5957446808510638,
+     "support": 78,
+     "predicted": 110,
+     "threshold": 0.8
+    },
+    "not_as_described": {
+     "tp": 311,
+     "fp": 99,
+     "fn": 101,
+     "tn": 3435,
+     "precision": 0.7585365853658537,
+     "recall": 0.7548543689320388,
+     "f1": 0.7566909975669099,
+     "support": 412,
+     "predicted": 410,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 191,
+     "fp": 110,
+     "fn": 58,
+     "tn": 3587,
+     "precision": 0.6345514950166113,
+     "recall": 0.7670682730923695,
+     "f1": 0.6945454545454546,
+     "support": 249,
+     "predicted": 301,
+     "threshold": 0.85
+    },
+    "delivery": {
+     "tp": 134,
+     "fp": 157,
+     "fn": 138,
+     "tn": 3517,
+     "precision": 0.46048109965635736,
+     "recall": 0.49264705882352944,
+     "f1": 0.4760213143872114,
+     "support": 272,
+     "predicted": 291,
+     "threshold": 0.8
+    }
+   },
+   "macro_f1": 0.6927736719683161
+  },
+  "minilm|ctx=0|emb+struct|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 267,
+     "fp": 88,
+     "fn": 132,
+     "tn": 3459,
+     "precision": 0.752112676056338,
+     "recall": 0.6691729323308271,
+     "f1": 0.7082228116710876,
+     "support": 399,
+     "predicted": 355,
+     "threshold": 0.85
+    },
+    "counterfeit": {
+     "tp": 112,
+     "fp": 15,
+     "fn": 9,
+     "tn": 3810,
+     "precision": 0.8818897637795275,
+     "recall": 0.9256198347107438,
+     "f1": 0.903225806451613,
+     "support": 121,
+     "predicted": 127,
+     "threshold": 0.85
+    },
+    "safety": {
+     "tp": 59,
+     "fp": 62,
+     "fn": 19,
+     "tn": 3806,
+     "precision": 0.48760330578512395,
+     "recall": 0.7564102564102564,
+     "f1": 0.592964824120603,
+     "support": 78,
+     "predicted": 121,
+     "threshold": 0.65
+    },
+    "not_as_described": {
+     "tp": 311,
+     "fp": 116,
+     "fn": 101,
+     "tn": 3418,
+     "precision": 0.7283372365339579,
+     "recall": 0.7548543689320388,
+     "f1": 0.7413587604290823,
+     "support": 412,
+     "predicted": 427,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 192,
+     "fp": 120,
+     "fn": 57,
+     "tn": 3577,
+     "precision": 0.6153846153846154,
+     "recall": 0.7710843373493976,
+     "f1": 0.6844919786096257,
+     "support": 249,
+     "predicted": 312,
+     "threshold": 0.75
+    },
+    "delivery": {
+     "tp": 148,
+     "fp": 215,
+     "fn": 124,
+     "tn": 3459,
+     "precision": 0.40771349862258954,
+     "recall": 0.5441176470588235,
+     "f1": 0.46614173228346456,
+     "support": 272,
+     "predicted": 363,
+     "threshold": 0.75
+    }
+   },
+   "macro_f1": 0.6827343189275794
+  },
+  "minilm|ctx=0|emb+struct|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 263,
+     "fp": 90,
+     "fn": 136,
+     "tn": 3457,
+     "precision": 0.7450424929178471,
+     "recall": 0.6591478696741855,
+     "f1": 0.6994680851063829,
+     "support": 399,
+     "predicted": 353,
+     "threshold": 0.85
+    },
+    "counterfeit": {
+     "tp": 111,
+     "fp": 14,
+     "fn": 10,
+     "tn": 3811,
+     "precision": 0.888,
+     "recall": 0.9173553719008265,
+     "f1": 0.9024390243902439,
+     "support": 121,
+     "predicted": 125,
+     "threshold": 0.8
+    },
+    "safety": {
+     "tp": 56,
+     "fp": 66,
+     "fn": 22,
+     "tn": 3802,
+     "precision": 0.45901639344262296,
+     "recall": 0.717948717948718,
+     "f1": 0.5599999999999999,
+     "support": 78,
+     "predicted": 122,
+     "threshold": 0.6
+    },
+    "not_as_described": {
+     "tp": 272,
+     "fp": 71,
+     "fn": 140,
+     "tn": 3463,
+     "precision": 0.793002915451895,
+     "recall": 0.6601941747572816,
+     "f1": 0.7205298013245034,
+     "support": 412,
+     "predicted": 343,
+     "threshold": 0.9
+    },
+    "quality": {
+     "tp": 182,
+     "fp": 113,
+     "fn": 67,
+     "tn": 3584,
+     "precision": 0.6169491525423729,
+     "recall": 0.7309236947791165,
+     "f1": 0.6691176470588235,
+     "support": 249,
+     "predicted": 295,
+     "threshold": 0.8
+    },
+    "delivery": {
+     "tp": 146,
+     "fp": 219,
+     "fn": 126,
+     "tn": 3455,
+     "precision": 0.4,
+     "recall": 0.5367647058823529,
+     "f1": 0.45839874411302983,
+     "support": 272,
+     "predicted": 365,
+     "threshold": 0.75
+    }
+   },
+   "macro_f1": 0.6683255503321638
+  },
+  "minilm|ctx=1|emb|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 164,
+     "fp": 237,
+     "fn": 235,
+     "tn": 3310,
+     "precision": 0.4089775561097257,
+     "recall": 0.41102756892230574,
+     "f1": 0.41,
+     "support": 399,
+     "predicted": 401,
+     "threshold": 0.7
+    },
+    "counterfeit": {
+     "tp": 65,
+     "fp": 79,
+     "fn": 56,
+     "tn": 3746,
+     "precision": 0.4513888888888889,
+     "recall": 0.5371900826446281,
+     "f1": 0.49056603773584906,
+     "support": 121,
+     "predicted": 144,
+     "threshold": 0.65
+    },
+    "safety": {
+     "tp": 18,
+     "fp": 66,
+     "fn": 60,
+     "tn": 3802,
+     "precision": 0.21428571428571427,
+     "recall": 0.23076923076923078,
+     "f1": 0.22222222222222224,
+     "support": 78,
+     "predicted": 84,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 159,
+     "fp": 298,
+     "fn": 253,
+     "tn": 3236,
+     "precision": 0.3479212253829322,
+     "recall": 0.3859223300970874,
+     "f1": 0.36593785960874564,
+     "support": 412,
+     "predicted": 457,
+     "threshold": 0.65
+    },
+    "quality": {
+     "tp": 100,
+     "fp": 193,
+     "fn": 149,
+     "tn": 3504,
+     "precision": 0.3412969283276451,
+     "recall": 0.40160642570281124,
+     "f1": 0.36900369003690037,
+     "support": 249,
+     "predicted": 293,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 117,
+     "fp": 320,
+     "fn": 155,
+     "tn": 3354,
+     "precision": 0.26773455377574373,
+     "recall": 0.43014705882352944,
+     "f1": 0.33004231311706633,
+     "support": 272,
+     "predicted": 437,
+     "threshold": 0.65
+    }
+   },
+   "macro_f1": 0.3646286871201306
+  },
+  "minilm|ctx=1|emb|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 210,
+     "fp": 419,
+     "fn": 189,
+     "tn": 3128,
+     "precision": 0.3338632750397456,
+     "recall": 0.5263157894736842,
+     "f1": 0.4085603112840467,
+     "support": 399,
+     "predicted": 629,
+     "threshold": 0.65
+    },
+    "counterfeit": {
+     "tp": 59,
+     "fp": 54,
+     "fn": 62,
+     "tn": 3771,
+     "precision": 0.5221238938053098,
+     "recall": 0.48760330578512395,
+     "f1": 0.5042735042735043,
+     "support": 121,
+     "predicted": 113,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 16,
+     "fp": 63,
+     "fn": 62,
+     "tn": 3805,
+     "precision": 0.20253164556962025,
+     "recall": 0.20512820512820512,
+     "f1": 0.2038216560509554,
+     "support": 78,
+     "predicted": 79,
+     "threshold": 0.9
+    },
+    "not_as_described": {
+     "tp": 161,
+     "fp": 261,
+     "fn": 251,
+     "tn": 3273,
+     "precision": 0.3815165876777251,
+     "recall": 0.3907766990291262,
+     "f1": 0.3860911270983214,
+     "support": 412,
+     "predicted": 422,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 108,
+     "fp": 243,
+     "fn": 141,
+     "tn": 3454,
+     "precision": 0.3076923076923077,
+     "recall": 0.43373493975903615,
+     "f1": 0.36,
+     "support": 249,
+     "predicted": 351,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 116,
+     "fp": 313,
+     "fn": 156,
+     "tn": 3361,
+     "precision": 0.2703962703962704,
+     "recall": 0.4264705882352941,
+     "f1": 0.3309557774607703,
+     "support": 272,
+     "predicted": 429,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.36561706269459965
+  },
+  "minilm|ctx=1|emb|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 233,
+     "fp": 541,
+     "fn": 166,
+     "tn": 3006,
+     "precision": 0.30103359173126615,
+     "recall": 0.5839598997493735,
+     "f1": 0.3972719522591645,
+     "support": 399,
+     "predicted": 774,
+     "threshold": 0.6
+    },
+    "counterfeit": {
+     "tp": 48,
+     "fp": 17,
+     "fn": 73,
+     "tn": 3808,
+     "precision": 0.7384615384615385,
+     "recall": 0.39669421487603307,
+     "f1": 0.5161290322580645,
+     "support": 121,
+     "predicted": 65,
+     "threshold": 0.9
+    },
+    "safety": {
+     "tp": 16,
+     "fp": 88,
+     "fn": 62,
+     "tn": 3780,
+     "precision": 0.15384615384615385,
+     "recall": 0.20512820512820512,
+     "f1": 0.17582417582417584,
+     "support": 78,
+     "predicted": 104,
+     "threshold": 0.9
+    },
+    "not_as_described": {
+     "tp": 190,
+     "fp": 422,
+     "fn": 222,
+     "tn": 3112,
+     "precision": 0.3104575163398693,
+     "recall": 0.46116504854368934,
+     "f1": 0.37109375000000006,
+     "support": 412,
+     "predicted": 612,
+     "threshold": 0.65
+    },
+    "quality": {
+     "tp": 120,
+     "fp": 281,
+     "fn": 129,
+     "tn": 3416,
+     "precision": 0.29925187032418954,
+     "recall": 0.4819277108433735,
+     "f1": 0.3692307692307692,
+     "support": 249,
+     "predicted": 401,
+     "threshold": 0.7
+    },
+    "delivery": {
+     "tp": 113,
+     "fp": 294,
+     "fn": 159,
+     "tn": 3380,
+     "precision": 0.27764127764127766,
+     "recall": 0.41544117647058826,
+     "f1": 0.33284241531664216,
+     "support": 272,
+     "predicted": 407,
+     "threshold": 0.75
+    }
+   },
+   "macro_f1": 0.3603986824814694
+  },
+  "minilm|ctx=1|emb+struct|C=0.5": {
+   "per_flag": {
+    "defect": {
+     "tp": 298,
+     "fp": 121,
+     "fn": 101,
+     "tn": 3426,
+     "precision": 0.711217183770883,
+     "recall": 0.7468671679197995,
+     "f1": 0.7286063569682151,
+     "support": 399,
+     "predicted": 419,
+     "threshold": 0.8
+    },
+    "counterfeit": {
+     "tp": 114,
+     "fp": 15,
+     "fn": 7,
+     "tn": 3810,
+     "precision": 0.8837209302325582,
+     "recall": 0.9421487603305785,
+     "f1": 0.9119999999999999,
+     "support": 121,
+     "predicted": 129,
+     "threshold": 0.7
+    },
+    "safety": {
+     "tp": 57,
+     "fp": 46,
+     "fn": 21,
+     "tn": 3822,
+     "precision": 0.5533980582524272,
+     "recall": 0.7307692307692307,
+     "f1": 0.6298342541436465,
+     "support": 78,
+     "predicted": 103,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 317,
+     "fp": 100,
+     "fn": 95,
+     "tn": 3434,
+     "precision": 0.7601918465227818,
+     "recall": 0.7694174757281553,
+     "f1": 0.7647768395657418,
+     "support": 412,
+     "predicted": 417,
+     "threshold": 0.65
+    },
+    "quality": {
+     "tp": 193,
+     "fp": 113,
+     "fn": 56,
+     "tn": 3584,
+     "precision": 0.630718954248366,
+     "recall": 0.7751004016064257,
+     "f1": 0.6954954954954955,
+     "support": 249,
+     "predicted": 306,
+     "threshold": 0.75
+    },
+    "delivery": {
+     "tp": 138,
+     "fp": 326,
+     "fn": 134,
+     "tn": 3348,
+     "precision": 0.2974137931034483,
+     "recall": 0.5073529411764706,
+     "f1": 0.375,
+     "support": 272,
+     "predicted": 464,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.6842854910288497
+  },
+  "minilm|ctx=1|emb+struct|C=2.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 301,
+     "fp": 146,
+     "fn": 98,
+     "tn": 3401,
+     "precision": 0.6733780760626398,
+     "recall": 0.7543859649122807,
+     "f1": 0.7115839243498817,
+     "support": 399,
+     "predicted": 447,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 115,
+     "fp": 16,
+     "fn": 6,
+     "tn": 3809,
+     "precision": 0.8778625954198473,
+     "recall": 0.9504132231404959,
+     "f1": 0.9126984126984128,
+     "support": 121,
+     "predicted": 131,
+     "threshold": 0.75
+    },
+    "safety": {
+     "tp": 54,
+     "fp": 44,
+     "fn": 24,
+     "tn": 3824,
+     "precision": 0.5510204081632653,
+     "recall": 0.6923076923076923,
+     "f1": 0.6136363636363635,
+     "support": 78,
+     "predicted": 98,
+     "threshold": 0.85
+    },
+    "not_as_described": {
+     "tp": 306,
+     "fp": 100,
+     "fn": 106,
+     "tn": 3434,
+     "precision": 0.7536945812807881,
+     "recall": 0.7427184466019418,
+     "f1": 0.7481662591687042,
+     "support": 412,
+     "predicted": 406,
+     "threshold": 0.7
+    },
+    "quality": {
+     "tp": 188,
+     "fp": 115,
+     "fn": 61,
+     "tn": 3582,
+     "precision": 0.6204620462046204,
+     "recall": 0.7550200803212851,
+     "f1": 0.681159420289855,
+     "support": 249,
+     "predicted": 303,
+     "threshold": 0.75
+    },
+    "delivery": {
+     "tp": 138,
+     "fp": 330,
+     "fn": 134,
+     "tn": 3344,
+     "precision": 0.2948717948717949,
+     "recall": 0.5073529411764706,
+     "f1": 0.37297297297297294,
+     "support": 272,
+     "predicted": 468,
+     "threshold": 0.7
+    }
+   },
+   "macro_f1": 0.6733695588526984
+  },
+  "minilm|ctx=1|emb+struct|C=8.0": {
+   "per_flag": {
+    "defect": {
+     "tp": 287,
+     "fp": 157,
+     "fn": 112,
+     "tn": 3390,
+     "precision": 0.6463963963963963,
+     "recall": 0.7192982456140351,
+     "f1": 0.6809015421115066,
+     "support": 399,
+     "predicted": 444,
+     "threshold": 0.75
+    },
+    "counterfeit": {
+     "tp": 117,
+     "fp": 19,
+     "fn": 4,
+     "tn": 3806,
+     "precision": 0.8602941176470589,
+     "recall": 0.9669421487603306,
+     "f1": 0.9105058365758755,
+     "support": 121,
+     "predicted": 136,
+     "threshold": 0.6
+    },
+    "safety": {
+     "tp": 49,
+     "fp": 43,
+     "fn": 29,
+     "tn": 3825,
+     "precision": 0.532608695652174,
+     "recall": 0.6282051282051282,
+     "f1": 0.5764705882352942,
+     "support": 78,
+     "predicted": 92,
+     "threshold": 0.8
+    },
+    "not_as_described": {
+     "tp": 293,
+     "fp": 110,
+     "fn": 119,
+     "tn": 3424,
+     "precision": 0.7270471464019851,
+     "recall": 0.7111650485436893,
+     "f1": 0.7190184049079754,
+     "support": 412,
+     "predicted": 403,
+     "threshold": 0.75
+    },
+    "quality": {
+     "tp": 171,
+     "fp": 98,
+     "fn": 78,
+     "tn": 3599,
+     "precision": 0.6356877323420075,
+     "recall": 0.6867469879518072,
+     "f1": 0.6602316602316602,
+     "support": 249,
+     "predicted": 269,
+     "threshold": 0.8
+    },
+    "delivery": {
+     "tp": 129,
+     "fp": 275,
+     "fn": 143,
+     "tn": 3399,
+     "precision": 0.3193069306930693,
+     "recall": 0.4742647058823529,
+     "f1": 0.3816568047337279,
+     "support": 272,
+     "predicted": 404,
+     "threshold": 0.75
+    }
+   },
+   "macro_f1": 0.65479747279934
+  }
+ },
+ "best_per_flag": {
+  "defect": "e5-small|ctx=0|emb+struct|C=2.0",
+  "counterfeit": "e5-small|ctx=1|emb+struct|C=8.0",
+  "safety": "e5-small|ctx=0|emb+struct|C=2.0",
+  "not_as_described": "e5-small|ctx=1|emb+struct|C=0.5",
+  "quality": "e5-small|ctx=1|emb+struct|C=8.0",
+  "delivery": "e5-small|ctx=0|emb+struct|C=8.0"
+ },
+ "historical_test": {
+  "defect": {
+   "config": "e5-small|ctx=0|emb+struct|C=2.0",
+   "threshold": 0.8,
+   "tp": 51,
+   "fp": 22,
+   "fn": 17,
+   "tn": 756,
+   "precision": 0.6986301369863014,
+   "recall": 0.75,
+   "f1": 0.7234042553191489,
+   "support": 68,
+   "predicted": 73,
+   "f1_ci95_product_bootstrap": [
+    0.642,
+    0.795
+   ]
+  },
+  "counterfeit": {
+   "config": "e5-small|ctx=1|emb+struct|C=8.0",
+   "threshold": 0.7,
+   "tp": 50,
+   "fp": 3,
+   "fn": 3,
+   "tn": 790,
+   "precision": 0.9433962264150944,
+   "recall": 0.9433962264150944,
+   "f1": 0.9433962264150944,
+   "support": 53,
+   "predicted": 53,
+   "f1_ci95_product_bootstrap": [
+    0.859,
+    0.991
+   ]
+  },
+  "safety": {
+   "config": "e5-small|ctx=0|emb+struct|C=2.0",
+   "threshold": 0.85,
+   "tp": 12,
+   "fp": 17,
+   "fn": 4,
+   "tn": 813,
+   "precision": 0.41379310344827586,
+   "recall": 0.75,
+   "f1": 0.5333333333333333,
+   "support": 16,
+   "predicted": 29,
+   "f1_ci95_product_bootstrap": [
+    0.293,
+    0.667
+   ]
+  },
+  "not_as_described": {
+   "config": "e5-small|ctx=1|emb+struct|C=0.5",
+   "threshold": 0.65,
+   "tp": 43,
+   "fp": 20,
+   "fn": 17,
+   "tn": 766,
+   "precision": 0.6825396825396826,
+   "recall": 0.7166666666666667,
+   "f1": 0.6991869918699187,
+   "support": 60,
+   "predicted": 63,
+   "f1_ci95_product_bootstrap": [
+    0.598,
+    0.799
+   ]
+  },
+  "quality": {
+   "config": "e5-small|ctx=1|emb+struct|C=8.0",
+   "threshold": 0.75,
+   "tp": 49,
+   "fp": 32,
+   "fn": 8,
+   "tn": 757,
+   "precision": 0.6049382716049383,
+   "recall": 0.8596491228070176,
+   "f1": 0.7101449275362319,
+   "support": 57,
+   "predicted": 81,
+   "f1_ci95_product_bootstrap": [
+    0.36,
+    0.823
+   ]
+  },
+  "delivery": {
+   "config": "e5-small|ctx=0|emb+struct|C=8.0",
+   "threshold": 0.65,
+   "tp": 23,
+   "fp": 51,
+   "fn": 8,
+   "tn": 764,
+   "precision": 0.3108108108108108,
+   "recall": 0.7419354838709677,
+   "f1": 0.4380952380952381,
+   "support": 31,
+   "predicted": 74,
+   "f1_ci95_product_bootstrap": [
+    0.253,
+    0.579
+   ]
+  }
+ }
+}
