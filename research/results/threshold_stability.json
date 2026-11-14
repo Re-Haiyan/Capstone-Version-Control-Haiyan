@@ -1,0 +1,52 @@
+{
+ "defect": {
+  "threshold_full": 0.45,
+  "bootstrap_p10_median_p90": [
+   0.4,
+   0.45,
+   0.45
+  ],
+  "f1_at_full": 0.71,
+  "f1_at_median": 0.71
+ },
+ "counterfeit": {
+  "threshold_full": 0.2,
+  "bootstrap_p10_median_p90": [
+   0.2,
+   0.2,
+   0.25
+  ],
+  "f1_at_full": 0.872,
+  "f1_at_median": 0.872
+ },
+ "safety": {
+  "threshold_full": 0.2,
+  "bootstrap_p10_median_p90": [
+   0.2,
+   0.2,
+   0.3
+  ],
+  "f1_at_full": 0.355,
+  "f1_at_median": 0.355
+ },
+ "not_as_described": {
+  "threshold_full": 0.4,
+  "bootstrap_p10_median_p90": [
+   0.4,
+   0.4,
+   0.5
+  ],
+  "f1_at_full": 0.705,
+  "f1_at_median": 0.705
+ },
+ "quality": {
+  "threshold_full": 0.5,
+  "bootstrap_p10_median_p90": [
+   0.4,
+   0.5,
+   0.5
+  ],
+  "f1_at_full": 0.659,
+  "f1_at_median": 0.659
+ }
+}

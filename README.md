@@ -535,3 +535,7 @@ They use a temporary accounts database and never start a real scan.
 
 This folder is its own git repository, local only: nothing is uploaded anywhere unless you add a remote and push.
 `backups/` (copies of the real database) is deliberately left out of it.
+
+## Research and project history
+
+The review-classification research (audits, baselines, evaluation with confidence intervals, benchmarks) is in `research/` (start at `research/README.md`); the chronological record of the work and its commits is in `docs/PROJECT_HISTORY.md`; annotation guides are in `docs/annotation_guides/`.
