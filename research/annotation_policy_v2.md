@@ -1,0 +1,47 @@
+# Annotation policy v2 (proposed): ten decisions, compared with v1
+
+**Status: PROPOSED. Not in force.** These are the ten interpretations supplied by the project owner for owner approval. They do not rewrite any gold label and change no production rule. v1 (`docs/annotation_guides/`) stays the policy in force until the owner approves v2 in writing. Supersedes the ten-question table in `annotation_policy_proposal.md`, which recorded the evidence before the owner's answers. All label statistics below are on the **training** file, with the provenance caveat of `annotation_provenance.md`; the historical test file was not read. Generated numbers: `research/results/policy_impact.json` (`research/policy_impact.py`).
+
+## How each decision compares with v1, with the data and the current rules
+
+"Current rules" is what the deployed rule layer does today on the probe sentences in `policy_impact.py`. "Gap" means the current rules differ from v2; nothing was changed to close it.
+
+| # | v2 decision (owner) | v1 | What the team-supplied labels show | Current rules | Gap or action |
+|---|---|---|---|---|---|
+| A | Damage to the packing alone is `delivery`, not `defect`; both flags if the product is also damaged | Packing damage is not a product flag; there was no `delivery` label | Damage words with packing words: defect in 24% of 343 rows, delivery in 27% | "Yupi yupi ang box pero okay ang item": no defect (correct). "Yupi ang box at basag ang takip": **no defect**, although the lid is cracked | **Gap 1:** the core lexicon excludes any damage word that has a packing word nearby ("shipping matter"), which hides item damage in the same sentence. The guard written in this round is span-level and does not cause it. **Gap 2:** the rule layer has no `delivery` flag (only the experimental model had one, F1 0.47) |
+| B | Do not exclude battery complaints universally; separate normal use, subjective dissatisfaction, abnormally rapid discharge, a battery that no longer holds a charge, and charging failure; an objectively described malfunction is a `defect`; do not infer one from "mabilis malowbat" | Fast battery drain was a defect for gadgets (earlier guide) | See the table below: subjective dissatisfaction (55 rows) is none in 58%, defect in 27%; charging failure (17 rows) is defect in 59% | "Mabilis malowbat": none. "Hindi na nagcha-charge", "100% to 20% in 10 minutes", "hindi na nag-hold ng charge": defect | **No gap on these probes.** The current rules already do what B says. The earlier blanket exemption was narrowed in this round to subjective wording; objective failures are flagged |
+| C | A subjective fit complaint is not a mismatch; an explicit difference between the advertised or ordered size and the received product is `not_as_described` | "Too small" counted as a mismatch in some rules | "Too small / too big / too tight": not_as_described in 17% of 52 rows | "Masyadong maliit sa akin": none. "Large ang inorder ko pero small ang dumating", "Size 42 ang order ko, 43 ang pinadala": not_as_described (the contrast case was added in this round) | **No gap** |
+| D | A missing freebie that the listing or purchase terms promised is `not_as_described`; an unadvertised one is not; a fulfilment complaint may also be `delivery` | Freebies were flagged inconsistently | Freebie wording: not_as_described in 18% of 61 rows | "Walang freebie na kasama": none. "Nakalagay sa listing may free tumbler pero wala": not_as_described (plus a spurious defect from the learned layer) | **Partial.** Whether a freebie was advertised is only knowable from the listing text; the rules read the sentence, not the listing's freebie list |
+| E | Separate natural half-filled packs, less than the stated amount, leakage, broken seals and ambiguous quantity; mark uncertain cases for review | Mixed | "Kalahati / half empty": not_as_described in 44% of 16 rows | "Kalahati lang ang laman": none. "Tumagas at kalahati na lang ang laman": defect (leak). "Buy 1 take 1 pero tig kalahati lang": none | **Gap:** a stated amount that is not delivered ("buy 1 take 1, half in each") is not detected. It needs the listing's quantity |
+| F | Do not flag a hypothetical fear; flag abnormal heating, burning smell, smoke, sparks, shock when reported; fear plus a stated abnormal condition qualifies | A reported heat that is frightening is safety | Fear wording without a stated abnormal condition (16 rows): none 6, safety 5, defect 3; with a stated abnormal condition (5 rows): none 4, safety 1 | "Umiinit habang nagchacharge, nakakatakot": safety. "Umusok na at nakakatakot": safety. **"Baka sumabog yung charger": defect** | **Gap:** a purely hypothetical fear is flagged as a *defect* by the learned layer. The 5-row sample shows the labels themselves disagree with v2 on fear plus abnormal condition (mostly none), so the data do not support the rule until the labels are re-adjudicated |
+| G | Do not exclude `quality` merely because of "pero okay"; judge the whole statement; a neutral physical description is not necessarily a complaint; a genuine complaint stays one even with partial praise | Thin counted as quality | Thin with a concession: quality in 39% of 75 rows; thin without one: 81% of 79 | "Manipis pero okay naman", "Sobrang manipis, parang papel", "Manipis pero pwede na": **quality in all three** | **Owner decision.** A reusable mechanism exists (`DEFAKETIVE_CLAUSE_RESOLVE=quality`, off by default): it clears plain descriptions only (no intensifier, no negative judgement) and never a complaint. On the training labels it costs 0.031 quality F1 because the labels call these a complaint 59% of the time, which agrees with the second half of G |
+| H | `safety` and `defect` together when both are independently supported; never add `defect` because a safety report exists | Heat counted twice | Defect co-occurs with safety in 10 of 399 defect rows | "Umusok ang charger": safety only. "Umusok at hindi na gumana": both | **No gap** |
+| I | `counterfeit` and `defect` together only if both are explicit; a fake allegation is not a defect | Fakes often also flagged as defects by the model | Defect co-occurs with counterfeit in 12 of 121 counterfeit rows | "Peke ito": counterfeit only. "Peke at sira agad": both | **No gap** |
+| J | Do not equate unmet expectations of results with malfunction; propose a future `effectiveness` flag if the data justify it | Inconsistent | Product-effect complaints: only **11** training rows, all beauty/health, labelled counterfeit 8, none 3, quality 1 | "Hindi umepekto sa akin ang serum": none. **"Walang epekto, hindi pumuti": defect** | **Gap** for the defect reading. **The data do not justify an `effectiveness` flag yet** (see below) |
+
+## Battery wording, five kinds (decision B)
+
+| Kind | Training rows | Team-supplied labels |
+|---|---:|---|
+| Charging failure ("hindi nagcha-charge", "ayaw mag-charge") | 17 | defect 10, none 4, delivery 3, counterfeit 3, safety 1 |
+| No longer holds a charge ("hindi na nag-hold", "namamatay agad") | 2 | none 2 |
+| Abnormally rapid discharge (a percentage drop over minutes) | 2 | none 1, defect 1 |
+| Subjective dissatisfaction ("mabilis malowbat", "short battery") | 55 | none 32, defect 15, quality 6, not_as_described 4, counterfeit 3, delivery 1, safety 1 |
+| Normal consumption or praise | 7 | none 5, defect 1, quality 1 |
+| Other battery or charging mention | 167 | none 106, defect 24, safety 22, not_as_described 13, delivery 8, quality 8, counterfeit 7 |
+
+Two kinds ("no longer holds a charge", "abnormally rapid discharge") have two rows each: **the labels cannot confirm or deny those two parts of B**; they need new, specifically sampled annotations. Charging failure and subjective dissatisfaction are consistent with B.
+
+## Proposal for a future `effectiveness` flag (decision J). Not for production
+
+* **Evidence today:** 11 training reviews, all beauty/health ("hindi umepekto", "walang epekto", "hindi pumuti", "ayaw bumula"); the team labelled 8 of them *counterfeit* (a soap that does not foam is read as fake), 3 none and 1 quality. That is too few to define a label and it shows the annotators already use "counterfeit" for this wording, so a new flag would change an existing decision.
+* **When it would be justified:** at least about 100 reviews of this kind in at least three product groups, annotated blind by two people with an agreement figure, and a measured overlap with `counterfeit` and `defect` that shows the existing labels cannot carry it.
+* **Draft definition (if approved):** the reviewer reports that the product did not produce the result it is for (whitening, foaming, growth, relief) while working as a physical object. Not a defect (it functions), not a counterfeit claim unless the reviewer says it is fake, not a quality complaint about materials.
+* Not introduced into the rules, the model or the interface.
+
+## Adoption
+
+1. The owner approves, edits or rejects each of A to J (the table above says which have a real gap, which are already met and which need a decision).
+2. The two annotators label the 300 agreement sheets (`research/agreement/GUIDE.md`) under the approved version; agreement is computed.
+3. Rule changes for the gaps (A item damage beside packing, `delivery` as a rule flag, E stated quantities, F hypothetical fear, J effect as a defect) are made on training evidence and re-measured on a fresh test (`research/fresh_eval/README.md`), not on the historical test file.
+4. Only then are the labels versioned (v4) with the original kept in a separate column.

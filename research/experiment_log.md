@@ -22,3 +22,19 @@ Dataset versions: `train_v3` (3,946 high-confidence rows, 303 products), `test_v
 Earlier work in this session (previous rounds): rule tuning on the training rows (not-as-advertised 0.59 to 0.72, defect 0.67 to 0.68 on test), three fine-tuned XLM-R runs (`training/RESULTS_v1.md`). Seeds: every stochastic step used a fixed seed; the XLM-R runs had one seed each and were unstable between runs, so no single-run claim is made from them.
 
 Not run, with reasons: SetFit, LoRA, distillation (E03); product-conclusion accuracy and inter-annotator agreement (need human annotation); a fresh final test (needs new labelled data).
+
+## Finalization round (from `e3d629c`)
+
+| ID | Hypothesis | Setup | Result | Decision |
+|---|---|---|---|---|
+| E14 | The audit's 534 and 502 disagree | Recount from the CSV | 534 entries, 502 reviews; 219 hazard entries were a substring bug ("amag" in "damage"); corrected to 285 entries over 280 reviews | Fixed and documented |
+| E15 | The labels are independent human gold | File timestamps, metadata, git history | 270 to 3,863 reviews returned 7 to 22 minutes after creation; no annotator records | Labelled "team-supplied, unverified" everywhere |
+| E16 | Flags without highlighted words are as reliable as the rest | Precision by evidence state against the supplied labels | defect 0.79 with words, 0.17 without; quality 0.63 / 0.17 | `review_evidence` states added |
+| E17 | Not counting model-only flags helps | Opt-in policy through the real pipeline | defect F1 0.733 to 0.767 (training), 0.680 to 0.773 (historical test, paired interval +0.044 to +0.162) | Opt-in, recommended for approval |
+| E18 | A contrast clause can resolve a soft statement | Mechanism on training rows | quality F1 0.691 to 0.660, safety 0.638 to 0.626 | Switch, off by default |
+| E19 | An order clause plus a different arrival clause is a mismatch | Mechanism and pattern, training rows | not-as-advertised F1 0.764 to 0.772, defect 0.733 to 0.736 (with the span-level packing guard) | On |
+| E20 | Agreement sheets are blind | Audit | Original id prefixes revealed the stratum; fixed with anonymous ids; scoring handles missing annotations | Fixed |
+| E21 | A fresh independent set exists | Product overlap against every labelled or inspected file | Only 89 gadget products are unseen; no non-gadget product | Gadget set and a sufficiency analysis; non-gadget data must be collected |
+| E22 | The sentiment calibrator is a stars shortcut | Feature ablation, out-of-fold | No: text alone 0.707 CV / 0.734 historical test | Not a shortcut |
+| E23 | The calibrator is safe for the conclusion card | Shadow mode on 60 saved products | 15 of 60 conclusions change, 12 from Well reviewed to Mixed reviews, negative share unchanged | Not activated; owner decision on neutral |
+| E24 | The policy v2 decisions match the current rules | Probes and label statistics, one group per decision | B, C, H, I met; gaps for A, E, F, J; D and G need a decision; no `effectiveness` flag justified (11 rows) | Documented, no rule changed |

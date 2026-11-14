@@ -7,6 +7,13 @@ The research round of the review-classification work. Start with `final_implemen
 
 | Document | What it answers |
 |---|---|
+| `finalization_round_summary.md` | **Start here for the latest round**: what was implemented, run, demonstrated, uncertain, blocked and ready |
+| `annotation_policy_v2.md` | The ten owner decisions compared with v1, the label data and the current rules (supersedes `annotation_policy_proposal.md`) |
+| `evidence_completeness.md` | Evidence states, why model-only flags are 17% right, the opt-in evidence policy |
+| `clause_context.md` | Clause-level context: the mechanism, its switch and its measured cost |
+| `sentiment_calibration_review.md` | Calibrator audit, shortcut test, shadow-mode effect on 60 products |
+| `product_conclusion_evaluation_protocol.md` | How to judge product conclusions independently (sheets in `conclusion_eval/`) |
+| `fresh_eval/README.md` | The proposed fresh evaluation set, its roles and what more data is needed |
 | `final_implementation_summary.md` | What was implemented, run, demonstrated, left uncertain, blocked on annotation, ready to deploy |
 | `evaluation_report.md` | The numbers: rules with confidence intervals, per group, sentiment, conclusions, thresholds, what a valid final claim still needs |
 | `baseline_comparison.md` | Sparse, embedding, fusion, stacking and weak-supervision baselines against the rules |

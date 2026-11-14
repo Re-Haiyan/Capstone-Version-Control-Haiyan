@@ -1,5 +1,7 @@
 # Annotation policy: proposed revision (v2 draft, NOT in force)
 
+> **SUPERSEDED** by `annotation_policy_v2.md`, which records the owner's ten decisions and compares each with v1. Kept for the evidence it first collected.
+
 **Status:** proposal for the annotators and the project owners to approve. The policy in force is v1 (the labelling guides in `evaluation/README_nongadget_labelling.md` and the round-3 README). Historical labels were **not** changed. Each proposed change names the evidence that suggests it; the evidence is the team's own labels, so a change here is a decision about what the label *should* mean, not a correction of an error.
 
 ## Principles (unchanged)

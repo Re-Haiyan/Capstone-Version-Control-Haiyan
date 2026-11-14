@@ -29,3 +29,14 @@
 * No push to the team repository (it returns 403) and **no deployment** to the VM from this round. The work is on the owner's own repository (branches `research-improvements` and `deployment`) at the owner's request.
 * No historical label was changed; no test was edited to fit new behaviour in this round. In the round before (rule tuning, commit `831f22f`) five existing tests that encoded the earlier battery, flavour and calories policy were changed on purpose; they are listed in `final_implementation_summary.md`.
 * SetFit, LoRA, larger encoders and distillation were not run because their gate (a competitive embedding baseline) was not met.
+
+## Added in the finalization round
+
+* **Label provenance is unknown** (`annotation_provenance.md`): the labels came back far faster than manual labelling allows. Every score is against silver labels until two independent annotators confirm a subset (`research/agreement/GUIDE.md`).
+* **No independent non-gadget test can be built from the current pool**: every non-gadget product scanned so far was already labelled or inspected (`research/fresh_eval/README.md`). Safety and counterfeit cannot be powered by a random sample at any plausible size; a two-phase weighted design is proposed.
+* **The sentiment calibrator would move 15 of 60 saved-product conclusions** (12 Well reviewed to Mixed reviews) by turning no-opinion reviews into "uncertain"; not activated; the saved products used are all gadgets.
+* **Clause-level resolution of "pero okay" costs F1** on the supplied labels (quality 0.691 to 0.660), so it is a switch.
+* **A model-only flag is right 17% of the time** (defect, quality); the evidence policy that stops counting them is opt-in and awaits approval.
+* **Known rule gaps against policy v2:** item damage beside packing words (the core lexicon's shipping rule), no `delivery` flag in the rules, a hypothetical fear flagged as defect, an effect complaint flagged as defect, stated quantities (`annotation_policy_v2.md`).
+* **Conclusion accuracy remains unmeasured** until two annotators judge the 100 products in `research/conclusion_eval/`.
+* **The brief for this round ended at "## 11."**; whatever it asked there was not received and not done.
