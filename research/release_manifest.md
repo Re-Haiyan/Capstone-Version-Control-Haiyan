@@ -10,7 +10,7 @@
 | Previous rule update | `831f22f` | rules tuned on the labelled training rows; **never deployed** |
 | Research implementation | `c3d20ed` | evidence states, clause context, calibrator and policy switches |
 | **Release candidate (code)** | `27598e4` | the last commit that changes code or lexicon files; every measurement in `release_validation.md` is of this code |
-| **Recommended deployment commit** | **`<<FINAL>>`** | `27598e4` plus documentation only (no code or lexicon file differs from `27598e4`; checked with `git diff 27598e4 <<FINAL>> -- backend deploy src scripts/requirements-lock.txt package.json package-lock.json`) |
+| **Recommended deployment commit** | **`825de6d`** | `27598e4` plus documentation, tests and research tooling only (no code or lexicon file differs from `27598e4`; checked with `git diff 27598e4 825de6d -- backend deploy src scripts/requirements-lock.txt package.json package-lock.json`) |
 
 ## 2. Every production-affecting change between `d74589a` and the release
 
@@ -48,12 +48,12 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 ## 5. Deployment checklist (every step needs the owner's go-ahead)
 
 **Before**
-1. Owner approves deploying commit `<<FINAL>>`; confirm the branch and hash: `git rev-parse --short HEAD`.
-2. `backend/.venv/Scripts/python.exe -m unittest discover -s tests` passes (270 tests at `27598e4`).
+1. Owner approves deploying commit `825de6d`; confirm the branch and hash: `git rev-parse --short HEAD`.
+2. `backend/.venv/Scripts/python.exe -m unittest discover -s tests` passes (274 tests at `825de6d`).
 3. Record the baseline on the live site: `python scripts/smoke_test.py https://defaketive.duckdns.org --save-baseline before.json`.
 4. On the VM: note the running commit (`git -C ~/defaketive log --oneline -1`, expect `d74589a`), `systemctl is-active defaketive`, and `systemctl show defaketive -p Environment` (expect no `DEFAKETIVE_` switch).
 5. Back up both databases: `~/defaketive/backend/.venv/bin/python scripts/backup_databases.py` (or confirm today's file under `~/defaketive/backups/daily/`).
-6. Build the bundle on the PC: `git bundle create release.bundle d74589a..<<FINAL>>`.
+6. Build the bundle on the PC: `git bundle create release.bundle d74589a..825de6d`.
 
 **Deploy** (the procedure used for earlier releases)
 7. `scp -i <key> release.bundle azureuser@defaketive.duckdns.org:~/`
