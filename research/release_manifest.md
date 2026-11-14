@@ -9,8 +9,8 @@
 | **Production today** | `d74589a` | on the Azure VM, the only version users see |
 | Previous rule update | `831f22f` | rules tuned on the labelled training rows; **never deployed** |
 | Research implementation | `c3d20ed` | evidence states, clause context, calibrator and policy switches |
-| **Release candidate (code)** | `27598e4` | the last commit that changes code or lexicon files; every measurement in `release_validation.md` is of this code |
-| **Recommended deployment commit** | **`825de6d`** | `27598e4` plus documentation, tests and research tooling only (no code or lexicon file differs from `27598e4`; checked with `git diff 27598e4 825de6d -- backend deploy src scripts/requirements-lock.txt package.json package-lock.json`) |
+| **Release candidate (code)** | `2c6e056` | the last commit that changes code or lexicon files; every measurement in `release_validation.md` is of this code |
+| **Recommended deployment commit** | **`2c6e056`** | the release candidate; commits after it are documentation only (check: `git diff 2c6e056 <later> -- backend deploy src scripts package.json package-lock.json` is empty). **Note:** the VM benchmark, API compatibility and quotation runs of `release_validation.md` were made on `27598e4`; `2c6e056` adds two small safety rules in `product_category.py` (re-measured: the behaviour diff and 286 tests) and the re-check tool, which does not run in the service. The VM benchmark was not repeated; the two rules add no measurable work (regular expressions on a sentence). |
 
 ## 2. Every production-affecting change between `d74589a` and the release
 
@@ -49,12 +49,12 @@ All production-affecting files are inside the sentiment-analysis package (`backe
 ## 5. Deployment checklist (every step needs the owner's go-ahead)
 
 **Before**
-1. Owner approves deploying commit `825de6d`; confirm the branch and hash: `git rev-parse --short HEAD`.
-2. `backend/.venv/Scripts/python.exe -m unittest discover -s tests` passes (274 tests at `825de6d`).
+1. Owner approves deploying commit `2c6e056`; confirm the branch and hash: `git rev-parse --short HEAD`.
+2. `backend/.venv/Scripts/python.exe -m unittest discover -s tests` passes (286 tests at `2c6e056`).
 3. Record the baseline on the live site: `python scripts/smoke_test.py https://defaketive.duckdns.org --save-baseline before.json`.
 4. On the VM: note the running commit (`git -C ~/defaketive log --oneline -1`, expect `d74589a`), `systemctl is-active defaketive`, and `systemctl show defaketive -p Environment` (expect no `DEFAKETIVE_` switch).
 5. Run `python scripts/check_admin_default.py` on the VM (expect: not active). Back up both databases: `~/defaketive/backend/.venv/bin/python scripts/backup_databases.py` (or confirm today's file under `~/defaketive/backups/daily/`).
-6. Build the bundle on the PC: `git bundle create release.bundle d74589a..825de6d`.
+6. Build the bundle on the PC: `git bundle create release.bundle d74589a..2c6e056`.
 
 **Deploy** (the procedure used for earlier releases)
 7. `scp -i <key> release.bundle azureuser@defaketive.duckdns.org:~/`
