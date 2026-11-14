@@ -1,0 +1,39 @@
+{
+ "total": {
+  "reviews": 4792,
+  "spans_checked": 1912,
+  "invalid_spans": 0
+ },
+ "per_flag": {
+  "defect": {
+   "raised": 539,
+   "with_valid_span": 428,
+   "no_span": 111,
+   "negated_span_only": 0
+  },
+  "counterfeit": {
+   "raised": 182,
+   "with_valid_span": 182,
+   "no_span": 0,
+   "negated_span_only": 0
+  },
+  "safety": {
+   "raised": 139,
+   "with_valid_span": 138,
+   "no_span": 1,
+   "negated_span_only": 0
+  },
+  "not_as_described": {
+   "raised": 449,
+   "with_valid_span": 427,
+   "no_span": 22,
+   "negated_span_only": 0
+  },
+  "quality": {
+   "raised": 410,
+   "with_valid_span": 389,
+   "no_span": 21,
+   "negated_span_only": 0
+  }
+ }
+}

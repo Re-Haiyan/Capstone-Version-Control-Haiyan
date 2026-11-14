@@ -1,0 +1,70 @@
+{
+ "train_rows": 3946,
+ "test_rows": 846,
+ "train_products": 303,
+ "test_products": 82,
+ "product_overlap": 0,
+ "exact_duplicate_texts": 343,
+ "exact_duplicates_across_splits": 0,
+ "exact_duplicate_label_conflicts": 0,
+ "conflict_examples": [],
+ "near_duplicate_test_vs_train_cos>=0.90": 0,
+ "near_duplicate_examples": [],
+ "train_near_duplicate_pairs_cos>=0.85": 489,
+ "train_near_duplicate_pairs_label_disagree": 6,
+ "train_positives": {
+  "defect": 399,
+  "counterfeit": 121,
+  "safety": 78,
+  "not_as_described": 412,
+  "quality": 249,
+  "delivery": 272
+ },
+ "train_rows_by_group": {
+  "pets": 321,
+  "other": 241,
+  "home_living": 1002,
+  "fashion": 524,
+  "beauty_health": 742,
+  "automotive_tools": 305,
+  "baby_kids_toys": 253,
+  "food_grocery": 53,
+  "sports_outdoor": 66,
+  "office_media": 61,
+  "electronics": 378
+ },
+ "train_products_per_flag": {
+  "defect": 136,
+  "counterfeit": 51,
+  "safety": 54,
+  "not_as_described": 126,
+  "quality": 84,
+  "delivery": 108
+ },
+ "test_positives": {
+  "defect": 68,
+  "counterfeit": 53,
+  "safety": 16,
+  "not_as_described": 60,
+  "quality": 57,
+  "delivery": 31
+ },
+ "test_rows_by_group": {
+  "beauty_health": 227,
+  "baby_kids_toys": 76,
+  "home_living": 200,
+  "food_grocery": 158,
+  "automotive_tools": 20,
+  "fashion": 61,
+  "pets": 27,
+  "electronics": 77
+ },
+ "test_products_per_flag": {
+  "defect": 34,
+  "counterfeit": 19,
+  "safety": 11,
+  "not_as_described": 31,
+  "quality": 13,
+  "delivery": 17
+ }
+}

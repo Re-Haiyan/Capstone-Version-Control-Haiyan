@@ -48,3 +48,6 @@ __pycache__/
 /dist-extension.zip
 /static/downloads
 training/runs/
+research/cache/emb_*.npy
+research/results_embed.log
+__pycache__/
