@@ -29,7 +29,8 @@ import torch
 from sklearn.metrics import precision_recall_fscore_support
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, get_linear_schedule_with_warmup
 
-FLAGS = ("defect", "counterfeit", "safety", "not_as_described", "quality")
+BASE_FLAGS = ("defect", "counterfeit", "safety", "not_as_described", "quality")
+FLAGS = BASE_FLAGS  # set in main(): BASE_FLAGS + ("delivery",) with --with-delivery
 BASE = "cardiffnlp/twitter-xlm-roberta-base-sentiment"  # the checkpoint the app's sentiment model was built from
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -65,7 +66,12 @@ def by_product(rows: list[dict], percent: int, salt: str):
 def batches(rows, size, tokenizer, max_len, shuffle):
     order = list(range(len(rows)))
     if shuffle:
+        # Similar lengths share a batch (less padding, so faster); the batches themselves come in random order.
         random.shuffle(order)
+        chunks = [sorted(order[i:i + size * 50], key=lambda j: len(rows[j]["text"])) for i in range(0, len(order), size * 50)]
+        grouped = [c[i:i + size] for c in chunks for i in range(0, len(c), size)]
+        random.shuffle(grouped)
+        order = [j for g in grouped for j in g]
     else:  # evaluation: group by length, it is faster and does not change a score
         order.sort(key=lambda i: len(rows[i]["text"]))
     for start in range(0, len(order), size):
@@ -117,18 +123,27 @@ def main():
     ap.add_argument("--max-len", type=int, default=160)
     ap.add_argument("--threads", type=int, default=12)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--train-embeddings", action="store_true", help="also train the 250,000-word embedding table (slower, rarely better)")
+    ap.add_argument("--with-delivery", action="store_true", help="add a sixth output: a complaint about delivery, packaging or the seller")
     ap.add_argument("--time-only", action="store_true", help="run a few steps on made-up rows and report seconds per step")
     args = ap.parse_args()
 
+    global FLAGS
+    FLAGS = BASE_FLAGS + (("delivery",) if args.with_delivery else ())
     torch.set_num_threads(args.threads)
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
     tokenizer = AutoTokenizer.from_pretrained(BASE)
     model = AutoModelForSequenceClassification.from_pretrained(BASE, num_labels=len(FLAGS), problem_type="multi_label_classification", ignore_mismatched_sizes=True)
 
+    if not args.train_embeddings:
+        for parameter in model.roberta.embeddings.word_embeddings.parameters():
+            parameter.requires_grad = False
+    trainable = [q for q in model.parameters() if q.requires_grad]
+
     if args.time_only:
-        rows = [{"product": "Rice cooker 1.8L", "stars": "2", "category": "small_appliance", "y": [1, 0, 0, 0, 1],
+        rows = [{"product": "Rice cooker 1.8L", "stars": "2", "category": "small_appliance", "y": [1.0, 0.0, 0.0, 0.0, 1.0] + [0.0] * (len(FLAGS) - 5),
                  "text": "Hindi gumana ang switch at manipis ang takip, nadismaya ako sa binili ko " * 2}] * 64
-        opt = torch.optim.AdamW(model.parameters(), lr=args.lr)
+        opt = torch.optim.AdamW(trainable, lr=args.lr)
         model.train(); steps = 0; start = time.time()
         for _, enc, y in batches(rows, args.batch, tokenizer, args.max_len, True):
             loss = torch.nn.functional.binary_cross_entropy_with_logits(model(**enc).logits, y)
@@ -151,7 +166,7 @@ def main():
     pos = y_train.sum(0); neg = len(y_train) - pos
     weight = torch.tensor(np.clip(neg / np.maximum(pos, 1), 1.0, 6.0), dtype=torch.float32)  # the rare labels count for more
 
-    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
+    opt = torch.optim.AdamW(trainable, lr=args.lr, weight_decay=0.01)
     total = math.ceil(len(train_rows) / args.batch) * args.epochs
     sched = get_linear_schedule_with_warmup(opt, int(0.06 * total), total)
     out = pathlib.Path(args.out); out.mkdir(parents=True, exist_ok=True)
