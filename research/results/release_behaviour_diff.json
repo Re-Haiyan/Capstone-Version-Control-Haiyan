@@ -1,0 +1,3921 @@
+{
+ "reviews": 4792,
+ "reviews_with_changed_flags": 363,
+ "flags_gained": {
+  "not_as_described": 160,
+  "defect": 41,
+  "quality": 4
+ },
+ "flags_lost": {
+  "safety": 29,
+  "quality": 29,
+  "defect": 116,
+  "not_as_described": 9
+ },
+ "sentiment_labels_changed": 0,
+ "analysis_keys_removed": [],
+ "analysis_keys_added": [
+  "review_evidence"
+ ],
+ "reviews_without_evidence_key_in_new": 0,
+ "scores": {
+  "train": {
+   "defect": {
+    "old_f1": 0.642,
+    "new_f1": 0.736,
+    "old_precision": 0.57,
+    "new_precision": 0.686,
+    "old_recall": 0.734,
+    "new_recall": 0.794
+   },
+   "counterfeit": {
+    "old_f1": 0.912,
+    "new_f1": 0.912,
+    "old_precision": 0.884,
+    "new_precision": 0.884,
+    "old_recall": 0.942,
+    "new_recall": 0.942
+   },
+   "safety": {
+    "old_f1": 0.553,
+    "new_f1": 0.638,
+    "old_precision": 0.432,
+    "new_precision": 0.545,
+    "old_recall": 0.769,
+    "new_recall": 0.769
+   },
+   "not_as_described": {
+    "old_f1": 0.599,
+    "new_f1": 0.772,
+    "old_precision": 0.758,
+    "new_precision": 0.784,
+    "old_recall": 0.495,
+    "new_recall": 0.76
+   },
+   "quality": {
+    "old_f1": 0.666,
+    "new_f1": 0.691,
+    "old_precision": 0.57,
+    "new_precision": 0.611,
+    "old_recall": 0.799,
+    "new_recall": 0.795
+   }
+  },
+  "test": {
+   "defect": {
+    "old_f1": 0.613,
+    "new_f1": 0.68,
+    "old_precision": 0.505,
+    "new_precision": 0.622,
+    "old_recall": 0.779,
+    "new_recall": 0.75
+   },
+   "counterfeit": {
+    "old_f1": 0.943,
+    "new_f1": 0.943,
+    "old_precision": 0.943,
+    "new_precision": 0.943,
+    "old_recall": 0.943,
+    "new_recall": 0.943
+   },
+   "safety": {
+    "old_f1": 0.533,
+    "new_f1": 0.533,
+    "old_precision": 0.414,
+    "new_precision": 0.414,
+    "old_recall": 0.75,
+    "new_recall": 0.75
+   },
+   "not_as_described": {
+    "old_f1": 0.586,
+    "new_f1": 0.717,
+    "old_precision": 0.744,
+    "new_precision": 0.717,
+    "old_recall": 0.483,
+    "new_recall": 0.717
+   },
+   "quality": {
+    "old_f1": 0.726,
+    "new_f1": 0.726,
+    "old_precision": 0.596,
+    "new_precision": 0.596,
+    "old_recall": 0.93,
+    "new_recall": 0.93
+   }
+  }
+ },
+ "changed_examples": [
+  {
+   "id": "T20158",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "wrong size and color ,my fault"
+  },
+  {
+   "id": "T20210",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Effective skin cleanser, Gentle on the skin, Leaves skin feeling refreshed, Relieves itching instantly, The it"
+  },
+  {
+   "id": "T30375",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Matagal icharge Mabilis malowbatt"
+  },
+  {
+   "id": "T60173",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Suitability:5 Quality:5 Appearance:5 Kulang yung battery ko tatlo dapat dalawa lng yung dumating"
+  },
+  {
+   "id": "T60275",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "fake ang charger hindi na katulad ng dati"
+  },
+  {
+   "id": "T70121",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "very wrong product it's a scam... they said Bluetooth it has wires"
+  },
+  {
+   "id": "T70302",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "kulang ang pinadala nyu sakin .nakaka dismaya pTi ang packeging nyu panget wala manlang bubble wrap kaya yupi "
+  },
+  {
+   "id": "X0144",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "I don't think you delivered the right item as ordered you delivered a very poor quality and I am disappointed."
+  },
+  {
+   "id": "X0168",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "mabilis dumating kaso nayupi yung box halarang hindi iningatan."
+  },
+  {
+   "id": "X0367",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Legit Kirkland fish oil. Kya lng yung box may dent buti nalng yung sa loob wala. Kaso yung bottle nasa labas n"
+  },
+  {
+   "id": "Y0127",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "mabilis po ba talaga siya uminit first time used about 1 and half hour"
+  },
+  {
+   "id": "T10025",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "madali cia malowbat pero maganda ang items in lng d masyado umiinit"
+  },
+  {
+   "id": "T10103",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Matagal icharge Mabilis malowbatt"
+  },
+  {
+   "id": "T10132",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "ganda ng item na to kaso kapag na full at na lowbat need mo ulit i charge tas matagal na naman hindi sya conti"
+  },
+  {
+   "id": "T30190",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "The side of the box was torn and open when it arrived. Fortunately, the Palmolive shampoo didn't leak. However"
+  },
+  {
+   "id": "T30239",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Design:good Naman Durability:ok naman Comfort:good ok naman sya Mali lang ung color na pinadala ni seller pero"
+  },
+  {
+   "id": "T30290",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Kulang ng isa, missing si Psyduck 😔😔"
+  },
+  {
+   "id": "T40029",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "Material: a bad design and a bad material , I really don’t like if I have receive the wrong items , it’s bette"
+  },
+  {
+   "id": "T50037",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "Nagoover heat. Sobrang init naman baka biglang pumutok. Di ko na ginamit."
+  },
+  {
+   "id": "T50090",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Maganda ang tela mali lang napadala doon sa isang set kulang yung extra pillowcase na inorder ko"
+  },
+  {
+   "id": "T50193",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Kulang sya nung dumating sa akin..nag message ako kay seller pero until now wala syang feedback..irereturn ko "
+  },
+  {
+   "id": "T60077",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "grabe naman, sa halagang 158 may ganitong klaseng bag ka na, napanalo ang quality, ang ganda talaga niya as in"
+  },
+  {
+   "id": "T60192",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Product Quality:umiinit kapag naka charge tapus wala pang 1 min lowbat agad ang powerbank"
+  },
+  {
+   "id": "T70010",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Maganda ung bass sound nya buong-buo. Maganda ung product pero bakit po kayo nagpapadala ng may sunog na earph"
+  },
+  {
+   "id": "H0268",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Compatible from breast to cup, Easy to clean with few parts, Ribbed texture prevents collapse, Ribbed texture "
+  },
+  {
+   "id": "H0294",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Ribbed texture prevents collapse, Anti-colic valve reduces fussing,"
+  },
+  {
+   "id": "X0066",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "mabilis malobat, mabilis din ma-stuck kasi maliit lang sya. kahit hiniwa ko na na stuck pa din. aside from tha"
+  },
+  {
+   "id": "X0187",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Pwede na it was missing a piece though when I got it"
+  },
+  {
+   "id": "X0336",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "The heat is too strong and isn't adjustable. My rice got burned, but there was still water on top. It hadn't e"
+  },
+  {
+   "id": "Y0020",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Stinks, plastic not food grade I think, the smell is way too much when heated, food likewise smells plastic..."
+  },
+  {
+   "id": "Y0175",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "⚡Performance:Okay namn yung phone kaso na stress lang ako kasi sabi sa mga review di gaanong umiinit pero yung"
+  },
+  {
+   "id": "Y0255",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "defect"
+   ],
+   "text": "peke po ito wag kayo maniwala. nalowbat siya chinarge ko and then nung full ginamit ko wala pang 30mins lowbat"
+  },
+  {
+   "id": "T20258",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Appearance:okay Suitability:okay Quality:not really okay Mabilis ma lowbat"
+  },
+  {
+   "id": "T20420",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Item received in due time Plastic sponge drainer rack, and I was surprised by how the seller pack the item wit"
+  },
+  {
+   "id": "T30033",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Design:It is somewhat waterproof but the water leaks from the zippers Durability:durable as i've tried during "
+  },
+  {
+   "id": "T40059",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Protein was fine, but the shaker included leaks at the top terribly, basically unusable can’t even shake it wi"
+  },
+  {
+   "id": "T40371",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "The lid of the 18 cm saucepan is leaking. When cooking, steam comes out from the handle where it is riveted to"
+  },
+  {
+   "id": "T40454",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "its not ookas brand, it is Yako. also, the operation manual doesnt match the actual machine. no temperature co"
+  },
+  {
+   "id": "T50010",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "fake 5mins lng lowbat na agad, tapos 10 percent lang nadadagdag sa phone ko use less na power bank"
+  },
+  {
+   "id": "T50039",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "It fits our bed perfectly. I love the design and quality. Makapal ang tela at pulido ang pagkakatahi. Pag may "
+  },
+  {
+   "id": "T50092",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "kala ko buy 1 take 2 bakit Isa lang and dip nbalot ng mabuti di tulad ng order Kong una"
+  },
+  {
+   "id": "T60107",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "yung item dumating na sira sira paano ngayon yan imbis na ipupump na lang sya"
+  },
+  {
+   "id": "T70117",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "The seller sent the M16 instead of M14 but did not inform me first"
+  },
+  {
+   "id": "T70167",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Product Quality:High quality Performance:goods Nice 👍 7days bago ma lowbat"
+  },
+  {
+   "id": "N0232",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "safety"
+   ],
+   "text": "the chicharon taste bad,like rotten, its bot original lapids , pork used.looks like rotten, this site is fake."
+  },
+  {
+   "id": "P0193",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "buy 1 take 1 pero isa lang dumating..😡😡😡"
+  },
+  {
+   "id": "G0207",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "This bed cover was disappointing. Although labeled as queen size (60x75), it only fit my parents’ semi double "
+  },
+  {
+   "id": "H0007",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Relieves itching instantly, Great for general hygiene, kudos tofor fast shipping of the parcel betadine is goo"
+  },
+  {
+   "id": "T10056",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "mali ang ipinadala nyo yung order ko ay pa straw pinadala nyo yung malapad ayaw gamitin ng apo ko sayang pera"
+  },
+  {
+   "id": "T10469",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "Large 25L capacity, Touch screen control, no cancel button Poor Quality Plastic Material With a few dents. Bad"
+  },
+  {
+   "id": "T20157",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "peach na kulay in-order ko tas purplr dumating"
+  },
+  {
+   "id": "T30088",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "The size is a little smaller than expected but the quality is ok. There are better bag on Lazada but not at th"
+  },
+  {
+   "id": "T30116",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Pinadala ni seller sa akin na walang laman cartoon yung laman niya tapos nung binalik ko hindi ako binayaran h"
+  },
+  {
+   "id": "T50334",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "💰Price:Sakto lang, much cheaper compared sa ibang brand. 😋Taste:medyo matabang, which is good para sakin since"
+  },
+  {
+   "id": "T50361",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Perfect sa iphone 12 & 13 namin. Magaan lang sya ang good decision na with stand ang binili namen. Charging: m"
+  },
+  {
+   "id": "T60110",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Incomplete kc wlang lance walang charger and mukang gamit na. Wla man lang plastic. 450 pa. Hay mga tao talaga"
+  },
+  {
+   "id": "T60301",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "hindi yan cia mga da dko ngamit khit man lng isang beses pg kacharge lowbat pa din in try kona din charge ng 2"
+  },
+  {
+   "id": "T70196",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I order 2. only got 1 but charged for 2"
+  },
+  {
+   "id": "T70225",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "The seller sent me a piece of cardboard instead of sending the product. When I asked for a refund they rejecte"
+  },
+  {
+   "id": "T70251",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "BEWARE!!!! Recieved our parcel today! My daughter has been looking forward to her wireless earphones. She had "
+  },
+  {
+   "id": "G0063",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "durable and strong. big compartment.good for grade 1-3. design is simple. bag is made with nylon material. Has"
+  },
+  {
+   "id": "X0167",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "I ordered 1 box which is equivalent to 100 pieces but I only received 80 pieces. The item box was already open"
+  },
+  {
+   "id": "Y0048",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit",
+    "not_as_described"
+   ],
+   "text": "Beware! This product is fake. Packaging is far different from the original whose texture is glossy. I tried ap"
+  },
+  {
+   "id": "T10313",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I ordered white but you delivered black. So sad Why? But you delivered black.It's so sad‼️ 📏Space Efficiency: "
+  },
+  {
+   "id": "T10466",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "💲Price:quite overpriced. 🔍Quality:inside are good but the packaging is so bad the cover has scratches on it. 📝"
+  },
+  {
+   "id": "T20024",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "4-pack for multiple use, Smooth transition from breast to cup, Ribbed texture prevents collapse, Anti-colic va"
+  },
+  {
+   "id": "T20103",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Provides a good source of Vitamin A, Contains essential vitamins and minerals, Supports overall health and wel"
+  },
+  {
+   "id": "T20154",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Ribbed texture prevents collapse, 4-pack for multiple use, 🛠️Durability: 💯 🧼Ease"
+  },
+  {
+   "id": "T30240",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "pangit na 2nd order ko tapos hindi pa queen size pinadala dapat inform ko ako seller,subrang nipis pa kakaloka"
+  },
+  {
+   "id": "T30368",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "ganda ng item na to kaso kapag na full at na lowbat need mo ulit i charge tas matagal na naman hindi sya conti"
+  },
+  {
+   "id": "T30395",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Far from the picture, a different product arrived."
+  },
+  {
+   "id": "T40477",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Nakakabw*s* na pagpack! Ang mahal mahal pero tinipid sa pagpack! Yupi yupi ung box ng serum!"
+  },
+  {
+   "id": "T50358",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "good ang quality tapos ang tipid sulit sa price Saka na gustuhan ng anak ko. nakakatipid talaga tapos na pa ti"
+  },
+  {
+   "id": "T60022",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "Perfect for small family, thank you 🩷 at least naka'arrive din.. grabee tagal super ang pag'deliver.. tapos ma"
+  },
+  {
+   "id": "T60135",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "I'm so glad you made time to see me How's life? Tell me, how's your family? I haven't seen them in a while You"
+  },
+  {
+   "id": "T60271",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Best Feature:it's working Product Quality:fair Performance:di ko pa nababatad para sa burn test, so far gumaga"
+  },
+  {
+   "id": "T60296",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Incomplete accessories walang remote control pero may battery po sya"
+  },
+  {
+   "id": "T60322",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Quality:good Suitability:good Appearance:good Ok na ok makakatipid na ako neto..legit to guys nag order nmn ak"
+  },
+  {
+   "id": "T60349",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Hi seller baket ganun madali sya uminit nasa 10 % pa lang ang init na naka off naman cp ko."
+  },
+  {
+   "id": "T70324",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "Performance:Pag Nasa Outside ako sobrang init umiinit din ung Phone 🥴, Pero sabi normal lang daw iyon. Camera "
+  },
+  {
+   "id": "N0136",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "quality"
+   ],
+   "text": "Ease of Use: perfect for people on the go. Medyo mabilis lang ma lowbatt"
+  },
+  {
+   "id": "G0031",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "it's good to received its delivered but not my request item"
+  },
+  {
+   "id": "G0176",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Wrong delivery po. Dogfood ang dineliver imbis na catfood"
+  },
+  {
+   "id": "G0205",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "pang kitten order eh adult ang dumating , mali pati flavor."
+  },
+  {
+   "id": "H0033",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Damage ang nakuha ko tapos wala man lang bubble wrap!"
+  },
+  {
+   "id": "H0110",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Akala ko Romoss, magnda sya kaso lang parang hindi sya power bank talaga e hahaha, 10minutes lang tagal nung 1"
+  },
+  {
+   "id": "H0137",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Compatible from breast to cup, Wide neck for easy cleaning, Anti-colic design reduces discomfort, Ribbed textu"
+  },
+  {
+   "id": "H0269",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Different teat flow rates available, Easy to clean with few parts, Wide neck for easy cleaning, Easy to clean "
+  },
+  {
+   "id": "X0212",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "good quality however no service manual or operational instruction included. we have to search to youtube on ho"
+  },
+  {
+   "id": "Y0045",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "the rice beneath slightly burn"
+  },
+  {
+   "id": "T10266",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Different teat flow rates available, Wide neck for easy cleaning, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "T20026",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "No screw pack. The screw pack is missing. What can you do for this issue? Please answer me what will you do?"
+  },
+  {
+   "id": "T20078",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Okay naman yung parcel kaso noong dumating sa amin yupi yupi yung box buti na lang di nadamay ung gamot sa loo"
+  },
+  {
+   "id": "T20182",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "Suitability:Madali malowbat Quality:low Appearance:fair Nagsisi ako sa pagbili nito, masyado lang hype mga ads"
+  },
+  {
+   "id": "T30319",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "di po nagrereply sa chat kulang po ang item wala pong charger yung unit kulang din ng wheel cap.. di tlaga sil"
+  },
+  {
+   "id": "T40060",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "ang tagal dumating, tapos kulang pa ang items..ok na sana kung Isa lang.. 3 ung kulang."
+  },
+  {
+   "id": "T40111",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit",
+    "not_as_described"
+   ],
+   "text": "walang manual and advice of how to use. fake!!!"
+  },
+  {
+   "id": "T50305",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Incomplete, wrong items, free items missing. Had to follow up many times before they resolved. So disappointed"
+  },
+  {
+   "id": "T70039",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "⚡Charging Speed:ok nmn pero concern ko is bakit nangangainit tapos mejo amoy sunog sya"
+  },
+  {
+   "id": "T70119",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Nourishing and moisturizing, Pairs well with conditioner, Long-lasting softness and smoothness, Travel-friendl"
+  },
+  {
+   "id": "T70143",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "super Ganda , nagustuhan Ng anak ko , super worth it , mabilis lang din dumating, mukang matibay at tatagal , "
+  },
+  {
+   "id": "T70195",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "sabi sa review ok nman kaya npa order ako kaso umiinit sya pag nag cha charge cguro dahil sa mura sya pero say"
+  },
+  {
+   "id": "N0045",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Size is not trueeee. 😭😭😭😭 Too big 😩😩😩 Sayang lang to. Di magagamit sana mabenta pa."
+  },
+  {
+   "id": "P0044",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "sobrang napaka scammer ng shop nato na sanay ma karma Kay sa mga pinag gagawa nyo pake Yung sabon nyo iBang ib"
+  },
+  {
+   "id": "P0108",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "natuwa aku kala ku scam pero di pala hihi pero isa lang yung dumating nakalagai kasi buy 1 take 1.. pero okey "
+  },
+  {
+   "id": "G0179",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "super nipis ng tela at ang dumating hindi amg design n pinili ko."
+  },
+  {
+   "id": "X0018",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "They sent me wrong items 😔"
+  },
+  {
+   "id": "X0289",
+   "gained": [
+    "not_as_described",
+    "quality"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Material is too thin the picture of s different from actual"
+  },
+  {
+   "id": "Y0125",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "scam.. Walang laman .. Yung laman puro wipes. Wala akong nakuhang airpods."
+  },
+  {
+   "id": "Y0178",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "🎧Sound Quality:Mahina fuck 🎧Comfort:Maayos nman sana isuot s tinga kaya lang mahina 🔋Battery Life:Ang bilis ny"
+  },
+  {
+   "id": "T30039",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "unang saksak para mag saing umusok agad ang rice cooker. very disappointed. not good product."
+  },
+  {
+   "id": "T30173",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "The item is good but there’s a small dent which is visible."
+  },
+  {
+   "id": "T30250",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Perfect for sandwiches and snacks., Rich and flavorful taste., Convenient and easy to use., no good so early t"
+  },
+  {
+   "id": "T30427",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Kulang kulang kayo magpadala ng order tas ang tagal nyo magresponse be responsible naman di yung nakuha nyo na"
+  },
+  {
+   "id": "T30453",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "pangit na 2nd order ko tapos hindi pa queen size pinadala dapat inform ko ako seller,subrang nipis pa kakaloka"
+  },
+  {
+   "id": "T40065",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "ordered yellow and beige colored bags (yellow bag is my sister's) but i received yellow and BLACK. The seller "
+  },
+  {
+   "id": "T40091",
+   "gained": [
+    "quality"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "panglawang order konrin po to .Kase sakto lng yong pagkanipis Nya pang Kwarto talga sya ..thanks po at KY kuya"
+  },
+  {
+   "id": "T40296",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "late review kasi ginamit ko Muna ng ilang araw. compare s ibang brand ayoko ko Siya big lang mag stop need mo "
+  },
+  {
+   "id": "T40429",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "well packed pero too tight na nayupi yung box"
+  },
+  {
+   "id": "T50017",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Performance:it tracks the number of steps you made in a day with corresponding calories burned"
+  },
+  {
+   "id": "T50071",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Quality:Good Fit:Good Style:Good Salamat Seller nagustuhan ng wife ko will order again ibang color naman. Sala"
+  },
+  {
+   "id": "T50339",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "no charger inside how can do this?"
+  },
+  {
+   "id": "T60058",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "bakit po mabilis uminit ginamit kopo CIA pero 10 percent palang po mainit napo ung ulo ng charger"
+  },
+  {
+   "id": "T60176",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "Performance:working as it should Product Quality:durable though it may be working as it should. my skin got bu"
+  },
+  {
+   "id": "T70073",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "incomplete parts i cannot build it😤"
+  },
+  {
+   "id": "T70229",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "grabe kayo lazada 80k ang package di man lang ninyo naiSeal ng maayos..literal na bukas walang sticker seal sa"
+  },
+  {
+   "id": "T70360",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "disappointed.return rejected. the shade of M14 Miss promoted on video and options is far different from the ac"
+  },
+  {
+   "id": "N0112",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Maganda Po lahat Po maayos Thank u Po Siller 😘😘😘😘😘😘 Yong iBang shop nag order Ako mga sira Dto sa shop nato Ga"
+  },
+  {
+   "id": "H0014",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Performance:damage Quality:damage"
+  },
+  {
+   "id": "X0099",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "mabilis dumating kaso nayupi yung box halarang hindi iningatan."
+  },
+  {
+   "id": "Y0239",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "ung color iba sa inorder q"
+  },
+  {
+   "id": "T10007",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "madaling ma lowbat nakakadismaya"
+  },
+  {
+   "id": "T20211",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "Material:not really good Size:the size is ok Style:too tight on the neck"
+  },
+  {
+   "id": "T30118",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "WALANG HOSE KULANG ORDER!!! 😡"
+  },
+  {
+   "id": "T30376",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "madli lang ma lowbat..."
+  },
+  {
+   "id": "T40294",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I like this product very much but was very disappointed with this sale. The 4-4 sale was much much better.i on"
+  },
+  {
+   "id": "T50257",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Umiinit pag ginagamit ung cam"
+  },
+  {
+   "id": "T70198",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Product Quality:WRONG MODEL Best Feature:NO GOOD Performance:NO GOOD WRONG MODEL, NO GOOD, SCAMMER ALERT!!!"
+  },
+  {
+   "id": "N0079",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "pangit ng fit, masyadong maliit"
+  },
+  {
+   "id": "F0213",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Anti-colic design reduces discomfort, Different teat flow rates available, Easy grip for baby to hold, Wide ne"
+  },
+  {
+   "id": "H0065",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Item was delivered the next day after I ordered it. Pero wrong color. Nakalagay sa label nung Lazada plastic n"
+  },
+  {
+   "id": "H0144",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Ribbed texture prevents collapse, Wide neck for easy cleaning, Anti-colic design reduces discomfort,"
+  },
+  {
+   "id": "T10063",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "the plastic blocks have scratches"
+  },
+  {
+   "id": "T10324",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "the plastic blocks have scratches"
+  },
+  {
+   "id": "T20087",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "mali ung items na natanggap ko"
+  },
+  {
+   "id": "T20430",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "There are small dents at the top right of the book so I took the opportunity to have it covered."
+  },
+  {
+   "id": "T30176",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "pakiayos atos po packaging.. nagleak siya... ubabalik ko sana pero wala.na kaming shampoo kaya gagamitin nalan"
+  },
+  {
+   "id": "T40247",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "the front part has scratches :("
+  },
+  {
+   "id": "T40380",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Performance:Dale malowbat Design:Nindot"
+  },
+  {
+   "id": "T50128",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "umiinit kahit isa lang ang nakasaksak. mas mainit kapag dalawa na. it worries me na baka maging sanhi ng pagka"
+  },
+  {
+   "id": "T60229",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "received naman pp siya and in good condition. wlang leak and damage so far and yes ibwould love to order dito "
+  },
+  {
+   "id": "G0105",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "Hindi cya cotton pangit mga kulay at manipis."
+  },
+  {
+   "id": "X0150",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "seller very unprofessional, unapologetic, ung Sila na may Mali magpadala Ng item, Sila pa Galit at walang sorr"
+  },
+  {
+   "id": "Y0031",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "No power button no charger its a scam"
+  },
+  {
+   "id": "Y0215",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "quality"
+   ],
+   "text": "Poor quality. Not file pan need to push hard to close the fryer. Smells burned electric"
+  },
+  {
+   "id": "T20007",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "wag na wag na kayo bibili nito sayang ang pera hindi ko din nagamit madaling malowbat at kapag lowbat di mo ma"
+  },
+  {
+   "id": "T20295",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Leaves hair feeling refreshed, Pump pack is convenient to use, Keeps hair hydrated all day, Moisturizing formu"
+  },
+  {
+   "id": "T20402",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Nakakabw*s* na pagpack! Ang mahal mahal pero tinipid sa pagpack! Yupi yupi ung box ng serum!"
+  },
+  {
+   "id": "T20454",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Quiet operation, perfect for home use. Appears sturdy and durable but it is bigger than what I expected. Not a"
+  },
+  {
+   "id": "T30403",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "baka saakin lang to maliit Yung dumating gaya Ng maliit na katabi nyang malaki."
+  },
+  {
+   "id": "T40169",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "This is so sulit got it 528 for 4pcs , Lagi ng income pang tinda maganda pa quality kaya mabilis maubos"
+  },
+  {
+   "id": "T50126",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit",
+    "not_as_described"
+   ],
+   "text": "pangit fake lang yang mga charger sabi samsung oero ibang brand ibibigay at sobrang pangit at bagal mag charge"
+  },
+  {
+   "id": "T50177",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "Mabilis lang ma lowbat I'm so disappointed poi though matagal sya ma lowbat pero fake po pala🤦🏻‍♀️"
+  },
+  {
+   "id": "T60144",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "bakit po puro kalahati lang ang laman ng shampoo nio ?"
+  },
+  {
+   "id": "T70020",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Wrong flavor delivered (Banana instead of Vanilla) pero okay na din."
+  },
+  {
+   "id": "T70149",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Nasunog agad, meaning nagshort yan sa loob..meaning 'di maganda build. Hindi na nga nagsasabay ng gamit Nasuno"
+  },
+  {
+   "id": "T70175",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "peke ung powerbank 3 battery ang nakalagay pero isa lang ang naka konek sa board ung 2 battery pampabigat lang"
+  },
+  {
+   "id": "P0021",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "Water Absorption:different product Softness:weak Scratch-Free:not advisable"
+  },
+  {
+   "id": "T10111",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit",
+    "defect"
+   ],
+   "text": "product is not authentic. I scratched and checked the sticker on the website. code failed authentication. also"
+  },
+  {
+   "id": "T40009",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "These kid’s roller skates are built to last. We’ve had ’em 3 months: weekly roller skating sessions, occasiona"
+  },
+  {
+   "id": "T40191",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "maganda ang tagal ma lowbat"
+  },
+  {
+   "id": "T40402",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Battery life:Antagal malowbat sulit pera ko dito Ang ganda, tibay mo talaga orashare antagal malowbat, dumatin"
+  },
+  {
+   "id": "T40459",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "No shaker, No scoop, No Seal, Kalahati nalang laman. Wasted my money. 4k sayang taena."
+  },
+  {
+   "id": "T50016",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "i only received 1, not sure why maybe someone too stupid to forgot"
+  },
+  {
+   "id": "T50258",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Durability:feels sturdy Performance:mabilis nmn ung phone Medyo umiinit lng pag kaka on lng ng phone, i dont k"
+  },
+  {
+   "id": "T50310",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "sa description is 200 W. bakit acutal is 40W lang!!! scammer... nag iinit pa baka sumabog pa toh..isang connec"
+  },
+  {
+   "id": "T60030",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "be attentive to details before shipment. you sent me 2 Conditioners instead of 1 shampoo and 1 Conditioner"
+  },
+  {
+   "id": "T60142",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "don't buy this piece of shit if you don't want to burn your house, I only charge it for 5 minutes and this is "
+  },
+  {
+   "id": "T60175",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "YAAAAAAASSSSSSSSS ANG GANDA AND SUPER CUTEEEEEE !! the only problem is nag overheat siya pag chinacharge or gi"
+  },
+  {
+   "id": "T70228",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Wrong item delivered... Protein shake order ko pero ang nareceive ng representative ko 2 garapong maliit n chi"
+  },
+  {
+   "id": "N0021",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Quality: 10/10 very good for my dry skin! I got it during their flash sale so instead of ₱699, I got it for ₱3"
+  },
+  {
+   "id": "N0111",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Quality:ok Suitability:ok Appearance:ok Wrong variation ang pinadala black binigay instead na white /silver"
+  },
+  {
+   "id": "P0049",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "Water Absorption:different product Softness:weak Scratch-Free:not advisable"
+  },
+  {
+   "id": "G0038",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "I received wrong colour and scratches! I ordered white but they gave me black with scratches! I already paid i"
+  },
+  {
+   "id": "G0127",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "I received wrong colour and scratches! I ordered white but they gave me black with scratches! I already paid i"
+  },
+  {
+   "id": "G0184",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "scam kayo Sabi nio pack of 2. isa lng talaga laman Ng box"
+  },
+  {
+   "id": "H0251",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Anti-colic valve reduces fussing, Ribbed texture prevents collapse, Smooth transition from breast to cup,"
+  },
+  {
+   "id": "Y0101",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "ayaw nmn p0 nya gumana khet knino fake nmn yta p0 to"
+  },
+  {
+   "id": "Y0158",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "the charging brick is hollow, overheats extremely quickly, and when it does overheat, it gives off a burning p"
+  },
+  {
+   "id": "T10374",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "🎨Design: Like the design Simple Casual and good for light items 🛠️Durability: Strong the outside fabric is nic"
+  },
+  {
+   "id": "T20033",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Hindi maganda ang packaging at delivery ng item dahil nayupi ang box ng Centrum Advance Multivitamins, 30 tabl"
+  },
+  {
+   "id": "T20215",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Here’s a sharper, more polished rant you can use: I ordered a black Life 9, but the seller sent me a pink one "
+  },
+  {
+   "id": "T40246",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "I did not receive the correct item. Instead they gave me a totally different one. Disappointed. NOT FAST SHIPP"
+  },
+  {
+   "id": "T50048",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Nakakadala umorder dito sa tinagal tagal ko nag oorder ng lazada now lang mali ang items na dumating kailangan"
+  },
+  {
+   "id": "T70203",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "it's easy to use and it has a lot of functions. I was worried at first because when I plugged it and turned it"
+  },
+  {
+   "id": "N0147",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "Ease of Use:85% Price:90% Capacity:75% Durability:80% Madali po syang ma lowbat di rin sya nakakagiling ng mga"
+  },
+  {
+   "id": "G0216",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "diko alam pano ito naging double size. ni hindi man lang umabot sa kalahati nung single size na nasa likod, sa"
+  },
+  {
+   "id": "H0175",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "♋Compatibility:Great compatibility with Micro, Type-C, and iPhone., Efficient charging without overheating., 👜"
+  },
+  {
+   "id": "X0025",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "okay okay Pero kulang ibang parts"
+  },
+  {
+   "id": "T10222",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Design:good Naman Durability:ok naman Comfort:good ok naman sya Mali lang ung color na pinadala ni seller pero"
+  },
+  {
+   "id": "T30408",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I requested for a specific color tumbler which they confirm is available but I still got a different color. Al"
+  },
+  {
+   "id": "T40329",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "order received but the delivered with leakage of item due to leakage bottle is half empty such a waste of my m"
+  },
+  {
+   "id": "T50078",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "kulang ng 1 order ko dalawa"
+  },
+  {
+   "id": "T50103",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "No type c, umiinit sya, hindi ata bavin ang cord not sure but overall ok na din as it serves its purpose and y"
+  },
+  {
+   "id": "T50265",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "The box was damaged upon delivery. The product inside was dented and the smell of the content was apparent."
+  },
+  {
+   "id": "T60120",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "Hindi ok ung charger ka try Klang subra cia init Hindi original at bigla pumutok😡😡😡"
+  },
+  {
+   "id": "T60362",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "fake d man lang makacharge kahit 10 %"
+  },
+  {
+   "id": "H0231",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "gusko nmn kala ko makakTipid Ako Ang mahal ng items tapus kabilis lng din ma lowbat 🤨 aanhin ko pa to kung kab"
+  },
+  {
+   "id": "Y0164",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "safety"
+   ],
+   "text": "Fake one, not the legit product very different sa original from the smell to the consistency, nagka rashes pak"
+  },
+  {
+   "id": "T10301",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Ease of Use: hindi maka cut ng kahit maliit na slices na ng apple. Madaling malowbat mid -blending Price: wag "
+  },
+  {
+   "id": "T10480",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "T20220",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit",
+    "not_as_described"
+   ],
+   "text": "Parang Hindi sya totoo Kasi Yung sa sachef na ginagamit ko is mabula pero sya Hindi gaano at nascam ako sa Isa"
+  },
+  {
+   "id": "T20433",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "9oz capacity for longer feeding, Wide neck for easy cleaning, Wide neck for easy cleaning, Ribbed texture prev"
+  },
+  {
+   "id": "T20485",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "kinabahan aq pag ukas q ng kahon 1 lang ang laman at mejo bukas n cia. un naman pla pinagtigisa p ng kahon ito"
+  },
+  {
+   "id": "T30357",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "not good seller..ibang color ang dumating ..dalawa pa man din order ko"
+  },
+  {
+   "id": "T40331",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "the item received was damaged, no bubble wrap."
+  },
+  {
+   "id": "T50023",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Quality:not as durable as expected, but the price is good. ang advantage nya yung flashlight lang Size:nice Hi"
+  },
+  {
+   "id": "T50183",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "not_as_described",
+    "safety"
+   ],
+   "text": "🔋Battery Life:good enough 📸Camera Quality:parang x7 pro lang ⚡Performance:not yet optimize, mabilis uminit hin"
+  },
+  {
+   "id": "T50292",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "too small, not satisfied customer."
+  },
+  {
+   "id": "T60182",
+   "gained": [],
+   "lost": [
+    "defect",
+    "safety"
+   ],
+   "gold": [],
+   "text": "Best Feature:It can detect your steps ang how much calories you burned. Performance:Superb! Chinarge ko pagkab"
+  },
+  {
+   "id": "T70079",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Wrong items not stripes brown"
+  },
+  {
+   "id": "T70208",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "parehas puti ung binigay, sa revieew ang gaganda ng pinili ng seller sana man Lang matingkad ung kulay, manipi"
+  },
+  {
+   "id": "T70287",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I ordered this item during the 12.12 sale, but only received it today, 01/04/2026. The experience was very fru"
+  },
+  {
+   "id": "G0108",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "super nipis ng tela at ang dumating hindi amg design n pinili ko."
+  },
+  {
+   "id": "H0258",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "ayos naman po sya. yupi lang po ung box pero ala nmn pong damage ung item. gumagana din po ung splitter..."
+  },
+  {
+   "id": "T10199",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "mali ung items na natanggap ko"
+  },
+  {
+   "id": "T20091",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Product Quality:ang ganda nang quality nya ang lakas nang hangin at ang tagal malowbat nang battery. Best Feat"
+  },
+  {
+   "id": "T20460",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Effectiveness:Madaling malobat"
+  },
+  {
+   "id": "T40279",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "leaked na yung shampoo, dunno why."
+  },
+  {
+   "id": "T50267",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "puro magaganda Ang dumating sa akin.. what you see is what you get. nice design Yung mga product nila very com"
+  },
+  {
+   "id": "T60122",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Kulang ng isang battery"
+  },
+  {
+   "id": "T70080",
+   "gained": [],
+   "lost": [
+    "defect",
+    "safety"
+   ],
+   "gold": [],
+   "text": "Performance:transition is so smooth, and it has basic health monitoring Product Quality:good purchase, afforda"
+  },
+  {
+   "id": "T70209",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Appearance:nice build quality Quality:also nice Suitability:👌 3k plus to nakuha kulang ng 2,145 medyo mahirap "
+  },
+  {
+   "id": "N0123",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "safety"
+   ],
+   "text": "the chicharon taste bad,like rotten, its bot original lapids , pork used.looks like rotten, this site is fake."
+  },
+  {
+   "id": "F0159",
+   "gained": [
+    "defect"
+   ],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Packing quality is awful It was opened and some are leaked Also there are ants in the packing materials I don’"
+  },
+  {
+   "id": "X0030",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "dalawa lang ung dumating tatlo dapat fake"
+  },
+  {
+   "id": "Y0139",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "📸Camera Quality:10/10 Maganda yung phone iba talaga feeling kesa sa android kaso mabilis uminit kakarating lan"
+  },
+  {
+   "id": "T20218",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Had a small dents but I'm very happy with this books, might buy different book to this store."
+  },
+  {
+   "id": "T20431",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "unang saksak para mag saing umusok agad ang rice cooker. very disappointed. not good product."
+  },
+  {
+   "id": "T20483",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "unang saksak para mag saing umusok agad ang rice cooker. very disappointed. not good product."
+  },
+  {
+   "id": "T30407",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "T50076",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "My cats love this tuna so much. Kulang ang usang sachet for a cat . Unahan silang makakuha ng marami kaya i al"
+  },
+  {
+   "id": "T60334",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "not recommended po thanks wag na kayo bumili nito nangamoy malapit masunog.."
+  },
+  {
+   "id": "N0151",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Haven't tried it yet, but Ry V convinced me to buy it. I don't know if it's because of the courier but mine le"
+  },
+  {
+   "id": "N0277",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Haven't tried it yet, but Ry V convinced me to buy it. I don't know if it's because of the courier but mine le"
+  },
+  {
+   "id": "H0151",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "defect",
+    "safety"
+   ],
+   "text": "hndi po cia maganda gagamitin plng nmin ngaun umusok na agad sayang ung ibiayad ng nanay ko bakit po kayo ganu"
+  },
+  {
+   "id": "X0521",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "seller very unprofessional, unapologetic, ung Sila na may Mali magpadala Ng item, Sila pa Galit at walang sorr"
+  },
+  {
+   "id": "Y0032",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "safety"
+   ],
+   "text": "Works well and very compact powerbank. Plus mas mura kesa sa ibang brand and trusted brand ko na ang tylex. Th"
+  },
+  {
+   "id": "Y0081",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described",
+    "quality"
+   ],
+   "text": "Poor quality i received . The item i order is different from the item i received this morning very disgusted ."
+  },
+  {
+   "id": "Y0134",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "love it!! sobrang cute!! okay s'ya pangsaing pero kailangan bantayan, okay din pang prito. aesthetic tignan✨✨✨"
+  },
+  {
+   "id": "T10017",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "Mabalis malowbat kahit nasa 1 speed lang sya. From 79 to 60 real quick wala lang 10 minutes."
+  },
+  {
+   "id": "T10093",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "when i first use it, it does really overheat faster but its gone after the update. i just wish it has a shutte"
+  },
+  {
+   "id": "T40359",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "Performance:okay lang pero mabilis malowbatt Design:Hindi kagaya ng nasa larawan ang pangalan nasa product vie"
+  },
+  {
+   "id": "T50025",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "budol scam iba dumating ,post sa lazadamall scam pala malii ang brand ng item na dumating Design:magkaiba ang "
+  },
+  {
+   "id": "T50055",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Performance:Goods lang Product Quality:Okay Best Feature:Idk Safe na nakarating. Walang galos or ano. It’s exa"
+  },
+  {
+   "id": "T50209",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "tye size is too small for a meduim size like me"
+  },
+  {
+   "id": "T50294",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Received in working condition even if box was crumpled because it was shipprd with only bubble wrap. Dual shoc"
+  },
+  {
+   "id": "T60094",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "MISSING ITEMS. I received only 2 shampoos. the 2 conditioners are missing."
+  },
+  {
+   "id": "T70001",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "works well with charging small equipment... perfect for lighting led lights for limited temporary daytime use."
+  },
+  {
+   "id": "N0092",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "dumating na ang order ko bakit dalawa lang ang sabi buy 6 take 6 dose lahat bakit dalawa lang pinadala ninyo! "
+  },
+  {
+   "id": "F0160",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "the box had dents/folds but the contents weren't damaged. it just looked like it wasn't packed well for shippi"
+  },
+  {
+   "id": "G0167",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "diko alam pano ito naging double size. ni hindi man lang umabot sa kalahati nung single size na nasa likod, sa"
+  },
+  {
+   "id": "T20172",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "dress quality is ok but the size is too small as to my usual dress size 😄"
+  },
+  {
+   "id": "T20488",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "the item received was damaged, no bubble wrap."
+  },
+  {
+   "id": "T30207",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Nakaka-disappoint, dito pa naman ako lagi bumibili ng cat foods kaso yung last na order ko eh dalawa yung duma"
+  },
+  {
+   "id": "T30412",
+   "gained": [],
+   "lost": [
+    "not_as_described"
+   ],
+   "gold": [],
+   "text": "Quality:really good for its price. fabric used is soft and really smooth against the skin. really light and co"
+  },
+  {
+   "id": "T50295",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "counterfeit",
+    "defect",
+    "not_as_described"
+   ],
+   "text": "Performance:wag na kayo bumili Dito peke Naman product nila Jusko 5000Mah daw pero ano 20 minutes gamit tagal "
+  },
+  {
+   "id": "T60068",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Product Quality:superb Best Feature:super handy Value For Money:worth it Pang 4th ko na purchase ito sa jisuli"
+  },
+  {
+   "id": "T60314",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "only received 1 item out of 4"
+  },
+  {
+   "id": "F0063",
+   "gained": [
+    "quality"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "Material:thin Size:fit Style:ok Versatile for different occasions, Comfortable and stylish, Eye-catching color"
+  },
+  {
+   "id": "G0020",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I ordered and paid for two bags but only received one bag. who's the thief who swindled me of.my purchase?"
+  },
+  {
+   "id": "G0195",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "complete and correct order received. too bad though that it's much more expensive now that coins can no longer"
+  },
+  {
+   "id": "H0025",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "Quality:5 Suitability:5 Appearance:7 Lacking parts, damaged item when arrived but replaced a new. But still la"
+  },
+  {
+   "id": "X0204",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Packaging:in original package cat loves it, mabilis maubos Flavor Variety:1 flavor available only, sana meron "
+  },
+  {
+   "id": "T10306",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "The lid of the 18 cm saucepan is leaking. When cooking, steam comes out from the handle where it is riveted to"
+  },
+  {
+   "id": "T20042",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "My cat do not want to eat because it is different from the original recipe."
+  },
+  {
+   "id": "T30051",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "I received a blanket instead of bed cover. Pero choosy pa ba na damaged item ang order pero di naman talaga to"
+  },
+  {
+   "id": "T30309",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Variant they sent over was wrong. Too much hassle to send back and just decided to keep it. Ordered Mocha Java"
+  },
+  {
+   "id": "T30388",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "seller needs to improve packaging. item arrived leaking, poor service, please improve. much is expected from y"
+  },
+  {
+   "id": "T40470",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Easy to clean with few parts, Anti-colic design reduces discomfort, Anti-colic design reduces discomfort, Ribb"
+  },
+  {
+   "id": "T60158",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "delivered the item with damage and already leaking, too hassle to return. and its my 1st time trying this prod"
+  },
+  {
+   "id": "T60288",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "wrong delivery. 4pcs na shampoo hindi sabon order ko"
+  },
+  {
+   "id": "T70059",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "umiinit caution ilayo sa masusunog na bagay"
+  },
+  {
+   "id": "T70134",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "not good is fake nit fast charger"
+  },
+  {
+   "id": "P0032",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Best Feature:I like the color combination. Value For Money:10/10 I got is for only 57 pesos. Because new accou"
+  },
+  {
+   "id": "G0082",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "scam kayo Sabi nio pack of 2. isa lng talaga laman Ng box"
+  },
+  {
+   "id": "X0109",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "May ibang lasa ung dumating na cheese sa akin at sabi nila may ttwag daw pra palitan and nanghingi nlng cla ng"
+  },
+  {
+   "id": "X0205",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "madaling ma lowbat nga lang. maayos Naman xa gamitin ndi pedeng tanggalin daliri pag inon kailangan naka stead"
+  },
+  {
+   "id": "Z0070",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "safety"
+   ],
+   "text": "This product is not good its fake my mothers face got burn by using it for a couple of days only!"
+  },
+  {
+   "id": "T10046",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "WALANG KWENTA. WAG NA KAYO BIBILI S SHOP NA TO. IBA NA DESIGN PINADALA MALI PA SIZE. MGA BOGUS SELLER WALANG K"
+  },
+  {
+   "id": "T20175",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Ribbed texture prevents collapse, 4-pack for multiple use, 🛠️Durability: 💯 🧼Ease"
+  },
+  {
+   "id": "T30053",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "The product is good and working however the seller sent me an incorrect color. I ordered black and they sent m"
+  },
+  {
+   "id": "T30107",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "madli lang ma lowbat..."
+  },
+  {
+   "id": "T30133",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "hindi maganda quality 48 hours daw battery budol pala maghapon lang lobat na"
+  },
+  {
+   "id": "T40284",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "Performance:okay lang pero mabilis malowbatt Design:Hindi kagaya ng nasa larawan ang pangalan nasa product vie"
+  },
+  {
+   "id": "T50246",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Best Feature:Notifications and exercise function Product Quality:the best Performance:Super like this if you j"
+  },
+  {
+   "id": "T50272",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Received this item last Oct28th and was so surprised to find out that I onle received samples and an umbrella "
+  },
+  {
+   "id": "T60129",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "second hand it's burned or has scratches"
+  },
+  {
+   "id": "F0268",
+   "gained": [
+    "defect"
+   ],
+   "lost": [
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Packing quality is awful It was opened and some are leaked Also there are ants in the packing materials I don’"
+  },
+  {
+   "id": "X0135",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Kinda disappointed at first kasi nagleak sa pump yung cleanser. Opened up about it sa chat and the store repli"
+  },
+  {
+   "id": "Z0072",
+   "gained": [
+    "defect",
+    "quality"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "I ordered this yesterday (01/22/22) and dumating siya kinabukasan. Mabilis ang shipment and wala namang damage"
+  },
+  {
+   "id": "T10357",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "quality"
+   ],
+   "text": "Large 25L capacity, Touch screen control, no cancel button Poor Quality Plastic Material With a few dents. Bad"
+  },
+  {
+   "id": "T10383",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Got mine heavily dented 😞"
+  },
+  {
+   "id": "T20250",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "when i first use it, it does really overheat faster but its gone after the update. i just wish it has a shutte"
+  },
+  {
+   "id": "T20413",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Mali po ang delivered sa akin. I ordered for dry car food. Puro wet cat food dumating"
+  },
+  {
+   "id": "T30185",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "Ease of Use: hindi maka cut ng kahit maliit na slices na ng apple. Madaling malowbat mid -blending Price: wag "
+  },
+  {
+   "id": "T30362",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [],
+   "text": "madali cia malowbat pero maganda ang items in lng d masyado umiinit"
+  },
+  {
+   "id": "T30414",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Ordered 3xl you delivered small so disappointed"
+  },
+  {
+   "id": "T40230",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Design:medyo mabilis ma lowbat"
+  },
+  {
+   "id": "T40309",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Different teat flow rates available, Wide neck for easy cleaning, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "T50029",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "it is not good not able to recommend bad bad bad umiinit agad iinit talaga ang ulo sa pag order it is not good"
+  },
+  {
+   "id": "T70031",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "buit pa to kumpleto at tama ying design. yung isa palpak. pang dalawa binayaran ko pero isa lang dumating di p"
+  },
+  {
+   "id": "T70084",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Ok Naman pero kulang ung order ko ng Isa. Pero ok na din dahil mura k lng nakuha."
+  },
+  {
+   "id": "T70135",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Performance:In terms of battery life, nung first week mabilis sya malowbat umaabot lang around 4-5 hours from "
+  },
+  {
+   "id": "T70185",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "this is scam po hindi po sya fast charging 6minutes po sya bago nadadagdagan at kung fast charging man po sya "
+  },
+  {
+   "id": "F0303",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Im sooooooo happy with my 12.12 Khiels package!!!! Unbelievable amount of freebies 🥰🥰🥰 All correct and no miss"
+  },
+  {
+   "id": "G0023",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "maganda sana quality kaso ibang design at color namn dumating sabi choose your design daw medyo delay pa yung "
+  },
+  {
+   "id": "H0288",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Ribbed texture prevents collapse, Leak-proof design for travel,"
+  },
+  {
+   "id": "Y0170",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "umiinit Po Yung charger pag ginamit"
+  },
+  {
+   "id": "T30081",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "isa lang dumating,wag kayo mag expect na dalawa dadating pag yun dalawahan na bag sa picture Makita niyo"
+  },
+  {
+   "id": "T30108",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Item was not handllee accordingly to think this is a vitamins. Nayupi yung box kaht may separate box at nakabu"
+  },
+  {
+   "id": "T30364",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Hello Seller, malinaw po ang inorder ka po na bot tech, I even double check it. pero ang dumating po imbest na"
+  },
+  {
+   "id": "T40418",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Gave me a wrong design and even seller wasn’t very responsive. Such a waste of money and time."
+  },
+  {
+   "id": "T50247",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "Yung isa yung on and off nya parang hindi nag ki.click masyado pero goods parin nman. Different from the one I"
+  },
+  {
+   "id": "T50326",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "mabilis uminit ginamit ko sa monitor Ng PC ko kaso nam2tay matay ... after 30 mins of playing .."
+  },
+  {
+   "id": "T60073",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "quality"
+   ],
+   "text": "Nakapag tataka ang nipis tas magaspang nagasgas motor ko"
+  },
+  {
+   "id": "T60266",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "hindi compatible sa Samsung S10 8hrs charging !!! 😑🙄 magaan kala ko mabigat hindi rin Fast charging ... ma's m"
+  },
+  {
+   "id": "H0002",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "quality"
+   ],
+   "text": "Goods naman ung items,medyo umiinit lng then di gaano mag tagal sa pag gamit ang batt"
+  },
+  {
+   "id": "H0029",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "The item delivered to me was open already. The bubble wrap was damaged. The delivery guy didnt provide any inf"
+  },
+  {
+   "id": "H0290",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Wide neck for easy cleaning, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "X0208",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "you deliver different color"
+  },
+  {
+   "id": "Y0066",
+   "gained": [],
+   "lost": [
+    "defect",
+    "quality"
+   ],
+   "gold": [
+    "defect"
+   ],
+   "text": "napakawalang kwenta wag kau bumili nito 2 pa kinuha q bilis malowbat wala pang 5mins magsisisi kau d2 mas maig"
+  },
+  {
+   "id": "Y0172",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect",
+    "not_as_described"
+   ],
+   "text": "5 star sana ksi maganda ung product kaso ung stand may damage kulang ung sabitan kulang ng isa..."
+  },
+  {
+   "id": "Y0227",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "📸Camera Quality:10/10 Thanks for the early bird promo, I bought it at 28.5k. Sobrang ganda ng camera kahit na "
+  },
+  {
+   "id": "T10100",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Battery life:Antagal malowbat sulit pera ko dito Ang ganda, tibay mo talaga orashare antagal malowbat, dumatin"
+  },
+  {
+   "id": "T20151",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "I reserve the parcel na may butas yung plastic then yung box is yupi yupi na🙃"
+  },
+  {
+   "id": "T20468",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "isa lang dumating,wag kayo mag expect na dalawa dadating pag yun dalawahan na bag sa picture Makita niyo"
+  },
+  {
+   "id": "T30135",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Anti-colic design reduces discomfort, Compatible from breast to cup, Ribbed texture prevents collapse,"
+  },
+  {
+   "id": "T30188",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "19/20 item lang ang fumating. kulang ng isa. ang tagal na nga bago nadeliver mali mali pa ng design yung dumat"
+  },
+  {
+   "id": "T30417",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "The body is dented yupi maybe you intentionally packed and deliver it"
+  },
+  {
+   "id": "T40054",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "isa lang dumating,wag kayo mag expect na dalawa dadating pag yun dalawahan na bag sa picture Makita niyo"
+  },
+  {
+   "id": "T60045",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "9/10 compatible for computer SSDs, mainit agad ung wire after a few minutes..? pero overall good product"
+  },
+  {
+   "id": "T70138",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "incomplete items, damaged packaging delivery is too long and yet satisfactory not met, i wonder why coz i got "
+  },
+  {
+   "id": "P0037",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "counterfeit"
+   ],
+   "text": "sobrang napaka scammer ng shop nato na sanay ma karma Kay sa mga pinag gagawa nyo pake Yung sabon nyo iBang ib"
+  },
+  {
+   "id": "H0030",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Damage ang product na pinadala nyo, nka disappointed...!"
+  },
+  {
+   "id": "H0291",
+   "gained": [],
+   "lost": [
+    "safety"
+   ],
+   "gold": [],
+   "text": "Leak-proof design for travel, Smooth transition from breast to cup, Wide neck for easy cleaning, Ribbed textur"
+  },
+  {
+   "id": "X0113",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "Walang bubble wrap ang steamer sira Walang sucurity sa product, waste of money"
+  },
+  {
+   "id": "Y0092",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [],
+   "text": "umiinit din sya...nakakapaso ang init.240 watts ung adapter na nabili q kay seller.d ata sya compatible ung co"
+  },
+  {
+   "id": "T10182",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Maling design pinadala ni seller HAHA buti nalang same size. kase kung ibang sukat, Hindi yun mapapakinabangan"
+  },
+  {
+   "id": "T10362",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Please pa notice po ng concern ko. 8 bags po lahat ng inorder ko which is 4 bags of beef & chicken flavor and "
+  },
+  {
+   "id": "T30030",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "I ordered khaki but I received a black one. I'm quite disappointed. Nevertheless, the delivery was fast."
+  },
+  {
+   "id": "T30162",
+   "gained": [],
+   "lost": [
+    "quality"
+   ],
+   "gold": [],
+   "text": "Battery life:Antagal malowbat sulit pera ko dito Ang ganda, tibay mo talaga orashare antagal malowbat, dumatin"
+  },
+  {
+   "id": "T50115",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "MISSING ITEM AND POOR SERVICE. I ordered 100ml first spray serum and 50ml waterfull essence but they only sent"
+  },
+  {
+   "id": "T60103",
+   "gained": [],
+   "lost": [
+    "defect",
+    "safety"
+   ],
+   "gold": [],
+   "text": "Product Quality:4/5 Performance:5/5 Best Feature:5/5 Okay po yung product after 5days of usage. Nagamit ko rin"
+  },
+  {
+   "id": "T60132",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "damage product sayang ang pira diman lang naka bubble wrap"
+  },
+  {
+   "id": "T60268",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "not good mabilis uminit adopter and ang order ko type c not android"
+  },
+  {
+   "id": "T70035",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "safety"
+   ],
+   "text": "pag sinaksak mo amoy sunog sayang lang pera pang 5watts lng yung bato ng power umiinit pa yung charger"
+  },
+  {
+   "id": "N0134",
+   "gained": [],
+   "lost": [
+    "defect"
+   ],
+   "gold": [
+    "counterfeit",
+    "safety"
+   ],
+   "text": "the chicharon taste bad,like rotten, its bot original lapids , pork used.looks like rotten, this site is fake."
+  },
+  {
+   "id": "F0235",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "Di nyo na pinadala yung kulang na item kumpleto ang binayad kulang ang item😡"
+  },
+  {
+   "id": "G0002",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Sira cia sayang Ang Pera Hindi man lng nagamit ....Hindi na din na respond Ang Pera ...sana sa ibang mg order "
+  },
+  {
+   "id": "G0057",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [
+    "not_as_described"
+   ],
+   "text": "This bed cover was disappointing. Although labeled as queen size (60x75), it only fit my parents’ semi double "
+  },
+  {
+   "id": "H0058",
+   "gained": [
+    "defect"
+   ],
+   "lost": [],
+   "gold": [
+    "defect"
+   ],
+   "text": "Quality:damage after a week in use."
+  },
+  {
+   "id": "Z0049",
+   "gained": [
+    "not_as_described"
+   ],
+   "lost": [],
+   "gold": [],
+   "text": "honest review. ok ang packaging safe, two different items daily lotion and gentle wash and shampoo but same In"
+  }
+ ]
+}

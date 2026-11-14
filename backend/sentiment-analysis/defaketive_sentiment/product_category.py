@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc3"
+PRODUCT_CATEGORY_REVISION = "pc4"  # pc4: shared all-product files, packing damage is delivery, evidence states, clause-level context; the stamp tells reports made by the earlier rules apart
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
