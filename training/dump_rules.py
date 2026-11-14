@@ -6,7 +6,8 @@ from defaketive_sentiment import registry
 FLAGS = ("defect", "counterfeit", "safety", "not_as_described", "quality")
 run = pathlib.Path(sys.argv[1]); probs = json.load(open(run / "probs.json"))
 rows = {}
-for f in ("evaluation/annotated/train_all.csv", "evaluation/annotated/test_all.csv"):
+files = sys.argv[2:] or ["evaluation/annotated/train_all.csv", "evaluation/annotated/test_all.csv"]
+for f in files:
     for r in csv.DictReader(open(ROOT / f, encoding="utf-8-sig")): rows[r["id"]] = r
 model = registry.load_model(); out = {}
 for part in ("valid", "test"):

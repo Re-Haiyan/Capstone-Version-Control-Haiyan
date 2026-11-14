@@ -1,8 +1,11 @@
 """Pick, per label, how to combine the rules and the model on the VALIDATION rows, then report the test rows."""
 import json, sys
-FL = ("defect", "counterfeit", "safety", "not_as_described", "quality")
+FL = ("defect", "counterfeit", "safety", "not_as_described", "quality", "delivery")
 run = sys.argv[1] + "/"
 pr = json.load(open(run + "probs.json")); ru = json.load(open(run + "rules.json")); thr = json.load(open(run + "metrics.json"))["thresholds_chosen_on_validation"]
+FL = tuple(f for f in FL if f in thr)
+for _id, _flags in ru.items():
+    ru[_id] = list(_flags) + [0] * (len(FL) - len(_flags))
 def f1(y, p):
     tp = sum(1 for a, b in zip(y, p) if a and b); fp = sum(1 for a, b in zip(y, p) if not a and b); fn = sum(1 for a, b in zip(y, p) if a and not b)
     P = tp / (tp + fp) if tp + fp else 0; R = tp / (tp + fn) if tp + fn else 0

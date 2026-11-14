@@ -31,3 +31,11 @@ Both fixes were written from the 377 validation rows, not the test rows. Heat or
 | Quality | 0.74 | 0.74 | **0.85** |
 
 For defect the validation slice favoured the model combination, but on the test rows the rules alone are better (0.67 against 0.61); with 39 validation and 60 test positives that difference is within noise. The combination was not changed after seeing it.
+
+## v2 and v3
+
+v2: same data as v1, embedding table frozen and similar-length batches. 49 minutes instead of 83. Test F1 (766 rows), model alone / best combination with the rules: defect 0.55 / 0.55, counterfeit 0.87 / 0.94, safety 0.57 / 0.56, not as advertised 0.72 / 0.79, quality 0.66 / 0.78.
+
+v3: adds a sixth output, delivery (complaint about delivery, packing or the seller; 255 training positives), 3,533 training rows, tested on 846 rows (adds 93 hazard-word rows; 16 safety and 31 delivery positives). Test F1, model alone / best combination: defect 0.60 / 0.60, counterfeit 0.83 / 0.94, safety 0.25 / 0.53, not as advertised 0.59 / 0.59, quality 0.47 / 0.74, delivery 0.47. The rules alone on the same rows: defect 0.67, counterfeit 0.94, safety 0.53, not as advertised 0.59, quality 0.73.
+
+Reading: with about 3,500 labelled rows the fine-tuned model does not beat the rules reliably. Not as advertised was 0.79 with v2 and 0.59 with v3 on a larger, harder test set; quality swings between 0.85, 0.78 and 0.74. The differences between runs are as large as the differences between the model and the rules. The model is not ready to ship into the app. Delivery at 0.47 is not usable. Safety (16 positives) is reported as found X of Y, not as a score.
