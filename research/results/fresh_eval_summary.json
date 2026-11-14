@@ -1,0 +1,14 @@
+{
+ "eligible_products": 89,
+ "roles": {
+  "representative": 712,
+  "enrichment": 69,
+  "al_candidate": 199
+ },
+ "active_learning_candidates_in": 200,
+ "active_learning_candidates_dropped_for_sharing_a_product": 1,
+ "groups_of_eligible_products": {
+  "electronics": 89
+ },
+ "products_in_any_earlier_labelled_or_inspected_file": 387
+}

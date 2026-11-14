@@ -1,0 +1,36 @@
+{
+ "basis": "all electronics rows of the training file",
+ "n": 378,
+ "per_flag": {
+  "defect": {
+   "prevalence": 0.1217,
+   "expected_positives_in_712": 86.6,
+   "reviews_needed_for_50_positives": 410
+  },
+  "counterfeit": {
+   "prevalence": 0.0582,
+   "expected_positives_in_712": 41.4,
+   "reviews_needed_for_50_positives": 859
+  },
+  "safety": {
+   "prevalence": 0.0873,
+   "expected_positives_in_712": 62.2,
+   "reviews_needed_for_50_positives": 572
+  },
+  "not_as_described": {
+   "prevalence": 0.0529,
+   "expected_positives_in_712": 37.7,
+   "reviews_needed_for_50_positives": 945
+  },
+  "quality": {
+   "prevalence": 0.037,
+   "expected_positives_in_712": 26.4,
+   "reviews_needed_for_50_positives": 1350
+  },
+  "delivery": {
+   "prevalence": 0.045,
+   "expected_positives_in_712": 32.0,
+   "reviews_needed_for_50_positives": 1111
+  }
+ }
+}
