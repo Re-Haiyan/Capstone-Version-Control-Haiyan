@@ -1,0 +1,82 @@
+name: Category PR validation (not deployment)
+on:
+  push:
+    branches:
+      - feature/category-accuracy-20261115
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-regression:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Run backend tests
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+        run: python -m unittest discover -s tests -p "test_*.py" -q
+
+  frontend:
+    name: Svelte check and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+
+  existing-review-audit:
+    name: Real saved-review and title comparison
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Compare saved review snapshots against unmodified parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/defaketive-baseline" HEAD^
+          python research/product_specific_conclusions/category_upgrade_audit.py --source-root "$RUNNER_TEMP/defaketive-baseline" --output "$RUNNER_TEMP/before.json" > /dev/null
+          python research/product_specific_conclusions/category_upgrade_audit.py --source-root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/after.json" > /dev/null
+          python research/product_specific_conclusions/category_upgrade_audit.py --compare "$RUNNER_TEMP/before.json" "$RUNNER_TEMP/after.json" --output "$RUNNER_TEMP/comparison.json" | head -c 16000
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: category-review-audit
+          path: |
+            ${{ runner.temp }}/before.json
+            ${{ runner.temp }}/after.json
+            ${{ runner.temp }}/comparison.json
+          if-no-files-found: warn
