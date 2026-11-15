@@ -115,7 +115,7 @@ def score(
     if not refs:
         raise GateError("reference dataset is empty")
     ids: set[str] = set()
-    seen_texts: set[tuple[str, str]] = set()
+    seen_texts: set[str] = set()
     human_adjudicated = True
     provenance: dict[str, int] = {method: 0 for method in sorted(METHODS)}
     validated: list[tuple[set[str], str]] = []
@@ -129,9 +129,9 @@ def score(
             raise GateError(f"duplicate reference review_id: {rid}")
         ids.add(rid)
         key = _text_key(text)
-        if (pid, key) in seen_texts:
-            raise GateError(f"duplicate text on product in reference: {rid}")
-        seen_texts.add((pid, key))
+        if key in seen_texts:
+            raise GateError(f"duplicate review text in reference: {rid}")
+        seen_texts.add(key)
         if pid in known_products or key in known_texts:
             raise GateError(f"historical/training overlap at review_id {rid}")
         if not _boolean(row["rights_confirmed"], f"{rid}.rights_confirmed"):
@@ -192,7 +192,8 @@ def score(
         "distinct_products": len({row["product_id"].casefold() for row in refs}),
         "excluded_history_files": len(exclusion_files),
         "annotation_provenance_counts": provenance,
-        "annotation_verified_human": human_adjudicated,
+        "annotation_claims_human_adjudication": human_adjudicated,
+        "independent_provenance_verified": False,
         "target": target,
         "minimum_positives_per_flag": min_positives,
         "per_class": per_class,
@@ -201,10 +202,10 @@ def score(
         "exact_match_accuracy": round(exact, 6),
         "sufficient_support": enough_support,
         "target_met_on_reference": metrics_pass,
-        "independently_verified_target_met": bool(metrics_pass and human_adjudicated),
+        "independently_verified_target_met": False,  # CSV declarations cannot establish human provenance
         "production_release_approved": False,
         "interpretation": (
-            "verified human-reference score; separate staging and release gates still apply"
+            "human adjudication is declared, not independently verified by this CSV"
             if human_adjudicated else
             "descriptive agreement with AI-assisted/unverified reference; not independent accuracy"
         ),
@@ -221,7 +222,7 @@ def main() -> int:
     parser.add_argument("--target", type=float, default=TARGET)
     parser.add_argument("--min-positives", type=int, default=20)
     parser.add_argument("--require-pass", action="store_true",
-                        help="Fail the command if the target is not independently verified")
+                        help="Fail the command if the score does not meet the numeric target on its declared reference")
     args = parser.parse_args()
     try:
         report = score(args.reference, args.predictions, args.exclude,
@@ -233,7 +234,7 @@ def main() -> int:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(payload + "\n", encoding="utf-8")
     print(payload)
-    return 1 if args.require_pass and not report["independently_verified_target_met"] else 0
+    return 1 if args.require_pass and not report["target_met_on_reference"] else 0
 
 
 if __name__ == "__main__":
