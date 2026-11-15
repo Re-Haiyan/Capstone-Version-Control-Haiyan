@@ -25,8 +25,25 @@ backend/.venv/bin/python scripts/check_admin_default.py backend/instance/account
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 SAVE="$HOME/defaketive-release-backup-$STAMP"
 install -d -m 700 "$SAVE"
-cp -p backend/defaketive.db "$SAVE/defaketive.db"
-cp -p backend/instance/accounts.db "$SAVE/accounts.db"
+# Use SQLite's ONLINE backup API: plain cp can miss WAL writes while the site runs.
+backend/.venv/bin/python - "$SAVE" <<'PY'
+import sqlite3
+import sys
+from pathlib import Path
+backup_dir = Path(sys.argv[1])
+for source_name, output_name in (
+    ("backend/defaketive.db", "defaketive.db"),
+    ("backend/instance/accounts.db", "accounts.db"),
+):
+    source_path = Path(source_name).resolve()
+    target_path = backup_dir / output_name
+    with sqlite3.connect(f"file:{source_path}?mode=ro", uri=True) as source:
+        with sqlite3.connect(str(target_path)) as target:
+            source.backup(target)
+            if target.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+                raise RuntimeError(f"Backup failed integrity check: {output_name}")
+    target_path.chmod(0o600)
+PY
 printf '%s\n' "$OLD" > "$SAVE/old.sha"
 sha256sum "$SAVE/defaketive.db" "$SAVE/accounts.db" > "$SAVE/sha256.txt"
 git fetch --no-tags origin deployment

@@ -923,7 +923,7 @@ CONCLUSION_MIXED_SHARE = 0.5  # below this share of positive reviews the decisio
 CONCLUSION_NOTICE = "This is a guide from public reviews, not proof or a guarantee."
 # An operator's off-switch for the product-specific reasons (read once at start): DEFAKETIVE_CONCLUSION_REASONS=0 puts every
 # product page back on the plain conclusion without a redeploy. The decision and the verdict are the same either way.
-REASONS_ENABLED = os.environ.get("DEFAKETIVE_CONCLUSION_REASONS", "0").strip().lower() not in ("0", "off", "false", "no")
+REASONS_ENABLED = os.environ.get("DEFAKETIVE_CONCLUSION_REASONS", "1").strip().lower() not in ("0", "off", "false", "no")
 
 
 def _sentiment_shares(summary: dict[str, Any]) -> dict[str, float] | None:
