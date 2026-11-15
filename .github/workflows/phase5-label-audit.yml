@@ -1,0 +1,51 @@
+name: Phase 5 source-only label integrity
+on:
+  push:
+    branches:
+      - research/phase5-label-quality-audit
+  pull_request:
+    branches:
+      - research/neutral-phase2
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Phase 5 unit tests
+        run: python -m unittest discover -s tests -p 'test_phase5_label_quality.py' -v
+      - name: Full text integrity and distribution audit
+        run: python research/xlmr_optimization/phase5/label_quality_audit.py --out-dir /tmp/phase5-audit
+      - name: Verify second AI labels and descriptive inter-AI agreement
+        run: |
+          python -m unittest discover -s tests -p 'test_phase5_second_ai.py' -v
+          python research/xlmr_optimization/phase5/compare_second_ai.py --out-dir /tmp/phase5-comparison
+      - name: Upload second-AI descriptive comparison (not human gold)
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-ai-agreement
+          path: /tmp/phase5-comparison/
+          if-no-files-found: error
+      - name: Inspect quarantined or downweighted development samples (no reannotation)
+        run: |
+          python -m unittest discover -s tests -p 'test_phase5_training_manifest.py' -v
+          python research/xlmr_optimization/phase5/training_ablation_manifest.py --out-dir /tmp/phase5-training-ablation > /tmp/phase5-training-ablation.log
+          cat /tmp/phase5-training-ablation.log
+      - name: Export proposed training-only weights for reproducibility
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-training-ablation
+          path: /tmp/phase5-training-ablation/
+          if-no-files-found: error
+      - name: Upload non-adjudicated review queue and aggregate counts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-label-audit
+          path: /tmp/phase5-audit/
+          if-no-files-found: error
