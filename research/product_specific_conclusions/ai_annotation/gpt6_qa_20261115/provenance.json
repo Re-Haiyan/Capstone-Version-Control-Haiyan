@@ -1,0 +1,41 @@
+{
+  "status": "AI-assisted provisional research QA only; not independent human evaluation",
+  "date_utc": "2026-11-15",
+  "model": "OpenAI GPT-6",
+  "interface": "ChatGPT with linked GitHub repository connector",
+  "annotator": "ChatGPT (GPT-6); not Claude and not a human",
+  "human_review": "none",
+  "datasets": {
+    "review_pack": "research/product_specific_conclusions/human_eval_pack/reviews.csv",
+    "review_rows_programmatically_inspected": 5946,
+    "product_count": 35,
+    "summary_rows_inspected": 70,
+    "review_pack_git_blob_sha": "1cb534fe2f6c8fb17ba7227bdeaf918e13c8ec2e",
+    "word_pack_git_blob_sha": "c9bc14cbea548a752b22f810fc44fc2ab6c10c51",
+    "card_template_git_blob_sha": "562f58a720a49795ba13b5e408c6767102d6b818"
+  },
+  "method": "Programmatic ingestion of every pack review, grouped counts and textual pattern scans; direct inspection of selected positive/negative and safety/authenticity excerpts per product. Provisional card labels and claim-risk triage are GPT-6 judgments, not exhaustive independent human readings of all 5946 reviews.",
+  "blinding": "NOT blind. The system's existing assessment and both system summaries were visible in the same review session. Therefore cards must not be treated as independent reference judgments.",
+  "rubric": "research/product_specific_conclusions/human_eval_pack/INSTRUCTIONS.md, applied provisionally with uncertainty; disputed safety/authenticity claims are unverified reviewer allegations.",
+  "outputs": [
+    {
+      "file": "card_preannotations_ai.csv",
+      "rows": 35,
+      "purpose": "Provisional five-way card assessment, safety, authenticity, evidence review numbers and confidence"
+    },
+    {
+      "file": "summary_triage_ai.csv",
+      "rows": 70,
+      "purpose": "Potential unsupported or understated safety/authenticity claims in two wordings per product; not numeric human ratings"
+    }
+  ],
+  "known_limitations": [
+    "Only a subset of the 5946 review texts was directly read by the model; regex-like scans are not a substitute for human semantic review.",
+    "Stars may be inconsistent with review sentiment or stratified in the source pool and were not used alone as evidence.",
+    "Review text can contain marketplace suggestion lists, unrelated content, and possible privacy-sensitive material.",
+    "Safety, authentic-product and FDA allegations are customer claims, not externally verified facts.",
+    "Output does not constitute annotation A or B, adjudicated truth, two independent AI sets, or independent human evaluation."
+  ],
+  "human_action": "Keep these outputs hidden from both independent human annotators during their blind annotation. After A/B sheets are finalized, use the QA flags for separate disagreements/adjudication review. Keep original raw human labels unmodified.",
+  "release_approval": "none; research gate remains blocked"
+}
