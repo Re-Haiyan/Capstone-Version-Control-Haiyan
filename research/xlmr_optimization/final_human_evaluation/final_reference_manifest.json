@@ -1,0 +1,12 @@
+{
+ "status": "NOT BUILT: PENDING INDEPENDENT HUMAN ADJUDICATION AND UNRESOLVED PROVENANCE",
+ "reason": "The two returned sheets have unsubstantiated human provenance and no completed A03 adjudication exists; no final ground truth was created.",
+ "policy_v1_sha256": "5875f98e454f2d4ea77a6b7f6bd9f7cd0b869f731ed667e6b27ca4352bb6d96d",
+ "frozen_test_manifest_sha256": "5d4384bb68b379fa0652a8b94b8df6234dbccb8ad1f861a856b70546f249908b",
+ "eligible_reviews": null,
+ "reference_checksum": null,
+ "returned_sheet_hashes": {
+  "A": "5e3670e36c82d51a42e64abd7aea3e610b18f614c8c256e448c88d5571bebf58",
+  "B": "2e3cb2a41d39c7d14b052d2e5634b5becb4e1c778c8a1b0913464ba355c558e2"
+ }
+}

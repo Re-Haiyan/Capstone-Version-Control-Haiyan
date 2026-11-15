@@ -1,0 +1,39 @@
+{
+ "locked_at_utc": "2026-11-15T05:01:22+00:00",
+ "rule": "Locked from development evidence only, before any adjudicated final label exists. The frozen final test was not used to choose between models and has not been scored.",
+ "selected_model": "the shipped model (prespecified primary)",
+ "selection_reason": "There is not enough trustworthy development evidence to replace it: every marketplace comparison uses team-supplied labels of unverified provenance; the candidates win on the 846-row benchmark (+0.10 to +0.11 macro F1) and lose by 0.09 to 0.11 on the older 150 team-labelled rows; seed noise is about 0.02; the best candidate d1_mix_ce_rep2_s1 is 0.010 below the shipped model on FiReCS; no independent final labels exist. Candidates stay exploratory and are not scored on the final test.",
+ "model_file": "backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/model.onnx",
+ "model_file_sha256": "e04da4c268bc8ab94e27da2e0fb4206f38dadc43e9cfb52050818a5bb40c3478",
+ "tokenizer_sha256": "27dea7a8dd6fe22d3913c719dd962f283f7bb2d91f023abf3b1e644df39ca49e",
+ "model_version": "defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2",
+ "production_vm_commit": "2c6e056",
+ "research_commit_at_lock": "branch deployment, documentation commits after d7af5fa",
+ "preprocessing": "raw review text, stripped; no normalisation; tokenizer.json with truncation at 128 tokens; stars, product title and category are not inputs",
+ "inference_configuration": "ONNX Runtime CPU, 1 intra-op thread, one review per call (int8 activation scales depend on the batch), softmax over logits, argmax",
+ "class_mapping": [
+  "negative",
+  "neutral",
+  "positive"
+ ],
+ "calibration": "none (no temperature, no decision-rule bias)",
+ "random_seed": "not applicable (no training); bootstrap intervals use seed 0",
+ "evaluation_scripts_sha256": {
+  "inference.py": "74c15e22f3e912876d493553ba3f049ac44733f0245cb3c94cbdb70fe074cdfe",
+  "metrics_x.py": "4cd0a985bf70b7c2316c7f0b034d2e94ed6659428107fa07cd287ceca0dd0908",
+  "sentiment_agreement.py": "9f1ee20cd9c5fcb1ba198292d423c906811b35ce2f0168dcd5884266ebcc304a"
+ },
+ "policy_v1_sha256": "5875f98e454f2d4ea77a6b7f6bd9f7cd0b869f731ed667e6b27ca4352bb6d96d",
+ "frozen_test_manifest_sha256": "5d4384bb68b379fa0652a8b94b8df6234dbccb8ad1f861a856b70546f249908b",
+ "exploratory_candidates_not_scored": {
+  "d1_mix_ce_rep2_s1": "D:/defaketive-train/xlmr/d1_mix_ce_rep2_s1/best",
+  "c2_mix_weighted_s1": "D:/defaketive-train/xlmr/c2_mix_weighted_s1/best"
+ },
+ "final_test_scored": false,
+ "sensitivity_analyses_prespecified": [
+  "all 400 reviews",
+  "excluding delivery-only reviews",
+  "excluding reviews present in review_pool_10000, fresh_eval_sheet or al_pool (prior AI or team labels)",
+  "mixed (no dominant polarity) reported separately"
+ ]
+}

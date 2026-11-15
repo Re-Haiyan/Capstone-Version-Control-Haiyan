@@ -1,0 +1,212 @@
+{
+ "A": {
+  "file": "team_label_1_final_test_sheet_A_v1.csv",
+  "sha256": "5e3670e36c82d51a42e64abd7aea3e610b18f614c8c256e448c88d5571bebf58",
+  "bytes": 153477,
+  "mtime_local": "2026-11-15T12:52:01",
+  "ctime_local": "2026-11-15T12:52:01",
+  "bom": true,
+  "crlf_lines": 401,
+  "lf_only_lines": 0,
+  "rows": 400,
+  "duplicate_ids": 0,
+  "ids_equal_blank_set": true,
+  "row_order_equals_blank_order": true,
+  "columns_equal_blank": true,
+  "rows_with_edited_non_label_columns": 0,
+  "rationale_distinct": 60,
+  "rationale_most_common": [
+   [
+    "Team Label 1: Favorable evaluation of product, function, value or purchase experience.",
+    202
+   ],
+   [
+    "Team Label 1: Unfavorable experience, complaint or product-performance issue.",
+    52
+   ],
+   [
+    "Team Label 1: Description, specifications or lack of product use; no clear evaluative experience.",
+    42
+   ],
+   [
+    "Team Label 1: Favorable delivery, packaging or seller feedback; no demonstrated product performance.",
+    21
+   ],
+   [
+    "Team Label 1: Complaint about delivery, packaging, seller or item fulfillment.",
+    9
+   ]
+  ],
+  "rationale_words_mean": 12.2,
+  "rationale_first_three_words_top": [
+   [
+    "team label 1:",
+    400
+   ]
+  ],
+  "labels_by_hidden_stars": {
+   "1": {
+    "negative": 33,
+    "positive": 1
+   },
+   "2": {
+    "negative": 14,
+    "mixed": 1,
+    "positive": 2,
+    "neutral": 1
+   },
+   "3": {
+    "positive": 6,
+    "negative": 16,
+    "neutral": 1,
+    "mixed": 1
+   },
+   "4": {
+    "positive": 18,
+    "negative": 3,
+    "mixed": 2,
+    "unclear": 1,
+    "neutral": 2
+   },
+   "5": {
+    "neutral": 46,
+    "positive": 231,
+    "negative": 13,
+    "mixed": 3,
+    "unclear": 5
+   }
+  },
+  "confidence_low": 27
+ },
+ "B": {
+  "file": "team_label_2_final_test_sheet_B_v1.csv",
+  "sha256": "2e3cb2a41d39c7d14b052d2e5634b5becb4e1c778c8a1b0913464ba355c558e2",
+  "bytes": 153717,
+  "mtime_local": "2026-11-15T12:52:02",
+  "ctime_local": "2026-11-15T12:52:02",
+  "bom": true,
+  "crlf_lines": 401,
+  "lf_only_lines": 0,
+  "rows": 400,
+  "duplicate_ids": 0,
+  "ids_equal_blank_set": true,
+  "row_order_equals_blank_order": true,
+  "columns_equal_blank": true,
+  "rows_with_edited_non_label_columns": 0,
+  "rationale_distinct": 61,
+  "rationale_most_common": [
+   [
+    "Team Label 2: Favorable evaluation of product, function, value or purchase experience.",
+    183
+   ],
+   [
+    "Team Label 2: Description, specifications or lack of product use; no clear evaluative experience.",
+    58
+   ],
+   [
+    "Team Label 2: Unfavorable experience, complaint or product-performance issue.",
+    52
+   ],
+   [
+    "Team Label 2: Favorable delivery, packaging or seller feedback; no demonstrated product performance.",
+    21
+   ],
+   [
+    "Team Label 2: Lukewarm statement without clear positive or negative evaluation.",
+    10
+   ]
+  ],
+  "rationale_words_mean": 12.3,
+  "rationale_first_three_words_top": [
+   [
+    "team label 2:",
+    400
+   ]
+  ],
+  "labels_by_hidden_stars": {
+   "1": {
+    "negative": 33,
+    "unclear": 1
+   },
+   "2": {
+    "negative": 13,
+    "mixed": 1,
+    "neutral": 1,
+    "positive": 2,
+    "unclear": 1
+   },
+   "3": {
+    "mixed": 1,
+    "negative": 16,
+    "positive": 5,
+    "neutral": 2
+   },
+   "4": {
+    "neutral": 4,
+    "unclear": 1,
+    "mixed": 2,
+    "positive": 16,
+    "negative": 3
+   },
+   "5": {
+    "neutral": 66,
+    "positive": 211,
+    "negative": 12,
+    "unclear": 7,
+    "mixed": 2
+   }
+  },
+  "confidence_low": 25
+ },
+ "between_sheets": {
+  "identical_rationale_text_rows": 0,
+  "mixed_tag_rows_A": 50,
+  "mixed_rows_with_identical_aspects": 50,
+  "identical_tag_strings": 374,
+  "identical_confidence": 394,
+  "identical_sentiment": 363
+ },
+ "other_files_sharing_frozen_test_texts": [
+  [
+   "C:/Users/cabal/Downloads\\manual_marketplace_reviews.csv",
+   12
+  ],
+  [
+   "C:/Users/cabal/Downloads\\defaketive\\rovic-deployment\\evaluation\\review_pool_10000.csv",
+   68
+  ],
+  [
+   "C:/Users/cabal/Downloads\\DeFaketive_annotation_v1\\annotator_A01_final_test_sheet_A_v1.csv",
+   400
+  ],
+  [
+   "C:/Users/cabal/Downloads\\DeFaketive_annotation_v1\\annotator_A02_final_test_sheet_B_v1.csv",
+   400
+  ],
+  [
+   "D:\\Capstone-Version-Control\\evaluation\\review_pool_10000.csv",
+   68
+  ],
+  [
+   "D:\\Capstone-Version-Control\\research\\cache\\al_pool.csv",
+   29
+  ],
+  [
+   "D:\\Capstone-Version-Control\\research\\conclusion_eval\\product_reviews.csv",
+   76
+  ],
+  [
+   "D:\\Capstone-Version-Control\\research\\fresh_eval\\fresh_eval_sheet.csv",
+   33
+  ],
+  [
+   "D:\\Capstone-Version-Control\\research\\xlmr_optimization\\annotation\\returned\\team_label_1_final_test_sheet_A_v1.csv",
+   400
+  ],
+  [
+   "D:\\Capstone-Version-Control\\research\\xlmr_optimization\\annotation\\returned\\team_label_2_final_test_sheet_B_v1.csv",
+   400
+  ]
+ ],
+ "same_file_hash_as_other_file": []
+}

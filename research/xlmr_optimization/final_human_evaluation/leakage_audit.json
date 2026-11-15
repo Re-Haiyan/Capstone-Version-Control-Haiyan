@@ -1,0 +1,71 @@
+{
+ "FiReCS train (fine-tuning and validation texts of every candidate)": {
+  "corpus_rows": 7340,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 1
+ },
+ "FiReCS test (gate of the shipped model)": {
+  "corpus_rows": 3147,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 0
+ },
+ "marketplace training rows used to fine-tune candidates (market_train split)": {
+  "corpus_rows": 3135,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 1
+ },
+ "marketplace validation split (candidate selection, calibration, bias rule)": {
+  "corpus_rows": 495,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 0
+ },
+ "market_test_v3 (historical benchmark)": {
+  "corpus_rows": 886,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 0
+ },
+ "market_fresh + market_fresh2 (folded into train_v3)": {
+  "corpus_rows": 580,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 0
+ },
+ "older team-labelled 300 (gold_labels_200 + heldout_labels_100)": {
+  "corpus_rows": 300,
+  "frozen_exact_text_matches": 1,
+  "frozen_near_duplicates_cosine_ge_0.9": 1
+ },
+ "review_pool_10000 (AI 'direct' annotations exist for these; also the active-learning pool)": {
+  "corpus_rows": 10000,
+  "frozen_exact_text_matches": 69,
+  "frozen_near_duplicates_cosine_ge_0.9": 75
+ },
+ "conclusion_eval/product_reviews.csv (product-conclusion study)": {
+  "corpus_rows": 3392,
+  "frozen_exact_text_matches": 70,
+  "frozen_near_duplicates_cosine_ge_0.9": 73
+ },
+ "fresh_eval_sheet.csv (earlier fresh evaluation)": {
+  "corpus_rows": 980,
+  "frozen_exact_text_matches": 31,
+  "frozen_near_duplicates_cosine_ge_0.9": 31
+ },
+ "al_pool.csv (active learning candidates)": {
+  "corpus_rows": 8000,
+  "frozen_exact_text_matches": 30,
+  "frozen_near_duplicates_cosine_ge_0.9": 31
+ },
+ "annotation dev pool sheet (different products, to be labelled for training)": {
+  "corpus_rows": 400,
+  "frozen_exact_text_matches": 0,
+  "frozen_near_duplicates_cosine_ge_0.9": 0
+ },
+ "Downloads/manual_marketplace_reviews.csv (an unrelated manual file)": {
+  "corpus_rows": 498,
+  "frozen_exact_text_matches": 13,
+  "frozen_near_duplicates_cosine_ge_0.9": 13
+ },
+ "_product_title_overlap_with_labelled_files": {},
+ "_frozen_products_also_in_the_local_database_used_by_conclusion_impact_and_prune_vocab": 34,
+ "_frozen_products": 73,
+ "_note_prune_vocab": "prune_vocab.py read the review text (no labels) of the whole production database copy, which contains every frozen-test review; it chose which tokenizer pieces to keep for the pruned artifacts only"
+}
