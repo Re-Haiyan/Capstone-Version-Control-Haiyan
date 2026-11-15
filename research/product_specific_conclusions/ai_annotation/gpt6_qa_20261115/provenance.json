@@ -27,6 +27,16 @@
       "file": "summary_triage_ai.csv",
       "rows": 70,
       "purpose": "Potential unsupported or understated safety/authenticity claims in two wordings per product; not numeric human ratings"
+    },
+    {
+      "file": "ai_only_audit.py",
+      "rows": 35,
+      "purpose": "Recomputes 35 product-level descriptive agreement and 70-summary issue triage without claiming true accuracy"
+    },
+    {
+      "file": "AI_ONLY_RESULTS.md",
+      "rows": 35,
+      "purpose": "Bounded AI-only quality report, gaps, and user-approved methodological scope"
     }
   ],
   "known_limitations": [
@@ -36,6 +46,14 @@
     "Safety, authentic-product and FDA allegations are customer claims, not externally verified facts.",
     "Output does not constitute annotation A or B, adjudicated truth, two independent AI sets, or independent human evaluation."
   ],
-  "human_action": "Keep these outputs hidden from both independent human annotators during their blind annotation. After A/B sheets are finalized, use the QA flags for separate disagreements/adjudication review. Keep original raw human labels unmodified.",
-  "release_approval": "none; research gate remains blocked"
+  "human_action": "No human annotators requested for the AI-only exploratory study. Original human-only pack remains untouched. If an independent evaluation is undertaken in the future, the AI triage must not be shown during blinded reference labeling.",
+  "release_approval": "none; research gate remains blocked",
+  "study_method_amendment": {
+    "date": "2026-11-15",
+    "instruction": "Project owner elected to use AI annotations without recruiting human annotators for the exploratory study.",
+    "scope": "AI-only descriptive research/quality audit; no independent human evaluation performed.",
+    "comparison_note": "The GPT-6 annotator saw the system card and summaries during review; agreement is not accuracy.",
+    "human_reference_status": "not planned for the selected exploratory methodology; old blank pack retained as historical protocol",
+    "production_decision": "unchanged; release blocked pending separate evidence, staging and safety gates"
+  }
 }
