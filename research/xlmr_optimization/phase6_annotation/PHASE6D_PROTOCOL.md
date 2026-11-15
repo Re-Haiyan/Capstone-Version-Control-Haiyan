@@ -1,0 +1,9 @@
+# Phase 6D: precommitted 200-review random AI annotation roster
+
+Status: GPT-6 annotation **not yet performed** at the moment this roster was committed. Selected with Python 3 `random.Random(20261115).sample(sorted(all_3400_development_ids), 200)`; the same deterministic method as Phase 6 `select_random_quality_sample`. The population is the 400 dev + 3,000 neutral-candidate AI-assisted development rows, not the natural marketplace population. 21 D and 179 N rows. This roster was locked **before** opening the corresponding review texts in this pass.
+
+**Goal:** a source-based, full-review-text GPT-6 second AI opinion on the complete 200-row sample; never human annotation or independent final truth. Source only: original blank `annotation/dev_pool_sheet.csv` and `annotation/neutral_candidate_pool.csv`, plus optional product title. Hide original Claude labels, stars, model predictions, and GPT-6 prior labels until the second labels are committed. Reviews possibly exposed in earlier conversations must be identified as a limitation. Do not use the already scored Phase 3 confirmation, final frozen test, or heldout v2.
+
+Policy: approved version 1 S1–S4. Include sentiment (positive/neutral/negative/mixed/unclear), tags (mixed/delivery-only/no-opinion), positive/negative aspects when mixed, confidence and concise rationale. Judge what the full review expresses while distinguishing personal experience, delivery-only statements, literal features and S4 ambiguous templates. Avoid fabricating customer experiences. Preserve Claude labels unchanged and don't promote AI opinions to verified human gold.
+
+After the 200 decisions are separately locked, run a description-only cross-AI agreement and confusion analysis, separate tag-shaped from natural review cases, and report uncertainty. No automatic retraining, deployment or confirmed 0.80 F1 claim.
