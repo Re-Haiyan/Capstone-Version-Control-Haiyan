@@ -36,8 +36,8 @@ What the feature does is described in `README.md` and `architecture.md`.
 
 | Check | Result |
 |---|---|
-| Backend tests, Python 3.11.9 (this PC) | **393 run: 393 passed, 0 failed, 0 skipped** (286 existing + 107 new; the earlier 377 plus 16 added this round) |
-| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **393 run: 393 passed, 0 failed, 0 skipped** |
+| Backend tests, Python 3.11.9 (this PC) | **400 run: 400 passed, 0 failed, 0 skipped** (re-run 2026-11-15 on the committed code plus the evaluation-pipeline additions; the earlier run was 393) |
+| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **400 run: 400 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15) |
 | New test files | `test_product_conclusion`, `test_sync_backend`, `test_recommendation_policy`, `test_text_rating`, `test_final_eval_pack` |
 | Existing sentiment, hazard, category tests | pass, unchanged |
 | Verdict and decision for the 182 saved products | **182 of 182 identical** to the baseline taken before any change |
@@ -95,7 +95,7 @@ Categories were confirmed from product titles, not from the project's classifier
 ## F. Recommendation comparison (existing live policy versus the experimental candidate)
 
 Run on all 182 saved products: **1 of 182 decisions changes**, not_recommended to caution (a Bluetooth speaker with 14 defect reports, 48% positive, 26% negative: the hazard
-warning stays on the card, but the label is weaker; the report flags it). The constructed scenarios, including every example you listed, are in `recommendation_policy_comparison.md`:
+warning stays on the card, but the label is weaker; the report flags it). **Why it differs:** the live rule returns `not_recommended` whenever a hazard concern is present and positive reviews do not clearly dominate; the candidate returns `caution` when fewer than a third of reviews are negative (here 26%). Whether that is better is untested without independent labels; the candidate is not wired in and was not enabled. The constructed scenarios, including every example you listed, are in `recommendation_policy_comparison.md`:
 
 | Scenario (positive / neutral / negative) | Existing | Candidate | Safety protected |
 |---|---|---|---|
@@ -115,13 +115,25 @@ product-level judgements, the thresholds are round numbers, and the saved pool b
 
 ## **PENDING HUMAN EVALUATION.**
 
+**AI-assisted evaluation: approved by the panel and adviser, not yet performed.** The pipeline now accepts AI-assisted reference labels (Team Label 1 and Team Label 2; primary AI-assisted annotator ChatGPT, per the owner) and refuses to score without a `provenance.json` that records type, annotator, model version, interface, dates, prompt file and human review; the output is then labelled an AI-assisted reference standard, never independent human annotation, and the independent-human requirement stays open until two humans finish the sheets or the panel amends the protocol in writing. A review-level features sheet (150 reviews, blind) was added so recall and F1 can be computed; the 0.80 F1 target is printed beside the result and is not a licence to change labels, samples or thresholds. Nothing was labelled by Claude Code. See `human_evaluation.md`.
+
 No annotation exists, so **no human-evaluation number is reported anywhere**. The pack is built and tested: 35 real products (16 unread real non-electronics, 19 stratified electronics; all five
 assessments; 24 with safety reports, 23 with authenticity reports, 28 with at least 25% Filipino or Taglish reviews), 80 claims, blind sheets for two annotators, a rubric with examples of supported, partly
 supported and unsupported statements, and a scorer that computes exact agreement, Cohen's kappa, per-dimension scores, claim precision with Wilson intervals, unsupported-claim and safety-error rates, and
 recommendation agreement, and refuses to run without real, complete annotations. See `human_evaluation.md`. The developer's own judgements (80% then 89% on real non-electronics claims; 88, 86, 94% on electronics with an
 earlier extractor) are **developer-judged, single-judge, optimistic and not independent**.
 
+### Re-validation of 2026-11-15 (staging-preparation round)
+
+Repeated on the committed code: 400 of 400 backend tests on Python 3.11.9 and on Python 3.12.10 (VM library versions); `svelte-check` 0 errors in 1,409 files; `npm run build`; the feature browser test (all checks pass at 360, 390 and 1280 px);
+the whole existing e2e suite **481 passed, 36 failed**, the same totals and the same failing files as the first run on this code. The unmodified-baseline comparison (394 passed, 40 failed; 23 of 24 files identical, no failure only on the
+feature) was **not repeated**: its throw-away worktree no longer exists and no feature or front-end source changed since it was made (only tests, research scripts and documents), so the earlier comparison is cited, not re-measured.
+Evidence verification: 0 problems in 3,535 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
+repetition inside one review, copy-pasted reviews) found no failing example, so no extraction code was changed.
+
 ## H. Benchmark
+
+**Staging benchmark: PENDING (no staging environment exists).** Local rerun 2026-11-15 (`performance_results_local_rerun.json`, Python 3.11, limited to 2 CPUs by emulation, an emulation and not the server): first read median 34.8 ms, p95 129.5 ms; cached 0.58 ms median, 1.3 ms p95; plain verdict without reasons 0.19 ms median; peak memory of the benchmark process 448.6 MiB (includes the loaded test data); CPU time equals wall time (single-threaded); no errors. The earlier run on the same code measured 72 ms median, 256 ms p95, cached 1 ms. **The two differ by about 2x on one PC: the figures depend on machine load, so no figure here predicts the VM.** Feature disabled versus enabled is the 0.19 ms versus 34.8 ms first-read figure (disabled skips extraction entirely).
 
 **No staging benchmark was run: no isolated staging environment matching production exists here** (no Docker, no WSL, no staging VM), and running experimental code on production is excluded.
 Measured instead (details and the exact procedure to produce a real staging run in `performance_benchmark.md`):

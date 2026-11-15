@@ -33,3 +33,17 @@ Exit 1: the files above differ from the original and were edited here. Merge the
 
 - The first run against the **real** original must be a `--dry-run` by someone who has it; expect the same 18 files (plus any the team has edited since) as conflicts.
 - Whether `backend/` should keep being a copy at all is a team decision: the diverged files now outnumber the untouched ones among the Python sources.
+
+## Conflict report: files that would need a person (2026-11-15, from the recorded hashes)
+
+**The real dry run was not performed.** The original app (`..\Capstone-Version-Control-Version-1.1`, or `DEFAKETIVE_ORIGINAL`) is not on this PC; `scripts/sync_backend.py --dry-run` stops with "The original DeFaketive app was not found" and writes nothing (checked again today). Nothing below was compared with the original.
+
+What can be established without it: comparing every file in `backend/BACKEND_FILES.json` (93 files) with the SHA-256 the last sync recorded, **18 files differ**, that is, they were edited in this repository after the last sync. If the original has also changed any of them, the sync would report a conflict and leave the file alone; if the original is unchanged, there is nothing to do.
+
+| File | Edited by |
+|---|---|
+| `dashboard_utils.py`, `webapp.py` | this feature (conclusion wiring; `webapp.py` one line) |
+| `accounts.py`, `static/css/figma.css`, `static/css/public.css`, `static/css/tokens.css`, `static/js/app.js`, `templates/index.html`, `lazada-scraper/src/lazada_scraper.py` | earlier project work (not this feature) |
+| `sentiment-analysis/defaketive_sentiment/` `analyze_reviews.py`, `extra_labels.py`, `fault_rules.py`, `hazard_model.py`, `lexicons/taglish_variants_v1.tsv`, `model.py`, `product_badges.py`, `risk_heads.py`, `safety_lookalikes.py` | earlier project work (sentiment and hazard; not touched by this feature) |
+
+Resolution rule for a person doing the first real sync: run `--dry-run`, and for each reported conflict diff the original's version against `backend/`'s; keep `backend/`'s unless the original holds a fix this repo lacks. Do not use `--force` on any of the 18. The five feature modules (`aspect_profiles.py`, `aspects.py`, `conclusion_text.py`, `recommendation_policy.py`, `category_copy.py`) are listed as local modules and are never touched or deleted (tested).

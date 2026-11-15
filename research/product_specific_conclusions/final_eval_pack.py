@@ -48,6 +48,12 @@ CLAIM_LABELS = ("correct", "wrong_aspect", "wrong_direction", "not_about_the_pro
 CARD_COLS = ["product_id", "product", "assessment", "serious_safety_concern", "counterfeit_concern", "main_reason", "confidence"]
 CLAIM_COLS = ["claim_id", "product_id", "aspect", "polarity", "review_no", "quotation", "label", "note"]
 WORDS_COLS = ["product_id", "product", "assessment_shown", "text_1", "text_2"] + [f"{c}_{n}" for n in (1, 2) for c in CRITERIA] + ["unsupported_1", "unsupported_2", "safety_error_1", "safety_error_2", "preferred", "note"]
+FEATURE_COLS = ["item_id", "product_id", "review_no", "profile", "stars", "review_text", "features", "note"]
+MIN_FEATURE_ITEMS = 40  # reviews judged by both annotators before recall and F1 are computed
+N_FEATURE_REVIEWS = 150
+ANNOTATOR_TYPES = ("human", "ai_assisted")
+PROVENANCE_KEYS = ("label", "type", "annotator", "model_version", "interface", "dates", "prompt_file", "human_review_of_labels")
+TARGET_F1 = 0.80
 MIN_PRODUCTS = 30
 MIN_CLAIMS = 50
 TARGET = {"recommended": 8, "mixed": 6, "caution": 8, "not_recommended": 8, "not_enough": 4}
@@ -163,6 +169,7 @@ def make() -> None:
         corder = list(sample)
         random.Random(seed + 10).shuffle(corder)
         write(PACK / f"claims_sheet_{label}.csv", CLAIM_COLS, [{**{k: c[k] for k in ("claim_id", "product_id", "aspect", "polarity", "review_no", "quotation")}, "label": "", "note": ""} for c in corder])
+    make_features(rows, random.Random(20261116), write, aspects, du)
     key, words = [], []
     for r in rows:
         texts = [("old", f"{r['before']['lead']} {r['before']['summary']}"), ("new", f"{r['c']['lead']} {r['c']['summary']}")]
@@ -181,6 +188,38 @@ def make() -> None:
     print(f"safety reports in {sum(1 for k in key if k['safety_reports'])}, authenticity reports in {sum(1 for k in key if k['authenticity_reports'])}, >=25% Filipino/Taglish in {sum(1 for k in key if k['filipino_or_taglish_share'] >= 0.25)}; {len(sample)} claims")
 
 
+def make_features(rows, rng, write, aspects, du) -> None:
+    """Review-level sheet for recall: the annotator lists every product feature a review states, from a fixed vocabulary, WITHOUT seeing the system.
+
+    The system's own reading of the same reviews goes to features_key_private.csv, which annotators never receive.
+    """
+    from aspect_profiles import aspects_for, profile_key
+
+    pool = []
+    for r in rows:
+        category, group = du.product_category_of(r["product"]), du.product_group(r["product"])
+        profile = profile_key(category, group)
+        for n, review in enumerate(r["reviews"], 1):
+            if len(str(review["content"]).strip()) >= 20:
+                pool.append((r, n, review, category, group, profile))
+    rng.shuffle(pool)
+    sample = pool[:N_FEATURE_REVIEWS]
+    items, key, vocabulary = [], [], {}
+    for k, (r, n, review, category, group, profile) in enumerate(sample, 1):
+        for a in aspects_for(category, group):
+            vocabulary[(profile, a.id)] = (a.label, a.kind)
+        system = sorted({f"{row['id']}:{pol}" for row, pol, _side in aspects.iter_claims(aspects.extract([review], category, group))})
+        item = {"item_id": f"R{k:03d}", "product_id": r["pid"], "review_no": n, "profile": profile, "stars": review.get("rating", ""), "review_text": redact(collapse(review["content"])), "features": "", "note": ""}
+        items.append(item)
+        key.append({"item_id": item["item_id"], "system_features": ";".join(system)})
+    for label, seed in (("A", 5), ("B", 6)):
+        order = list(items)
+        random.Random(seed).shuffle(order)
+        write(PACK / f"features_sheet_{label}.csv", FEATURE_COLS, order)
+    write(PACK / "features_key_private.csv", ["item_id", "system_features"], key)
+    write(PACK / "aspect_vocabulary.csv", ["profile", "aspect_id", "label", "kind"], [{"profile": p, "aspect_id": i, "label": v[0], "kind": v[1]} for (p, i), v in sorted(vocabulary.items())])
+
+
 def instructions() -> str:
     return """# Instructions for annotators
 
@@ -189,10 +228,11 @@ and do not ask the developers what the system "should" say.** There are no right
 `confidence` or `unclear`; that is useful information, not a failure.
 
 Files: `reviews.csv` (every review of every product: stars and text; phone numbers, e-mail addresses, links and handles that people typed into reviews were removed and show as
-"[number removed]" and so on), then three sheets, **to be done in this order**:
-1. `card_sheet_?.csv`: read the reviews and give your own overall assessment. (No system output is on this sheet.)
-2. `claims_sheet_?.csv`: judge each claim. (Only the claim and its quotation are shown.)
-3. `words_sheet_?.csv`: rate two anonymous texts. (Do this last: it shows the system's assessment label.)
+"[number removed]" and so on), then four sheets, **to be done in this order**:
+1. `features_sheet_?.csv` (with `aspect_vocabulary.csv`): list the features each sampled review states. (No system output.)
+2. `card_sheet_?.csv`: read the reviews and give your own overall assessment. (No system output is on this sheet.)
+3. `claims_sheet_?.csv`: judge each claim. (Only the claim and its quotation are shown.)
+4. `words_sheet_?.csv`: rate two anonymous texts. (Do this last: it shows the system's assessment label.)
 Use the sheet letter you were given (A or B). Do not open `key_private.csv`.
 
 ## 1. Card sheet: your own overall assessment
@@ -239,6 +279,13 @@ Read the reviews again. Text 1 and text 2 are two summaries of the same product,
 
 Also: `unsupported_?` yes if the text says anything the reviews do not support; `safety_error_?` yes if it hides, invents, overstates or claims to have verified a safety or authenticity matter;
 `preferred` 1, 2 or same.
+
+## 4. Features sheet (done FIRST; it is described last because it was added after the others)
+
+Each row is one review. List every product feature the review itself states, from the vocabulary in `aspect_vocabulary.csv` for the row's `profile`, in the form
+`aspect_id:positive` or `aspect_id:negative`, separated by semicolons (for example `softness:positive;dryness:negative`). Write `none` if the review states no listed feature
+(delivery-only, a bare "ok", a hypothetical, a comparison, something not yet used). A feature counts only if the review says it about the product, in that direction.
+Do not add features that are not in the vocabulary; use `note` for them. This sheet measures what the system misses (recall); the claims sheet measures what it gets wrong (precision).
 
 ### What a correct, a partly supported and an unsupported statement look like (invented illustration)
 Reviews: of 100, 14 say the shampoo made their hair soft, 3 say it dried their hair, 40 only talk about delivery.
@@ -292,9 +339,93 @@ def bootstrap_mean_ci(values: list[float], seed: int = 5) -> list[float]:
     return [round(means[50], 2), round(means[1949], 2)]
 
 
+def load_provenance(folder: Path) -> dict:
+    """Who produced the labels. Scoring refuses without it, so an AI-assisted reference can never be reported as independent human annotation."""
+    path = folder / "provenance.json"
+    if not path.is_file():
+        raise SystemExit(f"{path} is missing. Describe how each label set was produced (see provenance_template.json). Nothing is scored.")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    for who in ("annotator_A", "annotator_B"):
+        entry = data.get(who) or {}
+        missing = [k for k in PROVENANCE_KEYS if not str(entry.get(k, "")).strip()]
+        if missing:
+            raise SystemExit(f"provenance.json {who}: missing {missing}. Write 'not recorded' if it is unknown. Nothing is scored.")
+        if entry["type"] not in ANNOTATOR_TYPES:
+            raise SystemExit(f"provenance.json {who}: type must be one of {ANNOTATOR_TYPES}. Nothing is scored.")
+    types = {data["annotator_A"]["type"], data["annotator_B"]["type"]}
+    ai = "ai_assisted" in types
+    return {
+        "annotator_A": data["annotator_A"],
+        "annotator_B": data["annotator_B"],
+        "independent_of_each_other": data.get("independent_of_each_other", "not stated"),
+        "reference_standard": "AI-assisted reference standard (not independent human annotation)" if ai else "human reference standard",
+        "independent_human_evaluation_completed": (not ai) and data.get("independent_of_each_other") is True,
+        "wording_rule": "Report scores as agreement with the AI-assisted reference labels; do not call them human inter-annotator reliability or ground truth." if ai else "",
+    }
+
+
+def parse_features(text: str):
+    """'a:positive;b:negative' -> {(a, positive), (b, negative)}; 'none' -> empty set; blank or malformed -> None (row not counted)."""
+    text = (text or "").strip().lower()
+    if not text:
+        return None
+    if text == "none":
+        return set()
+    found = set()
+    for part in text.replace("\n", ";").split(";"):
+        part = part.strip()
+        if not part:
+            continue
+        name, _, polarity = part.partition(":")
+        if polarity.strip() not in ("positive", "negative") or not name.strip():
+            return None
+        found.add((name.strip(), polarity.strip()))
+    return found
+
+
+def prf(system: list, reference: list) -> dict:
+    tp = sum(len(s & r) for s, r in zip(system, reference))
+    fp = sum(len(s - r) for s, r in zip(system, reference))
+    fn = sum(len(r - s) for s, r in zip(system, reference))
+    nan = float("nan")
+    precision = tp / (tp + fp) if tp + fp else nan
+    recall = tp / (tp + fn) if tp + fn else nan
+    f1 = 2 * precision * recall / (precision + recall) if tp else (0.0 if tp + fp + fn else nan)
+    return {"tp": tp, "fp": fp, "fn": fn, "precision": round(precision, 3), "recall": round(recall, 3), "f1": round(f1, 3)}
+
+
+def score_features(folder: Path):
+    """Review-level precision, recall and F1 of the system's (feature, direction) pairs against each annotator, and against the pairs both list."""
+    if not (folder / "features_sheet_A.csv").is_file() or not (folder / "features_sheet_B.csv").is_file():
+        return None
+    key = {r["item_id"]: {tuple(x.split(":")) for x in r["system_features"].split(";") if x} for r in read_rows(PACK / "features_key_private.csv")}
+    sheets = {who: {r["item_id"]: parse_features(r["features"]) for r in read_rows(folder / f"features_sheet_{who}.csv")} for who in "AB"}
+    ids = sorted(i for i in key if sheets["A"].get(i) is not None and sheets["B"].get(i) is not None)
+    if len(ids) < MIN_FEATURE_ITEMS:
+        raise SystemExit(f"Features sheets: only {len(ids)} reviews listed by both annotators; at least {MIN_FEATURE_ITEMS} are needed. Nothing is scored.")
+    system = [key[i] for i in ids]
+    a, b = [sheets["A"][i] for i in ids], [sheets["B"][i] for i in ids]
+    out = {
+        "reviews": len(ids),
+        "reviews_with_a_feature_per_annotator": [sum(bool(x) for x in a), sum(bool(y) for y in b)],
+        "system_vs_annotator_A": prf(system, a),
+        "system_vs_annotator_B": prf(system, b),
+        "system_vs_pairs_both_list": prf(system, [x & y for x, y in zip(a, b)]),
+        "system_vs_pairs_either_lists": prf(system, [x | y for x, y in zip(a, b)]),
+        "annotator_B_vs_A_as_reference": prf(b, a),
+        "target_f1": TARGET_F1,
+        "note": "micro-averaged over (review, feature, direction) pairs from a random sample of reviews of the sampled products; "
+                "the target is a figure to report against, never a reason to change labels, the sample or the extractor's thresholds",
+    }
+    f1 = out["system_vs_annotator_A"]["f1"], out["system_vs_annotator_B"]["f1"]
+    out["meets_target_against_both_annotators"] = all(v >= TARGET_F1 for v in f1) if all(v == v for v in f1) else None
+    return out
+
+
 def score(folder: Path) -> dict:
     key = {r["product_id"]: r for r in read_rows(PACK / "key_private.csv")}
     out: dict = {"note": "computed only from the annotators' sheets; developer judgements are not used anywhere"}
+    out["provenance"] = load_provenance(folder)
 
     def both(prefix: str, id_col: str, complete) -> tuple[dict, dict, list[str]]:
         a = {r[id_col]: r for r in read_rows(folder / f"{prefix}_A.csv") if complete(r)}
@@ -378,6 +509,9 @@ def score(folder: Path) -> dict:
             prefs["same" if choice not in ("1", "2") else key[pid][f"text_{choice}"]] += 1
     words["preferred"] = dict(prefs)
     out["words"] = words
+    features = score_features(folder)
+    out["features"] = features if features else "no features sheets supplied: recall and F1 are not computed"
+    out["claim_f1_note"] = "Precision is reported in 'claims'. Recall and F1 exist only in 'features', where the annotators list what each review states."
     return out
 
 

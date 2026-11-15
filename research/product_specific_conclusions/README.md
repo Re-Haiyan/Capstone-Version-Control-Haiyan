@@ -21,13 +21,13 @@ expandable "Why this conclusion?" shows every count with the original quotations
 |---|---|---|
 | Saved products whose verdict and decision are unchanged | 182 of 182 | verified mechanically |
 | Quotations checked against their reviews (182 saved + 37 real non-electronics) | 5,837 of 5,837 verbatim, right position, 0 problems in 3,535 lines, 13,558 ids | verified mechanically |
-| Backend tests | 393 pass (286 existing + 107 new), 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
+| Backend tests | 400 pass, 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
 | Browser test, 3 widths, 7 cases (3 real non-electronics), accessibility | passes | verified |
 | First read of a product page | 72 ms median, 256 ms p95 (this PC); 72 / 249 ms in the VM's Python 3.12 limited to 2 CPUs; cached 1 ms; cold start 0.4 s | measured here and emulated; **no staging or VM measurement** |
 | "Mostly negative" said without a negative majority | 3 → 0 of 182 | verified |
 | Aspect claims judged correct, real non-electronics, first look | 80% (56 of 70) | **developer-judged, one person** |
 | … after fixes, new draw | 89% (62 of 70) | developer-judged, optimistic (same judge, informed) |
-| Independent human evaluation | none | **PENDING HUMAN EVALUATION** (pack of 35 real products and 80 claims is built) |
+| Independent human evaluation | none | **PENDING HUMAN EVALUATION** (pack of 35 real products, 80 claims and 150 reviews for recall/F1 is built; AI-assisted labelling is approved and, when done, is reported as an AI-assisted reference with provenance, not as human annotation) |
 | Footwear, motorcycle parts | no real reviews exist in the project | **unvalidated** |
 
 ## Files here

@@ -106,6 +106,22 @@ class Pack(unittest.TestCase):
         self.assertEqual(fp.redact("see https://fb.com/x and www.shop.ph"), "see [link removed] and [link removed]")
         self.assertEqual(fp.redact("Ang lambot ng buhok ko, 5 stars, 2 weeks, 100% legit"), "Ang lambot ng buhok ko, 5 stars, 2 weeks, 100% legit")
 
+    def test_features_sheets_are_blank_blind_and_the_key_stays_out(self):
+        items = {r["item_id"] for r in read(PACK / "features_key_private.csv")}
+        for s in "AB":
+            rows = read(PACK / f"features_sheet_{s}.csv")
+            self.assertEqual(list(rows[0].keys()), fp.FEATURE_COLS)
+            self.assertEqual({r["item_id"] for r in rows}, items)
+            self.assertTrue(all(r["features"] == "" and r["note"] == "" for r in rows))
+        self.assertNotEqual([r["item_id"] for r in read(PACK / "features_sheet_A.csv")], [r["item_id"] for r in read(PACK / "features_sheet_B.csv")])
+        self.assertGreaterEqual(len(items), fp.MIN_FEATURE_ITEMS)
+        vocabulary = {(v["profile"], v["aspect_id"]) for v in read(PACK / "aspect_vocabulary.csv")}
+        sheet = read(PACK / "features_sheet_A.csv")
+        self.assertTrue(all(any(p == r["profile"] for p, _ in vocabulary) for r in sheet))
+        for k in read(PACK / "features_key_private.csv"):
+            for pair in filter(None, k["system_features"].split(";")):
+                self.assertIn(pair.split(":")[1], ("positive", "negative"))
+
     def test_claims_point_at_real_review_text(self):
         reviews = {(r["product_id"], r["review_no"]): r["review_text"] for r in read(PACK / "reviews.csv")}
         found = 0
@@ -133,6 +149,11 @@ class Scoring(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
+    def provenance(self, kind="ai_assisted", independent=False):
+        entry = lambda n: {"label": f"Team Label {n}", "type": kind, "annotator": "synthetic test fixture", "model_version": "not recorded", "interface": "test", "dates": "test", "prompt_file": "not recorded", "human_review_of_labels": "none"}
+        import json
+        (self.tmp / "provenance.json").write_text(json.dumps({"annotator_A": entry(1), "annotator_B": entry(2), "independent_of_each_other": independent}), encoding="utf-8")
+
     def fill(self, annotator, card=lambda k: k["system_card"], claim="correct", new=5, old=3, safety_error="no"):
         rows = read(PACK / "card_sheet_A.csv")
         for r in rows:
@@ -158,6 +179,7 @@ class Scoring(unittest.TestCase):
     def test_perfect_agreement_gives_the_expected_numbers(self):
         self.fill("A")
         self.fill("B")
+        self.provenance()
         out = fp.score(self.tmp)
         self.assertEqual(out["card"]["annotators_cohens_kappa"], 1.0)
         self.assertEqual(out["card"]["system_vs_annotator_A_exact"][0], out["card"]["products"])
@@ -171,6 +193,7 @@ class Scoring(unittest.TestCase):
     def test_disagreement_and_safety_errors_are_counted(self):
         self.fill("A", claim="correct", safety_error="yes")
         self.fill("B", claim="wrong_direction", card=lambda k: "Not recommended")
+        self.provenance()
         out = fp.score(self.tmp)
         self.assertEqual(out["claims"]["factual_claim_precision_annotator_B"][0], 0)
         self.assertEqual(out["claims"]["strict_precision_both_say_correct"][0], 0)
@@ -184,14 +207,71 @@ class Scoring(unittest.TestCase):
         for r in rows[: len(rows) - (fp.MIN_PRODUCTS - 1)]:
             r["assessment"] = ""
         write(self.tmp / "card_sheet_B.csv", rows, fp.CARD_COLS)
+        self.provenance()
         with self.assertRaises(SystemExit):
             fp.score(self.tmp)
 
     def test_scoring_never_writes_into_the_pack(self):
         self.fill("A")
         self.fill("B")
+        self.provenance()
         fp.score(self.tmp)
         self.assertEqual({p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in PACK.iterdir()}, self.before)
+
+    def test_scoring_refuses_without_provenance_and_labels_ai_references(self):
+        self.fill("A")
+        self.fill("B")
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
+        self.provenance(kind="ai_assisted")
+        out = fp.score(self.tmp)["provenance"]
+        self.assertFalse(out["independent_human_evaluation_completed"])
+        self.assertIn("AI-assisted", out["reference_standard"])
+        self.provenance(kind="human", independent=True)
+        self.assertTrue(fp.score(self.tmp)["provenance"]["independent_human_evaluation_completed"])
+
+    def test_provenance_rejects_unknown_type_and_missing_fields(self):
+        import json
+        self.fill("A")
+        self.fill("B")
+        self.provenance(kind="a person, probably")
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
+        data = {"annotator_A": {"label": "Team Label 1"}, "annotator_B": {}}
+        (self.tmp / "provenance.json").write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
+
+    def test_feature_parsing_and_prf_on_known_cases(self):
+        self.assertEqual(fp.parse_features("softness:positive; dryness:negative"), {("softness", "positive"), ("dryness", "negative")})
+        self.assertEqual(fp.parse_features("none"), set())
+        self.assertIsNone(fp.parse_features(""))
+        self.assertIsNone(fp.parse_features("softness:great"))
+        out = fp.prf([{("a", "positive"), ("b", "negative")}, set()], [{("a", "positive")}, {("c", "positive")}])
+        self.assertEqual((out["tp"], out["fp"], out["fn"]), (1, 1, 1))
+        self.assertEqual((out["precision"], out["recall"], out["f1"]), (0.5, 0.5, 0.5))
+        self.assertEqual(fp.prf([set()], [set()])["tp"], 0)
+
+    def test_feature_scores_on_synthetic_sheets_and_refusal_when_too_few(self):
+        keyrows = read(PACK / "features_key_private.csv")
+        for who in "AB":
+            rows = read(PACK / f"features_sheet_{who}.csv")
+            for r in rows:
+                system = next(k["system_features"] for k in keyrows if k["item_id"] == r["item_id"])
+                r["features"] = system.replace(";", ";") if system else "none"
+            write(self.tmp / f"features_sheet_{who}.csv", rows, fp.FEATURE_COLS)
+        self.fill("A")
+        self.fill("B")
+        self.provenance()
+        out = fp.score(self.tmp)["features"]
+        self.assertEqual((out["system_vs_annotator_A"]["precision"], out["system_vs_annotator_A"]["recall"]), (1.0, 1.0) if out["system_vs_annotator_A"]["tp"] else (out["system_vs_annotator_A"]["precision"], out["system_vs_annotator_A"]["recall"]))
+        self.assertEqual(out["system_vs_annotator_A"]["fp"] + out["system_vs_annotator_A"]["fn"], 0)
+        rows = read(self.tmp / "features_sheet_B.csv")
+        for r in rows[: len(rows) - (fp.MIN_FEATURE_ITEMS - 1)]:
+            r["features"] = ""
+        write(self.tmp / "features_sheet_B.csv", rows, fp.FEATURE_COLS)
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
 
     def test_agreement_statistics_on_known_cases(self):
         self.assertAlmostEqual(fp.kappa(list("aabb"), list("abab")), 0.0)

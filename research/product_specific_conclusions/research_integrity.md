@@ -20,7 +20,7 @@ models' F1.
 
 | Evidence | What it proves | What it does not prove |
 |---|---|---|
-| 393 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
+| 400 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
 | 182 of 182 verdicts and decisions unchanged | the feature changes no verdict | that the verdicts are right (that is the hazard checker's and the policy's question) |
 | 5,356 of 5,356 quotations verbatim, ids valid, counts reproducible | every claim is *traceable* to a review | that the aspect and direction are the right reading of the sentence |
 | `quality_audit.py` clean | the text obeys rules about what it may say | that what it says is true |
@@ -40,7 +40,7 @@ evaluation (`human_eval_pack/`) can supply the latter.
 | Coverage per category | `aspect_validation.py` | the project's real scans | automatic | 2026-11-15 | coverage is not accuracy |
 | Latency, memory | `benchmark.py` | saved + real products | measured | 2026-11-15 | this PC, not the VM or a staging copy |
 | Policy comparison (1 of 182 would change) | `recommendation_policy_compare.py` | 182 saved products | automatic | 2026-11-15 | no independent labels, so it cannot say which policy is right |
-| Human evaluation | `final_eval_pack.py score` | **none yet** | | | **PENDING HUMAN EVALUATION** |
+| Human or AI-assisted evaluation | `final_eval_pack.py score` | **none yet** | | | **PENDING** (AI-assisted labelling approved, not performed; independent human evaluation still open) |
 
 ## 4. Rules this project follows
 
@@ -50,6 +50,7 @@ evaluation (`human_eval_pack/`) can supply the latter.
 4. No review text is invented or edited for an evaluation. Constructed sentences appear only in unit tests and are labelled.
 5. A negative or uncomfortable result is reported (for example: the first extractor's 80% first-look precision on real reviews, two silent bugs, a candidate policy that weakened a hazard label).
 6. The live recommendation policy and the hazard thresholds are unchanged and were not tuned to improve any figure here.
+7. **AI-assisted labels are labelled as such.** The panel and adviser approved AI-assisted annotation (primary annotator ChatGPT; identifiers Team Label 1 and Team Label 2). Such labels are never described as human or independent; the scorer requires a provenance record and prints "AI-assisted reference standard (not independent human annotation)"; the independent-human requirement stays open until completed or formally amended. Labels, the evaluation sample and the extractor's thresholds are never changed to reach an F1 target (0.80 is reported against, not tuned toward). Agreement between two AI label sets measures consistency, not reliability.
 
 ## 5. Methods description for the thesis (no findings)
 

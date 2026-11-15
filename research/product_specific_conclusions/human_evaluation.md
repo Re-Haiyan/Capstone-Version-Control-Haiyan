@@ -74,3 +74,38 @@ the final pack above supersedes them as the main evaluation because it adds real
 ## 6. Outstanding
 
 Two independent annotators, each a few hours (35 products, 80 claims). Until then this requirement is **PENDING HUMAN EVALUATION** and no figure from it may be quoted.
+
+## AI-assisted evaluation (approved by the panel and adviser; stated by the owner)
+
+The research panel and adviser approved AI-assisted annotation, with ChatGPT as the primary AI-assisted annotator and the identifiers **Team Label 1** (sheet A) and **Team Label 2** (sheet B).
+This repository's earlier study handled the same situation for sentiment labels (`research/xlmr_optimization/ai_assisted_annotation_methodology.md` on the `deployment` branch); the rules below follow it.
+
+**Status: PENDING.** No sheet has been filled, by anyone or anything. Nothing in this folder is an annotation. Claude Code, which built the pack, did not label it, and no number below is a result.
+
+### Rules
+1. **AI-assisted labels are never called human annotation.** `final_eval_pack.py score` refuses to run without `provenance.json` next to the filled sheets (template: `human_eval_pack/provenance_template.json`). Each label set states its type (`ai_assisted` or `human`), annotator, exact model version, interface, dates, the file holding the complete prompts, and how much a person reviewed. Unknown values must be written as `not recorded`.
+2. If either set is `ai_assisted`, the scorer's output says "AI-assisted reference standard (not independent human annotation)", sets `independent_human_evaluation_completed` to false, and carries the wording rule: report agreement with the AI-assisted reference, not human inter-annotator reliability or ground truth.
+3. **The requirement for an independent human evaluation stays open** until two humans complete the sheets, or the panel formally amends the protocol in writing (attach the approval to a protocol amendment before the thesis calls the AI-assisted result sufficient).
+4. Team Label 1 and Team Label 2 are likely to share one source and its biases, so their agreement is descriptive of consistency, not reliability. Separate sessions or separate people reviewing a sample of rows reduces but does not remove this.
+5. Run the AI annotation honestly: give the annotator only `human_eval_pack/` (never `key_private.csv` or `features_key_private.csv`), the instructions, the sheet letter and the order (features, card, claims, words). Save the complete prompts and raw outputs. Do not edit labels afterwards to improve a score; a person's corrections go in new columns with the reviewer and date.
+
+### What is measured, and where
+| Question | Sheet | Output | Valid when |
+|---|---|---|---|
+| Is the feature identified correctly, and in the right direction? | claims | claim precision with a Wilson interval (`correct`, `wrong_aspect`, `wrong_direction`) | both sets have at least 50 labelled claims |
+| Does the quotation support the conclusion? | claims | the same labels (`correct` means the quotation says it); the quotation is mechanically verified to be verbatim | same |
+| Are features missed? Recall and F1 | features | micro precision, recall and F1 of (review, feature, direction) pairs against each set, against the pairs both list, and against either | both sets have at least 40 reviews listed |
+| Are review counts accurate? | not annotated | counts are distinct review ids, reproduced mechanically (`evidence_verification.md`); annotators are not asked to count | always (mechanical) |
+| Are unsupported claims avoided? | words | `unsupported` rate for the new and old text | at least 30 products complete in both |
+| Are safety and authenticity reports qualified? | words, card | `safety` rating, `safety_error` rate, "well reviewed while both flag a serious safety concern" | same |
+| Is the overall assessment right? | card | exact agreement and kappa, system versus each set | at least 30 products |
+
+**F1.** F1 exists only for the features sheet, because only there can a miss be recorded. The 0.80 target is printed next to the result as a figure to report against. It is never a reason to change labels, the 150-review sample, or the extractor's cue tables, and the extractor must not be tuned on the reviews of this pack. Where the result is below 0.80, that is reported as it is. Claim precision, hazard F1 and sentiment F1 are separate figures and are never combined (`research_integrity.md`).
+
+### Procedure
+```
+python research/product_specific_conclusions/final_eval_pack.py make      # already done; deterministic
+# fill sheets A and B (copy to a working folder; never write into human_eval_pack/), add provenance.json
+python research/product_specific_conclusions/final_eval_pack.py score <working folder>
+```
+The scoring arithmetic is tested on synthetic sheets in a temporary folder only (`tests/test_final_eval_pack.py`); those numbers are not evidence about the system.

@@ -1,0 +1,144 @@
+﻿profile,aspect_id,label,kind
+apparel,appearance,looks,product
+apparel,arrival,condition on arrival,service
+apparel,authenticity,authenticity,trust
+apparel,build,build quality,product
+apparel,comfort,comfort,product
+apparel,delivery,delivery,service
+apparel,durability,durability,product
+apparel,ease,ease of use,product
+apparel,fabric,fabric,product
+apparel,freebies,promised freebies,service
+apparel,functionality,how well it works,product
+apparel,matches_listing,match with the listing,product
+apparel,packaging,packaging,service
+apparel,seller,seller service,service
+apparel,size,fit and sizing,product
+apparel,stitching,stitching,product
+apparel,value,value for money,product
+appliance,appearance,looks,product
+appliance,arrival,condition on arrival,service
+appliance,authenticity,authenticity,trust
+appliance,build,build quality,product
+appliance,delivery,delivery,service
+appliance,durability,durability,product
+appliance,ease,ease of use,product
+appliance,freebies,promised freebies,service
+appliance,functionality,how well it works,product
+appliance,matches_listing,match with the listing,product
+appliance,noise,noise level,product
+appliance,packaging,packaging,service
+appliance,performance,performance,product
+appliance,power_use,power consumption,product
+appliance,seller,seller service,service
+appliance,size,size,product
+appliance,value,value for money,product
+earbuds,appearance,looks,product
+earbuds,arrival,condition on arrival,service
+earbuds,authenticity,authenticity,trust
+earbuds,battery,battery life,product
+earbuds,build,build quality,product
+earbuds,comfort,comfort,product
+earbuds,connectivity,Bluetooth connectivity,product
+earbuds,delivery,delivery,service
+earbuds,durability,durability,product
+earbuds,ease,ease of use,product
+earbuds,freebies,promised freebies,service
+earbuds,functionality,how well it works,product
+earbuds,matches_listing,match with the listing,product
+earbuds,microphone,microphone quality,product
+earbuds,packaging,packaging,service
+earbuds,seller,seller service,service
+earbuds,size,size,product
+earbuds,sound,sound quality,product
+earbuds,value,value for money,product
+food,appearance,looks,product
+food,arrival,condition on arrival,service
+food,authenticity,authenticity,trust
+food,build,overall quality,product
+food,delivery,delivery,service
+food,ease,ease of use,product
+food,expiry,expiry date,product
+food,freebies,promised freebies,service
+food,freshness,freshness,product
+food,functionality,how well it works,product
+food,matches_listing,match with the listing,product
+food,mixability,mixability,product
+food,packaging,packaging,service
+food,quantity,quantity,product
+food,seller,seller service,service
+food,size,size,product
+food,taste,taste,product
+food,texture,texture,product
+food,value,value for money,product
+general,appearance,looks,product
+general,arrival,condition on arrival,service
+general,authenticity,authenticity,trust
+general,build,build quality,product
+general,delivery,delivery,service
+general,durability,durability,product
+general,ease,ease of use,product
+general,freebies,promised freebies,service
+general,functionality,how well it works,product
+general,matches_listing,match with the listing,product
+general,packaging,packaging,service
+general,seller,seller service,service
+general,size,size,product
+general,value,value for money,product
+hair,appearance,looks,product
+hair,arrival,condition on arrival,service
+hair,authenticity,authenticity,trust
+hair,build,overall quality,product
+hair,delivery,delivery,service
+hair,dryness,dryness,product
+hair,ease,ease of use,product
+hair,fragrance,fragrance,product
+hair,freebies,promised freebies,service
+hair,functionality,effect on hair,product
+hair,hair_fall,hair fall,product
+hair,manageability,manageability,product
+hair,matches_listing,match with the listing,product
+hair,packaging,packaging,service
+hair,scalp_irritation,scalp irritation,product
+hair,seller,seller service,service
+hair,size,size,product
+hair,softness,softness,product
+hair,value,value for money,product
+powerbank,appearance,looks,product
+powerbank,arrival,condition on arrival,service
+powerbank,authenticity,authenticity,trust
+powerbank,build,build quality,product
+powerbank,capacity,battery capacity,product
+powerbank,charging,charging,product
+powerbank,delivery,delivery,service
+powerbank,durability,durability,product
+powerbank,ease,ease of use,product
+powerbank,freebies,promised freebies,service
+powerbank,functionality,how well it works,product
+powerbank,matches_listing,match with the listing,product
+powerbank,overheating,overheating,product
+powerbank,packaging,packaging,service
+powerbank,seller,seller service,service
+powerbank,shutdowns,unexpected shutdowns,product
+powerbank,size,size,product
+powerbank,value,value for money,product
+skin,absorption,absorption,product
+skin,appearance,looks,product
+skin,arrival,condition on arrival,service
+skin,authenticity,authenticity,trust
+skin,build,overall quality,product
+skin,delivery,delivery,service
+skin,dryness,dryness,product
+skin,ease,ease of use,product
+skin,fragrance,fragrance,product
+skin,freebies,promised freebies,service
+skin,functionality,effect on skin,product
+skin,gentleness,gentleness on the skin,product
+skin,matches_listing,match with the listing,product
+skin,oiliness,oiliness,product
+skin,packaging,packaging,service
+skin,seller,seller service,service
+skin,size,size,product
+skin,skin_irritation,skin irritation,product
+skin,texture,texture,product
+skin,value,value for money,product

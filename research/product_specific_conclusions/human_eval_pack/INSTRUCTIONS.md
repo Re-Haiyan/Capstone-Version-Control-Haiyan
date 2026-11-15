@@ -5,10 +5,11 @@ and do not ask the developers what the system "should" say.** There are no right
 `confidence` or `unclear`; that is useful information, not a failure.
 
 Files: `reviews.csv` (every review of every product: stars and text; phone numbers, e-mail addresses, links and handles that people typed into reviews were removed and show as
-"[number removed]" and so on), then three sheets, **to be done in this order**:
-1. `card_sheet_?.csv`: read the reviews and give your own overall assessment. (No system output is on this sheet.)
-2. `claims_sheet_?.csv`: judge each claim. (Only the claim and its quotation are shown.)
-3. `words_sheet_?.csv`: rate two anonymous texts. (Do this last: it shows the system's assessment label.)
+"[number removed]" and so on), then four sheets, **to be done in this order**:
+1. `features_sheet_?.csv` (with `aspect_vocabulary.csv`): list the features each sampled review states. (No system output.)
+2. `card_sheet_?.csv`: read the reviews and give your own overall assessment. (No system output is on this sheet.)
+3. `claims_sheet_?.csv`: judge each claim. (Only the claim and its quotation are shown.)
+4. `words_sheet_?.csv`: rate two anonymous texts. (Do this last: it shows the system's assessment label.)
 Use the sheet letter you were given (A or B). Do not open `key_private.csv`.
 
 ## 1. Card sheet: your own overall assessment
@@ -55,6 +56,13 @@ Read the reviews again. Text 1 and text 2 are two summaries of the same product,
 
 Also: `unsupported_?` yes if the text says anything the reviews do not support; `safety_error_?` yes if it hides, invents, overstates or claims to have verified a safety or authenticity matter;
 `preferred` 1, 2 or same.
+
+## 4. Features sheet (done FIRST; it is described last because it was added after the others)
+
+Each row is one review. List every product feature the review itself states, from the vocabulary in `aspect_vocabulary.csv` for the row's `profile`, in the form
+`aspect_id:positive` or `aspect_id:negative`, separated by semicolons (for example `softness:positive;dryness:negative`). Write `none` if the review states no listed feature
+(delivery-only, a bare "ok", a hypothetical, a comparison, something not yet used). A feature counts only if the review says it about the product, in that direction.
+Do not add features that are not in the vocabulary; use `note` for them. This sheet measures what the system misses (recall); the claims sheet measures what it gets wrong (precision).
 
 ### What a correct, a partly supported and an unsupported statement look like (invented illustration)
 Reviews: of 100, 14 say the shampoo made their hair soft, 3 say it dried their hair, 40 only talk about delivery.

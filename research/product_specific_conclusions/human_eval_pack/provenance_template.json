@@ -1,0 +1,24 @@
+{
+  "_instructions": "Copy to <folder>/provenance.json next to the filled sheets and fill every field truthfully; write 'not recorded' where unknown. Never claim 'human' for labels an AI produced.",
+  "annotator_A": {
+    "label": "Team Label 1",
+    "type": "ai_assisted or human",
+    "annotator": "e.g. ChatGPT (primary AI-assisted annotator, approved by the panel and adviser) or a person's role",
+    "model_version": "exact model name and version, or 'not recorded'",
+    "interface": "web chat, API or script, or 'not recorded'",
+    "dates": "when the sheets were filled",
+    "prompt_file": "path to the complete prompt(s) and instructions used, or 'not recorded'",
+    "human_review_of_labels": "none, partial (how many rows), full or unknown"
+  },
+  "annotator_B": {
+    "label": "Team Label 2",
+    "type": "ai_assisted or human",
+    "annotator": "",
+    "model_version": "",
+    "interface": "",
+    "dates": "",
+    "prompt_file": "",
+    "human_review_of_labels": ""
+  },
+  "independent_of_each_other": false
+}
