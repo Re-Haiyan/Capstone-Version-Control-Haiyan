@@ -6,7 +6,7 @@ Standard library only, so the SAME script runs on Windows here and on a Linux st
 
     python research/product_specific_conclusions/benchmark.py --cpus 2 --tag staging
 
-It never touches a database, a model or a service. It measures: cold start in a fresh process; the first read of every saved
+It never touches a database, a model or a service. The --tag value is a filename label, not proof of the environment; preserve the commit SHA in any reported result. It measures: cold start in a fresh process; the first read of every saved
 product and its cached re-read; real non-electronics products when `--real` points at the analysed sample; review sets of
 growing size; several simultaneous readers; CPU time against wall time; peak memory; and the cost the existing plain verdict
 path pays (it should pay nothing).
@@ -24,6 +24,7 @@ import gzip
 import json
 import os
 import platform
+import re
 import statistics
 import subprocess
 import sys
@@ -47,17 +48,46 @@ def stats(seconds):
 
 
 def limit_cpus(count: int) -> int:
-    """Restrict this process to its first `count` logical CPUs (Linux and Windows). Returns the count in force."""
-    if hasattr(os, "sched_setaffinity"):
-        os.sched_setaffinity(0, set(range(count)))
-        return len(os.sched_getaffinity(0))
+    """Restrict this process to N *allowed* CPUs, not CPU indexes 0..N-1.
+
+    Hosted Linux runners and staging containers often have an affinity set
+    such as {24, 25}. Selecting {0, 1} there raises OSError EINVAL.
+    """
+    if count < 1:
+        raise ValueError("--cpus must be a positive integer")
+    if hasattr(os, "sched_getaffinity") and hasattr(os, "sched_setaffinity"):
+        allowed = sorted(os.sched_getaffinity(0))
+        if count > len(allowed):
+            raise ValueError(f"--cpus {count} exceeds {len(allowed)} CPUs available to this process")
+        selected = set(allowed[:count])
+        os.sched_setaffinity(0, selected)
+        effective = os.sched_getaffinity(0)
+        if effective != selected:
+            raise RuntimeError(f"Could not apply CPU affinity: requested {selected}, got {effective}")
+        return len(effective)
     if sys.platform == "win32":
         import ctypes
 
         kernel = ctypes.windll.kernel32
-        kernel.SetProcessAffinityMask(kernel.GetCurrentProcess(), (1 << count) - 1)
+        kernel.GetCurrentProcess.restype = ctypes.c_void_p
+        kernel.GetProcessAffinityMask.argtypes = [
+            ctypes.c_void_p, ctypes.POINTER(ctypes.c_size_t), ctypes.POINTER(ctypes.c_size_t)
+        ]
+        kernel.SetProcessAffinityMask.argtypes = [ctypes.c_void_p, ctypes.c_size_t]
+        current = kernel.GetCurrentProcess()
+        process_mask = ctypes.c_size_t()
+        system_mask = ctypes.c_size_t()
+        if not kernel.GetProcessAffinityMask(current, ctypes.byref(process_mask), ctypes.byref(system_mask)):
+            raise OSError("GetProcessAffinityMask failed")
+        allowed = [1 << bit for bit in range(ctypes.sizeof(ctypes.c_size_t) * 8)
+                   if process_mask.value & (1 << bit)]
+        if count > len(allowed):
+            raise ValueError(f"--cpus {count} exceeds {len(allowed)} CPUs available to this process")
+        mask = sum(allowed[:count])
+        if not kernel.SetProcessAffinityMask(current, ctypes.c_size_t(mask)):
+            raise OSError("SetProcessAffinityMask failed")
         return count
-    return os.cpu_count() or 1
+    raise RuntimeError("--cpus is unsupported on this platform; do not report an emulated measurement")
 
 
 def peak_memory_mib() -> float | None:
@@ -103,6 +133,8 @@ def cold_start(runs: int = 5) -> dict:
     out = []
     for _ in range(runs):
         ran = subprocess.run([sys.executable, "-I", "-c", script, str(ROOT / "backend")], capture_output=True, text=True)
+        if ran.returncode != 0:
+            raise RuntimeError(f"Cold-start subprocess failed ({ran.returncode}): {ran.stderr.strip()}")
         out.append(json.loads(ran.stdout))
     return {
         "runs": runs,
@@ -125,14 +157,28 @@ def main() -> None:
     parser.add_argument("--tag", default="local")
     parser.add_argument("--real", type=Path, default=None)
     args = parser.parse_args()
-    emulated = limit_cpus(args.cpus) if args.cpus else None
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,47}", args.tag):
+        parser.error("--tag must be 1-48 letters, numbers, underscores or hyphens (no path separators)")
+    if args.cpus < 0:
+        parser.error("--cpus must be a nonnegative integer")
+    before_cpus = (len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity")
+                   else os.cpu_count() or 1)
+    actual_cpus = limit_cpus(args.cpus) if args.cpus else before_cpus
+    emulated = bool(args.cpus and actual_cpus < before_cpus)
+    rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
+    git_commit = rev.stdout.strip() if rev.returncode == 0 else "not available"
 
     result: dict = {
         "tag": args.tag,
         "date": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "git_commit": git_commit,
         "machine": f"{platform.system()} {platform.release()}, Python {platform.python_version()}, {platform.processor() or platform.machine()}, {os.cpu_count()} logical CPUs",
-        "emulated_cpus": emulated,
-        "note": "An emulated CPU limit is not a measurement of the real server." if emulated else "Not emulated: this machine's own CPUs.",
+        "available_cpus_before_limit": before_cpus,
+        "effective_cpus": actual_cpus,
+        "cpu_limit_applied": emulated,
+        "emulated_cpus": actual_cpus if emulated else None,
+        "note": ("CPU count artificially restricted: this is NOT a measurement of the target-sized machine."
+                 if emulated else "No artificial CPU restriction; tag alone does not attest staging or production hardware."),
         "cold_start": cold_start(),
     }
     import aspect_profiles as ap
@@ -202,8 +248,19 @@ def main() -> None:
     result["simultaneous_first_reads_threads"] = {"note": "One Python process, threads: the GIL means no speed-up is expected; the figures show queueing, not parallel work.", **simultaneous}
 
     # the review-analysis pipeline is untouched: nothing in it is imported or changed by this feature
-    diff = subprocess.run(["git", "diff", "--stat", "deployment", "--", "backend/sentiment-analysis", "backend/accounts.py", "backend/data_store.py"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
-    result["existing_pipeline"] = {"files_changed_in_analysis_models_or_data_store_vs_deployment": diff or "none", "plain_verdict_per_product_median_ms": stats(plain)["median_ms"]}
+    comparison = subprocess.run(["git", "diff", "--stat", "deployment", "--", "backend/sentiment-analysis", "backend/accounts.py", "backend/data_store.py"], cwd=ROOT, capture_output=True, text=True)
+    if comparison.returncode == 0:
+        pipeline_status = "checked"
+        difference = comparison.stdout.strip() or "none"
+    else:
+        pipeline_status = "not_checked"
+        difference = "not checked (deployment ref unavailable or git diff failed)"
+    result["existing_pipeline"] = {
+        "comparison_status": pipeline_status,
+        "comparison_error": comparison.stderr.strip()[:500] if comparison.returncode else None,
+        "files_changed_in_analysis_models_or_data_store_vs_deployment": difference,
+        "plain_verdict_per_product_median_ms": stats(plain)["median_ms"],
+    }
     result["peak_memory_mib_of_this_process"] = peak_memory_mib()
 
     out = HERE / f"performance_results_{args.tag}.json"
