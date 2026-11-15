@@ -223,7 +223,7 @@ def train(args, train_rows, valid_rows, report, provenance):
 
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
     torch.set_num_threads(min(4, os.cpu_count() or 2))
-    tokenizer = AutoTokenizer.from_pretrained(BASE, trust_remote_code=False)
+    tokenizer = AutoTokenizer.from_pretrained(BASE, trust_remote_code=False, use_fast=False)
     model = AutoModelForSequenceClassification.from_pretrained(
         BASE, trust_remote_code=False)
     label_map = [str(model.config.id2label[i]).lower() for i in range(3)]
