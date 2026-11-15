@@ -88,3 +88,51 @@ class Asp3Rules(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class KnownDefectsFoundOnLiveData(unittest.TestCase):
+    """Found on 2026-11-15 by reading explanations of real saved products on the production VM against their source reviews.
+
+    Each test states the CORRECT behaviour and currently fails (expectedFailure): the explanations were switched off on the live site
+    because of them. Fixing one is a new extractor candidate, to be evaluated on new data (research/product_specific_conclusions/phase3/).
+    The fragments are short phrases from public reviews; no reviewer is identified.
+    """
+
+    @unittest.expectedFailure
+    def test_not_used_yet_written_as_one_word_is_not_praise(self):
+        self.assertNotIn(("functionality", "positive"), claims("diko pa siya nagagamit .. Kaya diko sure kung goods ba siya"))
+
+    @unittest.expectedFailure
+    def test_ayaw_naman_gumana_is_a_complaint(self):
+        got = claims("ayaw nmn gumana sayang ung pera ko")
+        self.assertNotIn(("functionality", "positive"), got)
+        self.assertIn(("functionality", "negative"), got)
+
+    @unittest.expectedFailure
+    def test_a_quality_answer_of_cheap_is_not_praise_of_quality(self):
+        self.assertNotIn(("build", "positive"), claims("Quality:mura pero d quality"))
+
+    @unittest.expectedFailure
+    def test_not_very_satisfied_is_not_praise(self):
+        self.assertNotIn(("functionality", "positive"), claims("Functionality:not very satisfied."))
+
+    @unittest.expectedFailure
+    def test_a_wish_spelled_sna_is_not_a_durability_claim(self):
+        self.assertNotIn(("durability", "positive"), claims("Yung cord manipis sna tumagal, salamat seller"))
+
+    @unittest.expectedFailure
+    def test_sound_quality_is_not_build_quality(self):
+        self.assertNotIn(("build", "positive"), claims("easy to pair, easy to use, sound quality is good"))
+
+    @unittest.expectedFailure
+    def test_hearsay_fast_charger_in_a_complaint_about_slowness_is_not_praise(self):
+        text = "napakaraming nagsasabi na fast charger daw eh magkakauban nako sa bagal ng charger na to"
+        self.assertNotIn(("charging", "positive"), claims(text, category="charger_cable"))
+
+    @unittest.expectedFailure
+    def test_a_single_suggested_phrase_is_not_a_customer_statement(self):
+        self.assertEqual(claims("Durable plastic construction,"), set())
+
+    @unittest.expectedFailure
+    def test_a_legit_store_is_not_a_claim_about_the_product(self):
+        self.assertNotIn(("authenticity", "positive"), claims("The store is legit and will buy again in the future."))

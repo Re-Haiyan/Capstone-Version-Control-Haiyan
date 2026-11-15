@@ -171,7 +171,7 @@ def saved_detail():
     if not product:
         return jsonify({"error": "Product not found in the saved database."}), 404
     recommendations = rank_recommendations(product, catalog, limit=3)
-    shown = {**with_badge_view(product), "checked_with_current": _checked_with_current(product)}
+    shown = {**with_badge_view(product, aspects=True), "checked_with_current": _checked_with_current(product)}
     return jsonify({"product": shown, "recommendations": webapp._cards(recommendations)})
 
 
