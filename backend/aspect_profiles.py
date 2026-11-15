@@ -1271,7 +1271,7 @@ BAGS = (
 HOME_TEXTILE = (APPAREL[0],)
 # Supplements are not snacks: expiry and taste are relevant; food spoilage
 # terms and build durability should not be imported.
-SUPPLEMENTS = tuple(aspect for aspect in FOOD if aspect.id in {"taste", "expiry"}) + (
+SUPPLEMENTS = tuple(aspect for aspect in FOOD if aspect.id in {"taste", "expiry", "mixability"}) + (
     replace(BUILD, label="overall quality"),
 )
 

@@ -19,7 +19,7 @@ def load_products(path: Path) -> list[dict]:
     with gzip.open(path, "rt", encoding="utf-8") as handle:
         data = json.load(handle)
     if isinstance(data, list):
-        return [item for item in data if isinstance(item, dict)]
+        return [item.get("product", item) for item in data if isinstance(item, dict)]
     if isinstance(data, dict):
         for key in ("products", "data", "items"):
             if isinstance(data.get(key), list):

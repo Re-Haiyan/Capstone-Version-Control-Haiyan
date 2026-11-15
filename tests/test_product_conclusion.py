@@ -367,6 +367,8 @@ EXAMPLES = {
     "noise": ("small_appliance", "Maingay", "negative"),
     "power_use": ("small_appliance", "Tipid sa kuryente", "positive"),
     "fitment": ("motorcycle", "Hindi kasya", "negative"),
+    "storage": ("bags", "Very spacious", "positive"),
+    "zipper": ("bags", "Sira ang zipper", "negative"),
 }
 
 
