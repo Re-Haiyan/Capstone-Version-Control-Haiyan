@@ -122,3 +122,20 @@ jobs:
             ${{ runner.temp }}/safety_source_audit.json
             ${{ runner.temp }}/safety_source_audit.csv
           if-no-files-found: warn
+
+  phase4-intake:
+    name: Phase 4 data integrity (synthetic tests only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify privacy, disjointness, near-duplicates and sealed F2
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p "test_phase4_intake.py" -q
+      # Do not collect or upload raw Phase 4 reviews in CI. The tests are
+      # synthetic; historical CSV is read only to validate exclusions.
