@@ -86,6 +86,10 @@ python -m unittest discover -s tests -p 'test_phase4_intake.py' -q
 
 All synthetic text in the test file exists **solely to test the intake gates**. Real Phase 4 research metrics require independently sourced records and cannot be filled from these examples.
 
+## Source eligibility follow-up (2026-11-15)
+
+See [SOURCE_OPTIONS.md](SOURCE_OPTIONS.md) for the license/schema review of FiReCS, SentiTaglish, TagaSenti and the product-listing metadata sample. None supplies the verifiable per-listing identity required to populate actual D3/V3/F2 in this workflow. The original 182-product database still requires a separately documented rights decision and lacks non-gadget coverage. The `supply_audit.py` split counts are **URL-proxy estimates only**: the real intake hashes canonical `listing_id` values and may assign a different split. Do not mark any estimated reviews accepted, annotated, or validated.
+
 ## Status audit, 2026-11-15 (Claude Code session; supply estimate only, no data collected)
 
 **Still zero accepted Phase 4 reviews. D3, V3 and F2 were not created, nothing was annotated, no candidate (C6 to C9) was developed or scored, and C3 remains the baseline (T1 precision 0.852, recall 0.371, F1 0.517 against a single AI-assisted reference).**
@@ -99,7 +103,7 @@ What was checked: the only locally held source of real marketplace reviews is th
 | Products not matching any Phase 3 product | 156 (152 with surviving reviews) |
 | Reviews in those products | 18,842 |
 | Dropped as historical-text duplicates / within-supply duplicates | 955 / 926 |
-| Surviving reviews if rights were confirmed (D3 / V3 / F2 by the frozen product hash) | 9,409 / 3,768 / 3,784 (79 / 36 / 37 products) |
+| Illustrative split counts using a URL-based proxy (NOT accepted D3/V3/F2 and NOT guaranteed to match canonical listing-ID assignments) | 9,409 / 3,768 / 3,784 (79 / 36 / 37 products) |
 
 Why this does not start Phase 4:
 
