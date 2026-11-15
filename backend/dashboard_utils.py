@@ -7,13 +7,16 @@ import csv
 import io
 import json
 import math
+import os
 import re
 import sys
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
+import aspects as aspect_evidence
 import category_copy
+import conclusion_text
 
 
 ROOT = Path(__file__).resolve().parent
@@ -916,8 +919,11 @@ def _verdict_detail(state: str, verdict: dict[str, Any], badges: list[dict[str, 
 # shoppers' outcomes, which is why the wording says what reviewers report and never promises anything.
 CONCLUSION_RECOMMEND_SHARE = 0.75  # at least this share of reviewers positive ...
 CONCLUSION_RECOMMEND_BOUND = 0.65  # ... and the lower bound of that share (small samples) at least this
-CONCLUSION_MIXED_SHARE = 0.5  # below this, most reviewers were not happy
+CONCLUSION_MIXED_SHARE = 0.5  # below this share of positive reviews the decision is not_recommended (a threshold on POSITIVE reviews only; the wording uses the real shares)
 CONCLUSION_NOTICE = "This is a guide from public reviews, not proof or a guarantee."
+# An operator's off-switch for the product-specific reasons (read once at start): DEFAKETIVE_CONCLUSION_REASONS=0 puts every
+# product page back on the plain conclusion without a redeploy. The decision and the verdict are the same either way.
+REASONS_ENABLED = os.environ.get("DEFAKETIVE_CONCLUSION_REASONS", "0").strip().lower() not in ("0", "off", "false", "no")
 
 
 def _sentiment_shares(summary: dict[str, Any]) -> dict[str, float] | None:
@@ -970,49 +976,51 @@ def _join_phrases(phrases: list[str]) -> str:
 def _conclusion_words(
     decision: str,
     usable: int,
-    positive: float | None,
+    shares: dict[str, float] | None,
     mentions: dict[str, int],
     closing: str | None,
     words: dict[str, Any] | None = None,
 ) -> dict[str, str]:
-    """The lead sentence, paragraph and side note of the conclusion card."""
+    """The lead sentence, paragraph and side note of the conclusion card when no review text is available to explain it.
+
+    The mood is described from the real positive, neutral and negative shares (conclusion_text.mood_sentence), never
+    inferred from one of them: a product that is 25% positive, 65% neutral and 10% negative is not "mostly negative".
+    """
     issues = _issue_phrases(mentions, words)
+    positive = shares["positive"] if shares else None
+    negative = shares["negative"] if shares else None
     happy = positive is not None and positive >= CONCLUSION_RECOMMEND_SHARE
+    serious = any(mentions.get(name) for name in ("safety", "counterfeit", "defect"))
     if decision == "not_enough":
         lead = "There are not enough reviews to say whether this product is worth buying."
         note = category_copy.ASSESSMENT_NOTE["not_enough"]
     elif decision == "recommended":
-        lead = "According to the reviews, this product is generally well-received."
+        lead = "Reviews of this product are generally favorable."
         note = category_copy.ASSESSMENT_NOTE["recommended"]
     elif decision == "mixed":
-        lead = "According to the reviews, opinions on this product are mixed."
+        lead = "Opinions on this product are mixed."
         note = category_copy.ASSESSMENT_NOTE["mixed"]
     elif decision == "not_recommended":
-        lead = "According to the reviews, this product is not recommended."
-        note = category_copy.ASSESSMENT_NOTE["not_recommended"]
-    else:
-        lead = (
-            "According to the reviews, this product is generally well-received, but some concerns were reported."
-            if happy
-            else "According to the reviews, think twice before buying this product."
+        lead = "Reviews advise against buying this product."
+        note = (
+            category_copy.ASSESSMENT_NOTE["not_recommended"]
+            if negative is not None and negative > 0.5
+            else "Serious problems were reported." if serious else "Few reviews were positive."
         )
+    else:
+        lead = "Reviews are generally favorable, but some concerns were reported." if happy else "Think twice before buying this product."
         note = category_copy.ASSESSMENT_NOTE["caution_happy" if happy else "caution_unhappy"]
     if decision == "not_enough":
         paragraph = f"Only {_review_count(usable)} could be analyzed, which is too few to say whether this product is worth buying."
-    elif positive is None:
-        paragraph = f"According to the {usable} customer reviews analyzed, the reviews could not be summarized as positive or negative."
     else:
-        feeling = "predominantly positive" if happy else ("mixed" if positive >= CONCLUSION_MIXED_SHARE else "mostly negative")
-        paragraph = f"According to the {usable} customer reviews analyzed, this product has received {feeling} feedback ({round(positive * 100)}%)."
+        paragraph = conclusion_text.mood_sentence(shares, usable)
     if issues:
         paragraph += (" However, some" if happy else " Some") + f" reviewers reported issues such as {_join_phrases(issues)}."
     default_closing = {
-        "recommended": "Overall, the reviews suggest a satisfactory experience for most users.",
-        "mixed": "Overall, opinions are mixed, so read the reported issues before deciding.",
-        "caution": "Overall, the reviews suggest a satisfactory experience for most users, but potential buyers are encouraged to review the reported issues before purchasing."
-        if happy
-        else "Overall, potential buyers are encouraged to review the reported issues before purchasing.",
-        "not_recommended": "Overall, the reviews advise against buying this product.",
+        "recommended": "Individual results may vary.",
+        "mixed": "Experiences differ, so read the reported issues before deciding.",
+        "caution": "Read the reported issues before purchasing.",
+        "not_recommended": "Read the reported issues before deciding.",
         "not_enough": "",
     }[decision]
     closing = default_closing if closing is None else closing
@@ -1035,7 +1043,7 @@ def _conclusion(
             "decision": decision,
             "headline": headline,
             "text": text,
-            **_conclusion_words(decision, usable, positive, mentions, closing, words),
+            **_conclusion_words(decision, usable, shares, mentions, closing, words),
             "points": points,
             "basis": {
                 "reviews": usable,
@@ -1051,6 +1059,9 @@ def _conclusion(
         if shares
         else None
     )
+    # "most reviewers were not happy" is said only when the negative share is a majority; a low positive share can
+    # just as well mean that most reviews were neutral.
+    unhappy = "most reviewers were negative" if negative is not None and negative > 0.5 else "few reviewers were positive"
     points = [f"{reviews} analyzed"] + ([mood] if mood else [])
     if state == "insufficient_evidence":
         return build(
@@ -1073,7 +1084,7 @@ def _conclusion(
             return build(
                 "not_recommended",
                 "Not recommended",
-                "Based on the reviews of this product, we advise against buying it: most reviewers were not happy and "
+                f"Based on the reviews of this product, we advise against buying it: {unhappy} and "
                 "some report possible safety problems.",
                 found,
             )
@@ -1094,7 +1105,7 @@ def _conclusion(
             return build(
                 "not_recommended",
                 "Not recommended",
-                "Based on the reviews of this product, we advise against buying it: most reviewers were not happy and "
+                f"Based on the reviews of this product, we advise against buying it: {unhappy} and "
                 "many report a fake item or a defect.",
                 points + problems,
             )
@@ -1158,8 +1169,89 @@ def product_group(product: dict[str, Any]) -> str | None:
         return None
 
 
-def badge_view(product: dict[str, Any]) -> dict[str, Any]:
-    """Turn a product's badge summary into what the screen shows."""
+def product_category_of(product: dict[str, Any]) -> str | None:
+    """The product's category (haircare, phone, audio ...): the saved one, or read again from its title."""
+    saved = product.get("product_category")
+    if saved:
+        return str(saved)
+    try:
+        _ensure_sentiment_path()
+        from defaketive_sentiment.product_category import classify_listing
+
+        return classify_listing({"name": str(product.get("name") or "")})
+    except Exception:
+        return None
+
+
+def _ground_conclusion(
+    conclusion: dict[str, Any] | None,
+    product: dict[str, Any],
+    summary: dict[str, Any],
+    state: str,
+    badges: list[dict[str, Any]],
+    usable: int,
+    words: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Explain the decision with what reviewers actually wrote about the product (aspects.py, conclusion_text.py).
+
+    Only the words change: the decision, headline, points, basis and notice stay as _conclusion made them. A product
+    saved without its review text keeps the plain wording, and any failure here also does (a report is never lost over
+    its explanation).
+    """
+    comments = product.get("comments")
+    if not conclusion or not isinstance(comments, list) or not comments:
+        return conclusion
+    try:
+        category, group = product_category_of(product), product_group(product)
+        result = aspect_evidence.cached_extract(str(product.get("link") or ""), comments, category, group)
+        mentions = {badge["category"]: int(badge.get("mentions") or 0) for badge in badges}
+        from aspect_profiles import noun_for
+
+        composed = conclusion_text.compose(
+            decision=conclusion["decision"],
+            state=state,
+            usable=usable,
+            shares=_sentiment_shares(summary),
+            mentions=mentions,
+            result=result,
+            noun=noun_for(category, group),
+            hazards=words["hazards"],
+            recommend_share=CONCLUSION_RECOMMEND_SHARE,
+        )
+        if composed is None:
+            return conclusion
+        grounded = {
+            **conclusion,
+            "lead": composed["lead"],
+            "summary": composed["summary"],
+            "body": composed["body"],  # the paragraph without the hazard sentences ...
+            "warnings": composed["warnings"],  # ... which come on their own, so the card can set them apart
+            "evidence_status": composed["evidence_status"],
+        }
+        if composed.get("assessment_note"):
+            grounded["assessment_note"] = composed["assessment_note"]
+        grounded["evidence"] = {
+            "status": composed["evidence_status"],
+            "reviews_considered": result["reviews_considered"],
+            "product_reviews": result["product_reviews"],
+            "service_reviews": result["service_reviews"],
+            "not_used_yet_reviews": result["not_used_yet_reviews"],
+            "skipped_clauses": result["skipped_clauses"],
+            "rules_version": result["version"],
+            "category": category,
+            "why": conclusion_text.why_items(result, usable),
+        }
+        return grounded
+    except Exception:
+        return conclusion
+
+
+def badge_view(product: dict[str, Any], aspects: bool = False) -> dict[str, Any]:
+    """Turn a product's badge summary into what the screen shows.
+
+    `aspects=True` also reads the product's review text for what reviewers praise and criticise (product page only:
+    list views never pay for it).
+    """
     summary = product.get("sentiment_summary") or {}
     if not is_badge_summary(summary):
         return {
@@ -1207,13 +1299,15 @@ def badge_view(product: dict[str, Any]) -> dict[str, Any]:
         "labels": _labels(words),
         "limits_notice": summary.get("limits_notice"),
         "safety_check_accuracy": SAFETY_CHECK_ACCURACY,
-        "conclusion": _conclusion(summary, state, badges, usable, words),
+        "conclusion": _ground_conclusion(_conclusion(summary, state, badges, usable, words), product, summary, state, badges, usable, words)
+        if aspects and REASONS_ENABLED
+        else _conclusion(summary, state, badges, usable, words),
     }
 
 
-def with_badge_view(product: dict[str, Any]) -> dict[str, Any]:
+def with_badge_view(product: dict[str, Any], aspects: bool = False) -> dict[str, Any]:
     """Return a shallow copy of a product carrying its display view."""
-    return {**product, "badge_view": badge_view(product)}
+    return {**product, "badge_view": badge_view(product, aspects)}
 
 
 def review_rows(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
