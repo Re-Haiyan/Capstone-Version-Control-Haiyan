@@ -48,6 +48,21 @@ def entry(item: dict) -> mod.Entry:
     return mod.parse_entry(item, 1)
 
 
+def distinct_review(listing_id: str, number: int = 1) -> str:
+    """Differ in several actual tokens, not just a product number.
+
+    Otherwise a correctly strict >=0.80 Jaccard filter would remove
+    different synthetic examples and make the test incorrectly expect 50.
+    """
+    code = listing_id.replace("-", "") + str(number)
+    return (
+        "Synthetic product experience with specific usage and observed quality: "
+        f"applause{code} roughness{code} compactness{code} durability{code} "
+        f"comfort{code} alignment{code} "
+        "after daily use in a comparison with an older item"
+    )
+
+
 def fake_history(texts=(), titles=(), hashes=()):
     index = mod.OverlapIndex()
     for text in texts:
@@ -163,8 +178,7 @@ class SplitAndOverlap(unittest.TestCase):
             for index in (1, 2):
                 inputs.append(entry(raw(
                     listing_id=key,
-                    review_text=f"Synthetic test review number {index} for {key} "
-                                f"with visible evidence of heating speed and build quality",
+                    review_text=distinct_review(key, index),
                 )))
         result = mod.build(inputs, fake_history())
         product_places = {}
@@ -179,8 +193,7 @@ class SplitAndOverlap(unittest.TestCase):
         inputs = [
             entry(raw(
                 listing_id=f"new-synthetic-{i}",
-                review_text=f"A well constructed synthetic example number {i} for clear "
-                            f"category boundary checking and deduplication testing",
+                review_text=distinct_review(f"new-synthetic-{i}"),
             ))
             for i in range(30)
         ]
@@ -205,8 +218,7 @@ class SealedOutputs(unittest.TestCase):
         inputs = [
             entry(raw(
                 listing_id=key,
-                review_text=f"Evidence for synthetic development check {key} gives enough "
-                            "context to describe whether the item works well",
+                review_text=distinct_review(key),
             )) for key in keys
         ]
         out = mod.build(inputs, fake_history())
