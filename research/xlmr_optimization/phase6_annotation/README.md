@@ -10,10 +10,12 @@ This change **does not turn all AI labels into verified ground truth**. It finds
 
 Public GitHub Actions produces a metadata-only artifact:
 
-- \`annotation_quality_report.json\`: complete counts and flag coverage, no customer text
-- \`all_3400_quality_registry.csv\`: one row per development review ID, original Claude label, risk flags/priority, and \`unverified_ai_label\` status; no review text
-- \`priority_ids.csv\`: reproducible prioritized review IDs, no text
-- \`priority_coordinator_only.csv\`: Claude and GPT-6 decisions (when present), flags and blank human-adjudication fields; do NOT share it with a blind annotator
+A separate deterministic **200-review simple-random quality-control sample** is also generated from the 3,400-row development pool. Its IDs appear in `random_quality_sample_ids.csv`; GitHub Actions never uploads the full customer review text.
+
+- `annotation_quality_report.json`: complete counts and flag coverage, no customer text
+- `all_3400_quality_registry.csv`: one row per development review ID, original Claude label, risk flags/priority, and `unverified_ai_label` status; no review text
+- `priority_ids.csv`: reproducible prioritized review IDs, no text
+- `priority_coordinator_only.csv`: Claude and GPT-6 decisions (when present), flags and blank human-adjudication fields; do NOT share it with a blind annotator
 
 All IDs, source labels and rationale fields are validated against their original CSV sources; the script also checks that no source text, product title, language, platform or category was altered. Mixed tags and aspect requirements are checked under v1. Every original row remains individually traceable.
 
@@ -36,26 +38,26 @@ In a **private authorized local checkout**, run:
     python research/xlmr_optimization/phase6_annotation/annotation_quality.py --export-blind-text --output /private/defaketive-qa
 
 It produces the metadata files plus:
-- \`all_3400_blind_review.csv\`: all 3,400 review texts, titles and blank annotation fields
-- \`priority_blind_review.csv\`: up to 480 risk-enriched reviews, blank sentiment/tags/aspects/confidence/rationale and no Claude/GPT-6 labels, star ratings or predictions
+- `all_3400_blind_review.csv`: all 3,400 review texts, titles and blank annotation fields
+- `priority_blind_review.csv`: up to 480 risk-enriched reviews, blank sentiment/tags/aspects/confidence/rationale and no Claude/GPT-6 labels, star ratings or predictions
 
-The 71 previously documented cross-AI disagreements are guaranteed in the priority packet, plus a reproducible sample of ordinary controls, while varying product titles and languages. The prioritized packet is **not** a random estimate of overall AI-label error. Reviewers must read the entire source review and work blind; coordinator should not reveal risk flags or earlier model outputs until after labels are locked.
+The 71 previously documented cross-AI disagreements are guaranteed in the priority packet, plus a reproducible sample of ordinary controls, while varying product titles and languages. A separate `random_blind_review.csv` containing the 200 source texts and blank labels is exported **locally only**, alongside the risk-prioritized and all-row sheets. The prioritized packet is **not** a random estimate of overall AI-label error. Reviewers must read the entire source review and work blind; coordinator should not reveal risk flags or earlier model outputs until after labels are locked.
 
-A suitably authorized reviewer can fill \`priority_blind_review.csv\` and, without changing any source sheet, validate the submitted work locally:
+A suitably authorized reviewer can fill `priority_blind_review.csv` and, without changing any source sheet, validate the submitted work locally:
 
     python research/xlmr_optimization/phase6_annotation/review_submission.py \
        --blind-original /private/defaketive-qa/priority_blind_review.csv \
        --completed /private/defaketive-qa/priority_blind_review_completed.csv \
        --output /private/defaketive-qa/proposed_reannotation_overlay.csv
 
-Completed rows must have one of the approved policy-v1 labels/tags, aspects for Mixed, rationale, high/low confidence, reviewer ID, self-declared reviewer type (human or AI), and policy version \`v1\` or \`v2-draft\`. They are stored as **proposed_not_adjudicated** in a separate overlay. Claimed reviewer type is self-reported, not automatically verified. A v2-draft decision is not an approved v2 reference.
+Completed rows must have one of the approved policy-v1 labels/tags, aspects for Mixed, rationale, high/low confidence, reviewer ID, self-declared reviewer type (human or AI), and policy version `v1` or `v2-draft`. They are stored as **proposed_not_adjudicated** in a separate overlay. Claimed reviewer type is self-reported, not automatically verified. A v2-draft decision is not an approved v2 reference.
 
 ## Mandatory quality gates before using reviewed labels
 
 - Confirm research adviser/team decision about S4 (buyer-selected vs auto-generated tags); use a separately versioned and approved policy if meaning changes
 - Obtain independent blinded human/second-source labels and a documented adjudication for disagreements, not majority vote between GPT-6 and Claude
 - Check *natural source distribution* and class/language supports; do not count reviewer-selected tag templates as natural Filipino/Taglish Neutral opinions
-- Keep \`annotation_policy.md\` v1, original sheets, final-test refs and previously scored confirmation immutable
+- Keep `annotation_policy.md` v1, original sheets, final-test refs and previously scored confirmation immutable
 - Do not train/tune to the already used 140 disagreement labels or previously scored confirmation; no candidate deployment without independent authorized product-disjoint test
 - Do not describe proposed, automatically flagged or AI-reviewed rows as independently human-validated labels
 
@@ -64,3 +66,7 @@ Completed rows must have one of the approved policy-v1 labels/tags, aspects for 
 No scraping was performed. No new human annotations were invented. The source contains 3,400 development rows and a separate 140-case second GPT-6 opinion; the frozen final test and confirm are integrity-guarded only. Complete quality auditing is **not** equivalent to complete human reannotation. The priority-review packet is deliberately biased toward difficult examples. An unauthorized scrape cannot substitute for a genuinely new test set.
 
 The legitimate improvement is reproducible, source-locked **full coverage**, explicit uncertainty, reviewer blinding, provenance validation and a safe pipeline for future corrections—not an invented F1 gain.
+
+## Distinct purposes of the two samples
+
+The 480-review risk queue is enriched for contradictions and therefore cannot estimate an overall error rate. The 200-review simple-random quality-control sample is designed for unbiased assessment **only within the already selected 3,400-row development pool**, after a truly independent blind reviewer labels it. Because the original 3,000-row candidate pool was intentionally selected for potential Neutral examples, neither sample estimates natural marketplace prevalence or supplies an independent model test.

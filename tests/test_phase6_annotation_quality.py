@@ -89,6 +89,14 @@ class Phase6AnnotationTests(unittest.TestCase):
         self.assertEqual(len({r["id"] for r in selected}),len(selected))
         self.assertEqual(sum("ai_disagreement" in r["flags"] for r in selected),71)
 
+    def test_random_annotation_quality_sample_is_reproducible(self):
+        samples=[row(label="positive",flags=[],group=f"title-{i}",rid=f"N{i:04d}")
+                 for i in range(300)]
+        a=qa.select_random_quality_sample(samples,maximum=80)
+        b=qa.select_random_quality_sample(list(reversed(samples)),maximum=80)
+        self.assertEqual([r["id"] for r in a],[r["id"] for r in b])
+        self.assertEqual(len(set(r["id"] for r in a)),80)
+
     def test_blind_packet_has_no_existing_labels_or_model_results(self):
         r=qa.blind_row(row())
         self.assertEqual(r["sentiment"],"")
@@ -104,6 +112,8 @@ class Phase6AnnotationTests(unittest.TestCase):
             output=qa.emit(data,p,protected=13,maximum=140)
             self.assertFalse((p/"all_3400_blind_review.csv").exists())
             self.assertFalse((p/"priority_blind_review.csv").exists())
+            self.assertFalse((p/"random_blind_review.csv").exists())
+            self.assertTrue((p/"random_quality_sample_ids.csv").exists())
             self.assertTrue((p/"priority_ids.csv").exists())
             self.assertEqual(output["full_blind_review_packet_rows"],0)
             self.assertEqual(output["eligible_for_local_blind_export"],150)

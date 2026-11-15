@@ -277,6 +277,17 @@ def select_priority_review(rows, maximum=480, cap_per_title=6):
     return selected
 
 
+def select_random_quality_sample(rows, maximum=200):
+    """Pre-declared simple random sample for ANNOTATION quality, not model test.
+
+    This is representative only of the 3,400-row selected development pool,
+    which itself is not representative of marketplace natural prevalence.
+    """
+    rng = random.Random(20261115)
+    ordered = sorted(rows, key=lambda r: r["id"])
+    return rng.sample(ordered, min(maximum, len(ordered)))
+
+
 def write_csv(path: Path, fieldnames, rows):
     with path.open("w",encoding="utf-8",newline="") as handle:
         writer = csv.DictWriter(handle,fieldnames=fieldnames)
@@ -299,6 +310,7 @@ def blind_row(row):
 def emit(rows, out_dir: Path, protected: int, maximum=480, export_blind_text=False):
     out_dir.mkdir(parents=True,exist_ok=True)
     selected = select_priority_review(rows, maximum=maximum)
+    random_sample = select_random_quality_sample(rows, maximum=200)
     chosen = {r["id"] for r in selected}
     by_flag = collections.Counter(flag for r in rows for flag in r["flags"])
     by_label = collections.Counter(r["label"] for r in rows)
@@ -317,6 +329,9 @@ def emit(rows, out_dir: Path, protected: int, maximum=480, export_blind_text=Fal
         "counts_by_flag": dict(sorted(by_flag.items())),
         "counts_by_language_and_label": {"/".join(k):v for k,v in sorted(by_lang_label.items())},
         "priority_blind_review_packet_rows": len(selected),
+        "random_quality_audit_sample_rows": len(random_sample),
+        "random_priority_overlap": len({r["id"] for r in random_sample} & chosen),
+        "random_sample_scope": "Selected 3400-row AI-labelled development pool, NOT natural marketplace population",
         "priority_blind_packet_flag_coverage": dict(sorted(included.items())),
         "full_blind_review_packet_rows": len(rows) if export_blind_text else 0,
         "full_blind_text_exported": export_blind_text,
@@ -348,12 +363,16 @@ def emit(rows, out_dir: Path, protected: int, maximum=480, export_blind_text=Fal
     ])
     write_csv(out_dir/"priority_ids.csv",["id","split"],[
         {"id":r["id"],"split":r["split"]} for r in selected])
+    write_csv(out_dir/"random_quality_sample_ids.csv",["id","split"],[
+        {"id":r["id"],"split":r["split"]} for r in random_sample])
     if export_blind_text:
         blind_fields=list(blind_row(rows[0]))
         write_csv(out_dir/"all_3400_blind_review.csv",blind_fields,[
             blind_row(r) for r in sorted(rows,key=lambda r:r["id"])])
         write_csv(out_dir/"priority_blind_review.csv",blind_fields,[
             blind_row(r) for r in selected])
+        write_csv(out_dir/"random_blind_review.csv",blind_fields,[
+            blind_row(r) for r in random_sample])
     coordinator_fields=["id","split","original_Claude_label","second_GPT6_label","language",
                         "priority","flags","current_status","human_adjudicated_label",
                         "adjudicator_id","adjudication_policy","adjudication_date"]
