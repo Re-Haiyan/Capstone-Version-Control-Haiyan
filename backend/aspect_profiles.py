@@ -1269,6 +1269,9 @@ BAGS = (
 )
 # A bedsheet has fabric characteristics, not clothing fit-and-sizing.
 HOME_TEXTILE = (APPAREL[0],)
+# Cables and wall chargers still have charging performance and overheating
+# reports; omitting the entire powerbank profile lost real review evidence.
+CHARGER_CABLE = tuple(aspect for aspect in POWERBANK if aspect.id in {"charging", "overheating"})
 # Supplements are not snacks: expiry and taste are relevant; food spoilage
 # terms and build durability should not be imported.
 SUPPLEMENTS = tuple(aspect for aspect in FOOD if aspect.id in {"taste", "expiry", "mixability"}) + (
@@ -1287,6 +1290,7 @@ PROFILES: dict[str, tuple[Aspect, ...]] = {
     "bags": BAGS,
     "home_textile": HOME_TEXTILE,
     "supplements": SUPPLEMENTS,
+    "charger_cable": CHARGER_CABLE,
     "footwear": FOOTWEAR,
     "food": FOOD,
     "appliance": APPLIANCE,
@@ -1302,7 +1306,7 @@ CATEGORY_PROFILE = {
     "tablet": "phone",
     "audio": "earbuds",
     "powerbank": "powerbank",
-    "charger_cable": "general",
+    "charger_cable": "charger_cable",
     "battery_solar": "general",
     "apparel": "apparel",
     "bags": "bags",
@@ -1330,6 +1334,7 @@ NOUNS: dict[str, tuple[str, bool]] = {
     "bags": ("bag", False),
     "home_textile": ("home textile", False),
     "supplements": ("supplement", False),
+    "charger_cable": ("charger or cable", False),
     "footwear": ("pair of shoes", False),
     "food": ("food product", False),
     "appliance": ("appliance", False),

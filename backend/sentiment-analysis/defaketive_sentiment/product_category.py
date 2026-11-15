@@ -263,7 +263,7 @@ _SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
         ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
         ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),
         ("skincare", r"\b(?:face\s+serum|skin\s+serum|serums?|sunscreens?|sunblocks?|moisturi[sz]ers?|facial\s+cleansers?|face\s+wash)\b"),
-        ("health_supplements", r"\b(?:whey(?:\s+protein)?|protein\s+(?:powders?|isolates?|concentrates?)|mass\s+gainers?|creatine|bcaa|pre[- ]workout)\b"),
+        ("health_supplements", r"\b(?:whey(?:\s+protein)?|isolate\s+protein|protein\s+(?:powders?|isolates?|concentrates?)|mass\s+gainers?|creatine|bcaa|pre[- ]workout|ceelin\s+gummies|centrum\s+silver)\b"),
     )
 )
 # The head of a title ends at the first of these: what follows is what the product comes with or fits.
@@ -294,12 +294,22 @@ def classify_listing(listing: Any) -> str:
         return OTHER
     title = listing.get("name") if isinstance(listing, dict) else listing
     title = _PROMO.sub(" ", str(title or ""))
+    # A single wash-and-shampoo product can have a literal ampersand in its name.
+    # Splitting at "&" would otherwise classify a baby shampoo by "baby" only.
+    if re.search(r"\bwash\s*(?:&|and)\s*shampoo\b", title, re.I):
+        return "haircare"
     # The head first, then each later part, then the whole title: a title that opens with a shop name or a slogan
     # ("Official Store | Tapo C200C WiFi IP Camera") is read from the first part that names a product.
     segments = [part for part in _HEAD_END.split(title) if part.strip()]
     head = segments[0] if segments else title
     for name, pattern in _SPECIFIC_TITLE_RULES:
         if pattern.search(head):
+            # A lipstick CASE or a whey-protein SHAKER is an accessory, not
+            # necessarily the makeup/supplement it names.
+            if name == "makeup" and re.search(r"\blip\s?sticks?\s+(?:case|holder|organizer|storage)\b", head, re.I):
+                continue
+            if name == "health_supplements" and re.search(r"\b(?:(?:shaker|cup|bottle)\s+(?:for\s+)?(?:whey|protein)|(?:whey|protein)\s+(?:shaker|cup|bottle))\b", head, re.I):
+                continue
             return name
     for text in (*segments, title):
         for name, pattern in _COMPILED:

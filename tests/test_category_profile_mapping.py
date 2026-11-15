@@ -26,7 +26,6 @@ class CategoryProfileMappingTests(unittest.TestCase):
 
     def test_categories_do_not_inherit_unrelated_product_profiles(self) -> None:
         for category, group in (
-            ("charger_cable", "electronics"),
             ("battery_solar", "electronics"),
             ("kitchen_dining", "home_living"),
             ("tv_display", "electronics"),
@@ -38,6 +37,11 @@ class CategoryProfileMappingTests(unittest.TestCase):
         self.assertEqual(profiles.profile_key(None, "automotive_tools"), "general")
         self.assertEqual(profiles.profile_key(None, "fashion"), "general")
         self.assertEqual(profiles.profile_key("motorcycle", "automotive_tools"), "motorcycle")
+        self.assertEqual(profiles.profile_key("charger_cable", "electronics"), "charger_cable")
+        cable = {aspect.id for aspect in profiles.aspects_for("charger_cable", "electronics")}
+        self.assertIn("charging", cable)
+        self.assertIn("overheating", cable)
+        self.assertNotIn("capacity", cable)
         self.assertEqual(profiles.profile_key("apparel", "fashion"), "apparel")
 
     def test_supplements_do_not_inherit_snack_spoilage_or_build_durability(self) -> None:
