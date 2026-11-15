@@ -3,8 +3,7 @@
 The panel asked that every analysed product carry a conclusion that says whether customers recommend it **and why**, from the actual reviews,
 without inventing anything. This folder is the technical record of the feature that does that.
 
-Written for: the capstone team and the review panel. Status: **built and tested; ready for staging, not for production; one local commit (ec0b53c), nothing
-pushed, merged or deployed.** Start with `final_report.md`; the production checklist is `deployment_readiness.md`.
+Written for: the capstone team and the review panel. Status: **built and tested; Phase 3 pushed to `feature/product-specific-conclusions` at `2529f8b`; ready for staging, NOT ready for production. No staging or production deployment has been completed.** Start with `final_report.md`; the production checklist is `deployment_readiness.md`.
 
 ## What it does, in one paragraph
 

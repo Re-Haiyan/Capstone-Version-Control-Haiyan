@@ -11,7 +11,7 @@ who wrote the rules, two have had none, the Azure VM has not measured the featur
 not formalities: they are the evidence the panel's requirement ("explain why, from actual review evidence, without inventing claims")
 rests on beyond the mechanical checks.
 
-One local commit exists (ec0b53c); nothing was pushed, merged or deployed. No database, model, checkpoint, evaluation set or production service was touched.
+Phase 3 is pushed on `feature/product-specific-conclusions` at commit `2529f8bfdcb4b828b0e17ae87179e718576550de`. The report does not establish any staging or production deployment. The frozen evaluation and extractor remain unchanged; do not infer production readiness from a successful push.
 The only things done to the production VM were read-only: `git log`, `nproc`, `free`, `uptime`, `lscpu`, and one one-second CPU
 micro-benchmark at the lowest priority (a temp file, removed afterwards).
 
@@ -72,4 +72,4 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 
 ## Who must act
 
-Someone with write access to the GitHub repository must push the branch (this PC's login gets a 403), and the team must decide whether to commit this work to the `deployment` branch. Neither was done.
+The feature branch is already pushed. The team must provision an isolated staging environment, run the pinned-commit checks and sync dry run, collect independent human evaluations and fresh category data, and record a written recommendation-policy decision. Do not merge into `deployment` or `main` or enable production until the gates above are met.
