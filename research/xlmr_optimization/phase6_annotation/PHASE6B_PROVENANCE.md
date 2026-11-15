@@ -1,0 +1,9 @@
+# Phase 6B second AI review provenance (NOT human adjudication)
+
+Timestamp: 2026-11-15. This ChatGPT GPT-6 pass read full original development-source review text and product title for each of 54 IDs, not stars or model predictions. The fixed ID roster was committed first at `1eb7c680fb9dc803533b6597bce49931502035bf`. The two original-source files were fetched for text inspection; **Claude per-ID output sheets were not fetched for these IDs during this pass**. Existing conversation history may have exposed earlier annotations for some specific reviews, so this is **not a strictly independent blind study** and must not be described as such.
+
+Policy: frozen `annotation_policy.md` v1, including S1 dominated mixed, S2 delivery-only, S3 okay-lang and S4 feature descriptions without personal evaluation. In template-shaped positive adjectives whose authorship was uncertain, `neutral`/`no-opinion` was used with low confidence instead of assuming marketplace tags are verified customer opinion. Full review endings are considered, including personal defects, and positive-negation language such as *hindi mabilis malowbat* is interpreted correctly. Actual personal visual/price opinions can be positive even when the product is not yet fully tested; such decisions are marked low confidence.
+
+A full additional AI-pass opinion is **not a verified correction**. Do not directly replace any 3,400 historic Claude labels or claim independent human annotation or positive class accuracy gain. After this labels file is committed, a separate scorer can compare it against Claude labels, classify disagreements, and produce `proposed_only` overlays. Earlier GPT-6 140 reviewed cases were excluded from this 54-ID roster. This selection is risk-enriched, not random, and cannot estimate natural-marketplace error.
+
+No frozen 400 test/Phase 3 confirmation/heldout v2 used. No S4 v2 approval presumed. No product conclusion or model artifact changed.

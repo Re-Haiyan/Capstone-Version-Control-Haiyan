@@ -1,0 +1,34 @@
+name: Phase 6B reviewed labels comparison (research only)
+on:
+  push:
+    branches:
+      - research/phase6b-blind-targeted-review-20261115
+  pull_request:
+    branches:
+      - research/neutral-phase2
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  phase6b-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate second-AI provenance, preserved source and agreement arithmetic
+        run: |
+          python -m unittest discover -s tests -p 'test_phase6b_comparison.py' -v
+      - name: Compare 54 locked second-AI development labels and generate proposed overlays
+        run: |
+          python research/xlmr_optimization/phase6_annotation/compare_phase6b.py \
+            --output /tmp/phase6b-review
+      - name: Save metadata-only proposed corrections, not reference-label replacements
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase6b-review-comparison
+          path: /tmp/phase6b-review/
+          retention-days: 7
+          if-no-files-found: error
