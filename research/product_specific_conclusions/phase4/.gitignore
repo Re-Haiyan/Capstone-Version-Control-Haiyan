@@ -1,0 +1,12 @@
+# Defense in depth. Real Phase 4 reviews and F2 must be OFF-REPO.
+# These ignores do not substitute for restricted storage or access control.
+/private/
+/data/
+/raw/
+/vault/
+/outputs/
+/*.jsonl
+/D3.csv
+/V3.csv
+/F2*.csv
+/manifest.json

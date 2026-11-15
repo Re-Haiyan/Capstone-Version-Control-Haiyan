@@ -1,0 +1,38 @@
+# Product-specific conclusions: release gates and owner handoff
+
+**Updated:** 2026-11-15. **Scope:** `feature/product-specific-conclusions`, not the deployed site.
+
+## Current decision
+
+**STAGING CANDIDATE ONLY — PRODUCTION BLOCKED.** Owner selected an AI-only exploratory evaluation on 2026-11-15, with the limitations recorded in `ai_annotation/gpt6_qa_20261115/`. This avoids assigning human annotators for the chosen study; it does **not** constitute an independent reference benchmark or production approval. Phase 3 C3 is the frozen research baseline, not proof of product-level completeness. Fresh non-electronics F (104 reviews) measured product-feature precision **0.852**, recall **0.371**, F1 **0.517**. These are *single Claude-assisted reference* scores, not independently human verified. Do not claim the goal of >=0.80 precision, recall and F1 was met. No staging environment or production deployment has been demonstrated.
+
+## Gates, in order
+
+| Gate | Required evidence | Current status |
+| --- | --- | --- |
+| 1. Research integrity | Historical locked pack, D1/D2/F and frozen C3 hashes unchanged; annotation provenance preserved. Any new candidate on separate Phase 4 data. | **Preserve** |
+| 2. Automated regression | Both Python 3.11 and 3.12 tests, Svelte check/build, evidence audit, saved verdict/decision equality, known browser baseline and off-switch checks on the **same commit**. | **CI subset verified** on `7cdb26b886b1a42221f66dcfe4cc290f9687f11f`: [seven GitHub Actions jobs passed](https://github.com/Re-Haiyan/Capstone-Version-Control-Haiyan/actions/runs/43728965194). Browser/e2e, on/off and staging-specific gates remain pending; recheck all CI on any newer candidate SHA |
+| 2b. Reproducible dependencies | Keep `package-lock.json` aligned and require `npm ci` + Svelte/build + extension tests on the reviewed commit; record Python dependency lock used for staging. | **CI frontend dependency/build checks passed** at `7cdb26b`; **staging Python dependency lock still pending verification on the target host** |
+| 3. Evaluation methodology | AI-only exploratory pathway selected by project owner on 2026-11-15; use GPT-6 provisional cards and summary triage with Claude-assisted historical feature evidence, explicitly separated by model and provenance. No fabricated independent human labels or seven-dimension word scores. For any claim of independently verified accuracy, obtain separate independent reference evidence. | **AI-only descriptive audit available; independent correctness NOT established.** Human annotation is **not required for the chosen exploratory study**, but the original human-validation gate was not passed. |
+| 4. Category validity | Fresh rights-cleared, product-disjoint real reviews across every enabled category (including footwear and motorcycle parts if enabled), languages and provenance; AI-only exploratory claim references must stay explicitly labelled as AI-assisted. Independent correctness cannot be claimed from them. | **BLOCKED** — `phase4/intake.py` exists but actual accepted D3/V3/F2 counts remain **0/0/0**. The only local supply is gadget reviews with **unconfirmed reuse rights**; URL-based split estimates are not actual accepted counts. Candidate licensed corpora lack per-product IDs; see `phase4/SOURCE_OPTIONS.md` |
+| 5. Isolated staging | Machine matched to intended 2-vCPU production size, reproducible benchmark on its actual resources, older saved reports, secrets/privacy audit, off/on rollback. | **BLOCKED** — no staging host verified |
+| 6. Sync dry run | `scripts/sync_backend.py --dry-run` against the actual original app; each conflict reviewed, no forced overwrite. | **BLOCKED** |
+| 7. Recommendation policy | Written decision record retaining current policy or independently validating a versioned alternative. | **ENGINEERING DECISION RECORDED** — `RECOMMENDATION_POLICY_DECISION.md` retains the existing live policy; experimental candidate stays unwired. This does not waive separate named production sign-off |
+| 8. Release approval | Named accountable person signs off after all above; explicit production deployment decision in separate PR. | **NOT REQUESTED** |
+
+Do not reclassify a *passing code test* as a scientific validation. A failed scientific target does not justify editing annotations, reducing the held-out set or silently changing the adoption rule. Do not promote production merely because the feature branch has been pushed.
+
+## Execution sequence
+
+1. Re-run combined-commit CI after every merge and preserve its SHA, job outcomes and any failures. Most recent verified feature-branch reference before this preparation: [run 43728965194](https://github.com/Re-Haiyan/Capstone-Version-Control-Haiyan/actions/runs/43728965194), SHA `7cdb26b886b1a42221f66dcfe4cc290f9687f11f`, **seven jobs passed**. This historical success does not cover subsequent commits; re-verify on the final merged SHA.
+2. Keep existing judgments and Phase 3 results immutable. Use `phase4/protocol.md` and `phase4/intake.py` to accept **rights-cleared new real reviews only**: verify all historical product/text exclusions, deterministic disjoint D3/V3/F2 splits, strict privacy checks and a separately restricted F2 vault before writing additional extraction rules. The software's synthetic tests do **not** constitute real data collection.
+3. For the owner-selected AI-only exploratory evaluation, use `ai_annotation/gpt6_qa_20261115/ai_only_audit.py` and its provenance; report 35-card comparison and 70-text triage as **non-blind descriptive agreement**, never independent accuracy. Do not invent numeric words/claim/feature ratings or human annotators. The original independent human track is **not being pursued**, not completed; stronger independent validation is still needed before claims of verified correctness or production reliability.
+4. Before touching the live VM, use `scripts/pre_vm_audit.py` **read-only** to check the existing checkout and independently stored SQLite snapshots (after backups have actually been made by the VM operator). It does **not** create backups, validate full restore, or approve production. Then provision an isolated staging machine with sanitized data and run `staging_procedure.md`; verify the off-switch, actual benchmark, privacy review and real sync dry run.
+5. Resolve category evidence and recommendation-policy choices. If any gate remains open, retain staging-only status; if necessary keep explanations disabled for unvalidated categories.
+
+## Provenance and change control
+
+- Phase 3 protocol, frozen extractor hashes, labels and F results are in `phase3/`; all earlier evaluation references are historical, not reusable training data.
+- The documented analysis identifies low **recall**, especially indirect statements, service experiences, and some Filipino text, as the main feature risk.
+- Experimental research code should use separate feature/research branches, small independently reviewable PRs, no force pushes or direct production merges.
+- Because GitHub Issues are disabled for this repository (HTTP 410 on 2026-11-15), this file is the canonical release-blocker register until a tracking system is enabled.

@@ -1,8 +1,9 @@
-name: Category PR validation (not deployment)
+name: Feature branch regression (no deployment)
 on:
   push:
     branches:
       - feature/category-accuracy-20261115
+      - feature/product-specific-conclusions
   pull_request:
     branches:
       - feature/product-specific-conclusions
@@ -49,11 +50,16 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-      # The repository's package-lock is already out of sync with package.json.
-      # This CI install is transient and does not rewrite committed lockfiles.
-      - run: npm install --no-package-lock --no-audit --no-fund
-      - run: npm run check
-      - run: npm run build
+      - name: Install exact lockfile dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify dependency manifests were not changed by install
+        run: git diff --exit-code -- package.json package-lock.json
+      - name: Svelte and TypeScript checks
+        run: npm run check
+      - name: Frontend build
+        run: npm run build
+      - name: Browser extension unit tests
+        run: npm run test:extension
 
   existing-review-audit:
     name: Real saved-review and title comparison
@@ -88,3 +94,68 @@ jobs:
             ${{ runner.temp }}/after.json
             ${{ runner.temp }}/comparison.json
           if-no-files-found: warn
+
+  safety-source-audit:
+    name: Source-linked hazard QA (non-deployment)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Operates only on the historical frozen evaluation pack. This job
+      # NEVER updates or trains the shipped hazard model.
+      - name: Rebuild source-linked review queue
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/product_specific_conclusions/ai_annotation/safety_source_audit.py \
+            --out-json "$RUNNER_TEMP/safety_source_audit.json" \
+            --out-csv "$RUNNER_TEMP/safety_source_audit.csv"
+          python -m unittest discover -s tests -p "test_safety_source_audit.py" -q
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-linked-hazard-review-queue
+          path: |
+            ${{ runner.temp }}/safety_source_audit.json
+            ${{ runner.temp }}/safety_source_audit.csv
+          if-no-files-found: warn
+
+  phase4-intake:
+    name: Phase 4 data integrity (synthetic tests only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify privacy, disjointness, near-duplicates and sealed F2
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p "test_phase4_intake.py" -q
+      # Do not collect or upload raw Phase 4 reviews in CI. The tests are
+      # synthetic; historical CSV is read only to validate exclusions.
+
+  pre-vm-audit:
+    name: Pre-VM backup integrity preflight (synthetic only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify read-only SQLite checks, separation and fail-closed safety
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p "test_pre_vm_audit.py" -q
+          python -m unittest discover -s tests -p "test_phase4_supply_audit.py" -q
+          python -m unittest discover -s tests -p "test_phase4_score_pairs.py" -q
+          python -m unittest discover -s tests -p "test_phase4_predict_pairs.py" -q
+      # Never connect to or deploy to the production VM from this workflow.
+      # The tests contain synthetic SQLite rows only.

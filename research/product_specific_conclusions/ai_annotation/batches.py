@@ -16,7 +16,9 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -69,51 +71,134 @@ def make(size: int, out: Path) -> int:
     return count
 
 
+def read_returned(path: Path, expected_cols: list[str]) -> list[dict]:
+    """Do not silently accept missing, duplicated, extra or shifted CSV columns."""
+    with open(path, encoding="utf-8-sig", newline="") as fh:
+        reader = csv.DictReader(fh)
+        if reader.fieldnames != expected_cols:
+            raise SystemExit(f"{path.name}: CSV header differs from the template")
+        data = list(reader)
+    if any(None in row or any(value is None for value in row.values()) for row in data):
+        raise SystemExit(f"{path.name}: malformed CSV row (extra/missing field)")
+    return data
+
+
+def validate_return(kind: str, path: Path, r: dict, cols: list[str], fixed: list[str]) -> bool:
+    """Return False only for a completely untouched annotation row."""
+    filled = {c: r[c].strip() for c in cols if c not in fixed}
+    if not any(filled.values()):
+        return False
+    if kind == "card":
+        if filled["assessment"] not in fp.CARDS:
+            raise SystemExit(f"{path.name}: {r['product_id']} invalid assessment")
+        for field in ("serious_safety_concern", "counterfeit_concern"):
+            if filled[field].lower() not in ("yes", "no"):
+                raise SystemExit(f"{path.name}: {r['product_id']} {field} must be yes/no")
+        if not filled["main_reason"]:
+            raise SystemExit(f"{path.name}: {r['product_id']} main_reason is required")
+        if filled["confidence"].lower() not in ("high", "medium", "low"):
+            raise SystemExit(f"{path.name}: {r['product_id']} confidence must be high/medium/low")
+    else:
+        for criterion in fp.CRITERIA:
+            for n in (1, 2):
+                field = f"{criterion}_{n}"
+                if filled[field] not in ("1", "2", "3", "4", "5"):
+                    raise SystemExit(f"{path.name}: {r['product_id']} {field} must be 1 to 5")
+        for field in ("unsupported", "safety_error"):
+            for n in (1, 2):
+                key = f"{field}_{n}"
+                if filled[key].lower() not in ("yes", "no"):
+                    raise SystemExit(f"{path.name}: {r['product_id']} {key} must be yes/no")
+        if filled["preferred"] not in ("1", "2", "same"):
+            raise SystemExit(f"{path.name}: {r['product_id']} preferred must be 1/2/same")
+    return True
+
+
 def merge(returned: Path, out: Path) -> dict:
+    """Validate the ENTIRE return before writing ANY completed sheet.
+
+    Each output file is atomically replaced after staging. Existing completed
+    rows survive subsequent partial batch merges. Changes to earlier answers,
+    provenance mismatches, or an invalid late batch are rejected before writing.
+    """
+    if out.resolve() == returned.resolve() or out.resolve() == PACK.resolve() or PACK.resolve() in out.resolve().parents:
+        raise SystemExit("Output must be a separate working folder, never the locked pack or returned folder.")
     prov = returned / "provenance.json"
     if not prov.is_file():
-        raise SystemExit("returned/provenance.json is missing: name the annotator, model version, interface, date and prompt. Nothing is merged.")
+        raise SystemExit("returned/provenance.json is missing: name the annotator, model version, interface, date, prompt and human review.")
     data = json.loads(prov.read_text(encoding="utf-8"))
     for key in ("annotator", "model_version", "interface", "date", "prompt_file", "human_review_of_labels"):
         if not str(data.get(key, "")).strip():
             raise SystemExit(f"provenance.json: '{key}' is empty (write 'not recorded' if unknown). Nothing is merged.")
-    out.mkdir(parents=True, exist_ok=True)
+
+    previous_files = (out / "card_sheet_A.csv", out / "words_sheet_A.csv", out / "provenance.json")
+    has_previous = [path.is_file() for path in previous_files]
+    if any(has_previous) and not all(has_previous):
+        raise SystemExit("Working folder contains incomplete prior merge; refusing to overwrite it.")
+
+    outputs: dict[str, tuple[list[str], list[dict]]] = {}
+    completed: dict[str, set[str]] = {}
     result = {}
-    for kind, cols, sheet_name, valid in (("card", fp.CARD_COLS, "card_sheet_A.csv", None), ("words", fp.WORDS_COLS, "words_sheet_A.csv", None)):
+    for kind, cols, sheet_name in (("card", fp.CARD_COLS, "card_sheet_A.csv"), ("words", fp.WORDS_COLS, "words_sheet_A.csv")):
         base = {r["product_id"]: r for r in rows(PACK / sheet_name)}
+        fixed = fp.CARD_COLS[:2] if kind == "card" else fp.WORDS_COLS[:5]
         merged: dict[str, dict] = {}
+        if all(has_previous):
+            prior_rows = read_returned(out / sheet_name, cols)
+            if len(prior_rows) != len(base) or {r["product_id"] for r in prior_rows} != set(base):
+                raise SystemExit(f"{sheet_name}: prior working sheet does not match locked product list")
+            for old in prior_rows:
+                pid = old["product_id"]
+                if any(old[c] != base[pid][c] for c in fixed):
+                    raise SystemExit(f"{sheet_name}: prior pre-filled columns changed for {pid}")
+                if validate_return(kind, out / sheet_name, old, cols, fixed):
+                    merged[pid] = old
+        seen: set[str] = set()
         for path in sorted(returned.glob(f"batch_*_{kind}_return.csv")):
-            for r in rows(path):
+            for r in read_returned(path, cols):
                 pid = r["product_id"]
                 if pid not in base:
                     raise SystemExit(f"{path.name}: unknown product {pid}")
-                if pid in merged:
+                if pid in seen:
                     raise SystemExit(f"{path.name}: product {pid} returned twice")
-                fixed = fp.CARD_COLS[:2] if kind == "card" else fp.WORDS_COLS[:5]
+                seen.add(pid)
                 if any(r[c] != base[pid][c] for c in fixed):
                     raise SystemExit(f"{path.name}: a pre-filled column of {pid} was changed")
-                if not any(r[c].strip() for c in cols if c not in fixed):
-                    continue  # an untouched row stays blank (pending), never guessed
-                if kind == "card" and r["assessment"].strip() not in fp.CARDS:
-                    raise SystemExit(f"{path.name}: {pid} assessment '{r['assessment']}' is not one of {fp.CARDS}")
-                if kind == "words":
-                    for c in fp.CRITERIA:
-                        for n in (1, 2):
-                            if r[f"{c}_{n}"].strip() not in {"1", "2", "3", "4", "5"}:
-                                raise SystemExit(f"{path.name}: {pid} {c}_{n} must be 1 to 5")
-                    for x in ("unsupported", "safety_error"):
-                        for n in (1, 2):
-                            if r[f"{x}_{n}"].strip().lower() not in ("yes", "no"):
-                                raise SystemExit(f"{path.name}: {pid} {x}_{n} must be yes or no")
+                if not validate_return(kind, path, r, cols, fixed):
+                    continue
+                if pid in merged and merged[pid] != r:
+                    raise SystemExit(f"{path.name}: {pid} conflicts with earlier completed annotation; keep the original and record any adjudication separately")
                 merged[pid] = r
-        if kind == "words":
-            cards_done = {r["product_id"] for r in rows(out / "card_sheet_A.csv") if r["assessment"].strip()}
-            missing = sorted(set(merged) - cards_done)
-            if missing:
-                raise SystemExit(f"words rows returned for {missing} before their card rows: the words sheet shows the system's assessment, so the card is done first. Nothing is merged.")
-        write(out / sheet_name, cols, [merged.get(pid, base[pid]) for pid in base])
+        completed[kind] = set(merged)
+        outputs[sheet_name] = (cols, [merged.get(pid, base[pid]) for pid in base])
         result[kind] = {"products_returned": len(merged), "products_total": len(base)}
-    (out / "provenance.json").write_text(json.dumps({"mode": "single_annotation_set", "annotator_A": {"label": "Team Label 1", "type": "ai_assisted", "annotator": data["annotator"], "model_version": data["model_version"], "interface": data["interface"], "dates": data["date"], "prompt_file": data["prompt_file"], "human_review_of_labels": data["human_review_of_labels"]}, "annotator_B": None}, indent=1), encoding="utf-8")
+
+    premature = sorted(completed["words"] - completed["card"])
+    if premature:
+        raise SystemExit(f"Words returned before card assessment for {premature}. Nothing is merged.")
+
+    provenance = {
+        "mode": "single_annotation_set",
+        "annotator_A": {
+            "label": "Team Label 1", "type": "ai_assisted", "annotator": data["annotator"],
+            "model_version": data["model_version"], "interface": data["interface"],
+            "dates": data["date"], "prompt_file": data["prompt_file"],
+            "human_review_of_labels": data["human_review_of_labels"],
+        },
+        "annotator_B": None,
+    }
+    if all(has_previous):
+        previous_provenance = json.loads((out / "provenance.json").read_text(encoding="utf-8"))
+        if previous_provenance != provenance:
+            raise SystemExit("Provenance differs from previous merge. Use a separate working folder for a different annotation session.")
+    out.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".batch-stage-", dir=out) as tmp:
+        tmp_dir = Path(tmp)
+        for sheet_name, (cols, data_rows) in outputs.items():
+            write(tmp_dir / sheet_name, cols, data_rows)
+        (tmp_dir / "provenance.json").write_text(json.dumps(provenance, indent=1), encoding="utf-8")
+        for filename in (*outputs, "provenance.json"):
+            os.replace(tmp_dir / filename, out / filename)
     return result
 
 
