@@ -109,8 +109,10 @@ class HazardEightyGateTests(unittest.TestCase):
             row["adjudicated"] = "true"
         self.write()
         report = gate.score(self.reference, self.predictions, [self.old], min_positives=1)
-        self.assertTrue(report["annotation_verified_human"])
-        self.assertTrue(report["independently_verified_target_met"])
+        self.assertTrue(report["annotation_claims_human_adjudication"])
+        self.assertFalse(report["independent_provenance_verified"])
+        self.assertTrue(report["target_met_on_reference"])
+        self.assertFalse(report["independently_verified_target_met"])
         self.assertFalse(report["production_release_approved"])
 
 
