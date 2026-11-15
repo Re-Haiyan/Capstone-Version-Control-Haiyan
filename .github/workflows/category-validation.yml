@@ -77,7 +77,8 @@ jobs:
           git worktree add --detach "$RUNNER_TEMP/defaketive-baseline" a5ea4de7c4a2585d597042015b9ac0e0be7f341a
           python research/product_specific_conclusions/category_upgrade_audit.py --source-root "$RUNNER_TEMP/defaketive-baseline" --output "$RUNNER_TEMP/before.json" > /dev/null
           python research/product_specific_conclusions/category_upgrade_audit.py --source-root "$GITHUB_WORKSPACE" --output "$RUNNER_TEMP/after.json" > /dev/null
-          python research/product_specific_conclusions/category_upgrade_audit.py --compare "$RUNNER_TEMP/before.json" "$RUNNER_TEMP/after.json" --output "$RUNNER_TEMP/comparison.json" | head -c 16000
+          python research/product_specific_conclusions/category_upgrade_audit.py --compare "$RUNNER_TEMP/before.json" "$RUNNER_TEMP/after.json" --output "$RUNNER_TEMP/comparison.json" > /dev/null
+          python -c 'import json,os; x=json.load(open(os.path.join(os.environ["RUNNER_TEMP"],"comparison.json"))); print({k:(len(v) if isinstance(v,list) else v) for k,v in x.items() if k != "limits"})'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
