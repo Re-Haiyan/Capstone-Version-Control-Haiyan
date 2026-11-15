@@ -25,6 +25,6 @@ Method: `sentiment_agreement.py check` (records matched by review ID against the
 
 No invalid row exists, so no corrected sheet is requested on structural grounds. No label was changed.
 
-## Provenance: NOT SUBSTANTIATED (see `annotation_provenance.md`)
+## Provenance: AI-assisted sets (see `annotation_provenance.md`)
 
-The structural checks cannot show who produced a label. Provenance fails: the returned files carry machine-generated patterns, and no annotator identity record, declaration or time record exists. Consequence under the protocol: **no human inter-annotator reliability is reported, adjudication is on hold, and the final test is not scored.**
+The structural checks cannot show who or what produced a label. Under the panel- and adviser-approved methodology the two sheets are **AI-assisted annotation sets** (ChatGPT), not independent human annotations. Consequences: agreement is descriptive only (`inter_annotator_agreement.md`), the reference standard is AI-assisted until human adjudication, and the process record (model version, prompts, human review) remains to be completed by the team. No label was changed.

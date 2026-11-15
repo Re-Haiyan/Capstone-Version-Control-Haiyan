@@ -1,35 +1,30 @@
-# Annotation provenance audit (policy v1)
+# Annotation provenance (updated 2026-11-15 under the panel- and adviser-approved AI-assisted methodology)
 
-Source of the figures: `_forensics.json` (`provenance_forensics.py`). No model prediction was read and no model was scored. The stars were read from the private map only to examine how the labels relate to them.
+**Classification: Team Label 1 and Team Label 2 are AI-assisted annotation sets** (primary annotator: ChatGPT, per the owner; approved by the research panel and adviser). They are **not independent human annotations** and are not described as such. Methodology and limits: `../ai_assisted_annotation_methodology.md`. Protocol changes: `../protocol_amendment_ai_assisted_annotation.md`.
 
-## What is documented
+## Recorded facts
 
-| Requirement | Evidence found |
+| Item | Record |
 |---|---|
-| Annotator identity records | None per annotator. The owner states that team 1 is run by Caballero and team 2 by Guyo (recorded in `annotation/provenance_log.csv` as `TEAM1-run-by-Caballero` and `TEAM2-run-by-Guyo`). That names the team leads, not who read each review. No annotator register entry was completed. |
-| Annotation dates | File modification times only: sheet A 2026-11-15 12:52:01, sheet B 12:52:02. The blank sheets were created at 12:39. |
-| Policy version | The file names carry `v1`. |
-| Declaration (alone, no AI, no script, no model output, no stars, no other sheet) | **Not given.** |
-| Visibility of predictions or existing labels | No evidence either way; **not confirmed**. |
-| Text and IDs unchanged | Yes (`validation_report.md`). |
+| Files | `annotation/returned/team_label_1_final_test_sheet_A_v1.csv` (SHA-256 `5e3670e36c82d51a...`), `team_label_2_final_test_sheet_B_v1.csv` (`2e3cb2a41d39c7d1...`); copied unchanged from Downloads |
+| Run by | team 1: Caballero; team 2: Guyo (owner's statement; research team members) |
+| Annotator | ChatGPT (primary AI-assisted annotator, owner's statement); model version, interface, prompts and session dates **not recorded**: to be entered in `annotation/annotation_process_record_template.md` |
+| Rubric | policy v1, frozen (`annotation/policy_v1.lock.json`) |
+| Dates | files written 2026-11-15 12:52:01 and 12:52:02, 13 minutes after the blank sheets were created |
+| Human review | extent unknown; no record of any row changed by a person |
+| Declaration of "no AI" | **withdrawn** (it would be false); replaced by the process record |
+| Text and IDs unchanged | yes, matched by review ID (`validation_report.md`) |
 
-## Forensic findings
+## Observed characteristics (consistent with AI-assisted generation; they also show the sets are not independent of each other)
 
-1. **Both 400-review sheets were written within one second of each other (12:52:01 and 12:52:02), 13 minutes after the blank sheets were created.** That is about 2 seconds per review per sheet, each row with a rationale.
-2. **The rationale column is templated.** Every rationale on sheet A begins "Team Label 1:" and every one on sheet B "Team Label 2:". Sheet A has 60 distinct rationale strings in 400 rows and sheet B 61, built from a short list of category sentences (202 rows of sheet A read "Favorable evaluation of product, function, value or purchase experience."). The policy asked for neither a team prefix nor a fixed sentence per category.
-3. **Fifty of fifty rows tagged `mixed` carry word-for-word identical `positive_aspect` and `negative_aspect` text on both sheets**, and the mixed tag set is identical on all 50. Two people working independently would not type the same aspect phrases in 50 of 50 cases.
-4. **Near-identical confidence:** 394 of 400 rows have the same `high` or `low` value on both sheets.
-5. **The file format matches the project's own CSV writer** (UTF-8 with byte-order mark, CRLF line endings, same column order and quoting). That alone is not conclusive (a spreadsheet can write the same), but together with 1 to 3 it points to a script producing both files from one source.
-6. **Relation to the hidden stars:** the labels follow the stars closely in aggregate (33 of 34 one-star rows negative on A; 231 of 290 five-star rows positive), as a text-reading process would; this neither supports nor contradicts independence.
-7. **No file hash match** with another file on this machine. **Comparison with the known AI-generated drafts:** 69 of the 400 frozen reviews also exist in the 10,000-review pool that carries AI "direct" sentiment annotations (`D:/cvc-annotations`, branch `annotations-10000`). On those 69, sheet A's label equals the AI label for 55 and sheet B's for 50 (80% and 72%; the AI scheme has `mixed` as a label, so differences are expected). This neither shows nor excludes copying.
+1. Every rationale starts "Team Label N:" followed by one of about 60 category sentences (60 distinct strings on sheet A, 61 on B).
+2. All 50 `mixed` rows have identical aspect text on both sets; the `mixed` tag is identical on all 50.
+3. Confidence agrees on 394 of 400 rows; the two files were written one second apart, 13 minutes after creation.
+4. The file format equals the project's CSV writer (BOM, CRLF).
+5. 69 of the 400 frozen reviews also exist in the 10,000-review pool that carries AI annotations (annotator model not recorded in the files): Team Label 1 matches that AI label on 55 and Team Label 2 on 50 of the 69.
 
-## Conclusion
+## What this means for use
 
-**Independent human annotation cannot be substantiated.** The evidence points to machine-generated or template-generated sheets from a shared source, labelled with team names: the pattern of the earlier unverifiable labels. It is not proof of misconduct (a team could have applied its own rubric with a script, or exported from a shared spreadsheet), and the submitted labels were not changed.
-
-## Evidence still needed
-
-1. For each sheet, the name of the person who read and labelled the reviews and a signed declaration that they labelled alone, without an AI assistant or script, without model predictions, stars or the other sheet.
-2. The original working file (spreadsheet with edit history, or the export log) and how long the labelling took.
-3. An explanation of the "Team Label N:" prefix, the repeated rationale sentences and the identical aspect text on the 50 mixed rows.
-4. Alternatively: fresh independent labelling by two named people on blank sheets made from the same frozen list, without any content of these sheets shared with them.
+* Agreement between the two sets is descriptive (`inter_annotator_agreement.md`), not reliability.
+* The reference standard of the final test is AI-assisted; it becomes verified only after human adjudication and a documented human check of agreed rows.
+* Original labels, texts and records are preserved; any later correction is an explicit adjudication decision recorded in separate columns.

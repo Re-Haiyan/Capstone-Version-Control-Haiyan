@@ -1,0 +1,55 @@
+model,reference,subset,true,pred_negative,pred_neutral,pred_positive
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,negative,46,29,4
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,neutral,1,7,42
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,positive,1,25,232
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,negative,37,29,4
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,neutral,1,7,39
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,positive,1,25,211
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,negative,28,20,4
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,neutral,1,4,28
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,positive,1,14,164
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,negative,46,28,3
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,neutral,1,11,61
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,positive,1,21,212
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,negative,37,28,3
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,neutral,1,11,58
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,positive,1,21,191
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,negative,28,20,3
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,neutral,1,7,40
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,positive,1,11,151
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,negative,46,28,3
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,neutral,1,7,37
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,positive,1,21,207
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,negative,37,28,3
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,neutral,1,7,35
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,positive,1,21,187
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,negative,28,20,3
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,neutral,1,4,24
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,positive,1,11,147
+sentiment_head_v1 (prespecified second model),sheet_A,all,negative,67,5,7
+sentiment_head_v1 (prespecified second model),sheet_A,all,neutral,3,6,41
+sentiment_head_v1 (prespecified second model),sheet_A,all,positive,7,7,244
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,negative,58,5,7
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,neutral,3,5,39
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,positive,7,7,223
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,negative,41,4,7
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,neutral,2,3,28
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,positive,5,4,170
+sentiment_head_v1 (prespecified second model),sheet_B,all,negative,66,5,6
+sentiment_head_v1 (prespecified second model),sheet_B,all,neutral,5,7,61
+sentiment_head_v1 (prespecified second model),sheet_B,all,positive,5,6,223
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,negative,57,5,6
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,neutral,5,6,59
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,positive,5,6,202
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,negative,41,4,6
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,neutral,4,3,41
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,positive,3,4,156
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,negative,66,5,6
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,neutral,3,6,36
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,positive,5,6,218
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,negative,57,5,6
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,neutral,3,5,35
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,positive,5,6,198
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,negative,41,4,6
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,neutral,2,3,24
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,positive,3,4,152

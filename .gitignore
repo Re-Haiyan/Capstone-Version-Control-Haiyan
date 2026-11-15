@@ -59,3 +59,4 @@ research/xlmr_optimization/results/_perf_texts.json
 research/xlmr_optimization/runs/queue*.out
 research/xlmr_optimization/runs/queue*.err
 research/xlmr_optimization/runs/*.done
+research/xlmr_optimization/data/head/

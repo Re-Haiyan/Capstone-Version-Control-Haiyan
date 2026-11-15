@@ -1,0 +1,55 @@
+model,reference,subset,n_scored,class,precision,recall,f1,support,accuracy,macro_precision,macro_recall,macro_f1,weighted_f1,macro_f1_ci95_low,macro_f1_ci95_high
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,387,negative,0.958,0.582,0.724,79,0.736,0.636,0.541,0.572,0.741,0.527,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,387,neutral,0.115,0.140,0.126,50,0.736,0.636,0.541,0.572,0.741,0.527,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_A,all,387,positive,0.835,0.899,0.866,258,0.736,0.636,0.541,0.572,0.741,0.527,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,354,negative,0.949,0.529,0.679,70,0.720,0.631,0.523,0.556,0.727,0.506,0.599
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,354,neutral,0.115,0.149,0.130,47,0.720,0.631,0.523,0.556,0.727,0.506,0.599
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_delivery_only,354,positive,0.831,0.890,0.859,237,0.720,0.631,0.523,0.556,0.727,0.506,0.599
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,264,negative,0.933,0.538,0.683,52,0.742,0.625,0.525,0.557,0.742,0.496,0.614
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,264,neutral,0.105,0.121,0.113,33,0.742,0.625,0.525,0.557,0.742,0.496,0.614
+"shipped_onnx_int8 (primary, locked)",sheet_A,excluding_prior_labelled_reviews,264,positive,0.837,0.916,0.875,179,0.742,0.625,0.525,0.557,0.742,0.496,0.614
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,384,negative,0.958,0.597,0.736,77,0.701,0.637,0.551,0.578,0.686,0.532,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,384,neutral,0.183,0.151,0.165,73,0.701,0.637,0.551,0.578,0.686,0.532,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_B,all,384,positive,0.768,0.906,0.831,234,0.701,0.637,0.551,0.578,0.686,0.532,0.613
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,351,negative,0.949,0.544,0.692,68,0.681,0.630,0.533,0.561,0.666,0.511,0.600
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,351,neutral,0.183,0.157,0.169,70,0.681,0.630,0.533,0.561,0.666,0.511,0.600
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_delivery_only,351,positive,0.758,0.897,0.822,213,0.681,0.630,0.533,0.561,0.666,0.511,0.600
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,262,negative,0.933,0.549,0.691,51,0.710,0.632,0.540,0.567,0.691,0.509,0.614
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,262,neutral,0.184,0.146,0.163,48,0.710,0.632,0.540,0.567,0.691,0.509,0.614
+"shipped_onnx_int8 (primary, locked)",sheet_B,excluding_prior_labelled_reviews,262,positive,0.778,0.926,0.846,163,0.710,0.632,0.540,0.567,0.691,0.509,0.614
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,351,negative,0.958,0.597,0.736,77,0.741,0.640,0.552,0.581,0.747,0.535,0.625
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,351,neutral,0.125,0.156,0.139,45,0.741,0.640,0.552,0.581,0.747,0.535,0.625
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,all,351,positive,0.838,0.904,0.870,229,0.741,0.640,0.552,0.581,0.747,0.535,0.625
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,320,negative,0.949,0.544,0.692,68,0.722,0.635,0.534,0.565,0.729,0.514,0.610
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,320,neutral,0.125,0.163,0.141,43,0.722,0.635,0.534,0.565,0.729,0.514,0.610
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_delivery_only,320,positive,0.831,0.895,0.862,209,0.722,0.635,0.534,0.565,0.729,0.514,0.610
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,239,negative,0.933,0.549,0.691,51,0.749,0.631,0.537,0.566,0.750,0.503,0.622
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,239,neutral,0.114,0.138,0.125,29,0.749,0.631,0.537,0.566,0.750,0.503,0.622
+"shipped_onnx_int8 (primary, locked)",A_and_B_agree,excluding_prior_labelled_reviews,239,positive,0.845,0.925,0.883,159,0.749,0.631,0.537,0.566,0.750,0.503,0.622
+sentiment_head_v1 (prespecified second model),sheet_A,all,387,negative,0.870,0.848,0.859,79,0.819,0.680,0.638,0.641,0.790,0.599,0.684
+sentiment_head_v1 (prespecified second model),sheet_A,all,387,neutral,0.333,0.120,0.176,50,0.819,0.680,0.638,0.641,0.790,0.599,0.684
+sentiment_head_v1 (prespecified second model),sheet_A,all,387,positive,0.836,0.946,0.887,258,0.819,0.680,0.638,0.641,0.790,0.599,0.684
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,354,negative,0.853,0.829,0.841,70,0.808,0.659,0.625,0.626,0.777,0.582,0.672
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,354,neutral,0.294,0.106,0.156,47,0.808,0.659,0.625,0.626,0.777,0.582,0.672
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_delivery_only,354,positive,0.829,0.941,0.881,237,0.808,0.659,0.625,0.626,0.777,0.582,0.672
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,264,negative,0.854,0.788,0.820,52,0.811,0.652,0.610,0.614,0.779,0.562,0.667
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,264,neutral,0.273,0.091,0.136,33,0.811,0.652,0.610,0.614,0.779,0.562,0.667
+sentiment_head_v1 (prespecified second model),sheet_A,excluding_prior_labelled_reviews,264,positive,0.829,0.950,0.885,179,0.811,0.652,0.610,0.614,0.779,0.562,0.667
+sentiment_head_v1 (prespecified second model),sheet_B,all,384,negative,0.868,0.857,0.863,77,0.771,0.675,0.635,0.623,0.721,0.580,0.667
+sentiment_head_v1 (prespecified second model),sheet_B,all,384,neutral,0.389,0.096,0.154,73,0.771,0.675,0.635,0.623,0.721,0.580,0.667
+sentiment_head_v1 (prespecified second model),sheet_B,all,384,positive,0.769,0.953,0.851,234,0.771,0.675,0.635,0.623,0.721,0.580,0.667
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,351,negative,0.851,0.838,0.844,68,0.755,0.653,0.624,0.608,0.702,0.564,0.654
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,351,neutral,0.353,0.086,0.138,70,0.755,0.653,0.624,0.608,0.702,0.564,0.654
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_delivery_only,351,positive,0.757,0.948,0.842,213,0.755,0.653,0.624,0.608,0.702,0.564,0.654
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,262,negative,0.854,0.804,0.828,51,0.763,0.632,0.608,0.594,0.710,0.546,0.644
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,262,neutral,0.273,0.062,0.102,48,0.763,0.632,0.608,0.594,0.710,0.546,0.644
+sentiment_head_v1 (prespecified second model),sheet_B,excluding_prior_labelled_reviews,262,positive,0.768,0.957,0.852,163,0.763,0.632,0.608,0.594,0.710,0.546,0.644
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,351,negative,0.892,0.857,0.874,77,0.826,0.694,0.647,0.653,0.798,0.605,0.702
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,351,neutral,0.353,0.133,0.194,45,0.826,0.694,0.647,0.653,0.798,0.605,0.702
+sentiment_head_v1 (prespecified second model),A_and_B_agree,all,351,positive,0.838,0.952,0.892,229,0.826,0.694,0.647,0.653,0.798,0.605,0.702
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,320,negative,0.877,0.838,0.857,68,0.812,0.673,0.634,0.637,0.782,0.589,0.685
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,320,neutral,0.312,0.116,0.169,43,0.812,0.673,0.634,0.637,0.782,0.589,0.685
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_delivery_only,320,positive,0.828,0.947,0.884,209,0.812,0.673,0.634,0.637,0.782,0.589,0.685
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,239,negative,0.891,0.804,0.845,51,0.820,0.666,0.621,0.629,0.792,0.570,0.687
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,239,neutral,0.273,0.103,0.150,29,0.820,0.666,0.621,0.629,0.792,0.570,0.687
+sentiment_head_v1 (prespecified second model),A_and_B_agree,excluding_prior_labelled_reviews,239,positive,0.835,0.956,0.891,159,0.820,0.666,0.621,0.629,0.792,0.570,0.687

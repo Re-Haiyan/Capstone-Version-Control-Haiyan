@@ -2,6 +2,8 @@
 
 For the person running the study and for the two annotators. **Nothing here has been labelled by a person, and no agreement figure exists.** The policy is `annotation_policy.md`, **version v1, approved by the owner and frozen** (SHA-256 in `annotation/policy_v1.lock.json`). Both annotators and the adjudicator use v1 only. Changing it later means a new version under a new file name.
 
+> **Amendment A1 (2026-11-15):** the panel and adviser approved AI-assisted annotation (ChatGPT as primary annotator). Team Label 1 and 2 are AI-assisted sets, not independent human annotators; the "no AI" declaration is withdrawn and replaced by `annotation/annotation_process_record_template.md`; agreement between them is descriptive only; the final-test reference is an AI-assisted reference until a named human adjudicates. See `ai_assisted_annotation_methodology.md` and `protocol_amendment_ai_assisted_annotation.md`. The steps below describe the original two-human track and remain the route to an independent human reference if the adviser requires it.
+
 ## What was prepared (all in `annotation/`)
 
 | File | For | Content |

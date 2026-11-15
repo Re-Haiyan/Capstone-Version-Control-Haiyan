@@ -2,7 +2,7 @@
 
     python research/xlmr_optimization/disagreement_report.py <sheet A done> <sheet B done>
 A disagreement is a difference in `sentiment` or in the set of `tags`. The report groups them and attaches the matching policy rule; it never says which annotator is right.
-The adjudication sheet has EMPTY final fields; nothing is pre-filled. Both returned sheets have UNVERIFIED provenance (annotation_provenance.md), so every row carries that status.
+The adjudication sheet has EMPTY final fields; nothing is pre-filled. Both returned sets are AI-assisted (ai_assisted_annotation_methodology.md), so every row carries that status.
 """
 import collections, csv, pathlib, re, sys
 X = pathlib.Path(__file__).resolve().parent
@@ -34,7 +34,7 @@ for i in sorted(set(A) & set(B)):
     found = [n for n, rx in PAT.items() if re.search(rx, a["review_text"], re.I)]
     counts[k] += 1
     for f in found: pats[f] += 1
-    rows.append({"provenance_status": "UNVERIFIED", "id": i, "disagreement_type": k, "policy_rule": rule, "recurring_pattern": "; ".join(found), "product": a["product"], "review_text": a["review_text"],
+    rows.append({"provenance_status": "AI-assisted set (not independent human)", "id": i, "disagreement_type": k, "policy_rule": rule, "recurring_pattern": "; ".join(found), "product": a["product"], "review_text": a["review_text"],
                  "label_A": a["sentiment"], "tags_A": a["tags"], "positive_aspect_A": a["positive_aspect"], "negative_aspect_A": a["negative_aspect"], "confidence_A": a["confidence"], "rationale_A": a["rationale"],
                  "label_B": b["sentiment"], "tags_B": b["tags"], "positive_aspect_B": b["positive_aspect"], "negative_aspect_B": b["negative_aspect"], "confidence_B": b["confidence"], "rationale_B": b["rationale"],
                  "any_low_confidence": "yes" if "low" in (a["confidence"], b["confidence"]) else "no"})
@@ -45,5 +45,5 @@ ac = ["status", "id", "product", "review_text", "label_A", "tags_A", "positive_a
 with open(OUT / "adjudication_sheet.csv", "w", newline="", encoding="utf-8-sig") as f:
     w = csv.DictWriter(f, fieldnames=ac); w.writeheader()
     for r in rows:
-        w.writerow({"status": "HOLD: do not issue to A03 until the provenance of sheets A and B is resolved", **{k: r[k] for k in ac if k in r and k != "status"}, "policy_version": "", "final_label": "", "final_tags": "", "final_positive_aspect": "", "final_negative_aspect": "", "reason_for_final_decision": "", "adjudicator_id": "", "date": ""})
+        w.writerow({"status": "READY for human review: both sets are AI-assisted (ChatGPT); decide each row from the review text and policy v1; keep originals; write only in the final_* columns", **{k: r[k] for k in ac if k in r and k != "status"}, "policy_version": "", "final_label": "", "final_tags": "", "final_positive_aspect": "", "final_negative_aspect": "", "reason_for_final_decision": "", "adjudicator_id": "", "date": ""})
 print(len(rows), "disagreements;", dict(counts)); print("patterns among them:", dict(pats.most_common()))

@@ -1,0 +1,28 @@
+{
+ "rows_before": 17806,
+ "removed_exact_frozen_match": 48,
+ "removed_near_duplicate_of_frozen": 11,
+ "rows_after": 17747,
+ "by_source": {
+  "firecs": 7340,
+  "market_team": 3629,
+  "ai_pool": 6778
+ },
+ "label_distribution": {
+  "firecs": {
+   "negative": 2381,
+   "neutral": 2549,
+   "positive": 2410
+  },
+  "market_team": {
+   "negative": 1083,
+   "neutral": 667,
+   "positive": 1879
+  },
+  "ai_pool": {
+   "negative": 3505,
+   "neutral": 146,
+   "positive": 3127
+  }
+ }
+}

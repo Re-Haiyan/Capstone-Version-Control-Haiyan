@@ -1,0 +1,454 @@
+{
+ "sheet_A": {
+  "all": {
+   "n_scored": 387,
+   "accuracy": 0.8191214470284238,
+   "macro_precision": 0.6796932139397892,
+   "macro_recall": 0.637945899977104,
+   "macro_f1": 0.6409058914941267,
+   "weighted_f1": 0.7896611560907046,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5991006246158378,
+    0.6835463126439233
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8701298701298701,
+     "recall": 0.8481012658227848,
+     "f1": 0.8589743589743589,
+     "support": 79
+    },
+    "neutral": {
+     "precision": 0.3333333333333333,
+     "recall": 0.12,
+     "f1": 0.1764705882352941,
+     "support": 50
+    },
+    "positive": {
+     "precision": 0.8356164383561644,
+     "recall": 0.9457364341085271,
+     "f1": 0.8872727272727272,
+     "support": 258
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     67,
+     5,
+     7
+    ],
+    [
+     3,
+     6,
+     41
+    ],
+    [
+     7,
+     7,
+     244
+    ]
+   ]
+  },
+  "excluding_delivery_only": {
+   "n_scored": 354,
+   "accuracy": 0.807909604519774,
+   "macro_precision": 0.658685035352431,
+   "macro_recall": 0.6252942257790091,
+   "macro_f1": 0.6260842116820379,
+   "weighted_f1": 0.7770665618975311,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5823850288103322,
+    0.6718464788679532
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8529411764705882,
+     "recall": 0.8285714285714286,
+     "f1": 0.8405797101449276,
+     "support": 70
+    },
+    "neutral": {
+     "precision": 0.29411764705882354,
+     "recall": 0.10638297872340426,
+     "f1": 0.15625,
+     "support": 47
+    },
+    "positive": {
+     "precision": 0.828996282527881,
+     "recall": 0.9409282700421941,
+     "f1": 0.8814229249011859,
+     "support": 237
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     58,
+     5,
+     7
+    ],
+    [
+     3,
+     5,
+     39
+    ],
+    [
+     7,
+     7,
+     223
+    ]
+   ]
+  },
+  "excluding_prior_labelled_reviews": {
+   "n_scored": 264,
+   "accuracy": 0.8106060606060606,
+   "macro_precision": 0.6520540773589554,
+   "macro_recall": 0.6096970999205636,
+   "macro_f1": 0.6139267676767677,
+   "weighted_f1": 0.7788999368686867,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5616490888131835,
+    0.6671054243299348
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8541666666666666,
+     "recall": 0.7884615384615384,
+     "f1": 0.8200000000000001,
+     "support": 52
+    },
+    "neutral": {
+     "precision": 0.2727272727272727,
+     "recall": 0.09090909090909091,
+     "f1": 0.13636363636363635,
+     "support": 33
+    },
+    "positive": {
+     "precision": 0.8292682926829268,
+     "recall": 0.9497206703910615,
+     "f1": 0.8854166666666666,
+     "support": 179
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     41,
+     4,
+     7
+    ],
+    [
+     2,
+     3,
+     28
+    ],
+    [
+     5,
+     4,
+     170
+    ]
+   ]
+  }
+ },
+ "sheet_B": {
+  "all": {
+   "n_scored": 384,
+   "accuracy": 0.7708333333333334,
+   "macro_precision": 0.6754251529206158,
+   "macro_recall": 0.635341573697738,
+   "macro_f1": 0.6225787633511027,
+   "weighted_f1": 0.7209116685184545,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5796775867720975,
+    0.6674540618054572
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.868421052631579,
+     "recall": 0.8571428571428571,
+     "f1": 0.8627450980392157,
+     "support": 77
+    },
+    "neutral": {
+     "precision": 0.3888888888888889,
+     "recall": 0.0958904109589041,
+     "f1": 0.15384615384615383,
+     "support": 73
+    },
+    "positive": {
+     "precision": 0.7689655172413793,
+     "recall": 0.9529914529914529,
+     "f1": 0.8511450381679387,
+     "support": 234
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     66,
+     5,
+     6
+    ],
+    [
+     5,
+     7,
+     61
+    ],
+    [
+     5,
+     6,
+     223
+    ]
+   ]
+  },
+  "excluding_delivery_only": {
+   "n_scored": 351,
+   "accuracy": 0.7549857549857549,
+   "macro_precision": 0.6534139174144699,
+   "macro_recall": 0.6241021291145566,
+   "macro_f1": 0.6080140485312899,
+   "weighted_f1": 0.7018586741766818,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5643358435482214,
+    0.6543013863918715
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8507462686567164,
+     "recall": 0.8382352941176471,
+     "f1": 0.8444444444444444,
+     "support": 68
+    },
+    "neutral": {
+     "precision": 0.35294117647058826,
+     "recall": 0.08571428571428572,
+     "f1": 0.13793103448275865,
+     "support": 70
+    },
+    "positive": {
+     "precision": 0.7565543071161048,
+     "recall": 0.9483568075117371,
+     "f1": 0.8416666666666666,
+     "support": 213
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     57,
+     5,
+     6
+    ],
+    [
+     5,
+     6,
+     59
+    ],
+    [
+     5,
+     6,
+     202
+    ]
+   ]
+  },
+  "excluding_prior_labelled_reviews": {
+   "n_scored": 262,
+   "accuracy": 0.7633587786259542,
+   "macro_precision": 0.6317889485992935,
+   "macro_recall": 0.6078255944504591,
+   "macro_f1": 0.5941455866435027,
+   "weighted_f1": 0.7102083963616747,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5455152385356165,
+    0.6435978505456266
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8541666666666666,
+     "recall": 0.803921568627451,
+     "f1": 0.8282828282828283,
+     "support": 51
+    },
+    "neutral": {
+     "precision": 0.2727272727272727,
+     "recall": 0.0625,
+     "f1": 0.10169491525423728,
+     "support": 48
+    },
+    "positive": {
+     "precision": 0.7684729064039408,
+     "recall": 0.9570552147239264,
+     "f1": 0.8524590163934426,
+     "support": 163
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     41,
+     4,
+     6
+    ],
+    [
+     4,
+     3,
+     41
+    ],
+    [
+     3,
+     4,
+     156
+    ]
+   ]
+  }
+ },
+ "A_and_B_agree": {
+  "all": {
+   "n_scored": 351,
+   "accuracy": 0.8262108262108262,
+   "macro_precision": 0.6944315356080062,
+   "macro_recall": 0.6474804186594579,
+   "macro_f1": 0.6531120381498428,
+   "weighted_f1": 0.7982931475718091,
+   "macro_f1_ci95_product_bootstrap": [
+    0.6051712292451809,
+    0.7022001217157438
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8918918918918919,
+     "recall": 0.8571428571428571,
+     "f1": 0.8741721854304636,
+     "support": 77
+    },
+    "neutral": {
+     "precision": 0.35294117647058826,
+     "recall": 0.13333333333333333,
+     "f1": 0.19354838709677416,
+     "support": 45
+    },
+    "positive": {
+     "precision": 0.8384615384615385,
+     "recall": 0.9519650655021834,
+     "f1": 0.8916155419222904,
+     "support": 229
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     66,
+     5,
+     6
+    ],
+    [
+     3,
+     6,
+     36
+    ],
+    [
+     5,
+     6,
+     218
+    ]
+   ]
+  },
+  "excluding_delivery_only": {
+   "n_scored": 320,
+   "accuracy": 0.8125,
+   "macro_precision": 0.6726249865894217,
+   "macro_recall": 0.6339609283125734,
+   "macro_f1": 0.6368543179983859,
+   "weighted_f1": 0.7822341290859565,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5885299593724987,
+    0.6846277685910629
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8769230769230769,
+     "recall": 0.8382352941176471,
+     "f1": 0.8571428571428571,
+     "support": 68
+    },
+    "neutral": {
+     "precision": 0.3125,
+     "recall": 0.11627906976744186,
+     "f1": 0.16949152542372883,
+     "support": 43
+    },
+    "positive": {
+     "precision": 0.8284518828451883,
+     "recall": 0.9473684210526315,
+     "f1": 0.8839285714285715,
+     "support": 209
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     57,
+     5,
+     6
+    ],
+    [
+     3,
+     5,
+     35
+    ],
+    [
+     5,
+     6,
+     198
+    ]
+   ]
+  },
+  "excluding_prior_labelled_reviews": {
+   "n_scored": 239,
+   "accuracy": 0.8200836820083682,
+   "macro_precision": 0.6663988185727315,
+   "macro_recall": 0.6211148957522719,
+   "macro_f1": 0.6289521419717629,
+   "weighted_f1": 0.7916786721688952,
+   "macro_f1_ci95_product_bootstrap": [
+    0.5702830483885691,
+    0.6869808371794573
+   ],
+   "classes": {
+    "negative": {
+     "precision": 0.8913043478260869,
+     "recall": 0.803921568627451,
+     "f1": 0.845360824742268,
+     "support": 51
+    },
+    "neutral": {
+     "precision": 0.2727272727272727,
+     "recall": 0.10344827586206896,
+     "f1": 0.15,
+     "support": 29
+    },
+    "positive": {
+     "precision": 0.8351648351648352,
+     "recall": 0.9559748427672956,
+     "f1": 0.8914956011730206,
+     "support": 159
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     41,
+     4,
+     6
+    ],
+    [
+     2,
+     3,
+     24
+    ],
+    [
+     3,
+     4,
+     152
+    ]
+   ]
+  }
+ },
+ "_notes": {
+  "status": "AI-assisted reference standard (ChatGPT), not independently verified ground truth; no human adjudication yet",
+  "model": "sentiment_head_v1",
+  "artifact_sha256": "f168de2da3723fe51070388cef7b232c708e7b5372d851426a08ec01c03524e9"
+ }
+}

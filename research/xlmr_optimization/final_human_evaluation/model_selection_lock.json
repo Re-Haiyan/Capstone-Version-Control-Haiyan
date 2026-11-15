@@ -35,5 +35,24 @@
   "excluding delivery-only reviews",
   "excluding reviews present in review_pool_10000, fresh_eval_sheet or al_pool (prior AI or team labels)",
   "mixed (no dominant polarity) reported separately"
- ]
+ ],
+ "prespecified_second_model": {
+  "added_at_utc": "2026-11-15T05:45:29+00:00",
+  "rule": "Added BEFORE it is scored on the frozen test. Chosen only by pooled out-of-fold macro F1 on training data (StratifiedGroupKFold, 5 folds). Both locked models are scored once each; the frozen test never chooses between them, and the shipped model stays the primary model.",
+  "name": "sentiment_head_v1 (logistic head on the shipped encoder's 768-d embedding)",
+  "artifact": "research/artifacts/sentiment_head_v1.joblib",
+  "artifact_sha256": "f168de2da3723fe51070388cef7b232c708e7b5372d851426a08ec01c03524e9",
+  "config": {
+   "features": "emb",
+   "C": 0.003,
+   "class_weight": null,
+   "macro_f1": 0.8606755011844808,
+   "accuracy": 0.8894461035668,
+   "neutral_f1": 0.7373593279442067,
+   "negative_f1": 0.9225815684029764,
+   "positive_f1": 0.9220856072062594
+  },
+  "training_data": "results/optimized_head_corpus.json (FiReCS train, marketplace train_v3 deduplicated, AI-silver pool rows; frozen-test matches removed first)"
+ },
+ "status_note_2026-11-15": "Labels of the frozen test are AI-assisted (ChatGPT); the reference is an AI-assisted reference standard, not independently verified ground truth."
 }
