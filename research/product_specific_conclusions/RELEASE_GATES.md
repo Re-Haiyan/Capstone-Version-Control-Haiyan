@@ -11,8 +11,8 @@
 | Gate | Required evidence | Current status |
 | --- | --- | --- |
 | 1. Research integrity | Historical locked pack, D1/D2/F and frozen C3 hashes unchanged; annotation provenance preserved. Any new candidate on separate Phase 4 data. | **Preserve** |
-| 2. Automated regression | Both Python 3.11 and 3.12 tests, Svelte check/build, evidence audit, saved verdict/decision equality, known browser baseline and off-switch checks on the **same commit**. | PRs #4–#6 were checked individually; run and record combined-tip checks |
-| 2b. Reproducible dependencies | Keep `package-lock.json` aligned and require `npm ci` + Svelte/build + extension tests on the reviewed commit; record Python dependency lock used for staging. | Frontend lock repaired and `npm ci` proved on PR #10 repair job; **combined-commit CI and staged Python lock proof remain pending** |
+| 2. Automated regression | Both Python 3.11 and 3.12 tests, Svelte check/build, evidence audit, saved verdict/decision equality, known browser baseline and off-switch checks on the **same commit**. | **CI subset verified** at `73774819860dbc67fb893af34add9839f156682d`: 440/440 Python tests on 3.11 and 3.12, clean frontend install/check/build/extension tests, saved-review audit; browser/e2e, on/off and staging-specific gates still pending |
+| 2b. Reproducible dependencies | Keep `package-lock.json` aligned and require `npm ci` + Svelte/build + extension tests on the reviewed commit; record Python dependency lock used for staging. | **Frontend verified** on merged commit `7377481`; **staging Python dependency lock still pending verification on the target host** |
 | 3. Independent judgement | Two independent human annotation sets or a prior dated written protocol amendment; card/claims/features/words scored, with safety and unsupported claims, intervals and disagreement analysis. | **BLOCKED** — one Claude-assisted set only |
 | 4. Category validity | Fresh real reviews and human-reviewed claims for every enabled category, including footwear and motorcycle parts if enabled. Language split reported. | **BLOCKED** — some groups lack real data |
 | 5. Isolated staging | Machine matched to intended 2-vCPU production size, reproducible benchmark on its actual resources, older saved reports, secrets/privacy audit, off/on rollback. | **BLOCKED** — no staging host verified |
@@ -24,7 +24,7 @@ Do not reclassify a *passing code test* as a scientific validation. A failed sci
 
 ## Execution sequence
 
-1. Run combined-commit CI and preserve its SHA, job outcomes and any failures.
+1. Re-run combined-commit CI after every merge and preserve its SHA, job outcomes and any failures. Previous known good example: [run 43720284477](https://github.com/Re-Haiyan/Capstone-Version-Control-Haiyan/actions/runs/43720284477), SHA `73774819860dbc67fb893af34add9839f156682d`, all four jobs passed. This historical success does not cover later commits.
 2. Keep existing judgments and Phase 3 results immutable. Use `phase4/protocol.md` to create **new** development/validation/final data before writing additional extraction rules.
 3. Make two independently completed human evaluation sets (without private keys or each other's outputs), label provenance and disagreement. No synthetic or guessed ratings.
 4. Provision an isolated staging machine with sanitized test data and run `staging_procedure.md`. Save the real performance artifacts and verify the off-switch and real sync dry run.
