@@ -1,0 +1,136 @@
+﻿item_id,outcome,aspect,polarity,profile,stars,text
+D2-001,fn,value,positive,powerbank,4,"💰Price:goodsType C plug, compatible with many devices., 🔨Durability:goods ♋Compatibility:goodsType C plug, compatible with many devices., Type C plug, compatible with many devices., Type C plug, compatible with many devices., Sturdy materials, built to last., High power output for quick charging., S"
+D2-001,fn,durability,positive,powerbank,4,"💰Price:goodsType C plug, compatible with many devices., 🔨Durability:goods ♋Compatibility:goodsType C plug, compatible with many devices., Type C plug, compatible with many devices., Type C plug, compatible with many devices., Sturdy materials, built to last., High power output for quick charging., S"
+D2-003,fp,performance,positive,appliance,5,"Fast and even heating, 8 smart cooking functions,"
+D2-004,fn,value,positive,skin,5,"Received order in good condition. Great deal with discount vouchers in use. Just that there’s a better deal after my purchase so I bought again. First time to try its Facial Cleanser. Hoping it will work just as well. Gentle and effective cleanser, Great for sensitive skin, Thank you very much selle"
+D2-005,fp,seller,positive,skin,5,Trusted brand for my 10 year old son.. Nagkakaron na din kasi sya ng pimples. He uses thus for his facial wash. This is a gentle and effective cleanser for him.
+D2-008,fn,value,positive,food,5,"so smooth texture Convenient to slice and serve, Taste:i love this cheese so much Price:so good also the price Ingredients:good ingredidentPacked with essential vitamins and minerals, A must-have for cheese lovers, Great taste and texture,"
+D2-008,fn,taste,positive,food,5,"so smooth texture Convenient to slice and serve, Taste:i love this cheese so much Price:so good also the price Ingredients:good ingredidentPacked with essential vitamins and minerals, A must-have for cheese lovers, Great taste and texture,"
+D2-008,fn,texture,positive,food,5,"so smooth texture Convenient to slice and serve, Taste:i love this cheese so much Price:so good also the price Ingredients:good ingredidentPacked with essential vitamins and minerals, A must-have for cheese lovers, Great taste and texture,"
+D2-011,fn,freebies,positive,hair,5,"Very nice, bango, my freebies pa. grabe worth it."
+D2-012,fn,appearance,positive,general,5,"Ang ganda nung item at halata talagang tatagal sya. Order pa ako goods pala quality para sa mga kaofficemates ko, thank you seller!!"
+D2-012,fn,durability,positive,general,5,"Ang ganda nung item at halata talagang tatagal sya. Order pa ako goods pala quality para sa mga kaofficemates ko, thank you seller!!"
+D2-012,fn,build,positive,general,5,"Ang ganda nung item at halata talagang tatagal sya. Order pa ako goods pala quality para sa mga kaofficemates ko, thank you seller!!"
+D2-012,fp,seller,positive,general,5,"Ang ganda nung item at halata talagang tatagal sya. Order pa ako goods pala quality para sa mga kaofficemates ko, thank you seller!!"
+D2-013,fn,functionality,positive,general,5,"The shooting is very clear. The shooting area is also large. Not bad, not bad, satisfied. A sense of security"
+D2-017,fn,functionality,positive,hair,5,"Leaves hair ultra smooth, Deep hydration for dry hair, Infused with Coco Cream and Milk Protein, Effectiveness:10 Ingredients:10 Fragrance:10"
+D2-017,fn,fragrance,positive,hair,5,"Leaves hair ultra smooth, Deep hydration for dry hair, Infused with Coco Cream and Milk Protein, Effectiveness:10 Ingredients:10 Fragrance:10"
+D2-018,fp,appearance,negative,skin,5,"not as advertised , it fades easily"
+D2-018,fn,build,negative,skin,5,"not as advertised , it fades easily"
+D2-020,fn,matches_listing,negative,appliance,2,maganda cia pero wla ung kettle n ksma n nkaindicate s post nio
+D2-021,fn,appearance,positive,general,5,"Waterproof design for outdoor use, Secure and reliable home security system, Wide viewing angle for better coverage, Quality: satisfied Appearance: satisfied Performance: satisfied"
+D2-021,fn,functionality,positive,general,5,"Waterproof design for outdoor use, Secure and reliable home security system, Wide viewing angle for better coverage, Quality: satisfied Appearance: satisfied Performance: satisfied"
+D2-021,fn,build,positive,general,5,"Waterproof design for outdoor use, Secure and reliable home security system, Wide viewing angle for better coverage, Quality: satisfied Appearance: satisfied Performance: satisfied"
+D2-025,fn,seller,positive,appliance,5,"10/10 ang rate, speechless ako sa item kase ♥️♥️♥️ ng receiver seller keep up the good work more power po sa inyo"
+D2-027,fn,size,negative,powerbank,5,"It is indeed a fast charger. However, it is not compatible with older iPhone models with lightning chargers. I had to buy an adaptor to use it for my iPhone. While small it is heavier than usual Powerbanks."
+D2-028,fn,seller,negative,earbuds,1,mandarambong seller na to sayang pera nyo dito papadalahan kayu ng maling item tas hinde nyo naman maibabalik pati CS ni lazada wala g kwr ta kahirap ng transaction sa inyo
+D2-028,fn,matches_listing,negative,earbuds,1,mandarambong seller na to sayang pera nyo dito papadalahan kayu ng maling item tas hinde nyo naman maibabalik pati CS ni lazada wala g kwr ta kahirap ng transaction sa inyo
+D2-028,fp,value,negative,earbuds,1,mandarambong seller na to sayang pera nyo dito papadalahan kayu ng maling item tas hinde nyo naman maibabalik pati CS ni lazada wala g kwr ta kahirap ng transaction sa inyo
+D2-029,fn,freebies,negative,appliance,5,Ang pangit hi di maganda sobrang liit ...Ang sabi buy 1 get 1 free...electric kettle Ang free ..pagdating putang ina nakakbwesit talaga .nakaksira ng araw....
+D2-029,fn,size,negative,appliance,5,Ang pangit hi di maganda sobrang liit ...Ang sabi buy 1 get 1 free...electric kettle Ang free ..pagdating putang ina nakakbwesit talaga .nakaksira ng araw....
+D2-029,fn,appearance,negative,appliance,5,Ang pangit hi di maganda sobrang liit ...Ang sabi buy 1 get 1 free...electric kettle Ang free ..pagdating putang ina nakakbwesit talaga .nakaksira ng araw....
+D2-030,fn,packaging,negative,skin,1,"Sablay packaging nag leak, nakamura nga bawas naman dumating"
+D2-030,fn,matches_listing,negative,skin,1,"Sablay packaging nag leak, nakamura nga bawas naman dumating"
+D2-031,fn,authenticity,positive,food,5,"fast delivery.. legit na cheese, masarap at Mura pa ito. creamy and delicious cheese will order again kapag naubos na ito. healthy choice for kids"
+D2-031,fn,taste,positive,food,5,"fast delivery.. legit na cheese, masarap at Mura pa ito. creamy and delicious cheese will order again kapag naubos na ito. healthy choice for kids"
+D2-031,fn,value,positive,food,5,"fast delivery.. legit na cheese, masarap at Mura pa ito. creamy and delicious cheese will order again kapag naubos na ito. healthy choice for kids"
+D2-031,fn,texture,positive,food,5,"fast delivery.. legit na cheese, masarap at Mura pa ito. creamy and delicious cheese will order again kapag naubos na ito. healthy choice for kids"
+D2-032,fn,texture,positive,skin,5,Quality:good Texture:very good Effectiveness:as a moisturizer its good
+D2-032,fn,build,positive,skin,5,Quality:good Texture:very good Effectiveness:as a moisturizer its good
+D2-034,fn,delivery,positive,hair,5,smells good. not yet tried . ang bilis dumating ay well-packed
+D2-036,fn,value,positive,skin,5,Product is great and almost like the old version of the oily skin cleanser. makes my face feel clean and not oily. And cheaper than the old ioly skin cleanser.
+D2-036,fn,functionality,positive,skin,5,Product is great and almost like the old version of the oily skin cleanser. makes my face feel clean and not oily. And cheaper than the old ioly skin cleanser.
+D2-036,fp,oiliness,negative,skin,5,Product is great and almost like the old version of the oily skin cleanser. makes my face feel clean and not oily. And cheaper than the old ioly skin cleanser.
+D2-036,fn,oiliness,positive,skin,5,Product is great and almost like the old version of the oily skin cleanser. makes my face feel clean and not oily. And cheaper than the old ioly skin cleanser.
+D2-037,fn,seller,negative,appliance,1,"Promised to check order for size. BUT again, sent me a 5L(checked size by measure) instead of 9L. How disappointing!!!! Very very bad business!"
+D2-037,fn,matches_listing,negative,appliance,1,"Promised to check order for size. BUT again, sent me a 5L(checked size by measure) instead of 9L. How disappointing!!!! Very very bad business!"
+D2-039,fn,authenticity,negative,powerbank,4,My box has no security code to check and verify legitimacy.
+D2-040,fn,value,positive,skin,5,"Effectiveness:Great for daily use, very effective at very smooth sa skin Price:so happy that i got it at lower price 1150, mura kung bibili sa pharmacy/grocery thank you sa vouchers at coins, it helps a lot."
+D2-040,fn,texture,positive,skin,5,"Effectiveness:Great for daily use, very effective at very smooth sa skin Price:so happy that i got it at lower price 1150, mura kung bibili sa pharmacy/grocery thank you sa vouchers at coins, it helps a lot."
+D2-040,fn,functionality,positive,skin,5,"Effectiveness:Great for daily use, very effective at very smooth sa skin Price:so happy that i got it at lower price 1150, mura kung bibili sa pharmacy/grocery thank you sa vouchers at coins, it helps a lot."
+D2-041,fn,packaging,positive,powerbank,4,Good quality and packaging. May option (scanning the qr code) to check if the product is legit or not. Although di siya fully charged upon delivery. Hoping na tumagal para sulit ang price.
+D2-041,fn,arrival,negative,powerbank,4,Good quality and packaging. May option (scanning the qr code) to check if the product is legit or not. Although di siya fully charged upon delivery. Hoping na tumagal para sulit ang price.
+D2-042,fn,value,positive,powerbank,5,"♋Compatibility:good 💰Price:good 🔨Durability:good10A power capacity, perfect for heavy usage., Type C plug, compatible with many devices.,"
+D2-042,fn,durability,positive,powerbank,5,"♋Compatibility:good 💰Price:good 🔨Durability:good10A power capacity, perfect for heavy usage., Type C plug, compatible with many devices.,"
+D2-043,fn,matches_listing,negative,earbuds,4,ok na sana. pero akala ko na tulad na nasa picture na walang antenna... meron pala. ahehe
+D2-044,fn,packaging,negative,skin,2,Effectiveness: Great for daily use. Price: Great value for money. Ingredients: Not sure about the ingredients. Consistency is not the same quality as the one I bought before. It’s much less viscous. Smells the same though. It’s non-irritant. Could be suitable for all skin types. Packaging could be i
+D2-044,fn,texture,negative,skin,2,Effectiveness: Great for daily use. Price: Great value for money. Ingredients: Not sure about the ingredients. Consistency is not the same quality as the one I bought before. It’s much less viscous. Smells the same though. It’s non-irritant. Could be suitable for all skin types. Packaging could be i
+D2-044,fn,skin_irritation,positive,skin,2,Effectiveness: Great for daily use. Price: Great value for money. Ingredients: Not sure about the ingredients. Consistency is not the same quality as the one I bought before. It’s much less viscous. Smells the same though. It’s non-irritant. Could be suitable for all skin types. Packaging could be i
+D2-044,fn,delivery,negative,skin,2,Effectiveness: Great for daily use. Price: Great value for money. Ingredients: Not sure about the ingredients. Consistency is not the same quality as the one I bought before. It’s much less viscous. Smells the same though. It’s non-irritant. Could be suitable for all skin types. Packaging could be i
+D2-046,fn,size,negative,appliance,5,💰Price:sulit 📏Capacity:maliit kesa expected
+D2-047,fn,value,positive,powerbank,5,"♋Compatibility:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 💰Price:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 🔨Durability:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 10A power capacity, perfect for heavy usage, High power output for quick charging. Kudos! ♥️"
+D2-047,fn,durability,positive,powerbank,5,"♋Compatibility:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 💰Price:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 🔨Durability:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 10A power capacity, perfect for heavy usage, High power output for quick charging. Kudos! ♥️"
+D2-047,fp,charging,positive,powerbank,5,"♋Compatibility:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 💰Price:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 🔨Durability:⭐⭐⭐⭐⭐/⭐⭐⭐⭐⭐ 10A power capacity, perfect for heavy usage, High power output for quick charging. Kudos! ♥️"
+D2-051,fn,value,positive,appliance,5,💰Price:mura lng 👌Ease of Use:yess... 📏Capacity:okey
+D2-051,fn,ease,positive,appliance,5,💰Price:mura lng 👌Ease of Use:yess... 📏Capacity:okey
+D2-052,fn,freebies,positive,skin,5,gentle on skin. we have been using this brand for years.. thanks for discount and freebies . highly recommend. our entire family is using this brand
+D2-054,fn,functionality,positive,appliance,5,"Very practical, good quality, expandable, perfect for you"
+D2-056,fn,functionality,positive,food,5,"ngaun q plng itry, pero maganda ung tulog q pag makainom aq nito, un lng matakaw rin bagay to sa mga gusto tumaba.. Effectiveness:OK Safety:OK Ingredients:OK"
+D2-057,fn,appearance,positive,appliance,5,Fast delivery. Mommy's in love with the color. It's working but she has yet to try cooking.
+D2-057,fn,functionality,positive,appliance,5,Fast delivery. Mommy's in love with the color. It's working but she has yet to try cooking.
+D2-058,fn,delivery,negative,powerbank,3,negative sa tagal ng delivery. tignan ko kung tatagal ang product
+D2-060,fn,fragrance,positive,hair,5,"Infused with Coco Cream and Milk Protein, Best when used with conditioner, Effectiveness: Excellent performance, Ingredients: Safe components, Fragrance: Nice and subtle aroma, Lovely fragrance, super bango tagal pa expiration"
+D2-065,fn,charging,negative,powerbank,2,doesn't work for me. it still charges my phone slow and doesn't show that it's fast charge im using a 120w charger and my phone is a realme 9 pro so i know it support fast charge
+D2-067,fn,durability,positive,earbuds,5,"♋CompatibExcellent frequency stability, ility：10 🔨Durability:10 🎧Sound Quality:10"
+D2-067,fn,sound,positive,earbuds,5,"♋CompatibExcellent frequency stability, ility：10 🔨Durability:10 🎧Sound Quality:10"
+D2-069,fn,durability,positive,earbuds,5,"♋Compatibility:very good 🔨Durability:very good 🎧Sound Quality:very good, load and clearLong-lasting battery life, Great range of connectivity, Excellent frequency stability, Easy to set up and use,"
+D2-069,fn,sound,positive,earbuds,5,"♋Compatibility:very good 🔨Durability:very good 🎧Sound Quality:very good, load and clearLong-lasting battery life, Great range of connectivity, Excellent frequency stability, Easy to set up and use,"
+D2-070,fp,authenticity,positive,food,5,na bili ko sya na buy1take and tinitake sya ng mga kapatid ko na nag aaral so far.. hnd sya mahapdi sa tyan and i do some research legit nman daw products na eto..
+D2-072,fp,durability,positive,earbuds,4,"good quality. long lasting power.Great range of connectivity,"
+D2-072,fn,battery,positive,earbuds,4,"good quality. long lasting power.Great range of connectivity,"
+D2-075,fn,delivery,positive,skin,5,"Very nice, like the product.Thank you to the delivery man as well,who patiently finds my address."
+D2-076,fn,functionality,positive,general,5,Very functional and serves it's purpose. The down side is that it disconnects for about over 25 meters. There input is not exact (100 m) it's just 20 to 30 m range.
+D2-076,fn,matches_listing,negative,general,5,Very functional and serves it's purpose. The down side is that it disconnects for about over 25 meters. There input is not exact (100 m) it's just 20 to 30 m range.
+D2-077,fp,microphone,negative,earbuds,1,scam pangit ang boses.👎👎👎😡
+D2-077,fn,sound,negative,earbuds,1,scam pangit ang boses.👎👎👎😡
+D2-077,fn,seller,negative,earbuds,1,scam pangit ang boses.👎👎👎😡
+D2-078,fn,value,positive,appliance,3,I like the size and the price. But some of the button functions are not working. but it still does it's purpose
+D2-078,fn,size,positive,appliance,3,I like the size and the price. But some of the button functions are not working. but it still does it's purpose
+D2-079,fn,authenticity,positive,hair,5,1sLegit na nakamura talaga..1st time q p lng mag order dito. Thank you seller at lazada.. Mag order ulit aq sa susunod pag nagustuhan namin...
+D2-079,fn,value,positive,hair,5,1sLegit na nakamura talaga..1st time q p lng mag order dito. Thank you seller at lazada.. Mag order ulit aq sa susunod pag nagustuhan namin...
+D2-079,fp,seller,positive,hair,5,1sLegit na nakamura talaga..1st time q p lng mag order dito. Thank you seller at lazada.. Mag order ulit aq sa susunod pag nagustuhan namin...
+D2-080,fn,value,positive,appliance,5,💰Price:reasonable price 👌Ease of Use:yes easy to use 📏Capacity:good for us for 2 people
+D2-080,fn,size,positive,appliance,5,💰Price:reasonable price 👌Ease of Use:yes easy to use 📏Capacity:good for us for 2 people
+D2-081,fn,arrival,positive,hair,5,Maayos Nadeliver xkn wlang butas thank you po
+D2-082,fn,packaging,positive,skin,4,Very elegant ang packaging lakas maka sosyal. Gusto ko yung balm n mentholated. Satisfied customer. Effective ❤️
+D2-083,fn,functionality,negative,skin,5,"Balm lng sya, di nagbabago Ang kulay Ng lips ko. Sayang ang Pera"
+D2-084,fn,delivery,positive,general,5,"ang bilis ng delivery, ok naman yung item sana lang magtagal. mura at sulit yung presyo. salamat seller salamat lazada."
+D2-084,fp,seller,positive,general,5,"ang bilis ng delivery, ok naman yung item sana lang magtagal. mura at sulit yung presyo. salamat seller salamat lazada."
+D2-085,fn,size,positive,powerbank,5,"Works as expected and even has a cycle count for how many times the powerbank has been charged. Can charge 2 phones to 80% + 1 phone to probably up to 50%, small in size so it saves up space, but wide in size so might not be best to bring in thin bags. It's really great that Anker Nano already has t"
+D2-085,fn,functionality,positive,powerbank,5,"Works as expected and even has a cycle count for how many times the powerbank has been charged. Can charge 2 phones to 80% + 1 phone to probably up to 50%, small in size so it saves up space, but wide in size so might not be best to bring in thin bags. It's really great that Anker Nano already has t"
+D2-085,fn,size,negative,powerbank,5,"Works as expected and even has a cycle count for how many times the powerbank has been charged. Can charge 2 phones to 80% + 1 phone to probably up to 50%, small in size so it saves up space, but wide in size so might not be best to bring in thin bags. It's really great that Anker Nano already has t"
+D2-086,fn,matches_listing,negative,food,2,"I really feel disappointed, I thought I was able to save money but...your picture was misleading, it was the smallest size of cheese and when I checked in the Supermarket it cost only less than 49 per small box which is new and very fresh and I pay you 187.50 for3 pcs including the courier service.."
+D2-086,fn,value,negative,food,2,"I really feel disappointed, I thought I was able to save money but...your picture was misleading, it was the smallest size of cheese and when I checked in the Supermarket it cost only less than 49 per small box which is new and very fresh and I pay you 187.50 for3 pcs including the courier service.."
+D2-087,fn,appearance,positive,skin,5,nagamit ko na ..d lang sya mapula makintab at nakakamoisturize ng labi. Maganda gamitin
+D2-087,fn,ease,positive,skin,5,nagamit ko na ..d lang sya mapula makintab at nakakamoisturize ng labi. Maganda gamitin
+D2-087,fn,functionality,positive,skin,5,nagamit ko na ..d lang sya mapula makintab at nakakamoisturize ng labi. Maganda gamitin
+D2-089,fn,matches_listing,positive,powerbank,5,Very satisfied with this purchase! The item arrived on time and was well-packed. The quality is better than expected and it works perfectly as described. Definitely worth the price. I would recommend this to others and will buy again from this seller.
+D2-089,fn,value,positive,powerbank,5,Very satisfied with this purchase! The item arrived on time and was well-packed. The quality is better than expected and it works perfectly as described. Definitely worth the price. I would recommend this to others and will buy again from this seller.
+D2-089,fn,functionality,positive,powerbank,5,Very satisfied with this purchase! The item arrived on time and was well-packed. The quality is better than expected and it works perfectly as described. Definitely worth the price. I would recommend this to others and will buy again from this seller.
+D2-089,fn,build,positive,powerbank,5,Very satisfied with this purchase! The item arrived on time and was well-packed. The quality is better than expected and it works perfectly as described. Definitely worth the price. I would recommend this to others and will buy again from this seller.
+D2-090,fn,value,positive,food,5,💰Price: Price is as good as their product 🔍Quality: 10 out of 10 Whey Protein 😋Taste: Vanilla’s excellent to mix with other fruit and oatmeal. Butterscotch’s best solo LOL
+D2-090,fn,taste,positive,food,5,💰Price: Price is as good as their product 🔍Quality: 10 out of 10 Whey Protein 😋Taste: Vanilla’s excellent to mix with other fruit and oatmeal. Butterscotch’s best solo LOL
+D2-090,fn,build,positive,food,5,💰Price: Price is as good as their product 🔍Quality: 10 out of 10 Whey Protein 😋Taste: Vanilla’s excellent to mix with other fruit and oatmeal. Butterscotch’s best solo LOL
+D2-090,fn,mixability,positive,food,5,💰Price: Price is as good as their product 🔍Quality: 10 out of 10 Whey Protein 😋Taste: Vanilla’s excellent to mix with other fruit and oatmeal. Butterscotch’s best solo LOL
+D2-091,fn,build,negative,appliance,2,I ordered the 7L touch white but the frying basket can only contain 4.7 liters of water. There are no rubber footing so the appliance slides easily on the counter.
+D2-091,fn,size,negative,appliance,2,I ordered the 7L touch white but the frying basket can only contain 4.7 liters of water. There are no rubber footing so the appliance slides easily on the counter.
+D2-091,fn,matches_listing,negative,appliance,2,I ordered the 7L touch white but the frying basket can only contain 4.7 liters of water. There are no rubber footing so the appliance slides easily on the counter.
+D2-092,fn,appearance,positive,appliance,5,Maayos naman ang packaging. Saka mabilis dumating. Maganda un ilaw sakto lang ang laki medyo may gasgas lng ng konte. Sana lng magamit siya ng matagal n panahon. Thanks po.
+D2-092,fn,size,positive,appliance,5,Maayos naman ang packaging. Saka mabilis dumating. Maganda un ilaw sakto lang ang laki medyo may gasgas lng ng konte. Sana lng magamit siya ng matagal n panahon. Thanks po.
+D2-092,fn,delivery,positive,appliance,5,Maayos naman ang packaging. Saka mabilis dumating. Maganda un ilaw sakto lang ang laki medyo may gasgas lng ng konte. Sana lng magamit siya ng matagal n panahon. Thanks po.
+D2-093,fn,functionality,positive,skin,5,Effectiveness: Really Good Price: Fair Got this in a sale because of using coins and vouchers. It performs as the same as the ones I bought before but this one can last for about months
+D2-094,fn,value,positive,general,3,🔧Ease of Installation:it is hard to install sometimes working sometimes not ⚙️Features:camera and door bell rong 💰Price:pricr is great
+D2-094,fn,ease,negative,general,3,🔧Ease of Installation:it is hard to install sometimes working sometimes not ⚙️Features:camera and door bell rong 💰Price:pricr is great
+D2-094,fn,functionality,negative,general,3,🔧Ease of Installation:it is hard to install sometimes working sometimes not ⚙️Features:camera and door bell rong 💰Price:pricr is great
+D2-095,fn,size,positive,powerbank,5,Very light and easy to bring during travels! CCC Certified as well which can be used for domestic travels in China!
+D2-096,fp,seller,positive,food,4,"Meron naman palang accurate na ""tagged"" or ""pinned"" kapag delivery failed eh haha customer lagi ang nire-reason ng courier eh. anyways, ang ganda ng packaging secured. Ki-nut ko n lng yung video kasi mahaba yung pag unbox ko. thank you seller"
+D2-097,fn,value,positive,hair,5,super bango at ganda sa buhok napaka sulit very affordable laking tipid salamat seller at lazada will buy again🥰
+D2-097,fp,seller,positive,hair,5,super bango at ganda sa buhok napaka sulit very affordable laking tipid salamat seller at lazada will buy again🥰
+D2-097,fn,functionality,positive,hair,5,super bango at ganda sa buhok napaka sulit very affordable laking tipid salamat seller at lazada will buy again🥰
+D2-097,fn,fragrance,positive,hair,5,super bango at ganda sa buhok napaka sulit very affordable laking tipid salamat seller at lazada will buy again🥰
+D2-100,fn,functionality,negative,appliance,3,Sa kasamaang palad ang touch panel ay hindi masyadong tumutugon.☹️
+D2-101,fn,delivery,positive,powerbank,5,"7% charge lang nung dumating. Atat yung automated message nila, agad agad gusto iconfirm receive. hehe anyways, bilis dumating. maayos naman packaging, may dent lang ng onti sa box. pero makapal kasi yung nasa loob pa na box kaya secure naman. Thanks"
+D2-103,fn,functionality,positive,skin,5,Quality:good Texture:ok Effectiveness:yes
+D2-103,fn,build,positive,skin,5,Quality:good Texture:ok Effectiveness:yes
+D2-104,fn,functionality,positive,food,5,"Narecieved q na poh..subok q na itong vitamins na to kaya umorder ulit aq..nung una sa shopee,nagkataon na may voucher dito sa lazada kaya dito aq napaorder hehe,maraming thankyou seller,bilis ng shipping..kahapon q lang to inorder,dumating agad ngayon..😊"
+D2-104,fp,seller,positive,food,5,"Narecieved q na poh..subok q na itong vitamins na to kaya umorder ulit aq..nung una sa shopee,nagkataon na may voucher dito sa lazada kaya dito aq napaorder hehe,maraming thankyou seller,bilis ng shipping..kahapon q lang to inorder,dumating agad ngayon..😊"

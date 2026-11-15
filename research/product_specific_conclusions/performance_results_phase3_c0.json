@@ -1,0 +1,130 @@
+{
+ "tag": "phase3_c0",
+ "date": "2026-11-15T11:21:27+00:00",
+ "machine": "Windows 10, Python 3.11.9, AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD, 12 logical CPUs",
+ "emulated_cpus": 2,
+ "note": "An emulated CPU limit is not a measurement of the real server.",
+ "cold_start": {
+  "runs": 5,
+  "import_ms_median": 303,
+  "first_read_150_reviews_ms_median": 18,
+  "heavy_modules_loaded": []
+ },
+ "saved_electronics_182": {
+  "products": 182,
+  "reviews": 21878,
+  "plain_verdict_as_before": {
+   "n": 182,
+   "median_ms": 0.3,
+   "p95_ms": 0.91,
+   "max_ms": 7.36
+  },
+  "with_reasons_first_read": {
+   "n": 182,
+   "median_ms": 64.02,
+   "p95_ms": 208.27,
+   "max_ms": 488.58
+  },
+  "with_reasons_cached": {
+   "n": 182,
+   "median_ms": 0.77,
+   "p95_ms": 2.01,
+   "max_ms": 2.72
+  },
+  "cpu_seconds_over_wall_seconds_for_all_first_reads": 0.87
+ },
+ "real_non_electronics": {
+  "products": 21,
+  "reviews_per_product_median": 224,
+  "first_read_by_profile": {
+   "apparel": {
+    "n": 4,
+    "median_ms": 108.87,
+    "p95_ms": 120.55,
+    "max_ms": 120.55
+   },
+   "appliance": {
+    "n": 5,
+    "median_ms": 86.2,
+    "p95_ms": 122.94,
+    "max_ms": 122.94
+   },
+   "food": {
+    "n": 5,
+    "median_ms": 109.97,
+    "p95_ms": 125.25,
+    "max_ms": 125.25
+   },
+   "hair": {
+    "n": 1,
+    "median_ms": 112.07,
+    "p95_ms": 112.07,
+    "max_ms": 112.07
+   },
+   "skin": {
+    "n": 6,
+    "median_ms": 104.51,
+    "p95_ms": 173.56,
+    "max_ms": 173.56
+   }
+  }
+ },
+ "review_set_size": {
+  "100": {
+   "seconds_median": 0.06,
+   "peak_extra_memory_kib": 88
+  },
+  "300": {
+   "seconds_median": 0.195,
+   "peak_extra_memory_kib": 151
+  },
+  "1000": {
+   "seconds_median": 0.678,
+   "peak_extra_memory_kib": 280
+  },
+  "3000": {
+   "seconds_median": 1.566,
+   "peak_extra_memory_kib": 655
+  }
+ },
+ "simultaneous_first_reads_threads": {
+  "note": "One Python process, threads: the GIL means no speed-up is expected; the figures show queueing, not parallel work.",
+  "1": {
+   "requests": 80,
+   "throughput_per_second": 10.3,
+   "n": 80,
+   "median_ms": 71.67,
+   "p95_ms": 226.14,
+   "max_ms": 310.92
+  },
+  "2": {
+   "requests": 80,
+   "throughput_per_second": 10.8,
+   "n": 80,
+   "median_ms": 130.59,
+   "p95_ms": 463.7,
+   "max_ms": 572.64
+  },
+  "4": {
+   "requests": 80,
+   "throughput_per_second": 9.5,
+   "n": 80,
+   "median_ms": 299.43,
+   "p95_ms": 1049.77,
+   "max_ms": 1504.38
+  },
+  "8": {
+   "requests": 80,
+   "throughput_per_second": 9.3,
+   "n": 80,
+   "median_ms": 432.81,
+   "p95_ms": 2102.16,
+   "max_ms": 3286.79
+  }
+ },
+ "existing_pipeline": {
+  "files_changed_in_analysis_models_or_data_store_vs_deployment": "none",
+  "plain_verdict_per_product_median_ms": 0.3
+ },
+ "peak_memory_mib_of_this_process": 448.4
+}

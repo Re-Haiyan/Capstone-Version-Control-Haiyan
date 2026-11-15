@@ -8,6 +8,6 @@ What is checked, mechanically, for every line of "Why this conclusion?" and ever
 
 | Pool | Products with evidence | Lines | Quotations | Review ids listed | Problems found |
 |---|---|---|---|---|---|
-| saved electronics | 182 of 182 | 2894 | 4744 | 10387 | 0 |
-| real non-electronics (read while tuning) | 21 of 21 | 357 | 610 | 1614 | 0 |
-| real non-electronics (unread) | 16 of 16 | 284 | 483 | 1557 | 0 |
+| saved electronics | 182 of 182 | 3265 | 5460 | 14274 | 0 |
+| real non-electronics (read while tuning) | 21 of 21 | 388 | 668 | 2079 | 0 |
+| real non-electronics (unread) | 16 of 16 | 312 | 533 | 1886 | 0 |

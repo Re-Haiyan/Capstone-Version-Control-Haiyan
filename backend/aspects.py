@@ -106,6 +106,78 @@ _MENU_MIDWORD = re.compile(r"(?<=[a-z0-9,.]\s)[A-Z][a-z]{2,}")
 _FIRST_PERSON = re.compile(r"\b(?:i|i'm|i've|my|me|mine|we|our|ko|ako|akin|sakin|saken|namin|ginamit|nagamit|nabili|binili|bumili)\b", re.I)
 
 
+# --- asp3 / C2: clause handling (Phase 3) ---------------------------------------------------------------------------------
+# A buyer who fills the marketplace's prompts writes "Price:good Quality:better". The label names the feature and the short
+# answer gives the direction, so "Price:good" is a statement about value even though the answer alone says nothing.
+_LABEL_MAP = {
+    "price": ("value",), "quality": ("build",), "durability": ("durability",), "taste": ("taste",), "texture": ("texture",),
+    "effectiveness": ("functionality",), "fragrance": ("fragrance",), "charging speed": ("charging",), "portability": ("size",),
+    "capacity": ("capacity", "size"), "sound quality": ("sound",), "comfort": ("comfort",), "battery life": ("battery",),
+    "ease of use": ("ease",), "ease of installation": ("ease",), "material": ("fabric", "build"), "size": ("size",),
+    "style": ("appearance",), "appearance": ("appearance",), "design": ("appearance",), "functionality": ("functionality",),
+    "performance": ("performance", "functionality"), "microphone": ("microphone",), "connectivity": ("connectivity",),
+}
+_ANS_POS = re.compile(
+    r"\b(?:good|goods?|great|excellent|best|better|nice|sulit|mura|affordable|fast|maganda|ganda|wonderful|reasonable|worthy|satisfied|perfect|amazing|solid|sturdy|durable|smooth|clear|comfortable|komportable|easy|madali|big|large|10\s*/\s*10|[89]\s*/\s*10|10\s+out\s+of\s+10)\b|\U0001F44D|\u2B50{4,}|\u2764",
+    re.I,
+)
+_ANS_NEG = re.compile(
+    r"\b(?:poor|bad|slow|mabagal|mahal|pangit|panget|worst|terrible|weak|mahina|malobat|lowbat|small|maliit|hard|difficult|hirap|flimsy|cheap|expensive|dull|not\s+(?:good|great|worth|fast|ok|okay|audible)|[0-4]\s*/\s*10)\b|\U0001F44E|\U0001F621|\U0001F614|\U0001F61E|\U0001F622",
+    re.I,
+)
+_NOT_WORD = re.compile(r"\bnot\s+\w+", re.I)
+
+
+_ANS_SCORE = re.compile(r"^\W*(\d{1,2})(?:\s*/\s*10)?\W*$")
+
+
+def _answer_polarity(answer: str) -> str | None:
+    score = _ANS_SCORE.match(answer)
+    if score:
+        value = int(score.group(1))
+        return "positive" if 8 <= value <= 10 else "negative" if value <= 4 else None
+    if len(answer.split()) > 6:
+        answer = " ".join(answer.split()[:4])  # a long answer carries its verdict in its first words; the rest is free text
+    positive = bool(_ANS_POS.search(_NOT_WORD.sub(" ", answer)))
+    negative = bool(_ANS_NEG.search(answer))
+    return "positive" if positive and not negative else "negative" if negative and not positive else None
+
+
+def _labelled_answers(clause: str, ids: set[str]) -> list[tuple[str, str]]:
+    """(aspect id, polarity) for each short "Label: answer" pair in the clause. A list of suggested phrases is not an answer."""
+    found: list[tuple[str, str]] = []
+    matches = list(PROMPT_LABEL.finditer(clause))
+    for number, match in enumerate(matches):
+        words = re.sub(r"[^a-z/& ]", " ", match.group(0).rstrip(":").lower()).split()
+        key = next((" ".join(words[start:]) for start in range(len(words)) if " ".join(words[start:]) in _LABEL_MAP), None)
+        if key is None:
+            continue
+        end = matches[number + 1].start() if number + 1 < len(matches) else len(clause)
+        answer = clause[match.end():end].strip()
+        if not answer or answer.endswith(",") or _MENU_COMMAS.search(answer):
+            continue
+        polarity = _answer_polarity(answer)
+        aspect_id = next((a for a in _LABEL_MAP[key] if a in ids), None)
+        if polarity and aspect_id:
+            found.append((aspect_id, polarity))
+    return found
+
+
+THANKS = re.compile(r"\b(?:thank(?:s|\s*you|\s*u)?|salamat|tnx|tysm|ty)\b", re.I)
+_LIST_SPLIT = re.compile(r"\s*,\s*")
+_SENTENCE_WORD = re.compile(r"\b(?:is|are|was|were|has|have|had|it|this|that|but|because|kasi|pero|naman|ako|kami)\b", re.I)
+
+
+def _is_plain_list(clause: str) -> bool:
+    """Five or more short comma-separated fragments with no "I", no Filipino function word and no verb: a tag list typed in lowercase."""
+    parts = [part for part in _LIST_SPLIT.split(clause.strip().rstrip(".,")) if part.strip()]
+    if len(parts) < 5 or any(len(part.split()) > 5 for part in parts):
+        return False
+    if _FIRST_PERSON.search(clause) or _SENTENCE_WORD.search(clause):
+        return False
+    return not ({word.lower() for part in parts for word in part.split()} & _FIL)
+
+
 def _is_menu_block(clause: str) -> bool:
     """A block of phrases the marketplace suggests to the buyer, not the buyer's own sentence.
 
@@ -123,6 +195,7 @@ def _is_menu_block(clause: str) -> bool:
         or len(_MENU_MIDWORD.findall(PROMPT_LABEL.sub(" ", clause))) >= 3
         or list_like
         or _MENU_LABELLED.match(clause)
+        or _is_plain_list(clause)
     )
 _STRETCH = re.compile(r"(.)\1{2,}")
 
@@ -317,6 +390,7 @@ def extract(
     product_reviews: set[str] = set()
     service_reviews: set[str] = set()
     kinds = {aspect.id: aspect.kind for aspect in aspects}
+    ids_in_profile = set(kinds)
     norm = _normalizer()
 
     for index, review in enumerate(comments or []):
@@ -349,6 +423,9 @@ def extract(
         no_experience_reviews += no_experience
         claims: dict[tuple[str, str], dict[str, Any]] = {}
         for clause in _bounded(norm.segment_sentences(content), policy["max_clause_chars"]):
+            if PROMPT_LABEL.search(clause) and not NO_EXPERIENCE.search(fold(clause)):
+                for aspect_id, polarity in _labelled_answers(clause, ids_in_profile):
+                    claims.setdefault((aspect_id, polarity), {"clause": clause, "span": _locate(index, clause), "how": "cue"})
             if _is_menu_block(clause):
                 excluded["menu_tag"] += 1  # a block of tags picked from the marketplace's menu, not the buyer's own words
                 continue
@@ -377,7 +454,7 @@ def extract(
                 if how == "conflict":
                     excluded["conflict"] += 1
                     continue
-                if polarity is None and aspect.topic and emoji and any(topic.search(text) for topic in aspect.topic):
+                if polarity is None and aspect.topic and emoji and not THANKS.search(text) and any(topic.search(text) for topic in aspect.topic):
                     polarity, how = emoji, "emoji"
                 if polarity is None:
                     continue

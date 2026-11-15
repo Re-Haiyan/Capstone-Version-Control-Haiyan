@@ -1,0 +1,144 @@
+{
+ "split": "D1",
+ "impl": "C:\\Users\\cabal\\AppData\\Local\\Temp\\claude\\daec81c2a6b4576e\\71b34fa2-d83c-4c08-bed1-488994844c9d\\scratchpad\\snap\\C4",
+ "rules_version": "asp3",
+ "reviews": 144,
+ "tasks": {
+  "T0": {
+   "tp": 126,
+   "fp": 7,
+   "fn": 73,
+   "precision": 0.947,
+   "recall": 0.633,
+   "f1": 0.759
+  },
+  "T1": {
+   "tp": 105,
+   "fp": 7,
+   "fn": 52,
+   "precision": 0.938,
+   "recall": 0.669,
+   "f1": 0.781
+  },
+  "T2": {
+   "tp": 15,
+   "fp": 0,
+   "fn": 16,
+   "precision": 1.0,
+   "recall": 0.484,
+   "f1": 0.652
+  },
+  "T3": {
+   "tp": 6,
+   "fp": 0,
+   "fn": 5,
+   "precision": 1.0,
+   "recall": 0.545,
+   "f1": 0.706
+  }
+ },
+ "by_profile": {
+  "apparel": {
+   "reviews": 18,
+   "tp": 20,
+   "fp": 1,
+   "fn": 6,
+   "precision": 0.952,
+   "recall": 0.769,
+   "f1": 0.851
+  },
+  "appliance": {
+   "reviews": 24,
+   "tp": 26,
+   "fp": 1,
+   "fn": 21,
+   "precision": 0.963,
+   "recall": 0.553,
+   "f1": 0.703
+  },
+  "earbuds": {
+   "reviews": 12,
+   "tp": 12,
+   "fp": 1,
+   "fn": 12,
+   "precision": 0.923,
+   "recall": 0.5,
+   "f1": 0.649
+  },
+  "food": {
+   "reviews": 24,
+   "tp": 26,
+   "fp": 3,
+   "fn": 12,
+   "precision": 0.897,
+   "recall": 0.684,
+   "f1": 0.776
+  },
+  "general": {
+   "reviews": 10,
+   "tp": 14,
+   "fp": 1,
+   "fn": 8,
+   "precision": 0.933,
+   "recall": 0.636,
+   "f1": 0.757
+  },
+  "hair": {
+   "reviews": 8,
+   "tp": 5,
+   "fp": 0,
+   "fn": 4,
+   "precision": 1.0,
+   "recall": 0.556,
+   "f1": 0.714
+  },
+  "powerbank": {
+   "reviews": 18,
+   "tp": 15,
+   "fp": 0,
+   "fn": 1,
+   "precision": 1.0,
+   "recall": 0.938,
+   "f1": 0.968
+  },
+  "skin": {
+   "reviews": 30,
+   "tp": 8,
+   "fp": 0,
+   "fn": 9,
+   "precision": 1.0,
+   "recall": 0.471,
+   "f1": 0.64
+  }
+ },
+ "by_language": {
+  "en": {
+   "reviews": 93,
+   "tp": 70,
+   "fp": 2,
+   "fn": 33,
+   "precision": 0.972,
+   "recall": 0.68,
+   "f1": 0.8
+  },
+  "fil": {
+   "reviews": 21,
+   "tp": 18,
+   "fp": 2,
+   "fn": 18,
+   "precision": 0.9,
+   "recall": 0.5,
+   "f1": 0.643
+  },
+  "taglish": {
+   "reviews": 30,
+   "tp": 38,
+   "fp": 3,
+   "fn": 22,
+   "precision": 0.927,
+   "recall": 0.633,
+   "f1": 0.752
+  }
+ },
+ "ms_per_review": 0.59
+}

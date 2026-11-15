@@ -3,27 +3,27 @@
   "pool": "saved electronics",
   "products": 182,
   "products_with_evidence": 182,
-  "lines": 2894,
-  "quotations": 4744,
-  "review_ids_listed": 10387,
+  "lines": 3265,
+  "quotations": 5460,
+  "review_ids_listed": 14274,
   "problems": []
  },
  {
   "pool": "real non-electronics (read while tuning)",
   "products": 21,
   "products_with_evidence": 21,
-  "lines": 357,
-  "quotations": 610,
-  "review_ids_listed": 1614,
+  "lines": 388,
+  "quotations": 668,
+  "review_ids_listed": 2079,
   "problems": []
  },
  {
   "pool": "real non-electronics (unread)",
   "products": 16,
   "products_with_evidence": 16,
-  "lines": 284,
-  "quotations": 483,
-  "review_ids_listed": 1557,
+  "lines": 312,
+  "quotations": 533,
+  "review_ids_listed": 1886,
   "problems": []
  }
 ]

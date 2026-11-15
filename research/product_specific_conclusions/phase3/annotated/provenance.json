@@ -1,0 +1,13 @@
+{
+ "annotator": "Claude (Claude-assisted annotation). Not ChatGPT, not a human.",
+ "model_version": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+ "interface": "Claude Code, VS Code extension session",
+ "date": "2026-11-15",
+ "policy": "annotation_process_record.md interpretation rules 1-6 (ai_annotation/claude_session_1), plus: label-prefixed prompt answers count as the reviewer's; bare thanks to a seller or rider is not a statement; the absence of a problem ('not irritating') is a positive statement",
+ "human_review_of_labels": "none",
+ "blindness": "labelled from review text only; the extractor was not run on these rows before labelling; D2 extractor output is not inspected until a candidate is frozen",
+ "input_sha256": {
+  "sheet_D1.csv": "b1b069ac4f9fb04b",
+  "sheet_D2.csv": "1a03577184228ba8"
+ }
+}

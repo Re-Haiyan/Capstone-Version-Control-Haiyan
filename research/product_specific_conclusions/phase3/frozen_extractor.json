@@ -1,0 +1,21 @@
+{
+ "frozen_before_reading_F": true,
+ "frozen_at_utc": "2026-11-15T11:25:01Z",
+ "adopted_candidate": "C3 (rules version asp3): C1 lexicons + C2 clause handling + C3 context and vocabulary",
+ "rejected": {
+  "C4": "hybrid topic noun plus plain sentiment word: no change on D2, one more false detection on D1",
+  "C5": "not built: about 170 reference pairs over 100+ labels cannot train a classifier"
+ },
+ "sha256_lf_normalised": {
+  "backend/aspects.py": "93f585f5e57a09da873b844f8028bb96e2faa595bc3e825613ec8d788d72c43e",
+  "backend/aspect_profiles.py": "96d77eb1cd5360f74899a5506561f7ac2db90247cfe5b0f6a4d824f2fb4963f6"
+ },
+ "sets_evaluated_on_D2": [
+  "C0",
+  "C1",
+  "C2",
+  "C3",
+  "C4"
+ ],
+ "note": "D2 metrics were looked at 5 times (one per candidate) and, after freezing, D2 false detections were read once for the unsupported-claim rule. F has not been opened."
+}

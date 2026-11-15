@@ -1,0 +1,353 @@
+﻿item_id,split,profile,category,group,language,source,collection_date,product_hash,stars,text_sha256,development_only
+D1-001,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,5,2d991ddbcbb77d65,False
+D1-002,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,5,5f11ed23a3b15ba5,False
+D1-003,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,5,1315e43e05fccdfc,False
+D1-004,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,1,5c3fb6b730612285,False
+D1-005,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,5,f9c6f879c4b9457e,False
+D1-006,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,f1bdf08c8786a76e,False
+D1-007,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,27f75185ea2cb727,False
+D1-008,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,1,d3f0232a71285582,True
+D1-009,D1,powerbank,charger_cable,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,5,832ec1dd42331124,True
+D1-010,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,cff2801f1ddc2046,False
+D1-011,D1,powerbank,powerbank,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,5d9a719dc4e0,5,f04f342cdcf08222,True
+D1-012,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,946835a31ba8119d,False
+D1-013,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,edf7a5d81a3fc034,False
+D1-014,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,ad0640c888bea0ab,False
+D1-015,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,b5adb61e67123324,False
+D1-016,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,6b0cbedd97aedbf4,False
+D1-017,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,180e4cf36d592391,False
+D1-018,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,69caf6e45691f45a,True
+D1-019,D1,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,dc3f241fb033c502,False
+D1-020,D1,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,c81961923201a92d,False
+D1-021,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,3,d173b7225ce11022,False
+D1-022,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),06ce9fece52a,5,1d463503b476ceec,False
+D1-023,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,2,7b72d98fafcd5533,False
+D1-024,D1,powerbank,charger_cable,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,3,1155ac1ab371a75e,True
+D1-025,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,ce4abbaaef849462,False
+D1-026,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,5,ab3d860e7d0d1793,False
+D1-027,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,4,c6788ca4e4b44059,False
+D1-028,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,424855fbda5a0ba2,False
+D1-029,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,30e0649d0cc20ffa,True
+D1-030,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,ac004e814f0ffcb4,False
+D1-031,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,a15bbff2e4a6a10f,False
+D1-032,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,6f318b9dd35e667e,False
+D1-033,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,94dfc1ba5a56c370,False
+D1-034,D1,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,3,ca9ead4eadb4a354,False
+D1-035,D1,general,computer_peripheral,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,8bf5c5423185,5,95c38d34e0f7e81e,True
+D1-036,D1,general,accessory,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,93ded398d543f0cc,True
+D1-037,D1,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,0af89a26919782f7,False
+D1-038,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,1,96d882847bd11a87,False
+D1-039,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,8cb267435965b137,False
+D1-040,D1,food,health_supplements,beauty_health,taglish,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,6c2dbf0703703aa6,False
+D1-041,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,5,aec5822d4445c30f,False
+D1-042,D1,skin,skincare,beauty_health,taglish,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,071d7e37668450bf,False
+D1-043,D1,general,accessory,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,6baafc96f8ff5df4,True
+D1-044,D1,general,computer_peripheral,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,8bf5c5423185,5,93b017bb6d27c5c3,True
+D1-045,D1,food,health_supplements,beauty_health,fil,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,1,7cb262feabd921cb,False
+D1-046,D1,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,5,86bed3ead9aaf035,False
+D1-047,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,d590d1011b294279,True
+D1-048,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,026d65954a7c7f31,True
+D1-049,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,a8591eb980eb5139,True
+D1-050,D1,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,09b09f140c9267f0,False
+D1-051,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,5,164819d7e000d746,False
+D1-052,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,afc765f0ad534bc8,False
+D1-053,D1,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,3,e901aa4a15b30363,False
+D1-054,D1,general,accessory,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,b0518f3474d5af99,True
+D1-055,D1,powerbank,powerbank,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,5d9a719dc4e0,1,b339d748245f9a6a,True
+D1-056,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,5,e9cb6a8d73746f63,False
+D1-057,D1,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,4,bd6b95317941d71e,True
+D1-058,D1,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,1,5ba4c5911693857f,True
+D1-059,D1,general,accessory,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,57ea56ac5a71bb81,True
+D1-060,D1,appliance,small_appliance,home_living,fil,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,b2ac57fb182743d0,False
+D1-061,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,5,7337e6d257a82101,False
+D1-062,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,9a0f11501289a4e3,False
+D1-063,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,70d73da432aeecc9,False
+D1-064,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,e0ed4885bfb94f33,False
+D1-065,D1,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eabca29df098,1,9aa5dde6d700db15,True
+D1-066,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,e75ec6b051f5e3ed,False
+D1-067,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,e7f2c49c07d01c5f,False
+D1-068,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,19daee25c656b47a,False
+D1-069,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,4,998859b9495cc137,False
+D1-070,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,28632c2af1316c0e,False
+D1-071,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,1,fe3c29be1b945d89,False
+D1-072,D1,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,3,2b8d2b6ebf8037f6,False
+D1-073,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,1,6ac1d50f47d34bbf,False
+D1-074,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,558b10122ee69f5a,False
+D1-075,D1,food,health_supplements,beauty_health,taglish,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,c87150335fb07ae0,False
+D1-076,D1,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),06ce9fece52a,5,1018e2921e0511f8,False
+D1-077,D1,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,ae2bde2ce41e4dce,False
+D1-078,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,5,95bd36aa61f7e715,False
+D1-079,D1,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,1,74b6afa9c819616c,False
+D1-080,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,1,a9ae2bda6f5a2896,False
+D1-081,D1,skin,skincare,beauty_health,taglish,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,d160259d6d0c29b5,False
+D1-082,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,0f95ec94150cc912,True
+D1-083,D1,apparel,apparel,fashion,fil,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,ac0605a85ab6b204,False
+D1-084,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,4dd3b54ba089205c,False
+D1-085,D1,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eabca29df098,5,a613c596d5c109f5,True
+D1-086,D1,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,5,e3bfd46c09a7e642,False
+D1-087,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,5a21a177b3a6fc83,False
+D1-088,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,5,7562cf72d12c1456,False
+D1-089,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,5,269a04a75b716e7f,True
+D1-090,D1,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,5,f7035aaff128d183,False
+D1-091,D1,earbuds,audio,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,3,c328f790939760cd,True
+D1-092,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,5,a1af0b8f7cf77a8a,False
+D1-093,D1,general,accessory,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,f36fe45eec2e4892,True
+D1-094,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,6385cbbbd2730323,False
+D1-095,D1,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,1,8e41fbf2b8b98f27,True
+D1-096,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,1,2f98626f678be944,False
+D1-097,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,5,8f3d8bdd709e6067,True
+D1-098,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,85b233d2cb227aaa,False
+D1-099,D1,skin,skincare,beauty_health,taglish,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,473055503ee6e882,False
+D1-100,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,27d75fa630bb64c7,False
+D1-101,D1,skin,skincare,beauty_health,taglish,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),feae15d6a2e3,5,52ecca3e19d26aed,False
+D1-102,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,f0eed7f4c702acc8,False
+D1-103,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,5,1ebd623dbb3f9af8,False
+D1-104,D1,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,5,10c729200bc29ef7,False
+D1-105,D1,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,1,12e19cb009f69817,False
+D1-106,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,4,6f9c206b49478eb9,False
+D1-107,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,b61cee10fabfab8a,False
+D1-108,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,2b569f8c053132c0,False
+D1-109,D1,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,5,069e380495a27d58,True
+D1-110,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,5,4f942015928ef053,False
+D1-111,D1,appliance,small_appliance,home_living,taglish,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),f2cb0281d9d5,5,730228d547131d9a,False
+D1-112,D1,general,accessory,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,389657921858469f,True
+D1-113,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6227b2b4f30f,5,babbfa3275ba22ef,False
+D1-114,D1,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,3,8ef2ffc21789654b,False
+D1-115,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,5,e9f4e6ac6167257d,True
+D1-116,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,f1c1ec7c51ab460d,False
+D1-117,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,3847f771d7bb32ed,False
+D1-118,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,eb382ccf3bb3,5,0ce807d06405863e,True
+D1-119,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,5,5009db9042bf50c4,False
+D1-120,D1,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,2,6e02fe24d06cb9c0,True
+D1-121,D1,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,3,3a2980d060e6a9f2,False
+D1-122,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),cdf3621c3cbe,5,49fb7220385423f0,False
+D1-123,D1,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,5,13a0675d78be6bdb,True
+D1-124,D1,food,health_supplements,beauty_health,taglish,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,f0f4e376682523e3,False
+D1-125,D1,earbuds,audio,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,eabca29df098,3,bf81487654dbf8dd,True
+D1-126,D1,skin,skincare,beauty_health,fil,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),7a5d34d5dbf1,5,573ebba2c73da14b,False
+D1-127,D1,earbuds,audio,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,eabca29df098,3,4f532e8953f4b773,True
+D1-128,D1,general,accessory,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,4efd5025ef5cfc0d,True
+D1-129,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,1,01a119b14536fbd5,True
+D1-130,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),1d4de17348f5,5,c1deb02eabf51b0f,False
+D1-131,D1,apparel,apparel,fashion,fil,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,1,d29cab2b8fdbaeb6,False
+D1-132,D1,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),6dda972dcff7,4,204ac56d20ff7719,False
+D1-133,D1,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),8c29dc8037fb,5,1e8c945dbf30810f,False
+D1-134,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,5,65d9868208db7af0,False
+D1-135,D1,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,7079263eaeb9,5,dcff1faea1462c2d,True
+D1-136,D1,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),4425664fd734,5,d38efe5ac6a4dfc1,False
+D1-137,D1,powerbank,charger_cable,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,1,93a2a42b8e1b39ce,True
+D1-138,D1,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),fa1137ec15b4,5,40a02162b8d135e9,False
+D1-139,D1,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),f5596e6a8a4d,1,9fb2e0705374c9bc,False
+D1-140,D1,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,20442366455f2d1e,False
+D1-141,D1,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,fcee6ad0c24d,5,abf02d16a507acd5,True
+D1-142,D1,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),df28d3bf6d6e,5,8dc4c752be4fa6b0,False
+D1-143,D1,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),7a878b06b40c,5,4bf7b6ef5819b742,False
+D1-144,D1,general,accessory,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,0356fbfd62d6,5,4bd587845fa77e3d,True
+D2-001,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,4,0fd77e14e14d38d5,True
+D2-002,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,8f621aad1e839be4,False
+D2-003,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,eddd7717f8fb9fe6,False
+D2-004,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,b739ff3acfb5096b,False
+D2-005,D2,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,5f7dfcefebea36fd,False
+D2-006,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,1,df89c0f9ffa4526d,True
+D2-007,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,5,f0329c8051576d17,True
+D2-008,D2,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,9a0241186236d71b,False
+D2-009,D2,food,food_beverage,food_grocery,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,99ab4abd63d718c9,False
+D2-010,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,5496c1b89755d148,False
+D2-011,D2,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,30975f264d3458c1,False
+D2-012,D2,general,smart_home,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,49b252fc69cc0cdf,True
+D2-013,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,24ef0de2a113221c,True
+D2-014,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,5,fe563c7a89e450af,False
+D2-015,D2,skin,makeup,beauty_health,en,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,70eb549675dac9d8,False
+D2-016,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,86fa1d22cf2afa23,False
+D2-017,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,2ce1a39d0a6270c9,False
+D2-018,D2,skin,makeup,beauty_health,en,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,47297d94d8114acf,False
+D2-019,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,aaa180fa6b739b94,False
+D2-020,D2,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,2,dd8281199d09e57c,False
+D2-021,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,8e432e79fbcfbd20,True
+D2-022,D2,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,30b11cb70554eb3a,False
+D2-023,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,8c950091f9c4b067,False
+D2-024,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,266aaa031bd66c71,False
+D2-025,D2,appliance,small_appliance,home_living,taglish,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,108957fdb92c6581,False
+D2-026,D2,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,34c633edc6d13a2d,False
+D2-027,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,5,290137e0bf5a7e38,True
+D2-028,D2,earbuds,audio,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,1,8f0b7872348b1343,True
+D2-029,D2,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,08e21faa27c83a18,False
+D2-030,D2,skin,skincare,beauty_health,fil,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,1,a7df2fde6e9578e8,False
+D2-031,D2,food,food_beverage,food_grocery,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,fe91d513cc4b9b1b,False
+D2-032,D2,skin,makeup,beauty_health,en,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,b3b24ffc54bf0bbb,False
+D2-033,D2,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,2d7425332039d595,False
+D2-034,D2,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,1e73196a9f176def,False
+D2-035,D2,powerbank,charger_cable,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,4,34955b7671f0ebe5,True
+D2-036,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,bd59c09e3ea02b5f,False
+D2-037,D2,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,1,570c94b40c131859,False
+D2-038,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,0599f419184e6912,False
+D2-039,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,4,b90f8fc37169ad77,True
+D2-040,D2,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,5,c2dedb2e62e50769,False
+D2-041,D2,powerbank,charger_cable,electronics,taglish,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,4,0d787f45836e8fc7,True
+D2-042,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,5,7e3c193031cbac20,True
+D2-043,D2,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,4,3a1d5b9a6ba5b1a1,True
+D2-044,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,2,093748e7fe49aaf8,False
+D2-045,D2,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,0e5698e1aacd5ad4,False
+D2-046,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,394cd3ccfca0bd83,False
+D2-047,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,5,5436f80470a265af,True
+D2-048,D2,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,2,6cdfa5d8b116b578,True
+D2-049,D2,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,26d9337466556a5e,False
+D2-050,D2,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),042b31fec792,5,93c2477114c5fdb8,False
+D2-051,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,3f4787b186a06aa7,False
+D2-052,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,8bdfd5068b054a68,False
+D2-053,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),03ed31b2483e,5,e2388754608644c6,False
+D2-054,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),03ed31b2483e,5,8b71cd8dc09cfa5e,False
+D2-055,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,ef44d7372e398105,False
+D2-056,D2,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,105d4116495cfcd8,False
+D2-057,D2,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,5,b41d24f4e2668be7,False
+D2-058,D2,powerbank,charger_cable,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,3,1c16ab8c0009b17b,True
+D2-059,D2,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,74febd2901e06f0b,False
+D2-060,D2,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,a2fc477e9a91fa98,False
+D2-061,D2,appliance,small_appliance,home_living,fil,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,3,85210e1bb9105954,False
+D2-062,D2,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,5,e53d17439078890e,False
+D2-063,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,5,7bfee8360df282fc,False
+D2-064,D2,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,f638cf977dc4ca89,False
+D2-065,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,cbe43b160de0,2,d543730a59dee83c,True
+D2-066,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,5,abbb9705955239ee,False
+D2-067,D2,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,5,de6d1979003aa037,True
+D2-068,D2,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,3,5ceb38e5d7fb5500,False
+D2-069,D2,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,5,79e26b87cc7b8653,True
+D2-070,D2,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,9222e4a04ed84b6b,False
+D2-071,D2,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,c7a7b731d0b664ae,False
+D2-072,D2,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,4,147f95049445d2c4,True
+D2-073,D2,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,25a777ba855a3c11,False
+D2-074,D2,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,4088dd7aca34fbef,False
+D2-075,D2,skin,makeup,beauty_health,en,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,39550858be4e42a3,False
+D2-076,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,e5a16815ae7395c1,True
+D2-077,D2,earbuds,audio,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,1,8a1b1fbc0fe3725f,True
+D2-078,D2,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,3,b5856d4a17aaf9bd,False
+D2-079,D2,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,926c15607165712e,False
+D2-080,D2,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),a2b972064102,5,2fcb47fd8d1fd1d4,False
+D2-081,D2,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),acca4cb3f086,5,c88339602948d616,False
+D2-082,D2,skin,makeup,beauty_health,taglish,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,4,d486b5f60077d569,False
+D2-083,D2,skin,makeup,beauty_health,fil,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,5a2b9009bcde747b,False
+D2-084,D2,general,smart_home,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,847dd30ae6a34888,True
+D2-085,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,5,33c24f83202c645c,True
+D2-086,D2,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,2,41db7855c116e033,False
+D2-087,D2,skin,makeup,beauty_health,fil,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,f97e6a5ffe3f31d2,False
+D2-088,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,5,8385d2732bfff3b3,True
+D2-089,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,5,0247cbe166e0e861,True
+D2-090,D2,food,health_supplements,beauty_health,en,pool-scans/search_protein_powder.json,2026-11-13 to 2026-11-14 (scan_log.json),042b31fec792,5,bd61931a60e5b095,False
+D2-091,D2,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,2,ab9753832e54b0a3,False
+D2-092,D2,appliance,small_appliance,home_living,fil,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,5,2d1634e992bf40ff,False
+D2-093,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),9e7a28956efe,5,699dd8bbc14f9bbf,False
+D2-094,D2,general,smart_home,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,a8fc1960f7b1,3,1e8cf4057ceaff93,True
+D2-095,D2,powerbank,charger_cable,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,5,e42ce6cf890278f2,True
+D2-096,D2,food,food_beverage,food_grocery,fil,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),87c50f6e0ddf,4,26b83372d6a59cc4,False
+D2-097,D2,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),eb0b5d08e721,5,89256910850c9621,False
+D2-098,D2,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),da1427e97c20,5,b72a18f6dda539f0,False
+D2-099,D2,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,95079c8905eeae61,False
+D2-100,D2,appliance,small_appliance,home_living,fil,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),e98d74321404,3,0f10a6801537597f,False
+D2-101,D2,powerbank,charger_cable,electronics,fil,saved_products.json.gz (seed),not recorded in the seed file,bd15f949de55,5,0834690497e97ef2,True
+D2-102,D2,earbuds,audio,electronics,en,saved_products.json.gz (seed),not recorded in the seed file,081b84faa324,1,68a10631b48c7ee7,True
+D2-103,D2,skin,makeup,beauty_health,en,pool-scans/search_lipstick.json,2026-11-13 to 2026-11-14 (scan_log.json),365194f0e176,5,256caf3bc8bddffa,False
+D2-104,D2,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),7f4fc5338b11,5,26585206b0ad3018,False
+F-001,F,skin,skincare,beauty_health,taglish,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,5,50cdf5bfa7fc4588,False
+F-002,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,1,5090c3777e7dd425,False
+F-003,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,2596d5cce5340e1f,False
+F-004,F,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,800f41a9bd15dd75,False
+F-005,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,5,16b39fec72f71d84,False
+F-006,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,4,2e21904bc1573828,False
+F-007,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,7ece193ba63c8f9d,False
+F-008,F,skin,skincare,beauty_health,en,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,5,02a154c4abe3cd3b,False
+F-009,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,6665c949afeb3c9b,False
+F-010,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,25df63fc26c0b991,False
+F-011,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,cf1f36d695197946,False
+F-012,F,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,5,f42884653d6ede93,False
+F-013,F,skin,skincare,beauty_health,en,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),23598f9c1ea8,5,e8e1730260db99a9,False
+F-014,F,apparel,apparel,fashion,fil,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,e0aee31434175338,False
+F-015,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,5,0095f96bc6f5a792,False
+F-016,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,4,fc8b6525748b377c,False
+F-017,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,4df45b8b8ba6d65a,False
+F-018,F,skin,skincare,beauty_health,fil,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,1,813a2989184ce532,False
+F-019,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),01b5d1012b64,5,9a103841eeb4ef7c,False
+F-020,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,5,458c842ce983ce90,False
+F-021,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,0e2703d42e1a8c65,False
+F-022,F,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,5,377c283a22d31dd3,False
+F-023,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,1,aad38d96d5f432db,False
+F-024,F,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,5,555f5de1e211c12e,False
+F-025,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,6bf7f08674d2a2d7,False
+F-026,F,food,health_supplements,beauty_health,fil,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,5,ed13f9065c644b0c,False
+F-027,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,f4ac594eb492faf3,False
+F-028,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,6810831c675cca71,False
+F-029,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,4,a965a95adfff35d9,False
+F-030,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),01b5d1012b64,5,94155b59f791acd6,False
+F-031,F,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,a201fc8ee19f3913,False
+F-032,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,5,9d5962bd627d8451,False
+F-033,F,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,597015228647e736,False
+F-034,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,68ed8e5e3d6b42e4,False
+F-035,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,fa69cb8c96192903,False
+F-036,F,skin,skincare,beauty_health,en,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,3,bf2d5f5a110b850c,False
+F-037,F,food,health_supplements,beauty_health,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,5,d4453df85ddfaad2,False
+F-038,F,appliance,small_appliance,home_living,taglish,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,e54f403411f86d26,False
+F-039,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,1e9695bd8f77f70a,False
+F-040,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,8025ebd2fd7b9cc3,False
+F-041,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),01b5d1012b64,5,0b9837b7a08a9011,False
+F-042,F,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,2f447888b2ab0a13,False
+F-043,F,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,1,d32cf8e77e326f65,False
+F-044,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,4,42ec11159b5a48aa,False
+F-045,F,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,ed1c00856217b69c,False
+F-046,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,5,17f6949875bfdc89,False
+F-047,F,skin,skincare,beauty_health,taglish,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,1,f39fc50f19ccf2c2,False
+F-048,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,1,048ca1a2b8485bf0,False
+F-049,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,dac0069f34976399,False
+F-050,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,edc970d47b4bd209,False
+F-051,F,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,315c5d89a5717076,False
+F-052,F,appliance,small_appliance,home_living,taglish,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,978d44019bd0841b,False
+F-053,F,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),01b5d1012b64,5,015211f48bccdbec,False
+F-054,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,4d301bb7c66be22d,False
+F-055,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,3,af444fafc47c9022,False
+F-056,F,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,daf499d59fcc80ae,False
+F-057,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,7a3dd849b1d7b0ac,False
+F-058,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,ca635723b5ca1046,False
+F-059,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,1,93f717464c8d66e7,False
+F-060,F,skin,skincare,beauty_health,taglish,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,5,ea8a4095670287e9,False
+F-061,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,0ab5cbfd27387486,False
+F-062,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,f45d0c237ffec4bc,False
+F-063,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,96cf6b4a901557c7,False
+F-064,F,skin,skincare,beauty_health,fil,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,5,d22e633776efd185,False
+F-065,F,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,d262b13fcc50ef49,False
+F-066,F,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,8ae9f510194f1798,False
+F-067,F,skin,skincare,beauty_health,fil,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),6b130b97f53a,1,c6c47f29f5391fef,False
+F-068,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,a4428aa71e5724dd,False
+F-069,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,f1cce78ebbe9cd42,False
+F-070,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,990e9388ed175b66,False
+F-071,F,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,5,e3c05a646b3d651b,False
+F-072,F,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),4b01f0e4f8dd,5,4097eb85820e555b,False
+F-073,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,8c01d73b4bbfb9e1,False
+F-074,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,788b8362642374ef,False
+F-075,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,bee81fa76dfd95c4,False
+F-076,F,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,2,26c794b6a9814ebc,False
+F-077,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,4b8b61f39368db5a,False
+F-078,F,appliance,small_appliance,home_living,fil,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,385ee199b8d0301c,False
+F-079,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,d0f114b3a57553d9,False
+F-080,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,6e4898c9c006b2f2,False
+F-081,F,skin,skincare,beauty_health,en,pool-scans/search_sunscreen.json,2026-11-13 to 2026-11-14 (scan_log.json),23598f9c1ea8,5,a7f6ecba7976d54f,False
+F-082,F,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,bf6e55c68a585e33,False
+F-083,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,5,5a952b2b7c8bf1b9,False
+F-084,F,appliance,small_appliance,home_living,en,pool-scans/search_rice_cooker.json,2026-11-13 to 2026-11-14 (scan_log.json),700bde299e29,5,7d1efdb4f04cc6ee,False
+F-085,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,95a2eef7271be8d2,False
+F-086,F,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,30338c99e03d1010,False
+F-087,F,food,food_beverage,food_grocery,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),4b01f0e4f8dd,5,0994cefd0e96ba39,False
+F-088,F,food,food_beverage,food_grocery,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),4b01f0e4f8dd,4,5c942f6feed1fcb3,False
+F-089,F,skin,skincare,beauty_health,en,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,758c10074c6e5065,False
+F-090,F,food,health_supplements,beauty_health,fil,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),19ed252c7307,3,6f53432849aad06a,False
+F-091,F,hair,haircare,beauty_health,fil,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),691609b4dc82,1,242c22da725c893f,False
+F-092,F,appliance,small_appliance,home_living,en,pool-scans/search_air_fryer.json,2026-11-13 to 2026-11-14 (scan_log.json),617e4d87de7c,5,e73672588f520f68,False
+F-093,F,skin,skincare,beauty_health,taglish,pool-scans/search_facial_cleanser.json,2026-11-13 to 2026-11-14 (scan_log.json),3e5ca744ea86,5,f4f840e73eab897a,False
+F-094,F,food,food_beverage,food_grocery,taglish,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),4b01f0e4f8dd,5,6ecf73dfd8a42c82,False
+F-095,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,6b4e73886f6be11d,False
+F-096,F,hair,haircare,beauty_health,en,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),84c65e6f7f76,1,250cadab826c8d8b,False
+F-097,F,apparel,apparel,fashion,taglish,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),4163f54b5354,1,62506135e36ce019,False
+F-098,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,fb0430c0cd81571b,False
+F-099,F,food,health_supplements,beauty_health,fil,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,3,e4b386e03711e592,False
+F-100,F,food,health_supplements,beauty_health,fil,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,1,3fe8ad8cd2f1732f,False
+F-101,F,hair,haircare,beauty_health,taglish,pool-scans/search_hair_shampoo.json,2026-11-13 to 2026-11-14 (scan_log.json),9332138e8932,5,676219d3cbfac449,False
+F-102,F,food,health_supplements,beauty_health,en,pool-scans/search_vitamins_supplement.json,2026-11-13 to 2026-11-14 (scan_log.json),de88ef1f2366,5,a0a8796f43b6e12e,False
+F-103,F,skin,skincare,beauty_health,en,pool-scans/search_whitening_serum.json,2026-11-13 to 2026-11-14 (scan_log.json),ab1fa749f2a2,5,903f7bdd668e2957,False
+F-104,F,apparel,apparel,fashion,en,pool-scans/search_dress_women.json,2026-11-13 to 2026-11-14 (scan_log.json),277b7bd264fa,5,90a418dc3fe7e9ae,False

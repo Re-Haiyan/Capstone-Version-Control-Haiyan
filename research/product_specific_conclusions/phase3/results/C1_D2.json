@@ -1,0 +1,135 @@
+{
+ "split": "D2",
+ "impl": "C:\\Users\\cabal\\AppData\\Local\\Temp\\claude\\daec81c2a6b4576e\\71b34fa2-d83c-4c08-bed1-488994844c9d\\scratchpad\\snap\\C1",
+ "rules_version": "asp3",
+ "reviews": 104,
+ "tasks": {
+  "T0": {
+   "tp": 65,
+   "fp": 12,
+   "fn": 100,
+   "precision": 0.844,
+   "recall": 0.394,
+   "f1": 0.537
+  },
+  "T1": {
+   "tp": 39,
+   "fp": 8,
+   "fn": 88,
+   "precision": 0.83,
+   "recall": 0.307,
+   "f1": 0.448
+  },
+  "T2": {
+   "tp": 26,
+   "fp": 3,
+   "fn": 9,
+   "precision": 0.897,
+   "recall": 0.743,
+   "f1": 0.812
+  },
+  "T3": {
+   "tp": 0,
+   "fp": 1,
+   "fn": 3,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0
+  }
+ },
+ "by_profile": {
+  "appliance": {
+   "reviews": 18,
+   "tp": 17,
+   "fp": 1,
+   "fn": 17,
+   "precision": 0.944,
+   "recall": 0.5,
+   "f1": 0.654
+  },
+  "earbuds": {
+   "reviews": 8,
+   "tp": 4,
+   "fp": 3,
+   "fn": 8,
+   "precision": 0.571,
+   "recall": 0.333,
+   "f1": 0.421
+  },
+  "food": {
+   "reviews": 18,
+   "tp": 4,
+   "fp": 2,
+   "fn": 15,
+   "precision": 0.667,
+   "recall": 0.211,
+   "f1": 0.32
+  },
+  "general": {
+   "reviews": 8,
+   "tp": 5,
+   "fp": 0,
+   "fn": 10,
+   "precision": 1.0,
+   "recall": 0.333,
+   "f1": 0.5
+  },
+  "hair": {
+   "reviews": 16,
+   "tp": 10,
+   "fp": 1,
+   "fn": 9,
+   "precision": 0.909,
+   "recall": 0.526,
+   "f1": 0.667
+  },
+  "powerbank": {
+   "reviews": 14,
+   "tp": 12,
+   "fp": 1,
+   "fn": 18,
+   "precision": 0.923,
+   "recall": 0.4,
+   "f1": 0.558
+  },
+  "skin": {
+   "reviews": 22,
+   "tp": 13,
+   "fp": 4,
+   "fn": 23,
+   "precision": 0.765,
+   "recall": 0.361,
+   "f1": 0.491
+  }
+ },
+ "by_language": {
+  "en": {
+   "reviews": 67,
+   "tp": 28,
+   "fp": 5,
+   "fn": 66,
+   "precision": 0.848,
+   "recall": 0.298,
+   "f1": 0.441
+  },
+  "fil": {
+   "reviews": 19,
+   "tp": 17,
+   "fp": 1,
+   "fn": 19,
+   "precision": 0.944,
+   "recall": 0.472,
+   "f1": 0.63
+  },
+  "taglish": {
+   "reviews": 18,
+   "tp": 20,
+   "fp": 6,
+   "fn": 15,
+   "precision": 0.769,
+   "recall": 0.571,
+   "f1": 0.656
+  }
+ },
+ "ms_per_review": 0.57
+}

@@ -27,7 +27,7 @@ import re
 from dataclasses import dataclass, field, replace
 from typing import Iterable
 
-ASPECT_RULES_VERSION = "asp2"  # bump when a table or the reading rules change; cached results are keyed on it
+ASPECT_RULES_VERSION = "asp3"  # bump when a table or the reading rules change; cached results are keyed on it
 
 # ---------------------------------------------------------------------------------------------------------------
 # How much evidence a sentence needs. These are policy, not statistics: no outcome of shoppers was used to set
@@ -259,7 +259,7 @@ BUILD = Aspect(
     "build quality",
     pos=_re(
         [
-            r"\b(?:matibay|sturdy|well[- ]made|well[- ]built|de[- ]kalidad|premium|solid\s+(?:na\s+)?(?:build|quality|gawa))\b",
+            r"\b(?:sturdy|well[- ]made|well[- ]built|de[- ]kalidad|premium|solid\s+(?:na\s+)?(?:build|quality|gawa))\b",
             r"\b(?:good|great|high|nice|excellent|maganda|ganda|ok|okay|superb)\s+(?:na\s+|ang\s+|ng\s+)?(?:quality|build|kalidad|gawa|pagkakagawa|materials?)\b(?!\s+(?:nung\s+|ng\s+|of\s+|ang\s+)?(?:audios?|sound|pictures?|videos?|photos?|camera|calls?|display|screen|mic|voice))",
             r"(?<!sound\s)(?<!audio\s)(?<!photo\s)(?<!video\s)(?<!image\s)(?<!call\s)(?<!camera\s)(?<!picture\s)(?<!print\s)(?<!screen\s)(?<!display\s)(?<!mic\s)(?<!voice\s)\b(?:quality|kalidad|gawa|pagkakagawa|build)\s+(?:is\s+|ay\s+|nya\s+|niya\s+)?(?:good|great|high|nice|excellent|maganda|ganda|ok|okay|solid|superb|premium)\b",
         ]
@@ -278,7 +278,7 @@ DURABILITY = Aspect(
     "durability",
     pos=_re(
         [
-            r"\b(?:tumagal|nagtagal|tumatagal|long[- ]lasting|lasts?\s+(?:long|well|for\s+(?:months|years))|durable|matibay\s+talaga|hindi\s+agad\s+(?:nasira|masira)|di\s+agad\s+(?:nasira|masira))\b(?!\s+(?:na\s+)?(?:battery|baterya|charge|fragrance|scent|smell|amoy|bango|pabango))",
+            r"\b(?:tumagal|nagtagal|tumatagal|long[- ]lasting|lasts?\s+(?:long|well|for\s+(?:months|years))|durable|matibay|hindi\s+agad\s+(?:nasira|masira)|di\s+agad\s+(?:nasira|masira))\b(?!\s+(?:na\s+)?(?:battery|baterya|charge|fragrance|scent|smell|amoy|bango|pabango))",
         ]
     ),
     neg=_re(
@@ -410,7 +410,7 @@ SELLER = Aspect(
     "seller service",
     pos=_re(
         [
-            r"(?<!user-)(?<!user )\b(?:responsive|accommodating|friendly|helpful|mabait|maasikaso|trusted|nag-?reply|replied|sumagot|legit\s+seller|recommended\s+seller|thank\s*you\s+seller|salamat\s+seller|(?:good|great|ok|okay|best)\s+seller|mabilis\s+(?:mag-?reply|sumagot|mag-?respond))\b",
+            r"(?<!user-)(?<!user )\b(?:responsive|accommodating|friendly|helpful|mabait|maasikaso|trusted|nag-?reply|replied|sumagot|legit\s+seller|recommended\s+seller|(?:good|great|ok|okay|best)\s+seller|mabilis\s+(?:mag-?reply|sumagot|mag-?respond))\b",
         ]
     ),
     neg=_re(
@@ -470,7 +470,7 @@ SIZE = _more(
     neg=[r"\bang\s+liit\s+(?:pala|nung|ng|po)\b", r"\bmaliit\s+(?:pala|po|lang|sya|siya)\b", r"\bmalaki\s+pala\b"],
 )
 # "Fake ang promo" is a complaint about the promotion, not about the product.
-AUTHENTICITY = _more(AUTHENTICITY, guard=r"\bfake\s+(?:ang\s+)?(?:promo|freebie|voucher|discount|review|reviews|rating|ratings|ad|sale|price|picture|pic|photo)\b")
+AUTHENTICITY = _more(AUTHENTICITY, pos=[r'\blegit\s+(?:talaga|tlg|tlgah|nga)\s+(?:siya|sya|po|ito|to)\b'], guard=r"\bfake\s+(?:ang\s+)?(?:promo|freebie|voucher|discount|review|reviews|rating|ratings|ad|sale|price|picture|pic|photo)\b")
 
 EASE = Aspect(
     "ease",
@@ -546,6 +546,156 @@ ARRIVAL = Aspect(
         ]
     ),
     kind=SERVICE,
+)
+
+# --- asp3 / C1: expanded lexicons (Phase 3, written from the development set D1 only; never from the locked evaluation) ---------------
+# Each table keeps its original cues; these are added with `_more`. A cue under a negation is still read as its opposite by aspects.py.
+VALUE = _more(
+    VALUE,
+    pos=[
+        r"\b(?:good|great|nice|best|low|lowest|reasonable|fair|wonderful|affordable|murang?)\s+(?:na\s+)?(?:price|presyo)\b",
+        r"\bmas\s+mura\s+(?:dito|pa|kesa|kaysa)\b|\bmura\s+(?:lang|lng|pa|na|ito|siya|sya|nya|po)\b|\bmura\s+(?:at|and)\s+(?:sulit|maganda|ok|okay|quality)\b",
+        r"\b(?:laking|malaking)\s+tipid\b|\bmakakatipid\b|\bcheaper\b|\bsuper\s+mura\b|\bsobrang\s+mura\b",
+        r"\bworth\s+(?:your|my|the)\s+(?:money|price|buy)\b|\b(?:good|great|nice|best)\s+(?:buy|deal|purchase)\b",
+    ],
+    neg=[
+        r"\bmahal\s+(?:ang|yah|ya|yan|yun|sya|siya|nya|nito|naman|pala|talaga|masyado)\b|\b(?:masyadong?|sobrang|medyo|too|so)\s+(?:mahal|pricey|expensive)\b",
+        r"\bsayang\s+(?:lang\s+)?(?:ang\s+|yung\s+|ung\s+|sa\s+)?(?:pera|bayad|binayad)\b|\bnot\s+worth(?:y|\s+it|\s+the)?\b|\bhindi\s+worth(?:y)?\b",
+    ],
+)
+FUNCTIONALITY = _more(
+    FUNCTIONALITY,
+    pos=[
+        r"\b(?:works?|worked|working)\s+(?:quite\s+|pretty\s+|really\s+|very\s+)?(?:well|great|fine|perfectly|nicely|for\s+me|as\s+(?:expected|described|advertised|it\s+should))\b",
+        r"\b(?:serves?|served)\s+(?:its|it'?s|the|my)\s+purpose\b|\bwell\s+fun?ction\b|\ball\s+worked\b|\bit'?s\s+working\b|\b(?:fans?|buttons?|hinges?)\s+(?:are|is)\s+working\b",
+        r"\bnakapag-?(?:luto|letson|fry|bake|charge|grill|steam)\w*\b",
+        r"\b(?:nawala|nawawala)\s+(?:ang\s+|yung\s+|ung\s+|na\s+)?(?:itch\w*|pangangati|pimples?|acne|dark\s+spots?|rashes|balakubak|dandruff)\b",
+        r"\b(?:naglalighten|nag-?lighten)\b|\b(?:good|great|nice|maganda|magandang)\s+(?:ang\s+)?(?:effect|epekto|results?|resulta|kinalabasan)\b",
+        r"\b(?:nakakaalis|nakakawala|nakakatanggal|nkkawaala|nkakawala)\s+(?:ng|ang)\s+(?:oily|dull|dark|pimples?|acne|dandruff|amoy|itch\w*)\b",
+    ],
+    neg=[
+        r"\b(?:does(?:n'?t|\s+not)|did(?:n'?t|\s+not)|do(?:n'?t|\s+not)|can'?t|cannot)\s+(?:even\s+)?(?:work|charge|function|turn\s+on|cook|connect|pair|start|power\s+on)\b",
+        r"\b(?:not|hindi|di)\s+(?:properly\s+|correctly\s+)?(?:working|functioning|charging|nagcha?rge|umiinit|sumasagot|tumutugon)\b",
+        r"\bnot\s+working\b|\bno\s+longer\s+works?\b|\bnever\s+worked\b|\b(?:hindi|di)\s+masyadong?\s+tumutugon\b",
+        r"\b(?:ayaw|di|hindi)\s+(?:mag-?)?(?:bumukas|umandar|magcharge|mag-?charge|mag-?on)\b",
+    ],
+)
+BUILD = _more(
+    BUILD,
+    pos=[
+        r"\b(?:quality|materials?)\s+(?:and\s+\w+\s+)?(?:is\s+|are\s+|was\s+|seems?\s+|looks?\s+|feels?\s+)?(?:so\s+|very\s+|really\s+|pretty\s+)?(?:good|great|nice|solid|sturdy|excellent|impressive|premium)\b",
+        r"\b(?:looks?|feels?|seems?|parang)\s+(?:so\s+|very\s+)?(?:sturdy|solid|well[- ]made|metal)\b",
+        r"\b(?:remarkably\s+|very\s+|so\s+)?(?:solid|sturdy)\b",
+        r"\b(?:excellent|superb|great|high|top[- ]notch)\s+(?:na\s+)?quality\b",
+        r"\bmetal(?:lic)?\s+(?:build|body|frame|stand)\b",
+    ],
+    neg=[
+        r"\b(?:very\s+|so\s+|really\s+)?(?:poor|bad|low|cheap)\s+(?:na\s+)?(?:quality|materials?)\b",
+        r"\b(?:quality|material)\s+(?:is\s+|was\s+|ay\s+)?(?:very\s+|so\s+|really\s+)(?:bad|poor|low|cheap|pangit|panget)\b",
+        r"\b(?:so|too|very)\s+plastic\b|\bplastic\s+(?:lang|na|pala)\b",
+        r"\b(?:bali|nabali|putol|nabasag|natutuklap|natanggal|nabutas)\s+(?:pa\s+)?(?:ang\s+|ung\s+|yung\s+|yong\s+|na\s+)?(?:pump|pindutan|button|takip|hawakan|handle|label|lid|cover|wheel|hinge|screw|ilaw|cord|wire)\b",
+        r"\b(?:not|hindi|di)\s+(?:maganda|good)\s+(?:ang\s+|ung\s+|yung\s+)?(?:quality|materials?|kalidad)\b",
+    ],
+    guard=r"\b(?:flimsy|bad|poor|cheap|manipis|nipis)\s+(?:na\s+|ang\s+|ung\s+|yung\s+)?(?:packag\w*|packing|box|kahon|balot|wrapping)\b|\b(?:packag\w*|packing|box|kahon)\s+(?:is\s+)?(?:flimsy|poor|bad|cheap)\b",
+)
+APPEARANCE = _more(
+    APPEARANCE,
+    pos=[
+        r"\b(?:elegant|elegante|sosyalin?|stylish|aesthetic|gorgeous|sleek)\b",
+        r"\bang\s+(?:ganda|cute)\s+(?:ng|nung)\s+(?:dress|item|product|ilaw|bag|kulay|color|design|itsura|lights?|fabric)\b",
+        r"\bmukh(?:a|ang)\s+(?:maganda|ok|okay|elegante|mamahalin|premium|sosyal)\b|\blakas\s+maka-?(?:sosyal|ganda|rich|mayaman)\b|\bsosyal\s+(?:ang\s+)?(?:dating|itsura)\b",
+        r"\b(?:colou?r|kulay)\s+(?:is\s+|ay\s+)?(?:fine|nice|good|great|beautiful|pretty|ok)\b|\b(?:appearance|design|style|looks?)\s+(?:is\s+|are\s+)?(?:pretty\s+|so\s+|very\s+)?(?:good|great|nice|elegant|beautiful)\b",
+        r"\b(?:good|great|nice|beautiful)\s+(?:style|appearance)\b|\bmaganda\s+(?:ang\s+)?(?:design|style)\b",
+    ],
+    neg=[
+        r"\bdull\s+(?:\w+\s+){0,2}colou?r\b|\b(?:colou?r|kulay)\s+(?:is\s+)?dull\b|\b(?:pangit|panget)\s+(?:ang\s+|ung\s+|yung\s+)?(?:itsura|hitsura|design)\b",
+    ],
+    guard=r"\b(?:different|wrong|iba|ibang|mali)\s+(?:na\s+)?(?:colou?r|kulay)\s+(?:received|delivered|sent|binigay|dumating|natanggap|pinadala)\b",
+)
+EASE = _more(
+    EASE,
+    pos=[
+        r"\b(?:very\s+|so\s+|super\s+)?easy\s+(?:to\s+)?(?:use|operate|wear|wash|clean|install|set\s*up|apply|assemble|carry|remove|open|understand)\b|\beasy\s+(?:lang\s+)?(?:gamitin|linisin)\b|\bcleanup\s+was\s+(?:a\s+)?snap\b",
+        r"\b(?:dali|madali)(?:ng)?\s+(?:i-?operate|gamitin|linisin|isuot|labhan|i-?assemble|i-?install|dalhin)\b|\bnapakadali(?:ng)?\s+(?:i-?operate|gamitin|linisin)\b|\bhindi\s+(?:na\s+)?(?:ako\s+)?(?:nahirapan|mahirap)\b",
+        r"\bready\s+to\s+use\b|\b(?:convenient|handy)\s+(?:pump|bottle)\b",
+    ],
+    neg=[
+        r"\b(?:hard|difficult|mahirap|hirap)\s+(?:to\s+|na\s+|ang\s+)?(?:use|install|operate|press|open|assemble|understand|gamitin|i-?install)\b|\bnot\s+easy\s+to\s+\w+\b|\bnot\s+techy\b|\bno\s+clear\s+instructions?\b|\bmanghuhula\b|\b(?:hindi|di)\s+madali\b",
+    ],
+)
+SIZE = _more(
+    SIZE,
+    pos=[
+        r"\b(?:exactly|just|perfectly)\s+(?:the\s+|my\s+)?(?:size|fit)\b|\b(?:sakto|saktong|tama|swak)\s+(?:lang\s+)?(?:ang\s+)?(?:laki|size|sukat)\b|\bfits?\s+(?:perfectly|well|great|nicely|just\s+right)\b|\bflattering\s+(?:ng\s+)?fit\b|\bkasya\b",
+        r"\b(?:lightweight|magaan|compact|portable|pocket[- ]size)\b|\b(?:very|so|medyo)\s+(?:light|magaan)\b",
+        r"\bbig\s+enough\b|\bsuitable\s+size\b",
+    ],
+    neg=[
+        r"\b(?:too|masyadong?|sobrang|pinaka|ang)\s+(?:maliit|liit|small|tiny|tight|masikip|loose|maluwag)\b|\b(?:maliit|liit)\s+(?:lang|pala|naman|ito|sya|siya)\b",
+        r"\b(?:medyo|bit|a\s+bit)\s+(?:tight|masikip|maluwag|loose|small|maliit)\b|\bmaliit\s+(?:kesa|than)\s+(?:expected|sa\s+inaasahan)\b|\b(?:tight|small)\s+for\s+(?:a\s+|an\s+)?\d?\s?xl\b",
+    ],
+    guard=r"\b(?:kusina|kitchen|bahay|room|lugar|space|place)\b",
+)
+MATCHES_LISTING = _more(
+    MATCHES_LISTING,
+    pos=[
+        r"\b(?:see|what)\s+(?:is\s+)?what\s+you\s+get\b|\bpare-?pareho\s+sa\s+(?:paglalarawan|description|picture|pic)\b|\b(?:exactly|just)\s+(?:as|like)\s+(?:posted|shown|described|advertised)\b|\beverything\s+is\s+as\s+(?:posted|described|advertised)\b",
+    ],
+    neg=[
+        r"\b(?:different|wrong|iba|ibang|mali)\s+(?:na\s+)?(?:colou?r|kulay|size|item|product|variant|model)\s+(?:received|delivered|sent|binigay|dumating|natanggap|pinadala)\b",
+        r"\b(?:mali|maling)\s+(?:ang\s+)?(?:item|binigay|dumating|na\s+item|pinadala|nadeliver|order)\b|\bmali\s+mali\s+ang\s+items?\b",
+        r"\bnot\s+(?:as\s+(?:advertised|advertise|claimed|described|shown|pictured|stated|posted)|like\s+(?:the\s+)?(?:picture|photo|description)|true\s+to\s+(?:the\s+)?(?:claim|description)|same\s+in\s+the\s+(?:picture|photo))\b|\bnot\s+related\b|\bmisleading\b|\bliar\s+on\b",
+        r"\b(?:kulang|missing|incomplete)\s+(?:ng|pa|ang|yung|ung|na|items?|parts?|pieces?|wire|accessor\w+)\b|\b(?:walang|no)\s+(?:kasamang\s+)?(?:charger|kettle|wire|cable|adapter|plug|panaksak)\b",
+    ],
+)
+SELLER = _more(
+    SELLER,
+    skip_if=r'\bresponsive\s+(?:delivery|rider|courier)\b',
+    pos=[
+        r"\b(?:recommended|reliable|accommodating|responsive|friendly|maasikaso|excellent|good|great)\s+(?:na\s+)?(?:seller|shop|store|customer\s+service)\b|\bkeep\s+up\s+the\s+good\s+work\b|\bfast\s+response\b|\bkudos\s+to\s+the\s+seller\b|\bgreat\s+service\s+from\s+the\s+seller\b",
+    ],
+    neg=[
+        r"\b(?:scammm+|manloloko|mandarambong|panloloko)\b|\bscam\s+lang\s+pala\b|\bscam(?:mer)?\s+(?:ang|ung|yung|amg)\s+seller\b",
+        r"\b(?:ayaw|di|hindi)\s+(?:pumayag|mag-?reply|sumagot|mag-?respond|mag-?return)\b|\bayaw\s+pa\s+mag\s*refund\b|\bnot\s+(?:very\s+)?responsive\b|\bhindi\s+(?:ganon\s+)?(?:karesponsive|responsive)\b|\b(?:very\s+)?bad\s+business\b|\b(?:poor|bad)\s+(?:customer\s+)?service\b",
+    ],
+)
+DELIVERY = _more(
+    DELIVERY,
+    pos=[
+        r"\b(?:bilis|ang\s+bilis)\s+(?:ng\s+)?(?:dumating|delivery|shipping|nakarating)\b|\bone[- ]day\s+delivery\b|\b(?:delivered|dumating|arrived)\s+(?:so\s+|very\s+)?(?:fast|early|earlier|agad|on\s+time)\b|\bdelivery\s+was\s+(?:prompt|fast|quick|faster)\b|\bresponsive\s+delivery\s+man\b",
+        r"\barrived\s+(?:earlier|early)\s+than\b|\bbilis\s+dumating\b|\bmabilis\s+(?:dumating|nakarating)\b",
+    ],
+    neg=[
+        r"\b(?:matagal|tagal|super\s+tagal|ang\s+tagal)\s+(?:na\s+)?(?:dumating|ng\s+delivery|ang\s+delivery|inantay|naantay|nakarating)\b|\b(?:matagal|tagal)\s+(?:kung|kong|ko)\s+(?:inantay|hinintay)\b",
+        r"\b(?:took|take|takes)\s+\d+\s+days?\s+to\s+arrive\b|\b(?:walang|di)\s+(?:nakakarating|dumating|na-?deliver)\b|\bhindi\s+(?:pa\s+)?(?:na-?deliver|nakarating)\b|\biniwan\s+lang\s+ng\s+rider\b|\bnot\s+delivered\b|\bndiliver\b",
+    ],
+)
+PACKAGING = _more(
+    PACKAGING,
+    pos=[
+        r"\b(?:well|securely|nicely)\s+(?:packed|packaged|wrapped)\b|\bbubble[- ]?wrapped\b|\bwrapped\s+in\s+plastic\b|\bmaayos\s+(?:ang\s+)?(?:pagkakabalot|packing|pagkapack|packaging)\b|\b(?:very\s+)?elegant\s+(?:ang\s+)?packaging\b",
+    ],
+    neg=[
+        r"\b(?:di|hindi)\s+maayos\s+(?:ang\s+)?(?:pagkakabalot|packing|pagkapack|packaging)\b|\bpackaging\s+not\s+secured\b|\b(?:nag\s*leak|nagleak|tumagas|natapon)\b|\bwalang\s+takip\b|\bnabuhod\b",
+    ],
+)
+FREEBIES = _more(
+    FREEBIES,
+    pos=[r"\b(?:my|may|got|with)\s+(?:pa\s+)?(?:free\s+)?freebies?\b|\bthanks?\s+for\s+(?:the\s+)?(?:discount\s+and\s+)?freebies?\b"],
+    neg=[r"\b(?:no|walang)\s+(?:gift|freebies?)\s+inside\b|\bnothing\s+gift\b|\breward\b[^.!?]{0,60}\b(?:vanished|nawala|wala)\b|\bpromised\b[^.!?]{0,60}\b(?:reward|freebies?)\b"],
+)
+ARRIVAL = _more(
+    ARRIVAL,
+    pos=[
+        r"\b(?:arrived|dumating|received|natanggap)\s+(?:in\s+|ng\s+)?(?:good|perfect|excellent|great|maayos|intact|safe)\b(?:\s+(?:condition|state|shape))?|\bgood\s+(?:state|shape)\b|\bintact\b|\bsafe\s+(?:shipment|delivery)\b|\bwalang\s+butas\b",
+    ],
+    neg=[
+        r"\b(?:madumi|marumi)\s+na\b|\bsecond[- ]?hand\b|\b(?:box|kahon)\s+(?:is\s+|was\s+)?(?:damaged|dented|nayupi|durog|punit|sira|deformed)\b|\bdurog\s+durog\b|\bmay\s+(?:gasgas|dent|crack|yupi)\b",
+    ],
+)
+AUTHENTICITY = _more(
+    AUTHENTICITY,
+    neg=[r"\blegit\s+(?:po\s+)?ba\b|\bis\s+(?:this|it)\s+(?:legit|original|real|genuine)\b|\b(?:not|hindi|di)\s+(?:legit|original|authentic|genuine)\b|\bdoesn'?t\s+seem\s+legit\b"],
 )
 
 GENERAL = (FUNCTIONALITY, BUILD, DURABILITY, SIZE, APPEARANCE, VALUE, EASE, MATCHES_LISTING, AUTHENTICITY, DELIVERY, PACKAGING, SELLER, FREEBIES, ARRIVAL)
@@ -971,7 +1121,8 @@ FOOD = (
         pos=_re(
             [
                 r"\b(?:masarap|sarap|yummy|delicious|tasty|flavorful|malasa)\b",
-                r"\b(?:good|great|nice|amazing|ok|okay)\s+(?:taste|flavou?r)\b",
+                r"\b(?:good|great|nice|amazing|ok|okay|best|excellent|wonderful|top[- ]notch)\s+(?:na\s+)?(?:taste|flavou?r|lasa)\b",
+                r"\b(?:taste|lasa|flavou?r)\s+(?:is\s+)?(?:top[- ]notch|the\s+best|best|excellent|wonderful)\b",
                 r"\b(?:taste|lasa|flavou?r)\s+(?:is\s+|ay\s+|nya\s+)?(?:good|great|nice|masarap|ok|okay|sarap|amazing)\b",
             ]
         ),
@@ -1369,7 +1520,7 @@ PROMOTION = re.compile(r"\b(?:gloan|installments?|loan|promo\s+code|voucher\s+co
 # A prompt the marketplace puts in front of a review field ("Sound Quality:", "Value for money:"). The label is not the buyer's claim.
 PROMPT_LABEL = re.compile(r"\b[A-Z][A-Za-z/&]*(?:\s+[A-Za-z/&]+){0,3}:(?=\s*\S)")
 COMPARISON = re.compile(
-    r"\bas\s+\w+\s+as\s+(?:this|that|the|my|other|others|before|dati)\b|\b(?:than|compared\s+(?:to|with)|kumpara|kesa|kaysa|better\s+than|worse\s+than|same\s+as\s+(?!(?:in\s+)?(?:the\s+)?(?:picture|pictures|photo|photos|pic|pics|advertised|described|listed|description|listing|ad)\b)|kasing|mas\s+(?:maganda|ok|okay|mabuti|mahina|pangit|malakas|mabilis|mabango|malambot))\b",
+    r"\bas\s+\w+\s+as\s+(?:this|that|the|my|other|others|before|dati)\b|\b(?:than(?!\s+(?:i\s+)?(?:expected|thought|inaasahan|advertised|described|the\s+picture))|compared\s+(?:to|with)|kumpara|kesa|kaysa|better\s+than(?!\s+(?:i\s+)?expected)|worse\s+than(?!\s+(?:i\s+)?expected)|same\s+as\s+(?!(?:in\s+)?(?:the\s+)?(?:picture|pictures|photo|photos|pic|pics|advertised|described|listed|description|listing|ad)\b)|kasing|mas\s+(?:maganda|ok|okay|mabuti|mahina|pangit|malakas|mabilis|mabango|malambot))\b",
     re.I,
 )
 SARCASM = re.compile(r"\b(?:yeah\s+right|as\s+if|sure\s+ka|talaga\s+lang|sana\s+all|/s)\b|\bwow\b[^.!?]{0,25}\b(?:sira|sayang|nasira|broken|fake)\b", re.I)
@@ -1385,7 +1536,7 @@ NO_EXPERIENCE = re.compile(
 # anti-dandruff, anti-acne) names it constantly in praise, so words that say it is lessened, stopped, fought or treated count as relief.
 RELIEF = re.compile(
     r"\b(?:nawala|nawawala|nabawasan|bumaba|gumaling|nagamot|clear\w*|reduc\w*|remov\w*|cure\w*|heal\w*|fights?|prevent\w*|control\w*|bawas\w*|goodbye|walang\s+na|stopped?|stops?"
-    r"|less|fewer|anti|helps?|helping|helped|improv\w*|solution|tinanggal|natanggal|wala\s+nang|no\s+more|hindi\s+na|effective\s+(?:for|against|in)|good\s+for|works?\s+(?:for|on|against)|mas\s+less)\b",
+    r"|less|fewer|anti|helps?|helping|helped|improv\w*|solution|tinanggal|natanggal|nkkawa+la|nkakawa+la|nakaka-?(?:wa+la|alis|tanggal)|wala\s+nang|no\s+more|hindi\s+na|effective\s+(?:for|against|in)|good\s+for|works?\s+(?:for|on|against)|mas\s+less)\b",
     re.I,
 )
 POSITIVE_EMOJI = re.compile("[\U0001F60D\U0001F44D\U0001F4AF❤\U0001F970\U0001F60A\U0001F929\U0001F44F\U0001F44C✨\U0001F496\U0001F495]")
