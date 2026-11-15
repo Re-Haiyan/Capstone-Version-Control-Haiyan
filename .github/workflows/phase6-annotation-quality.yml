@@ -1,0 +1,41 @@
+name: Phase 6 comprehensive annotation quality (research only)
+on:
+  push:
+    branches:
+      - research/annotation-quality-coverage-20261115
+  pull_request:
+    branches:
+      - research/neutral-phase2
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  annotation-quality:
+    name: Source integrity and review-readiness (3400 rows)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test annotation integrity, blind-review isolation and import safeguards
+        run: |
+          python -m unittest discover -s tests -p 'test_phase6_annotation_quality.py' -v
+          python -m unittest discover -s tests -p 'test_phase6_review_submission.py' -v
+      - name: Verify all protected Git blobs and audit all 3,400 development annotations
+        run: |
+          python research/xlmr_optimization/phase6_annotation/annotation_quality.py \
+            --output /tmp/defaketive-annotation-quality \
+            --maximum-review-rows 480
+      - name: Never export customer review text from public GitHub Actions
+        run: |
+          test ! -f /tmp/defaketive-annotation-quality/all_3400_blind_review.csv
+          test ! -f /tmp/defaketive-annotation-quality/priority_blind_review.csv
+      - name: Store metadata-only quality registry and review IDs
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase6-annotation-quality-metadata
+          path: /tmp/defaketive-annotation-quality/
+          retention-days: 7
+          if-no-files-found: error
