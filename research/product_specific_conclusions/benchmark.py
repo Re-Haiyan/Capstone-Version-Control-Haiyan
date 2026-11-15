@@ -69,6 +69,11 @@ def limit_cpus(count: int) -> int:
         import ctypes
 
         kernel = ctypes.windll.kernel32
+        kernel.GetCurrentProcess.restype = ctypes.c_void_p
+        kernel.GetProcessAffinityMask.argtypes = [
+            ctypes.c_void_p, ctypes.POINTER(ctypes.c_size_t), ctypes.POINTER(ctypes.c_size_t)
+        ]
+        kernel.SetProcessAffinityMask.argtypes = [ctypes.c_void_p, ctypes.c_size_t]
         current = kernel.GetCurrentProcess()
         process_mask = ctypes.c_size_t()
         system_mask = ctypes.c_size_t()
