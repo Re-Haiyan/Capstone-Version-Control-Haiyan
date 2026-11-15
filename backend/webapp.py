@@ -725,7 +725,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         catalog = _merged_catalog()
         recommendations = rank_recommendations(product, catalog, limit=3)
         return jsonify(
-            {"product": with_badge_view(product), "recommendations": _cards(recommendations)}
+            {"product": with_badge_view(product, aspects=True), "recommendations": _cards(recommendations)}
         )
 
     @app.get("/api/export/products.csv")

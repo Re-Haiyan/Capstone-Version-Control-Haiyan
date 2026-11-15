@@ -51,3 +51,5 @@ training/runs/
 research/cache/emb_*.npy
 research/results_embed.log
 __pycache__/
+research/cache/*.log
+research/results/shadow_run.log

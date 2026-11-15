@@ -146,5 +146,65 @@ class EvidenceEndToEnd(unittest.TestCase):
         self.assertNotIn("review_evidence_dropped", a)  # nothing is dropped unless the policy is on
 
 
+class EvidencePolicyShadow(unittest.TestCase):
+    """DEFAKETIVE_EVIDENCE_POLICY=shadow reports what 'require' would do and changes nothing."""
+
+    MODEL_ONLY_REVIEW = "nakakatakot icharge ung iphone ko dto"  # a learned-layer defect flag with no supporting words (deterministic)
+
+    @classmethod
+    def setUpClass(cls):
+        cls.model = registry.load_model()
+
+    def setUp(self):
+        os.environ.pop(ev.POLICY_ENV, None)
+
+    tearDown = setUp
+
+    def run_review(self, text=None, product="Phone Cable"):
+        return self.model.analyze_batch([text or self.MODEL_ONLY_REVIEW], [2], listing={"name": product})[0]
+
+    def test_shadow_changes_no_flag_and_lists_what_would_be_dropped(self):
+        base = self.run_review()
+        self.assertIn("defect", base["review_tags"])
+        self.assertEqual(base["review_evidence"]["defect"]["state"], ev.MODEL_ONLY)
+        os.environ[ev.POLICY_ENV] = ev.POLICY_SHADOW
+        shadow = self.run_review()
+        self.assertEqual(shadow["review_tags"], base["review_tags"])
+        self.assertNotIn("review_evidence_dropped", shadow)
+        self.assertEqual([d["flag"] for d in shadow["review_evidence_would_drop"]], ["defect"])
+
+    def test_nothing_is_reported_when_the_policy_is_not_shadow(self):
+        self.assertNotIn("review_evidence_would_drop", self.run_review())
+
+    def test_safety_is_never_in_the_shadow_list(self):
+        os.environ[ev.POLICY_ENV] = ev.POLICY_SHADOW
+        a = self.run_review("Umusok ang charger at amoy sunog, muntik nang masunog", "Phone Charger 20W")
+        self.assertIn("safety", a["review_tags"])
+        self.assertNotIn("safety", [d["flag"] for d in a.get("review_evidence_would_drop") or []])
+
+    def test_the_shadow_verdict_equals_what_require_then_produces(self):
+        from defaketive_sentiment.product_badges import ProductBadgeAggregator
+
+        texts = [self.MODEL_ONLY_REVIEW] * 14 + ["Maganda ang product, sulit na sulit", "Okay naman, ayos ang quality, recommended seller"] * 12
+        stars = [2] * 14 + [5] * 24
+
+        def summarise():
+            analyses = self.model.analyze_batch(texts, stars, listing={"name": "Phone Cable"})
+            return ProductBadgeAggregator().summarize(analyses, reviews_available=len(texts), product_type="charger_cable")
+
+        real = summarise()
+        self.assertNotIn("shadow_evidence_policy", real)
+        os.environ[ev.POLICY_ENV] = ev.POLICY_SHADOW
+        shadowed = summarise()
+        self.assertEqual(shadowed["flags"]["defect"]["flagged_reviews"], real["flags"]["defect"]["flagged_reviews"])  # the real counts are untouched
+        self.assertEqual(shadowed["verdict"]["state"], real["verdict"]["state"])
+        block = shadowed["shadow_evidence_policy"]
+        self.assertEqual(block["dropped_flags"].get("defect"), 14)
+        os.environ[ev.POLICY_ENV] = ev.POLICY_REQUIRE
+        required = summarise()
+        self.assertEqual(block["verdict_state"], required["verdict"]["state"])
+        self.assertEqual(block["flagged_reviews"]["defect"], required["flags"]["defect"]["flagged_reviews"])
+
+
 if __name__ == "__main__":
     unittest.main()

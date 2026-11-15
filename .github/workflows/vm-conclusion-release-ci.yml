@@ -1,0 +1,67 @@
+name: VM conclusion release candidate (validation only)
+on:
+  push:
+    branches:
+      - release/vm-conclusions-flagged-20261115
+  pull_request:
+    branches:
+      - deployment
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Ensure sentiment and hazard engines are unchanged
+        run: |
+          set -euo pipefail
+          BASE=2c6e056befe0ad7a24652bd12d4d28f7af236a8f
+          git cat-file -e "${BASE}^{commit}"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis backend/requirements.txt scripts/requirements-lock.txt)"
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Full backend regression
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CONCLUSION_REASONS: "1"
+        run: python -m unittest discover -s tests -p 'test_*.py' -q
+      - name: Confirm off-switch works in a new process
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CONCLUSION_REASONS: "0"
+        run: python -c 'import dashboard_utils; assert dashboard_utils.REASONS_ENABLED is False; print("Reasons OFF")'
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: |
+          npm ci --no-fund --no-audit
+          git diff --exit-code -- package.json package-lock.json
+          npm run check
+          npm run build
+          npm run test:extension

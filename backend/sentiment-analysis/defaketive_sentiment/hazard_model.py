@@ -33,6 +33,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from . import hazard_taxonomy as taxonomy
 from .evidence import apply_policy as apply_evidence_policy
+from .evidence import would_drop as evidence_would_drop
 from .evidence import evidence_for_review
 from .sentiment_calibration import calibrated_sentiment
 from . import text_norm
@@ -1993,6 +1994,7 @@ class HazardBadgeModel:
             if item.get("hazard_subtype") and item["high_confidence"].get(SAFETY)
         ]
         evidence = evidence_for_review(review, sentences, review_tags, extra_tags if five_labels else ())
+        shadow_drop = evidence_would_drop(evidence)  # policy "shadow": reported, nothing dropped
         review_tags, extra_tags, dropped = apply_evidence_policy(sentences, review_tags, extra_tags, evidence)
         if dropped:
             confident = [tag for tag in confident if tag in review_tags]
@@ -2017,6 +2019,7 @@ class HazardBadgeModel:
             **({"review_extra_tags": extra_tags} if five_labels else {}),
             "review_evidence": evidence,
             **({"review_evidence_dropped": dropped} if dropped else {}),
+            **({"review_evidence_would_drop": shadow_drop} if shadow_drop else {}),
             "review_high_confidence": confident,
             "max_severity": max(
                 (taxonomy.SEVERITY.get(name, 0) for name in subtypes), default=0

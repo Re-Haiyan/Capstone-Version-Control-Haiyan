@@ -26,6 +26,7 @@ DeFaketive reads Lazada and Shopee reviews and says whether a listing shows sign
 | Fine-tuned XLM-R | Three runs (CPU, 50 to 85 min each; embedding table frozen and length-grouped batches cut a run from 83 to 49 min). The model alone never beat the rules; combined it helped in one run and not in another; the delivery output reached F1 0.47 | `e968d1c`, `ebcde8b`, `e2e0943`; `training/RESULTS_v1.md` |
 | Rule tuning on the training rows | Shared files for every product, packing damage is delivery, battery-drain policy, learned-model gates, heat reported as safety is not also a defect. Historical test F1: not-as-advertised 0.59 to 0.72, defect 0.67 to 0.69, counterfeit 0.94, quality 0.73, safety 0.53 | `d9d221b`, `831f22f` |
 | Research round | Audits, baselines, evaluation with intervals, weak supervision, active learning, sentiment recalibration, deployment benchmark, 12 deliverables | branch `research-improvements`, `research/` |
+| Release audit round | Release candidate `27598e4` compared with production `d74589a`; model version `pc4`; evidence-policy shadow mode and audit (policy not recommended for activation); battery-drain guard; reusable does-not-work variants; conclusion policy comparison; owner decision sheet; annotation execution guide with provenance recording; production-VM benchmark and API/aggregation checks; research integrity audit. **Nothing deployed or pushed**; production is still `d74589a` | `research/release_manifest.md`, `release_validation.md`, `evidence_policy_decision.md`, `final_research_integrity_audit.md` |
 | Finalization round | Provenance audit (the supplied labels came back in minutes, so they are silver), corrected annotation-audit counts, evidence states with an opt-in policy (defect precision 0.62 to 0.80), clause-level context, an order/arrival mismatch fix, sentiment-calibrator shadow mode (15 of 60 conclusions would change), policy v2 comparison, agreement and conclusion-evaluation sheets, a proposed fresh evaluation set; 257 tests | `research/finalization_round_summary.md` |
 
 ## 3. What the numbers say (and do not)
@@ -37,7 +38,7 @@ DeFaketive reads Lazada and Shopee reviews and says whether a listing shows sign
 
 ## 4. How to reproduce
 
-* Tests: `backend\.venv\Scripts\python.exe -m unittest discover -s tests` (206 tests).
+* Tests: `backend\.venv\Scripts\python.exe -m unittest discover -s tests` (the suite in `tests/`; 286 after the blocker checks).
 * Score the rules: `evaluation/score_nongadget.py`, `training/rules_eval.py`, `research/evaluate_all.py`.
 * Training environment: `D:\defaketive-train` (CPU PyTorch, transformers, scikit-learn, sentence-transformers, cleanlab); runs are not committed (`training/runs/` is ignored).
 * Everything that touches labels uses product-grouped folds (`research/common.py`).

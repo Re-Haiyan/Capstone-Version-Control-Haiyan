@@ -6,19 +6,17 @@
 
 For every flag the checker raises, can a real phrase of the review be quoted as evidence? The previous round counted 155 flags without highlighted words (111 defect, 22 not-as-advertised, 21 quality, 1 safety).
 
-## 2. The counts, confirmed
-
-Re-run over all 4,792 labelled reviews with the new `review_evidence` field (`research/evidence_cases.py`):
+## 2. The counts, confirmed (final release code, all 4,792 labelled reviews)
 
 | Flag | Raised | With highlighted words | Listing comparison | No supporting words (model-only) |
 |---|---:|---:|---:|---:|
-| defect | 540 | 439 | 0 | 101 |
+| defect | 556 | 468 | 0 | 88 |
 | quality | 413 | 395 | 0 | 18 |
-| not as advertised | 449 | 427 | 19 | 3 |
+| not as advertised | 459 | 437 | 19 | 3 |
 | safety | 139 | 138 | 0 | 1 |
 | counterfeit | 182 | 182 | 0 | 0 |
 
-The 155 of the previous round are confirmed and now split by cause: **111 defect and 1 safety** from the learned classifier, **21 quality** from the extra-label classifier, **22 not-as-advertised**, of which **19 are listing comparisons** (the sentence compared with the listing is itself the evidence) and 3 are classifier-only. Before the patterns below, the model-only totals were 111 + 21 + 3 + 1 = 136; they are now 101 + 18 + 3 + 1 = 123.
+The 155 flags without words of the first audit are confirmed and were split by cause: 111 defect and 1 safety from the learned classifier, 21 quality from the extra-label classifier, and 22 not-as-advertised, of which 19 are listing comparisons (the sentence compared with the listing is itself the evidence) and 3 are classifier-only. The reusable patterns of this and the following audit round (spelling and spacing variants of "does not work", a leak, a torn part; see `evidence_policy_decision.md`) cut the model-only defect flags from 111 to 88 and the quality flags from 21 to 18.
 
 ## 3. What was implemented
 
@@ -28,40 +26,42 @@ The 155 of the previous round are confirmed and now split by cause: **111 defect
 
 ## 4. The finding that matters: evidence predicts correctness
 
-Agreement with the team-supplied labels, by evidence state (`research/results/evidence_precision_by_state.json`, all labelled rows):
+Agreement with the team-supplied labels, by evidence state, **training rows (development) and historical-test rows kept apart** (`research/results/evidence_precision_by_state_split.json`, final code):
 
-| Flag | State | Raised | Agree with label | Precision |
-|---|---|---:|---:|---:|
-| defect | keyword span | 439 | 348 | 0.79 |
-| defect | **model only** | 101 | 17 | **0.17** |
-| quality | keyword span | 395 | 248 | 0.63 |
-| quality | **model only** | 18 | 3 | **0.17** |
-| not as advertised | keyword span | 427 | 340 | 0.80 |
-| not as advertised | listing comparison | 19 | 9 | 0.47 |
-| not as advertised | model only | 3 | 0 | 0.00 |
-| safety | keyword span | 138 | 71 | 0.51 |
-| safety | model only | 1 | 1 | 1.00 |
-| counterfeit | keyword span | 182 | 164 | 0.90 |
+| Flag | State | Train: raised, agree, precision | Historical test: raised, agree, precision |
+|---|---|---|---|
+| defect | keyword span | 401, 317, **0.79** | 67, 53, **0.79** |
+| defect | **model only** | 70, 5, **0.07** | 18, 0, **0.00** |
+| quality | keyword span | 309, 195, 0.63 | 86, 53, 0.62 |
+| quality | **model only** | 15, 3, **0.20** | 3, 0, 0.00 |
+| not as advertised | keyword span | 379, 305, 0.80 | 58, 42, 0.72 |
+| not as advertised | listing comparison | 18, 8, 0.44 | 1, 1, 1.00 |
+| not as advertised | model only | 2, 0, 0.00 | 1, 0, 0.00 |
+| safety | keyword span | 110, 60, 0.55 | 28, 11, 0.39 |
+| safety | model only | 0 | 1, 1, 1.00 |
+| counterfeit | keyword span | 129, 114, 0.88 | 53, 50, 0.94 |
 
-A flag with no supporting words is right about 1 time in 6. Reading 42 of the model-only defect cases showed three kinds: about a third have a defensible phrase the keyword layer missed (not working, intermittent failure, charging failure; some now covered by the new patterns); about a tenth are wrong (a denial such as "Wala leak and damage", praise such as "Gumagana xa..", or an unrelated text); the rest are real complaints about *something else* (a missing item, a skin reaction, a pet that will not eat) that the model filed under defect. One reader judged these, not two independent annotators.
+The direction is the same in both: a defect flag with no supporting words agrees with the label 5 times in 70 on training rows and 0 times in 18 on the historical test. (An earlier version of this table pooled training and test rows and, before the keyword gaps were closed, showed 17 of 101; the training-only figure then was 17 of 83. The gaps closed since were found from training rows only.) The small counts for safety, listing comparison and model-only not-as-advertised cannot be interpreted.
+
+Reading 42 of the model-only defect cases (before the gaps were closed) showed three kinds: about a third had a defensible phrase the keyword layer missed (not working, intermittent failure, charging failure), about a tenth were wrong (a denial, praise or an unrelated text), and the rest were real complaints about something else that the model filed under defect. One reader judged these, not two independent annotators.
 
 ## 5. An opt-in policy, measured, off by default
 
 `DEFAKETIVE_EVIDENCE_POLICY=require`: model-only **defect, quality and not-as-advertised** flags are not counted; every drop is listed in `review_evidence_dropped` with its reason and model score, so nothing disappears silently. **Safety is never dropped** (a missed hazard costs more than an unverified one) and counterfeit has no model-only cases. Default: `keep` (nothing changes).
 
-Measured through the real pipeline (`research/results/evidence_policy_effect.json`):
+Measured through the real pipeline (`research/results/evidence_policy_effect_v2.json`, final code):
 
 | | Training rows (3,946): F1, precision, recall | Historical test (846): F1, precision, recall |
 |---|---|---|
-| defect, keep | 0.733, 0.69, 0.79 | 0.680, 0.62, 0.75 |
-| defect, **require** | **0.767**, 0.79, 0.74 | **0.773**, 0.80, 0.75 |
+| defect, keep | 0.738, 0.68, 0.80 | 0.680, 0.62, 0.75 |
+| defect, **require** | **0.791**, 0.79, 0.79 | **0.773**, 0.80, 0.75 |
 | quality | 0.691 to 0.699 | 0.726 to 0.741 |
 | not as advertised | 0.764 to 0.766 | 0.717 to 0.723 |
 | safety, counterfeit | unchanged | unchanged |
 
-On the historical test the defect gain is +0.093 F1 with the paired product-bootstrap interval **+0.044 to +0.162** (precision 0.62 to 0.80, recall unchanged); quality and not-as-advertised gains are within noise. **How the decision was reached, stated plainly:** the first precision-by-state table pooled training and test rows; the direction was then confirmed on training rows alone (defect precision 0.69 to 0.79, F1 0.733 to 0.767), so the training result is the basis and the test result is historical confirmation, not selection. This does not change the 0.80 aspiration being unmet for defect (0.77).
+On the historical test the defect gain is +0.093 F1 with the paired product-bootstrap interval **+0.046 to +0.162** (historical benchmark: the set was inspected during development, so this is not an independent test) (precision 0.62 to 0.80, recall unchanged); quality and not-as-advertised gains are within noise. **How the decision was reached, stated plainly:** the first precision-by-state table pooled training and test rows; the direction was then confirmed on training rows alone (defect precision 0.68 to 0.79, F1 0.738 to 0.791), so the training result is the basis and the test result is historical confirmation, not selection. The 0.80 aspiration is still just unmet for defect (0.79 training, 0.77 historical).
 
-**Recommendation (needs the owner's approval; not enabled):** adopt `require` for defect, quality and not-as-advertised, and show flags without evidence as "unverified" in the interface if they are shown at all.
+**Recommendation (superseded by `evidence_policy_decision.md`): do not enable `require`.** The labelled gain is real but the product-level audit shows it would also remove genuine failure reports that lack keyword evidence and flips 4 of 60 gadget verdicts. Run `shadow` first and close the vocabulary gaps listed there.
 
 ## 6. Known remaining gaps
 

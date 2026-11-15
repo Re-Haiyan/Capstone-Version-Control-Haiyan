@@ -16,6 +16,9 @@ positive and negative agreement, Gwet's AC1, the 2x2 table and 95% percentile-bo
 for all reviews, for each stratum, and for the rows both marked high confidence. A review missing a label in either sheet is
 left out of that statistic; fewer than 30 reviews completed in both sheets and `score` refuses to run.
 
+`check` validates ONE completed sheet before it is used (allowed values, unchanged review text, missing rows) and can record who made it
+(--annotator ID --policy VERSION appends a line with the date and the file's SHA-256 to research/agreement/provenance_log.csv).
+
 `compare` adds what the provenance audit needs: each annotator against the team-supplied labels, and the two annotators
 against each other, per flag. If the supplied labels are human-quality, annotator-vs-supplied agreement should be close to
 annotator-vs-annotator agreement.
@@ -143,6 +146,60 @@ def score(path_a, path_b, id_map_path=None, out=print):
     return result
 
 
+ALLOWED_SENTIMENT = {"positive", "neutral", "negative"}
+ALLOWED_CONFIDENCE = {"high", "low"}
+
+
+def check(done_path, blank_path=None, annotator=None, policy=None, out=print, log_path=None):
+    """Validate a completed sheet against its blank original. Returns a dict of problems; records provenance when asked."""
+    import hashlib, datetime
+
+    done_path = pathlib.Path(done_path)
+    blank_path = pathlib.Path(blank_path) if blank_path else None
+    if blank_path is None:  # sheet_A_done.csv is checked against sheet_A.csv, sheet_B_done.csv against sheet_B.csv
+        stem = "sheet_A" if "sheet_A" in done_path.name else ("sheet_B" if "sheet_B" in done_path.name else None)
+        blank_path = OUT / f"{stem}.csv" if stem else None
+    done = _read(done_path)
+    blank = _read(blank_path) if blank_path and blank_path.exists() else {}
+    problems = {"unknown_ids": [], "changed_text": [], "bad_sentiment": [], "bad_flags": [], "bad_confidence": [], "none_mixed_with_flags": [], "missing_ids": [], "blank_rows": 0}
+    for i, r in done.items():
+        if blank and i not in blank:
+            problems["unknown_ids"].append(i); continue
+        if blank and any(r.get(c, "") != blank[i][c] for c in ("stars", "product", "review_text")):
+            problems["changed_text"].append(i)
+        filled = bool(r.get("flags", "").strip() or r.get("sentiment", "").strip() or r.get("confidence", "").strip())
+        if not filled:
+            problems["blank_rows"] += 1; continue
+        if r.get("sentiment", "").strip().lower() not in ALLOWED_SENTIMENT:
+            problems["bad_sentiment"].append(i)
+        tokens = [x for x in r.get("flags", "").replace(" ", "").lower().split(";") if x]
+        if not tokens or any(x not in set(FLAGS) | {"none"} for x in tokens):
+            problems["bad_flags"].append(i)
+        elif "none" in tokens and len(tokens) > 1:
+            problems["none_mixed_with_flags"].append(i)
+        if r.get("confidence", "").strip().lower() not in ALLOWED_CONFIDENCE:
+            problems["bad_confidence"].append(i)
+    problems["missing_ids"] = [i for i in blank if i not in done]
+    complete = [i for i, r in done.items() if _done(r) and r.get("confidence", "").strip().lower() in ALLOWED_CONFIDENCE]
+    low = sum(1 for i in complete if done[i]["confidence"].strip().lower() == "low")
+    out(f"{done_path.name}: {len(done)} rows, {len(complete)} completed ({low} marked low confidence), {problems['blank_rows']} still blank")
+    bad = {k: v for k, v in problems.items() if k != "blank_rows" and v}
+    for k, v in bad.items():
+        out(f"  PROBLEM {k}: {len(v)} (first: {v[:5]})")
+    out("  OK: every filled row uses allowed values and no review text was changed" if not bad else "  FIX the problems above before this sheet is used")
+    if annotator and policy:
+        sha = hashlib.sha256(done_path.read_bytes()).hexdigest()
+        log = pathlib.Path(log_path) if log_path else OUT / "provenance_log.csv"
+        new = not log.exists()
+        with open(log, "a", encoding="utf-8-sig", newline="") as fh:
+            w = csv.writer(fh)
+            if new:
+                w.writerow(["recorded_at_utc", "annotator_id", "policy_version", "file", "rows_completed", "rows_low_confidence", "sha256"])
+            w.writerow([datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), annotator, policy, done_path.name, len(complete), low, sha])
+        out(f"  provenance recorded in {log.name} (annotator {annotator}, policy {policy}, sha256 {sha[:12]}...)")
+    return problems
+
+
 def compare(path_a, path_b, id_map_path=None, out=print):
     """Annotator A vs B, and each against the team-supplied labels."""
     A, B = _read(path_a), _read(path_b)
@@ -173,5 +230,11 @@ if __name__ == "__main__":
         score(sys.argv[2], sys.argv[3])
     elif len(sys.argv) == 4 and sys.argv[1] == "compare":
         compare(sys.argv[2], sys.argv[3])
+    elif len(sys.argv) >= 3 and sys.argv[1] == "check":
+        args = sys.argv[2:]
+        opt = {a.split("=")[0]: a.split("=")[1] for a in args if a.startswith("--") and "=" in a}
+        pos = [a for a in args if not a.startswith("--")]
+        problems = check(pos[0], pos[1] if len(pos) > 1 else None, opt.get("--annotator"), opt.get("--policy"))
+        sys.exit(1 if any(v for k, v in problems.items() if k != "blank_rows") else 0)
     else:
         sys.exit(__doc__)

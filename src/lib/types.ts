@@ -53,6 +53,41 @@ export interface SafetyCheckAccuracy {
 /** What the reviews add up to, in words ("Based on the reviews of this product ..."). Worked out by the server. */
 export type ConclusionDecision = 'recommended' | 'mixed' | 'caution' | 'not_recommended' | 'not_enough';
 
+/** One quotation behind a claim: the reviewer's own words, where they sit in the review, and which review it is. */
+export interface AspectQuote {
+	review_id: string;
+	text: string;
+	/** [start, end) in the original review text, or null when the position could not be found. */
+	span: [number, number] | null;
+	language: 'en' | 'fil' | 'taglish';
+	rating: number | null;
+	evidence: string;
+}
+
+/** One line of "Why this conclusion?": a count of distinct reviews that can be reproduced from the review text. */
+export interface WhyItem {
+	aspect: string;
+	kind: 'product' | 'trust' | 'service';
+	polarity: 'positive' | 'negative';
+	reviews: number;
+	text: string;
+	quotes: AspectQuote[];
+	review_ids: string[];
+	ids_truncated: boolean;
+}
+
+export interface ConclusionEvidence {
+	status: 'supported' | 'limited';
+	reviews_considered: number;
+	product_reviews: number;
+	service_reviews: number;
+	not_used_yet_reviews: number;
+	skipped_clauses: Record<string, number>;
+	rules_version: string;
+	category: string | null;
+	why: WhyItem[];
+}
+
 export interface Conclusion {
 	decision: ConclusionDecision;
 	headline: string;
@@ -62,6 +97,13 @@ export interface Conclusion {
 	summary?: string;
 	assessment?: string;
 	assessment_note?: string;
+	/** The paragraph without the hazard sentences, and those sentences on their own (safety and authenticity reports). `summary` has all of it. */
+	body?: string;
+	warnings?: string[];
+	/** 'limited' when the reviews say little about the product itself (delivery and packaging only, or too few opinions). */
+	evidence_status?: 'supported' | 'limited';
+	/** Only on the product page, and only when the saved report kept its review text. */
+	evidence?: ConclusionEvidence;
 	points: string[];
 	basis: { reviews: number; positive?: number; uncertain?: number; negative?: number };
 	notice: string;
@@ -133,6 +175,9 @@ export interface Product {
 	price?: string;
 	rating?: number;
 	category?: string;
+	/** Rule-derived from the listing title; `other` means no recognized category. */
+	product_category?: string;
+	product_group?: string;
 	platform?: string;
 	img?: string;
 	image?: string;

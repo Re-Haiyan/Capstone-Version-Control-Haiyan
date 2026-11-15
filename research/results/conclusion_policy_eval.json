@@ -1,0 +1,166 @@
+{
+ "pinned_scenarios": [
+  {
+   "P0 today": "recommended",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "recommended",
+   "scenario": "85 positive, 5 uncertain, 10 negative (bound .78)",
+   "pinned_by_tests_today": "recommended"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "not_enough",
+   "P2 negative-led": "not_enough",
+   "P3 wording only": "mixed",
+   "scenario": "9 of 10 positive, small sample (bound .6)",
+   "pinned_by_tests_today": "mixed"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "mixed",
+   "P2 negative-led": "mixed",
+   "P3 wording only": "mixed",
+   "scenario": "60 / 10 / 30",
+   "pinned_by_tests_today": "mixed"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "not_recommended",
+   "P2 negative-led": "not_recommended",
+   "P3 wording only": "not_recommended",
+   "scenario": "30 / 10 / 60",
+   "pinned_by_tests_today": "not_recommended"
+  },
+  {
+   "P0 today": "recommended",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "recommended",
+   "scenario": "weighted shares 90 / 5 / 5 (bound .8)",
+   "pinned_by_tests_today": "recommended"
+  }
+ ],
+ "neutral_heavy": [
+  {
+   "P0 today": "recommended",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "recommended",
+   "scenario": "75 / 15 / 10"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "mixed",
+   "scenario": "70 / 20 / 10"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "mixed",
+   "scenario": "65 / 30 / 5"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "mixed",
+   "scenario": "60 / 35 / 5"
+  },
+  {
+   "P0 today": "mixed",
+   "P1 opinionated only": "recommended",
+   "P2 negative-led": "recommended",
+   "P3 wording only": "mixed",
+   "scenario": "50 / 40 / 10"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "mixed",
+   "P2 negative-led": "mixed",
+   "P3 wording only": "not_recommended",
+   "scenario": "40 / 40 / 20"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "mixed",
+   "P2 negative-led": "mixed",
+   "P3 wording only": "not_recommended",
+   "scenario": "45 / 25 / 30"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "mixed",
+   "P2 negative-led": "mixed",
+   "P3 wording only": "not_recommended",
+   "scenario": "30 / 60 / 10"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "not_enough",
+   "P2 negative-led": "not_enough",
+   "P3 wording only": "not_recommended",
+   "scenario": "10 / 85 / 5"
+  },
+  {
+   "P0 today": "not_recommended",
+   "P1 opinionated only": "mixed",
+   "P2 negative-led": "mixed",
+   "P3 wording only": "not_recommended",
+   "scenario": "20 / 60 / 20"
+  }
+ ],
+ "shadow_products": {
+  "P0 today | deployed sentiment": {
+   "recommended": 46,
+   "mixed": 11,
+   "not_recommended": 3
+  },
+  "P1 opinionated only | deployed sentiment": {
+   "recommended": 56,
+   "mixed": 3,
+   "not_recommended": 1
+  },
+  "P2 negative-led | deployed sentiment": {
+   "recommended": 54,
+   "mixed": 5,
+   "not_recommended": 1
+  },
+  "P3 wording only | deployed sentiment": {
+   "recommended": 46,
+   "mixed": 11,
+   "not_recommended": 3
+  },
+  "P0 today | calibrated sentiment": {
+   "mixed": 37,
+   "recommended": 20,
+   "not_recommended": 3
+  },
+  "P1 opinionated only | calibrated sentiment": {
+   "recommended": 55,
+   "mixed": 4,
+   "not_recommended": 1
+  },
+  "P2 negative-led | calibrated sentiment": {
+   "recommended": 53,
+   "mixed": 6,
+   "not_recommended": 1
+  },
+  "P3 wording only | calibrated sentiment": {
+   "mixed": 37,
+   "recommended": 20,
+   "not_recommended": 3
+  },
+  "P0 today | deployed sentiment | changed_vs_today": 0,
+  "P1 opinionated only | deployed sentiment | changed_vs_today": 12,
+  "P2 negative-led | deployed sentiment | changed_vs_today": 10,
+  "P3 wording only | deployed sentiment | changed_vs_today": 0,
+  "P0 today | calibrated sentiment | changed_vs_today": 30,
+  "P1 opinionated only | calibrated sentiment | changed_vs_today": 11,
+  "P2 negative-led | calibrated sentiment | changed_vs_today": 11,
+  "P3 wording only | calibrated sentiment | changed_vs_today": 30
+ }
+}

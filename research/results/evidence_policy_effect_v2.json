@@ -1,0 +1,335 @@
+{
+ "overall": {
+  "train": {
+   "defect": {
+    "keep_f1": 0.738,
+    "require_f1": 0.791,
+    "keep_p": 0.684,
+    "require_p": 0.79,
+    "keep_r": 0.802,
+    "require_r": 0.792,
+    "dropped": 68,
+    "true_lost": 4
+   },
+   "counterfeit": {
+    "keep_f1": 0.912,
+    "require_f1": 0.912,
+    "keep_p": 0.884,
+    "require_p": 0.884,
+    "keep_r": 0.942,
+    "require_r": 0.942,
+    "dropped": 0,
+    "true_lost": 0
+   },
+   "safety": {
+    "keep_f1": 0.638,
+    "require_f1": 0.638,
+    "keep_p": 0.545,
+    "require_p": 0.545,
+    "keep_r": 0.769,
+    "require_r": 0.769,
+    "dropped": 0,
+    "true_lost": 0
+   },
+   "not_as_described": {
+    "keep_f1": 0.772,
+    "require_f1": 0.774,
+    "keep_p": 0.784,
+    "require_p": 0.788,
+    "keep_r": 0.76,
+    "require_r": 0.76,
+    "dropped": 2,
+    "true_lost": 0
+   },
+   "quality": {
+    "keep_f1": 0.691,
+    "require_f1": 0.699,
+    "keep_p": 0.611,
+    "require_p": 0.631,
+    "keep_r": 0.795,
+    "require_r": 0.783,
+    "dropped": 15,
+    "true_lost": 3
+   }
+  },
+  "test": {
+   "defect": {
+    "keep_f1": 0.68,
+    "require_f1": 0.773,
+    "keep_p": 0.622,
+    "require_p": 0.797,
+    "keep_r": 0.75,
+    "require_r": 0.75,
+    "dropped": 18,
+    "true_lost": 0,
+    "paired_diff_ci95": [
+     0.046,
+     0.162
+    ]
+   },
+   "counterfeit": {
+    "keep_f1": 0.943,
+    "require_f1": 0.943,
+    "keep_p": 0.943,
+    "require_p": 0.943,
+    "keep_r": 0.943,
+    "require_r": 0.943,
+    "dropped": 0,
+    "true_lost": 0
+   },
+   "safety": {
+    "keep_f1": 0.533,
+    "require_f1": 0.533,
+    "keep_p": 0.414,
+    "require_p": 0.414,
+    "keep_r": 0.75,
+    "require_r": 0.75,
+    "dropped": 0,
+    "true_lost": 0
+   },
+   "not_as_described": {
+    "keep_f1": 0.717,
+    "require_f1": 0.723,
+    "keep_p": 0.717,
+    "require_p": 0.729,
+    "keep_r": 0.717,
+    "require_r": 0.717,
+    "dropped": 1,
+    "true_lost": 0,
+    "paired_diff_ci95": [
+     0.0,
+     0.021
+    ]
+   },
+   "quality": {
+    "keep_f1": 0.726,
+    "require_f1": 0.741,
+    "keep_p": 0.596,
+    "require_p": 0.616,
+    "keep_r": 0.93,
+    "require_r": 0.93,
+    "dropped": 3,
+    "true_lost": 0,
+    "paired_diff_ci95": [
+     0.0,
+     0.042
+    ]
+   }
+  }
+ },
+ "by_group": {
+  "automotive_tools": {
+   "train": {
+    "rows": 305,
+    "defect_positives": 46,
+    "defect_dropped": 3,
+    "true_lost": 0,
+    "keep_f1": 0.779,
+    "require_f1": 0.804,
+    "keep_p": 0.755,
+    "require_p": 0.804
+   },
+   "test": {
+    "rows": 20,
+    "defect_positives": 2,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 1.0,
+    "require_f1": 1.0,
+    "keep_p": 1.0,
+    "require_p": 1.0
+   }
+  },
+  "baby_kids_toys": {
+   "train": {
+    "rows": 253,
+    "defect_positives": 5,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 0.615,
+    "require_f1": 0.615,
+    "keep_p": 0.5,
+    "require_p": 0.5
+   },
+   "test": {
+    "rows": 76,
+    "defect_positives": 3,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 0.5,
+    "require_f1": 0.5,
+    "keep_p": 1.0,
+    "require_p": 1.0
+   }
+  },
+  "beauty_health": {
+   "train": {
+    "rows": 742,
+    "defect_positives": 65,
+    "defect_dropped": 18,
+    "true_lost": 0,
+    "keep_f1": 0.704,
+    "require_f1": 0.794,
+    "keep_p": 0.596,
+    "require_p": 0.737
+   },
+   "test": {
+    "rows": 227,
+    "defect_positives": 13,
+    "defect_dropped": 7,
+    "true_lost": 0,
+    "keep_f1": 0.467,
+    "require_f1": 0.609,
+    "keep_p": 0.412,
+    "require_p": 0.7
+   }
+  },
+  "electronics": {
+   "train": {
+    "rows": 378,
+    "defect_positives": 46,
+    "defect_dropped": 21,
+    "true_lost": 4,
+    "keep_f1": 0.633,
+    "require_f1": 0.687,
+    "keep_p": 0.514,
+    "require_p": 0.642
+   },
+   "test": {
+    "rows": 77,
+    "defect_positives": 13,
+    "defect_dropped": 5,
+    "true_lost": 0,
+    "keep_f1": 0.706,
+    "require_f1": 0.828,
+    "keep_p": 0.571,
+    "require_p": 0.75
+   }
+  },
+  "fashion": {
+   "train": {
+    "rows": 524,
+    "defect_positives": 40,
+    "defect_dropped": 1,
+    "true_lost": 0,
+    "keep_f1": 0.789,
+    "require_f1": 0.8,
+    "keep_p": 0.833,
+    "require_p": 0.857
+   },
+   "test": {
+    "rows": 61,
+    "defect_positives": 3,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 0.75,
+    "require_f1": 0.75,
+    "keep_p": 0.6,
+    "require_p": 0.6
+   }
+  },
+  "food_grocery": {
+   "train": {
+    "rows": 53,
+    "defect_positives": 1,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 1.0,
+    "require_f1": 1.0,
+    "keep_p": 1.0,
+    "require_p": 1.0
+   },
+   "test": {
+    "rows": 158,
+    "defect_positives": 2,
+    "defect_dropped": 2,
+    "true_lost": 0,
+    "keep_f1": 0.4,
+    "require_f1": 0.667,
+    "keep_p": 0.333,
+    "require_p": 1.0
+   }
+  },
+  "home_living": {
+   "train": {
+    "rows": 1002,
+    "defect_positives": 161,
+    "defect_dropped": 18,
+    "true_lost": 0,
+    "keep_f1": 0.791,
+    "require_f1": 0.838,
+    "keep_p": 0.782,
+    "require_p": 0.878
+   },
+   "test": {
+    "rows": 200,
+    "defect_positives": 32,
+    "defect_dropped": 4,
+    "true_lost": 0,
+    "keep_f1": 0.769,
+    "require_f1": 0.82,
+    "keep_p": 0.758,
+    "require_p": 0.862
+   }
+  },
+  "office_media": {
+   "train": {
+    "rows": 61,
+    "defect_positives": 8,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 0.875,
+    "require_f1": 0.875,
+    "keep_p": 0.875,
+    "require_p": 0.875
+   }
+  },
+  "other": {
+   "train": {
+    "rows": 241,
+    "defect_positives": 13,
+    "defect_dropped": 1,
+    "true_lost": 0,
+    "keep_f1": 0.692,
+    "require_f1": 0.72,
+    "keep_p": 0.692,
+    "require_p": 0.75
+   }
+  },
+  "pets": {
+   "train": {
+    "rows": 321,
+    "defect_positives": 10,
+    "defect_dropped": 5,
+    "true_lost": 0,
+    "keep_f1": 0.538,
+    "require_f1": 0.667,
+    "keep_p": 0.438,
+    "require_p": 0.636
+   },
+   "test": {
+    "rows": 27,
+    "defect_positives": 0,
+    "defect_dropped": 0,
+    "true_lost": 0,
+    "keep_f1": 0.0,
+    "require_f1": 0.0,
+    "keep_p": 0.0,
+    "require_p": 0.0
+   }
+  },
+  "sports_outdoor": {
+   "train": {
+    "rows": 66,
+    "defect_positives": 4,
+    "defect_dropped": 1,
+    "true_lost": 0,
+    "keep_f1": 0.5,
+    "require_f1": 0.571,
+    "keep_p": 0.5,
+    "require_p": 0.667
+   }
+  }
+ },
+ "safety_changed_rows": 0
+}

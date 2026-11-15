@@ -1,0 +1,166 @@
+{
+ "D_freebies": {
+  "all_freebie_rows": {
+   "rows": 72,
+   "labels": {
+    "none": 50,
+    "not_as_described": 12,
+    "delivery": 6,
+    "safety": 3,
+    "defect": 2,
+    "counterfeit": 1,
+    "quality": 1
+   },
+   "not_as_described_share": 0.17,
+   "quality_share": 0.01,
+   "none_share": 0.69
+  },
+  "missing and promised (listing, sale or seller said so)": {
+   "rows": 11,
+   "labels": {
+    "not_as_described": 5,
+    "none": 5,
+    "safety": 1,
+    "delivery": 1
+   },
+   "not_as_described_share": 0.45,
+   "quality_share": 0.0,
+   "none_share": 0.45
+  },
+  "missing, no promise stated": {
+   "rows": 12,
+   "labels": {
+    "none": 6,
+    "delivery": 4,
+    "not_as_described": 3
+   },
+   "not_as_described_share": 0.25,
+   "quality_share": 0.0,
+   "none_share": 0.5
+  },
+  "freebie mentioned, not missing": {
+   "rows": 49,
+   "labels": {
+    "none": 39,
+    "not_as_described": 4,
+    "defect": 2,
+    "safety": 2,
+    "delivery": 1,
+    "counterfeit": 1,
+    "quality": 1
+   },
+   "not_as_described_share": 0.08,
+   "quality_share": 0.02,
+   "none_share": 0.8
+  },
+  "examples": {
+   "missing and promised (listing, sale or seller said so)": [
+    "Received.. My first time to order online but I have been using this dark spot solution for a long while now.. ",
+    "i'm so disapapointed. i checked out my order with a freebie included as you have advertised in your 11.11 prom",
+    "i'm so disapapointed. i checked out my order with a freebie included as you have advertised in your 11.11 prom",
+    "there is NO FREE SHIRT INSIDE. DONT BE FOOLED BY FAKE ADVERTISEMENT. Quality:ok Safe:ok Effective:ok"
+   ],
+   "missing, no promise stated": [
+    "Sound quality:100% good condition maganda Suitability:ok na ok sa helmet ayos ang ganda 100% legit po ito maga",
+    "walang freebies na shaker at sando",
+    "1. Scotch tape lng ba talaga yung pang wrap or seal ng cap? Naka bubble wrap naman. 2. Wala akong natanggap na",
+    "Sound quality:100% good condition maganda Suitability:ok na ok sa helmet ayos ang ganda 100% legit po ito maga"
+   ],
+   "freebie mentioned, not missing": [
+    "Item was shipped and delivered immediately with no issues or damage. Complete item with freebie. Sealed and ex",
+    "Arrived in just 2 days! works perfectly. I can finally start my home bakery business. Thank you kitchenAid for",
+    "Good packaging but very disappointed with the freebies of 7.7. piece of advice read the very long t&c before y",
+    "saktong sakto sakin na lactose intolerant.. maliit sizing nila sa free shirt kaya kahit xl pinili ko, sakto la"
+   ]
+  }
+ },
+ "G_thin": {
+  "all_thin_rows": {
+   "rows": 208,
+   "labels": {
+    "quality": 143,
+    "none": 56,
+    "not_as_described": 22,
+    "defect": 19,
+    "delivery": 13,
+    "counterfeit": 1,
+    "safety": 1
+   },
+   "not_as_described_share": 0.11,
+   "quality_share": 0.69,
+   "none_share": 0.27
+  },
+  "thin_without_a_concession": {
+   "rows": 86,
+   "labels": {
+    "quality": 61,
+    "none": 22,
+    "not_as_described": 8,
+    "defect": 6,
+    "delivery": 2
+   },
+   "not_as_described_share": 0.09,
+   "quality_share": 0.71,
+   "none_share": 0.26
+  },
+  "thin_with_a_concession": {
+   "rows": 122,
+   "labels": {
+    "quality": 82,
+    "none": 34,
+    "not_as_described": 14,
+    "defect": 13,
+    "delivery": 11,
+    "counterfeit": 1,
+    "safety": 1
+   },
+   "not_as_described_share": 0.11,
+   "quality_share": 0.67,
+   "none_share": 0.28
+  },
+  "thin_with_a_concession_and_a_named_drawback_or_intensifier": {
+   "rows": 78,
+   "labels": {
+    "quality": 55,
+    "none": 18,
+    "defect": 10,
+    "delivery": 10,
+    "not_as_described": 9,
+    "counterfeit": 1
+   },
+   "not_as_described_share": 0.12,
+   "quality_share": 0.71,
+   "none_share": 0.23
+  },
+  "thin_with_a_concession_and_no_drawback_named": {
+   "rows": 44,
+   "labels": {
+    "quality": 27,
+    "none": 16,
+    "not_as_described": 5,
+    "defect": 3,
+    "delivery": 1,
+    "safety": 1
+   },
+   "not_as_described_share": 0.11,
+   "quality_share": 0.61,
+   "none_share": 0.36
+  },
+  "examples": {
+   "concession_no_drawback": [
+    "Buy one take one deal, manipis but ok lng. Cannot choose design you like.",
+    "maganda . may pag ka nipis Lang pero aus maman .. ginamit Kona . salamat Po seller and laslzada",
+    "nabubura ung tatak niya, manipis lang pero pwede para sa price niya BPA-free and safe for babies, Variety of s",
+    "manipis po. un una ko nabili ay makapal compare sa fisrt ko, but i will use it pa rin tnx",
+    "ok nmn Po mnipis lng kunti pero ok nmn cya"
+   ],
+   "concession_with_drawback": [
+    "🛠️Durability:hindi matibay at di rin pang matagalan ang paggamit ng item,manipis madali lang mapunit 🎨Design:m",
+    "🛠️Durability: not really i think, meju manipis xa 🎨Design: very cutesy 🎧Comfort: looks comfortable ang ganda n",
+    "manipis strap, walang foam, mura kaya walang foam at Hindi sturdy for laptop. mas okay pang byahe byahe lang a",
+    "sobrang sarap, milky chocolateey. sana maimprove pa yung packaging hahahshs. poor packaging prone to basag ung",
+    "Yan ang resulta seller basag elese niya ikaw kc kuripot ka dapat Naka box ang item hindi Naka bubble wrap alam"
+   ]
+  }
+ }
+}

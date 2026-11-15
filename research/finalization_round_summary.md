@@ -27,7 +27,7 @@ Branch `deployment` (local commits, pushed to the owner's repository; nothing de
 
 1. **Annotation audit counts reconciled.** 534 and 502 were both real but measured different things (entries against unique reviews); worse, **219 of the 264 hazard entries came from a bug of mine** (the stem "amag", mold, matched inside "damage" and "magnetic"). Fixed with word-start matching and benign contexts: now **285 entries over 280 unique reviews, 16 high priority, 117 needing the listing, all needing manual adjudication**. All 219 removed rows were checked.
 2. **Provenance audit: the labels cannot be called human gold.** Returned files appeared 7 to 22 minutes after the blank files were created, for 270 to 3,863 reviews each. No annotator ids, timestamps or tool records exist. Verified provenance of every labelled set: unknown.
-3. **Evidence completeness.** The 155 flags without words are confirmed and split by cause. **A flag without supporting words agrees with the label 17% of the time (defect), against 79% with words.** With the opt-in policy, defect F1 0.733 to 0.767 on training rows and 0.680 to 0.773 on the historical test (paired interval for the gain +0.044 to +0.162), precision 0.62 to 0.80.
+3. **Evidence completeness.** The 155 flags without words are confirmed and split by cause. **A flag without supporting words agreed with the label 17% of the time (defect) at the time of that audit; after the later keyword gaps were closed the final figures are 5 of 70 on training rows and 0 of 18 on the historical test, against 79% with words.** With the opt-in policy (final code), defect F1 0.738 to 0.791 on training rows and 0.680 to 0.773 on the historical test (paired interval for the gain +0.046 to +0.162; historical benchmark, not an independent test), precision 0.62 to 0.80. See `evidence_policy_decision.md`: the policy is not recommended for activation.
 4. **Clause context.** A reusable mechanism was built; resolving "pero okay" for quality or heat was measured to cost F1 (quality 0.691 to 0.660), so it is a switch, off. The order/arrival mismatch raised not-as-advertised F1 0.764 to 0.772 on training rows.
 5. **Agreement workflow.** Found and fixed a leak (original id prefixes revealed the sampling stratum); sheets are now anonymous; missing annotations are handled; `compare` adds annotator-versus-supplied-label agreement.
 6. **Fresh evaluation set.** **All 89 products not already used are gadgets**; no non-gadget product is unseen, so an independent non-gadget test cannot be built from the current pool. A gadget set (712 representative reviews with sampling weights, 69 enrichment, 199 training candidates) and a sufficiency analysis were produced; a test caught and fixed a zero sampling weight.
@@ -37,7 +37,7 @@ Branch `deployment` (local commits, pushed to the owner's repository; nothing de
 
 ## What improved (measured)
 
-* Defect (opt-in policy): +0.034 F1 on training rows, +0.093 on the historical test (interval above zero).
+* Defect (opt-in policy, final code): +0.053 F1 on training rows, +0.093 on the historical test (interval above zero; historical benchmark only, adaptively reused).
 * Not as advertised: 0.764 to 0.772 on training rows (order/arrival).
 * Defect: 0.733 to 0.736 (span-level packing guard).
 * Evidence: 13 more flags with real quoted evidence; every flag now has an explicit evidence state.

@@ -1,0 +1,122 @@
+{
+ "defect|keyword_span": {
+  "train": {
+   "raised": 401,
+   "agree": 317,
+   "precision": 0.791
+  },
+  "test": {
+   "raised": 67,
+   "agree": 53,
+   "precision": 0.791
+  }
+ },
+ "defect|model_only": {
+  "train": {
+   "raised": 70,
+   "agree": 5,
+   "precision": 0.071
+  },
+  "test": {
+   "raised": 18,
+   "agree": 0,
+   "precision": 0.0
+  }
+ },
+ "counterfeit|keyword_span": {
+  "train": {
+   "raised": 129,
+   "agree": 114,
+   "precision": 0.884
+  },
+  "test": {
+   "raised": 53,
+   "agree": 50,
+   "precision": 0.943
+  }
+ },
+ "safety|keyword_span": {
+  "train": {
+   "raised": 110,
+   "agree": 60,
+   "precision": 0.545
+  },
+  "test": {
+   "raised": 28,
+   "agree": 11,
+   "precision": 0.393
+  }
+ },
+ "safety|model_only": {
+  "train": {
+   "raised": 0,
+   "agree": 0,
+   "precision": null
+  },
+  "test": {
+   "raised": 1,
+   "agree": 1,
+   "precision": 1.0
+  }
+ },
+ "not_as_described|keyword_span": {
+  "train": {
+   "raised": 379,
+   "agree": 305,
+   "precision": 0.805
+  },
+  "test": {
+   "raised": 58,
+   "agree": 42,
+   "precision": 0.724
+  }
+ },
+ "not_as_described|listing_context": {
+  "train": {
+   "raised": 18,
+   "agree": 8,
+   "precision": 0.444
+  },
+  "test": {
+   "raised": 1,
+   "agree": 1,
+   "precision": 1.0
+  }
+ },
+ "not_as_described|model_only": {
+  "train": {
+   "raised": 2,
+   "agree": 0,
+   "precision": 0.0
+  },
+  "test": {
+   "raised": 1,
+   "agree": 0,
+   "precision": 0.0
+  }
+ },
+ "quality|keyword_span": {
+  "train": {
+   "raised": 309,
+   "agree": 195,
+   "precision": 0.631
+  },
+  "test": {
+   "raised": 86,
+   "agree": 53,
+   "precision": 0.616
+  }
+ },
+ "quality|model_only": {
+  "train": {
+   "raised": 15,
+   "agree": 3,
+   "precision": 0.2
+  },
+  "test": {
+   "raised": 3,
+   "agree": 0,
+   "precision": 0.0
+  }
+ }
+}
