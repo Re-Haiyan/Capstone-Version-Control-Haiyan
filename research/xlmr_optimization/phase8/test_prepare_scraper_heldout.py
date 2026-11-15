@@ -101,6 +101,17 @@ class PrivateIntakeTests(unittest.TestCase):
         self.assertEqual(manifest["status"], "insufficient_new_reviews_or_products")
         self.assertLess(manifest["reviews_selected"], 700)
 
+    def test_item_id_dedupes_changed_slug(self):
+        original = "https://www.lazada.com.ph/products/first-slug-i2345678.html?aff=123"
+        renamed = "https://www.lazada.com.ph/products/renamed-slug-i2345678.html"
+        self.assertEqual(intake.product_key(original), intake.product_key(renamed))
+        kept, discarded = intake.dedupe(
+            [{"product": "Different title", "link": renamed, "id": "9",
+              "text": "This product has a review but is historically present"}],
+            set(), {intake.product_key(original)}, set())
+        self.assertEqual(len(kept), 0)
+        self.assertEqual(discarded["historical_product"], 1)
+
     def test_no_raw_reviews_in_public_repo(self):
         former = sys.argv
         try:
