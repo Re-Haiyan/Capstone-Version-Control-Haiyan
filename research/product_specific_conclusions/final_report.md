@@ -36,8 +36,8 @@ What the feature does is described in `README.md` and `architecture.md`.
 
 | Check | Result |
 |---|---|
-| Backend tests, Python 3.11.9 (this PC) | **402 run: 402 passed, 0 failed, 0 skipped** (re-run 2026-11-15 after the single-set scoring tests were added; 393 before this work) |
-| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **400 run: 400 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15) |
+| Backend tests, Python 3.11.9 (this PC) | **424 run: 424 passed, 0 failed, 0 skipped** (re-run 2026-11-15 after the Phase 3 extractor and tests; 393 before the staging-preparation work) |
+| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **424 run: 424 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15 on the adopted extractor) |
 | New test files | `test_product_conclusion`, `test_sync_backend`, `test_recommendation_policy`, `test_text_rating`, `test_final_eval_pack` |
 | Existing sentiment, hazard, category tests | pass, unchanged |
 | Verdict and decision for the 182 saved products | **182 of 182 identical** to the baseline taken before any change |
@@ -57,9 +57,9 @@ Every remaining failure is listed in `regression_results.md` and, for the browse
 | | Count |
 |---|---|
 | Products checked (182 saved electronics, 21 real read while tuning, 16 real never read) | 219 |
-| "Why this conclusion?" lines | 3,535 |
-| Quotations | 5,837 |
-| Review identifiers listed | 13,558 |
+| "Why this conclusion?" lines | 3,965 |
+| Quotations | 6,661 |
+| Review identifiers listed | 18,239 |
 | **Invalid spans, missing reviews, non-verbatim quotations, double-counted reviews, wrong-profile aspects, reviewer fields in a payload** | **0** |
 
 `quality_audit.py` (rules about what the text may say, run on the same three pools): **0** contradictions between headline, paragraph and assessment, **0** count words stronger
@@ -125,10 +125,10 @@ earlier extractor) are **developer-judged, single-judge, optimistic and not inde
 
 ### Re-validation of 2026-11-15 (staging-preparation round)
 
-Repeated on the committed code: 400 of 400 backend tests on Python 3.11.9 and on Python 3.12.10 (VM library versions); `svelte-check` 0 errors in 1,409 files; `npm run build`; the feature browser test (all checks pass at 360, 390 and 1280 px);
+Repeated on the staging-preparation commit (asp2): 400 of 400 backend tests on Python 3.11.9 and on Python 3.12.10 (VM library versions); `svelte-check` 0 errors in 1,409 files; `npm run build`; the feature browser test (all checks pass at 360, 390 and 1280 px);
 the whole existing e2e suite **481 passed, 36 failed**, the same totals and the same failing files as the first run on this code. The unmodified-baseline comparison (394 passed, 40 failed; 23 of 24 files identical, no failure only on the
 feature) was **not repeated**: its throw-away worktree no longer exists and no feature or front-end source changed since it was made (only tests, research scripts and documents), so the earlier comparison is cited, not re-measured.
-Evidence verification: 0 problems in 3,535 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
+Evidence verification: 0 problems in 3,965 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
 repetition inside one review, copy-pasted reviews) found no failing example, so no extraction code was changed.
 
 ### AI-assisted evaluation (Claude-assisted annotation; one set; not independent; not human)
@@ -184,6 +184,21 @@ Why not READY FOR PRODUCTION: (1) the requirement that matters most to the panel
 (2) footwear and motorcycle parts have no real reviews and the other five new categories have only informal testing on a small number of products; (3) the feature has not been measured on a machine like production; (4) the decision-policy
 question is open. Why not NEEDS MORE VALIDATION or NOT READY: a staging deployment exposes nobody, it is the only way to obtain the staging measurement, the feature can be switched off without a redeploy, no verdict or decision changed,
 and every known defect is documented. **Staging is the right next step; production is gated on the items below.**
+
+## K. Phase 3: feature-extraction improvement (2026-11-15)
+
+Goal: raise product-feature precision, recall and F1 toward 0.80 without touching evidence grounding, safety wording, decisions or the sentiment model. Full record: `phase3/protocol.md` (written before any change), `phase3/results.md` (generated from stored results), `phase3/frozen_extractor.json`.
+
+| | Result |
+|---|---|
+| Locked baseline (asp2, 150 reviews, electronics included) | precision 0.718, recall 0.285, F1 0.408; unchanged and kept as the historical baseline |
+| New data | D1 144 + D2 104 development reviews (product-grouped), F 104 fresh final reviews (non-electronics), none from the locked pack or its near-duplicates |
+| Candidates | C0 baseline; C1 lexicons; C2 clause handling (labelled prompt answers, lowercase suggestion lists); **C3 context and vocabulary (adopted)**; C4 hybrid topic and polarity (rejected: no gain); C5 trained classifier (not built: too little labelled data) |
+| Adopted on D2 (uninspected) | product-feature F1 0.366 to 0.623; precision 0.811 to 0.861; unsupported detections 20% to 9%; first-read p95 208 to 333 ms |
+| **Fresh final F, scored once after the freeze** | **product features: precision 0.852, recall 0.371, F1 0.517** (C0 on the same reviews 0.800, 0.258, 0.390); all kinds 0.850, 0.315, 0.459 (C0 0.667, 0.259, 0.373); service 0.818, 0.209, 0.333; authenticity too few to interpret |
+| **Target 0.80** | **not met**; precision for product features is at the target, recall (0.37) is far from it |
+
+Caveats that matter: the reference is one Claude-assisted annotation set (not independent, not human); D2 influenced the choice between candidates and F is the figure to quote; F has no electronics; the gain on F is smaller than on D2; a detection missing from the reference counts as false, so precision is a lower bound. Known defects found and left unfixed because the extractor is frozen are listed in `phase3/results.md`. Decisions (182 of 182), hazard checker, thresholds, sentiment model and the off-switch are unchanged; 424 backend tests, svelte-check, build, browser tests, evidence verification (0 problems in 3,965 lines and 6,661 quotations) and the quality audit (0 issues) were re-run on the adopted extractor. Existing browser suite (24 files) on the adopted extractor: the first full run gave 363 passed, 38 failed, differing from the earlier 481 passed, 36 failed in two files that timed out under the long run (`admin`: a sign-up API call; `extension-browser`: a page load); **re-run alone they pass (133 of 133 and 25 of 25)**, and every other file gave the same counts as before, so no regression was introduced (the unmodified-baseline comparison of 394 passed, 40 failed is cited, not repeated). Feature browser test: 360 of 360 at 360, 390 and 1280 px against the regenerated fixture. The card and words annotation workflow was prepared in product-level batches (`human_evaluation.md`) and is **not annotated**.
 
 ## Remaining blockers for production, and the next step
 

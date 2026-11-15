@@ -20,9 +20,9 @@ models' F1.
 
 | Evidence | What it proves | What it does not prove |
 |---|---|---|
-| 400 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
+| 424 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
 | 182 of 182 verdicts and decisions unchanged | the feature changes no verdict | that the verdicts are right (that is the hazard checker's and the policy's question) |
-| 5,356 of 5,356 quotations verbatim, ids valid, counts reproducible | every claim is *traceable* to a review | that the aspect and direction are the right reading of the sentence |
+| 6,661 of 6,661 quotations verbatim, ids valid, counts reproducible | every claim is *traceable* to a review | that the aspect and direction are the right reading of the sentence |
 | `quality_audit.py` clean | the text obeys rules about what it may say | that what it says is true |
 | developer-judged claim correctness (80% first look, 89% after fixes, real non-electronics; 88/86/94% on electronics, earlier extractor) | the developer, who wrote the rules, found these shares correct | independent accuracy: one judge, the author, on data used to fix errors |
 
@@ -41,6 +41,7 @@ evaluation (`human_eval_pack/`) can supply the latter.
 | Latency, memory | `benchmark.py` | saved + real products | measured | 2026-11-15 | this PC, not the VM or a staging copy |
 | Policy comparison (1 of 182 would change) | `recommendation_policy_compare.py` | 182 saved products | automatic | 2026-11-15 | no independent labels, so it cannot say which policy is right |
 | AI-assisted features and claims evaluation | `final_eval_pack.py score ai_annotation/claude_session_1` | 150 reviews, 80 claims | one pass by Claude Sonnet 5.5 (Claude-assisted, not ChatGPT, not human, no person reviewed) | 2026-11-15 | one set, annotator is the system's author, interpretation rules disclosed; features P 0.718, R 0.285, F1 0.408 (target 0.80 not met); claims 63 of 80 correct |
+| Phase 3 extractor comparison and fresh final result | `phase3/` (`protocol.md`, `results.md`, `frozen_extractor.json`) | D1 144, D2 104 (development, product-grouped), F 104 reviews (fresh, scored once) | rule-based candidates C0 to C4 compared; adoption rule written in advance; reference from one Claude-assisted annotation set | 2026-11-15 | **not independent**; D2 influenced the choice between candidates (disclosed); F has no electronics; reference omissions count as false detections, so precision is a lower bound; product-feature precision 0.852, recall 0.371, F1 0.517, target 0.80 not met |
 | Card, words, agreement, independent human evaluation | | **none yet** | | | **PENDING** (no written amendment replacing the independent-human requirement) |
 
 ## 4. Rules this project follows
@@ -52,6 +53,9 @@ evaluation (`human_eval_pack/`) can supply the latter.
 5. A negative or uncomfortable result is reported (for example: the first extractor's 80% first-look precision on real reviews, two silent bugs, a candidate policy that weakened a hazard label).
 6. The live recommendation policy and the hazard thresholds are unchanged and were not tuned to improve any figure here.
 7. **AI-assisted labels are labelled as such, with the AI that actually did the work.** (ChatGPT is the approved primary annotator, but where Claude annotated, the record says Claude; no work is attributed to a tool that did not perform it.) The panel and adviser approved AI-assisted annotation (primary annotator ChatGPT; identifiers Team Label 1 and Team Label 2). Such labels are never described as human or independent; the scorer requires a provenance record and prints "AI-assisted reference standard (not independent human annotation)"; the independent-human requirement stays open until completed or formally amended. Labels, the evaluation sample and the extractor's thresholds are never changed to reach an F1 target (0.80 is reported against, not tuned toward). Agreement between two AI label sets measures consistency, not reliability.
+
+8. **No tuning on evaluation data.** The locked 150-review sample, its labels and its misses were never used to write a rule. Phase 3 rules came from a separate development set (D1, inspected) and were compared on a second one (D2); the fresh final set F was drawn before any change, opened only after the extractor was frozen (commit c163605, hashes in `phase3/frozen_extractor.json`) and scored once. A set that was looked at is never called untouched.
+9. **A target that is not met is reported as not met.** The 0.80 target for precision, recall and F1 was not reached for recall or F1; nothing was relabelled, removed or re-sampled in response.
 
 ## 5. Methods description for the thesis (no findings)
 

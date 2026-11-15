@@ -3,19 +3,19 @@
  "products_compared": 182,
  "decisions_unchanged": "182 of 182",
  "evidence_status": {
-  "supported": 178,
-  "limited": 4
+  "supported": 180,
+  "limited": 2
  },
  "products_naming_at_least_one_product_reason": 182,
- "median_product_reasons_per_product": 10.0,
+ "median_product_reasons_per_product": 12.0,
  "words_old_median": 61.0,
- "words_new_median": 85.5,
+ "words_new_median": 86.0,
  "words_new_max": 100,
  "new_texts_over_100_words": 0,
  "wording_bug": {
   "old_said_mostly_negative_without_a_negative_majority": 3,
   "new_said_mostly_negative_without_a_negative_majority": 0
  },
- "quotations_checked": 4744,
- "quotations_found_verbatim_in_their_review": 4744
+ "quotations_checked": 5460,
+ "quotations_found_verbatim_in_their_review": 5460
 }

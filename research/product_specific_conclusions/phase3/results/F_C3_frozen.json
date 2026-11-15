@@ -1,0 +1,117 @@
+{
+ "split": "F",
+ "impl": "..\\..\\..\\backend",
+ "rules_version": "asp3",
+ "reviews": 104,
+ "tasks": {
+  "T0": {
+   "tp": 34,
+   "fp": 6,
+   "fn": 74,
+   "precision": 0.85,
+   "recall": 0.315,
+   "f1": 0.459
+  },
+  "T1": {
+   "tp": 23,
+   "fp": 4,
+   "fn": 39,
+   "precision": 0.852,
+   "recall": 0.371,
+   "f1": 0.517
+  },
+  "T2": {
+   "tp": 9,
+   "fp": 2,
+   "fn": 34,
+   "precision": 0.818,
+   "recall": 0.209,
+   "f1": 0.333
+  },
+  "T3": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 1,
+   "precision": 1.0,
+   "recall": 0.667,
+   "f1": 0.8
+  }
+ },
+ "by_profile": {
+  "apparel": {
+   "reviews": 16,
+   "tp": 7,
+   "fp": 0,
+   "fn": 6,
+   "precision": 1.0,
+   "recall": 0.538,
+   "f1": 0.7
+  },
+  "appliance": {
+   "reviews": 20,
+   "tp": 8,
+   "fp": 2,
+   "fn": 17,
+   "precision": 0.8,
+   "recall": 0.32,
+   "f1": 0.457
+  },
+  "food": {
+   "reviews": 20,
+   "tp": 4,
+   "fp": 2,
+   "fn": 13,
+   "precision": 0.667,
+   "recall": 0.235,
+   "f1": 0.348
+  },
+  "hair": {
+   "reviews": 22,
+   "tp": 11,
+   "fp": 2,
+   "fn": 20,
+   "precision": 0.846,
+   "recall": 0.355,
+   "f1": 0.5
+  },
+  "skin": {
+   "reviews": 26,
+   "tp": 4,
+   "fp": 0,
+   "fn": 18,
+   "precision": 1.0,
+   "recall": 0.182,
+   "f1": 0.308
+  }
+ },
+ "by_language": {
+  "en": {
+   "reviews": 69,
+   "tp": 11,
+   "fp": 4,
+   "fn": 34,
+   "precision": 0.733,
+   "recall": 0.244,
+   "f1": 0.367
+  },
+  "fil": {
+   "reviews": 15,
+   "tp": 7,
+   "fp": 0,
+   "fn": 21,
+   "precision": 1.0,
+   "recall": 0.25,
+   "f1": 0.4
+  },
+  "taglish": {
+   "reviews": 20,
+   "tp": 16,
+   "fp": 2,
+   "fn": 19,
+   "precision": 0.889,
+   "recall": 0.457,
+   "f1": 0.604
+  }
+ },
+ "ms_per_review": 0.8
+}

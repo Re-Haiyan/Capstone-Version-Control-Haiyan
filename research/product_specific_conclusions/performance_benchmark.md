@@ -104,3 +104,7 @@ median 306 ms, p95 1,190 ms (one process, queueing); peak memory 448.6 MiB (benc
 and differ by about 2x: treat both as "this PC under variable load". **Neither is a staging or VM measurement.** The staging procedure is unchanged: `benchmark.py --cpus 2 --tag staging` on a machine of production's size.
 
 Staging procedure: `staging_procedure.md` (pending; no staging environment).
+
+## Phase 3: extractor asp2 against asp3 (local, same PC, back to back, 2 CPUs emulated; staging still pending)
+
+`performance_results_phase3_c0.json` and `performance_results_phase3_c3.json`. First read of a saved product (182 products): median 64.0 ms and p95 208.3 ms (asp2) against 86.2 ms and 333.0 ms (asp3); cached read 0.77 ms against 0.80 ms; 1,000 reviews 0.68 s against 0.77 s; 8 simultaneous first reads p95 2.1 s against 2.6 s; peak memory 448.4 against 449.2 MiB. The added cues cost about a third more time per first read and no memory; p95 stays under one second. Neither run is a staging or VM measurement, and the two differ by up to 2x between sessions on this PC.

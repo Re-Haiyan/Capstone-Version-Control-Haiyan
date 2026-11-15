@@ -2,7 +2,7 @@
 
 ## Verdict: **READY FOR STAGING. NOT READY FOR PRODUCTION.**
 
-Why staging: the feature is complete, backward compatible, switchable off, covered by 402 passing tests (on Python 3.11 and on Python 3.12 with the VM's library versions), and its main risks (a changed
+Why staging: the feature is complete, backward compatible, switchable off, covered by 424 passing tests (on Python 3.11 and on Python 3.12 with the VM's library versions), and its main risks (a changed
 decision, a hidden hazard, an untraceable claim, a slow first page) have each been checked and found clean on the saved products.
 Putting it on a staging copy exposes nobody and is the only way to measure the two things that cannot be measured from this PC.
 
@@ -24,11 +24,11 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 | 3 | Decisions and verdicts unchanged on the saved products | **verified** | `test_the_explanation_changes_no_verdict_and_no_decision`: 182 of 182 equal to the baseline taken before any change |
 | 4 | Hazard checker, thresholds, models, category classifier unchanged | **verified** | `git diff deployment` for `backend/sentiment-analysis`, `accounts.py`, `data_store.py` is empty |
 | 5 | Safety warnings cannot be hidden by praise | **verified** | tests on a grid of 5,000+ states (candidate policy) and on the live path; card shows warnings in the open (browser test) |
-| 6 | Every displayed claim traces to a review | **verified mechanically** | `evidence_verification.md`: 3,535 lines, 5,837 quotations, 13,558 ids, **0 problems** (0 invalid spans) on three pools (182 saved, 21 real read while tuning, 16 real never read) |
+| 6 | Every displayed claim traces to a review | **verified mechanically** | `evidence_verification.md`: 3,965 lines, 6,661 quotations, 18,239 ids, **0 problems** (0 invalid spans) on three pools (182 saved, 21 real read while tuning, 16 real never read) |
 | 7 | Claims are the *right* claims | **not verified independently** | developer-judged only (`aspect_validation.md`); annotation pending |
 | 8 | Existing saved reports still load | **verified** | `test_saved_report_compat`, `test_saved_pool`, the 182-product regression; a report without review text falls back to the plain wording |
 | 9 | Missing evidence handled | **verified** | empty, missing-id, no-text, no-category tests; `evidence_status` "limited"/"unavailable" |
-| 10 | Backend tests | **402 pass, 0 fail**, on Python 3.11.9 and on Python 3.12.10 with the VM's NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0 | `regression_results.md` |
+| 10 | Backend tests | **424 pass, 0 fail**, on Python 3.11.9 and on Python 3.12.10 with the VM's NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0 | `regression_results.md` |
 | 11 | Front-end build | passes | `npm run build` |
 | 12 | Browser test, 360 / 390 / 1280 px, 7 cases incl. 3 real non-electronics | **passes** | `tests/e2e/product-conclusion.mjs`: no horizontal scroll, long names, warnings visible and outside any collapsed section, quotations exact |
 | 13 | Accessibility | axe (WCAG 2.0/2.1 A and AA) passes on the card at every width; **no manual screen-reader test** | same test |
@@ -42,9 +42,12 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 | 19b | Independent human evaluation | **PENDING (requirement not amended)** | no written amendment replacing it exists; AI-assisted results do not satisfy it |
 | 19 | Human evaluation | **not done** | sheets ready (cards, claims, words, features); AI-assisted labelling approved but not performed; scoring refuses without annotations and without `provenance.json`; AI labels are reported as an AI-assisted reference (`human_evaluation.md`) |
 | 20 | Category validation | partial | hair, skin, apparel, food, appliance: some real reviews; footwear and motorcycle: none (`aspect_validation.md`) |
+| 20b | Extractor version asp3 (Phase 3) | **adopted under a rule written in advance; target not met** | fresh final set: product-feature F1 0.517 (precision 0.852, recall 0.371), baseline 0.390; decisions 182 of 182 unchanged; hazards, thresholds, sentiment model untouched; tests, evidence, quality audit, browser tests re-run (`phase3/results.md`) |
 | 21 | Decision-policy change | **not adopted** | candidate is experimental and not wired in; 1 of 182 saved products would differ (`recommendation_policy_comparison.md`) |
 
 ## Known open defects (not blockers for staging)
+
+- Phase 3 found and left unfixed (the extractor is frozen): the hypothetical filter skips 'works as expected'; service recall is low (0.21 on the fresh set); implicit praise and complaints are mostly missed. Full list: `phase3/results.md`.
 
 - Four real-review error classes are open (`aspect_validation.md` §5): dryness read from "frizzy, dry hair" when the product fixes it; "hindi umiinit ang taas" read as a complaint in appliances; "gumagana" about a person; lowercase tag lists.
 - The category classifier mislabels some listings (lipsticks as kitchenware, toy cars as automotive); a product in the wrong type is read with the wrong aspect table. The classifier is outside this work.

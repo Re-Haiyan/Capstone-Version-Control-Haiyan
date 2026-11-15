@@ -1003,8 +1003,8 @@
       "evidence": {
        "status": "supported",
        "reviews_considered": 88,
-       "product_reviews": 27,
-       "service_reviews": 9,
+       "product_reviews": 33,
+       "service_reviews": 8,
        "not_used_yet_reviews": 1,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -1019,15 +1019,15 @@
         "conflict": 0,
         "menu_tag": 41
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "charger_cable",
        "why": [
         {
          "aspect": "functionality",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 7,
-         "text": "How well it works: 7 reviews supporting",
+         "reviews": 8,
+         "text": "How well it works: 8 reviews supporting",
          "quotes": [
           {
            "review_id": "1003308767501105",
@@ -1056,6 +1056,7 @@
           "1003308767501105",
           "998153552201105",
           "1002190463501105",
+          "990348932001105",
           "975817505201105",
           "629654914601105",
           "622128920101105",
@@ -1067,9 +1068,20 @@
          "aspect": "value",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 6,
-         "text": "Value for money: 6 reviews supporting",
+         "reviews": 8,
+         "text": "Value for money: 8 reviews supporting",
          "quotes": [
+          {
+           "review_id": "615896781201105",
+           "text": "pro keribels lng at mura lng nmn",
+           "span": [
+            49,
+            81
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "1009144015001105",
            "text": "I love this brand because they’re so affordable.",
@@ -1080,26 +1092,17 @@
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "997841374601105",
-           "text": "nice on its appearance quality material used 2 ports in one unit of charger a nice idea for portability and compatibility on unit to be used a great value for…",
-           "span": [
-            0,
-            158
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "615896781201105",
           "1009144015001105",
           "997841374601105",
           "1002458562401105",
           "998153552201105",
           "998861491901105",
-          "1005166984601105"
+          "1005166984601105",
+          "612551152101105"
          ],
          "ids_truncated": false
         },
@@ -1107,8 +1110,8 @@
          "aspect": "build",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 4,
-         "text": "Build quality: 4 reviews supporting",
+         "reviews": 6,
+         "text": "Build quality: 6 reviews supporting",
          "quotes": [
           {
            "review_id": "998499865601105",
@@ -1122,11 +1125,11 @@
            "evidence": "clear"
           },
           {
-           "review_id": "967886474101105",
-           "text": "Very sturdy, reliable brand.",
+           "review_id": "991852496701105",
+           "text": "All in all, solid product.",
            "span": [
-            115,
-            143
+            50,
+            76
            ],
            "language": "en",
            "rating": 5.0,
@@ -1135,9 +1138,50 @@
          ],
          "review_ids": [
           "998499865601105",
+          "991852496701105",
           "967886474101105",
           "629654914601105",
+          "622128920101105",
           "944569678301105"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "size",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 5,
+         "text": "Size: 5 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "997128075301105",
+           "text": "Portability: easy to use ⚡",
+           "span": [
+            301,
+            327
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "1004293239901105",
+           "text": "Portability:good ⚡",
+           "span": [
+            21,
+            39
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "997128075301105",
+          "1004293239901105",
+          "990348932001105",
+          "1007404960801105",
+          "1005166984601105"
          ],
          "ids_truncated": false
         },
@@ -1145,9 +1189,20 @@
          "aspect": "charging",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 2,
-         "text": "Charging: 2 reviews supporting",
+         "reviews": 4,
+         "text": "Charging: 4 reviews supporting",
          "quotes": [
+          {
+           "review_id": "997128075301105",
+           "text": "Charging Speed:goods",
+           "span": [
+            327,
+            347
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "997740966201105",
            "text": "Charging Speed:fast charging",
@@ -1158,22 +1213,13 @@
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "997811967301105",
-           "text": "Dj nga sya fast charging kaya tama pang charge ng ear piece ko at ibang gadgets..",
-           "span": [
-            26,
-            107
-           ],
-           "language": "fil",
-           "rating": 5.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "997128075301105",
           "997740966201105",
-          "997811967301105"
+          "997811967301105",
+          "990348932001105"
          ],
          "ids_truncated": false
         },
@@ -1226,6 +1272,30 @@
          "ids_truncated": false
         },
         {
+         "aspect": "durability",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 1,
+         "text": "Durability: 1 review supporting",
+         "quotes": [
+          {
+           "review_id": "998499865601105",
+           "text": "Ramdam mong matibay at tatagal talaga.",
+           "span": [
+            137,
+            175
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "998499865601105"
+         ],
+         "ids_truncated": false
+        },
+        {
          "aspect": "ease",
          "kind": "product",
          "polarity": "positive",
@@ -1253,8 +1323,8 @@
          "aspect": "charging",
          "kind": "product",
          "polarity": "negative",
-         "reviews": 4,
-         "text": "Problems with charging: 4 reviews concerning",
+         "reviews": 5,
+         "text": "Problems with charging: 5 reviews concerning",
          "quotes": [
           {
            "review_id": "868076730401105",
@@ -1282,6 +1352,7 @@
          "review_ids": [
           "868076730401105",
           "634839351301105",
+          "1005083806501105",
           "647594727301105",
           "975817505201105"
          ],
@@ -1326,6 +1397,42 @@
          "ids_truncated": false
         },
         {
+         "aspect": "functionality",
+         "kind": "product",
+         "polarity": "negative",
+         "reviews": 2,
+         "text": "Faults or failure to work: 2 reviews concerning",
+         "quotes": [
+          {
+           "review_id": "653719988201105",
+           "text": "Scorch marks were left behind, indicating a faulty and potentially dangerous product.",
+           "span": [
+            177,
+            262
+           ],
+           "language": "en",
+           "rating": 1.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "634839351301105",
+           "text": "the product are functioning properly, can't charge 2 devices at the same time,not fast charging.",
+           "span": [
+            0,
+            96
+           ],
+           "language": "en",
+           "rating": 1.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "653719988201105",
+          "634839351301105"
+         ],
+         "ids_truncated": false
+        },
+        {
          "aspect": "capacity",
          "kind": "product",
          "polarity": "negative",
@@ -1350,26 +1457,26 @@
          "ids_truncated": false
         },
         {
-         "aspect": "functionality",
+         "aspect": "value",
          "kind": "product",
          "polarity": "negative",
          "reviews": 1,
-         "text": "Faults or failure to work: 1 review concerning",
+         "text": "Problems with value for money: 1 review concerning",
          "quotes": [
           {
-           "review_id": "653719988201105",
-           "text": "Scorch marks were left behind, indicating a faulty and potentially dangerous product.",
+           "review_id": "924981815501105",
+           "text": "pag sinaksak mo amoy sunog sayang lang pera pang 5watts lng yung bato ng power umiinit pa yung charger",
            "span": [
-            177,
-            262
+            0,
+            102
            ],
-           "language": "en",
+           "language": "fil",
            "rating": 1.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
-          "653719988201105"
+          "924981815501105"
          ],
          "ids_truncated": false
         },
@@ -1447,43 +1554,6 @@
          "ids_truncated": false
         },
         {
-         "aspect": "seller",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 3,
-         "text": "Seller service: 3 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "998499865601105",
-           "text": "Solid buy, highly recommended seller!",
-           "span": [
-            176,
-            213
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "973187506201105",
-           "text": "trusted brand ko talaga to kahit medjo pricey ok lang at least pass charger at compatible sya sa mga cp namen salamat seller",
-           "span": [
-            0,
-            124
-           ],
-           "language": "taglish",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "998499865601105",
-          "973187506201105",
-          "588918064501105"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "arrival",
          "kind": "service",
          "polarity": "positive",
@@ -1552,6 +1622,42 @@
          "review_ids": [
           "634839351301105",
           "1008260580101105"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "seller",
+         "kind": "service",
+         "polarity": "positive",
+         "reviews": 2,
+         "text": "Seller service: 2 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "998499865601105",
+           "text": "Solid buy, highly recommended seller!",
+           "span": [
+            176,
+            213
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "973187506201105",
+           "text": "trusted brand ko talaga to kahit medjo pricey ok lang at least pass charger at compatible sya sa mga cp namen salamat seller",
+           "span": [
+            0,
+            124
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "998499865601105",
+          "973187506201105"
          ],
          "ids_truncated": false
         },
@@ -2586,8 +2692,8 @@
      "evidence": {
       "status": "supported",
       "reviews_considered": 88,
-      "product_reviews": 27,
-      "service_reviews": 9,
+      "product_reviews": 33,
+      "service_reviews": 8,
       "not_used_yet_reviews": 1,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -2602,15 +2708,15 @@
        "conflict": 0,
        "menu_tag": 41
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "charger_cable",
       "why": [
        {
         "aspect": "functionality",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 7,
-        "text": "How well it works: 7 reviews supporting",
+        "reviews": 8,
+        "text": "How well it works: 8 reviews supporting",
         "quotes": [
          {
           "review_id": "1003308767501105",
@@ -2639,6 +2745,7 @@
          "1003308767501105",
          "998153552201105",
          "1002190463501105",
+         "990348932001105",
          "975817505201105",
          "629654914601105",
          "622128920101105",
@@ -2650,9 +2757,20 @@
         "aspect": "value",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 6,
-        "text": "Value for money: 6 reviews supporting",
+        "reviews": 8,
+        "text": "Value for money: 8 reviews supporting",
         "quotes": [
+         {
+          "review_id": "615896781201105",
+          "text": "pro keribels lng at mura lng nmn",
+          "span": [
+           49,
+           81
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "1009144015001105",
           "text": "I love this brand because they’re so affordable.",
@@ -2663,26 +2781,17 @@
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "997841374601105",
-          "text": "nice on its appearance quality material used 2 ports in one unit of charger a nice idea for portability and compatibility on unit to be used a great value for…",
-          "span": [
-           0,
-           158
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "615896781201105",
          "1009144015001105",
          "997841374601105",
          "1002458562401105",
          "998153552201105",
          "998861491901105",
-         "1005166984601105"
+         "1005166984601105",
+         "612551152101105"
         ],
         "ids_truncated": false
        },
@@ -2690,8 +2799,8 @@
         "aspect": "build",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 4,
-        "text": "Build quality: 4 reviews supporting",
+        "reviews": 6,
+        "text": "Build quality: 6 reviews supporting",
         "quotes": [
          {
           "review_id": "998499865601105",
@@ -2705,11 +2814,11 @@
           "evidence": "clear"
          },
          {
-          "review_id": "967886474101105",
-          "text": "Very sturdy, reliable brand.",
+          "review_id": "991852496701105",
+          "text": "All in all, solid product.",
           "span": [
-           115,
-           143
+           50,
+           76
           ],
           "language": "en",
           "rating": 5.0,
@@ -2718,9 +2827,50 @@
         ],
         "review_ids": [
          "998499865601105",
+         "991852496701105",
          "967886474101105",
          "629654914601105",
+         "622128920101105",
          "944569678301105"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "size",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 5,
+        "text": "Size: 5 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "997128075301105",
+          "text": "Portability: easy to use ⚡",
+          "span": [
+           301,
+           327
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "1004293239901105",
+          "text": "Portability:good ⚡",
+          "span": [
+           21,
+           39
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "997128075301105",
+         "1004293239901105",
+         "990348932001105",
+         "1007404960801105",
+         "1005166984601105"
         ],
         "ids_truncated": false
        },
@@ -2728,9 +2878,20 @@
         "aspect": "charging",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 2,
-        "text": "Charging: 2 reviews supporting",
+        "reviews": 4,
+        "text": "Charging: 4 reviews supporting",
         "quotes": [
+         {
+          "review_id": "997128075301105",
+          "text": "Charging Speed:goods",
+          "span": [
+           327,
+           347
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "997740966201105",
           "text": "Charging Speed:fast charging",
@@ -2741,22 +2902,13 @@
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "997811967301105",
-          "text": "Dj nga sya fast charging kaya tama pang charge ng ear piece ko at ibang gadgets..",
-          "span": [
-           26,
-           107
-          ],
-          "language": "fil",
-          "rating": 5.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "997128075301105",
          "997740966201105",
-         "997811967301105"
+         "997811967301105",
+         "990348932001105"
         ],
         "ids_truncated": false
        },
@@ -2809,6 +2961,30 @@
         "ids_truncated": false
        },
        {
+        "aspect": "durability",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 1,
+        "text": "Durability: 1 review supporting",
+        "quotes": [
+         {
+          "review_id": "998499865601105",
+          "text": "Ramdam mong matibay at tatagal talaga.",
+          "span": [
+           137,
+           175
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "998499865601105"
+        ],
+        "ids_truncated": false
+       },
+       {
         "aspect": "ease",
         "kind": "product",
         "polarity": "positive",
@@ -2836,8 +3012,8 @@
         "aspect": "charging",
         "kind": "product",
         "polarity": "negative",
-        "reviews": 4,
-        "text": "Problems with charging: 4 reviews concerning",
+        "reviews": 5,
+        "text": "Problems with charging: 5 reviews concerning",
         "quotes": [
          {
           "review_id": "868076730401105",
@@ -2865,6 +3041,7 @@
         "review_ids": [
          "868076730401105",
          "634839351301105",
+         "1005083806501105",
          "647594727301105",
          "975817505201105"
         ],
@@ -2909,6 +3086,42 @@
         "ids_truncated": false
        },
        {
+        "aspect": "functionality",
+        "kind": "product",
+        "polarity": "negative",
+        "reviews": 2,
+        "text": "Faults or failure to work: 2 reviews concerning",
+        "quotes": [
+         {
+          "review_id": "653719988201105",
+          "text": "Scorch marks were left behind, indicating a faulty and potentially dangerous product.",
+          "span": [
+           177,
+           262
+          ],
+          "language": "en",
+          "rating": 1.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "634839351301105",
+          "text": "the product are functioning properly, can't charge 2 devices at the same time,not fast charging.",
+          "span": [
+           0,
+           96
+          ],
+          "language": "en",
+          "rating": 1.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "653719988201105",
+         "634839351301105"
+        ],
+        "ids_truncated": false
+       },
+       {
         "aspect": "capacity",
         "kind": "product",
         "polarity": "negative",
@@ -2933,26 +3146,26 @@
         "ids_truncated": false
        },
        {
-        "aspect": "functionality",
+        "aspect": "value",
         "kind": "product",
         "polarity": "negative",
         "reviews": 1,
-        "text": "Faults or failure to work: 1 review concerning",
+        "text": "Problems with value for money: 1 review concerning",
         "quotes": [
          {
-          "review_id": "653719988201105",
-          "text": "Scorch marks were left behind, indicating a faulty and potentially dangerous product.",
+          "review_id": "924981815501105",
+          "text": "pag sinaksak mo amoy sunog sayang lang pera pang 5watts lng yung bato ng power umiinit pa yung charger",
           "span": [
-           177,
-           262
+           0,
+           102
           ],
-          "language": "en",
+          "language": "fil",
           "rating": 1.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
-         "653719988201105"
+         "924981815501105"
         ],
         "ids_truncated": false
        },
@@ -3030,43 +3243,6 @@
         "ids_truncated": false
        },
        {
-        "aspect": "seller",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 3,
-        "text": "Seller service: 3 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "998499865601105",
-          "text": "Solid buy, highly recommended seller!",
-          "span": [
-           176,
-           213
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "973187506201105",
-          "text": "trusted brand ko talaga to kahit medjo pricey ok lang at least pass charger at compatible sya sa mga cp namen salamat seller",
-          "span": [
-           0,
-           124
-          ],
-          "language": "taglish",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "998499865601105",
-         "973187506201105",
-         "588918064501105"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "arrival",
         "kind": "service",
         "polarity": "positive",
@@ -3135,6 +3311,42 @@
         "review_ids": [
          "634839351301105",
          "1008260580101105"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "seller",
+        "kind": "service",
+        "polarity": "positive",
+        "reviews": 2,
+        "text": "Seller service: 2 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "998499865601105",
+          "text": "Solid buy, highly recommended seller!",
+          "span": [
+           176,
+           213
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "973187506201105",
+          "text": "trusted brand ko talaga to kahit medjo pricey ok lang at least pass charger at compatible sya sa mga cp namen salamat seller",
+          "span": [
+           0,
+           124
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "998499865601105",
+         "973187506201105"
         ],
         "ids_truncated": false
        },
@@ -3561,8 +3773,8 @@
       "decision": "recommended",
       "headline": "Looks okay to buy",
       "text": "Based on the reviews of this product, it looks okay to buy: 98% of reviewers were positive and 0% negative, and no safety, fake or defect problem stood out.",
-      "lead": "Based on customer reviews, this product is generally well received, for how well it works and looks.",
-      "summary": "Many reviewers praised how well it works and looks, several mentioned build quality. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
+      "lead": "Based on customer reviews, this product is generally well received, for size and looks.",
+      "summary": "Many reviewers praised size, looks and how well it works. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
       "assessment": "Well reviewed",
       "assessment_note": "Mostly positive, no red flags found.",
       "points": [
@@ -3577,13 +3789,13 @@
        "negative": 0
       },
       "notice": "This is a guide from public reviews, not proof or a guarantee.",
-      "body": "Many reviewers praised how well it works and looks, several mentioned build quality. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
+      "body": "Many reviewers praised size, looks and how well it works. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
       "warnings": [],
       "evidence_status": "supported",
       "evidence": {
        "status": "supported",
        "reviews_considered": 73,
-       "product_reviews": 36,
+       "product_reviews": 46,
        "service_reviews": 14,
        "not_used_yet_reviews": 3,
        "skipped_clauses": {
@@ -3599,15 +3811,111 @@
         "conflict": 0,
         "menu_tag": 0
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "computer_peripheral",
        "why": [
+        {
+         "aspect": "size",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 15,
+         "text": "Size: 15 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "1001176370247760",
+           "text": "The mouse is very light in hand, so it's not tiring to use for long periods.",
+           "span": [
+            0,
+            76
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "1006240380947760",
+           "text": "Material and appearance are lightweight, making it easy to hold and comfortable for long-term use.",
+           "span": [
+            62,
+            160
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "1001176370247760",
+          "1006240380947760",
+          "1009318639447760",
+          "1009319610047760",
+          "1009369820147760",
+          "1009420487247760",
+          "1006241915347760",
+          "1006242732647760",
+          "1006240579047760",
+          "1006240284347760",
+          "1009413903847760",
+          "1009368457447760",
+          "1009367574247760",
+          "1009420980447760",
+          "1009423014147760"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "appearance",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 13,
+         "text": "Looks: 13 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "1009367492447760",
+           "text": "It looks great and the tracking is very precise.",
+           "span": [
+            0,
+            48
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "1001176370247760",
+           "text": "The silent click is great, and it looks good.",
+           "span": [
+            77,
+            122
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "1009367492447760",
+          "1001176370247760",
+          "1009319610047760",
+          "1009420487247760",
+          "1009367051147760",
+          "1006241915347760",
+          "1006242732647760",
+          "1009413903847760",
+          "1009415926147760",
+          "1001185219447760",
+          "1006235687847760",
+          "1006238222747760",
+          "990547320447760"
+         ],
+         "ids_truncated": false
+        },
         {
          "aspect": "functionality",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 12,
-         "text": "How well it works: 12 reviews supporting",
+         "reviews": 13,
+         "text": "How well it works: 13 reviews supporting",
          "quotes": [
           {
            "review_id": "1009368850147760",
@@ -3643,52 +3951,9 @@
           "1009370223247760",
           "1009321718147760",
           "1009319609247760",
+          "1009412742647760",
           "1006238222747760",
           "990547320447760"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "appearance",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 10,
-         "text": "Looks: 10 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "1009367492447760",
-           "text": "It looks great and the tracking is very precise.",
-           "span": [
-            0,
-            48
-           ],
-           "language": "en",
-           "rating": 4.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "1001176370247760",
-           "text": "The silent click is great, and it looks good.",
-           "span": [
-            77,
-            122
-           ],
-           "language": "en",
-           "rating": 4.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "1009367492447760",
-          "1001176370247760",
-          "1009319610047760",
-          "1009420487247760",
-          "1009367051147760",
-          "1006242732647760",
-          "1009413903847760",
-          "1001185219447760",
-          "1006235687847760",
-          "1006238222747760"
          ],
          "ids_truncated": false
         },
@@ -3696,8 +3961,8 @@
          "aspect": "build",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 7,
-         "text": "Build quality: 7 reviews supporting",
+         "reviews": 8,
+         "text": "Build quality: 8 reviews supporting",
          "quotes": [
           {
            "review_id": "1006237482047760",
@@ -3725,6 +3990,7 @@
          "review_ids": [
           "1006237482047760",
           "1006237934447760",
+          "1006237253947760",
           "1009414650847760",
           "1009367593847760",
           "1009423014147760",
@@ -3737,8 +4003,8 @@
          "aspect": "ease",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 5,
-         "text": "Ease of use: 5 reviews supporting",
+         "reviews": 6,
+         "text": "Ease of use: 6 reviews supporting",
          "quotes": [
           {
            "review_id": "1009367986647760",
@@ -3766,6 +4032,7 @@
          "review_ids": [
           "1009367986647760",
           "1009320374047760",
+          "1009413903847760",
           "1003483565447760",
           "1009366459547760",
           "1009420980447760"
@@ -3776,9 +4043,20 @@
          "aspect": "value",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 5,
-         "text": "Value for money: 5 reviews supporting",
+         "reviews": 6,
+         "text": "Value for money: 6 reviews supporting",
          "quotes": [
+          {
+           "review_id": "990546729947760",
+           "text": "This mouse feels surprisingly nice for such a low price! 👍",
+           "span": [
+            0,
+            58
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "1009367051147760",
            "text": "It is worth buying.",
@@ -3789,20 +4067,10 @@
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "1009320359047760",
-           "text": "Worth buying.",
-           "span": [
-            74,
-            87
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "990546729947760",
           "1009367051147760",
           "1009320359047760",
           "1009367593847760",
@@ -3848,48 +4116,23 @@
          "ids_truncated": false
         },
         {
-         "aspect": "size",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 2,
-         "text": "Size: 2 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "1009319610047760",
-           "text": "It's the perfect size.",
-           "span": [
-            61,
-            83
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "1009368457447760",
-           "text": "The size is just right.",
-           "span": [
-            30,
-            53
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "1009319610047760",
-          "1009368457447760"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "matches_listing",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 1,
-         "text": "Match with the listing: 1 review supporting",
+         "reviews": 2,
+         "text": "Match with the listing: 2 reviews supporting",
          "quotes": [
+          {
+           "review_id": "1010129938747760",
+           "text": "What you see is what you get sa price.",
+           "span": [
+            0,
+            38
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "1006243641747760",
            "text": "I have received the product and it is exactly as described.",
@@ -3903,6 +4146,7 @@
           }
          ],
          "review_ids": [
+          "1010129938747760",
           "1006243641747760"
          ],
          "ids_truncated": false
@@ -4351,8 +4595,8 @@
      "decision": "recommended",
      "headline": "Looks okay to buy",
      "text": "Based on the reviews of this product, it looks okay to buy: 98% of reviewers were positive and 0% negative, and no safety, fake or defect problem stood out.",
-     "lead": "Based on customer reviews, this product is generally well received, for how well it works and looks.",
-     "summary": "Many reviewers praised how well it works and looks, several mentioned build quality. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
+     "lead": "Based on customer reviews, this product is generally well received, for size and looks.",
+     "summary": "Many reviewers praised size, looks and how well it works. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
      "assessment": "Well reviewed",
      "assessment_note": "Mostly positive, no red flags found.",
      "points": [
@@ -4367,13 +4611,13 @@
       "negative": 0
      },
      "notice": "This is a guide from public reviews, not proof or a guarantee.",
-     "body": "Many reviewers praised how well it works and looks, several mentioned build quality. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
+     "body": "Many reviewers praised size, looks and how well it works. About 98% of the 73 reviews were positive, 2% neutral or unclear and 0% negative. Overall, feedback is favorable, although individual experiences vary.",
      "warnings": [],
      "evidence_status": "supported",
      "evidence": {
       "status": "supported",
       "reviews_considered": 73,
-      "product_reviews": 36,
+      "product_reviews": 46,
       "service_reviews": 14,
       "not_used_yet_reviews": 3,
       "skipped_clauses": {
@@ -4389,15 +4633,111 @@
        "conflict": 0,
        "menu_tag": 0
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "computer_peripheral",
       "why": [
+       {
+        "aspect": "size",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 15,
+        "text": "Size: 15 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "1001176370247760",
+          "text": "The mouse is very light in hand, so it's not tiring to use for long periods.",
+          "span": [
+           0,
+           76
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "1006240380947760",
+          "text": "Material and appearance are lightweight, making it easy to hold and comfortable for long-term use.",
+          "span": [
+           62,
+           160
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "1001176370247760",
+         "1006240380947760",
+         "1009318639447760",
+         "1009319610047760",
+         "1009369820147760",
+         "1009420487247760",
+         "1006241915347760",
+         "1006242732647760",
+         "1006240579047760",
+         "1006240284347760",
+         "1009413903847760",
+         "1009368457447760",
+         "1009367574247760",
+         "1009420980447760",
+         "1009423014147760"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "appearance",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 13,
+        "text": "Looks: 13 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "1009367492447760",
+          "text": "It looks great and the tracking is very precise.",
+          "span": [
+           0,
+           48
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "1001176370247760",
+          "text": "The silent click is great, and it looks good.",
+          "span": [
+           77,
+           122
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "1009367492447760",
+         "1001176370247760",
+         "1009319610047760",
+         "1009420487247760",
+         "1009367051147760",
+         "1006241915347760",
+         "1006242732647760",
+         "1009413903847760",
+         "1009415926147760",
+         "1001185219447760",
+         "1006235687847760",
+         "1006238222747760",
+         "990547320447760"
+        ],
+        "ids_truncated": false
+       },
        {
         "aspect": "functionality",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 12,
-        "text": "How well it works: 12 reviews supporting",
+        "reviews": 13,
+        "text": "How well it works: 13 reviews supporting",
         "quotes": [
          {
           "review_id": "1009368850147760",
@@ -4433,52 +4773,9 @@
          "1009370223247760",
          "1009321718147760",
          "1009319609247760",
+         "1009412742647760",
          "1006238222747760",
          "990547320447760"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "appearance",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 10,
-        "text": "Looks: 10 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "1009367492447760",
-          "text": "It looks great and the tracking is very precise.",
-          "span": [
-           0,
-           48
-          ],
-          "language": "en",
-          "rating": 4.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "1001176370247760",
-          "text": "The silent click is great, and it looks good.",
-          "span": [
-           77,
-           122
-          ],
-          "language": "en",
-          "rating": 4.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "1009367492447760",
-         "1001176370247760",
-         "1009319610047760",
-         "1009420487247760",
-         "1009367051147760",
-         "1006242732647760",
-         "1009413903847760",
-         "1001185219447760",
-         "1006235687847760",
-         "1006238222747760"
         ],
         "ids_truncated": false
        },
@@ -4486,8 +4783,8 @@
         "aspect": "build",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 7,
-        "text": "Build quality: 7 reviews supporting",
+        "reviews": 8,
+        "text": "Build quality: 8 reviews supporting",
         "quotes": [
          {
           "review_id": "1006237482047760",
@@ -4515,6 +4812,7 @@
         "review_ids": [
          "1006237482047760",
          "1006237934447760",
+         "1006237253947760",
          "1009414650847760",
          "1009367593847760",
          "1009423014147760",
@@ -4527,8 +4825,8 @@
         "aspect": "ease",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 5,
-        "text": "Ease of use: 5 reviews supporting",
+        "reviews": 6,
+        "text": "Ease of use: 6 reviews supporting",
         "quotes": [
          {
           "review_id": "1009367986647760",
@@ -4556,6 +4854,7 @@
         "review_ids": [
          "1009367986647760",
          "1009320374047760",
+         "1009413903847760",
          "1003483565447760",
          "1009366459547760",
          "1009420980447760"
@@ -4566,9 +4865,20 @@
         "aspect": "value",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 5,
-        "text": "Value for money: 5 reviews supporting",
+        "reviews": 6,
+        "text": "Value for money: 6 reviews supporting",
         "quotes": [
+         {
+          "review_id": "990546729947760",
+          "text": "This mouse feels surprisingly nice for such a low price! 👍",
+          "span": [
+           0,
+           58
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "1009367051147760",
           "text": "It is worth buying.",
@@ -4579,20 +4889,10 @@
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "1009320359047760",
-          "text": "Worth buying.",
-          "span": [
-           74,
-           87
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "990546729947760",
          "1009367051147760",
          "1009320359047760",
          "1009367593847760",
@@ -4638,48 +4938,23 @@
         "ids_truncated": false
        },
        {
-        "aspect": "size",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 2,
-        "text": "Size: 2 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "1009319610047760",
-          "text": "It's the perfect size.",
-          "span": [
-           61,
-           83
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "1009368457447760",
-          "text": "The size is just right.",
-          "span": [
-           30,
-           53
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "1009319610047760",
-         "1009368457447760"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "matches_listing",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 1,
-        "text": "Match with the listing: 1 review supporting",
+        "reviews": 2,
+        "text": "Match with the listing: 2 reviews supporting",
         "quotes": [
+         {
+          "review_id": "1010129938747760",
+          "text": "What you see is what you get sa price.",
+          "span": [
+           0,
+           38
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "1006243641747760",
           "text": "I have received the product and it is exactly as described.",
@@ -4693,6 +4968,7 @@
          }
         ],
         "review_ids": [
+         "1010129938747760",
          "1006243641747760"
         ],
         "ids_truncated": false
@@ -6045,8 +6321,8 @@
       "decision": "not_recommended",
       "headline": "Not recommended",
       "text": "Based on the reviews of this product, we advise against buying it: reviewers report safety problems such as fire, smoke, burning smells or overheating.",
-      "lead": "Based on customer reviews, this charger or cable raises concerns: the reviews include reports of possible safety problems, defects and problems with charging.",
-      "summary": "Some reviewers praised looks and build quality, one mentioned value for money. Some reviewers reported problems with charging and overheating, one mentioned problems with durability. 5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
+      "lead": "Based on customer reviews, this charger or cable raises concerns: the reviews include reports of possible safety problems, defects and overheating.",
+      "summary": "Several reviewers praised size and build quality, some mentioned looks. Some reviewers reported overheating, one mentioned problems with durability. 5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
       "assessment": "Not recommended",
       "assessment_note": "Serious problems were reported.",
       "points": [
@@ -6061,7 +6337,7 @@
        "negative": 6
       },
       "notice": "This is a guide from public reviews, not proof or a guarantee.",
-      "body": "Some reviewers praised looks and build quality, one mentioned value for money. Some reviewers reported problems with charging and overheating, one mentioned problems with durability. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
+      "body": "Several reviewers praised size and build quality, some mentioned looks. Some reviewers reported overheating, one mentioned problems with durability. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
       "warnings": [
        "5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first."
       ],
@@ -6069,8 +6345,8 @@
       "evidence": {
        "status": "supported",
        "reviews_considered": 80,
-       "product_reviews": 18,
-       "service_reviews": 7,
+       "product_reviews": 31,
+       "service_reviews": 6,
        "not_used_yet_reviews": 2,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -6085,16 +6361,27 @@
         "conflict": 0,
         "menu_tag": 30
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "charger_cable",
        "why": [
         {
          "aspect": "functionality",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 3,
-         "text": "How well it works: 3 reviews supporting",
+         "reviews": 11,
+         "text": "How well it works: 11 reviews supporting",
          "quotes": [
+          {
+           "review_id": "732148717876710",
+           "text": "Functionality: good Quality: good Material: The first time you have a problem is if you’re going through something and you’re trying something and",
+           "span": [
+            0,
+            146
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "887489009776710",
            "text": "works well with charging small equipment...",
@@ -6105,13 +6392,47 @@
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
-          },
+          }
+         ],
+         "review_ids": [
+          "732148717876710",
+          "887489009776710",
+          "837927827076710",
+          "622263723676710",
+          "961148830476710",
+          "697959269776710",
+          "535644003576710",
+          "926266231076710",
+          "572550500276710",
+          "507461850976710",
+          "499575496876710"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "size",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 7,
+         "text": "Size: 7 reviews supporting",
+         "quotes": [
           {
-           "review_id": "535644003576710",
-           "text": "salamat seller gumagana cia sna magtgal😍🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗",
+           "review_id": "933633099076710",
+           "text": "Portable and lightweight.",
            "span": [
             0,
-            92
+            25
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "994066491476710",
+           "text": "Portability: Portable ⚡",
+           "span": [
+            28,
+            51
            ],
            "language": "en",
            "rating": 5.0,
@@ -6119,9 +6440,52 @@
           }
          ],
          "review_ids": [
-          "887489009776710",
-          "535644003576710",
-          "507461850976710"
+          "933633099076710",
+          "994066491476710",
+          "1001718894976710",
+          "1000341295576710",
+          "983607513976710",
+          "922985092676710",
+          "915037788776710"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "build",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 5,
+         "text": "Build quality: 5 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "732148717876710",
+           "text": "Functionality: good Quality: good Material: The first time you have a problem is if you’re going through something and you’re trying something and",
+           "span": [
+            0,
+            146
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "918644961976710",
+           "text": "good quality and nice design",
+           "span": [
+            0,
+            28
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "732148717876710",
+          "918644961976710",
+          "622263723676710",
+          "697959269776710",
+          "572550500276710"
          ],
          "ids_truncated": false
         },
@@ -6162,29 +6526,29 @@
          "ids_truncated": false
         },
         {
-         "aspect": "build",
+         "aspect": "charging",
          "kind": "product",
          "polarity": "positive",
          "reviews": 2,
-         "text": "Build quality: 2 reviews supporting",
+         "text": "Charging: 2 reviews supporting",
          "quotes": [
           {
-           "review_id": "918644961976710",
-           "text": "good quality and nice design",
+           "review_id": "1001718894976710",
+           "text": "Charging Speed:good 👜",
            "span": [
-            0,
-            28
+            78,
+            99
            ],
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
           },
           {
-           "review_id": "572550500276710",
-           "text": "Like it and fast delivery well packed by the seller and it looks good quality and its working .",
+           "review_id": "1000341295576710",
+           "text": "Charging Speed:fast charging for multiple devices",
            "span": [
-            0,
-            95
+            98,
+            147
            ],
            "language": "en",
            "rating": 5.0,
@@ -6192,24 +6556,24 @@
           }
          ],
          "review_ids": [
-          "918644961976710",
-          "572550500276710"
+          "1001718894976710",
+          "1000341295576710"
          ],
          "ids_truncated": false
         },
         {
-         "aspect": "charging",
+         "aspect": "ease",
          "kind": "product",
          "polarity": "positive",
          "reviews": 1,
-         "text": "Charging: 1 review supporting",
+         "text": "Ease of use: 1 review supporting",
          "quotes": [
           {
            "review_id": "1000341295576710",
-           "text": "Charging Speed:fast charging for multiple devices",
+           "text": "Portability:easy to Carry inside bags, purses ⚡",
            "span": [
-            98,
-            147
+            51,
+            98
            ],
            "language": "en",
            "rating": 5.0,
@@ -6249,8 +6613,8 @@
          "aspect": "functionality",
          "kind": "product",
          "polarity": "negative",
-         "reviews": 7,
-         "text": "Faults or failure to work: 7 reviews concerning",
+         "reviews": 8,
+         "text": "Faults or failure to work: 8 reviews concerning",
          "quotes": [
           {
            "review_id": "720329545376710",
@@ -6279,6 +6643,7 @@
           "720329545376710",
           "847419033976710",
           "550466446876710",
+          "570758827076710",
           "571004645676710",
           "591327962676710",
           "637432538976710",
@@ -6444,49 +6809,23 @@
          "ids_truncated": false
         },
         {
-         "aspect": "seller",
+         "aspect": "packaging",
          "kind": "service",
          "polarity": "positive",
          "reviews": 3,
-         "text": "Seller service: 3 reviews supporting",
+         "text": "Packaging: 3 reviews supporting",
          "quotes": [
           {
-           "review_id": "697959269776710",
-           "text": "Functionality:good Quality:good Material:good maganda Po mabilis magchager salamat seller salamat Lazada gudbless",
+           "review_id": "622263723676710",
+           "text": "Functionality:good, working Quality:good Material:good securely bubble wrapped to avoid damage to the item.",
            "span": [
             0,
-            113
-           ],
-           "language": "taglish",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "535644003576710",
-           "text": "salamat seller gumagana cia sna magtgal😍🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗",
-           "span": [
-            0,
-            92
+            107
            ],
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "697959269776710",
-          "535644003576710",
-          "499575496876710"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "packaging",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 2,
-         "text": "Packaging: 2 reviews supporting",
-         "quotes": [
+          },
           {
            "review_id": "511923418676710",
            "text": "ok naman po yong packaging ang delivery...",
@@ -6497,20 +6836,10 @@
            "language": "fil",
            "rating": 5.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "572550500276710",
-           "text": "Like it and fast delivery well packed by the seller and it looks good quality and its working .",
-           "span": [
-            0,
-            95
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "622263723676710",
           "511923418676710",
           "572550500276710"
          ],
@@ -7861,8 +8190,8 @@
      "decision": "not_recommended",
      "headline": "Not recommended",
      "text": "Based on the reviews of this product, we advise against buying it: reviewers report safety problems such as fire, smoke, burning smells or overheating.",
-     "lead": "Based on customer reviews, this charger or cable raises concerns: the reviews include reports of possible safety problems, defects and problems with charging.",
-     "summary": "Some reviewers praised looks and build quality, one mentioned value for money. Some reviewers reported problems with charging and overheating, one mentioned problems with durability. 5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
+     "lead": "Based on customer reviews, this charger or cable raises concerns: the reviews include reports of possible safety problems, defects and overheating.",
+     "summary": "Several reviewers praised size and build quality, some mentioned looks. Some reviewers reported overheating, one mentioned problems with durability. 5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
      "assessment": "Not recommended",
      "assessment_note": "Serious problems were reported.",
      "points": [
@@ -7877,7 +8206,7 @@
       "negative": 6
      },
      "notice": "This is a guide from public reviews, not proof or a guarantee.",
-     "body": "Some reviewers praised looks and build quality, one mentioned value for money. Some reviewers reported problems with charging and overheating, one mentioned problems with durability. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
+     "body": "Several reviewers praised size and build quality, some mentioned looks. Some reviewers reported overheating, one mentioned problems with durability. About 84% of the 80 reviews were positive, 10% neutral or unclear and 6% negative. Buyers may want to read the complaints and compare alternatives before deciding.",
      "warnings": [
       "5 reviews describe a possible safety problem (fire, smoke, burning smells or overheating). These reports have not been independently verified; read them first."
      ],
@@ -7885,8 +8214,8 @@
      "evidence": {
       "status": "supported",
       "reviews_considered": 80,
-      "product_reviews": 18,
-      "service_reviews": 7,
+      "product_reviews": 31,
+      "service_reviews": 6,
       "not_used_yet_reviews": 2,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -7901,16 +8230,27 @@
        "conflict": 0,
        "menu_tag": 30
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "charger_cable",
       "why": [
        {
         "aspect": "functionality",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 3,
-        "text": "How well it works: 3 reviews supporting",
+        "reviews": 11,
+        "text": "How well it works: 11 reviews supporting",
         "quotes": [
+         {
+          "review_id": "732148717876710",
+          "text": "Functionality: good Quality: good Material: The first time you have a problem is if you’re going through something and you’re trying something and",
+          "span": [
+           0,
+           146
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "887489009776710",
           "text": "works well with charging small equipment...",
@@ -7921,13 +8261,47 @@
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
-         },
+         }
+        ],
+        "review_ids": [
+         "732148717876710",
+         "887489009776710",
+         "837927827076710",
+         "622263723676710",
+         "961148830476710",
+         "697959269776710",
+         "535644003576710",
+         "926266231076710",
+         "572550500276710",
+         "507461850976710",
+         "499575496876710"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "size",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 7,
+        "text": "Size: 7 reviews supporting",
+        "quotes": [
          {
-          "review_id": "535644003576710",
-          "text": "salamat seller gumagana cia sna magtgal😍🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗",
+          "review_id": "933633099076710",
+          "text": "Portable and lightweight.",
           "span": [
            0,
-           92
+           25
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "994066491476710",
+          "text": "Portability: Portable ⚡",
+          "span": [
+           28,
+           51
           ],
           "language": "en",
           "rating": 5.0,
@@ -7935,9 +8309,52 @@
          }
         ],
         "review_ids": [
-         "887489009776710",
-         "535644003576710",
-         "507461850976710"
+         "933633099076710",
+         "994066491476710",
+         "1001718894976710",
+         "1000341295576710",
+         "983607513976710",
+         "922985092676710",
+         "915037788776710"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "build",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 5,
+        "text": "Build quality: 5 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "732148717876710",
+          "text": "Functionality: good Quality: good Material: The first time you have a problem is if you’re going through something and you’re trying something and",
+          "span": [
+           0,
+           146
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "918644961976710",
+          "text": "good quality and nice design",
+          "span": [
+           0,
+           28
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "732148717876710",
+         "918644961976710",
+         "622263723676710",
+         "697959269776710",
+         "572550500276710"
         ],
         "ids_truncated": false
        },
@@ -7978,29 +8395,29 @@
         "ids_truncated": false
        },
        {
-        "aspect": "build",
+        "aspect": "charging",
         "kind": "product",
         "polarity": "positive",
         "reviews": 2,
-        "text": "Build quality: 2 reviews supporting",
+        "text": "Charging: 2 reviews supporting",
         "quotes": [
          {
-          "review_id": "918644961976710",
-          "text": "good quality and nice design",
+          "review_id": "1001718894976710",
+          "text": "Charging Speed:good 👜",
           "span": [
-           0,
-           28
+           78,
+           99
           ],
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
          },
          {
-          "review_id": "572550500276710",
-          "text": "Like it and fast delivery well packed by the seller and it looks good quality and its working .",
+          "review_id": "1000341295576710",
+          "text": "Charging Speed:fast charging for multiple devices",
           "span": [
-           0,
-           95
+           98,
+           147
           ],
           "language": "en",
           "rating": 5.0,
@@ -8008,24 +8425,24 @@
          }
         ],
         "review_ids": [
-         "918644961976710",
-         "572550500276710"
+         "1001718894976710",
+         "1000341295576710"
         ],
         "ids_truncated": false
        },
        {
-        "aspect": "charging",
+        "aspect": "ease",
         "kind": "product",
         "polarity": "positive",
         "reviews": 1,
-        "text": "Charging: 1 review supporting",
+        "text": "Ease of use: 1 review supporting",
         "quotes": [
          {
           "review_id": "1000341295576710",
-          "text": "Charging Speed:fast charging for multiple devices",
+          "text": "Portability:easy to Carry inside bags, purses ⚡",
           "span": [
-           98,
-           147
+           51,
+           98
           ],
           "language": "en",
           "rating": 5.0,
@@ -8065,8 +8482,8 @@
         "aspect": "functionality",
         "kind": "product",
         "polarity": "negative",
-        "reviews": 7,
-        "text": "Faults or failure to work: 7 reviews concerning",
+        "reviews": 8,
+        "text": "Faults or failure to work: 8 reviews concerning",
         "quotes": [
          {
           "review_id": "720329545376710",
@@ -8095,6 +8512,7 @@
          "720329545376710",
          "847419033976710",
          "550466446876710",
+         "570758827076710",
          "571004645676710",
          "591327962676710",
          "637432538976710",
@@ -8260,49 +8678,23 @@
         "ids_truncated": false
        },
        {
-        "aspect": "seller",
+        "aspect": "packaging",
         "kind": "service",
         "polarity": "positive",
         "reviews": 3,
-        "text": "Seller service: 3 reviews supporting",
+        "text": "Packaging: 3 reviews supporting",
         "quotes": [
          {
-          "review_id": "697959269776710",
-          "text": "Functionality:good Quality:good Material:good maganda Po mabilis magchager salamat seller salamat Lazada gudbless",
+          "review_id": "622263723676710",
+          "text": "Functionality:good, working Quality:good Material:good securely bubble wrapped to avoid damage to the item.",
           "span": [
            0,
-           113
-          ],
-          "language": "taglish",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "535644003576710",
-          "text": "salamat seller gumagana cia sna magtgal😍🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗🤗🤩🤗😍🤗🤩🤗😍🤗🤩🤩😍🤗",
-          "span": [
-           0,
-           92
+           107
           ],
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "697959269776710",
-         "535644003576710",
-         "499575496876710"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "packaging",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 2,
-        "text": "Packaging: 2 reviews supporting",
-        "quotes": [
+         },
          {
           "review_id": "511923418676710",
           "text": "ok naman po yong packaging ang delivery...",
@@ -8313,20 +8705,10 @@
           "language": "fil",
           "rating": 5.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "572550500276710",
-          "text": "Like it and fast delivery well packed by the seller and it looks good quality and its working .",
-          "span": [
-           0,
-           95
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "622263723676710",
          "511923418676710",
          "572550500276710"
         ],
@@ -9618,8 +10000,8 @@
       "evidence": {
        "status": "supported",
        "reviews_considered": 245,
-       "product_reviews": 40,
-       "service_reviews": 34,
+       "product_reviews": 54,
+       "service_reviews": 41,
        "not_used_yet_reviews": 16,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -9634,40 +10016,42 @@
         "conflict": 0,
         "menu_tag": 139
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "skincare",
        "why": [
         {
          "aspect": "functionality",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 16,
-         "text": "Effect on skin: 16 reviews supporting",
+         "reviews": 25,
+         "text": "Effect on skin: 25 reviews supporting",
          "quotes": [
           {
-           "review_id": "950889526760210",
-           "text": "effective and gentle for the skin, medyo costly lang.",
+           "review_id": "989529135760210",
+           "text": "Effectiveness:9 Price:9 Ingredients:8 Leaves skin feeling fresh and clean, Gentle on the skin, Contains nourishing vitamins and glycerin,",
            "span": [
             0,
-            53
+            137
            ],
-           "language": "taglish",
+           "language": "en",
            "rating": 4.0,
            "evidence": "clear"
           },
           {
-           "review_id": "1010519359160210",
-           "text": "Effectiveness: Very effective cleanser.",
+           "review_id": "954361407660210",
+           "text": "Effectiveness:Great for daily use, very effective cleanser in the morning Price:Great value, Ingredients:Organic formula, Safe for sensitive skin, Leaves skin…",
            "span": [
             0,
-            39
+            158
            ],
            "language": "en",
-           "rating": 5.0,
+           "rating": 4.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
+          "989529135760210",
+          "954361407660210",
           "950889526760210",
           "1010519359160210",
           "1002872959860210",
@@ -9677,13 +10061,20 @@
           "989461896260210",
           "1012041905860210",
           "997603901460210",
+          "997596635060210",
           "905150024460210",
+          "990750473160210",
+          "989853881160210",
           "975561949260210",
           "971379846860210",
           "971221390760210",
           "958327536160210",
           "1014728805460210",
-          "1007481980260210"
+          "603287727360210",
+          "1007481980260210",
+          "800628770460210",
+          "915780835160210",
+          "881844943960210"
          ],
          "ids_truncated": false
         },
@@ -9691,48 +10082,56 @@
          "aspect": "value",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 15,
-         "text": "Value for money: 15 reviews supporting",
+         "reviews": 23,
+         "text": "Value for money: 23 reviews supporting",
          "quotes": [
           {
-           "review_id": "1011693225660210",
-           "text": "Effectiveness: 100 Price: sulit nakuha ko lang ng 995!",
+           "review_id": "989529135760210",
+           "text": "Effectiveness:9 Price:9 Ingredients:8 Leaves skin feeling fresh and clean, Gentle on the skin, Contains nourishing vitamins and glycerin,",
            "span": [
             0,
-            54
+            137
            ],
-           "language": "fil",
-           "rating": 5.0,
+           "language": "en",
+           "rating": 4.0,
            "evidence": "clear"
           },
           {
-           "review_id": "1010519359160210",
-           "text": "Price: Great value for money.",
+           "review_id": "506673077960210",
+           "text": "Kaya malaki na binili ko kasi mas makakatipid compare sa maliliit na bote.",
            "span": [
-            78,
-            107
+            230,
+            304
            ],
-           "language": "en",
-           "rating": 5.0,
+           "language": "fil",
+           "rating": 4.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
+          "989529135760210",
+          "506673077960210",
           "1011693225660210",
           "1010519359160210",
           "994065142260210",
           "993764673560210",
           "989461896260210",
+          "989438207060210",
           "907367246360210",
           "886111132060210",
+          "990750473160210",
           "990652110460210",
+          "989016984260210",
           "987074043660210",
           "975417358360210",
           "975932382660210",
           "810689660060210",
           "811428878760210",
           "958327536160210",
-          "945921312960210"
+          "945921312960210",
+          "873564973160210",
+          "915780835160210",
+          "881844943960210"
          ],
          "ids_truncated": false
         },
@@ -9807,6 +10206,54 @@
          "ids_truncated": false
         },
         {
+         "aspect": "build",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 1,
+         "text": "Overall quality: 1 review supporting",
+         "quotes": [
+          {
+           "review_id": "800628770460210",
+           "text": "Quality: excellent💯",
+           "span": [
+            0,
+            19
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "800628770460210"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "texture",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 1,
+         "text": "Texture: 1 review supporting",
+         "quotes": [
+          {
+           "review_id": "800628770460210",
+           "text": "Texture: very nice👌🏻 Effectiveness: perfect👌🏻",
+           "span": [
+            20,
+            65
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "800628770460210"
+         ],
+         "ids_truncated": false
+        },
+        {
          "aspect": "skin_irritation",
          "kind": "product",
          "polarity": "negative",
@@ -9840,6 +10287,43 @@
           "1007481980260210",
           "864369807460210",
           "862936535060210"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "value",
+         "kind": "product",
+         "polarity": "negative",
+         "reviews": 3,
+         "text": "Problems with value for money: 3 reviews concerning",
+         "quotes": [
+          {
+           "review_id": "1010982208860210",
+           "text": "Price: Not bad for its size.",
+           "span": [
+            68,
+            96
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "971379846860210",
+           "text": "Effectiveness: effective since I am using this for a long time Price: not too cheap",
+           "span": [
+            0,
+            83
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "1010982208860210",
+          "971379846860210",
+          "603287727360210"
          ],
          "ids_truncated": false
         },
@@ -9940,18 +10424,18 @@
          "ids_truncated": false
         },
         {
-         "aspect": "value",
+         "aspect": "size",
          "kind": "product",
          "polarity": "negative",
          "reviews": 1,
-         "text": "Problems with value for money: 1 review concerning",
+         "text": "Problems with size: 1 review concerning",
          "quotes": [
           {
-           "review_id": "603287727360210",
-           "text": "dazurb ang expensive na price since it serves it’s purpose.",
+           "review_id": "983619266260210",
+           "text": "when it come to delivery wala ko masasaabi kaci mabili dumadating, when it come to packaging, all my items are secured, kaht madyo mahigpy at too tight ung…",
            "span": [
-            82,
-            141
+            59,
+            214
            ],
            "language": "taglish",
            "rating": 5.0,
@@ -9959,7 +10443,7 @@
           }
          ],
          "review_ids": [
-          "603287727360210"
+          "983619266260210"
          ],
          "ids_truncated": false
         },
@@ -10045,58 +10529,23 @@
          "ids_truncated": false
         },
         {
-         "aspect": "seller",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 12,
-         "text": "Seller service: 12 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "553910792460210",
-           "text": "Opened up about it sa chat and the store replied right away to apologize and asked how much amount na natira sa container.",
-           "span": [
-            64,
-            186
-           ],
-           "language": "taglish",
-           "rating": 4.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "1011516313760210",
-           "text": "cetaphil is one of the most important skin routines of my niece especially when the flare ups of psoriasis attack...dahil mejo expensive sya I always make…",
-           "span": [
-            0,
-            154
-           ],
-           "language": "taglish",
-           "rating": 5.0,
-           "evidence": "emoji"
-          }
-         ],
-         "review_ids": [
-          "553910792460210",
-          "1011516313760210",
-          "1007021235860210",
-          "983626185260210",
-          "990652110460210",
-          "987343854560210",
-          "982749761060210",
-          "975417358360210",
-          "810689660060210",
-          "1016679989960210",
-          "588183015360210",
-          "588388992960210"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "packaging",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 9,
-         "text": "Packaging: 9 reviews supporting",
+         "reviews": 13,
+         "text": "Packaging: 13 reviews supporting",
          "quotes": [
+          {
+           "review_id": "416493418860210",
+           "text": "my first order it was boxed and bubble wrapped, this latest was bubble wrap nalang…",
+           "span": [
+            91,
+            174
+           ],
+           "language": "en",
+           "rating": 3.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "606244789460210",
            "text": "ok naman ang packaging medyo nag lick lang sya ng konti.",
@@ -10107,28 +10556,21 @@
            "language": "fil",
            "rating": 4.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "524152649960210",
-           "text": "But the packaging was good.",
-           "span": [
-            48,
-            75
-           ],
-           "language": "en",
-           "rating": 4.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "416493418860210",
           "606244789460210",
           "524152649960210",
           "986969457160210",
           "989016984260210",
+          "975417358360210",
           "810689660060210",
           "588388992960210",
           "559843937560210",
+          "785648986660210",
           "908498459860210",
+          "885966642860210",
           "885654050960210"
          ],
          "ids_truncated": false
@@ -10137,8 +10579,8 @@
          "aspect": "delivery",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 7,
-         "text": "Delivery: 7 reviews supporting",
+         "reviews": 10,
+         "text": "Delivery: 10 reviews supporting",
          "quotes": [
           {
            "review_id": "399059203160210",
@@ -10152,25 +10594,69 @@
            "evidence": "clear"
           },
           {
-           "review_id": "506673077960210",
-           "text": "Mabilis ang shipment and wala namang damage yung item kaya nga lang nagkaroon siya ng kaunting leak kahit na may tape, may tumagas pa rin.",
+           "review_id": "925170500560210",
+           "text": "mabilis dumating.",
            "span": [
-            67,
-            205
+            0,
+            17
            ],
-           "language": "taglish",
+           "language": "fil",
            "rating": 4.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
           "399059203160210",
+          "925170500560210",
           "506673077960210",
+          "993764673560210",
           "987186842860210",
           "1007021235860210",
           "982749761060210",
           "1016679989960210",
+          "1007481980260210",
           "908498459860210"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "seller",
+         "kind": "service",
+         "polarity": "positive",
+         "reviews": 7,
+         "text": "Seller service: 7 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "553910792460210",
+           "text": "Opened up about it sa chat and the store replied right away to apologize and asked how much amount na natira sa container.",
+           "span": [
+            64,
+            186
+           ],
+           "language": "taglish",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "1007021235860210",
+           "text": "Thank you so much po seller, as in❤️ Super legit and trusted seller here...talagang safe and secured na na deliver sa akin ang product plus super fast…",
+           "span": [
+            8,
+            158
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "553910792460210",
+          "1007021235860210",
+          "983626185260210",
+          "987343854560210",
+          "975417358360210",
+          "588183015360210",
+          "588388992960210"
          ],
          "ids_truncated": false
         },
@@ -10178,8 +10664,8 @@
          "aspect": "arrival",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 5,
-         "text": "Condition on arrival: 5 reviews supporting",
+         "reviews": 6,
+         "text": "Condition on arrival: 6 reviews supporting",
          "quotes": [
           {
            "review_id": "385788271160210",
@@ -10208,6 +10694,7 @@
           "385788271160210",
           "792047672760210",
           "307675892960210",
+          "989853881160210",
           "810689660060210",
           "908498459860210"
          ],
@@ -10241,8 +10728,8 @@
          "aspect": "packaging",
          "kind": "service",
          "polarity": "negative",
-         "reviews": 4,
-         "text": "Problems with packaging: 4 reviews concerning",
+         "reviews": 8,
+         "text": "Problems with packaging: 8 reviews concerning",
          "quotes": [
           {
            "review_id": "900911396460210",
@@ -10256,22 +10743,26 @@
            "evidence": "clear"
           },
           {
-           "review_id": "1006662769160210",
-           "text": "Order was not well packed.",
+           "review_id": "420876047860210",
+           "text": "Nagleak yung laman..",
            "span": [
-            0,
-            26
+            47,
+            67
            ],
-           "language": "en",
-           "rating": 3.0,
+           "language": "fil",
+           "rating": 2.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
           "900911396460210",
+          "420876047860210",
           "1006662769160210",
           "308136866660210",
-          "423054661460210"
+          "553910792460210",
+          "506673077960210",
+          "423054661460210",
+          "1011856816760210"
          ],
          "ids_truncated": false
         },
@@ -11608,8 +12099,8 @@
      "evidence": {
       "status": "supported",
       "reviews_considered": 245,
-      "product_reviews": 40,
-      "service_reviews": 34,
+      "product_reviews": 54,
+      "service_reviews": 41,
       "not_used_yet_reviews": 16,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -11624,40 +12115,42 @@
        "conflict": 0,
        "menu_tag": 139
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "skincare",
       "why": [
        {
         "aspect": "functionality",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 16,
-        "text": "Effect on skin: 16 reviews supporting",
+        "reviews": 25,
+        "text": "Effect on skin: 25 reviews supporting",
         "quotes": [
          {
-          "review_id": "950889526760210",
-          "text": "effective and gentle for the skin, medyo costly lang.",
+          "review_id": "989529135760210",
+          "text": "Effectiveness:9 Price:9 Ingredients:8 Leaves skin feeling fresh and clean, Gentle on the skin, Contains nourishing vitamins and glycerin,",
           "span": [
            0,
-           53
+           137
           ],
-          "language": "taglish",
+          "language": "en",
           "rating": 4.0,
           "evidence": "clear"
          },
          {
-          "review_id": "1010519359160210",
-          "text": "Effectiveness: Very effective cleanser.",
+          "review_id": "954361407660210",
+          "text": "Effectiveness:Great for daily use, very effective cleanser in the morning Price:Great value, Ingredients:Organic formula, Safe for sensitive skin, Leaves skin…",
           "span": [
            0,
-           39
+           158
           ],
           "language": "en",
-          "rating": 5.0,
+          "rating": 4.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
+         "989529135760210",
+         "954361407660210",
          "950889526760210",
          "1010519359160210",
          "1002872959860210",
@@ -11667,13 +12160,20 @@
          "989461896260210",
          "1012041905860210",
          "997603901460210",
+         "997596635060210",
          "905150024460210",
+         "990750473160210",
+         "989853881160210",
          "975561949260210",
          "971379846860210",
          "971221390760210",
          "958327536160210",
          "1014728805460210",
-         "1007481980260210"
+         "603287727360210",
+         "1007481980260210",
+         "800628770460210",
+         "915780835160210",
+         "881844943960210"
         ],
         "ids_truncated": false
        },
@@ -11681,48 +12181,56 @@
         "aspect": "value",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 15,
-        "text": "Value for money: 15 reviews supporting",
+        "reviews": 23,
+        "text": "Value for money: 23 reviews supporting",
         "quotes": [
          {
-          "review_id": "1011693225660210",
-          "text": "Effectiveness: 100 Price: sulit nakuha ko lang ng 995!",
+          "review_id": "989529135760210",
+          "text": "Effectiveness:9 Price:9 Ingredients:8 Leaves skin feeling fresh and clean, Gentle on the skin, Contains nourishing vitamins and glycerin,",
           "span": [
            0,
-           54
+           137
           ],
-          "language": "fil",
-          "rating": 5.0,
+          "language": "en",
+          "rating": 4.0,
           "evidence": "clear"
          },
          {
-          "review_id": "1010519359160210",
-          "text": "Price: Great value for money.",
+          "review_id": "506673077960210",
+          "text": "Kaya malaki na binili ko kasi mas makakatipid compare sa maliliit na bote.",
           "span": [
-           78,
-           107
+           230,
+           304
           ],
-          "language": "en",
-          "rating": 5.0,
+          "language": "fil",
+          "rating": 4.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
+         "989529135760210",
+         "506673077960210",
          "1011693225660210",
          "1010519359160210",
          "994065142260210",
          "993764673560210",
          "989461896260210",
+         "989438207060210",
          "907367246360210",
          "886111132060210",
+         "990750473160210",
          "990652110460210",
+         "989016984260210",
          "987074043660210",
          "975417358360210",
          "975932382660210",
          "810689660060210",
          "811428878760210",
          "958327536160210",
-         "945921312960210"
+         "945921312960210",
+         "873564973160210",
+         "915780835160210",
+         "881844943960210"
         ],
         "ids_truncated": false
        },
@@ -11797,6 +12305,54 @@
         "ids_truncated": false
        },
        {
+        "aspect": "build",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 1,
+        "text": "Overall quality: 1 review supporting",
+        "quotes": [
+         {
+          "review_id": "800628770460210",
+          "text": "Quality: excellent💯",
+          "span": [
+           0,
+           19
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "800628770460210"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "texture",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 1,
+        "text": "Texture: 1 review supporting",
+        "quotes": [
+         {
+          "review_id": "800628770460210",
+          "text": "Texture: very nice👌🏻 Effectiveness: perfect👌🏻",
+          "span": [
+           20,
+           65
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "800628770460210"
+        ],
+        "ids_truncated": false
+       },
+       {
         "aspect": "skin_irritation",
         "kind": "product",
         "polarity": "negative",
@@ -11830,6 +12386,43 @@
          "1007481980260210",
          "864369807460210",
          "862936535060210"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "value",
+        "kind": "product",
+        "polarity": "negative",
+        "reviews": 3,
+        "text": "Problems with value for money: 3 reviews concerning",
+        "quotes": [
+         {
+          "review_id": "1010982208860210",
+          "text": "Price: Not bad for its size.",
+          "span": [
+           68,
+           96
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "971379846860210",
+          "text": "Effectiveness: effective since I am using this for a long time Price: not too cheap",
+          "span": [
+           0,
+           83
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "1010982208860210",
+         "971379846860210",
+         "603287727360210"
         ],
         "ids_truncated": false
        },
@@ -11930,18 +12523,18 @@
         "ids_truncated": false
        },
        {
-        "aspect": "value",
+        "aspect": "size",
         "kind": "product",
         "polarity": "negative",
         "reviews": 1,
-        "text": "Problems with value for money: 1 review concerning",
+        "text": "Problems with size: 1 review concerning",
         "quotes": [
          {
-          "review_id": "603287727360210",
-          "text": "dazurb ang expensive na price since it serves it’s purpose.",
+          "review_id": "983619266260210",
+          "text": "when it come to delivery wala ko masasaabi kaci mabili dumadating, when it come to packaging, all my items are secured, kaht madyo mahigpy at too tight ung…",
           "span": [
-           82,
-           141
+           59,
+           214
           ],
           "language": "taglish",
           "rating": 5.0,
@@ -11949,7 +12542,7 @@
          }
         ],
         "review_ids": [
-         "603287727360210"
+         "983619266260210"
         ],
         "ids_truncated": false
        },
@@ -12035,58 +12628,23 @@
         "ids_truncated": false
        },
        {
-        "aspect": "seller",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 12,
-        "text": "Seller service: 12 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "553910792460210",
-          "text": "Opened up about it sa chat and the store replied right away to apologize and asked how much amount na natira sa container.",
-          "span": [
-           64,
-           186
-          ],
-          "language": "taglish",
-          "rating": 4.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "1011516313760210",
-          "text": "cetaphil is one of the most important skin routines of my niece especially when the flare ups of psoriasis attack...dahil mejo expensive sya I always make…",
-          "span": [
-           0,
-           154
-          ],
-          "language": "taglish",
-          "rating": 5.0,
-          "evidence": "emoji"
-         }
-        ],
-        "review_ids": [
-         "553910792460210",
-         "1011516313760210",
-         "1007021235860210",
-         "983626185260210",
-         "990652110460210",
-         "987343854560210",
-         "982749761060210",
-         "975417358360210",
-         "810689660060210",
-         "1016679989960210",
-         "588183015360210",
-         "588388992960210"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "packaging",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 9,
-        "text": "Packaging: 9 reviews supporting",
+        "reviews": 13,
+        "text": "Packaging: 13 reviews supporting",
         "quotes": [
+         {
+          "review_id": "416493418860210",
+          "text": "my first order it was boxed and bubble wrapped, this latest was bubble wrap nalang…",
+          "span": [
+           91,
+           174
+          ],
+          "language": "en",
+          "rating": 3.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "606244789460210",
           "text": "ok naman ang packaging medyo nag lick lang sya ng konti.",
@@ -12097,28 +12655,21 @@
           "language": "fil",
           "rating": 4.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "524152649960210",
-          "text": "But the packaging was good.",
-          "span": [
-           48,
-           75
-          ],
-          "language": "en",
-          "rating": 4.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "416493418860210",
          "606244789460210",
          "524152649960210",
          "986969457160210",
          "989016984260210",
+         "975417358360210",
          "810689660060210",
          "588388992960210",
          "559843937560210",
+         "785648986660210",
          "908498459860210",
+         "885966642860210",
          "885654050960210"
         ],
         "ids_truncated": false
@@ -12127,8 +12678,8 @@
         "aspect": "delivery",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 7,
-        "text": "Delivery: 7 reviews supporting",
+        "reviews": 10,
+        "text": "Delivery: 10 reviews supporting",
         "quotes": [
          {
           "review_id": "399059203160210",
@@ -12142,25 +12693,69 @@
           "evidence": "clear"
          },
          {
-          "review_id": "506673077960210",
-          "text": "Mabilis ang shipment and wala namang damage yung item kaya nga lang nagkaroon siya ng kaunting leak kahit na may tape, may tumagas pa rin.",
+          "review_id": "925170500560210",
+          "text": "mabilis dumating.",
           "span": [
-           67,
-           205
+           0,
+           17
           ],
-          "language": "taglish",
+          "language": "fil",
           "rating": 4.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
          "399059203160210",
+         "925170500560210",
          "506673077960210",
+         "993764673560210",
          "987186842860210",
          "1007021235860210",
          "982749761060210",
          "1016679989960210",
+         "1007481980260210",
          "908498459860210"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "seller",
+        "kind": "service",
+        "polarity": "positive",
+        "reviews": 7,
+        "text": "Seller service: 7 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "553910792460210",
+          "text": "Opened up about it sa chat and the store replied right away to apologize and asked how much amount na natira sa container.",
+          "span": [
+           64,
+           186
+          ],
+          "language": "taglish",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "1007021235860210",
+          "text": "Thank you so much po seller, as in❤️ Super legit and trusted seller here...talagang safe and secured na na deliver sa akin ang product plus super fast…",
+          "span": [
+           8,
+           158
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "553910792460210",
+         "1007021235860210",
+         "983626185260210",
+         "987343854560210",
+         "975417358360210",
+         "588183015360210",
+         "588388992960210"
         ],
         "ids_truncated": false
        },
@@ -12168,8 +12763,8 @@
         "aspect": "arrival",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 5,
-        "text": "Condition on arrival: 5 reviews supporting",
+        "reviews": 6,
+        "text": "Condition on arrival: 6 reviews supporting",
         "quotes": [
          {
           "review_id": "385788271160210",
@@ -12198,6 +12793,7 @@
          "385788271160210",
          "792047672760210",
          "307675892960210",
+         "989853881160210",
          "810689660060210",
          "908498459860210"
         ],
@@ -12231,8 +12827,8 @@
         "aspect": "packaging",
         "kind": "service",
         "polarity": "negative",
-        "reviews": 4,
-        "text": "Problems with packaging: 4 reviews concerning",
+        "reviews": 8,
+        "text": "Problems with packaging: 8 reviews concerning",
         "quotes": [
          {
           "review_id": "900911396460210",
@@ -12246,22 +12842,26 @@
           "evidence": "clear"
          },
          {
-          "review_id": "1006662769160210",
-          "text": "Order was not well packed.",
+          "review_id": "420876047860210",
+          "text": "Nagleak yung laman..",
           "span": [
-           0,
-           26
+           47,
+           67
           ],
-          "language": "en",
-          "rating": 3.0,
+          "language": "fil",
+          "rating": 2.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
          "900911396460210",
+         "420876047860210",
          "1006662769160210",
          "308136866660210",
-         "423054661460210"
+         "553910792460210",
+         "506673077960210",
+         "423054661460210",
+         "1011856816760210"
         ],
         "ids_truncated": false
        },
@@ -14424,8 +15024,8 @@
       "decision": "mixed",
       "headline": "Mixed reviews",
       "text": "Based on the reviews of this product, opinions are mixed: 64% of reviewers were positive and 20% negative. Nothing alarming stood out, but read the complaints before you decide.",
-      "lead": "Based on customer reviews, opinions on this clothing item are mixed: some praise fabric and comfort, while the reviews also report defects and items that differ from the listing.",
-      "summary": "Many reviewers praised fabric, several mentioned comfort, and some mentioned stitching. Many reviewers reported items that differ from the listing, one mentioned problems with looks. Reviewers disagree about build quality: 5 reviews praised it and 2 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
+      "lead": "Based on customer reviews, opinions on this clothing item are mixed: some praise fabric and looks, while the reviews also report defects and items that differ from the listing.",
+      "summary": "Many reviewers praised fabric, several mentioned looks and comfort. Many reviewers reported items that differ from the listing. Reviewers disagree about fit and sizing: 5 reviews praised it and 3 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
       "assessment": "Mixed reviews",
       "assessment_note": "Mixed opinions.",
       "points": [
@@ -14440,14 +15040,14 @@
        "negative": 20
       },
       "notice": "This is a guide from public reviews, not proof or a guarantee.",
-      "body": "Many reviewers praised fabric, several mentioned comfort, and some mentioned stitching. Many reviewers reported items that differ from the listing, one mentioned problems with looks. Reviewers disagree about build quality: 5 reviews praised it and 2 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
+      "body": "Many reviewers praised fabric, several mentioned looks and comfort. Many reviewers reported items that differ from the listing. Reviewers disagree about fit and sizing: 5 reviews praised it and 3 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
       "warnings": [],
       "evidence_status": "supported",
       "evidence": {
        "status": "supported",
        "reviews_considered": 242,
-       "product_reviews": 66,
-       "service_reviews": 17,
+       "product_reviews": 75,
+       "service_reviews": 8,
        "not_used_yet_reviews": 2,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -14462,15 +15062,15 @@
         "conflict": 0,
         "menu_tag": 51
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "apparel",
        "why": [
         {
          "aspect": "fabric",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 19,
-         "text": "Fabric: 19 reviews supporting",
+         "reviews": 21,
+         "text": "Fabric: 21 reviews supporting",
          "quotes": [
           {
            "review_id": "1005045350007487",
@@ -14498,6 +15098,7 @@
          "review_ids": [
           "1005045350007487",
           "971486288907487",
+          "722560688707487",
           "1010904679707487",
           "998617278507487",
           "1000150692707487",
@@ -14511,10 +15112,53 @@
           "628902092007487",
           "533958619507487",
           "715587622007487",
+          "717960910207487",
           "524508267907487",
           "754487428307487",
           "766259955507487",
           "565042005507487"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "appearance",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 8,
+         "text": "Looks: 8 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "709696189507487",
+           "text": "Material:light fabrics Size:ok Design:ok Good",
+           "span": [
+            0,
+            45
+           ],
+           "language": "en",
+           "rating": 3.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "722560688707487",
+           "text": "Material:good Size:good Design:good Ang ganda ng dress gustong gusto ni misis at sakto lng sknya",
+           "span": [
+            0,
+            96
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "709696189507487",
+          "722560688707487",
+          "1009117808507487",
+          "561765245507487",
+          "521971669707487",
+          "717960910207487",
+          "594538501307487",
+          "570350451607487"
          ],
          "ids_truncated": false
         },
@@ -14561,50 +15205,11 @@
          "ids_truncated": false
         },
         {
-         "aspect": "build",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 5,
-         "text": "Build quality: 5 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "981566258807487",
-           "text": "mukang matibay.",
-           "span": [
-            82,
-            97
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "730826385807487",
-           "text": "the items received good quality",
-           "span": [
-            0,
-            31
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "981566258807487",
-          "730826385807487",
-          "715587622007487",
-          "754487428307487",
-          "596831310707487"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "size",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 4,
-         "text": "Fit and sizing: 4 reviews supporting",
+         "reviews": 5,
+         "text": "Fit and sizing: 5 reviews supporting",
          "quotes": [
           {
            "review_id": "1007472153907487",
@@ -14632,8 +15237,47 @@
          "review_ids": [
           "1007472153907487",
           "875122622107487",
+          "722560688707487",
           "980151505907487",
           "970029262807487"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "build",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 4,
+         "text": "Build quality: 4 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "730826385807487",
+           "text": "the items received good quality",
+           "span": [
+            0,
+            31
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "715587622007487",
+           "text": "Excellent quality material, maganda po sya at masarap isoot presko tama dn kulay dumating sakin....",
+           "span": [
+            0,
+            99
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "730826385807487",
+          "715587622007487",
+          "754487428307487",
+          "596831310707487"
          ],
          "ids_truncated": false
         },
@@ -14677,9 +15321,20 @@
          "aspect": "value",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 1,
-         "text": "Value for money: 1 review supporting",
+         "reviews": 2,
+         "text": "Value for money: 2 reviews supporting",
          "quotes": [
+          {
+           "review_id": "1007472153907487",
+           "text": "ang gandaaaa sobra ang mura pa, nag aalangan pa akong orderin kasi parang pa Xxxl na size ko ayun kasyang kasya pang maternity dress ang ganda din neto…",
+           "span": [
+            0,
+            151
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "616450476407487",
            "text": "worth it ang pg hihintay😘😘",
@@ -14693,7 +15348,56 @@
           }
          ],
          "review_ids": [
+          "1007472153907487",
           "616450476407487"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "durability",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 1,
+         "text": "Durability: 1 review supporting",
+         "quotes": [
+          {
+           "review_id": "981566258807487",
+           "text": "mukang matibay.",
+           "span": [
+            82,
+            97
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "981566258807487"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "matches_listing",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 1,
+         "text": "Match with the listing: 1 review supporting",
+         "quotes": [
+          {
+           "review_id": "538529053507487",
+           "text": "What you see what you get ❤️❤️❤️",
+           "span": [
+            0,
+            32
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "538529053507487"
          ],
          "ids_truncated": false
         },
@@ -14802,6 +15506,43 @@
          "ids_truncated": false
         },
         {
+         "aspect": "size",
+         "kind": "product",
+         "polarity": "negative",
+         "reviews": 3,
+         "text": "Problems with fit and sizing: 3 reviews concerning",
+         "quotes": [
+          {
+           "review_id": "981445902107487",
+           "text": "It is not true to size because I am tall.",
+           "span": [
+            99,
+            140
+           ],
+           "language": "en",
+           "rating": 3.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "986576314507487",
+           "text": "Too short!",
+           "span": [
+            13,
+            23
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "981445902107487",
+          "986576314507487",
+          "998483690307487"
+         ],
+         "ids_truncated": false
+        },
+        {
          "aspect": "build",
          "kind": "product",
          "polarity": "negative",
@@ -14834,42 +15575,6 @@
          "review_ids": [
           "709696189507487",
           "567023306907487"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "size",
-         "kind": "product",
-         "polarity": "negative",
-         "reviews": 2,
-         "text": "Problems with fit and sizing: 2 reviews concerning",
-         "quotes": [
-          {
-           "review_id": "981445902107487",
-           "text": "It is not true to size because I am tall.",
-           "span": [
-            99,
-            140
-           ],
-           "language": "en",
-           "rating": 3.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "986576314507487",
-           "text": "Too short!",
-           "span": [
-            13,
-            23
-           ],
-           "language": "en",
-           "rating": 4.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "981445902107487",
-          "986576314507487"
          ],
          "ids_truncated": false
         },
@@ -14922,57 +15627,11 @@
          "ids_truncated": false
         },
         {
-         "aspect": "seller",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 12,
-         "text": "Seller service: 12 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "1005045350007487",
-           "text": "Thank you seller at kay kuya rider ang bilis dumating at ang ganda ng tela malambot di mainit sa katawan.",
-           "span": [
-            0,
-            105
-           ],
-           "language": "fil",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "997901544107487",
-           "text": "Nice dress thank you seller satisfied customer here",
-           "span": [
-            0,
-            51
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "1005045350007487",
-          "997901544107487",
-          "725512901607487",
-          "970029262807487",
-          "721954998607487",
-          "974204670407487",
-          "715587622007487",
-          "769116535107487",
-          "693127781907487",
-          "573738240907487",
-          "616450476407487",
-          "613575374007487"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "arrival",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 2,
-         "text": "Condition on arrival: 2 reviews supporting",
+         "reviews": 3,
+         "text": "Condition on arrival: 3 reviews supporting",
          "quotes": [
           {
            "review_id": "981566732907487",
@@ -14999,7 +15658,8 @@
          ],
          "review_ids": [
           "981566732907487",
-          "980151505907487"
+          "980151505907487",
+          "730826385807487"
          ],
          "ids_truncated": false
         },
@@ -15007,15 +15667,26 @@
          "aspect": "delivery",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 1,
-         "text": "Delivery: 1 review supporting",
+         "reviews": 3,
+         "text": "Delivery: 3 reviews supporting",
          "quotes": [
           {
-           "review_id": "621751452407487",
-           "text": "Fast shipping and delivery 🚚",
+           "review_id": "1005045350007487",
+           "text": "Thank you seller at kay kuya rider ang bilis dumating at ang ganda ng tela malambot di mainit sa katawan.",
            "span": [
-            7,
-            35
+            0,
+            105
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "563928228907487",
+           "text": "bilis dumating",
+           "span": [
+            0,
+            14
            ],
            "language": "en",
            "rating": 5.0,
@@ -15023,6 +15694,8 @@
           }
          ],
          "review_ids": [
+          "1005045350007487",
+          "563928228907487",
           "621751452407487"
          ],
          "ids_truncated": false
@@ -17133,8 +17806,8 @@
      "decision": "mixed",
      "headline": "Mixed reviews",
      "text": "Based on the reviews of this product, opinions are mixed: 64% of reviewers were positive and 20% negative. Nothing alarming stood out, but read the complaints before you decide.",
-     "lead": "Based on customer reviews, opinions on this clothing item are mixed: some praise fabric and comfort, while the reviews also report defects and items that differ from the listing.",
-     "summary": "Many reviewers praised fabric, several mentioned comfort, and some mentioned stitching. Many reviewers reported items that differ from the listing, one mentioned problems with looks. Reviewers disagree about build quality: 5 reviews praised it and 2 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
+     "lead": "Based on customer reviews, opinions on this clothing item are mixed: some praise fabric and looks, while the reviews also report defects and items that differ from the listing.",
+     "summary": "Many reviewers praised fabric, several mentioned looks and comfort. Many reviewers reported items that differ from the listing. Reviewers disagree about fit and sizing: 5 reviews praised it and 3 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
      "assessment": "Mixed reviews",
      "assessment_note": "Mixed opinions.",
      "points": [
@@ -17149,14 +17822,14 @@
       "negative": 20
      },
      "notice": "This is a guide from public reviews, not proof or a guarantee.",
-     "body": "Many reviewers praised fabric, several mentioned comfort, and some mentioned stitching. Many reviewers reported items that differ from the listing, one mentioned problems with looks. Reviewers disagree about build quality: 5 reviews praised it and 2 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
+     "body": "Many reviewers praised fabric, several mentioned looks and comfort. Many reviewers reported items that differ from the listing. Reviewers disagree about fit and sizing: 5 reviews praised it and 3 reviews criticised it. About 64% of the 252 reviews were positive, 16% neutral or unclear and 20% negative. Because experiences differ, it is worth reading the complaints before you decide.",
      "warnings": [],
      "evidence_status": "supported",
      "evidence": {
       "status": "supported",
       "reviews_considered": 242,
-      "product_reviews": 66,
-      "service_reviews": 17,
+      "product_reviews": 75,
+      "service_reviews": 8,
       "not_used_yet_reviews": 2,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -17171,15 +17844,15 @@
        "conflict": 0,
        "menu_tag": 51
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "apparel",
       "why": [
        {
         "aspect": "fabric",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 19,
-        "text": "Fabric: 19 reviews supporting",
+        "reviews": 21,
+        "text": "Fabric: 21 reviews supporting",
         "quotes": [
          {
           "review_id": "1005045350007487",
@@ -17207,6 +17880,7 @@
         "review_ids": [
          "1005045350007487",
          "971486288907487",
+         "722560688707487",
          "1010904679707487",
          "998617278507487",
          "1000150692707487",
@@ -17220,10 +17894,53 @@
          "628902092007487",
          "533958619507487",
          "715587622007487",
+         "717960910207487",
          "524508267907487",
          "754487428307487",
          "766259955507487",
          "565042005507487"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "appearance",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 8,
+        "text": "Looks: 8 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "709696189507487",
+          "text": "Material:light fabrics Size:ok Design:ok Good",
+          "span": [
+           0,
+           45
+          ],
+          "language": "en",
+          "rating": 3.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "722560688707487",
+          "text": "Material:good Size:good Design:good Ang ganda ng dress gustong gusto ni misis at sakto lng sknya",
+          "span": [
+           0,
+           96
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "709696189507487",
+         "722560688707487",
+         "1009117808507487",
+         "561765245507487",
+         "521971669707487",
+         "717960910207487",
+         "594538501307487",
+         "570350451607487"
         ],
         "ids_truncated": false
        },
@@ -17270,50 +17987,11 @@
         "ids_truncated": false
        },
        {
-        "aspect": "build",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 5,
-        "text": "Build quality: 5 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "981566258807487",
-          "text": "mukang matibay.",
-          "span": [
-           82,
-           97
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "730826385807487",
-          "text": "the items received good quality",
-          "span": [
-           0,
-           31
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "981566258807487",
-         "730826385807487",
-         "715587622007487",
-         "754487428307487",
-         "596831310707487"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "size",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 4,
-        "text": "Fit and sizing: 4 reviews supporting",
+        "reviews": 5,
+        "text": "Fit and sizing: 5 reviews supporting",
         "quotes": [
          {
           "review_id": "1007472153907487",
@@ -17341,8 +18019,47 @@
         "review_ids": [
          "1007472153907487",
          "875122622107487",
+         "722560688707487",
          "980151505907487",
          "970029262807487"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "build",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 4,
+        "text": "Build quality: 4 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "730826385807487",
+          "text": "the items received good quality",
+          "span": [
+           0,
+           31
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "715587622007487",
+          "text": "Excellent quality material, maganda po sya at masarap isoot presko tama dn kulay dumating sakin....",
+          "span": [
+           0,
+           99
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "730826385807487",
+         "715587622007487",
+         "754487428307487",
+         "596831310707487"
         ],
         "ids_truncated": false
        },
@@ -17386,9 +18103,20 @@
         "aspect": "value",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 1,
-        "text": "Value for money: 1 review supporting",
+        "reviews": 2,
+        "text": "Value for money: 2 reviews supporting",
         "quotes": [
+         {
+          "review_id": "1007472153907487",
+          "text": "ang gandaaaa sobra ang mura pa, nag aalangan pa akong orderin kasi parang pa Xxxl na size ko ayun kasyang kasya pang maternity dress ang ganda din neto…",
+          "span": [
+           0,
+           151
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "616450476407487",
           "text": "worth it ang pg hihintay😘😘",
@@ -17402,7 +18130,56 @@
          }
         ],
         "review_ids": [
+         "1007472153907487",
          "616450476407487"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "durability",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 1,
+        "text": "Durability: 1 review supporting",
+        "quotes": [
+         {
+          "review_id": "981566258807487",
+          "text": "mukang matibay.",
+          "span": [
+           82,
+           97
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "981566258807487"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "matches_listing",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 1,
+        "text": "Match with the listing: 1 review supporting",
+        "quotes": [
+         {
+          "review_id": "538529053507487",
+          "text": "What you see what you get ❤️❤️❤️",
+          "span": [
+           0,
+           32
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "538529053507487"
         ],
         "ids_truncated": false
        },
@@ -17511,6 +18288,43 @@
         "ids_truncated": false
        },
        {
+        "aspect": "size",
+        "kind": "product",
+        "polarity": "negative",
+        "reviews": 3,
+        "text": "Problems with fit and sizing: 3 reviews concerning",
+        "quotes": [
+         {
+          "review_id": "981445902107487",
+          "text": "It is not true to size because I am tall.",
+          "span": [
+           99,
+           140
+          ],
+          "language": "en",
+          "rating": 3.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "986576314507487",
+          "text": "Too short!",
+          "span": [
+           13,
+           23
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "981445902107487",
+         "986576314507487",
+         "998483690307487"
+        ],
+        "ids_truncated": false
+       },
+       {
         "aspect": "build",
         "kind": "product",
         "polarity": "negative",
@@ -17543,42 +18357,6 @@
         "review_ids": [
          "709696189507487",
          "567023306907487"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "size",
-        "kind": "product",
-        "polarity": "negative",
-        "reviews": 2,
-        "text": "Problems with fit and sizing: 2 reviews concerning",
-        "quotes": [
-         {
-          "review_id": "981445902107487",
-          "text": "It is not true to size because I am tall.",
-          "span": [
-           99,
-           140
-          ],
-          "language": "en",
-          "rating": 3.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "986576314507487",
-          "text": "Too short!",
-          "span": [
-           13,
-           23
-          ],
-          "language": "en",
-          "rating": 4.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "981445902107487",
-         "986576314507487"
         ],
         "ids_truncated": false
        },
@@ -17631,57 +18409,11 @@
         "ids_truncated": false
        },
        {
-        "aspect": "seller",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 12,
-        "text": "Seller service: 12 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "1005045350007487",
-          "text": "Thank you seller at kay kuya rider ang bilis dumating at ang ganda ng tela malambot di mainit sa katawan.",
-          "span": [
-           0,
-           105
-          ],
-          "language": "fil",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "997901544107487",
-          "text": "Nice dress thank you seller satisfied customer here",
-          "span": [
-           0,
-           51
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "1005045350007487",
-         "997901544107487",
-         "725512901607487",
-         "970029262807487",
-         "721954998607487",
-         "974204670407487",
-         "715587622007487",
-         "769116535107487",
-         "693127781907487",
-         "573738240907487",
-         "616450476407487",
-         "613575374007487"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "arrival",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 2,
-        "text": "Condition on arrival: 2 reviews supporting",
+        "reviews": 3,
+        "text": "Condition on arrival: 3 reviews supporting",
         "quotes": [
          {
           "review_id": "981566732907487",
@@ -17708,7 +18440,8 @@
         ],
         "review_ids": [
          "981566732907487",
-         "980151505907487"
+         "980151505907487",
+         "730826385807487"
         ],
         "ids_truncated": false
        },
@@ -17716,15 +18449,26 @@
         "aspect": "delivery",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 1,
-        "text": "Delivery: 1 review supporting",
+        "reviews": 3,
+        "text": "Delivery: 3 reviews supporting",
         "quotes": [
          {
-          "review_id": "621751452407487",
-          "text": "Fast shipping and delivery 🚚",
+          "review_id": "1005045350007487",
+          "text": "Thank you seller at kay kuya rider ang bilis dumating at ang ganda ng tela malambot di mainit sa katawan.",
           "span": [
-           7,
-           35
+           0,
+           105
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "563928228907487",
+          "text": "bilis dumating",
+          "span": [
+           0,
+           14
           ],
           "language": "en",
           "rating": 5.0,
@@ -17732,6 +18476,8 @@
          }
         ],
         "review_ids": [
+         "1005045350007487",
+         "563928228907487",
          "621751452407487"
         ],
         "ids_truncated": false
@@ -19299,7 +20045,7 @@
       "headline": "Not recommended",
       "text": "Based on the reviews of this product, we advise against buying it: reviewers report safety problems such as electric shocks, burns, overheating, sharp edges or collapse.",
       "lead": "Based on customer reviews, this appliance raises concerns: the reviews include reports of possible safety problems, defects and doubts about authenticity.",
-      "summary": "Some reviewers praised ease of use and performance, one mentioned looks. Many reviewers reported problems with size, some mentioned problems with durability. 4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first. One review questions whether the product is genuine. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
+      "summary": "Several reviewers praised looks and ease of use, some mentioned performance. Many reviewers reported problems with size, some mentioned items that differ from the listing. 4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first. One review questions whether the product is genuine. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
       "assessment": "Not recommended",
       "assessment_note": "Serious problems were reported.",
       "points": [
@@ -19314,7 +20060,7 @@
        "negative": 13
       },
       "notice": "This is a guide from public reviews, not proof or a guarantee.",
-      "body": "Some reviewers praised ease of use and performance, one mentioned looks. Many reviewers reported problems with size, some mentioned problems with durability. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
+      "body": "Several reviewers praised looks and ease of use, some mentioned performance. Many reviewers reported problems with size, some mentioned items that differ from the listing. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
       "warnings": [
        "4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first.",
        "One review questions whether the product is genuine."
@@ -19323,8 +20069,8 @@
       "evidence": {
        "status": "supported",
        "reviews_considered": 228,
-       "product_reviews": 34,
-       "service_reviews": 17,
+       "product_reviews": 59,
+       "service_reviews": 18,
        "not_used_yet_reviews": 13,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -19336,18 +20082,146 @@
         "hypothetical": 37,
         "comparison": 1,
         "sarcasm_or_emoji": 1,
-        "conflict": 0,
+        "conflict": 2,
         "menu_tag": 76
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "small_appliance",
        "why": [
+        {
+         "aspect": "value",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 10,
+         "text": "Value for money: 10 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "694174551975114",
+           "text": "nice product value for money highly recommended for couples starting up cool & classic design",
+           "span": [
+            0,
+            93
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "1012890442575114",
+           "text": "Price:10 👌",
+           "span": [
+            1,
+            11
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "694174551975114",
+          "1012890442575114",
+          "971377816075114",
+          "966759557275114",
+          "966747433575114",
+          "852848649075114",
+          "854179638575114",
+          "921184137875114",
+          "759403328275114",
+          "968158416075114"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "appearance",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 8,
+         "text": "Looks: 8 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "1015569195175114",
+           "text": "versatile and elegant",
+           "span": [
+            0,
+            21
+           ],
+           "language": "en",
+           "rating": 4.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "763797216175114",
+           "text": "mukhang mamahalin kaya lang maliit pala, pwde SA nag diet ....👍",
+           "span": [
+            0,
+            63
+           ],
+           "language": "fil",
+           "rating": 4.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "1015569195175114",
+          "763797216175114",
+          "754450701775114",
+          "763852670575114",
+          "694279424275114",
+          "859209942175114",
+          "667151215175114",
+          "719449804075114"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "ease",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 8,
+         "text": "Ease of use: 8 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "1012890442575114",
+           "text": "Ease of Use:10 📏",
+           "span": [
+            11,
+            27
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "971377816075114",
+           "text": "Ease of Use: excellent 📏",
+           "span": [
+            72,
+            96
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "1012890442575114",
+          "971377816075114",
+          "966759557275114",
+          "966747433575114",
+          "852848649075114",
+          "854179638575114",
+          "660376405575114",
+          "968158416075114"
+         ],
+         "ids_truncated": false
+        },
         {
          "aspect": "functionality",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 7,
-         "text": "How well it works: 7 reviews supporting",
+         "reviews": 8,
+         "text": "How well it works: 8 reviews supporting",
          "quotes": [
           {
            "review_id": "966747433575114",
@@ -19378,47 +20252,9 @@
           "661360027775114",
           "921184137875114",
           "759403328275114",
+          "671780219875114",
           "765596308975114",
           "838212748275114"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "value",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 5,
-         "text": "Value for money: 5 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "694174551975114",
-           "text": "nice product value for money highly recommended for couples starting up cool & classic design",
-           "span": [
-            0,
-            93
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "966759557275114",
-           "text": "Price: Very affordable 👌",
-           "span": [
-            1,
-            25
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "694174551975114",
-          "966759557275114",
-          "966747433575114",
-          "921184137875114",
-          "759403328275114"
          ],
          "ids_truncated": false
         },
@@ -19426,8 +20262,8 @@
          "aspect": "build",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 4,
-         "text": "Build quality: 4 reviews supporting",
+         "reviews": 7,
+         "text": "Build quality: 7 reviews supporting",
          "quotes": [
           {
            "review_id": "687263196575114",
@@ -19455,35 +20291,38 @@
          "review_ids": [
           "687263196575114",
           "814312897575114",
-          "756279473775114",
-          "685055399275114"
+          "747152216075114",
+          "804576369575114",
+          "671780219875114",
+          "671417913275114",
+          "716174339875114"
          ],
          "ids_truncated": false
         },
         {
-         "aspect": "ease",
+         "aspect": "size",
          "kind": "product",
          "polarity": "positive",
-         "reviews": 2,
-         "text": "Ease of use: 2 reviews supporting",
+         "reviews": 5,
+         "text": "Size: 5 reviews supporting",
          "quotes": [
           {
-           "review_id": "966759557275114",
-           "text": "Ease of Use: easy to use 📏",
+           "review_id": "1012890442575114",
+           "text": "Capacity:10",
            "span": [
-            25,
-            51
+            27,
+            38
            ],
            "language": "en",
            "rating": 5.0,
            "evidence": "clear"
           },
           {
-           "review_id": "966747433575114",
-           "text": "Ease of Use: Very easy to use 📏",
+           "review_id": "971377816075114",
+           "text": "Capacity: satisfied",
            "span": [
-            228,
-            259
+            96,
+            115
            ],
            "language": "en",
            "rating": 5.0,
@@ -19491,8 +20330,47 @@
           }
          ],
          "review_ids": [
-          "966759557275114",
-          "966747433575114"
+          "1012890442575114",
+          "971377816075114",
+          "966747433575114",
+          "854179638575114",
+          "669974731675114"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "durability",
+         "kind": "product",
+         "polarity": "positive",
+         "reviews": 2,
+         "text": "Durability: 2 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "756279473775114",
+           "text": "it's my second order matibay talaga thanks seller and lazada i gave 5 stars...",
+           "span": [
+            0,
+            78
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "685055399275114",
+           "text": "ok naman mukhang matibay",
+           "span": [
+            0,
+            24
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "756279473775114",
+          "685055399275114"
          ],
          "ids_truncated": false
         },
@@ -19533,83 +20411,11 @@
          "ids_truncated": false
         },
         {
-         "aspect": "appearance",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 1,
-         "text": "Looks: 1 review supporting",
-         "quotes": [
-          {
-           "review_id": "719449804075114",
-           "text": "pero it looks elegant ang very chic",
-           "span": [
-            52,
-            87
-           ],
-           "language": "taglish",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "719449804075114"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "durability",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 1,
-         "text": "Durability: 1 review supporting",
-         "quotes": [
-          {
-           "review_id": "756279473775114",
-           "text": "it's my second order matibay talaga thanks seller and lazada i gave 5 stars...",
-           "span": [
-            0,
-            78
-           ],
-           "language": "taglish",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "756279473775114"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "size",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 1,
-         "text": "Size: 1 review supporting",
-         "quotes": [
-          {
-           "review_id": "669974731675114",
-           "text": "Nagustuhan ng kutumer tamang tamang ang size.",
-           "span": [
-            0,
-            45
-           ],
-           "language": "fil",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "669974731675114"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "size",
          "kind": "product",
          "polarity": "negative",
-         "reviews": 10,
-         "text": "Problems with size: 10 reviews concerning",
+         "reviews": 13,
+         "text": "Problems with size: 13 reviews concerning",
          "quotes": [
           {
            "review_id": "867626673075114",
@@ -19637,14 +20443,17 @@
          "review_ids": [
           "867626673075114",
           "767158712675114",
+          "857875338075114",
           "687263196575114",
           "978788158475114",
           "860891636575114",
+          "709989041175114",
           "918228493875114",
           "665211004875114",
+          "921184137875114",
           "940416901775114",
-          "685055399275114",
-          "766221364375114"
+          "766221364375114",
+          "961947927175114"
          ],
          "ids_truncated": false
         },
@@ -19652,9 +20461,20 @@
          "aspect": "functionality",
          "kind": "product",
          "polarity": "negative",
-         "reviews": 4,
-         "text": "Faults or failure to work: 4 reviews concerning",
+         "reviews": 6,
+         "text": "Faults or failure to work: 6 reviews concerning",
          "quotes": [
+          {
+           "review_id": "958998701675114",
+           "text": "It doesn’t cook properly.",
+           "span": [
+            0,
+            25
+           ],
+           "language": "en",
+           "rating": 1.0,
+           "evidence": "clear"
+          },
           {
            "review_id": "693632287575114",
            "text": "madaling masira 3 days p lng gingmit isang beses isang araw lng me magsaing ayan sira n agad...hindi na gumgana...sayang ang pera ko..",
@@ -19665,22 +20485,13 @@
            "language": "fil",
            "rating": 1.0,
            "evidence": "clear"
-          },
-          {
-           "review_id": "892138020575114",
-           "text": "Product is defective.",
-           "span": [
-            0,
-            21
-           ],
-           "language": "en",
-           "rating": 2.0,
-           "evidence": "clear"
           }
          ],
          "review_ids": [
+          "958998701675114",
           "693632287575114",
           "892138020575114",
+          "702570174875114",
           "685653988775114",
           "885018950875114"
          ],
@@ -19728,8 +20539,8 @@
          "aspect": "build",
          "kind": "product",
          "polarity": "negative",
-         "reviews": 2,
-         "text": "Problems with build quality: 2 reviews concerning",
+         "reviews": 3,
+         "text": "Problems with build quality: 3 reviews concerning",
          "quotes": [
           {
            "review_id": "971109898175114",
@@ -19743,20 +20554,58 @@
            "evidence": "clear"
           },
           {
-           "review_id": "931021263875114",
-           "text": "low quality plastic",
+           "review_id": "699408403475114",
+           "text": "ok naman..amoy plastic lang..tapos ung panel nawawala wala.",
            "span": [
             0,
-            19
+            59
            ],
-           "language": "en",
+           "language": "fil",
            "rating": 5.0,
            "evidence": "clear"
           }
          ],
          "review_ids": [
           "971109898175114",
+          "699408403475114",
           "931021263875114"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "matches_listing",
+         "kind": "product",
+         "polarity": "negative",
+         "reviews": 3,
+         "text": "Items that differ from the listing: 3 reviews concerning",
+         "quotes": [
+          {
+           "review_id": "867626673075114",
+           "text": "Misleading description.",
+           "span": [
+            0,
+            23
+           ],
+           "language": "en",
+           "rating": 1.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "766613739475114",
+           "text": "so far ok naman po triny namin agad nilagyan nmin ng tubig gaya nung cnssbi ng comment ng iba po n pg first time ei tubig muna iluto.photo not related po",
+           "span": [
+            0,
+            153
+           ],
+           "language": "taglish",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "867626673075114",
+          "766613739475114",
+          "935069047975114"
          ],
          "ids_truncated": false
         },
@@ -19874,6 +20723,44 @@
          "ids_truncated": false
         },
         {
+         "aspect": "delivery",
+         "kind": "service",
+         "polarity": "positive",
+         "reviews": 4,
+         "text": "Delivery: 4 reviews supporting",
+         "quotes": [
+          {
+           "review_id": "857256146175114",
+           "text": "gumagana din at ang bilis dumating, 2 days lang dumating na agad",
+           "span": [
+            55,
+            119
+           ],
+           "language": "fil",
+           "rating": 5.0,
+           "evidence": "clear"
+          },
+          {
+           "review_id": "902090426975114",
+           "text": "Item was well packed and arrived fast.",
+           "span": [
+            77,
+            115
+           ],
+           "language": "en",
+           "rating": 5.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "857256146175114",
+          "902090426975114",
+          "683524127175114",
+          "941282035375114"
+         ],
+         "ids_truncated": false
+        },
+        {
          "aspect": "packaging",
          "kind": "service",
          "polarity": "positive",
@@ -19912,60 +20799,12 @@
          "ids_truncated": false
         },
         {
-         "aspect": "delivery",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 3,
-         "text": "Delivery: 3 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "868481475875114",
-           "text": "Thank you Lazada seller packer courrier and delivery personnel 🥰",
-           "span": [
-            76,
-            140
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "emoji"
-          },
-          {
-           "review_id": "683524127175114",
-           "text": "fast delivery well packed recieved in good condition thanks to our rider and seller",
-           "span": [
-            0,
-            83
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "868481475875114",
-          "683524127175114",
-          "941282035375114"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "seller",
          "kind": "service",
          "polarity": "positive",
-         "reviews": 3,
-         "text": "Seller service: 3 reviews supporting",
+         "reviews": 1,
+         "text": "Seller service: 1 review supporting",
          "quotes": [
-          {
-           "review_id": "868481475875114",
-           "text": "Thank you Lazada seller packer courrier and delivery personnel 🥰",
-           "span": [
-            76,
-            140
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "emoji"
-          },
           {
            "review_id": "694279424275114",
            "text": "mabait ang deliver boy very goo",
@@ -19979,9 +20818,7 @@
           }
          ],
          "review_ids": [
-          "868481475875114",
-          "694279424275114",
-          "670648788275114"
+          "694279424275114"
          ],
          "ids_truncated": false
         },
@@ -20022,6 +20859,30 @@
           "814312897575114",
           "929110323575114",
           "661075036575114"
+         ],
+         "ids_truncated": false
+        },
+        {
+         "aspect": "seller",
+         "kind": "service",
+         "polarity": "negative",
+         "reviews": 1,
+         "text": "Problems with seller service: 1 review concerning",
+         "quotes": [
+          {
+           "review_id": "972949911275114",
+           "text": "MANLOLOKO KAU WLA NMN SA 2 LITERS!!!",
+           "span": [
+            0,
+            36
+           ],
+           "language": "fil",
+           "rating": 1.0,
+           "evidence": "clear"
+          }
+         ],
+         "review_ids": [
+          "972949911275114"
          ],
          "ids_truncated": false
         }
@@ -21537,7 +22398,7 @@
      "headline": "Not recommended",
      "text": "Based on the reviews of this product, we advise against buying it: reviewers report safety problems such as electric shocks, burns, overheating, sharp edges or collapse.",
      "lead": "Based on customer reviews, this appliance raises concerns: the reviews include reports of possible safety problems, defects and doubts about authenticity.",
-     "summary": "Some reviewers praised ease of use and performance, one mentioned looks. Many reviewers reported problems with size, some mentioned problems with durability. 4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first. One review questions whether the product is genuine. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
+     "summary": "Several reviewers praised looks and ease of use, some mentioned performance. Many reviewers reported problems with size, some mentioned items that differ from the listing. 4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first. One review questions whether the product is genuine. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
      "assessment": "Not recommended",
      "assessment_note": "Serious problems were reported.",
      "points": [
@@ -21552,7 +22413,7 @@
       "negative": 13
      },
      "notice": "This is a guide from public reviews, not proof or a guarantee.",
-     "body": "Some reviewers praised ease of use and performance, one mentioned looks. Many reviewers reported problems with size, some mentioned problems with durability. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
+     "body": "Several reviewers praised looks and ease of use, some mentioned performance. Many reviewers reported problems with size, some mentioned items that differ from the listing. About 68% of the 238 reviews were positive, 19% neutral or unclear and 13% negative.",
      "warnings": [
       "4 reviews describe a possible safety problem (electric shocks, burns, overheating, sharp edges or collapse). These reports have not been independently verified; read them first.",
       "One review questions whether the product is genuine."
@@ -21561,8 +22422,8 @@
      "evidence": {
       "status": "supported",
       "reviews_considered": 228,
-      "product_reviews": 34,
-      "service_reviews": 17,
+      "product_reviews": 59,
+      "service_reviews": 18,
       "not_used_yet_reviews": 13,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -21574,18 +22435,146 @@
        "hypothetical": 37,
        "comparison": 1,
        "sarcasm_or_emoji": 1,
-       "conflict": 0,
+       "conflict": 2,
        "menu_tag": 76
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "small_appliance",
       "why": [
+       {
+        "aspect": "value",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 10,
+        "text": "Value for money: 10 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "694174551975114",
+          "text": "nice product value for money highly recommended for couples starting up cool & classic design",
+          "span": [
+           0,
+           93
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "1012890442575114",
+          "text": "Price:10 👌",
+          "span": [
+           1,
+           11
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "694174551975114",
+         "1012890442575114",
+         "971377816075114",
+         "966759557275114",
+         "966747433575114",
+         "852848649075114",
+         "854179638575114",
+         "921184137875114",
+         "759403328275114",
+         "968158416075114"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "appearance",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 8,
+        "text": "Looks: 8 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "1015569195175114",
+          "text": "versatile and elegant",
+          "span": [
+           0,
+           21
+          ],
+          "language": "en",
+          "rating": 4.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "763797216175114",
+          "text": "mukhang mamahalin kaya lang maliit pala, pwde SA nag diet ....👍",
+          "span": [
+           0,
+           63
+          ],
+          "language": "fil",
+          "rating": 4.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "1015569195175114",
+         "763797216175114",
+         "754450701775114",
+         "763852670575114",
+         "694279424275114",
+         "859209942175114",
+         "667151215175114",
+         "719449804075114"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "ease",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 8,
+        "text": "Ease of use: 8 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "1012890442575114",
+          "text": "Ease of Use:10 📏",
+          "span": [
+           11,
+           27
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "971377816075114",
+          "text": "Ease of Use: excellent 📏",
+          "span": [
+           72,
+           96
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "1012890442575114",
+         "971377816075114",
+         "966759557275114",
+         "966747433575114",
+         "852848649075114",
+         "854179638575114",
+         "660376405575114",
+         "968158416075114"
+        ],
+        "ids_truncated": false
+       },
        {
         "aspect": "functionality",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 7,
-        "text": "How well it works: 7 reviews supporting",
+        "reviews": 8,
+        "text": "How well it works: 8 reviews supporting",
         "quotes": [
          {
           "review_id": "966747433575114",
@@ -21616,47 +22605,9 @@
          "661360027775114",
          "921184137875114",
          "759403328275114",
+         "671780219875114",
          "765596308975114",
          "838212748275114"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "value",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 5,
-        "text": "Value for money: 5 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "694174551975114",
-          "text": "nice product value for money highly recommended for couples starting up cool & classic design",
-          "span": [
-           0,
-           93
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "966759557275114",
-          "text": "Price: Very affordable 👌",
-          "span": [
-           1,
-           25
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "694174551975114",
-         "966759557275114",
-         "966747433575114",
-         "921184137875114",
-         "759403328275114"
         ],
         "ids_truncated": false
        },
@@ -21664,8 +22615,8 @@
         "aspect": "build",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 4,
-        "text": "Build quality: 4 reviews supporting",
+        "reviews": 7,
+        "text": "Build quality: 7 reviews supporting",
         "quotes": [
          {
           "review_id": "687263196575114",
@@ -21693,35 +22644,38 @@
         "review_ids": [
          "687263196575114",
          "814312897575114",
-         "756279473775114",
-         "685055399275114"
+         "747152216075114",
+         "804576369575114",
+         "671780219875114",
+         "671417913275114",
+         "716174339875114"
         ],
         "ids_truncated": false
        },
        {
-        "aspect": "ease",
+        "aspect": "size",
         "kind": "product",
         "polarity": "positive",
-        "reviews": 2,
-        "text": "Ease of use: 2 reviews supporting",
+        "reviews": 5,
+        "text": "Size: 5 reviews supporting",
         "quotes": [
          {
-          "review_id": "966759557275114",
-          "text": "Ease of Use: easy to use 📏",
+          "review_id": "1012890442575114",
+          "text": "Capacity:10",
           "span": [
-           25,
-           51
+           27,
+           38
           ],
           "language": "en",
           "rating": 5.0,
           "evidence": "clear"
          },
          {
-          "review_id": "966747433575114",
-          "text": "Ease of Use: Very easy to use 📏",
+          "review_id": "971377816075114",
+          "text": "Capacity: satisfied",
           "span": [
-           228,
-           259
+           96,
+           115
           ],
           "language": "en",
           "rating": 5.0,
@@ -21729,8 +22683,47 @@
          }
         ],
         "review_ids": [
-         "966759557275114",
-         "966747433575114"
+         "1012890442575114",
+         "971377816075114",
+         "966747433575114",
+         "854179638575114",
+         "669974731675114"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "durability",
+        "kind": "product",
+        "polarity": "positive",
+        "reviews": 2,
+        "text": "Durability: 2 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "756279473775114",
+          "text": "it's my second order matibay talaga thanks seller and lazada i gave 5 stars...",
+          "span": [
+           0,
+           78
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "685055399275114",
+          "text": "ok naman mukhang matibay",
+          "span": [
+           0,
+           24
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "756279473775114",
+         "685055399275114"
         ],
         "ids_truncated": false
        },
@@ -21771,83 +22764,11 @@
         "ids_truncated": false
        },
        {
-        "aspect": "appearance",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 1,
-        "text": "Looks: 1 review supporting",
-        "quotes": [
-         {
-          "review_id": "719449804075114",
-          "text": "pero it looks elegant ang very chic",
-          "span": [
-           52,
-           87
-          ],
-          "language": "taglish",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "719449804075114"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "durability",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 1,
-        "text": "Durability: 1 review supporting",
-        "quotes": [
-         {
-          "review_id": "756279473775114",
-          "text": "it's my second order matibay talaga thanks seller and lazada i gave 5 stars...",
-          "span": [
-           0,
-           78
-          ],
-          "language": "taglish",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "756279473775114"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "size",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 1,
-        "text": "Size: 1 review supporting",
-        "quotes": [
-         {
-          "review_id": "669974731675114",
-          "text": "Nagustuhan ng kutumer tamang tamang ang size.",
-          "span": [
-           0,
-           45
-          ],
-          "language": "fil",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "669974731675114"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "size",
         "kind": "product",
         "polarity": "negative",
-        "reviews": 10,
-        "text": "Problems with size: 10 reviews concerning",
+        "reviews": 13,
+        "text": "Problems with size: 13 reviews concerning",
         "quotes": [
          {
           "review_id": "867626673075114",
@@ -21875,14 +22796,17 @@
         "review_ids": [
          "867626673075114",
          "767158712675114",
+         "857875338075114",
          "687263196575114",
          "978788158475114",
          "860891636575114",
+         "709989041175114",
          "918228493875114",
          "665211004875114",
+         "921184137875114",
          "940416901775114",
-         "685055399275114",
-         "766221364375114"
+         "766221364375114",
+         "961947927175114"
         ],
         "ids_truncated": false
        },
@@ -21890,9 +22814,20 @@
         "aspect": "functionality",
         "kind": "product",
         "polarity": "negative",
-        "reviews": 4,
-        "text": "Faults or failure to work: 4 reviews concerning",
+        "reviews": 6,
+        "text": "Faults or failure to work: 6 reviews concerning",
         "quotes": [
+         {
+          "review_id": "958998701675114",
+          "text": "It doesn’t cook properly.",
+          "span": [
+           0,
+           25
+          ],
+          "language": "en",
+          "rating": 1.0,
+          "evidence": "clear"
+         },
          {
           "review_id": "693632287575114",
           "text": "madaling masira 3 days p lng gingmit isang beses isang araw lng me magsaing ayan sira n agad...hindi na gumgana...sayang ang pera ko..",
@@ -21903,22 +22838,13 @@
           "language": "fil",
           "rating": 1.0,
           "evidence": "clear"
-         },
-         {
-          "review_id": "892138020575114",
-          "text": "Product is defective.",
-          "span": [
-           0,
-           21
-          ],
-          "language": "en",
-          "rating": 2.0,
-          "evidence": "clear"
          }
         ],
         "review_ids": [
+         "958998701675114",
          "693632287575114",
          "892138020575114",
+         "702570174875114",
          "685653988775114",
          "885018950875114"
         ],
@@ -21966,8 +22892,8 @@
         "aspect": "build",
         "kind": "product",
         "polarity": "negative",
-        "reviews": 2,
-        "text": "Problems with build quality: 2 reviews concerning",
+        "reviews": 3,
+        "text": "Problems with build quality: 3 reviews concerning",
         "quotes": [
          {
           "review_id": "971109898175114",
@@ -21981,20 +22907,58 @@
           "evidence": "clear"
          },
          {
-          "review_id": "931021263875114",
-          "text": "low quality plastic",
+          "review_id": "699408403475114",
+          "text": "ok naman..amoy plastic lang..tapos ung panel nawawala wala.",
           "span": [
            0,
-           19
+           59
           ],
-          "language": "en",
+          "language": "fil",
           "rating": 5.0,
           "evidence": "clear"
          }
         ],
         "review_ids": [
          "971109898175114",
+         "699408403475114",
          "931021263875114"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "matches_listing",
+        "kind": "product",
+        "polarity": "negative",
+        "reviews": 3,
+        "text": "Items that differ from the listing: 3 reviews concerning",
+        "quotes": [
+         {
+          "review_id": "867626673075114",
+          "text": "Misleading description.",
+          "span": [
+           0,
+           23
+          ],
+          "language": "en",
+          "rating": 1.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "766613739475114",
+          "text": "so far ok naman po triny namin agad nilagyan nmin ng tubig gaya nung cnssbi ng comment ng iba po n pg first time ei tubig muna iluto.photo not related po",
+          "span": [
+           0,
+           153
+          ],
+          "language": "taglish",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "867626673075114",
+         "766613739475114",
+         "935069047975114"
         ],
         "ids_truncated": false
        },
@@ -22112,6 +23076,44 @@
         "ids_truncated": false
        },
        {
+        "aspect": "delivery",
+        "kind": "service",
+        "polarity": "positive",
+        "reviews": 4,
+        "text": "Delivery: 4 reviews supporting",
+        "quotes": [
+         {
+          "review_id": "857256146175114",
+          "text": "gumagana din at ang bilis dumating, 2 days lang dumating na agad",
+          "span": [
+           55,
+           119
+          ],
+          "language": "fil",
+          "rating": 5.0,
+          "evidence": "clear"
+         },
+         {
+          "review_id": "902090426975114",
+          "text": "Item was well packed and arrived fast.",
+          "span": [
+           77,
+           115
+          ],
+          "language": "en",
+          "rating": 5.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "857256146175114",
+         "902090426975114",
+         "683524127175114",
+         "941282035375114"
+        ],
+        "ids_truncated": false
+       },
+       {
         "aspect": "packaging",
         "kind": "service",
         "polarity": "positive",
@@ -22150,60 +23152,12 @@
         "ids_truncated": false
        },
        {
-        "aspect": "delivery",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 3,
-        "text": "Delivery: 3 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "868481475875114",
-          "text": "Thank you Lazada seller packer courrier and delivery personnel 🥰",
-          "span": [
-           76,
-           140
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "emoji"
-         },
-         {
-          "review_id": "683524127175114",
-          "text": "fast delivery well packed recieved in good condition thanks to our rider and seller",
-          "span": [
-           0,
-           83
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "868481475875114",
-         "683524127175114",
-         "941282035375114"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "seller",
         "kind": "service",
         "polarity": "positive",
-        "reviews": 3,
-        "text": "Seller service: 3 reviews supporting",
+        "reviews": 1,
+        "text": "Seller service: 1 review supporting",
         "quotes": [
-         {
-          "review_id": "868481475875114",
-          "text": "Thank you Lazada seller packer courrier and delivery personnel 🥰",
-          "span": [
-           76,
-           140
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "emoji"
-         },
          {
           "review_id": "694279424275114",
           "text": "mabait ang deliver boy very goo",
@@ -22217,9 +23171,7 @@
          }
         ],
         "review_ids": [
-         "868481475875114",
-         "694279424275114",
-         "670648788275114"
+         "694279424275114"
         ],
         "ids_truncated": false
        },
@@ -22260,6 +23212,30 @@
          "814312897575114",
          "929110323575114",
          "661075036575114"
+        ],
+        "ids_truncated": false
+       },
+       {
+        "aspect": "seller",
+        "kind": "service",
+        "polarity": "negative",
+        "reviews": 1,
+        "text": "Problems with seller service: 1 review concerning",
+        "quotes": [
+         {
+          "review_id": "972949911275114",
+          "text": "MANLOLOKO KAU WLA NMN SA 2 LITERS!!!",
+          "span": [
+           0,
+           36
+          ],
+          "language": "fil",
+          "rating": 1.0,
+          "evidence": "clear"
+         }
+        ],
+        "review_ids": [
+         "972949911275114"
         ],
         "ids_truncated": false
        }
@@ -22685,7 +23661,7 @@
        "status": "limited",
        "reviews_considered": 9,
        "product_reviews": 0,
-       "service_reviews": 7,
+       "service_reviews": 6,
        "not_used_yet_reviews": 0,
        "skipped_clauses": {
         "truncated_reviews": 0,
@@ -22700,7 +23676,7 @@
         "conflict": 0,
         "menu_tag": 0
        },
-       "rules_version": "asp2",
+       "rules_version": "asp3",
        "category": "haircare",
        "why": [
         {
@@ -22774,42 +23750,6 @@
           "L2",
           "L3",
           "L8"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "seller",
-         "kind": "service",
-         "polarity": "positive",
-         "reviews": 2,
-         "text": "Seller service: 2 reviews supporting",
-         "quotes": [
-          {
-           "review_id": "L4",
-           "text": "Fast shipping thank you seller",
-           "span": [
-            0,
-            30
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          },
-          {
-           "review_id": "L7",
-           "text": "Thank you seller",
-           "span": [
-            0,
-            16
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "L4",
-          "L7"
          ],
          "ids_truncated": false
         }
@@ -23232,7 +24172,7 @@
       "status": "limited",
       "reviews_considered": 9,
       "product_reviews": 0,
-      "service_reviews": 7,
+      "service_reviews": 6,
       "not_used_yet_reviews": 0,
       "skipped_clauses": {
        "truncated_reviews": 0,
@@ -23247,7 +24187,7 @@
        "conflict": 0,
        "menu_tag": 0
       },
-      "rules_version": "asp2",
+      "rules_version": "asp3",
       "category": "haircare",
       "why": [
        {
@@ -23321,42 +24261,6 @@
          "L2",
          "L3",
          "L8"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "seller",
-        "kind": "service",
-        "polarity": "positive",
-        "reviews": 2,
-        "text": "Seller service: 2 reviews supporting",
-        "quotes": [
-         {
-          "review_id": "L4",
-          "text": "Fast shipping thank you seller",
-          "span": [
-           0,
-           30
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         },
-         {
-          "review_id": "L7",
-          "text": "Thank you seller",
-          "span": [
-           0,
-           16
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "L4",
-         "L7"
         ],
         "ids_truncated": false
        }

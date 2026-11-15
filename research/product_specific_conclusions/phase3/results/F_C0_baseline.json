@@ -1,0 +1,117 @@
+{
+ "split": "F",
+ "impl": "C:\\Users\\cabal\\AppData\\Local\\Temp\\claude\\daec81c2a6b4576e\\71b34fa2-d83c-4c08-bed1-488994844c9d\\scratchpad\\snap\\C0",
+ "rules_version": "asp2",
+ "reviews": 104,
+ "tasks": {
+  "T0": {
+   "tp": 28,
+   "fp": 14,
+   "fn": 80,
+   "precision": 0.667,
+   "recall": 0.259,
+   "f1": 0.373
+  },
+  "T1": {
+   "tp": 16,
+   "fp": 4,
+   "fn": 46,
+   "precision": 0.8,
+   "recall": 0.258,
+   "f1": 0.39
+  },
+  "T2": {
+   "tp": 10,
+   "fp": 10,
+   "fn": 33,
+   "precision": 0.5,
+   "recall": 0.233,
+   "f1": 0.317
+  },
+  "T3": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 1,
+   "precision": 1.0,
+   "recall": 0.667,
+   "f1": 0.8
+  }
+ },
+ "by_profile": {
+  "apparel": {
+   "reviews": 16,
+   "tp": 4,
+   "fp": 0,
+   "fn": 9,
+   "precision": 1.0,
+   "recall": 0.308,
+   "f1": 0.471
+  },
+  "appliance": {
+   "reviews": 20,
+   "tp": 5,
+   "fp": 2,
+   "fn": 20,
+   "precision": 0.714,
+   "recall": 0.2,
+   "f1": 0.312
+  },
+  "food": {
+   "reviews": 20,
+   "tp": 4,
+   "fp": 5,
+   "fn": 13,
+   "precision": 0.444,
+   "recall": 0.235,
+   "f1": 0.308
+  },
+  "hair": {
+   "reviews": 22,
+   "tp": 11,
+   "fp": 5,
+   "fn": 20,
+   "precision": 0.688,
+   "recall": 0.355,
+   "f1": 0.468
+  },
+  "skin": {
+   "reviews": 26,
+   "tp": 4,
+   "fp": 2,
+   "fn": 18,
+   "precision": 0.667,
+   "recall": 0.182,
+   "f1": 0.286
+  }
+ },
+ "by_language": {
+  "en": {
+   "reviews": 69,
+   "tp": 8,
+   "fp": 5,
+   "fn": 37,
+   "precision": 0.615,
+   "recall": 0.178,
+   "f1": 0.276
+  },
+  "fil": {
+   "reviews": 15,
+   "tp": 6,
+   "fp": 6,
+   "fn": 22,
+   "precision": 0.5,
+   "recall": 0.214,
+   "f1": 0.3
+  },
+  "taglish": {
+   "reviews": 20,
+   "tp": 14,
+   "fp": 3,
+   "fn": 21,
+   "precision": 0.824,
+   "recall": 0.4,
+   "f1": 0.538
+  }
+ },
+ "ms_per_review": 0.65
+}

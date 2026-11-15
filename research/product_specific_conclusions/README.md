@@ -20,13 +20,14 @@ expandable "Why this conclusion?" shows every count with the original quotations
 | Result | Value | Trust |
 |---|---|---|
 | Saved products whose verdict and decision are unchanged | 182 of 182 | verified mechanically |
-| Quotations checked against their reviews (182 saved + 37 real non-electronics) | 5,837 of 5,837 verbatim, right position, 0 problems in 3,535 lines, 13,558 ids | verified mechanically |
-| Backend tests | 402 pass, 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
+| Quotations checked against their reviews (182 saved + 37 real non-electronics) | 6,661 of 6,661 verbatim, right position, 0 problems in 3,965 lines, 18,239 ids | verified mechanically |
+| Backend tests | 424 pass, 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
 | Browser test, 3 widths, 7 cases (3 real non-electronics), accessibility | passes | verified |
 | First read of a product page | 72 ms median, 256 ms p95 (this PC); 72 / 249 ms in the VM's Python 3.12 limited to 2 CPUs; cached 1 ms; cold start 0.4 s | measured here and emulated; **no staging or VM measurement** |
 | "Mostly negative" said without a negative majority | 3 → 0 of 182 | verified |
 | Aspect claims judged correct, real non-electronics, first look | 80% (56 of 70) | **developer-judged, one person** |
 | … after fixes, new draw | 89% (62 of 70) | developer-judged, optimistic (same judge, informed) |
+| **Phase 3: extractor asp3 on fresh data (F, 104 reviews, non-electronics)** | product features precision 0.852, recall 0.371, **F1 0.517** (baseline asp2 on the same reviews 0.800 / 0.258 / 0.390); all kinds 0.850 / 0.315 / 0.459; **target 0.80 not met (recall)** | **Claude-assisted reference, one set, not independent**; `phase3/results.md` |
 | AI-assisted evaluation (Claude-assisted, one set, not independent) | features P 0.72 / R 0.29 / **F1 0.41 (target 0.80 not met)**; claims 63 of 80 correct (78.8%, 68.6 to 86.3%) | **AI-assisted, not human**; card and words sheets pending |
 | Independent human evaluation | none | **PENDING HUMAN EVALUATION** (pack of 35 real products, 80 claims and 150 reviews for recall/F1 is built; AI-assisted labelling is approved and, when done, is reported as an AI-assisted reference with provenance, not as human annotation) |
 | Footwear, motorcycle parts | no real reviews exist in the project | **unvalidated** |
@@ -51,6 +52,9 @@ expandable "Why this conclusion?" shows every count with the original quotations
 | `real_examples.md`, `examples.md` | Before and after: real non-electronics products with traceable reviews; constructed review sets (labelled synthetic) |
 | `precision_check.md` | The earlier developer precision rounds on electronics (historical: the extractor has changed since) |
 | `before_after.csv`, `before_after_summary.json` | Old and new text of every saved product |
+| `phase3/` | The feature-extraction improvement study: protocol written in advance, new development and fresh final data, candidates, results, freeze record |
+| `ai_annotation/` | Annotation records and tooling (provenance, single-set scoring, product-level batches for the card and words sheets) |
+| `staging_procedure.md` | The reproducible staging procedure (not yet performed) |
 | `rating/`, `aspect_validation_sample.csv` | Blind annotation sheets (empty) |
 | `*.py` | `before_after`, `examples`, `real_examples`, `aspect_validation`, `analyse_real_nongadget`, `evidence_verification`, `recommendation_policy_compare`, `text_rating`, `benchmark`, `make_ui_fixture`, `run_regression` |
 

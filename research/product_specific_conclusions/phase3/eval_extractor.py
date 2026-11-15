@@ -74,7 +74,7 @@ def run(impl: Path, split: str, errors: Path | None = None) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--impl", type=Path, default=ROOT / "backend")
-    parser.add_argument("--split", required=True, choices=["D1", "D2"])
+    parser.add_argument("--split", required=True, choices=["D1", "D2", "F"])
     parser.add_argument("--errors", type=Path, default=None)
     parser.add_argument("--json", type=Path, default=None)
     args = parser.parse_args()

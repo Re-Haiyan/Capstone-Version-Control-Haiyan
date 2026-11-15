@@ -148,3 +148,19 @@ Claim correctness is a **precision-type** figure and is not an F1. Seven of the 
 | Agreement between annotation sets | only one set exists |
 | Review evidence counts | not judged by annotators; verified mechanically (distinct review ids; `evidence_verification.md`) |
 | Human-reviewed results | none exist; reported separately here when they do |
+
+
+## Phase 3 evaluation sets and the card and words batches
+
+**Phase 3 sets (separate from the locked pack above).** `phase3/data/` holds three new samples of real reviews, split by product: D1 (inspected development), D2 (development validation) and F (fresh final). The same Claude-assisted annotator labelled each set blind to the extractor (`phase3/annotated/provenance.json`; model Claude Sonnet 5.5, not ChatGPT, no human review). They are **AI-assisted reference labels, not independent human labels**. Results: `phase3/results.md`. Target 0.80: not met.
+
+**Card and words sheets in product-level batches (prepared, not annotated).** These two sheets need every review of each product read (5,946 reviews for the 35 products). To make that manageable and honest:
+
+```
+python research/product_specific_conclusions/ai_annotation/batches.py make --size 5       # 7 batches: a reading packet and a blank return CSV each (generated, not committed)
+# an annotator reads one card packet (no system output), fills batch_NN_card_return.csv; only afterwards the words packet for the same products
+# put returned CSVs and a provenance.json (annotator, model version, interface, date, prompt file, human review) in a folder
+python research/product_specific_conclusions/ai_annotation/batches.py merge <returned> --out <working folder>
+python research/product_specific_conclusions/final_eval_pack.py score <working folder>   # single_annotation_set provenance
+```
+`merge` refuses without provenance, refuses a words row whose card row is missing, refuses any changed pre-filled column or out-of-range value, and leaves an untouched row blank. Whoever annotates (a person, ChatGPT, or Claude) is named in the provenance; AI-assisted and human-reviewed results are scored from separate folders and reported separately. **Status: no batch has been annotated; card, words, conclusion preference and agreement between sets remain pending.**

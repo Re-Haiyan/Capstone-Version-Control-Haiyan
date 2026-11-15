@@ -49,3 +49,14 @@ If several qualify, the one with the best T1 F1 on D2 is chosen. A candidate tha
 
 ## 6. What this protocol cannot promise
 0.80 for precision, recall and F1 are optimisation goals. A rule-based extractor that is deliberately conservative may not reach 0.80 recall without unacceptable false statements; the final report will say what was reached and what it cost.
+
+## Amendments (dated; none changes a rule after seeing the final result)
+
+**2026-11-15, before F was opened:**
+1. **Candidate contents.** C3 also carries profile-specific vocabulary found missing in D1 (food taste phrases such as "best taste" and "taste is top notch"), not only context rules. Reason: it was found in D1 while writing C3 and fits no other candidate.
+2. **Unsupported-claim rule (criterion 3).** The protocol said "a sample of 60 new claims from D2 output". After the freeze, **every** D2 detection absent from the reference was read instead (C3: 12, C0: 15), which is a stronger check than a sample. Result: C3 9 of 100 detections unsupported, C0 12 of 60. Judged by the annotator, not independently.
+3. **D2 use.** D2 metrics were looked at once per candidate (C0 to C4, five times) and the false detections of C0 and C3 once, after the freeze. D2 is therefore a *validation* set that influenced the choice between candidates, not an untouched test; F is the untouched test.
+4. **Fresh final set composition.** F contains no electronics, because every electronics review in the project was read while tuning in earlier rounds; F is real non-electronics reviews from products absent from the locked pack and from D1 and D2.
+5. **Apparel in D2.** D2 has no apparel products (the hash split put the few apparel products in D1 and F); apparel is represented in F.
+6. **Annotation additions.** Prompt answers in the reviewer's own words ("Price: good") count; bare thanks to a seller or rider is not a statement; the absence of a problem ("not irritating") is a positive statement. These were fixed before F and are in `annotated/provenance.json`.
+7. **C5** was not built (about 170 reference pairs over more than 100 aspect labels).

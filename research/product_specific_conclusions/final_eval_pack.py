@@ -426,6 +426,58 @@ def score_features(folder: Path):
     return out
 
 
+def score_card_single(sheet: dict, key: dict) -> dict:
+    ids = sorted(i for i, r in sheet.items() if r["assessment"].strip() in CARDS and i in key)
+    if len(ids) < MIN_PRODUCTS:
+        raise SystemExit(f"Card sheet: only {len(ids)} products judged; at least {MIN_PRODUCTS} are needed. Nothing is scored.")
+    ann = [sheet[i]["assessment"].strip() for i in ids]
+    sysc = [key[i]["system_card"] for i in ids]
+    agree = sum(a == b for a, b in zip(ann, sysc))
+    dangerous = sum(1 for i in ids if key[i]["system_card"] == "Well reviewed" and sheet[i]["serious_safety_concern"].strip().lower() == "yes")
+    return {
+        "products": len(ids),
+        "system_vs_annotator_exact": [agree, len(ids), wilson(agree, len(ids))],
+        "system_agrees_cohens_kappa": round(kappa(sysc, ann), 2),
+        "system_says_well_reviewed_while_annotator_flags_a_serious_safety_concern": dangerous,
+        "annotator_card_counts": dict(collections.Counter(ann)),
+        "note": "against ONE annotation set; agreement between annotation sets is not available",
+    }
+
+
+def score_words_single(sheet: dict, key: dict) -> dict:
+    def complete(r):
+        try:
+            return all(1 <= int(r[f"{c}_{n}"]) <= 5 for c in CRITERIA for n in (1, 2)) and all(r[f"{x}_{n}"].strip().lower() in ("yes", "no") for x in ("unsupported", "safety_error") for n in (1, 2))
+        except (ValueError, KeyError):
+            return False
+
+    ids = sorted(i for i, r in sheet.items() if complete(r) and i in key)
+    if len(ids) < MIN_PRODUCTS:
+        raise SystemExit(f"Words sheet: only {len(ids)} products completely rated; at least {MIN_PRODUCTS} are needed. Nothing is scored.")
+
+    def value(pid, criterion, version):
+        k = key[pid]
+        n = 1 if k["text_1"] == version else 2
+        return int(sheet[pid][f"{criterion}_{n}"])
+
+    out: dict = {"products": len(ids), "criteria": {}}
+    for crit in CRITERIA:
+        old, new = [value(i, crit, "old") for i in ids], [value(i, crit, "new") for i in ids]
+        diffs = [b - a for a, b in zip(old, new)]
+        out["criteria"][crit] = {"old_mean": round(statistics.fmean(old), 2), "new_mean": round(statistics.fmean(new), 2), "mean_difference_new_minus_old": round(statistics.fmean(diffs), 2), "difference_95pct_bootstrap_interval": bootstrap_mean_ci([float(d) for d in diffs])}
+    for flag in ("unsupported", "safety_error"):
+        for version in ("old", "new"):
+            hits = [sheet[i][f"{flag}_{1 if key[i]['text_1'] == version else 2}"].strip().lower() == "yes" for i in ids]
+            out[f"{flag}_rate_{version}_text"] = [sum(hits), len(hits), wilson(sum(hits), len(hits))]
+    prefs = collections.Counter()
+    for i in ids:
+        choice = sheet[i]["preferred"].strip().lower()
+        prefs["same" if choice not in ("1", "2") else key[i][f"text_{choice}"]] += 1
+    out["preferred"] = dict(prefs)
+    out["note"] = "against ONE annotation set"
+    return out
+
+
 def score_single(folder: Path, provenance: dict) -> dict:
     """One annotation set (sheet A only): precision, recall and F1 against that set. Agreement between sets, the card and the words ratings are reported as pending, never filled in."""
     out: dict = {"note": "computed only from the annotator's sheets; developer judgements are not used anywhere", "provenance": provenance}
@@ -475,8 +527,12 @@ def score_single(folder: Path, provenance: dict) -> dict:
         out["features"] = features
     else:
         out["features"] = pending
-    out["card"] = pending
-    out["words"] = pending
+    key = {r["product_id"]: r for r in read_rows(PACK / "key_private.csv")}
+    card_rows = {r["product_id"]: r for r in read_rows(folder / "card_sheet_A.csv")} if (folder / "card_sheet_A.csv").is_file() else {}
+    words_rows = {r["product_id"]: r for r in read_rows(folder / "words_sheet_A.csv")} if (folder / "words_sheet_A.csv").is_file() else {}
+    # a sheet with no rating at all is "pending"; a sheet with some ratings but too few is refused, as for the other sections
+    out["card"] = score_card_single(card_rows, key) if any(r["assessment"].strip() for r in card_rows.values()) else pending
+    out["words"] = score_words_single(words_rows, key) if any(r["preferred"].strip() or r["factual_1"].strip() for r in words_rows.values()) else pending
     out["agreement_between_annotation_sets"] = "pending: only one annotation set exists"
     return out
 
