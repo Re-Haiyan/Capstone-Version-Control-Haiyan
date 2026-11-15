@@ -36,6 +36,7 @@ from .evidence import apply_policy as apply_evidence_policy
 from .evidence import would_drop as evidence_would_drop
 from .evidence import evidence_for_review
 from .sentiment_calibration import calibrated_sentiment
+from .hazard_refine import refine_sentences
 from . import text_norm
 from .extra_labels import (
     EXTRA_RULES_REVISION,
@@ -1975,6 +1976,7 @@ class HazardBadgeModel:
             if listing is not None and getattr(self.tagger, "listing_context", False)
             else self.tagger.tag_review(review, rating)
         )
+        sentences = refine_sentences(sentences)  # rules hf1; a no-op unless DEFAKETIVE_HAZARD_REFINE is set
         review_tags = sorted({tag for item in sentences for tag in item["tags"]})
         # The two informational labels travel beside review_tags, never inside it:
         # review_tags keeps meaning safety, defect or counterfeit wherever it is stored.

@@ -1,0 +1,14 @@
+{
+ "frozen_before_reading_HF": true,
+ "frozen_at_utc": "2026-11-15T17:07:56Z",
+ "adopted": "DEFAKETIVE_HAZARD_REFINE=adopted: the not_as_described additions of rules hf1 only",
+ "not_adopted": {
+  "precision rules": "counterfeit rose 0.029 on HD2, under the 0.03 bar; defect 0.001; safety and quality unchanged",
+  "recall rules for quality, defect, counterfeit": "no change on HD2"
+ },
+ "sha256_lf": {
+  "hazard_refine.py": "bdafb0fe764bd15cdcf0c8f5e9619a1f85edfbae14c3765673d3cec6db4197f2",
+  "hazard_model.py": "76c810c7e133eed70a2f8120a2edfd90a2a9486033412a177173976ce13106e9"
+ },
+ "HD2_looks": "metrics for H0, H1, H2, H3 and the adopted mode; HD2 mis-flags never listed"
+}

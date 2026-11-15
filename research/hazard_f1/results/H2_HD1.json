@@ -1,0 +1,143 @@
+{
+ "name": "H2",
+ "split": "HD1",
+ "impl": "D:\\DeFaketive-hazard",
+ "scored_rows": 153,
+ "low_confidence_rows_left_out": 24,
+ "products": 66,
+ "seconds": 13.8,
+ "flags": {
+  "safety": {
+   "weighted": {
+    "precision": 0.6,
+    "recall": 0.822,
+    "f1": 0.694,
+    "tp": 9.0,
+    "fp": 6.0,
+    "fn": 1.9,
+    "f1_95": [
+     0.454,
+     0.897
+    ]
+   },
+   "unweighted": {
+    "precision": 0.6,
+    "recall": 0.9,
+    "f1": 0.72,
+    "tp": 9.0,
+    "fp": 6.0,
+    "fn": 1.0,
+    "f1_95": [
+     0.48,
+     0.9
+    ]
+   }
+  },
+  "defect": {
+   "weighted": {
+    "precision": 0.789,
+    "recall": 0.98,
+    "f1": 0.874,
+    "tp": 292.2,
+    "fp": 77.9,
+    "fn": 6.0,
+    "f1_95": [
+     0.769,
+     0.934
+    ]
+   },
+   "unweighted": {
+    "precision": 0.7,
+    "recall": 0.875,
+    "f1": 0.778,
+    "tp": 35.0,
+    "fp": 15.0,
+    "fn": 5.0,
+    "f1_95": [
+     0.655,
+     0.859
+    ]
+   }
+  },
+  "counterfeit": {
+   "weighted": {
+    "precision": 0.962,
+    "recall": 1.0,
+    "f1": 0.981,
+    "tp": 49.1,
+    "fp": 1.9,
+    "fn": 0.0,
+    "f1_95": [
+     0.88,
+     1.0
+    ]
+   },
+   "unweighted": {
+    "precision": 0.95,
+    "recall": 1.0,
+    "f1": 0.974,
+    "tp": 19.0,
+    "fp": 1.0,
+    "fn": 0.0,
+    "f1_95": [
+     0.857,
+     1.0
+    ]
+   }
+  },
+  "quality": {
+   "weighted": {
+    "precision": 0.913,
+    "recall": 0.936,
+    "f1": 0.924,
+    "tp": 157.0,
+    "fp": 15.0,
+    "fn": 10.7,
+    "f1_95": [
+     0.859,
+     0.981
+    ]
+   },
+   "unweighted": {
+    "precision": 0.9,
+    "recall": 0.931,
+    "f1": 0.915,
+    "tp": 27.0,
+    "fp": 3.0,
+    "fn": 2.0,
+    "f1_95": [
+     0.845,
+     0.974
+    ]
+   }
+  },
+  "not_as_described": {
+   "weighted": {
+    "precision": 0.852,
+    "recall": 0.716,
+    "f1": 0.778,
+    "tp": 134.6,
+    "fp": 23.5,
+    "fn": 53.4,
+    "f1_95": [
+     0.612,
+     0.911
+    ]
+   },
+   "unweighted": {
+    "precision": 0.828,
+    "recall": 0.774,
+    "f1": 0.8,
+    "tp": 24.0,
+    "fp": 5.0,
+    "fn": 7.0,
+    "f1_95": [
+     0.656,
+     0.909
+    ]
+   }
+  }
+ },
+ "macro_f1_weighted": 0.85,
+ "macro_f1_unweighted": 0.837
+}

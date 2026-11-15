@@ -1,0 +1,143 @@
+{
+ "name": "H0",
+ "split": "HD2",
+ "impl": "D:\\DeFaketive-hotfix",
+ "scored_rows": 150,
+ "low_confidence_rows_left_out": 25,
+ "products": 71,
+ "seconds": 12.7,
+ "flags": {
+  "safety": {
+   "weighted": {
+    "precision": 0.923,
+    "recall": 0.233,
+    "f1": 0.373,
+    "tp": 12.0,
+    "fp": 1.0,
+    "fn": 39.4,
+    "f1_95": [
+     0.133,
+     0.979
+    ]
+   },
+   "unweighted": {
+    "precision": 0.923,
+    "recall": 0.8,
+    "f1": 0.857,
+    "tp": 12.0,
+    "fp": 1.0,
+    "fn": 3.0,
+    "f1_95": [
+     0.632,
+     0.979
+    ]
+   }
+  },
+  "defect": {
+   "weighted": {
+    "precision": 0.832,
+    "recall": 0.803,
+    "f1": 0.817,
+    "tp": 386.1,
+    "fp": 78.1,
+    "fn": 94.5,
+    "f1_95": [
+     0.701,
+     0.907
+    ]
+   },
+   "unweighted": {
+    "precision": 0.681,
+    "recall": 0.865,
+    "f1": 0.762,
+    "tp": 32.0,
+    "fp": 15.0,
+    "fn": 5.0,
+    "f1_95": [
+     0.642,
+     0.857
+    ]
+   }
+  },
+  "counterfeit": {
+   "weighted": {
+    "precision": 0.833,
+    "recall": 1.0,
+    "f1": 0.909,
+    "tp": 24.0,
+    "fp": 4.8,
+    "fn": 0.0,
+    "f1_95": [
+     0.8,
+     1.0
+    ]
+   },
+   "unweighted": {
+    "precision": 0.833,
+    "recall": 1.0,
+    "f1": 0.909,
+    "tp": 15.0,
+    "fp": 3.0,
+    "fn": 0.0,
+    "f1_95": [
+     0.8,
+     1.0
+    ]
+   }
+  },
+  "quality": {
+   "weighted": {
+    "precision": 0.83,
+    "recall": 0.669,
+    "f1": 0.741,
+    "tp": 107.7,
+    "fp": 22.0,
+    "fn": 53.2,
+    "f1_95": [
+     0.547,
+     0.909
+    ]
+   },
+   "unweighted": {
+    "precision": 0.84,
+    "recall": 0.875,
+    "f1": 0.857,
+    "tp": 21.0,
+    "fp": 4.0,
+    "fn": 3.0,
+    "f1_95": [
+     0.741,
+     0.943
+    ]
+   }
+  },
+  "not_as_described": {
+   "weighted": {
+    "precision": 0.945,
+    "recall": 0.563,
+    "f1": 0.706,
+    "tp": 208.3,
+    "fp": 12.2,
+    "fn": 161.5,
+    "f1_95": [
+     0.562,
+     0.839
+    ]
+   },
+   "unweighted": {
+    "precision": 0.897,
+    "recall": 0.684,
+    "f1": 0.776,
+    "tp": 26.0,
+    "fp": 3.0,
+    "fn": 12.0,
+    "f1_95": [
+     0.655,
+     0.872
+    ]
+   }
+  }
+ },
+ "macro_f1_weighted": 0.709,
+ "macro_f1_unweighted": 0.832
+}
