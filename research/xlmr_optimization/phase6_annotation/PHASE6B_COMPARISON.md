@@ -1,5 +1,16 @@
 # Phase 6B comparison and decisions
 
+## Executed GitHub Actions comparison
+
+- All five Phase 6B unit tests passed, and the comparison generated its metadata-only outputs.
+- Five-class exact sentiment agreement **40/54 (74.07%)**; Cohen's kappa **0.441242**. These are descriptive cross-AI results for an intentionally risk-enriched set.
+- **14 sentiment label disagreements** and **four additional tag-only disagreements** generated **18 proposed-only overlays**.
+- High-priority review cases remain **N2459**, **N2372**, **N1025** and **N1682**; none is a certified correction.
+- Existing original Claude labels, the Phase 5 GPT-6 140-case labels, the frozen final test, the previously used confirmation and the deployment model remain unchanged.
+- GitHub Actions run: https://github.com/Re-Haiyan/Capstone-Version-Control-Haiyan/actions/runs/43724393187
+- Artifact: https://github.com/Re-Haiyan/Capstone-Version-Control-Haiyan/actions/runs/43724393187/artifacts/14165028744 (aggregate agreement JSON and coordinator-only proposed overlay; **no customer review text**).
+
+
 **Status:** AI-to-AI development-only error investigation. This does not establish corrected truth or replace existing Claude labels.
 
 ## What was done
