@@ -201,5 +201,51 @@ class Batches(unittest.TestCase):
         self.assertFalse((self.tmp / "work" / "card_sheet_A.csv").exists())
 
 
+    def test_incremental_merges_preserve_earlier_completed_batches(self):
+        ret = self.returned()
+        for path in ret.glob("batch_*_return.csv"):
+            if not path.name.startswith("batch_01_"):
+                path.unlink()
+        work = self.tmp / "work"
+        first = bt.merge(ret, work)
+        self.assertEqual(first["card"]["products_returned"], 5)
+        self.assertEqual(first["words"]["products_returned"], 5)
+        earlier = {r["product_id"]: r for r in read(work / "card_sheet_A.csv") if r["assessment"]}
+
+        ret = self.returned()
+        for path in ret.glob("batch_01_*_return.csv"):
+            path.unlink()
+        final = bt.merge(ret, work)
+        self.assertEqual(final["card"]["products_returned"], 35)
+        self.assertEqual(final["words"]["products_returned"], 35)
+        completed = {r["product_id"]: r for r in read(work / "card_sheet_A.csv")}
+        for pid, original in earlier.items():
+            self.assertEqual(completed[pid], original)
+
+    def test_rejects_conflicting_reannotation_without_losing_original(self):
+        ret = self.returned()
+        work = self.tmp / "work"
+        bt.merge(ret, work)
+        original = (work / "card_sheet_A.csv").read_bytes()
+        path = ret / "batch_01_card_return.csv"
+        data = read(path)
+        data[0]["main_reason"] = "a changed answer that needs recorded adjudication"
+        write(path, data, fp.CARD_COLS)
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, work)
+        self.assertEqual((work / "card_sheet_A.csv").read_bytes(), original)
+
+    def test_incremental_merge_rejects_changed_annotator_provenance(self):
+        ret = self.returned()
+        work = self.tmp / "work"
+        bt.merge(ret, work)
+        original = (work / "provenance.json").read_bytes()
+        new_provenance = dict(PROVENANCE, annotator="another AI session")
+        (ret / "provenance.json").write_text(json.dumps(new_provenance), encoding="utf-8")
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, work)
+        self.assertEqual((work / "provenance.json").read_bytes(), original)
+
+
 if __name__ == "__main__":
     unittest.main()

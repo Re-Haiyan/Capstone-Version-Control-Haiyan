@@ -117,8 +117,9 @@ def validate_return(kind: str, path: Path, r: dict, cols: list[str], fixed: list
 def merge(returned: Path, out: Path) -> dict:
     """Validate the ENTIRE return before writing ANY completed sheet.
 
-    Each output file is atomically replaced after staging. An invalid late words
-    batch cannot leave a newly written card sheet behind.
+    Each output file is atomically replaced after staging. Existing completed
+    rows survive subsequent partial batch merges. Changes to earlier answers,
+    provenance mismatches, or an invalid late batch are rejected before writing.
     """
     if out.resolve() == returned.resolve() or out.resolve() == PACK.resolve() or PACK.resolve() in out.resolve().parents:
         raise SystemExit("Output must be a separate working folder, never the locked pack or returned folder.")
@@ -130,6 +131,11 @@ def merge(returned: Path, out: Path) -> dict:
         if not str(data.get(key, "")).strip():
             raise SystemExit(f"provenance.json: '{key}' is empty (write 'not recorded' if unknown). Nothing is merged.")
 
+    previous_files = (out / "card_sheet_A.csv", out / "words_sheet_A.csv", out / "provenance.json")
+    has_previous = [path.is_file() for path in previous_files]
+    if any(has_previous) and not all(has_previous):
+        raise SystemExit("Working folder contains incomplete prior merge; refusing to overwrite it.")
+
     outputs: dict[str, tuple[list[str], list[dict]]] = {}
     completed: dict[str, set[str]] = {}
     result = {}
@@ -137,6 +143,16 @@ def merge(returned: Path, out: Path) -> dict:
         base = {r["product_id"]: r for r in rows(PACK / sheet_name)}
         fixed = fp.CARD_COLS[:2] if kind == "card" else fp.WORDS_COLS[:5]
         merged: dict[str, dict] = {}
+        if all(has_previous):
+            prior_rows = read_returned(out / sheet_name, cols)
+            if len(prior_rows) != len(base) or {r["product_id"] for r in prior_rows} != set(base):
+                raise SystemExit(f"{sheet_name}: prior working sheet does not match locked product list")
+            for old in prior_rows:
+                pid = old["product_id"]
+                if any(old[c] != base[pid][c] for c in fixed):
+                    raise SystemExit(f"{sheet_name}: prior pre-filled columns changed for {pid}")
+                if validate_return(kind, out / sheet_name, old, cols, fixed):
+                    merged[pid] = old
         seen: set[str] = set()
         for path in sorted(returned.glob(f"batch_*_{kind}_return.csv")):
             for r in read_returned(path, cols):
@@ -150,6 +166,8 @@ def merge(returned: Path, out: Path) -> dict:
                     raise SystemExit(f"{path.name}: a pre-filled column of {pid} was changed")
                 if not validate_return(kind, path, r, cols, fixed):
                     continue
+                if pid in merged and merged[pid] != r:
+                    raise SystemExit(f"{path.name}: {pid} conflicts with earlier completed annotation; keep the original and record any adjudication separately")
                 merged[pid] = r
         completed[kind] = set(merged)
         outputs[sheet_name] = (cols, [merged.get(pid, base[pid]) for pid in base])
@@ -169,6 +187,10 @@ def merge(returned: Path, out: Path) -> dict:
         },
         "annotator_B": None,
     }
+    if all(has_previous):
+        previous_provenance = json.loads((out / "provenance.json").read_text(encoding="utf-8"))
+        if previous_provenance != provenance:
+            raise SystemExit("Provenance differs from previous merge. Use a separate working folder for a different annotation session.")
     out.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".batch-stage-", dir=out) as tmp:
         tmp_dir = Path(tmp)
