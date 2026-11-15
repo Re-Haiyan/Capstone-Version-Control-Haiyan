@@ -1,0 +1,461 @@
+{
+ "model": "R2 T7 recipe retrained on v1 folds (filtered corpus, no FiReCS neutral, balanced)",
+ "split_seed": 11,
+ "confusion_rows_true_neg_neu_pos": [
+  [
+   307,
+   52,
+   6
+  ],
+  [
+   16,
+   1568,
+   103
+  ],
+  [
+   22,
+   300,
+   904
+  ]
+ ],
+ "neutral_to_positive": {
+  "count": 103,
+  "of_true_class": 1687,
+  "features": {
+   "has_numeric_ratings=False": 100,
+   "has_numeric_ratings=True": 3,
+   "language=english": 56,
+   "language=filipino": 5,
+   "language=taglish": 14,
+   "language=unknown": 14,
+   "language=unknown (under 4 words)": 14,
+   "low_confidence=False": 49,
+   "low_confidence=True": 54,
+   "lukewarm_words=False": 83,
+   "lukewarm_words=True": 20,
+   "no_opinion_tag=False": 30,
+   "no_opinion_tag=True": 73,
+   "tag_list_shape=False": 44,
+   "tag_list_shape=True": 59
+  },
+  "examples": [
+   {
+    "id": "D229",
+    "text": "ok naman maraming salamat seller at maraming salamat din kay kiya na nagdeliver",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D298",
+    "text": "\ud83d\udd0bBattery Life:oks life \ud83d\udcf8Camera Quality:jdksnaanab \u26a1Performance:dko AP ana open sealed pa e salamat sa seller more buyers",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D001",
+    "text": "Ease of Use:perfect. havent tested. i will revisit my review",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D063",
+    "text": "Breathable light effect mode, Ergonomic keycap design, Compact and portable size, its a gifr for my bro.",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D377",
+    "text": "Fast 45W charging, Built-in USB-C cable, thanks po seller and Rider \ud83d\udc4d\ud83d\udc4d",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D395",
+    "text": "Responsive keys, great for typing, The white color is clean and elegant, ok nama sya akala ko medyo malaki maliit lng pala pero ok nadin",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D235",
+    "text": "Got this as an additional freebie for preordering IP18 Pro! Thank you",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D067",
+    "text": "Compact and flight-approved, Fast 45W charging power, just received it looks good on me magfollow up review for quality. got this on sale thank you",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D339",
+    "text": "gonna try pa if legit",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "N0004",
+    "text": "Appearance:Okay Quality:okay Suitability:not yet used Fast Delivery. Delivered in condition, good packaging. Same as advertised, same as picture. Thank you shopee and seller.",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0008",
+    "text": "Arrived, in good condition, have yet to test, will send a thorough review once tested and used for 2-3 weeks",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0011",
+    "text": "Best Feature:10 Product Quality:ain't sure, haven't tried yet. Thank you!",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   }
+  ]
+ },
+ "positive_to_neutral": {
+  "count": 300,
+  "of_true_class": 1226,
+  "features": {
+   "has_numeric_ratings=False": 268,
+   "has_numeric_ratings=True": 32,
+   "language=english": 234,
+   "language=filipino": 12,
+   "language=taglish": 14,
+   "language=unknown": 30,
+   "language=unknown (under 4 words)": 10,
+   "low_confidence=False": 147,
+   "low_confidence=True": 153,
+   "lukewarm_words=False": 275,
+   "lukewarm_words=True": 25,
+   "no_opinion_tag=False": 300,
+   "tag_list_shape=False": 33,
+   "tag_list_shape=True": 267
+  },
+  "examples": [
+   {
+    "id": "D002",
+    "text": "legit.napaka murang wired mouse.gumagana naman,pati ang scroll up/down.medyo maliit.",
+    "true_tags": "mixed",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D269",
+    "text": "Reliable and stable connection., Versatile cable for various devices., Durability:\ud83d\udcaf Length:\ud83d\udcaf Compatibility:\ud83d\udcaf",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D291",
+    "text": "Easy assembly manual, 360-degree rotating wheels, Easy to move with wheels, Fast shipping service, Good quality material, Multi-purpose use, Non-slip wheel design, mabilis ding madeliver",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D214",
+    "text": "easy to pair on Bluetooth. Digital display indicator, Built-in microphone, fast delivery.",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D120",
+    "text": "Responsive , fast connecting.. left and right click good.. mid scroller bad.. 4 star only .",
+    "true_tags": "mixed",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D273",
+    "text": "ok naman yung item, nakarating ng walang basag. tamang-tama sa pag organized ng mga gamit na pakalat-kalat sa shop. medyo maliit lang.",
+    "true_tags": "mixed",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D217",
+    "text": "Inorder ko syang Oct. 14 then dumating sya ng Oct. 17, para sa akin na 1st time na magka iPhone maganda nmn sya, sana lang tumagal sya sakin haha",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D246",
+    "text": "Good quality and packaging. May option (scanning the qr code) to check if the product is legit or not. Although di siya fully charged upon delivery. Hoping na tumagal para sulit ang price.",
+    "true_tags": "mixed",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D090",
+    "text": "Easy to connect and use!,",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D015",
+    "text": "3 ports for simultaneous use, Fast 45W charging, Good quality product \ud83d\udc4d. good qualuty good qauality.",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D082",
+    "text": "Good packaging, items were all secured. My only complaint is it took quite some time for the items to be delivered.",
+    "true_tags": "delivery-only",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D248",
+    "text": "Design:same with coros pace 3 Functionality:Mas improve compared to pace 3 Durability:Dko pa na try (will edit later) Battery Life:Dumating ng 80% but dpende sa settings ng watch yung batt life Water Resistance:Yes",
+    "true_tags": "",
+    "set": "dev_pool"
+   }
+  ]
+ },
+ "neutral_to_negative": {
+  "count": 16,
+  "of_true_class": 1687,
+  "features": {
+   "has_numeric_ratings=False": 15,
+   "has_numeric_ratings=True": 1,
+   "language=english": 3,
+   "language=filipino": 5,
+   "language=taglish": 1,
+   "language=unknown": 6,
+   "language=unknown (under 4 words)": 1,
+   "low_confidence=False": 2,
+   "low_confidence=True": 14,
+   "lukewarm_words=False": 14,
+   "lukewarm_words=True": 2,
+   "no_opinion_tag=False": 6,
+   "no_opinion_tag=True": 10,
+   "tag_list_shape=False": 10,
+   "tag_list_shape=True": 6
+  },
+  "examples": [
+   {
+    "id": "D311",
+    "text": "paano po FM nito ? dipo ma i set",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D239",
+    "text": "there's no option for english language?",
+    "true_tags": "no-opinion",
+    "set": "dev_pool"
+   },
+   {
+    "id": "N0060",
+    "text": "Price:Reasonable price, Design:? Durability:?",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0102",
+    "text": "sana lang...matagal syang ma-lowbat.\ud83d\ude05",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0109",
+    "text": "wala pa na gamit",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0148",
+    "text": "1.is there anyway to remove the headset. 2.malabo nakakaduling",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0314",
+    "text": "34% dumating ,naka chrge pa siya isang cp may naiwan na 7%.. chinarge kna.. sana tumagal tlga.",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0384",
+    "text": "6 pairs sya",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0456",
+    "text": "Akala namim nawala yung isang battery. Yun pala, nsa loob ng box yung 2nd battery haha",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0678",
+    "text": "Ayos sya small but terrible. Sana lang magtagal. And I am expecting longer battery life (yet to be tested) and fast delivery 2 days lang nareceive ko na ang product.",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0743",
+    "text": "Best Feature:Metal chassis, 120Hz refresh rate, low price Product Quality:Decent entry-level tablet Performance:Average once 120Hz refresh rate and additional memory is used I bought the 6GB/128GB model since 4GB of RAM ",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N1833",
+    "text": "Ease of Use:Effortless operation.,",
+    "true_tags": "no-opinion",
+    "set": "neutral_candidates"
+   }
+  ]
+ },
+ "negative_to_neutral": {
+  "count": 52,
+  "of_true_class": 365,
+  "features": {
+   "has_numeric_ratings=False": 52,
+   "language=english": 24,
+   "language=filipino": 4,
+   "language=taglish": 6,
+   "language=unknown": 9,
+   "language=unknown (under 4 words)": 9,
+   "low_confidence=False": 35,
+   "low_confidence=True": 17,
+   "lukewarm_words=False": 48,
+   "lukewarm_words=True": 4,
+   "no_opinion_tag=False": 52,
+   "tag_list_shape=False": 23,
+   "tag_list_shape=True": 29
+  },
+  "examples": [
+   {
+    "id": "D066",
+    "text": "sayang Pera subrang hena",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D397",
+    "text": "It would have been nice if it was a little bigger.",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D007",
+    "text": "SUPPOSEDLY THE ORDER APPEARS DELIVERED ON JULY 15, 2024 AT 7 PM AND TODAY, JULY 16, THE PACKAGE HAS NOT ARRIVED AND ALSO WHEN TRACKING WITH X-CARGO I GET A CONFIRMATION OF DELIVERY WITH A SIGNATURE THAT IS NOT MINE, I DE",
+    "true_tags": "delivery-only",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D352",
+    "text": "i dont remember ordeeing this!",
+    "true_tags": "delivery-only",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D314",
+    "text": "Hmmmm, well I got it for free but its sound quality is bad, haven't tried its battery life it was packed nice and delivered quick, thanks still :)",
+    "true_tags": "mixed",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D019",
+    "text": "Box deformed.. no plastic or whatsoever.. but I hope the item is nice.",
+    "true_tags": "delivery-only",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D399",
+    "text": "\ud83d\udd0bBattery Life:product image vs reality",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D022",
+    "text": "Product Quality:the box was opened",
+    "true_tags": "delivery-only",
+    "set": "dev_pool"
+   },
+   {
+    "id": "D065",
+    "text": "I returned it. Is it still worth reviewing? It's been days since I applied for a return online.",
+    "true_tags": "",
+    "set": "dev_pool"
+   },
+   {
+    "id": "N0058",
+    "text": "Performance:need at least 1 week to further evaluate Product Quality:off color, its not white. Its dirty white or greyish white Best Feature:not yet known",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N0076",
+    "text": "Value For Money:not yet tried Best Feature:so small not expected size..hopefully it will last.. Maltese was stickers for kids..am already senior...",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   },
+   {
+    "id": "N1470",
+    "text": "Convenient wireless connectivity, Easy to use and navigate, Rechargeable for eco-friendly use, not good for big/long hands.",
+    "true_tags": "",
+    "set": "neutral_candidates"
+   }
+  ]
+ },
+ "natural_distribution_neutral_to_positive_vs_positive_to_neutral": {
+  "neutral_to_positive": 9,
+  "positive_to_neutral": 21,
+  "dev_pool_neutral": 75,
+  "dev_pool_positive": 195
+ },
+ "by_language_hint": {
+  "english": {
+   "n": 2216,
+   "accuracy": 0.8542418772563177,
+   "neutral_f1": 0.8943685438187272,
+   "macro_f1": 0.8271466958040032,
+   "labels": {
+    "negative": 105,
+    "neutral": 1401,
+    "positive": 710
+   }
+  },
+  "filipino": {
+   "n": 182,
+   "accuracy": 0.8351648351648352,
+   "neutral_f1": 0.4347826086956522,
+   "macro_f1": 0.7386340246752147,
+   "labels": {
+    "negative": 83,
+    "neutral": 20,
+    "positive": 79
+   }
+  },
+  "taglish": {
+   "n": 262,
+   "accuracy": 0.8435114503816794,
+   "neutral_f1": 0.3859649122807018,
+   "macro_f1": 0.7207534922065815,
+   "labels": {
+    "negative": 49,
+    "neutral": 26,
+    "positive": 187
+   }
+  },
+  "unknown": {
+   "n": 364,
+   "accuracy": 0.8214285714285714,
+   "neutral_f1": 0.8521303258145363,
+   "macro_f1": 0.8090026308719359,
+   "labels": {
+    "negative": 52,
+    "neutral": 190,
+    "positive": 122
+   }
+  },
+  "unknown (under 4 words)": {
+   "n": 254,
+   "accuracy": 0.84251968503937,
+   "neutral_f1": 0.673076923076923,
+   "macro_f1": 0.8159271049896049,
+   "labels": {
+    "negative": 76,
+    "neutral": 50,
+    "positive": 128
+   }
+  }
+ }
+}

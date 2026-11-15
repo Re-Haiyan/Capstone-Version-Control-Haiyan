@@ -1,0 +1,225 @@
+{
+ "rows": 200,
+ "three_class_rows": 184,
+ "labels": {
+  "negative": 57,
+  "neutral": 41,
+  "positive": 86
+ },
+ "rows_with_product_unseen_in_phase4_training": 8,
+ "reference": "AI-assisted (Claude, policy v1); not independent human ground truth; set already used once in Phase 3 for T0/T7; not product-independent",
+ "models": {
+  "P4A": {
+   "all": {
+    "n": 184,
+    "labels": {
+     "negative": 57,
+     "neutral": 41,
+     "positive": 86
+    },
+    "accuracy": 0.8913043478260869,
+    "macro_precision": 0.8847724149082383,
+    "macro_recall": 0.8841936093779542,
+    "macro_f1": 0.8834875722440875,
+    "weighted_f1": 0.8896879610402223,
+    "classes": {
+     "negative": {
+      "precision": 0.9193548387096774,
+      "recall": 1.0,
+      "f1": 0.9579831932773109,
+      "support": 57
+     },
+     "neutral": {
+      "precision": 0.8421052631578947,
+      "recall": 0.7804878048780488,
+      "f1": 0.810126582278481,
+      "support": 41
+     },
+     "positive": {
+      "precision": 0.8928571428571429,
+      "recall": 0.872093023255814,
+      "f1": 0.8823529411764706,
+      "support": 86
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0
+     ],
+     [
+      0,
+      32,
+      9
+     ],
+     [
+      5,
+      6,
+      75
+     ]
+    ],
+    "macro_f1_ci95_product_bootstrap": [
+     0.8282410476415002,
+     0.9310515942419059
+    ]
+   },
+   "product_unseen_subset": {
+    "n": 8,
+    "labels": {
+     "negative": 2,
+     "neutral": 2,
+     "positive": 4
+    },
+    "accuracy": 0.875,
+    "macro_precision": 0.9333333333333332,
+    "macro_recall": 0.8333333333333334,
+    "macro_f1": 0.8518518518518517,
+    "weighted_f1": 0.8611111111111112,
+    "classes": {
+     "negative": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+     },
+     "neutral": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 2
+     },
+     "positive": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.888888888888889,
+      "support": 4
+     }
+    },
+    "confusion": [
+     [
+      2,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      0,
+      4
+     ]
+    ]
+   }
+  },
+  "P4B": {
+   "all": {
+    "n": 184,
+    "labels": {
+     "negative": 57,
+     "neutral": 41,
+     "positive": 86
+    },
+    "accuracy": 0.8478260869565217,
+    "macro_precision": 0.8460468426501034,
+    "macro_recall": 0.8148988466628854,
+    "macro_f1": 0.8209160037556361,
+    "weighted_f1": 0.8395326897791703,
+    "classes": {
+     "negative": {
+      "precision": 0.890625,
+      "recall": 1.0,
+      "f1": 0.9421487603305785,
+      "support": 57
+     },
+     "neutral": {
+      "precision": 0.8214285714285714,
+      "recall": 0.5609756097560976,
+      "f1": 0.6666666666666667,
+      "support": 41
+     },
+     "positive": {
+      "precision": 0.8260869565217391,
+      "recall": 0.8837209302325582,
+      "f1": 0.853932584269663,
+      "support": 86
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0
+     ],
+     [
+      2,
+      23,
+      16
+     ],
+     [
+      5,
+      5,
+      76
+     ]
+    ],
+    "macro_f1_ci95_product_bootstrap": [
+     0.748813469677078,
+     0.8780062737664306
+    ]
+   },
+   "product_unseen_subset": {
+    "n": 8,
+    "labels": {
+     "negative": 2,
+     "neutral": 2,
+     "positive": 4
+    },
+    "accuracy": 0.875,
+    "macro_precision": 0.9333333333333332,
+    "macro_recall": 0.8333333333333334,
+    "macro_f1": 0.8518518518518517,
+    "weighted_f1": 0.8611111111111112,
+    "classes": {
+     "negative": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2
+     },
+     "neutral": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 2
+     },
+     "positive": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.888888888888889,
+      "support": 4
+     }
+    },
+    "confusion": [
+     [
+      2,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      0,
+      4
+     ]
+    ]
+   }
+  }
+ }
+}

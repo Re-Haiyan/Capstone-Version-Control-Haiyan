@@ -1,0 +1,30 @@
+{
+ "locked_at_utc": "2026-11-15T11:30:56+00:00",
+ "rule": "Fitted on all three-class v1 rows and locked before any scoring of the Phase 3 confirmation set with a Phase 4 model; selection evidence is the product-grouped development split (results/phase4_experiments.json).",
+ "annotator_of_v1_rows": "Claude (claude-sonnet-5-5), policy v1; one annotator; not ChatGPT; no human review",
+ "P4A": {
+  "artifact": "research/artifacts/sentiment_head_v3_p4a.joblib",
+  "sha256": "a59a95fe5f62fe8a849b08632174dde1052c53af0cc12cf02f6ed534bbe07cad",
+  "config": "v1 rows only, C 0.003, balanced",
+  "training_rows": 3278,
+  "training_labels": {
+   "negative": 365,
+   "neutral": 1687,
+   "positive": 1226
+  }
+ },
+ "P4B": {
+  "artifact": "research/artifacts/sentiment_head_v3_p4b.joblib",
+  "sha256": "2e5129635159cc912b5d579590b73521bb91213e4235af9536389c363ee1e78a",
+  "config": "filtered corpus without FiReCS neutral + v1 rows, C 0.003, no class weights",
+  "training_rows": 15840,
+  "training_labels": {
+   "negative": 6830,
+   "neutral": 2257,
+   "positive": 6753
+  }
+ },
+ "confirmation_set_used_in_training_or_selection": false,
+ "frozen_test_and_heldout_v2_used": false,
+ "shipped_model_unchanged": true
+}
