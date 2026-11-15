@@ -1,3 +1,5 @@
+> **Historical status note (2026-11-15):** This file records the original Phase 3 staging decision and older test counts. It is **not** a current production-approval record. For the latest CI evidence, unresolved dataset/rights gates, owner-selected AI-only evaluation limits, and retained-policy decision, see [RELEASE_GATES.md](RELEASE_GATES.md), [RECOMMENDATION_POLICY_DECISION.md](RECOMMENDATION_POLICY_DECISION.md), and [Phase 4 source options](phase4/SOURCE_OPTIONS.md). **Production remains blocked**; no new VM staging benchmark or live sync dry run has been performed.
+
 # Deployment readiness
 
 ## Verdict: **READY FOR STAGING. NOT READY FOR PRODUCTION.**
