@@ -1,147 +1,116 @@
 <script lang="ts">
 	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
 	import CircleCheckIcon from '@lucide/svelte/icons/circle-check';
-	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
 	import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
-	import InfoIcon from '@lucide/svelte/icons/info';
+	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 	import { chipFor, view } from '#lib/product.js';
-	import type { ConclusionDecision, Product, WhyItem } from '#lib/types.js';
+	import { positiveHighlights, reviewMentionCount } from '#lib/positive-highlights.js';
+	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
 
-	// One card for the verdict and the conclusion. It says what reviewers REPORT, never that a product is safe or
-	// unsafe. The server words the lead sentence, the paragraph that counts the reviews behind each concern, and the
-	// assessment; the verdict (the safety wording shoppers are told to read) stays underneath, unchanged.
-	// It arrives in steps: the box settles in and takes its colour, then the icon, the headline and the detail follow.
+	// Only review-grounded positive aspects: count each distinct review once.
+	// This is not a product recommendation or independent safety assurance.
 	let { product }: { product: Product } = $props();
-
 	const verdict = $derived(view(product));
 	const chip = $derived(chipFor(product));
-	const conclusion = $derived(verdict.conclusion);
-
-	// The assessment takes the conclusion's own colour, from the same four as the verdict.
-	const TONE: Record<ConclusionDecision, 'clear' | 'caution' | 'safety' | 'unknown'> = {
-		recommended: 'clear',
-		mixed: 'caution',
-		caution: 'caution',
-		not_recommended: 'safety',
-		not_enough: 'unknown'
-	};
-	const assessTone = $derived(conclusion ? TONE[conclusion.decision] : chip.kind);
-	const lead = $derived(conclusion?.lead || conclusion?.headline || verdict.headline);
-	// Safety and authenticity reports come on their own (`warnings`) and are shown in the open, set apart from the paragraph.
-	// `body` is the paragraph without them; a report saved without them shows `summary` as before.
-	const warnings = $derived(conclusion?.warnings ?? []);
-	const paragraph = $derived((warnings.length ? conclusion?.body : conclusion?.summary) || conclusion?.text || verdict.detail);
-
-	// "Why this conclusion?": every line is a count of distinct reviews, with the reviewers' own words behind it.
-	// The server sends it only when the saved report kept its review text; otherwise this section is simply absent.
-	const why = $derived(conclusion?.evidence?.why ?? []);
-	const GROUPS: { kind: WhyItem['kind']; title: string }[] = [
-		{ kind: 'product', title: 'About the product' },
-		{ kind: 'trust', title: 'Authenticity, as reviewers describe it' },
-		{ kind: 'service', title: 'Delivery and seller (not about the product itself)' }
-	];
-	const groups = $derived(GROUPS.map((group) => ({ ...group, items: why.filter((item) => item.kind === group.kind).slice(0, 8) })).filter((group) => group.items.length));
-	const LANGUAGE = { en: 'English', fil: 'Filipino', taglish: 'Taglish' } as const;
-	const reviewWord = (count: number) => (count === 1 ? '1 review' : `${count} reviews`);
+	const highlights = $derived(positiveHighlights(verdict.conclusion));
+	const analyzed = $derived(Number(verdict.reviews_analyzed) || highlights.reviewed || 0);
+	const reported = $derived((verdict.badges ?? []).filter((item) => Number(item.mentions) > 0));
+	const important = $derived(reported.filter((item) => !item.informs_only));
+	const caution = $derived(chip.kind === 'caution' || chip.kind === 'safety');
+	const first = $derived(highlights.product[0]);
+	const explanation = $derived(
+		first
+			? 'Most often praised: ' + first.label.toLowerCase() + ', mentioned positively in ' + reviewMentionCount(first.reviews) + '.'
+			: 'Only positive qualities explicitly supported by review text appear here.'
+	);
 </script>
 
-<!-- Keyed on the product, so opening another report plays the reveal again. -->
 {#key product.link}
-	<div class={cn('verdict-box tone-' + chip.kind, 'text-foreground grid min-w-0 gap-4 rounded-xl border-2 border-(--tone)/60 bg-(--tone-soft) p-4 [overflow-wrap:anywhere] sm:p-5 md:grid-cols-[minmax(0,1fr)_auto] md:gap-6 md:p-6')} role="group" aria-label="Result">
-		<div class="grid min-w-0 content-start gap-3">
-			<div class="verdict-step flex flex-wrap items-center gap-2 text-sm font-medium" style="--d: 0.2s">
-				<span class="relative grid size-5 place-items-center">
-					{#if chip.kind === 'safety'}
-						<span class="verdict-ring absolute inset-0 rounded-full bg-(--tone)/30" aria-hidden="true"></span>
-					{/if}
-					<span class="pop relative text-(--tone)" style="animation-delay: 0.2s">
-						{#if chip.kind === 'safety'}<TriangleAlertIcon class="size-5" />
-						{:else if chip.kind === 'caution'}<CircleAlertIcon class="size-5" />
-						{:else if chip.kind === 'clear'}<CircleCheckIcon class="size-5" />
-						{:else}<CircleHelpIcon class="size-5" />{/if}
-					</span>
-				</span>
-				<span>Product Conclusion</span>
-				<span class="sr-only">{chip.label}</span>
-				<!-- On a phone this would drop onto a line of its own; there the headline and the "guide, not proof" line say it. -->
-				<span class="text-muted-foreground font-normal max-sm:sr-only">· What reviewers report</span>
-			</div>
-			<h2 class="verdict-step text-foreground text-2xl leading-tight font-semibold tracking-tight md:text-3xl" style="--d: 0.32s">{lead}</h2>
-			{#if paragraph}<p class="verdict-step text-foreground/80 text-base" style="--d: 0.44s">{paragraph}</p>{/if}
-			{#each warnings as warning (warning)}
-				<p class="verdict-step bg-background/70 text-foreground flex items-start gap-2 rounded-lg border-l-4 border-(--tone) px-3 py-2 text-sm font-medium" role="note" style="--d: 0.46s">
-					<TriangleAlertIcon class="mt-0.5 size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					<span>{warning}</span>
-				</p>
-			{/each}
-			{#if conclusion}
-				<!-- The verdict itself, as the checker words it. -->
-				<p class="verdict-step text-foreground/80 text-sm" style="--d: 0.5s"><b class="text-foreground font-medium">{verdict.headline}.</b> {verdict.detail}</p>
-			{/if}
-			{#if groups.length}
-				<details class="verdict-step group/why border-(--tone)/30 border-t pt-3" style="--d: 0.54s">
-					<summary class="text-foreground flex min-h-11 cursor-pointer list-none items-center gap-1.5 text-sm font-medium [&::-webkit-details-marker]:hidden">
-						<ChevronDownIcon class="size-4 transition-transform group-open/why:rotate-180" aria-hidden="true" />
-						Why this conclusion?
-					</summary>
-					<div class="grid gap-4 pt-2">
-						{#each groups as group (group.kind)}
-							<section class="grid gap-2">
-								<h3 class="text-muted-foreground text-xs font-medium tracking-wide uppercase">{group.title}</h3>
-								<ul class="grid gap-2">
-									{#each group.items as item (item.aspect + item.polarity)}
-										<li class="grid gap-1 text-sm">
-											<span class="flex flex-wrap items-baseline gap-x-2">
-												<span class={cn('text-foreground rounded-full border px-2 py-0.5 text-xs font-medium', item.polarity === 'positive' ? 'border-emerald-600/70' : 'border-amber-600/80')}>{item.polarity === 'positive' ? 'Praised' : 'Concern'}</span>
-												<span class="text-foreground">{item.text}</span>
-											</span>
-											{#if item.quotes.length}
-												<details class="text-muted-foreground">
-													<summary class="min-h-8 cursor-pointer text-xs underline-offset-2 hover:underline">Read {item.quotes.length === item.reviews ? (item.reviews === 1 ? 'the review' : `all ${item.reviews} reviews`) : `${item.quotes.length} of ${item.reviews} reviews`}</summary>
-													<ul class="grid gap-1.5 pt-1">
-														{#each item.quotes as quote (quote.review_id)}
-															<li class="border-(--tone)/30 border-l-2 pl-2 text-sm">
-																<q lang={quote.language === 'en' ? 'en' : 'fil'} class="text-foreground/90">{quote.text}</q>
-																<span class="text-muted-foreground block text-xs">{quote.rating ? `${quote.rating} of 5 stars · ` : ''}{LANGUAGE[quote.language]}</span>
-															</li>
-														{/each}
-													</ul>
-												</details>
-											{/if}
-										</li>
-									{/each}
-								</ul>
-							</section>
-						{/each}
-						<p class="text-muted-foreground text-xs">
-							Counts are distinct reviews among the {conclusion?.evidence?.reviews_considered} analyzed. Each review counts once per feature; copied reviews, tag blocks picked from a menu, reviews that have not used the product yet, and comparisons are left out.
-						</p>
-					</div>
-				</details>
-			{/if}
-			<p class="verdict-step text-muted-foreground text-sm" style="--d: 0.56s">Based on customer reviews, not independent product verification. Review signals are a guide, not proof.</p>
-		</div>
-		{#if conclusion?.assessment}
-			<div class="verdict-step grid content-center justify-items-start gap-3 md:justify-items-center md:border-l md:border-(--tone)/30 md:pl-6" style="--d: 0.5s">
-				<div class={cn('tone-' + assessTone, 'grid gap-0.5 rounded-xl border border-(--tone)/60 bg-(--tone-soft) px-4 py-2.5 md:min-w-44')}>
-					<span class="text-foreground flex items-center gap-1.5 text-sm font-medium">
-						{#if assessTone === 'safety'}<TriangleAlertIcon class="size-4 text-(--tone)" />
-						{:else if assessTone === 'caution'}<CircleAlertIcon class="size-4 text-(--tone)" />
-						{:else if assessTone === 'clear'}<CircleCheckIcon class="size-4 text-(--tone)" />
-						{:else}<CircleHelpIcon class="size-4 text-(--tone)" />{/if}
-						Overall assessment
-					</span>
-					<span class="text-foreground text-2xl leading-tight font-semibold tracking-tight">{conclusion.assessment}</span>
+	<section
+		class="min-w-0 overflow-hidden rounded-xl border border-border bg-card shadow-xs"
+		aria-label="Review highlights"
+	>
+		<div class="grid min-w-0 gap-4 p-4 sm:p-5 md:grid-cols-[minmax(0,1fr)_minmax(12rem,15rem)] md:gap-6">
+			<div class="grid min-w-0 content-start gap-3">
+				<div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
+					<CircleCheckIcon class="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+					<h2 class="font-semibold">What reviewers liked</h2>
+					<span class="text-muted-foreground font-normal">· positive review themes</span>
 				</div>
-				{#if conclusion.assessment_note}
-					<p class="text-foreground/80 flex max-w-52 items-start gap-1.5 text-sm md:text-left">
-						<InfoIcon class="text-muted-foreground mt-0.5 size-4 shrink-0" aria-hidden="true" />
-						<span>{conclusion.assessment_note}</span>
+
+				{#if highlights.product.length}
+					<div class="flex flex-wrap items-start gap-2" aria-label="Positive product qualities and support counts">
+						{#each highlights.product as item (item.key)}
+							<details class="group/highlight min-w-0 max-w-full rounded-lg border border-emerald-700/25 bg-emerald-500/5 px-3 py-2">
+								<summary class="flex min-h-6 cursor-pointer list-none flex-wrap items-center gap-x-2 gap-y-1 text-sm [&::-webkit-details-marker]:hidden">
+									<b class="break-words font-semibold">{item.label}</b>
+									<span class="text-muted-foreground shrink-0 text-xs">{reviewMentionCount(item.reviews)}</span>
+									<ChevronDownIcon class="text-muted-foreground size-3.5 shrink-0 transition-transform group-open/highlight:rotate-180" aria-hidden="true" />
+								</summary>
+								<div class="grid max-w-sm gap-2 border-t border-emerald-700/20 pt-2 text-xs">
+									<p class="text-muted-foreground">{reviewMentionCount(item.reviews)} explicitly praised this aspect.</p>
+									{#if item.concerns}
+										<p class="text-amber-700 dark:text-amber-400">Also criticised in {reviewMentionCount(item.concerns)}.</p>
+									{/if}
+									{#each item.quotes as quote, index (index)}
+										<q class="text-foreground/85 block break-words border-l-2 border-emerald-600/40 pl-2">{quote}</q>
+									{/each}
+								</div>
+							</details>
+						{/each}
+					</div>
+					<p class="text-foreground/80 text-sm">{explanation}</p>
+				{:else}
+					<p class="text-foreground/80 text-sm">No specific positive product quality could be reliably identified from the available review text.</p>
+				{/if}
+
+				{#if highlights.service.length}
+					<p class="text-muted-foreground text-xs">
+						Delivery or seller praise is separate: {highlights.service[0].label.toLowerCase()} ({reviewMentionCount(highlights.service[0].reviews)}).
+						It does not establish product quality.
 					</p>
 				{/if}
+				<p class="text-muted-foreground text-xs">
+					Based on {analyzed} analyzed review{analyzed === 1 ? '' : 's'}. Theme counts refer to distinct reviews; a review can mention several qualities.
+				</p>
 			</div>
+
+			<aside class="grid content-start gap-2 rounded-lg border border-border/80 bg-muted/40 p-3" aria-label="Checker status">
+				<div class="flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
+					{#if chip.kind === 'safety'}
+						<TriangleAlertIcon class="size-4 text-destructive" aria-hidden="true" />
+					{:else if caution}
+						<CircleAlertIcon class="size-4 text-amber-600" aria-hidden="true" />
+					{:else if chip.kind === 'clear'}
+						<CircleCheckIcon class="size-4 text-emerald-600" aria-hidden="true" />
+					{:else}
+						<CircleHelpIcon class="size-4 text-muted-foreground" aria-hidden="true" />
+					{/if}
+					<span>Review checks</span>
+				</div>
+				<p class={cn('text-sm font-semibold', chip.kind === 'safety' && 'text-destructive')}>{verdict.headline}</p>
+				<p class="text-muted-foreground text-xs">{verdict.detail}</p>
+				{#if important.length}
+					<ul class="grid gap-1.5 text-xs">
+						{#each important.slice(0, 3) as item (item.category)}
+							<li class="flex items-start justify-between gap-2 rounded-md bg-background/70 px-2 py-1.5">
+								<span>{item.label}</span>
+								<b class="shrink-0 tabular-nums">{reviewMentionCount(item.mentions)}</b>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+				<p class="text-muted-foreground text-xs">Review reports are signals, not independent proof of safety or authenticity.</p>
+			</aside>
+		</div>
+
+		{#if caution}
+			<p class={cn('border-t px-4 py-3 text-sm sm:px-5', chip.kind === 'safety' ? 'border-destructive/30 bg-destructive/5 text-destructive' : 'border-amber-500/30 bg-amber-500/5')}>
+				<strong>Check the flagged reviews before buying.</strong>
+				Positive feedback does not cancel reported safety, authenticity or defect concerns.
+			</p>
 		{/if}
-	</div>
+	</section>
 {/key}
