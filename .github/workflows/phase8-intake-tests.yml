@@ -1,0 +1,36 @@
+name: Phase 8 held-out intake safeguard tests (synthetic only)
+
+on:
+  push:
+    branches:
+      - research/heldout-v2-scraper-intake-20261116
+    paths:
+      - "research/xlmr_optimization/phase8/**"
+      - ".github/workflows/phase8-intake-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-only-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dataset screening dependencies
+        run: python -m pip install "numpy>=1.26,<2" "scikit-learn>=1.4,<1.7"
+      - name: Compile collection intake and synthetic tests
+        run: |
+          python -m py_compile research/xlmr_optimization/phase8/prepare_scraper_heldout.py
+          python -m py_compile research/xlmr_optimization/phase8/test_prepare_scraper_heldout.py
+      - name: Test entirely fictional review data, no live requests
+        run: |
+          python -m unittest discover \
+            -s research/xlmr_optimization/phase8 \
+            -p 'test_*.py' -v
