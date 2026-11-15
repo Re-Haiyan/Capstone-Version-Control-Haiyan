@@ -52,6 +52,8 @@ class Batches(unittest.TestCase):
                     r["assessment"] = self.key[r["product_id"]]["system_card"]
                     r["serious_safety_concern"] = "no"
                     r["counterfeit_concern"] = "no"
+                    r["main_reason"] = "synthetic reason, not an actual annotation"
+                    r["confidence"] = "medium"
             if "words_return" in path.name and words:
                 for r in data:
                     for c in fp.CRITERIA:
@@ -141,6 +143,62 @@ class Batches(unittest.TestCase):
         out = fp.score(work)
         self.assertTrue(str(out["card"]).startswith("pending"))
         self.assertTrue(str(out["words"]).startswith("pending"))
+
+
+    def test_partial_card_return_is_rejected_without_writing(self):
+        ret = self.returned()
+        path = ret / "batch_01_card_return.csv"
+        data = read(path)
+        data[0]["confidence"] = ""
+        write(path, data, fp.CARD_COLS)
+        work = self.tmp / "work"
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, work)
+        self.assertFalse((work / "card_sheet_A.csv").exists())
+
+    def test_invalid_card_flags_and_preference_are_rejected(self):
+        ret = self.returned()
+        card = ret / "batch_01_card_return.csv"
+        data = read(card)
+        data[0]["serious_safety_concern"] = "maybe"
+        write(card, data, fp.CARD_COLS)
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, self.tmp / "work")
+        data[0]["serious_safety_concern"] = "no"
+        write(card, data, fp.CARD_COLS)
+        words = ret / "batch_01_words_return.csv"
+        w = read(words)
+        w[0]["preferred"] = "both"
+        write(words, w, fp.WORDS_COLS)
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, self.tmp / "work")
+
+    def test_late_invalid_words_batch_preserves_existing_outputs(self):
+        work = self.tmp / "work"
+        bt.merge(self.returned(), work)
+        before = {name: hashlib.sha256((work / name).read_bytes()).hexdigest()
+                  for name in ("card_sheet_A.csv", "words_sheet_A.csv", "provenance.json")}
+        ret = self.returned()
+        path = ret / "batch_07_words_return.csv"
+        w = read(path)
+        w[0]["safety_error_2"] = ""
+        write(path, w, fp.WORDS_COLS)
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, work)
+        after = {name: hashlib.sha256((work / name).read_bytes()).hexdigest()
+                 for name in before}
+        self.assertEqual(after, before)
+
+    def test_bad_header_is_rejected_and_locked_pack_never_targeted(self):
+        ret = self.returned()
+        path = ret / "batch_01_card_return.csv"
+        data = read(path)
+        write(path, data, list(reversed(fp.CARD_COLS)))
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, self.tmp / "work")
+        with self.assertRaises(SystemExit):
+            bt.merge(ret, fp.PACK)
+        self.assertFalse((self.tmp / "work" / "card_sheet_A.csv").exists())
 
 
 if __name__ == "__main__":
