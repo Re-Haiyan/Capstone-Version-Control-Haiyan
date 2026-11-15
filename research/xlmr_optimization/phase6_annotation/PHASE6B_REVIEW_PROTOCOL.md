@@ -1,0 +1,7 @@
+# Phase 6B: precommitted second-AI development review roster
+
+Selected **54 IDs** on 2026-11-15 from Phase 6 metadata-only risk flags, before looking at the source review texts or original Claude labels for these IDs in this pass. No previously GPT-6 annotated row from the 140-row Phase 5 pass was selected. The coordinator selected high-priority no-opinion/opinion conflicts, positive-with-defect cues, Filipino/Taglish Neutral scarcity, possible 170-character cutoffs, and suspected S4 exceptions. The selection is **not random or representative**.
+
+The model conducting the new pass is ChatGPT GPT-6, an **AI** reviewer, not a human. Its review should use the full original review text, shortened product context, frozen Policy v1; avoid star ratings, original Claude per-ID labels, GPT-6 history, or model predictions until the new labels are locked in a separate commit. A second-AI pass is not adjudication. In particular, template-only lists of positive adjectives remain S4-ambiguous and should be explicitly marked low confidence or Neutral depending on v1's no-opinion rule, rather than assuming verified buyer use.
+
+Decisions must include: ID, sentiment, tags, mixed aspects if applicable, confidence, concise justification, and provenance; the original 3,400 Claude labels remain intact. After committing, separately run a descriptive agreement scorer and prepare a **proposed** correction overlay for clear defects/actual personal opinions. No automatic model retraining, no frozen test, no confirmation, no production.
