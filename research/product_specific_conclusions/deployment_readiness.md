@@ -11,7 +11,7 @@ who wrote the rules, two have had none, the Azure VM has not measured the featur
 not formalities: they are the evidence the panel's requirement ("explain why, from actual review evidence, without inventing claims")
 rests on beyond the mechanical checks.
 
-Nothing was committed, pushed, merged or deployed. No database, model, checkpoint, evaluation set or production service was touched.
+One local commit exists (ec0b53c); nothing was pushed, merged or deployed. No database, model, checkpoint, evaluation set or production service was touched.
 The only things done to the production VM were read-only: `git log`, `nproc`, `free`, `uptime`, `lscpu`, and one one-second CPU
 micro-benchmark at the lowest priority (a temp file, removed afterwards).
 

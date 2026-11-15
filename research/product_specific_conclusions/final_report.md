@@ -27,7 +27,7 @@ What the feature does is described in `README.md` and `architecture.md`.
 | | |
 |---|---|
 | Branch | `feature/product-specific-conclusions` (worktree `D:\DeFaketive-conclusions`), based on `e06c98a` |
-| Local commit | **<<COMMIT>>** |
+| Local commit | **ec0b53c** (`feat: add evidence-grounded product-specific review conclusions`), on `feature/product-specific-conclusions`, based on `e06c98a`. Not pushed, not merged. Since then `deployment` advanced (63eb05f, later de39603; the XLM-R study); the only overlapping file is `research/README.md`, a trivial merge. This SHA line is the only edit made after the commit, so the working tree has this one uncommitted documentation change. |
 | Pushed / merged / deployed | **No, no, no.** Production is on `2c6e056` (read-only check this round) |
 | XLM-R work | the main checkout's untracked `research/xlmr_optimization/` and `tests/test_sentiment_agreement.py` were never touched |
 | Before staging | a secret and personal-data scan of every file in the commit was run (no keys, tokens, passwords, phone numbers; the only email is the project's pre-existing default admin address in `CHANGELOG.md`; reviewer names are not in any file) |
