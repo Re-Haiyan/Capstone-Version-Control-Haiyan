@@ -155,5 +155,7 @@ jobs:
           set -euo pipefail
           python -m unittest discover -s tests -p "test_pre_vm_audit.py" -q
           python -m unittest discover -s tests -p "test_phase4_supply_audit.py" -q
+          python -m unittest discover -s tests -p "test_phase4_score_pairs.py" -q
+          python -m unittest discover -s tests -p "test_phase4_predict_pairs.py" -q
       # Never connect to or deploy to the production VM from this workflow.
       # The tests contain synthetic SQLite rows only.
