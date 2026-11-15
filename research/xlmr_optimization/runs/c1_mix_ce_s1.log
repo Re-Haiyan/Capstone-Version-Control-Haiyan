@@ -1,0 +1,32 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 26771.30it/s]
+train rows 9743 class counts [3047, 2879, 3817] loss ce lr 2e-05 epochs 2 seed 1
+before training: {'firecs_val': 0.647, 'market_val': 0.6347}
+epoch 1 step 50/1218 loss 0.6096 elapsed 312s
+epoch 1 step 100/1218 loss 0.6298 elapsed 478s
+epoch 1 step 150/1218 loss 0.6244 elapsed 589s
+epoch 1 step 200/1218 loss 0.5692 elapsed 703s
+epoch 1 step 250/1218 loss 0.6161 elapsed 822s
+epoch 1 step 300/1218 loss 0.5706 elapsed 927s
+epoch 1 step 350/1218 loss 0.5096 elapsed 1051s
+epoch 1 step 400/1218 loss 0.4994 elapsed 1159s
+epoch 1 step 450/1218 loss 0.5004 elapsed 1281s
+epoch 1 step 500/1218 loss 0.4848 elapsed 1389s
+epoch 1 step 550/1218 loss 0.5074 elapsed 1522s
+epoch 1 step 600/1218 loss 0.4956 elapsed 1631s
+epoch 1: market_val macroF1 0.6180 (neu 0.239, neg recall 0.771) firecs_val macroF1 0.8351
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.47s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.47s/it]
+epoch 2 step 650/1218 loss 0.3805 elapsed 1795s
+epoch 2 step 700/1218 loss 0.3661 elapsed 1919s
+epoch 2 step 750/1218 loss 0.3594 elapsed 2025s
+epoch 2 step 800/1218 loss 0.4121 elapsed 2140s
+epoch 2 step 850/1218 loss 0.3575 elapsed 2251s
+epoch 2 step 900/1218 loss 0.3577 elapsed 2382s
+epoch 2 step 950/1218 loss 0.4151 elapsed 2510s
+epoch 2 step 1000/1218 loss 0.4068 elapsed 2643s
+epoch 2 step 1050/1218 loss 0.3901 elapsed 2743s
+epoch 2 step 1100/1218 loss 0.3979 elapsed 2856s
+epoch 2 step 1150/1218 loss 0.3852 elapsed 2970s
+epoch 2 step 1200/1218 loss 0.3717 elapsed 3079s
+epoch 2: market_val macroF1 0.6591 (neu 0.346, neg recall 0.788) firecs_val macroF1 0.8475
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.35s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.35s/it]
+done 3162 s; best market_val macro F1 0.6591

@@ -1,0 +1,42 @@
+{
+ "deployed_int8": {
+  "cold_start_s": 0.53,
+  "rss_before_mb": 29.6,
+  "rss_after_load_mb": 168.4,
+  "peak_rss_mb": 173.3,
+  "latency_ms_median": 35.3,
+  "latency_ms_p95": 85.0,
+  "reviews_per_second_1_thread": 24.8,
+  "file_mb": 95.2
+ },
+ "pruned_fp32": {
+  "cold_start_s": 0.94,
+  "rss_before_mb": 29.4,
+  "rss_after_load_mb": 535.5,
+  "peak_rss_mb": 539.0,
+  "latency_ms_median": 66.1,
+  "latency_ms_p95": 156.1,
+  "reviews_per_second_1_thread": 13.2,
+  "file_mb": 454.0
+ },
+ "pruned_int8": {
+  "cold_start_s": 0.5,
+  "rss_before_mb": 29.5,
+  "rss_after_load_mb": 198.6,
+  "peak_rss_mb": 203.6,
+  "latency_ms_median": 33.5,
+  "latency_ms_p95": 81.4,
+  "reviews_per_second_1_thread": 25.8,
+  "file_mb": 114.3
+ },
+ "pruned_int8_perchannel": {
+  "cold_start_s": 0.57,
+  "rss_before_mb": 29.6,
+  "rss_after_load_mb": 198.7,
+  "peak_rss_mb": 204.2,
+  "latency_ms_median": 33.7,
+  "latency_ms_p95": 82.3,
+  "reviews_per_second_1_thread": 25.8,
+  "file_mb": 114.7
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "candidate": "c1_mix_ce_s1",
+ "baseline": "onnx_int8",
+ "set": "market_gold200",
+ "n": 150,
+ "macro_f1_difference": -0.1050549407695397,
+ "ci95": [
+  -0.18076903701348043,
+  -0.0334180272613772
+ ],
+ "grouping": "row"
+}

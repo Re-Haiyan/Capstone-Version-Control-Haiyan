@@ -1,0 +1,40 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 17594.44it/s]
+train rows 12878 class counts [3951, 3463, 5464] loss ce lr 2e-05 epochs 2 seed 1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+before training: {'firecs_val': 0.647, 'market_val': 0.6347}
+epoch 1 step 50/1610 loss 0.6673 elapsed 229s
+epoch 1 step 100/1610 loss 0.6086 elapsed 816s
+epoch 1 step 150/1610 loss 0.6563 elapsed 944s
+epoch 1 step 200/1610 loss 0.6065 elapsed 1335s
+epoch 1 step 250/1610 loss 0.5671 elapsed 1453s
+epoch 1 step 300/1610 loss 0.5654 elapsed 1558s
+epoch 1 step 350/1610 loss 0.5158 elapsed 1674s
+epoch 1 step 400/1610 loss 0.5833 elapsed 1774s
+epoch 1 step 450/1610 loss 0.5258 elapsed 1882s
+epoch 1 step 500/1610 loss 0.5239 elapsed 1987s
+epoch 1 step 550/1610 loss 0.5033 elapsed 2097s
+epoch 1 step 600/1610 loss 0.5505 elapsed 2205s
+epoch 1 step 650/1610 loss 0.4969 elapsed 2315s
+epoch 1 step 700/1610 loss 0.4995 elapsed 2424s
+epoch 1 step 750/1610 loss 0.4561 elapsed 2533s
+epoch 1 step 800/1610 loss 0.5607 elapsed 2639s
+epoch 1: market_val macroF1 0.6847 (neu 0.397, neg recall 0.810) firecs_val macroF1 0.8366
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.57s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.57s/it]
+epoch 2 step 850/1610 loss 0.3600 elapsed 2797s
+epoch 2 step 900/1610 loss 0.3899 elapsed 2922s
+epoch 2 step 950/1610 loss 0.3856 elapsed 3018s
+epoch 2 step 1000/1610 loss 0.3545 elapsed 3120s
+epoch 2 step 1050/1610 loss 0.3718 elapsed 3224s
+epoch 2 step 1100/1610 loss 0.3707 elapsed 3333s
+epoch 2 step 1150/1610 loss 0.3813 elapsed 3440s
+epoch 2 step 1200/1610 loss 0.3298 elapsed 3531s
+epoch 2 step 1250/1610 loss 0.3859 elapsed 3628s
+epoch 2 step 1300/1610 loss 0.4145 elapsed 3728s
+epoch 2 step 1350/1610 loss 0.3337 elapsed 3827s
+epoch 2 step 1400/1610 loss 0.3026 elapsed 3919s
+epoch 2 step 1450/1610 loss 0.3481 elapsed 4013s
+epoch 2 step 1500/1610 loss 0.3345 elapsed 4105s
+epoch 2 step 1550/1610 loss 0.3327 elapsed 4229s
+epoch 2 step 1600/1610 loss 0.3082 elapsed 4318s
+epoch 2: market_val macroF1 0.6755 (neu 0.395, neg recall 0.810) firecs_val macroF1 0.8425
+done 4365 s; best market_val macro F1 0.6847

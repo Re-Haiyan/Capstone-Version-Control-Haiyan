@@ -1,0 +1,125 @@
+{
+ "frozen_at_utc": "2026-11-14T22:56:49+00:00",
+ "rule": "FROZEN before any model selection. Scored once, with the final chosen model, after two independent human annotators have labelled it. Never used to tune, select or threshold.",
+ "source_database_sha256": "ba71bf5861a8c23f0c87668d3f890eaa5a224466c6780ef71b3bd546f1389a00",
+ "final_test_ids_and_texts_sha256": "5d4384bb68b379fa0652a8b94b8df6234dbccb8ad1f861a856b70546f249908b",
+ "sheet_sha256": {
+  "final_test_sheet_A.csv": "0b65aacfdd2241ea24962c3b022737ce58b7c10e8c4e2c9197e5d9321a69fd8e",
+  "final_test_sheet_B.csv": "57689ddcae823f26f240e5a1d232d3731816043e192c5a7df75b96e5b279ce97",
+  "dev_pool_sheet.csv": "b74630646f5afda5e2ba5fbd384e80ec641882998a0c71e89836513b46cdc0cd",
+  "PRIVATE_id_map.csv": "52d68296e4332eccd5b92fb7b22a42125f908ac8ac95b35e272d1531dc008c27"
+ },
+ "plan": {
+  "available_after_filters": {
+   "final_test": {
+    "reviews": 414,
+    "products": 73,
+    "by_group": {
+     "electronics": 389,
+     "home_living": 19,
+     "fashion": 6,
+     "beauty_health": 0,
+     "food_grocery": 0,
+     "automotive_tools": 0,
+     "other": 0
+    },
+    "by_star": {
+     "1-2": 52,
+     "3": 24,
+     "4": 26,
+     "5": 312
+    }
+   },
+   "dev_pool": {
+    "reviews": 450,
+    "products": 76,
+    "by_group": {
+     "electronics": 426,
+     "home_living": 24,
+     "fashion": 0,
+     "beauty_health": 0,
+     "food_grocery": 0,
+     "automotive_tools": 0,
+     "other": 0
+    },
+    "by_star": {
+     "1-2": 72,
+     "3": 27,
+     "4": 27,
+     "5": 324
+    }
+   }
+  },
+  "chosen": {
+   "final_test": {
+    "reviews": 400,
+    "products": 73,
+    "filled_outside_quota": 241,
+    "by_group": {
+     "electronics": 375,
+     "home_living": 19,
+     "fashion": 6,
+     "beauty_health": 0,
+     "food_grocery": 0,
+     "automotive_tools": 0,
+     "other": 0
+    },
+    "by_platform": {
+     "Lazada PH": 297,
+     "Shopee PH": 85,
+     "Temu PH": 18
+    },
+    "by_star": {
+     "1-2": 52,
+     "3": 24,
+     "4": 26,
+     "5": 298
+    }
+   },
+   "dev_pool": {
+    "reviews": 400,
+    "products": 76,
+    "filled_outside_quota": 230,
+    "by_group": {
+     "electronics": 376,
+     "home_living": 24,
+     "fashion": 0,
+     "beauty_health": 0,
+     "food_grocery": 0,
+     "automotive_tools": 0,
+     "other": 0
+    },
+    "by_platform": {
+     "Lazada PH": 357,
+     "Shopee PH": 31,
+     "Temu PH": 12
+    },
+    "by_star": {
+     "1-2": 71,
+     "3": 27,
+     "4": 27,
+     "5": 275
+    }
+   }
+  }
+ },
+ "products_excluded_because_labelled_elsewhere": 245,
+ "group_quota": {
+  "electronics": 0.4,
+  "home_living": 0.15,
+  "fashion": 0.12,
+  "beauty_health": 0.1,
+  "food_grocery": 0.08,
+  "automotive_tools": 0.08,
+  "other": 0.07
+ },
+ "star_quota": {
+  "1-2": 0.3,
+  "3": 0.2,
+  "4": 0.2,
+  "5": 0.3
+ },
+ "max_reviews_per_product": 6,
+ "stars_shown_to_annotators": false,
+ "human_labels_in_files": 0
+}

@@ -1,0 +1,88 @@
+{
+ "args": {
+  "name": "c1_mix_ce_s2",
+  "mix": "firecs+market",
+  "init": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+  "loss": "ce",
+  "lr": 2e-05,
+  "epochs": 2,
+  "batch": 16,
+  "seed": 2,
+  "wd": 0.01,
+  "warmup": 0.06,
+  "max_len": 128,
+  "dropout": null,
+  "no_freeze_emb": false,
+  "max_steps": 0,
+  "market_repeat": 1
+ },
+ "train_rows": 9743,
+ "class_counts": [
+  3047,
+  2879,
+  3817
+ ],
+ "before_training": {
+  "firecs_val": {
+   "macro_f1": 0.6470141340274055,
+   "accuracy": 0.6912568306010929,
+   "negative_recall": 0.9327731092436975,
+   "neutral_f1": 0.3663663663663664,
+   "negative_f1": 0.7681660899653979,
+   "positive_f1": 0.8065099457504521
+  },
+  "market_val": {
+   "macro_f1": 0.6346717157590982,
+   "accuracy": 0.7353535353535353,
+   "negative_recall": 0.7932960893854749,
+   "neutral_f1": 0.30769230769230765,
+   "negative_f1": 0.7867036011080332,
+   "positive_f1": 0.8096192384769539
+  }
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "firecs_val": {
+    "macro_f1": 0.8458018690038577,
+    "accuracy": 0.8469945355191257,
+    "negative_recall": 0.9243697478991597,
+    "neutral_f1": 0.7685774946921445,
+    "negative_f1": 0.8712871287128714,
+    "positive_f1": 0.8975409836065574
+   },
+   "market_val": {
+    "macro_f1": 0.6694660912280498,
+    "accuracy": 0.7616161616161616,
+    "negative_recall": 0.8100558659217877,
+    "neutral_f1": 0.35460992907801414,
+    "negative_f1": 0.8123249299719888,
+    "positive_f1": 0.8414634146341463
+   },
+   "seconds": 1310
+  },
+  {
+   "epoch": 2,
+   "firecs_val": {
+    "macro_f1": 0.8468207838471757,
+    "accuracy": 0.8469945355191257,
+    "negative_recall": 0.9159663865546218,
+    "neutral_f1": 0.7717842323651452,
+    "negative_f1": 0.8667992047713716,
+    "positive_f1": 0.9018789144050104
+   },
+   "market_val": {
+    "macro_f1": 0.663475573822629,
+    "accuracy": 0.7515151515151515,
+    "negative_recall": 0.8044692737430168,
+    "neutral_f1": 0.348993288590604,
+    "negative_f1": 0.8067226890756303,
+    "positive_f1": 0.8347107438016529
+   },
+   "seconds": 2600
+  }
+ ],
+ "selected_epoch": 1,
+ "torch": "2.15.0+cpu",
+ "seconds": 2600
+}

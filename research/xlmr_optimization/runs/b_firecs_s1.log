@@ -1,0 +1,25 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 16424.54it/s]
+train rows 6608 class counts [2143, 2295, 2170] loss ce lr 2e-05 epochs 2 seed 1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+before training: {'firecs_val': 0.647, 'market_val': 0.6347}
+epoch 1 step 50/826 loss 0.5953 elapsed 145s
+epoch 1 step 100/826 loss 0.5649 elapsed 251s
+epoch 1 step 150/826 loss 0.4763 elapsed 342s
+epoch 1 step 200/826 loss 0.4801 elapsed 445s
+epoch 1 step 250/826 loss 0.4351 elapsed 546s
+epoch 1 step 300/826 loss 0.4100 elapsed 644s
+epoch 1 step 350/826 loss 0.4119 elapsed 750s
+epoch 1 step 400/826 loss 0.3984 elapsed 850s
+epoch 1: market_val macroF1 0.6252 (neu 0.286, neg recall 0.709) firecs_val macroF1 0.8227
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.83s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.83s/it]
+epoch 2 step 450/826 loss 0.2325 elapsed 994s
+epoch 2 step 500/826 loss 0.3608 elapsed 1099s
+epoch 2 step 550/826 loss 0.2580 elapsed 1216s
+epoch 2 step 600/826 loss 0.3205 elapsed 1321s
+epoch 2 step 650/826 loss 0.3239 elapsed 1422s
+epoch 2 step 700/826 loss 0.3275 elapsed 1535s
+epoch 2 step 750/826 loss 0.2574 elapsed 1635s
+epoch 2 step 800/826 loss 0.3126 elapsed 1749s
+epoch 2: market_val macroF1 0.6428 (neu 0.339, neg recall 0.682) firecs_val macroF1 0.8555
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it]
+done 1838 s; best market_val macro F1 0.6428

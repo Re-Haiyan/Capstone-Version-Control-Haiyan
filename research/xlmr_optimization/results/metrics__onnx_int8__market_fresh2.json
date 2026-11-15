@@ -1,0 +1,116 @@
+{
+ "model": "onnx_int8",
+ "set": "market_fresh2",
+ "rows_scored": 253,
+ "rows_excluded_low_confidence": 17,
+ "n": 253,
+ "accuracy": 0.8814229249011858,
+ "macro_f1": 0.7369932975555132,
+ "micro_f1": 0.8814229249011858,
+ "weighted_f1": 0.8897507310793433,
+ "classes": {
+  "negative": {
+   "precision": 1.0,
+   "recall": 0.7903225806451613,
+   "f1": 0.8828828828828829,
+   "support": 62
+  },
+  "neutral": {
+   "precision": 0.32,
+   "recall": 0.5,
+   "f1": 0.39024390243902435,
+   "support": 16
+  },
+  "positive": {
+   "precision": 0.9273743016759777,
+   "recall": 0.9485714285714286,
+   "f1": 0.9378531073446328,
+   "support": 175
+  }
+ },
+ "confusion": [
+  [
+   49,
+   8,
+   5
+  ],
+  [
+   0,
+   8,
+   8
+  ],
+  [
+   0,
+   9,
+   166
+  ]
+ ],
+ "macro_f1_ci95_product_bootstrap": [
+  0.6557292758417413,
+  0.8098644526950358
+ ],
+ "products": 75,
+ "interval_kind": "product bootstrap",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 140,
+    "accuracy": 0.9214285714285714,
+    "macro_f1": 0.7498625262817402,
+    "negative_recall": 0.8,
+    "neutral_f1": 0.4
+   },
+   "filipino": {
+    "n": 52,
+    "accuracy": 0.8269230769230769,
+    "macro_f1": 0.701006201006201,
+    "negative_recall": 0.8666666666666667,
+    "neutral_f1": 0.36363636363636365
+   },
+   "taglish": {
+    "n": 35,
+    "accuracy": 0.7714285714285715,
+    "macro_f1": 0.6306881524272828,
+    "negative_recall": 0.4444444444444444,
+    "neutral_f1": 0.3636363636363636
+   },
+   "unknown": {
+    "n": 24,
+    "accuracy": 0.9166666666666666,
+    "macro_f1": 0.65,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.0
+   }
+  },
+  "product_group": {
+   "beauty_health": {
+    "n": 42,
+    "accuracy": 0.8333333333333334,
+    "macro_f1": 0.7215085267823604,
+    "negative_recall": 0.7,
+    "neutral_f1": 0.4444444444444445
+   },
+   "fashion": {
+    "n": 29,
+    "accuracy": 0.896551724137931,
+    "macro_f1": 0.5422222222222222,
+    "negative_recall": 0.5,
+    "neutral_f1": 0.0
+   },
+   "home_living": {
+    "n": 114,
+    "accuracy": 0.8859649122807017,
+    "macro_f1": 0.7335947712418301,
+    "negative_recall": 0.8292682926829268,
+    "neutral_f1": 0.3529411764705882
+   },
+   "pets": {
+    "n": 52,
+    "accuracy": 0.8846153846153846,
+    "macro_f1": 0.7772727272727273,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.4000000000000001
+   }
+  }
+ }
+}

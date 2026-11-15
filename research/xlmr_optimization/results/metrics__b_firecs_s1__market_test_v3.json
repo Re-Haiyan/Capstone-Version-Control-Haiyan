@@ -1,0 +1,144 @@
+{
+ "model": "b_firecs_s1",
+ "set": "market_test_v3",
+ "rows_scored": 846,
+ "rows_excluded_low_confidence": 40,
+ "n": 846,
+ "accuracy": 0.6761229314420804,
+ "macro_f1": 0.6112279784173352,
+ "micro_f1": 0.6761229314420804,
+ "weighted_f1": 0.6684398285541533,
+ "classes": {
+  "negative": {
+   "precision": 0.8393782383419689,
+   "recall": 0.675,
+   "f1": 0.7482678983833718,
+   "support": 240
+  },
+  "neutral": {
+   "precision": 0.3058823529411765,
+   "recall": 0.27225130890052357,
+   "f1": 0.28808864265927975,
+   "support": 191
+  },
+  "positive": {
+   "precision": 0.7412008281573499,
+   "recall": 0.8626506024096385,
+   "f1": 0.7973273942093541,
+   "support": 415
+  }
+ },
+ "confusion": [
+  [
+   162,
+   65,
+   13
+  ],
+  [
+   27,
+   52,
+   112
+  ],
+  [
+   4,
+   53,
+   358
+  ]
+ ],
+ "macro_f1_ci95_product_bootstrap": [
+  0.5682703153030546,
+  0.6506172881387108
+ ],
+ "products": 82,
+ "interval_kind": "product bootstrap",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 424,
+    "accuracy": 0.7311320754716981,
+    "macro_f1": 0.6193520460826424,
+    "negative_recall": 0.7534246575342466,
+    "neutral_f1": 0.23943661971830987
+   },
+   "filipino": {
+    "n": 161,
+    "accuracy": 0.5652173913043478,
+    "macro_f1": 0.5179969882149059,
+    "negative_recall": 0.648936170212766,
+    "neutral_f1": 0.30612244897959184
+   },
+   "taglish": {
+    "n": 167,
+    "accuracy": 0.6766467065868264,
+    "macro_f1": 0.5675704412546518,
+    "negative_recall": 0.5957446808510638,
+    "neutral_f1": 0.1754385964912281
+   },
+   "unknown": {
+    "n": 89,
+    "accuracy": 0.6179775280898876,
+    "macro_f1": 0.62102732417575,
+    "negative_recall": 0.68,
+    "neutral_f1": 0.44827586206896547
+   }
+  },
+  "product_group": {
+   "automotive_tools": {
+    "n": 20,
+    "accuracy": 0.55,
+    "macro_f1": 0.46222222222222226,
+    "negative_recall": 0.5,
+    "neutral_f1": 0.0
+   },
+   "baby_kids_toys": {
+    "n": 76,
+    "accuracy": 0.7631578947368421,
+    "macro_f1": 0.5348219032429559,
+    "negative_recall": 0.6153846153846154,
+    "neutral_f1": 0.0
+   },
+   "beauty_health": {
+    "n": 227,
+    "accuracy": 0.7400881057268722,
+    "macro_f1": 0.6537131925941109,
+    "negative_recall": 0.75,
+    "neutral_f1": 0.3414634146341463
+   },
+   "electronics": {
+    "n": 77,
+    "accuracy": 0.8441558441558441,
+    "macro_f1": 0.7402852049910873,
+    "negative_recall": 0.8823529411764706,
+    "neutral_f1": 0.39999999999999997
+   },
+   "fashion": {
+    "n": 61,
+    "accuracy": 0.4426229508196721,
+    "macro_f1": 0.42155388471177946,
+    "negative_recall": 0.42424242424242425,
+    "neutral_f1": 0.1142857142857143
+   },
+   "food_grocery": {
+    "n": 158,
+    "accuracy": 0.6708860759493671,
+    "macro_f1": 0.6516784460161035,
+    "negative_recall": 0.8620689655172413,
+    "neutral_f1": 0.358974358974359
+   },
+   "home_living": {
+    "n": 200,
+    "accuracy": 0.56,
+    "macro_f1": 0.546815950009551,
+    "negative_recall": 0.5925925925925926,
+    "neutral_f1": 0.3025210084033613
+   },
+   "pets": {
+    "n": 27,
+    "accuracy": 0.9259259259259259,
+    "macro_f1": 0.6527777777777778,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.0
+   }
+  }
+ }
+}

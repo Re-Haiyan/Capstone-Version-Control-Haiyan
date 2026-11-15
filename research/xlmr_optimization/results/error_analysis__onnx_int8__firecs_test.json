@@ -1,0 +1,370 @@
+{
+ "model": "onnx_int8",
+ "set": "firecs_test",
+ "scored": 3147,
+ "errors": 524,
+ "error_rate": 0.167,
+ "confusion_cells": {
+  "neutral->positive": 164,
+  "negative->neutral": 142,
+  "neutral->negative": 134,
+  "positive->neutral": 70,
+  "negative->positive": 13,
+  "positive->negative": 1
+ },
+ "tags": {
+  "contrast_marker (mixed opinion?)": {
+   "reviews": 1276,
+   "errors": 286,
+   "error_rate": 0.224
+  },
+  "defect_or_failure_words": {
+   "reviews": 261,
+   "errors": 49,
+   "error_rate": 0.188
+  },
+  "delivery_or_seller_mention": {
+   "reviews": 1450,
+   "errors": 228,
+   "error_rate": 0.157
+  },
+  "elongation_or_caps": {
+   "reviews": 80,
+   "errors": 8,
+   "error_rate": 0.1
+  },
+  "language:english": {
+   "reviews": 186,
+   "errors": 23,
+   "error_rate": 0.124
+  },
+  "language:filipino": {
+   "reviews": 1251,
+   "errors": 215,
+   "error_rate": 0.172
+  },
+  "language:taglish": {
+   "reviews": 1566,
+   "errors": 260,
+   "error_rate": 0.166
+  },
+  "language:unknown": {
+   "reviews": 140,
+   "errors": 24,
+   "error_rate": 0.171
+  },
+  "language:unknown (under 4 words)": {
+   "reviews": 4,
+   "errors": 2,
+   "error_rate": 0.5
+  },
+  "negation": {
+   "reviews": 1435,
+   "errors": 262,
+   "error_rate": 0.183
+  },
+  "not_yet_used": {
+   "reviews": 17,
+   "errors": 3,
+   "error_rate": 0.176
+  },
+  "question_or_request": {
+   "reviews": 513,
+   "errors": 125,
+   "error_rate": 0.244
+  },
+  "short (4 to 6 words)": {
+   "reviews": 96,
+   "errors": 9,
+   "error_rate": 0.094
+  },
+  "very_short (3 words or fewer)": {
+   "reviews": 4,
+   "errors": 2,
+   "error_rate": 0.5
+  }
+ },
+ "examples": {
+  "negative->neutral": [
+   {
+    "id": "FT00012",
+    "stars": 0,
+    "text": "ang nakalagay ay 10m pero 5 meters lang pala ang dumating nalaman lang namin nung ikinabit na kasi maikli lang ang napaglagyan ubos na isang roll 5meters lang pala sa susunod be honest sa details ng products nyo maraming salamat",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "FT00047",
+    "stars": 0,
+    "text": "dalawa yung binili ko isa sakin tsaka sa friend ko first of all kaunti lang yung laman nung isa habang medyo mas lamang yung sa isa about sa color maroon yung sa tingin kong dapat maging kakalabasan niya pero violet yung kulay niy",
+    "tags": [
+     "contrast_marker (mixed opinion?)"
+    ]
+   },
+   {
+    "id": "FT00052",
+    "stars": 0,
+    "text": "type c namn yung dumating hshs",
+    "tags": [
+     "delivery_or_seller_mention",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "FT00093",
+    "stars": 0,
+    "text": "okay siya unexpected iyong laki okay ang qualty but my choice in the color hi di nasunod kya medyo dissapointed sana next time icheck mabuti itong choice of color",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00106",
+    "stars": 0,
+    "text": "ang liit nang sizes po kahit 40 41 ang liit size ko talaga 40 pero di kasya",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation"
+    ]
+   },
+   {
+    "id": "FT00111",
+    "stars": 0,
+    "text": "ok naman yung service friendly naman mga staff kaso di soundproof ang rooms literally maririnig mo lahat ng ginagawa sa katabing rooms lahat lahat",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation"
+    ]
+   }
+  ],
+  "neutral->negative": [
+   {
+    "id": "FT00020",
+    "stars": 0,
+    "text": "bilis ma lowbat tapos mahaw akan mo lang kahit gentle eh masyado sen sitive bigla bigla din mawawala sa conn ection yun lang feedback lang",
+    "tags": []
+   },
+   {
+    "id": "FT00026",
+    "stars": 0,
+    "text": "dumating na po cute sana kaso sira yong isa hindi omilaw hindi rin mag charge",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "defect_or_failure_words",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00043",
+    "stars": 0,
+    "text": "ok sya malakai kaso mali ang kulay pink ang order ko dumating orange hays seller wala namang pasabi bago iship edi sana nakapili man lang ako ng ibang kulay na option",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00049",
+    "stars": 0,
+    "text": "10 10 hindi siya 10 meters misleading sa description palitan nyo yan para sa mga nag susukat di pwede yung kulang ang inyong ipapadala thanks okey sana pero mali ang sukat",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00077",
+    "stars": 0,
+    "text": "ok na sana yung item kaso ibang color lang ang dumating royal blue to green wew",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00124",
+    "stars": 0,
+    "text": "hnd ko alam ang sensitive ng adjustment touch niya tapos pag ng call ka na didisconnect siya hnd siya friendly user sabagay what do you expect nga naman s price niya",
+    "tags": []
+   }
+  ],
+  "positive->neutral": [
+   {
+    "id": "FT00027",
+    "stars": 0,
+    "text": "sana gumana ok lang naman itsura pero diko nasubukan chinarge ko muna medyo matagal delivery pero sana worth it siy",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00071",
+    "stars": 0,
+    "text": "well packed naman po ang item sana magtagal sya magaan lang dya pero maganda naman at malakas ang hangin sa likod sana effective talaga sya",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00098",
+    "stars": 0,
+    "text": "kompleto orders sana yung wipes walang tagas kasi yung nauna ko nabili tumatagas kapag nakatagilid eh salamat seller at shoppe",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00119",
+    "stars": 0,
+    "text": "subrang maganda po ang laki nya siguro until 3 years old ni baby pd gamitin higaan at may isng unan sya n ksama medyo manipis lang pero ok nmn no damage at mganda packaging ni seller thank you kahit medyo mabigat s bulsa ang price",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation"
+    ]
+   },
+   {
+    "id": "FT00142",
+    "stars": 0,
+    "text": "lambot sa feet 2 size larger ang kinuha ko yung sa daughter ko size 38 siya ok sa kanya ang size 40 sakto lang ako naman 39 dapat 41 na size kinuha ko",
+    "tags": []
+   },
+   {
+    "id": "FT00227",
+    "stars": 0,
+    "text": "sobrang ganda mall quality pero sana lang mag tagal at di ganon mabilis umangat or matagal sana magamit if ttingnan parang mall quality pero mas massure if talagang matibay pag nagamit na pero pag open ko palang amg saya kona sa g",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "question_or_request"
+    ]
+   }
+  ],
+  "negative->positive": [
+   {
+    "id": "FT00080",
+    "stars": 0,
+    "text": "as seen on pictures ng g ling ni seller alam niyang walang kasya na bottom para sa order na 1000 ml nag send pa rin siya para lang makabenta very good ka seller ik w ng tinatawag na suwapang na seller tapos nung kinontak ko siya p",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation"
+    ]
+   },
+   {
+    "id": "FT00157",
+    "stars": 0,
+    "text": "well cheap price comes with a cheap quality you can really feel na ang cheap ng dating nya tho i love it kasi malambot sya sa paa problema lng ang inorder ko 38 39 na size pero ang dumating png size 6 5 or ganto talaga size nya",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "FT00266",
+    "stars": 0,
+    "text": "after 5 minutes of using eto na sya",
+    "tags": []
+   },
+   {
+    "id": "FT01107",
+    "stars": 0,
+    "text": "sobrang tapang ng alcohol niya sakit sa ilong masyado pag unang spray thankyou parin seller happy new year",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "FT01617",
+    "stars": 0,
+    "text": "order at your own risk sobrang clear",
+    "tags": []
+   },
+   {
+    "id": "FT01912",
+    "stars": 0,
+    "text": "first time kong umorder at hindi na mauulit apat inorder ko tatlo lang pinadala nyo ang galing nyo",
+    "tags": [
+     "negation"
+    ]
+   }
+  ],
+  "neutral->positive": [
+   {
+    "id": "FT00090",
+    "stars": 0,
+    "text": "matagal mag serve pero affordable naman at masarap food parking is good for 6 cars lang",
+    "tags": [
+     "contrast_marker (mixed opinion?)"
+    ]
+   },
+   {
+    "id": "FT00100",
+    "stars": 0,
+    "text": "gusto kong magbigay sana ng 5 star kaso may issue po sa thread sa isang important part nong ring light working naman ang ilaw at control may dent din sa paa nong stand sana next time mai double check at mas secured na packaging sa",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00129",
+    "stars": 0,
+    "text": "maganda quality peru jusmeyo marimar ang cutting nya hindi pantay thankyou padin seller nxt time sana pantay na yung cutting nya",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "FT00132",
+    "stars": 0,
+    "text": "nice product and in excellent condition wrong size lang yung isa if you want to avail for this pm the seller first and ask for the item you want to order if tama bago ipaship",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "FT00150",
+    "stars": 0,
+    "text": "okay naman nakakabango ng buong room oil and fragrance is not included nagorder ako sa iba pero it works tahimik din siya kapag ginamit kaya hindi distracting pag matutulog",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation"
+    ]
+   },
+   {
+    "id": "FT00177",
+    "stars": 0,
+    "text": "ok nman sya kya lng kla q size xl aq dpat pla ay large lng kinuha q pro ganda po nya",
+    "tags": []
+   }
+  ],
+  "positive->negative": [
+   {
+    "id": "FT03058",
+    "stars": 0,
+    "text": "bhmili ako sa mall last week 89 pesos to tapos dito mura lang napabili ako sa mall kasi nakalimutan kong nakaorder na pala ako dito since dipa sya dumating nung nag mall ako haha sayang ba",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   }
+  ]
+ }
+}

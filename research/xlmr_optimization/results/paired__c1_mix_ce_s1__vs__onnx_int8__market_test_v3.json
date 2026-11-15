@@ -1,0 +1,12 @@
+{
+ "candidate": "c1_mix_ce_s1",
+ "baseline": "onnx_int8",
+ "set": "market_test_v3",
+ "n": 846,
+ "macro_f1_difference": 0.09890146185702409,
+ "ci95": [
+  0.05395463449729652,
+  0.1409581397031652
+ ],
+ "grouping": "product"
+}

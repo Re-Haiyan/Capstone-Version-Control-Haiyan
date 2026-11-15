@@ -1,0 +1,87 @@
+{
+ "model": "d1_mix_ce_rep2_s1",
+ "set": "market_gold200",
+ "rows_scored": 150,
+ "rows_excluded_low_confidence": 50,
+ "n": 150,
+ "accuracy": 0.7733333333333333,
+ "macro_f1": 0.7273312740300257,
+ "micro_f1": 0.7733333333333333,
+ "weighted_f1": 0.7603898793340816,
+ "classes": {
+  "negative": {
+   "precision": 0.8208955223880597,
+   "recall": 0.873015873015873,
+   "f1": 0.8461538461538461,
+   "support": 63
+  },
+  "neutral": {
+   "precision": 0.6,
+   "recall": 0.4166666666666667,
+   "f1": 0.49180327868852464,
+   "support": 36
+  },
+  "positive": {
+   "precision": 0.7931034482758621,
+   "recall": 0.9019607843137255,
+   "f1": 0.8440366972477066,
+   "support": 51
+  }
+ },
+ "confusion": [
+  [
+   55,
+   6,
+   2
+  ],
+  [
+   11,
+   15,
+   10
+  ],
+  [
+   1,
+   4,
+   46
+  ]
+ ],
+ "macro_f1_ci95_row_bootstrap": [
+  0.6505518024847237,
+  0.7954993442254411
+ ],
+ "interval_kind": "row bootstrap (no product field; optimistic)",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 74,
+    "accuracy": 0.7837837837837838,
+    "macro_f1": 0.7162375790424571,
+    "negative_recall": 0.8095238095238095,
+    "neutral_f1": 0.4444444444444444
+   },
+   "filipino": {
+    "n": 36,
+    "accuracy": 0.7777777777777778,
+    "macro_f1": 0.8005698005698005,
+    "negative_recall": 0.9166666666666666,
+    "neutral_f1": 0.5555555555555556
+   },
+   "taglish": {
+    "n": 21,
+    "accuracy": 0.7142857142857143,
+    "macro_f1": 0.6726579520697168,
+    "negative_recall": 0.875,
+    "neutral_f1": 0.4444444444444445
+   }
+  },
+  "product_group": {
+   "n/a": {
+    "n": 150,
+    "accuracy": 0.7733333333333333,
+    "macro_f1": 0.7273312740300257,
+    "negative_recall": 0.873015873015873,
+    "neutral_f1": 0.49180327868852464
+   }
+  }
+ }
+}

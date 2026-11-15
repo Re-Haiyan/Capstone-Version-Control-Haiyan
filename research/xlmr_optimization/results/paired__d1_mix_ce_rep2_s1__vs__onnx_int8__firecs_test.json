@@ -1,0 +1,12 @@
+{
+ "candidate": "d1_mix_ce_rep2_s1",
+ "baseline": "onnx_int8",
+ "set": "firecs_test",
+ "n": 3147,
+ "macro_f1_difference": -0.00992390014297384,
+ "ci95": [
+  -0.02182736067269183,
+  0.00029045687768569265
+ ],
+ "grouping": "row"
+}

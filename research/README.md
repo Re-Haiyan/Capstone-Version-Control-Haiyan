@@ -7,6 +7,7 @@ The research round of the review-classification work. Start with `final_implemen
 
 | Document | What it answers |
 |---|---|
+| `xlmr_optimization/README.md` | **Sentiment model optimisation study** (XLM-R): audit, baselines, error analysis, experiments, ONNX, product-conclusion impact, recommendation (INSUFFICIENT EVIDENCE) |
 | `release_manifest.md` | **Release audit**: what differs from production, switches, deployment checklist, smoke tests, rollback (nothing deployed) |
 | `release_blocker_checks.md` | Safety regression audit of the 29 lost flags, saved-report migration strategy and rehearsal, default admin password check |
 | `release_validation.md` | Tests, API compatibility, quotation, aggregation, VM benchmark, behaviour diff for the release candidate |

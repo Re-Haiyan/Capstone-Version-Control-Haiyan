@@ -1,0 +1,244 @@
+{
+ "repo_head": "e06c98a98b11781559e8475c285c058ab2fe30de",
+ "branch": "deployment",
+ "models": {
+  "deployed_onnx_int8/model.onnx": {
+   "bytes": 95150724,
+   "sha256": "e04da4c268bc8ab94e27da2e0fb4206f38dadc43e9cfb52050818a5bb40c3478"
+  },
+  "deployed_onnx_int8/tokenizer.json": {
+   "bytes": 671973,
+   "sha256": "27dea7a8dd6fe22d3913c719dd962f283f7bb2d91f023abf3b1e644df39ca49e"
+  },
+  "deployed_onnx_int8/manifest.json": {
+   "bytes": 1583,
+   "sha256": "fccc6c1a16af8f88dc11a1d80659c926823b9883a02cdda1b097e0615f699bec"
+  },
+  "experimental_calibrator_v1.joblib (disabled)": {
+   "bytes": 1469431,
+   "sha256": "e866e276cbf08261401cc9c5f07321340383d04fbf0029ac6114c18fe3326202"
+  },
+  "cardiffnlp/twitter-xlm-roberta-base-sentiment (public base, FP32)": {
+   "snapshot": "48de035c693d1ae475bcf32c71d5b0f2588c160a",
+   "files": {
+    "model.safetensors": {
+     "bytes": 1112212292,
+     "sha256": "0c0d65e6a3ff8ee8e54af9be5962ef96e5d2f831b8f851f122aedbfd17433d86"
+    }
+   }
+  },
+  "training/runs/v1/model (HAZARD-FLAG model, not sentiment)": {
+   "bytes": 1112214236,
+   "sha256": "953507a57e2207ebfbc2189d5e8efa4d3d30ff3ac3a105d8c4b751ba037ce9d3"
+  },
+  "training/runs/v2/model (HAZARD-FLAG model, not sentiment)": {
+   "bytes": 1112214236,
+   "sha256": "9890639706753f1f68f76ac1cf95e8154bad82b17dc50e3f931ee270a4cfe6e1"
+  },
+  "training/runs/v3/model (HAZARD-FLAG model, not sentiment)": {
+   "bytes": 1112217312,
+   "sha256": "358070bd830e0c6d43b795f620b0f108cebdc58d65c57a486a6d979933e36747"
+  }
+ },
+ "datasets": {
+  "firecs_train": {
+   "file_sha256": "9ca5ef80b8f93836f5966a1db8d017ebbd474e4b615468269cb0ba9d3778eb39",
+   "rows": 7340,
+   "confidence": {
+    "published": 7340
+   },
+   "labels_high_confidence": {
+    "negative": 2381,
+    "neutral": 2549,
+    "positive": 2410
+   },
+   "label_share_high": {
+    "negative": 0.324,
+    "neutral": 0.347,
+    "positive": 0.328
+   },
+   "duplicate_texts_within": 2,
+   "products": 0,
+   "mean_words": 26.3
+  },
+  "firecs_test": {
+   "file_sha256": "6c172b8a52ad5d320d445bcf2229557de103587673582767cc59f8fc42754875",
+   "rows": 3147,
+   "confidence": {
+    "published": 3147
+   },
+   "labels_high_confidence": {
+    "neutral": 1087,
+    "positive": 1033,
+    "negative": 1027
+   },
+   "label_share_high": {
+    "neutral": 0.345,
+    "positive": 0.328,
+    "negative": 0.326
+   },
+   "duplicate_texts_within": 0,
+   "products": 0,
+   "mean_words": 26.3
+  },
+  "market_train_v3": {
+   "file_sha256": "eb17e1abf09b290cbb9933ff9fde2aca9a95aa9a935f44f5fb98c0cb57a76068",
+   "rows": 4268,
+   "confidence": {
+    "high": 3946,
+    "low": 322
+   },
+   "labels_high_confidence": {
+    "positive": 2017,
+    "neutral": 724,
+    "negative": 1205
+   },
+   "label_share_high": {
+    "positive": 0.511,
+    "neutral": 0.183,
+    "negative": 0.305
+   },
+   "duplicate_texts_within": 352,
+   "products": 305,
+   "mean_words": 25.1
+  },
+  "market_test_v3": {
+   "file_sha256": "723f68c21adece201b17ec28ac7f975c77c2f20e872970aa4a5601911272e48f",
+   "rows": 886,
+   "confidence": {
+    "high": 846,
+    "low": 40
+   },
+   "labels_high_confidence": {
+    "positive": 415,
+    "negative": 240,
+    "neutral": 191
+   },
+   "label_share_high": {
+    "positive": 0.491,
+    "negative": 0.284,
+    "neutral": 0.226
+   },
+   "duplicate_texts_within": 56,
+   "products": 82,
+   "mean_words": 23.6
+  },
+  "market_fresh": {
+   "file_sha256": "4cc90bcef2ab08344e9430294873a10a1c82981722193a3037527a92ab7e1597",
+   "rows": 310,
+   "confidence": {
+    "high": 293,
+    "low": 17
+   },
+   "labels_high_confidence": {
+    "positive": 224,
+    "negative": 44,
+    "neutral": 25
+   },
+   "label_share_high": {
+    "positive": 0.765,
+    "negative": 0.15,
+    "neutral": 0.085
+   },
+   "duplicate_texts_within": 36,
+   "products": 69,
+   "mean_words": 23.5
+  },
+  "market_fresh2": {
+   "file_sha256": "04c490d8865498b2f84ffc5c04841a8d1a040e4fb0c1f6f70bb9a4383865e62d",
+   "rows": 270,
+   "confidence": {
+    "high": 253,
+    "low": 17
+   },
+   "labels_high_confidence": {
+    "positive": 175,
+    "negative": 62,
+    "neutral": 16
+   },
+   "label_share_high": {
+    "positive": 0.692,
+    "negative": 0.245,
+    "neutral": 0.063
+   },
+   "duplicate_texts_within": 21,
+   "products": 75,
+   "mean_words": 21.9
+  },
+  "market_gold200": {
+   "file_sha256": "756d22255eecbcccd1f284556e3538dcec32ecdd6bb10f674813decbb21ecd94",
+   "rows": 200,
+   "confidence": {
+    "high": 150,
+    "low": 50
+   },
+   "labels_high_confidence": {
+    "positive": 51,
+    "neutral": 36,
+    "negative": 63
+   },
+   "label_share_high": {
+    "positive": 0.34,
+    "neutral": 0.24,
+    "negative": 0.42
+   },
+   "duplicate_texts_within": 0,
+   "products": 0,
+   "mean_words": 21.3
+  },
+  "market_heldout100": {
+   "file_sha256": "49e243ab0f338fee3f7e6719b9bda1c8b4686618aa9e73fb010a900c89ab28f0",
+   "rows": 100,
+   "confidence": {
+    "low": 24,
+    "high": 76
+   },
+   "labels_high_confidence": {
+    "positive": 30,
+    "negative": 36,
+    "neutral": 10
+   },
+   "label_share_high": {
+    "positive": 0.395,
+    "negative": 0.474,
+    "neutral": 0.132
+   },
+   "duplicate_texts_within": 0,
+   "products": 0,
+   "mean_words": 20.1
+  }
+ },
+ "exact_text_overlap": {
+  "firecs_train & firecs_test": 4,
+  "market_train_v3 & market_fresh": 201,
+  "market_train_v3 & market_fresh2": 208
+ },
+ "product_overlap": {
+  "market_train_v3 & market_fresh": 51,
+  "market_train_v3 & market_fresh2": 62,
+  "market_test_v3 & market_fresh": 18,
+  "market_test_v3 & market_fresh2": 13
+ },
+ "near_duplicates": {
+  "firecs_test vs firecs_train": {
+   "rows": 3147,
+   "with_neighbour_cosine_ge_0.9": 10,
+   "with_neighbour_cosine_ge_0.95": 7
+  },
+  "market_test_v3 vs market_train_v3": {
+   "rows": 886,
+   "with_neighbour_cosine_ge_0.9": 1,
+   "with_neighbour_cosine_ge_0.95": 0
+  },
+  "market_test_v3 vs firecs_train": {
+   "rows": 886,
+   "with_neighbour_cosine_ge_0.9": 0,
+   "with_neighbour_cosine_ge_0.95": 0
+  },
+  "market_fresh vs market_train_v3": {
+   "rows": 310,
+   "with_neighbour_cosine_ge_0.9": 226,
+   "with_neighbour_cosine_ge_0.95": 226
+  }
+ }
+}

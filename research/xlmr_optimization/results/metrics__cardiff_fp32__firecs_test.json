@@ -1,0 +1,94 @@
+{
+ "model": "cardiff_fp32",
+ "set": "firecs_test",
+ "rows_scored": 3147,
+ "rows_excluded_low_confidence": 0,
+ "n": 3147,
+ "accuracy": 0.6822370511598348,
+ "macro_f1": 0.6389336167879623,
+ "micro_f1": 0.6822370511598348,
+ "weighted_f1": 0.6338723206350975,
+ "classes": {
+  "negative": {
+   "precision": 0.6520818630910374,
+   "recall": 0.8997078870496592,
+   "f1": 0.7561374795417349,
+   "support": 1027
+  },
+  "neutral": {
+   "precision": 0.7115384615384616,
+   "recall": 0.23827046918123276,
+   "f1": 0.3569951757408684,
+   "support": 1087
+  },
+  "positive": {
+   "precision": 0.705710102489019,
+   "recall": 0.9332042594385286,
+   "f1": 0.8036681950812838,
+   "support": 1033
+  }
+ },
+ "confusion": [
+  [
+   924,
+   66,
+   37
+  ],
+  [
+   463,
+   259,
+   365
+  ],
+  [
+   30,
+   39,
+   964
+  ]
+ ],
+ "macro_f1_ci95_row_bootstrap": [
+  0.624546635948179,
+  0.6534901106264579
+ ],
+ "interval_kind": "row bootstrap (no product field; optimistic)",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 186,
+    "accuracy": 0.7634408602150538,
+    "macro_f1": 0.6855890279859542,
+    "negative_recall": 0.9487179487179487,
+    "neutral_f1": 0.42857142857142855
+   },
+   "filipino": {
+    "n": 1251,
+    "accuracy": 0.6442845723421263,
+    "macro_f1": 0.6288041704401047,
+    "negative_recall": 0.8737270875763747,
+    "neutral_f1": 0.42618384401114207
+   },
+   "taglish": {
+    "n": 1566,
+    "accuracy": 0.7017879948914432,
+    "macro_f1": 0.6243634943024673,
+    "negative_recall": 0.9315673289183223,
+    "neutral_f1": 0.2686567164179104
+   },
+   "unknown": {
+    "n": 140,
+    "accuracy": 0.7142857142857143,
+    "macro_f1": 0.6499348663891241,
+    "negative_recall": 0.8181818181818182,
+    "neutral_f1": 0.35714285714285715
+   }
+  },
+  "product_group": {
+   "n/a": {
+    "n": 3147,
+    "accuracy": 0.6822370511598348,
+    "macro_f1": 0.6389336167879623,
+    "negative_recall": 0.8997078870496592,
+    "neutral_f1": 0.3569951757408684
+   }
+  }
+ }
+}

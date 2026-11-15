@@ -1,0 +1,418 @@
+{
+ "model": "onnx_int8",
+ "set": "market_test_v3",
+ "scored": 846,
+ "errors": 292,
+ "error_rate": 0.345,
+ "confusion_cells": {
+  "neutral->positive": 129,
+  "negative->neutral": 61,
+  "positive->neutral": 50,
+  "neutral->negative": 31,
+  "negative->positive": 19,
+  "positive->negative": 2
+ },
+ "tags": {
+  "contrast_marker (mixed opinion?)": {
+   "reviews": 144,
+   "errors": 77,
+   "error_rate": 0.535
+  },
+  "defect_or_failure_words": {
+   "reviews": 103,
+   "errors": 22,
+   "error_rate": 0.214
+  },
+  "delivery_or_seller_mention": {
+   "reviews": 233,
+   "errors": 70,
+   "error_rate": 0.3
+  },
+  "elongation_or_caps": {
+   "reviews": 48,
+   "errors": 5,
+   "error_rate": 0.104
+  },
+  "emoji": {
+   "reviews": 139,
+   "errors": 48,
+   "error_rate": 0.345
+  },
+  "language:english": {
+   "reviews": 424,
+   "errors": 117,
+   "error_rate": 0.276
+  },
+  "language:filipino": {
+   "reviews": 161,
+   "errors": 76,
+   "error_rate": 0.472
+  },
+  "language:taglish": {
+   "reviews": 167,
+   "errors": 55,
+   "error_rate": 0.329
+  },
+  "language:unknown": {
+   "reviews": 89,
+   "errors": 42,
+   "error_rate": 0.472
+  },
+  "language:unknown (under 4 words)": {
+   "reviews": 5,
+   "errors": 2,
+   "error_rate": 0.4
+  },
+  "long (60 words or more)": {
+   "reviews": 36,
+   "errors": 13,
+   "error_rate": 0.361
+  },
+  "negation": {
+   "reviews": 342,
+   "errors": 94,
+   "error_rate": 0.275
+  },
+  "not_yet_used": {
+   "reviews": 5,
+   "errors": 0,
+   "error_rate": 0.0
+  },
+  "question_or_request": {
+   "reviews": 56,
+   "errors": 18,
+   "error_rate": 0.321
+  },
+  "short (4 to 6 words)": {
+   "reviews": 64,
+   "errors": 35,
+   "error_rate": 0.547
+  },
+  "star_vs_label_contradiction": {
+   "reviews": 84,
+   "errors": 54,
+   "error_rate": 0.643
+  },
+  "template_or_feature_list": {
+   "reviews": 247,
+   "errors": 73,
+   "error_rate": 0.296
+  },
+  "three_star": {
+   "reviews": 40,
+   "errors": 25,
+   "error_rate": 0.625
+  },
+  "very_short (3 words or fewer)": {
+   "reviews": 8,
+   "errors": 4,
+   "error_rate": 0.5
+  }
+ },
+ "examples": {
+  "negative->neutral": [
+   {
+    "id": "X0004",
+    "stars": 2,
+    "text": "too small and can only chop small amount, easy to discharge",
+    "tags": []
+   },
+   {
+    "id": "X0025",
+    "stars": 5,
+    "text": "okay okay Pero kulang ibang parts",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "short (4 to 6 words)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0031",
+    "stars": 5,
+    "text": "ok namn Yung item Kaso parehas may link po but still ok namn siya next time po make sure nakalock po maigi Yung bottle para dipo mag leak",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "defect_or_failure_words",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0033",
+    "stars": 4,
+    "text": "the unit is functioning well as tested. but the right fender of the unit was broken. I don't know what happened to this or it happened during in transit. the handling was not so good. the seller must look into this as we noticed t",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "defect_or_failure_words",
+     "long (60 words or more)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0040",
+    "stars": 4,
+    "text": "🛠️Material:medyo manipis and rought",
+    "tags": [
+     "emoji",
+     "short (4 to 6 words)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0045",
+    "stars": 2,
+    "text": "received na po ang items di ko pa sya nagamit sana ok sya pero Yung items yupi Yung gilid,sna gumana, salamat Lazada at sa Rider",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request"
+    ]
+   }
+  ],
+  "negative->positive": [
+   {
+    "id": "X0005",
+    "stars": 5,
+    "text": "thanks po at dumating na at kumpleto lahat walang sira o butas maayos lahat thanks again yummy Creamy and delicious cheese, Packed with essential vitamins and minerals, Packed with essential vitamins and minerals, Versatile and ea",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "defect_or_failure_words",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0069",
+    "stars": 5,
+    "text": "sobrang nipis lang pala nya sakto lang sa price nya..wag lang lagyan ng mabigat masyado maganda ang design sna mag tagal😊",
+    "tags": [
+     "emoji",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0156",
+    "stars": 5,
+    "text": "Doesn't clog pores, Leaves skin feeling fresh and clean, Gentle and non-drying cleanser. Also, i love how the packed it properly this time it didn't leak.",
+    "tags": [
+     "negation",
+     "defect_or_failure_words",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0195",
+    "stars": 5,
+    "text": "Functionality:good Quality:good Value for Money:good 2nd time na bumili ako dito goods naman, nung una tumatagas sya pero ngayon goods na, thanks",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0241",
+    "stars": 5,
+    "text": "medyo manipis lang pero maganda nman....mabilis din dumating...",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "X0280",
+    "stars": 5,
+    "text": "Maraming maraming salamat seller, items delivered safe and sound. Maayos lahat, no damages nor broken sealed. My families all time favourite. Thank you so much and until next purchase with you. God bless, and more sales to come 🙏",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "defect_or_failure_words",
+     "emoji",
+     "star_vs_label_contradiction"
+    ]
+   }
+  ],
+  "neutral->positive": [
+   {
+    "id": "X0007",
+    "stars": 5,
+    "text": "super cool 😎 👌 and super",
+    "tags": [
+     "emoji",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "X0008",
+    "stars": 5,
+    "text": "Adjustable temperature settings, LED display for easy operation, Sleek and modern design,",
+    "tags": [
+     "template_or_feature_list"
+    ]
+   },
+   {
+    "id": "X0015",
+    "stars": 5,
+    "text": "👜Portability:maliit pala pero keri lang sa bag. ⚙️Speed Settings:malakas naman din Compact and portable, Sleek modern look,",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "emoji"
+    ]
+   },
+   {
+    "id": "X0022",
+    "stars": 5,
+    "text": "Large feeder mouth, Versatile food processor, High-speed performance,",
+    "tags": [
+     "template_or_feature_list"
+    ]
+   },
+   {
+    "id": "X0023",
+    "stars": 5,
+    "text": "Pascual yogurt, particularly Greek yogurt, offers benefits like supporting bone health with calcium and protein, aiding digestion with probiotics, and contributing to overall",
+    "tags": []
+   },
+   {
+    "id": "X0035",
+    "stars": 5,
+    "text": "Large capacity for family meals, Fast and efficient cooking, 2-year warranty for peace of mind, Easy to clean and maintain,",
+    "tags": [
+     "template_or_feature_list"
+    ]
+   }
+  ],
+  "positive->neutral": [
+   {
+    "id": "X0021",
+    "stars": 5,
+    "text": "First time user. I don't know if it effective. The price is cheaper. No bad smell I will back again for update my review after one month. To make sure if it's effective or not. Price:The price is cheaper Ingredients:the ingredient",
+    "tags": [
+     "negation"
+    ]
+   },
+   {
+    "id": "X0043",
+    "stars": 4,
+    "text": "you get what you pay for. mas malipis siya than the usual covers na nabibili but ok na siguro since mura lang.",
+    "tags": [
+     "contrast_marker (mixed opinion?)"
+    ]
+   },
+   {
+    "id": "X0056",
+    "stars": 5,
+    "text": "Texture:Maganda texture niya pag slice hindi siya dumidikit hindi ganon ka lambot at hindi rin matigas sakto lang. Price:suliit kasi naka promo ko siya na check out Taste:Yummy and rich, not too salty. kaya sakto lang yung lasa ni",
+    "tags": [
+     "negation"
+    ]
+   },
+   {
+    "id": "X0059",
+    "stars": 5,
+    "text": "Maganda naman yung design pero mukhang manipis yung sa loob. Hindi advisable kung books ang ilalagay. Dapat magaan lang like few notebooks. Marami siyang pockets sa labas and may isa sa loob na pwdeng maliit na laptop or tablet. P",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "emoji"
+    ]
+   },
+   {
+    "id": "X0063",
+    "stars": 4,
+    "text": "mura naman siya, medyo di ko gusto yung fit sa may bust pero okay with belt. kaso manipis siya, kaya di ko masusuot sa event namin",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation"
+    ]
+   },
+   {
+    "id": "X0067",
+    "stars": 5,
+    "text": "maayos naman medyo mabagal lang magpakulo...panalo na rin sa price nya na 158 pesos lang..",
+    "tags": []
+   }
+  ],
+  "neutral->negative": [
+   {
+    "id": "X0057",
+    "stars": 4,
+    "text": "Damaged, partially opened box. Rider must have mistakenly delivered previous day to other client, because status said failed delivery. I just received it now.",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "X0077",
+    "stars": 5,
+    "text": "dumating na parcel ko wala naman damage sana epektib..",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "X0102",
+    "stars": 4,
+    "text": "Damaged, partially opened box. Rider must have mistakenly delivered previous day to other client, because status said failed delivery. I just received it now.",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "X0170",
+    "stars": 2,
+    "text": "as of october 15 2026... i receive a DEC19 2026 expiration.. meaning near expiry sya.. but they didn't mention. (2mos nlng expired n) we're starting to buy kasi for xmas giveaways so we choose to buy online ... kaso if ganito HIND",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "elongation_or_caps",
+     "long (60 words or more)"
+    ]
+   },
+   {
+    "id": "X0176",
+    "stars": 2,
+    "text": "Sira sira yung mga box. Pano gagawin dun pang reregalo pa naman",
+    "tags": [
+     "delivery_or_seller_mention",
+     "defect_or_failure_words"
+    ]
+   },
+   {
+    "id": "X0182",
+    "stars": 4,
+    "text": "The box is already distorted",
+    "tags": [
+     "delivery_or_seller_mention",
+     "short (4 to 6 words)"
+    ]
+   }
+  ],
+  "positive->negative": [
+   {
+    "id": "X0214",
+    "stars": 5,
+    "text": "d maganda ung tela 😒",
+    "tags": [
+     "emoji",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "Y0095",
+    "stars": 3,
+    "text": "kaya pala mura kc npakanipis.",
+    "tags": [
+     "short (4 to 6 words)",
+     "three_star"
+    ]
+   }
+  ]
+ }
+}

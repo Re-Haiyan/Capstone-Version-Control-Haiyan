@@ -1,0 +1,116 @@
+{
+ "model": "onnx_int8",
+ "set": "market_fresh",
+ "rows_scored": 293,
+ "rows_excluded_low_confidence": 17,
+ "n": 293,
+ "accuracy": 0.8771331058020477,
+ "macro_f1": 0.7183399975009371,
+ "micro_f1": 0.8771331058020477,
+ "weighted_f1": 0.8793159476459126,
+ "classes": {
+  "negative": {
+   "precision": 0.9722222222222222,
+   "recall": 0.7954545454545454,
+   "f1": 0.875,
+   "support": 44
+  },
+  "neutral": {
+   "precision": 0.32142857142857145,
+   "recall": 0.36,
+   "f1": 0.33962264150943394,
+   "support": 25
+  },
+  "positive": {
+   "precision": 0.9301310043668122,
+   "recall": 0.9508928571428571,
+   "f1": 0.9403973509933774,
+   "support": 224
+  }
+ },
+ "confusion": [
+  [
+   35,
+   8,
+   1
+  ],
+  [
+   1,
+   9,
+   15
+  ],
+  [
+   0,
+   11,
+   213
+  ]
+ ],
+ "macro_f1_ci95_product_bootstrap": [
+  0.643478435510381,
+  0.7972286536277469
+ ],
+ "products": 69,
+ "interval_kind": "product bootstrap",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 179,
+    "accuracy": 0.9385474860335196,
+    "macro_f1": 0.8110050895990347,
+    "negative_recall": 0.9411764705882353,
+    "neutral_f1": 0.5217391304347826
+   },
+   "filipino": {
+    "n": 38,
+    "accuracy": 0.6052631578947368,
+    "macro_f1": 0.5615334632878493,
+    "negative_recall": 0.5882352941176471,
+    "neutral_f1": 0.21052631578947364
+   },
+   "taglish": {
+    "n": 49,
+    "accuracy": 0.8775510204081632,
+    "macro_f1": 0.7066017316017316,
+    "negative_recall": 0.8333333333333334,
+    "neutral_f1": 0.28571428571428575
+   },
+   "unknown": {
+    "n": 27,
+    "accuracy": 0.8518518518518519,
+    "macro_f1": 0.6349206349206349,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.0
+   }
+  },
+  "product_group": {
+   "baby_kids_toys": {
+    "n": 68,
+    "accuracy": 0.9705882352941176,
+    "macro_f1": 0.8835978835978836,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.6666666666666666
+   },
+   "beauty_health": {
+    "n": 119,
+    "accuracy": 0.773109243697479,
+    "macro_f1": 0.6249258580546925,
+    "negative_recall": 0.7083333333333334,
+    "neutral_f1": 0.1818181818181818
+   },
+   "fashion": {
+    "n": 35,
+    "accuracy": 0.9142857142857143,
+    "macro_f1": 0.8554720133667502,
+    "negative_recall": 0.9,
+    "neutral_f1": 0.6666666666666665
+   },
+   "food_grocery": {
+    "n": 25,
+    "accuracy": 0.88,
+    "macro_f1": 0.5767441860465117,
+    "negative_recall": 0.6666666666666666,
+    "neutral_f1": 0.0
+   }
+  }
+ }
+}

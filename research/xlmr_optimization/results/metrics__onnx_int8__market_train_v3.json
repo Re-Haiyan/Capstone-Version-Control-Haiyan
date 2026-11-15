@@ -1,0 +1,172 @@
+{
+ "model": "onnx_int8",
+ "set": "market_train_v3",
+ "rows_scored": 3946,
+ "rows_excluded_low_confidence": 322,
+ "n": 3946,
+ "accuracy": 0.7055245818550431,
+ "macro_f1": 0.6047386192173021,
+ "micro_f1": 0.7055245818550431,
+ "weighted_f1": 0.6947991663569268,
+ "classes": {
+  "negative": {
+   "precision": 0.831958762886598,
+   "recall": 0.6697095435684647,
+   "f1": 0.7420689655172413,
+   "support": 1205
+  },
+  "neutral": {
+   "precision": 0.26547231270358307,
+   "recall": 0.22513812154696133,
+   "f1": 0.2436472346786248,
+   "support": 724
+  },
+  "positive": {
+   "precision": 0.7679932260795935,
+   "recall": 0.8993554784333168,
+   "f1": 0.8284996574560402,
+   "support": 2017
+  }
+ },
+ "confusion": [
+  [
+   807,
+   265,
+   133
+  ],
+  [
+   146,
+   163,
+   415
+  ],
+  [
+   17,
+   186,
+   1814
+  ]
+ ],
+ "macro_f1_ci95_product_bootstrap": [
+  0.5875362724171725,
+  0.6221941478248899
+ ],
+ "products": 303,
+ "interval_kind": "product bootstrap",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 1954,
+    "accuracy": 0.7512794268167861,
+    "macro_f1": 0.6053137687139437,
+    "negative_recall": 0.696078431372549,
+    "neutral_f1": 0.1895910780669145
+   },
+   "filipino": {
+    "n": 770,
+    "accuracy": 0.6532467532467533,
+    "macro_f1": 0.5895299631816578,
+    "negative_recall": 0.6966824644549763,
+    "neutral_f1": 0.270440251572327
+   },
+   "taglish": {
+    "n": 806,
+    "accuracy": 0.6910669975186104,
+    "macro_f1": 0.5583059446171469,
+    "negative_recall": 0.5546558704453441,
+    "neutral_f1": 0.18723404255319148
+   },
+   "unknown": {
+    "n": 389,
+    "accuracy": 0.6066838046272494,
+    "macro_f1": 0.5940349978943766,
+    "negative_recall": 0.7073170731707317,
+    "neutral_f1": 0.3539823008849557
+   },
+   "unknown (under 4 words)": {
+    "n": 27,
+    "accuracy": 0.7407407407407407,
+    "macro_f1": 0.7676767676767676,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.6666666666666666
+   }
+  },
+  "product_group": {
+   "automotive_tools": {
+    "n": 305,
+    "accuracy": 0.7081967213114754,
+    "macro_f1": 0.586375227686703,
+    "negative_recall": 0.5517241379310345,
+    "neutral_f1": 0.24
+   },
+   "baby_kids_toys": {
+    "n": 253,
+    "accuracy": 0.7509881422924901,
+    "macro_f1": 0.6513791308873277,
+    "negative_recall": 0.8846153846153846,
+    "neutral_f1": 0.2857142857142857
+   },
+   "beauty_health": {
+    "n": 742,
+    "accuracy": 0.7250673854447439,
+    "macro_f1": 0.6299160848800333,
+    "negative_recall": 0.762114537444934,
+    "neutral_f1": 0.26720647773279355
+   },
+   "electronics": {
+    "n": 378,
+    "accuracy": 0.6798941798941799,
+    "macro_f1": 0.6046321759050353,
+    "negative_recall": 0.7253521126760564,
+    "neutral_f1": 0.2608695652173913
+   },
+   "fashion": {
+    "n": 524,
+    "accuracy": 0.7194656488549618,
+    "macro_f1": 0.5966844178241555,
+    "negative_recall": 0.5253164556962026,
+    "neutral_f1": 0.28220858895705525
+   },
+   "food_grocery": {
+    "n": 53,
+    "accuracy": 0.7547169811320755,
+    "macro_f1": 0.6114539055715527,
+    "negative_recall": 1.0,
+    "neutral_f1": 0.23529411764705882
+   },
+   "home_living": {
+    "n": 1002,
+    "accuracy": 0.6936127744510978,
+    "macro_f1": 0.6071828757543297,
+    "negative_recall": 0.6778042959427207,
+    "neutral_f1": 0.25
+   },
+   "office_media": {
+    "n": 61,
+    "accuracy": 0.5573770491803278,
+    "macro_f1": 0.4569255521427526,
+    "negative_recall": 0.4,
+    "neutral_f1": 0.0
+   },
+   "other": {
+    "n": 241,
+    "accuracy": 0.6929460580912863,
+    "macro_f1": 0.5940465792749051,
+    "negative_recall": 0.6842105263157895,
+    "neutral_f1": 0.23529411764705882
+   },
+   "pets": {
+    "n": 321,
+    "accuracy": 0.6978193146417445,
+    "macro_f1": 0.56539144548314,
+    "negative_recall": 0.6727272727272727,
+    "neutral_f1": 0.16822429906542055
+   },
+   "sports_outdoor": {
+    "n": 66,
+    "accuracy": 0.696969696969697,
+    "macro_f1": 0.47831715210355985,
+    "negative_recall": 0.6,
+    "neutral_f1": 0.0
+   }
+  }
+ }
+}

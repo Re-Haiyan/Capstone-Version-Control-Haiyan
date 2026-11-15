@@ -1,0 +1,33 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|██████████| 201/201 [00:00<00:00, 20096.67it/s]
+train rows 9743 class counts [3047, 2879, 3817] loss weighted lr 2e-05 epochs 2 seed 1
+before training: {'firecs_val': 0.647, 'market_val': 0.6347}
+epoch 1 step 50/1218 loss 0.6264 elapsed 318s
+epoch 1 step 100/1218 loss 0.6390 elapsed 440s
+epoch 1 step 150/1218 loss 0.6464 elapsed 567s
+epoch 1 step 200/1218 loss 0.5871 elapsed 690s
+epoch 1 step 250/1218 loss 0.6367 elapsed 823s
+epoch 1 step 300/1218 loss 0.6010 elapsed 943s
+epoch 1 step 350/1218 loss 0.5318 elapsed 1089s
+epoch 1 step 400/1218 loss 0.5206 elapsed 1211s
+epoch 1 step 450/1218 loss 0.5192 elapsed 1345s
+epoch 1 step 500/1218 loss 0.4933 elapsed 1468s
+epoch 1 step 550/1218 loss 0.5344 elapsed 1612s
+epoch 1 step 600/1218 loss 0.5157 elapsed 1730s
+epoch 1: market_val macroF1 0.6371 (neu 0.288, neg recall 0.765) firecs_val macroF1 0.8405
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.52s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.52s/it]
+epoch 2 step 650/1218 loss 0.3814 elapsed 1913s
+epoch 2 step 700/1218 loss 0.3842 elapsed 2057s
+epoch 2 step 750/1218 loss 0.3701 elapsed 2190s
+epoch 2 step 800/1218 loss 0.4300 elapsed 2353s
+epoch 2 step 850/1218 loss 0.3750 elapsed 2480s
+epoch 2 step 900/1218 loss 0.3716 elapsed 2614s
+epoch 2 step 950/1218 loss 0.4308 elapsed 2737s
+epoch 2 step 1000/1218 loss 0.4143 elapsed 2888s
+epoch 2 step 1050/1218 loss 0.4027 elapsed 3005s
+epoch 2 step 1100/1218 loss 0.4089 elapsed 3134s
+epoch 2 step 1150/1218 loss 0.4012 elapsed 3265s
+epoch 2 step 1200/1218 loss 0.3849 elapsed 3382s
+epoch 2: market_val macroF1 0.6652 (neu 0.371, neg recall 0.788) firecs_val macroF1 0.8493
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]
+done 3504 s; best market_val macro F1 0.6652

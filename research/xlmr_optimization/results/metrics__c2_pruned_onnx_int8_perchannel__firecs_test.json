@@ -1,0 +1,94 @@
+{
+ "model": "c2_pruned_onnx_int8_perchannel",
+ "set": "firecs_test",
+ "rows_scored": 3147,
+ "rows_excluded_low_confidence": 0,
+ "n": 3147,
+ "accuracy": 0.8233238004448681,
+ "macro_f1": 0.8228768531118941,
+ "micro_f1": 0.8233238004448681,
+ "weighted_f1": 0.8214209463841656,
+ "classes": {
+  "negative": {
+   "precision": 0.8407335907335908,
+   "recall": 0.8481012658227848,
+   "f1": 0.8444013572467282,
+   "support": 1027
+  },
+  "neutral": {
+   "precision": 0.7722277722277723,
+   "recall": 0.7111315547378105,
+   "f1": 0.7404214559386975,
+   "support": 1087
+  },
+  "positive": {
+   "precision": 0.8531531531531531,
+   "recall": 0.9167473378509197,
+   "f1": 0.8838077461502566,
+   "support": 1033
+  }
+ },
+ "confusion": [
+  [
+   871,
+   146,
+   10
+  ],
+  [
+   161,
+   773,
+   153
+  ],
+  [
+   4,
+   82,
+   947
+  ]
+ ],
+ "macro_f1_ci95_row_bootstrap": [
+  0.8115096728249995,
+  0.8351251697698363
+ ],
+ "interval_kind": "row bootstrap (no product field; optimistic)",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 186,
+    "accuracy": 0.8655913978494624,
+    "macro_f1": 0.8442651977178833,
+    "negative_recall": 0.9487179487179487,
+    "neutral_f1": 0.7391304347826088
+   },
+   "filipino": {
+    "n": 1251,
+    "accuracy": 0.8161470823341327,
+    "macro_f1": 0.8219969974646641,
+    "negative_recall": 0.8513238289205702,
+    "neutral_f1": 0.7678018575851394
+   },
+   "taglish": {
+    "n": 1566,
+    "accuracy": 0.8314176245210728,
+    "macro_f1": 0.8247605198106172,
+    "negative_recall": 0.8454746136865342,
+    "neutral_f1": 0.7291886195995785
+   },
+   "unknown": {
+    "n": 140,
+    "accuracy": 0.7428571428571429,
+    "macro_f1": 0.7120909106241405,
+    "negative_recall": 0.75,
+    "neutral_f1": 0.5070422535211268
+   }
+  },
+  "product_group": {
+   "n/a": {
+    "n": 3147,
+    "accuracy": 0.8233238004448681,
+    "macro_f1": 0.8228768531118941,
+    "negative_recall": 0.8481012658227848,
+    "neutral_f1": 0.7404214559386975
+   }
+  }
+ }
+}

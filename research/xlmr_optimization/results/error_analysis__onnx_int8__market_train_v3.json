@@ -1,0 +1,466 @@
+{
+ "model": "onnx_int8",
+ "set": "market_train_v3",
+ "scored": 3946,
+ "errors": 1162,
+ "error_rate": 0.294,
+ "confusion_cells": {
+  "neutral->positive": 415,
+  "negative->neutral": 265,
+  "positive->neutral": 186,
+  "neutral->negative": 146,
+  "negative->positive": 133,
+  "positive->negative": 17
+ },
+ "tags": {
+  "contrast_marker (mixed opinion?)": {
+   "reviews": 734,
+   "errors": 323,
+   "error_rate": 0.44
+  },
+  "defect_or_failure_words": {
+   "reviews": 407,
+   "errors": 112,
+   "error_rate": 0.275
+  },
+  "delivery_or_seller_mention": {
+   "reviews": 1366,
+   "errors": 409,
+   "error_rate": 0.299
+  },
+  "elongation_or_caps": {
+   "reviews": 204,
+   "errors": 43,
+   "error_rate": 0.211
+  },
+  "emoji": {
+   "reviews": 695,
+   "errors": 197,
+   "error_rate": 0.283
+  },
+  "language:english": {
+   "reviews": 1954,
+   "errors": 486,
+   "error_rate": 0.249
+  },
+  "language:filipino": {
+   "reviews": 770,
+   "errors": 267,
+   "error_rate": 0.347
+  },
+  "language:taglish": {
+   "reviews": 806,
+   "errors": 249,
+   "error_rate": 0.309
+  },
+  "language:unknown": {
+   "reviews": 389,
+   "errors": 153,
+   "error_rate": 0.393
+  },
+  "language:unknown (under 4 words)": {
+   "reviews": 27,
+   "errors": 7,
+   "error_rate": 0.259
+  },
+  "long (60 words or more)": {
+   "reviews": 194,
+   "errors": 56,
+   "error_rate": 0.289
+  },
+  "negation": {
+   "reviews": 1507,
+   "errors": 419,
+   "error_rate": 0.278
+  },
+  "not_yet_used": {
+   "reviews": 46,
+   "errors": 18,
+   "error_rate": 0.391
+  },
+  "question_or_request": {
+   "reviews": 360,
+   "errors": 114,
+   "error_rate": 0.317
+  },
+  "short (4 to 6 words)": {
+   "reviews": 235,
+   "errors": 78,
+   "error_rate": 0.332
+  },
+  "star_vs_label_contradiction": {
+   "reviews": 425,
+   "errors": 256,
+   "error_rate": 0.602
+  },
+  "template_or_feature_list": {
+   "reviews": 1082,
+   "errors": 289,
+   "error_rate": 0.267
+  },
+  "three_star": {
+   "reviews": 219,
+   "errors": 109,
+   "error_rate": 0.498
+  },
+  "very_short (3 words or fewer)": {
+   "reviews": 47,
+   "errors": 15,
+   "error_rate": 0.319
+  }
+ },
+ "examples": {
+  "neutral->positive": [
+   {
+    "id": "T10003",
+    "stars": 5,
+    "text": "Beautiful thank you seller 🥰🥰",
+    "tags": [
+     "delivery_or_seller_mention",
+     "emoji",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "T10006",
+    "stars": 5,
+    "text": "Healthy and balanced nutrition., Keeps your active dog energized., Indoor formula for a healthy lifestyle.,",
+    "tags": []
+   },
+   {
+    "id": "T10014",
+    "stars": 5,
+    "text": "Fast shipping service, Heart healthy formula, Strong bones and muscles, Good for adults 50+, Genuine product,",
+    "tags": [
+     "template_or_feature_list",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "T10021",
+    "stars": 5,
+    "text": "High quality ingredients, Healthy heart support, Fast shipping, Helps with memory,",
+    "tags": [
+     "template_or_feature_list",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "T10031",
+    "stars": 5,
+    "text": "ayos yung pagkabalot maraming salamat seller masubukan nga ito kung gagana ba at magiging model hehehe salamat rin kay kuya rider",
+    "tags": [
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "T10041",
+    "stars": 5,
+    "text": "🛠️Durability:Matibay naman kahit managsak di agad nasisira 📚Educational Value:Helps for child development Safety:Malaki sya kaya kahit isubo ng baby safe na safe",
+    "tags": [
+     "template_or_feature_list",
+     "negation",
+     "emoji"
+    ]
+   }
+  ],
+  "positive->neutral": [
+   {
+    "id": "T10004",
+    "stars": 5,
+    "text": "🛠️Durability:mukang di sya matibay kase manopis, maagan lng malalagay pero malaki sya 🎨Design:maganda naman ang design.. cute dame pocket 🎧Comfort:oks naman good good good good",
+    "tags": [
+     "template_or_feature_list",
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "emoji"
+    ]
+   },
+   {
+    "id": "T10018",
+    "stars": 5,
+    "text": "Product Quality:good Value For Money:great value Best Feature:mukhang matibay po at malakas ang hangin... sana matagal malowbat at sana magtagal din xa bago masira kasi ang dami ko ng nabili na fan kaso madali lng masira... sana i",
+    "tags": [
+     "template_or_feature_list",
+     "contrast_marker (mixed opinion?)",
+     "question_or_request"
+    ]
+   },
+   {
+    "id": "T10022",
+    "stars": 4,
+    "text": "Buy one take one deal, manipis but ok lng. Cannot choose design you like.",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "negation"
+    ]
+   },
+   {
+    "id": "T10025",
+    "stars": 5,
+    "text": "madali cia malowbat pero maganda ang items in lng d masyado umiinit",
+    "tags": [
+     "contrast_marker (mixed opinion?)"
+    ]
+   },
+   {
+    "id": "T10043",
+    "stars": 5,
+    "text": "ok lng nmn kaso wlang box maganda sna if my box po",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "T10100",
+    "stars": 5,
+    "text": "Battery life:Antagal malowbat sulit pera ko dito Ang ganda, tibay mo talaga orashare antagal malowbat, dumating sha nasa 72% at sahi sa instruction dapat e zero ang batt for first charge, kaya lang te 12pm pa ako nag fan, 10pm na ",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "question_or_request"
+    ]
+   }
+  ],
+  "neutral->negative": [
+   {
+    "id": "T10005",
+    "stars": 2,
+    "text": "wheyl protein keeps getting worse tastes like chemicals and wont dilute through simple mixing",
+    "tags": [
+     "negation"
+    ]
+   },
+   {
+    "id": "T10010",
+    "stars": 5,
+    "text": "I was very excited when it was delivered this morning. I immediately applied it. But, it was very disappointing. It looks like as if I just put colorless lip balm.",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention"
+    ]
+   },
+   {
+    "id": "T10017",
+    "stars": 3,
+    "text": "Mabalis malowbat kahit nasa 1 speed lang sya. From 79 to 60 real quick wala lang 10 minutes.",
+    "tags": [
+     "negation",
+     "three_star"
+    ]
+   },
+   {
+    "id": "T10027",
+    "stars": 3,
+    "text": "💰Price:cheap 😋Taste:Rich and flavorful taste, ideal for cooking and baking. ● Item recieved on said date. ● Item recieved no damage - Not packed well and dusty. Pls. Improve your packaging.",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request",
+     "emoji",
+     "three_star"
+    ]
+   },
+   {
+    "id": "T10033",
+    "stars": 1,
+    "text": "can't mix even small pieces",
+    "tags": [
+     "negation",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "T10034",
+    "stars": 3,
+    "text": "💰Price:cheap 😋Taste:Rich and flavorful taste, ideal for cooking and baking. ● Item recieved on said date. ● Item recieved no damage - Not packed well and dusty. Pls. Improve your packaging.",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation",
+     "question_or_request",
+     "emoji",
+     "three_star"
+    ]
+   }
+  ],
+  "negative->positive": [
+   {
+    "id": "T10011",
+    "stars": 5,
+    "text": "High-speed off-road climb, perfect for adventurous kids. Great design, I like that the LED bar has different colors and realistic simulation. Received in good condition but it took a while to ship the item. Estimated is May 8 but ",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10083",
+    "stars": 5,
+    "text": "Mganda.. Bagay n abagay sa mga kuds. Verry afffordable... D ko na napictiran kasi nabigay ko na agad sa bata. Medyo sira lng yun isang zipper. Inipit ko na lng ng pliers. Sirry fo rhe pix",
+    "tags": [
+     "defect_or_failure_words",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10172",
+    "stars": 5,
+    "text": "Good job, seller! This time the package was very well packed and protected. The items arrived in excellent condition, and none of them were dented or damaged during shipping. I really appreciate the improvement in packaging compar",
+    "tags": [
+     "delivery_or_seller_mention",
+     "long (60 words or more)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10173",
+    "stars": 5,
+    "text": "maganda . may pag ka nipis Lang pero aus maman .. ginamit Kona . salamat Po seller and laslzada",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10190",
+    "stars": 5,
+    "text": "sobrang sarap, milky chocolateey. sana maimprove pa yung packaging hahahshs. poor packaging prone to basag ung garapon since manipis at hindj ouno hahaha. pero overall legit and masarap.",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "defect_or_failure_words",
+     "question_or_request",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10201",
+    "stars": 5,
+    "text": "I haven't tasted it yet but I appreciate the fast response and delivery as I needed to have them before I travel abroad. As I've seen the reviews and online comparisons, I am positive that these will not disappoint",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "star_vs_label_contradiction"
+    ]
+   }
+  ],
+  "negative->neutral": [
+   {
+    "id": "T10023",
+    "stars": 3,
+    "text": "Value for Money:sayang kc ayaw ng mga pusa ko",
+    "tags": [
+     "negation",
+     "three_star"
+    ]
+   },
+   {
+    "id": "T10032",
+    "stars": 3,
+    "text": "fast shipping and delivery nmn pero not well packed, halatang minadali lng ung paglagay ng carton at tape dun sa bottle tas wlng \"fragile\" warning... wlng visible damage dun sa bottle pero may leak sya buti nlng onti lng tumapon t",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "defect_or_failure_words",
+     "three_star"
+    ]
+   },
+   {
+    "id": "T10068",
+    "stars": 5,
+    "text": "🛠️Durability: not really i think, meju manipis xa 🎨Design: very cutesy 🎧Comfort: looks comfortable ang ganda nia. nagustuhan ng mga anak ko. sayang kasi halos di ako nakapili ng color dahil ito yung sale that time pero sulit na",
+    "tags": [
+     "template_or_feature_list",
+     "contrast_marker (mixed opinion?)",
+     "negation",
+     "emoji",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10093",
+    "stars": 5,
+    "text": "when i first use it, it does really overheat faster but its gone after the update. i just wish it has a shutter on the screen to lesses the wear and tear of the physical button",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10097",
+    "stars": 5,
+    "text": "Material:Lightweight crepe fabric, Style:maxi length.. This is so soo nice.. the style is soo elegant.. My bad,I got the wrong size..good thing,kasya parin kasi stretching xia..",
+    "tags": [
+     "star_vs_label_contradiction"
+    ]
+   },
+   {
+    "id": "T10103",
+    "stars": 1,
+    "text": "Matagal icharge Mabilis malowbatt",
+    "tags": [
+     "short (4 to 6 words)"
+    ]
+   }
+  ],
+  "positive->negative": [
+   {
+    "id": "T10268",
+    "stars": 4,
+    "text": "4 star only because of the flavor. It didn’t taste as good as the rich choco and vanilla cream. Actually, it tasted weird… it leaves a chemical-like taste.",
+    "tags": []
+   },
+   {
+    "id": "T10380",
+    "stars": 3,
+    "text": "sabi ng lahat maganda at makapal daw pero yun frypan lang ng series na to ang nagustuhan ko. average lang yun mga sauce pot saka naninipisan ako sa sides nun wok at matagal siyang uminit sa induction. I sold mine kasi hassle na ib",
+    "tags": [
+     "contrast_marker (mixed opinion?)",
+     "delivery_or_seller_mention",
+     "negation",
+     "long (60 words or more)",
+     "three_star"
+    ]
+   },
+   {
+    "id": "T10399",
+    "stars": 5,
+    "text": "Not as good as expected.",
+    "tags": [
+     "negation",
+     "short (4 to 6 words)"
+    ]
+   },
+   {
+    "id": "T20253",
+    "stars": 5,
+    "text": "ang inorder ko ay L-XXL, ang ipinadadla ni seller ay XL...umasa p nman Ako na okay dadating yong order ko..nakaka disappointed ☹️ ...kc maayos nman akong nag bayad..",
+    "tags": [
+     "delivery_or_seller_mention",
+     "emoji"
+    ]
+   },
+   {
+    "id": "T40358",
+    "stars": 5,
+    "text": "di maganda Ang dumating sa aking mahina Ang blender nya",
+    "tags": [
+     "delivery_or_seller_mention",
+     "negation"
+    ]
+   },
+   {
+    "id": "T40378",
+    "stars": 5,
+    "text": "Mali Ang bag maliit dalawa pa nmn binili ko tapos d nmn tulad ng nasa picture.....not good",
+    "tags": [
+     "negation"
+    ]
+   }
+  ]
+ }
+}

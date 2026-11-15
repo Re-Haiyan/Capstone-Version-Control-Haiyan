@@ -1,0 +1,94 @@
+{
+ "model": "c2_mix_weighted_s1",
+ "set": "firecs_test",
+ "rows_scored": 3147,
+ "rows_excluded_low_confidence": 0,
+ "n": 3147,
+ "accuracy": 0.8382586590403559,
+ "macro_f1": 0.8399102933077844,
+ "micro_f1": 0.8382586590403559,
+ "weighted_f1": 0.83873722481531,
+ "classes": {
+  "negative": {
+   "precision": 0.8539651837524178,
+   "recall": 0.8597857838364168,
+   "f1": 0.8568655992236779,
+   "support": 1027
+  },
+  "neutral": {
+   "precision": 0.7650765076507651,
+   "recall": 0.7819687212511499,
+   "f1": 0.7734303912647862,
+   "support": 1087
+  },
+  "positive": {
+   "precision": 0.9031936127744511,
+   "recall": 0.8760890609874153,
+   "f1": 0.8894348894348894,
+   "support": 1033
+  }
+ },
+ "confusion": [
+  [
+   883,
+   137,
+   7
+  ],
+  [
+   147,
+   850,
+   90
+  ],
+  [
+   4,
+   124,
+   905
+  ]
+ ],
+ "macro_f1_ci95_row_bootstrap": [
+  0.827759998714903,
+  0.8543154224261899
+ ],
+ "interval_kind": "row bootstrap (no product field; optimistic)",
+ "subgroups": {
+  "language(heuristic)": {
+   "english": {
+    "n": 186,
+    "accuracy": 0.8763440860215054,
+    "macro_f1": 0.8596230158730158,
+    "negative_recall": 0.9487179487179487,
+    "neutral_f1": 0.7708333333333333
+   },
+   "filipino": {
+    "n": 1251,
+    "accuracy": 0.8305355715427658,
+    "macro_f1": 0.837253988046819,
+    "negative_recall": 0.8533604887983707,
+    "neutral_f1": 0.7948969578017664
+   },
+   "taglish": {
+    "n": 1566,
+    "accuracy": 0.842911877394636,
+    "macro_f1": 0.8400065382093417,
+    "negative_recall": 0.8631346578366446,
+    "neutral_f1": 0.7609561752988048
+   },
+   "unknown": {
+    "n": 140,
+    "accuracy": 0.8071428571428572,
+    "macro_f1": 0.7879988309687018,
+    "negative_recall": 0.8181818181818182,
+    "neutral_f1": 0.6388888888888888
+   }
+  },
+  "product_group": {
+   "n/a": {
+    "n": 3147,
+    "accuracy": 0.8382586590403559,
+    "macro_f1": 0.8399102933077844,
+    "negative_recall": 0.8597857838364168,
+    "neutral_f1": 0.7734303912647862
+   }
+  }
+ }
+}
