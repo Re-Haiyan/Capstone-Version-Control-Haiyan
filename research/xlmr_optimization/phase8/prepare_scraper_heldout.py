@@ -61,6 +61,17 @@ def urlkey(url):
         return ""
 
 
+def product_key(url):
+    """Canonical Lazada product ID, invariant to a changed listing URL slug."""
+    address = urlkey(url)
+    host = urlsplit(address).hostname or ""
+    if host == "lazada.com.ph" or host.endswith(".lazada.com.ph"):
+        m = re.search(r"-i(\d{5,})(?:-s\d+)?\.html", urlsplit(address).path)
+        if m:
+            return "lazada:item:" + m.group(1)
+    return address
+
+
 def checksum(path):
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -113,7 +124,7 @@ def old_corpus(private_map):
             if title:
                 blocked_titles.add(title)
             if link:
-                blocked_links.add(link)
+                blocked_links.add(product_key(link))
             if text:
                 blocked_text.add(text)
     return blocked_titles, blocked_links, blocked_text, source_counts
@@ -163,7 +174,7 @@ def dedupe(rows, old_titles, old_links, old_text):
     kept, omitted = [], collections.Counter()
     seen_ids, seen_text = set(), set()
     for r in rows:
-        if norm(r["product"]) in old_titles or r["link"] in old_links:
+        if norm(r["product"]) in old_titles or product_key(r["link"]) in old_links:
             omitted["historical_product"] += 1
             continue
         t = norm(r["text"])
@@ -173,7 +184,7 @@ def dedupe(rows, old_titles, old_links, old_text):
         if t in old_text:
             omitted["historical_text"] += 1
             continue
-        uid = (r["link"], r["id"])
+        uid = (product_key(r["link"]), r["id"])
         if uid in seen_ids or t in seen_text:
             omitted["duplicate"] += 1
             continue
@@ -212,21 +223,21 @@ def balanced_product_sample(rows, target, max_per_product, seed):
     rng = random.Random(seed)
     product_rows = collections.defaultdict(list)
     for r in rows:
-        product_rows[r["link"]].append(r)
+        product_rows[product_key(r["link"])].append(r)
     for collection in product_rows.values():
         rng.shuffle(collection)
     links = list(product_rows)
     rng.shuffle(links)
     chosen = [product_rows[p].pop() for p in links[:target]]
-    counts = collections.Counter(r["link"] for r in chosen)
+    counts = collections.Counter(product_key(r["link"]) for r in chosen)
     remaining = [r for link in links for r in product_rows[link]]
     rng.shuffle(remaining)
     for r in remaining:
         if len(chosen) >= target:
             break
-        if counts[r["link"]] < max_per_product:
+        if counts[product_key(r["link"])] < max_per_product:
             chosen.append(r)
-            counts[r["link"]] += 1
+            counts[product_key(r["link"])] += 1
     return sorted(chosen, key=lambda r: (r["link"], r["id"]))
 
 
@@ -255,7 +266,7 @@ def main():
     usable, n_near = exclude_near_duplicates(usable, old_text)
     omitted["near_historical_text"] = n_near
     chosen = balanced_product_sample(usable, a.target, a.max_per_product, a.seed)
-    n_products = len({r["link"] for r in chosen})
+    n_products = len({product_key(r["link"]) for r in chosen})
     enough = len(chosen) == a.target and n_products >= a.min_products
     status = ("insufficient_new_reviews_or_products" if not enough
               else "provisional_missing_historical_product_ids" if not a.private_historical_map
@@ -270,14 +281,14 @@ def main():
                           sentiment="", tags="", positive_aspect="", negative_aspect="",
                           confidence="", rationale=""))
         restricted.append(dict(id=sid, product_link=r["link"],
-                               source_review_id=r["id"], star_hidden=r["stars"],
+                               source_review_id=r["id"], canonical_product_key=product_key(r["link"]), star_hidden=r["stars"],
                                source_file=r["source_file"]))
     for annotator, shuffle_seed in (("A", 11), ("B", 19)):
         shuffled = list(sheet)
         random.Random(shuffle_seed).shuffle(shuffled)
         writecsv(output / f"blind_reviewer_{annotator}.csv", FIELDS, shuffled)
     writecsv(output / "PRIVATE_source_map.csv",
-             ["id", "product_link", "source_review_id", "star_hidden", "source_file"], restricted)
+             ["id", "product_link", "source_review_id", "canonical_product_key", "star_hidden", "source_file"], restricted)
     manifest = {
         "status": status,
         "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
