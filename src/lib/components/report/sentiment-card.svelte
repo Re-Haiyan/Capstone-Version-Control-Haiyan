@@ -1,83 +1,58 @@
 <script lang="ts">
-	import { PieChart, Text } from 'layerchart';
-	import * as Chart from '#lib/components/ui/chart/index.js';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '#lib/components/ui/card/index.js';
-	import CountUp from '#lib/components/app/count-up.svelte';
+	import { Progress } from '#lib/components/ui/progress/index.js';
 	import { sentimentPercentages } from '#lib/product.js';
 	import type { Product } from '#lib/types.js';
 
 	let { product, uniqueCount }: { product: Product; uniqueCount: number } = $props();
-
 	const data = $derived(sentimentPercentages(product));
 	const weighted = $derived(Boolean(product.sentiment_summary?.sentiment_shares));
 	const share = (label: string) => data.find((item) => item.label === label) ?? { value: 0, percent: 0 };
-
-	// The verdict colours: teal, grey, orange. Never red, so a negative review can't be mistaken for a safety report.
-	// Each slice also has its name and number in the list, so colour is never the only cue.
-	const config = {
-		positive: { label: 'Positive reviews', color: 'var(--success)' },
-		uncertain: { label: 'Mixed or unclear reviews', color: 'var(--unknown)' },
-		negative: { label: 'Negative reviews', color: 'var(--warning)' }
-	} satisfies Chart.ChartConfig;
-
 	const rows = $derived(
-		(['positive', 'uncertain', 'negative'] as const).map((key) => {
-			const item = share(key[0].toUpperCase() + key.slice(1));
-			return { key, label: config[key].label, color: config[key].color, percent: item.percent, value: item.value };
+		([
+			{ key: 'positive', name: 'Positive', note: 'Favourable experience or opinion', color: '[&>div]:bg-emerald-600' },
+			{ key: 'uncertain', name: 'Neutral or unclear', note: 'No clear positive or negative opinion', color: '[&>div]:bg-slate-500' },
+			{ key: 'negative', name: 'Negative', note: 'Problems or dissatisfaction', color: '[&>div]:bg-amber-600' }
+		] as const).map((entry) => {
+			const s = share(entry.key[0].toUpperCase() + entry.key.slice(1));
+			return { ...entry, count: Number(s.value) || 0, percent: Math.max(0, Math.min(100, Number(s.percent) || 0)) };
 		})
 	);
-	const summary = $derived(rows.map((r) => `${r.percent.toFixed(0)}% ${r.key}`).join(', '));
+	const dominant = $derived([...rows].sort((a, b) => b.percent - a.percent)[0]);
 </script>
 
-<Card>
-	<CardHeader>
-		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Sentiment distribution</p>
-		<CardTitle class="text-xl">Review sentiment</CardTitle>
+<Card class="min-w-0 gap-4">
+	<CardHeader class="gap-1.5">
+		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Review sentiment</p>
+		<CardTitle class="text-lg">How reviewers feel</CardTitle>
 		<CardDescription>
-			{weighted
-				? 'We read extra low-star reviews on purpose, so the percentages are adjusted to reflect the whole listing.'
-				: 'How the reviews lean. Shown for context; it does not change the result.'}
+			{#if uniqueCount}
+				{dominant?.percent >= 50
+					? dominant.name + ' was the largest group among ' + uniqueCount + ' analyzed reviews.'
+					: 'Opinions vary across ' + uniqueCount + ' analyzed reviews.'}
+			{:else}
+				No analyzed reviews to summarise yet.
+			{/if}
 		</CardDescription>
 	</CardHeader>
-	<CardContent class="flex-1 flex-row flex-wrap content-center items-center gap-6">
-		<div class="size-40 shrink-0" role="img" aria-label="Sentiment: {summary}">
-			<Chart.Container {config} class="aspect-square size-full">
-				<PieChart
-					data={rows}
-					key="key"
-					value="percent"
-					c="color"
-					innerRadius={-14}
-					padding={4}
-					cornerRadius={3}
-					padAngle={0.02}
-					props={{ pie: { motion: 'tween' } }}
-				>
-					{#snippet aboveMarks()}
-						<Text value={String(uniqueCount)} textAnchor="middle" verticalAnchor="middle" class="fill-foreground text-xl! font-semibold" dy={-4} />
-						<Text value="reviews" textAnchor="middle" verticalAnchor="middle" class="fill-muted-foreground text-xs!" dy={14} />
-					{/snippet}
-					{#snippet tooltip()}
-						<Chart.Tooltip hideLabel />
-					{/snippet}
-				</PieChart>
-			</Chart.Container>
-		</div>
-		<ul class="grid flex-1 gap-3 text-sm">
-			{#each rows as row (row.key)}
-				<li class="flex items-center gap-3">
-					<i class="size-3 shrink-0 rounded-full border" style="background: {row.color}" aria-hidden="true"></i>
-					<span class="flex-1">
-						{row.label}
-						<small class="text-muted-foreground block text-xs">
-							{weighted ? `${row.value} of ${uniqueCount} read` : `${row.percent.toFixed(0)}% of reviews`}
-						</small>
-					</span>
-					<b class="tabular-nums">
-						{#if weighted}<CountUp value={row.percent} />%{:else}<CountUp value={row.value} />{/if}
-					</b>
-				</li>
-			{/each}
-		</ul>
+	<CardContent class="grid gap-3">
+		{#each rows as row (row.key)}
+			<div class="grid gap-1.5">
+				<div class="flex flex-wrap items-baseline justify-between gap-x-3 text-sm">
+					<span class="font-medium">{row.name}</span>
+					<b class="tabular-nums">{row.percent.toFixed(0)}%</b>
+				</div>
+				<Progress value={row.percent} aria-label="{row.name}: {row.percent.toFixed(0)} percent" class={row.color} />
+				<p class="text-muted-foreground text-xs">
+					{row.note} · {row.count} of {uniqueCount} reviewed
+				</p>
+			</div>
+		{/each}
+		{#if weighted}
+			<p class="text-muted-foreground rounded-md bg-muted/50 px-3 py-2 text-xs">
+				Percentages are adjusted for the listing's star distribution; the review counts show the actual sample.
+			</p>
+		{/if}
+		<p class="text-muted-foreground text-xs">Sentiment alone does not override safety or authenticity reports.</p>
 	</CardContent>
 </Card>
