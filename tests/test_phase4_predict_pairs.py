@@ -30,7 +30,7 @@ class PredictionExport(unittest.TestCase):
             "ASPECT_RULES_VERSION='SYNTHETIC_ONLY'\n"
             "def extract(reviews,category,group):\n"
             "    return [{'id':'build_quality','polarity':'positive'}] "
-            "if 'quality' in reviews[0]['content'] else []\n"
+            "if 'quality' in reviews[0]['content'].lower() else []\n"
             "def iter_claims(extraction):\n"
             "    for item in extraction: yield ({'id':item['id']},item['polarity'],None)\n",
             encoding="utf-8",
