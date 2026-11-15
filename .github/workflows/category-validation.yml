@@ -1,8 +1,9 @@
-name: Category PR validation (not deployment)
+name: Feature branch regression (no deployment)
 on:
   push:
     branches:
       - feature/category-accuracy-20261115
+      - feature/product-specific-conclusions
   pull_request:
     branches:
       - feature/product-specific-conclusions
@@ -49,11 +50,16 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-      # The repository's package-lock is already out of sync with package.json.
-      # This CI install is transient and does not rewrite committed lockfiles.
-      - run: npm install --no-package-lock --no-audit --no-fund
-      - run: npm run check
-      - run: npm run build
+      - name: Install exact lockfile dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify dependency manifests were not changed by install
+        run: git diff --exit-code -- package.json package-lock.json
+      - name: Svelte and TypeScript checks
+        run: npm run check
+      - name: Frontend build
+        run: npm run build
+      - name: Browser extension unit tests
+        run: npm run test:extension
 
   existing-review-audit:
     name: Real saved-review and title comparison
