@@ -1,0 +1,19 @@
+{
+  "baseline_commit": "14bc1f43b5865cc29bb96f3f97e4da422c7e27b3",
+  "protected_blob_shas": {
+    "research/xlmr_optimization/annotation/dev_pool_sheet.csv": "e591be5f8c1359371add31d1c5aa9ba6a3b2d721",
+    "research/xlmr_optimization/annotation/neutral_candidate_pool.csv": "e6c0de9313b9e6fa13be0211cbcaa88223618384",
+    "research/xlmr_optimization/annotation/ai_labelled/dev_pool_sheet_ai_v1.csv": "263ce09f696bb7e4a70b20f43eee6185749c19a2",
+    "research/xlmr_optimization/annotation/ai_labelled/neutral_candidate_pool_ai_v1.csv": "2b66970736eddded80552799297941073a3deef4",
+    "research/xlmr_optimization/annotation/confirm_v1_sheet.csv": "f95bdab6c0fa3595c8376743d19cfd56b0590091",
+    "research/xlmr_optimization/annotation/ai_labelled/confirm_v1_sheet_ai_v1.csv": "31c98562c96e2d9b6524e6b9a189ea1b140e440c",
+    "research/xlmr_optimization/annotation/final_test_sheet_A.csv": "d6d2e8d1ae5b7c4cd757241f2c106d7a3ddefbcd",
+    "research/xlmr_optimization/annotation/final_test_sheet_B.csv": "76494a8e5afbd5209f0ad53836bbebdd01c5113e",
+    "research/xlmr_optimization/annotation/returned/team_label_1_final_test_sheet_A_v1.csv": "5da5b7af61e111b9dfe2488eb87a47d4278ee317",
+    "research/xlmr_optimization/annotation/returned/team_label_2_final_test_sheet_B_v1.csv": "ede7284d75a64d0fa8015e2a6c839183cf27266a",
+    "research/xlmr_optimization/annotation_policy.md": "4fff8c5f5b65efc30291aa7bbd3768365243c12f",
+    "research/xlmr_optimization/annotation/policy_v1.lock.json": "1e71c68a7792e4a9aba8aabaa4a0b87ec0023c46",
+    "research/xlmr_optimization/phase5/gpt6_second_ai_labels_v1.csv": "e8196e92530287ca7454d3e6a1390396f8b22295"
+  },
+  "guard_scope": "integrity-only for frozen/used confirmation and final tests; no reading labels for tuning"
+}
