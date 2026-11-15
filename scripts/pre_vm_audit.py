@@ -131,8 +131,10 @@ def inspect(live_root: Path, backup_dir: Path, max_backup_age_hours: float = 24.
         "preflight_checks_pass": ok,
         "production_release_approved": False,
         "warnings": [
-            "No Azure VM state, live service health, runtime performance, backup age, "
-            "full restoration, same-moment snapshots, owner permissions or GitHub CI is verified by this script.",
+            "The file-age check uses filesystem timestamps only; it does not prove how or when "
+            "the two snapshots were made, their consistency as a pair, or off-host recovery.",
+            "No VM service health, runtime performance, full restoration, owner permissions "
+            "or GitHub CI is verified by this script.",
             "Passing this audit does not authorize merging, updating or restarting production.",
         ],
     }
