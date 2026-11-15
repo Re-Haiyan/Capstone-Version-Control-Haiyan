@@ -163,9 +163,21 @@
 
 	// Beside the name and the stars: what a shopper recognises the listing by.
 	const identity = $derived([platformName(product), product?.price ? money(product.price) : ''].filter(Boolean).join(' · '));
-	// Under the verdict: the numbers behind the report. (No "Category": saved products carry none, so it only
-	// ever said "Not specified".)
+	// Older reports may have no classifier category. Do not substitute the
+	// marketplace's generic category field, which can name the wrong product.
+	const detectedCategory = $derived(
+		!product?.product_category
+			? 'Not recorded (older report)'
+			: product.product_category === 'other'
+				? 'Unclassified'
+				: product.product_category
+						.split('_')
+						.map((word) => word === 'tv' ? 'TV' : word.charAt(0).toUpperCase() + word.slice(1))
+						.join(' ')
+	);
+	// The label is automatically detected, not verified ground truth.
 	const details = $derived([
+		['Auto-detected category', detectedCategory],
 		['Positive reviews', weighted ? `${positive.percent.toFixed(0)}% (adjusted)` : `${positive.value} / ${uniqueCount}`],
 		['Negative reviews', weighted ? `${negative.percent.toFixed(0)}% (adjusted)` : `${negative.value} / ${uniqueCount}`],
 		['Flagged reviews', `${flagged.length} / ${uniqueCount}`],

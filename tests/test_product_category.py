@@ -51,6 +51,26 @@ TITLES = {
     "Leather Handbag Women Sling Bag": "bags",
     "Gold Necklace Pendant 18k": "jewelry_accessories",
     "Matte Lipstick Waterproof": "makeup",
+    # Collision types observed in real-scan audits; source examples here are synthetic.
+    "Matte Lipstick in Travel Cup": "makeup",
+    "Collagen Face Serum Vitamin C 30ml": "skincare",
+    "Herbal Shampoo with Dish Soap Gift": "haircare",
+    "RC Toy Car Remote Control Rechargeable": "toys",
+    "Whey Protein Isolate 1kg": "health_supplements",
+    # Documented real listing titles (some truncated by the historical audit).
+    "( BUY 1 TAKE 1 ) NEW Cetaphil Baby Gentle Wash & Shampoo 400ml": "haircare",
+    "Optimum Nutrition Gold Standard 100% Isolate Protein 5 lbs": "health_supplements",
+    "Ceelin Gummies with Zinc 30s Bottle": "health_supplements",
+    "[BUY 3, GET 1] Buy Centrum Silver Advance 30s x3, get FREE Centrum Sil": "health_supplements",
+    # Negative controls for superficially similar accessories.
+    "Lipstick Case Holder Travel Organizer": "accessory",
+    "Shaker Cup for Whey Protein": "kitchen_dining",
+    "Protein Shaker Bottle": "kitchen_dining",
+    "Whey Protein Shaker Bottle": "kitchen_dining",
+    # Bundled accessories must not override the main item.
+    "Samsung Galaxy A15 Smartphone with Lip Balm": "phone",
+    "Baby Feeding Bottle 240ml": "baby",
+    "Dish Soap Lemon 500ml": "household_cleaning",
     "Hair Dryer 2000W Foldable": "haircare",
     "Shampoo and Conditioner Set": "haircare",
     "Electric Toothbrush Sonic": "personal_care",

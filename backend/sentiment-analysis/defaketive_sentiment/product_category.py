@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc4"  # pc4: shared all-product files, packing damage is delivery, evidence states, clause-level context; the stamp tells reports made by the earlier rules apart
+PRODUCT_CATEGORY_REVISION = "pc5"  # pc5: specific product-head disambiguation; bump saved-report checker version
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -251,6 +251,21 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"fuses?|electrical tape|cable ties|wire connectors?|sockets?|lighting fixtures?)\b"),
 )
 _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in _RULES)
+
+# High-specificity cues resolve products whose title also contains generic words:
+# a "cup" in lipstick packaging, collagen in serum, or "car" in a toy car.
+# Only inspect the product head, never bundled accessories after "with"/"for".
+# These category rules do not determine review sentiment.
+_SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
+    (name, re.compile(pattern, re.I))
+    for name, pattern in (
+        ("toys", r"\b(?:toy\s+cars?|rc\s+cars?|remote[- ]control(?:led)?\s+cars?|diecast(?:\s+cars?)?|hot\s+wheels)\b"),
+        ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
+        ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),
+        ("skincare", r"\b(?:face\s+serum|skin\s+serum|serums?|sunscreens?|sunblocks?|moisturi[sz]ers?|facial\s+cleansers?|face\s+wash)\b"),
+        ("health_supplements", r"\b(?:whey(?:\s+protein)?|isolate\s+protein|protein\s+(?:powders?|isolates?|concentrates?)|mass\s+gainers?|creatine|bcaa|pre[- ]workout|ceelin\s+gummies|centrum\s+silver)\b"),
+    )
+)
 # The head of a title ends at the first of these: what follows is what the product comes with or fits.
 _HEAD_END = re.compile(r"\s(?:for|with|w/|free|plus)\s|\s[+&|-]\s|[,(|]", re.I)
 # Shop names, slogans and bracketed promotions that say nothing about what the product is.
@@ -279,9 +294,23 @@ def classify_listing(listing: Any) -> str:
         return OTHER
     title = listing.get("name") if isinstance(listing, dict) else listing
     title = _PROMO.sub(" ", str(title or ""))
+    # A single wash-and-shampoo product can have a literal ampersand in its name.
+    # Splitting at "&" would otherwise classify a baby shampoo by "baby" only.
+    if re.search(r"\bwash\s*(?:&|and)\s*shampoo\b", title, re.I):
+        return "haircare"
     # The head first, then each later part, then the whole title: a title that opens with a shop name or a slogan
     # ("Official Store | Tapo C200C WiFi IP Camera") is read from the first part that names a product.
     segments = [part for part in _HEAD_END.split(title) if part.strip()]
+    head = segments[0] if segments else title
+    for name, pattern in _SPECIFIC_TITLE_RULES:
+        if pattern.search(head):
+            # A lipstick CASE or a whey-protein SHAKER is an accessory, not
+            # necessarily the makeup/supplement it names.
+            if name == "makeup" and re.search(r"\blip\s?sticks?\s+(?:case|holder|organizer|storage)\b", head, re.I):
+                continue
+            if name == "health_supplements" and re.search(r"\b(?:(?:shaker|cup|bottle)\s+(?:for\s+)?(?:whey|protein)|(?:whey|protein)\s+(?:shaker|cup|bottle))\b", head, re.I):
+                continue
+            return name
     for text in (*segments, title):
         for name, pattern in _COMPILED:
             if pattern.search(text):
