@@ -1,4 +1,4 @@
-"""Regression tests for multi-mention hazard reports (safety s5a).
+"""Regression tests for multi-mention hazard reports (safety s5b).
 
 Synthetic, policy-derived examples: not part of the historical labelled set.
 A benign first mention must not mask a later real one in the same sentence.
@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend" / "sentiment-analysis"))
 
-from defaketive_sentiment.safety_lookalikes import s3_adds  # noqa: E402
+from defaketive_sentiment.safety_lookalikes import s3_adds, s3_removes  # noqa: E402
 from defaketive_sentiment.hazard_model import LexiconHazardTagger  # noqa: E402
 
 
@@ -37,6 +37,11 @@ class MultipleSafetyMentions(unittest.TestCase):
         ):
             with self.subTest(review=review):
                 self.assertIsNone(s3_adds(review))
+
+    def test_other_device_and_denied_item_are_both_accounted_for(self) -> None:
+        reasons = s3_removes("My phone became hot but the charger did not become hot")
+        self.assertIn("other_device", reasons)
+        self.assertIn("denial", reasons)
 
     def test_integration_preserves_safety_tag(self) -> None:
         tagger = LexiconHazardTagger(rules="0.4", counterfeit_rules="c2")
