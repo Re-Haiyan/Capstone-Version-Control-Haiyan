@@ -1,0 +1,87 @@
+name: Phase 7 XLM-R research-only training
+
+on:
+  push:
+    branches:
+      - research/xlmr-controlled-tuning-20261116
+    paths:
+      - "research/xlmr_optimization/phase7/**"
+      - ".github/workflows/phase7-xlmr-research.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: xlmr-phase7-research-only
+  cancel-in-progress: true
+
+jobs:
+  verify-development-data:
+    name: Verify frozen development annotation data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install lightweight audit dependencies
+        run: python -m pip install "numpy>=1.26,<2" "scikit-learn>=1.4,<1.7"
+      - name: Compile runner
+        run: python -m py_compile research/xlmr_optimization/phase7/train_xlmr_research.py
+      - name: Audit provenance, class supports and group leakage
+        run: |
+          python research/xlmr_optimization/phase7/train_xlmr_research.py \
+            --audit-only --seed 20261116 --output "$RUNNER_TEMP/phase7-audit"
+          python -m json.tool "$RUNNER_TEMP/phase7-audit/data_audit.json" > /dev/null
+
+  train:
+    name: Train research candidate (no production)
+    needs: verify-development-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      TOKENIZERS_PARALLELISM: "false"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU PyTorch
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Install pinned experiment dependencies
+        run: python -m pip install "numpy>=1.26,<2" "scikit-learn>=1.4,<1.7" "transformers==4.46.3" "safetensors>=0.4,<0.6"
+      - name: Train two epochs and record development diagnostics
+        run: |
+          python research/xlmr_optimization/phase7/train_xlmr_research.py \
+            --seed 20261116 --epochs 2 --batch 8 --grad-accum 2 \
+            --output "$RUNNER_TEMP/phase7-run"
+      - name: Verify non-deployment metadata and output files
+        run: |
+          python - "$RUNNER_TEMP/phase7-run" <<'PY'
+          import json, pathlib, sys
+          d = pathlib.Path(sys.argv[1])
+          m = json.loads((d / "metrics.json").read_text())
+          assert m["eligible_for_deployment"] is False
+          assert not m["frozen_test_used"] and not m["phase3_confirmation_used"]
+          assert (d / "adapter_delta.safetensors").stat().st_size > 100000
+          print("Research artifact verified. No deployment has occurred.")
+          PY
+      - name: Upload weight delta and metrics (no customer reviews)
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase7-xlmr-research-candidate
+          path: |
+            ${{ runner.temp }}/phase7-run/adapter_delta.safetensors
+            ${{ runner.temp }}/phase7-run/metrics.json
+          retention-days: 7
+          if-no-files-found: error
