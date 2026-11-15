@@ -56,5 +56,5 @@ jobs:
           python-version: "3.12"
       - name: Compile and run pure-Python gate tests
         run: |
-          python -m py_compile research/hazard_80_gate.py tests/test_hazard_80_gate.py
+          python -m py_compile research/hazard_80_gate.py research/hazard_predict.py tests/test_hazard_80_gate.py
           python -m unittest discover -s tests -p "test_hazard_80_gate.py" -v
