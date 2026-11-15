@@ -1,0 +1,35 @@
+name: Phase 6C independent reviewer adjudication gate (research only)
+on:
+  push:
+    branches:
+      - research/phase6c-adjudication-gate-20261115
+  pull_request:
+    branches:
+      - research/neutral-phase2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safeguards:
+    name: Adjudication safeguards / Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Validate review separation, policy and proposed-only provenance
+        run: |
+          python -m unittest discover -s tests -p 'test_phase6c_adjudication.py' -v
+          python -m unittest discover -s tests -p 'test_phase6_review_submission.py' -v
+      - name: Assert public repository contains no re-exported private packets
+        run: |
+          test ! -e research/xlmr_optimization/phase6_annotation/adjudication_sheet.csv
+          test ! -e research/xlmr_optimization/phase6_annotation/adjudicated_proposed_only.csv
