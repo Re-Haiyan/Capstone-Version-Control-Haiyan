@@ -20,9 +20,9 @@ models' F1.
 
 | Evidence | What it proves | What it does not prove |
 |---|---|---|
-| 424 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
+| 429 passing tests | the code does what the tests say, and the old behaviour (decisions, verdicts, saved reports) did not regress | that a conclusion is *true* of real reviews |
 | 182 of 182 verdicts and decisions unchanged | the feature changes no verdict | that the verdicts are right (that is the hazard checker's and the policy's question) |
-| 6,661 of 6,661 quotations verbatim, ids valid, counts reproducible | every claim is *traceable* to a review | that the aspect and direction are the right reading of the sentence |
+| 6,639 of 6,639 quotations verbatim, ids valid, counts reproducible | every claim is *traceable* to a review | that the aspect and direction are the right reading of the sentence |
 | `quality_audit.py` clean | the text obeys rules about what it may say | that what it says is true |
 | developer-judged claim correctness (80% first look, 89% after fixes, real non-electronics; 88/86/94% on electronics, earlier extractor) | the developer, who wrote the rules, found these shares correct | independent accuracy: one judge, the author, on data used to fix errors |
 

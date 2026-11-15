@@ -20,8 +20,8 @@ expandable "Why this conclusion?" shows every count with the original quotations
 | Result | Value | Trust |
 |---|---|---|
 | Saved products whose verdict and decision are unchanged | 182 of 182 | verified mechanically |
-| Quotations checked against their reviews (182 saved + 37 real non-electronics) | 6,661 of 6,661 verbatim, right position, 0 problems in 3,965 lines, 18,239 ids | verified mechanically |
-| Backend tests | 424 pass, 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
+| Quotations checked against their reviews (182 saved + 37 real non-electronics) | 6,639 of 6,639 verbatim, right position, 0 problems in 3,948 lines, 18,210 ids | verified mechanically |
+| Backend tests | 429 pass, 0 fail, on Python 3.11 **and** on Python 3.12 with the VM's library versions | verified |
 | Browser test, 3 widths, 7 cases (3 real non-electronics), accessibility | passes | verified |
 | First read of a product page | 72 ms median, 256 ms p95 (this PC); 72 / 249 ms in the VM's Python 3.12 limited to 2 CPUs; cached 1 ms; cold start 0.4 s | measured here and emulated; **no staging or VM measurement** |
 | "Mostly negative" said without a negative majority | 3 → 0 of 182 | verified |

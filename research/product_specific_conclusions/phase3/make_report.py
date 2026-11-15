@@ -115,6 +115,15 @@ def main() -> None:
             "- 'legit' and 'scam' are read as claims about the item or the seller by fixed rules; their target is often ambiguous.",
             "- Implicit praise and complaints ('kasya 2 buo na chicken', 'pinaka maliit lang pala') remain mostly missed; this is where recall is lost.",
             "- Electronics are absent from F (they were read while tuning in earlier rounds), so F says nothing new about phone, earbuds and powerbank categories; D2 contains them but was used to choose between candidates.", ""]
+    mt = {s: load(f"{s}_merged_tip.json")["tasks"] for s in ("D2", "F")}
+    out += ["", "## The branch tip after a collaborator's category change", "",
+            "While Phase 3 ran, another contributor's pull request (#2: tighter category matching and scoped profiles for supplements, bags, home textiles, charger cables and some device categories) was merged into the same branch. The figures above are for the frozen extractor at commit c163605. The merged tip, scored once on the same samples (profiles chosen from the categories stored at sampling time, so reference features that a scoped profile no longer carries count as misses):", "",
+            "| Set, task | Frozen asp3 P / R / F1 | Merged tip P / R / F1 |", "|---|---|---|"]
+    for split, frozen in (("D2", "C3_D2.json"), ("F", "F_C3_frozen.json")):
+        for task in ("T0", "T1", "T2"):
+            a, b = load(frozen)["tasks"][task], mt[split][task]
+            out.append(f"| {split} {task} | {pct(a['precision'])} / {pct(a['recall'])} / {pct(a['f1'])} | {pct(b['precision'])} / {pct(b['recall'])} / {pct(b['f1'])} |")
+    out += ["", "F is identical; D2 differs by one detection. The merge does not change the Phase 3 conclusion.", ""]
     (HERE / "results.md").write_text("\n".join(out), encoding="utf-8")
     print("wrote results.md")
 

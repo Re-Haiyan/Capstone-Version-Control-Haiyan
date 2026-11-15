@@ -200,3 +200,19 @@ Adoption rule (written in advance, `protocol.md` section 5), applied on D2: T1 F
 - 'legit' and 'scam' are read as claims about the item or the seller by fixed rules; their target is often ambiguous.
 - Implicit praise and complaints ('kasya 2 buo na chicken', 'pinaka maliit lang pala') remain mostly missed; this is where recall is lost.
 - Electronics are absent from F (they were read while tuning in earlier rounds), so F says nothing new about phone, earbuds and powerbank categories; D2 contains them but was used to choose between candidates.
+
+
+## The branch tip after a collaborator's category change
+
+While Phase 3 ran, another contributor's pull request (#2: tighter category matching and scoped profiles for supplements, bags, home textiles, charger cables and some device categories) was merged into the same branch. The figures above are for the frozen extractor at commit c163605. The merged tip, scored once on the same samples (profiles chosen from the categories stored at sampling time, so reference features that a scoped profile no longer carries count as misses):
+
+| Set, task | Frozen asp3 P / R / F1 | Merged tip P / R / F1 |
+|---|---|---|
+| D2 T0 | 0.880 / 0.533 / 0.664 | 0.879 / 0.527 / 0.659 |
+| D2 T1 | 0.861 / 0.488 / 0.623 | 0.859 / 0.480 / 0.616 |
+| D2 T2 | 0.963 / 0.743 / 0.839 | 0.963 / 0.743 / 0.839 |
+| F T0 | 0.850 / 0.315 / 0.459 | 0.850 / 0.315 / 0.459 |
+| F T1 | 0.852 / 0.371 / 0.517 | 0.852 / 0.371 / 0.517 |
+| F T2 | 0.818 / 0.209 / 0.333 | 0.818 / 0.209 / 0.333 |
+
+F is identical; D2 differs by one detection. The merge does not change the Phase 3 conclusion.

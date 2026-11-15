@@ -33,6 +33,11 @@ def run(impl: Path, split: str, errors: Path | None = None) -> dict:
     import aspects  # noqa: E402
     import aspect_profiles  # noqa: E402
 
+    ALL_KINDS: dict = {}
+    for value in vars(aspect_profiles).values():
+        if isinstance(value, tuple) and value and isinstance(value[0], aspect_profiles.Aspect):
+            for aspect in value:
+                ALL_KINDS.setdefault(aspect.id, aspect.kind)
     manifest = {r["item_id"]: r for r in csv.DictReader(open(HERE / "data" / "data_manifest.csv", encoding="utf-8-sig"))}
     rows = list(csv.DictReader(open(HERE / "annotated" / f"sheet_{split}_annotated.csv", encoding="utf-8-sig")))
     counts = {name: collections.Counter() for name in KINDS}
@@ -44,10 +49,12 @@ def run(impl: Path, split: str, errors: Path | None = None) -> dict:
         m = manifest[r["item_id"]]
         result = aspects.extract([{"comment_id": r["item_id"], "content": r["review_text"], "rating": r["stars"]}], m["category"] or None, m["group"] or None)
         kinds = {a.id: a.kind for a in aspect_profiles.aspects_for(m["category"] or None, m["group"] or None)}
+        for a, _p in ({tuple(x.split(":")) for x in r["features"].split(";")} if r["features"] != "none" else set()):
+            kinds.setdefault(a, ALL_KINDS[a])  # a profile scoped down later may not carry a reference aspect: it is then a miss, not an error
         system = {(row["id"], pol) for row, pol, _ in aspects.iter_claims(result)}
         ref = set() if r["features"] == "none" else {tuple(x.split(":")) for x in r["features"].split(";")}
         for a, p in ref | system:
-            kind = kinds[a]  # every aspect is in the profile (the labels were validated against it)
+            kind = kinds[a]
             outcome = "tp" if (a, p) in ref and (a, p) in system else "fn" if (a, p) in ref else "fp"
             for name, wanted in KINDS.items():
                 if wanted is None or wanted == kind:

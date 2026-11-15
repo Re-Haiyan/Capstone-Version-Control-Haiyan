@@ -28,7 +28,8 @@ What the feature does is described in `README.md` and `architecture.md`.
 |---|---|
 | Branch | `feature/product-specific-conclusions` (worktree `D:\DeFaketive-conclusions`), based on `e06c98a` |
 | Local commit | **ec0b53c** (`feat: add evidence-grounded product-specific review conclusions`), on `feature/product-specific-conclusions`, based on `e06c98a`. Not pushed, not merged. Since then `deployment` advanced (63eb05f, later de39603; the XLM-R study); the only overlapping file is `research/README.md`, a trivial merge. This SHA line is the only edit made after the commit, so the working tree has this one uncommitted documentation change. |
-| Pushed / merged / deployed | **No, no, no.** Production is on `2c6e056` (read-only check this round) |
+| Branch history | Pull request #2 ("category accuracy and scoped product analysis", by another contributor) was merged into this branch on the remote while Phase 3 ran (233a466); it was merged here, not overwritten (b738dbe). It narrows the profile used for supplements, bags, home textiles, charger cables and some device categories and changes the category classifier. Measured on the Phase 3 samples it changes nothing on F and one detection on D2 (`phase3/results.md`). |
+| Pushed / merged / deployed | **The feature branch is pushed to the Haiyan repository; not merged into `deployment` or `main`; not deployed.** Production is on `2c6e056` (read-only check this round) |
 | XLM-R work | the main checkout's untracked `research/xlmr_optimization/` and `tests/test_sentiment_agreement.py` were never touched |
 | Before staging | a secret and personal-data scan of every file in the commit was run (no keys, tokens, passwords, phone numbers; the only email is the project's pre-existing default admin address in `CHANGELOG.md`; reviewer names are not in any file) |
 
@@ -36,8 +37,8 @@ What the feature does is described in `README.md` and `architecture.md`.
 
 | Check | Result |
 |---|---|
-| Backend tests, Python 3.11.9 (this PC) | **424 run: 424 passed, 0 failed, 0 skipped** (re-run 2026-11-15 after the Phase 3 extractor and tests; 393 before the staging-preparation work) |
-| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **424 run: 424 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15 on the adopted extractor) |
+| Backend tests, Python 3.11.9 (this PC) | **429 run: 429 passed, 0 failed, 0 skipped** (re-run 2026-11-15 on the merged branch tip, including the category-accuracy tests merged from pull request 2; 393 before the staging-preparation work) |
+| Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **429 run: 429 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15 on the merged branch tip) |
 | New test files | `test_product_conclusion`, `test_sync_backend`, `test_recommendation_policy`, `test_text_rating`, `test_final_eval_pack` |
 | Existing sentiment, hazard, category tests | pass, unchanged |
 | Verdict and decision for the 182 saved products | **182 of 182 identical** to the baseline taken before any change |
@@ -57,9 +58,9 @@ Every remaining failure is listed in `regression_results.md` and, for the browse
 | | Count |
 |---|---|
 | Products checked (182 saved electronics, 21 real read while tuning, 16 real never read) | 219 |
-| "Why this conclusion?" lines | 3,965 |
-| Quotations | 6,661 |
-| Review identifiers listed | 18,239 |
+| "Why this conclusion?" lines | 3,948 |
+| Quotations | 6,639 |
+| Review identifiers listed | 18,210 |
 | **Invalid spans, missing reviews, non-verbatim quotations, double-counted reviews, wrong-profile aspects, reviewer fields in a payload** | **0** |
 
 `quality_audit.py` (rules about what the text may say, run on the same three pools): **0** contradictions between headline, paragraph and assessment, **0** count words stronger
@@ -128,7 +129,7 @@ earlier extractor) are **developer-judged, single-judge, optimistic and not inde
 Repeated on the staging-preparation commit (asp2): 400 of 400 backend tests on Python 3.11.9 and on Python 3.12.10 (VM library versions); `svelte-check` 0 errors in 1,409 files; `npm run build`; the feature browser test (all checks pass at 360, 390 and 1280 px);
 the whole existing e2e suite **481 passed, 36 failed**, the same totals and the same failing files as the first run on this code. The unmodified-baseline comparison (394 passed, 40 failed; 23 of 24 files identical, no failure only on the
 feature) was **not repeated**: its throw-away worktree no longer exists and no feature or front-end source changed since it was made (only tests, research scripts and documents), so the earlier comparison is cited, not re-measured.
-Evidence verification: 0 problems in 3,965 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
+Evidence verification: 0 problems in 3,948 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
 repetition inside one review, copy-pasted reviews) found no failing example, so no extraction code was changed.
 
 ### AI-assisted evaluation (Claude-assisted annotation; one set; not independent; not human)
@@ -198,7 +199,7 @@ Goal: raise product-feature precision, recall and F1 toward 0.80 without touchin
 | **Fresh final F, scored once after the freeze** | **product features: precision 0.852, recall 0.371, F1 0.517** (C0 on the same reviews 0.800, 0.258, 0.390); all kinds 0.850, 0.315, 0.459 (C0 0.667, 0.259, 0.373); service 0.818, 0.209, 0.333; authenticity too few to interpret |
 | **Target 0.80** | **not met**; precision for product features is at the target, recall (0.37) is far from it |
 
-Caveats that matter: the reference is one Claude-assisted annotation set (not independent, not human); D2 influenced the choice between candidates and F is the figure to quote; F has no electronics; the gain on F is smaller than on D2; a detection missing from the reference counts as false, so precision is a lower bound. Known defects found and left unfixed because the extractor is frozen are listed in `phase3/results.md`. Decisions (182 of 182), hazard checker, thresholds, sentiment model and the off-switch are unchanged; 424 backend tests, svelte-check, build, browser tests, evidence verification (0 problems in 3,965 lines and 6,661 quotations) and the quality audit (0 issues) were re-run on the adopted extractor. Existing browser suite (24 files) on the adopted extractor: the first full run gave 363 passed, 38 failed, differing from the earlier 481 passed, 36 failed in two files that timed out under the long run (`admin`: a sign-up API call; `extension-browser`: a page load); **re-run alone they pass (133 of 133 and 25 of 25)**, and every other file gave the same counts as before, so no regression was introduced (the unmodified-baseline comparison of 394 passed, 40 failed is cited, not repeated). Feature browser test: 360 of 360 at 360, 390 and 1280 px against the regenerated fixture. The card and words annotation workflow was prepared in product-level batches (`human_evaluation.md`) and is **not annotated**.
+**Merged branch tip.** The extractor scored on F is the frozen version at commit c163605 (hashes in `phase3/frozen_extractor.json`). The branch tip now also contains the other contributor's category changes; re-scored on the same samples it gives the same F figures and one detection fewer on D2 (T1 F1 0.616 against 0.623), so the figures above describe the tip as well. Caveats that matter: the reference is one Claude-assisted annotation set (not independent, not human); D2 influenced the choice between candidates and F is the figure to quote; F has no electronics; the gain on F is smaller than on D2; a detection missing from the reference counts as false, so precision is a lower bound. Known defects found and left unfixed because the extractor is frozen are listed in `phase3/results.md`. Decisions (182 of 182), hazard checker, thresholds, sentiment model and the off-switch are unchanged; 424 backend tests, svelte-check, build, browser tests, evidence verification (0 problems in 3,948 lines and 6,639 quotations) and the quality audit (0 issues) were re-run on the adopted extractor. Existing browser suite (24 files): three full runs on this code gave 481 passed and 36 failed (earlier run), 363 passed and 38 failed (two files, `admin` and `extension-browser`, timed out under the long run; re-run alone they pass, 133 of 133 and 25 of 25), and, on the merged branch tip, 479 passed and 37 failed. The merged-tip differences were one colour-contrast check in `lock` that did not reproduce (re-run: identical to the earlier counts) and one `report-flow` check that the **other contributor's** pull request made out of date by adding an 'Auto-detected category' row above the report numbers; the expectation in `tests/e2e/report-flow.mjs` was updated to include that row. All 36 remaining failures are the pre-existing ones (mainly a splash-screen click blocker), the same files and counts as the unmodified-baseline comparison (394 passed, 40 failed; cited, not repeated); no failure is caused by the feature. Feature browser test: 360 of 360 at 360, 390 and 1280 px. The card and words annotation workflow was prepared in product-level batches (`human_evaluation.md`) and is **not annotated**.
 
 ## Remaining blockers for production, and the next step
 

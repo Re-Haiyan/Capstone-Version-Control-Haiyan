@@ -1248,30 +1248,6 @@
          "ids_truncated": false
         },
         {
-         "aspect": "capacity",
-         "kind": "product",
-         "polarity": "positive",
-         "reviews": 1,
-         "text": "Battery capacity: 1 review supporting",
-         "quotes": [
-          {
-           "review_id": "1002458562401105",
-           "text": "It is very functional and can be use to charge two cellphones at the same time which means you can save time and energy.",
-           "span": [
-            100,
-            220
-           ],
-           "language": "en",
-           "rating": 5.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
-          "1002458562401105"
-         ],
-         "ids_truncated": false
-        },
-        {
          "aspect": "durability",
          "kind": "product",
          "polarity": "positive",
@@ -1428,30 +1404,6 @@
          ],
          "review_ids": [
           "653719988201105",
-          "634839351301105"
-         ],
-         "ids_truncated": false
-        },
-        {
-         "aspect": "capacity",
-         "kind": "product",
-         "polarity": "negative",
-         "reviews": 1,
-         "text": "Problems with battery capacity: 1 review concerning",
-         "quotes": [
-          {
-           "review_id": "634839351301105",
-           "text": "the product are functioning properly, can't charge 2 devices at the same time,not fast charging.",
-           "span": [
-            0,
-            96
-           ],
-           "language": "en",
-           "rating": 1.0,
-           "evidence": "clear"
-          }
-         ],
-         "review_ids": [
           "634839351301105"
          ],
          "ids_truncated": false
@@ -2937,30 +2889,6 @@
         "ids_truncated": false
        },
        {
-        "aspect": "capacity",
-        "kind": "product",
-        "polarity": "positive",
-        "reviews": 1,
-        "text": "Battery capacity: 1 review supporting",
-        "quotes": [
-         {
-          "review_id": "1002458562401105",
-          "text": "It is very functional and can be use to charge two cellphones at the same time which means you can save time and energy.",
-          "span": [
-           100,
-           220
-          ],
-          "language": "en",
-          "rating": 5.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
-         "1002458562401105"
-        ],
-        "ids_truncated": false
-       },
-       {
         "aspect": "durability",
         "kind": "product",
         "polarity": "positive",
@@ -3117,30 +3045,6 @@
         ],
         "review_ids": [
          "653719988201105",
-         "634839351301105"
-        ],
-        "ids_truncated": false
-       },
-       {
-        "aspect": "capacity",
-        "kind": "product",
-        "polarity": "negative",
-        "reviews": 1,
-        "text": "Problems with battery capacity: 1 review concerning",
-        "quotes": [
-         {
-          "review_id": "634839351301105",
-          "text": "the product are functioning properly, can't charge 2 devices at the same time,not fast charging.",
-          "span": [
-           0,
-           96
-          ],
-          "language": "en",
-          "rating": 1.0,
-          "evidence": "clear"
-         }
-        ],
-        "review_ids": [
          "634839351301105"
         ],
         "ids_truncated": false

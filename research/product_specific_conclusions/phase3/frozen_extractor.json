@@ -17,5 +17,6 @@
   "C3",
   "C4"
  ],
- "note": "D2 metrics were looked at 5 times (one per candidate) and, after freezing, D2 false detections were read once for the unsupported-claim rule. F has not been opened."
+ "note": "D2 metrics were looked at 5 times (one per candidate) and, after freezing, D2 false detections were read once for the unsupported-claim rule. F has not been opened.",
+ "merge_note": "After the freeze, pull request #2 from another contributor was merged into the branch (233a466; merge b738dbe). The frozen hashes describe commit c163605. The merged tip was scored on D2 and F as well (results/D2_merged_tip.json, results/F_merged_tip.json)."
 }
