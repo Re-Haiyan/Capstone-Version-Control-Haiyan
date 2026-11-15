@@ -48,7 +48,7 @@ HAZARD = re.compile(
 )
 _HEAT = r"(?:overheat\w*|over[\s-]*(?:heat|hit)\w*|heat\w*|hot|init|mainit|uminit|umiinit|iinit|nainit|naiinit|nag-?\s?iinit|nag-?\s?init|mag\s?init|nangangainit)"
 _FILL = (r"(?:naman|nman|nmn|po|sya|siya|xa|cya|ganun|ganon|gaano|masyado|masyadong|madaling|madali|mabilis|basta|agad|so|that|very|"
-         r"any|noticeable|noticed|experienced|experience|felt|feel|detect\w*|nag|ng|yung|ung|the|a|an|ko|ako|akong|maramdamang|"
+         r"any|noticeable|noticed|experienced|experience|felt|feel|detect\w*|become|became|becomes|becoming|getting|gets|got|nag|ng|yung|ung|the|a|an|ko|ako|akong|maramdamang|"
          r"maramdaman|at|ever|even|really|talaga|totally|or|mag|issues?|problems?|nagka|nagkaroon|parin|pa|rin|din|man|lang|lng|po\.?)")
 PARTS = {
     "feature": [
@@ -123,7 +123,7 @@ SPELLING = [
                r"|(?<![a-z])(?:bloated|swollen|swelling)\s+(?:[\w']+\s+)?batter(?:y|ies)", re.I),
     re.compile(r"(?<![a-z])(?:shrt|shotr|shor|shot)[\s-]?circuit|(?<![a-z])short[\s-]?(?:sirkit|sircuit)|(?<![a-z])shortcircuit", re.I),
 ]
-S5_REVISION = "s5"
+S5_REVISION = "s5c"
 S4_REVISION = "s4"
 PREVIOUS_UNIT = re.compile(
     r"(?<![a-z])(?:the|my|our)\s+(?:very\s+)?(?:first|previous|old|older|last|former)"
@@ -157,7 +157,27 @@ def s3_removes(raw: str, previous: bool = False) -> set[str]:
     if FAILURE.search(text) or not COMFORT_WORD.search(text):
         spans = [s for s in spans if s[2] != "comfort"]
     if ITEM.search(text):
-        spans = [s for s in spans if s[2] != "other_device" or re.search(r"lumobo|swell|burn|nasunog|sumabog|una|dati|previous|old", text[s[0]:s[1]], re.I)]
+        # An own-phone observation must not erase a separate, unexplained
+        # product hazard. But merely naming the charger elsewhere is not proof
+        # of harm: "my phone got hot; the charger did NOT become hot" describes
+        # only the reviewer's phone.
+        own_hazards = {
+            i for i, (a, b) in enumerate(hazards)
+            if any(s <= a and b <= e for s, e, part in spans if part == "other_device")
+        }
+        unexplained_item_hazard = any(
+            i not in own_hazards
+            and not any(s <= a and b <= e for s, e, part in spans if part != "other_device")
+            for i, (a, b) in enumerate(hazards)
+        )
+        if unexplained_item_hazard:
+            spans = [
+                s for s in spans
+                if s[2] != "other_device" or re.search(
+                    r"lumobo|swell|burn|nasunog|sumabog|una|dati|previous|old",
+                    text[s[0]:s[1]], re.I
+                )
+            ]
     if previous and not THIS_ONE_TOO.search(text):
         for m in PREVIOUS_UNIT.finditer(text):
             spans.append((m.start(), m.end(), "previous"))
@@ -181,7 +201,13 @@ def s3_adds(raw: str) -> str | None:
     text = " ".join(str(raw).split())
     spans = [m.span() for part in ("feature", "denial", "other_device", "weather", "idiom") for p in PARTS[part] for m in p.finditer(text)]
     for n, p in enumerate(SPELLING):
-        m = p.search(text)
-        if m and not NEGATED_BEFORE.search(text[: m.start()]) and not any(s <= m.start() and m.end() <= e for s, e in spans):
+        # The earliest hit may be a harmless feature, a negated statement, or
+        # the reviewer's own device. Scan *all* mentions so it cannot hide a
+        # later genuine report on the purchased product.
+        for m in p.finditer(text):
+            if NEGATED_BEFORE.search(text[: m.start()]):
+                continue
+            if any(s <= m.start() and m.end() <= e for s, e in spans):
+                continue
             return f"spelling:{n}"
     return None
