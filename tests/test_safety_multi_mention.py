@@ -1,4 +1,4 @@
-"""Regression tests for multi-mention hazard reports (safety s5b).
+"""Regression tests for multi-mention hazard reports (safety s5c).
 
 Synthetic, policy-derived examples: not part of the historical labelled set.
 A benign first mention must not mask a later real one in the same sentence.
@@ -42,6 +42,9 @@ class MultipleSafetyMentions(unittest.TestCase):
         reasons = s3_removes("My phone became hot but the charger did not become hot")
         self.assertIn("other_device", reasons)
         self.assertIn("denial", reasons)
+
+    def test_other_device_does_not_hide_real_product_heat(self) -> None:
+        self.assertFalse(s3_removes("My phone became hot and the charger became hot"))
 
     def test_integration_preserves_safety_tag(self) -> None:
         tagger = LexiconHazardTagger(rules="0.4", counterfeit_rules="c2")
