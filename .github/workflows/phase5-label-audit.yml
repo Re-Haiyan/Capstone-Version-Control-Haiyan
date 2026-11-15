@@ -19,6 +19,16 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_phase5_label_quality.py' -v
       - name: Full text integrity and distribution audit
         run: python research/xlmr_optimization/phase5/label_quality_audit.py --out-dir /tmp/phase5-audit
+      - name: Verify second AI labels and descriptive inter-AI agreement
+        run: |
+          python -m unittest discover -s tests -p 'test_phase5_second_ai.py' -v
+          python research/xlmr_optimization/phase5/compare_second_ai.py --out-dir /tmp/phase5-comparison
+      - name: Upload second-AI descriptive comparison (not human gold)
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-ai-agreement
+          path: /tmp/phase5-comparison/
+          if-no-files-found: error
       - name: Upload non-adjudicated review queue and aggregate counts
         uses: actions/upload-artifact@v4
         with:
