@@ -1,4 +1,6 @@
-# Human evaluation: the final pack, instructions and status
+# Human evaluation: historical protocol and untouched blank pack
+
+**2026-11-15 study-method note:** The owner has selected an **AI-only exploratory evaluation** and does not intend to recruit the two human annotators for this stage. The originally planned human study is **not being carried out**, not completed or replaced by fabricated human sheets. The separate GPT-6-assisted results and descriptive audit are in `ai_annotation/gpt6_qa_20261115/`; the human pack remains blank and the original human scorer remains available but must not be run on AI-labeled data as if people supplied it. All statements below describe the **historical human-only protocol**.
 
 ## **STATUS: PENDING HUMAN EVALUATION.**
 
