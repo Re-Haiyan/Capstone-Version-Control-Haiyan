@@ -78,6 +78,12 @@ The files are created with owner-only permissions when supported; **that is not 
 - D3 may inform candidate development, V3 is for preregistered selection only, and **F2 is opened once only after freeze**. Do not reuse the Phase 3 F subset or this historical safety triage to tune the new model.
 - Existing deployed decisions, hazards, sentiment, saved product verdicts and frozen model/thresholds stay unchanged until the separately reviewed model-adoption protocol can be satisfied. **No Phase 4 model candidate has been created or tested by this intake.**
 
+## Measure Phase 4 gains without changing the frozen final set
+
+Once real accepted reviews and independently generated extractor predictions exist, use [SCORING.md](SCORING.md) and the new tools `predict_pairs.py` / `score_pairs.py` to compare the frozen Phase 3 C3 baseline against a *new* candidate on precisely the same D3/V3/F2 rows. All prediction exports, reference labels and scores stay in restricted local folders outside Git. F2 prediction and scoring require a prospective code/data/rubric freeze. The tools refuse incomplete references and never claim production approval.
+
+**Current status: no accepted Phase 4 reviews, no C6–C9 candidate, no new performance score.** The target of >=0.80 product-feature precision, recall *and* F1 remains unchanged; the historical C3 T1 recall is 0.371 against one AI-assisted proxy reference. Synthetic software tests are not accuracy evidence. Never reuse the Phase 3 frozen final set to establish a fresh result.
+
 ## Run synthetic-only unit tests
 
 ```bash
