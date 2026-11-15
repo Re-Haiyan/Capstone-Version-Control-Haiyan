@@ -123,7 +123,7 @@ SPELLING = [
                r"|(?<![a-z])(?:bloated|swollen|swelling)\s+(?:[\w']+\s+)?batter(?:y|ies)", re.I),
     re.compile(r"(?<![a-z])(?:shrt|shotr|shor|shot)[\s-]?circuit|(?<![a-z])short[\s-]?(?:sirkit|sircuit)|(?<![a-z])shortcircuit", re.I),
 ]
-S5_REVISION = "s5"
+S5_REVISION = "s5a"
 S4_REVISION = "s4"
 PREVIOUS_UNIT = re.compile(
     r"(?<![a-z])(?:the|my|our)\s+(?:very\s+)?(?:first|previous|old|older|last|former)"
@@ -181,7 +181,13 @@ def s3_adds(raw: str) -> str | None:
     text = " ".join(str(raw).split())
     spans = [m.span() for part in ("feature", "denial", "other_device", "weather", "idiom") for p in PARTS[part] for m in p.finditer(text)]
     for n, p in enumerate(SPELLING):
-        m = p.search(text)
-        if m and not NEGATED_BEFORE.search(text[: m.start()]) and not any(s <= m.start() and m.end() <= e for s, e in spans):
+        # The earliest hit may be a harmless feature, a negated statement, or
+        # the reviewer's own device. Scan *all* mentions so it cannot hide a
+        # later genuine report on the purchased product.
+        for m in p.finditer(text):
+            if NEGATED_BEFORE.search(text[: m.start()]):
+                continue
+            if any(s <= m.start() and m.end() <= e for s, e in spans):
+                continue
             return f"spelling:{n}"
     return None
