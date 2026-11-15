@@ -12,6 +12,7 @@
 | --- | --- | --- |
 | 1. Research integrity | Historical locked pack, D1/D2/F and frozen C3 hashes unchanged; annotation provenance preserved. Any new candidate on separate Phase 4 data. | **Preserve** |
 | 2. Automated regression | Both Python 3.11 and 3.12 tests, Svelte check/build, evidence audit, saved verdict/decision equality, known browser baseline and off-switch checks on the **same commit**. | PRs #4–#6 were checked individually; run and record combined-tip checks |
+| 2b. Reproducible dependencies | Align `package-lock.json` with `package.json` and pass `npm ci` on a clean machine; record Python dependency lock used for staging. | **BLOCKED** — current CI uses `npm install --no-package-lock` |
 | 3. Independent judgement | Two independent human annotation sets or a prior dated written protocol amendment; card/claims/features/words scored, with safety and unsupported claims, intervals and disagreement analysis. | **BLOCKED** — one Claude-assisted set only |
 | 4. Category validity | Fresh real reviews and human-reviewed claims for every enabled category, including footwear and motorcycle parts if enabled. Language split reported. | **BLOCKED** — some groups lack real data |
 | 5. Isolated staging | Machine matched to intended 2-vCPU production size, reproducible benchmark on its actual resources, older saved reports, secrets/privacy audit, off/on rollback. | **BLOCKED** — no staging host verified |
