@@ -62,7 +62,11 @@ def main() -> None:
         if kept:
             prod["products_with_surviving_reviews"] += 1
             groups[str(p.get("category_group") or p.get("group") or "unknown")] += 1
-    out = {"purpose": "supply estimate only; rights NOT established; no dataset created", "counts": dict(c), "products": dict(prod),
+    out = {"purpose": "supply estimate only; rights NOT established; no dataset created",
+           "split_estimate_not_intake_assignment": True,
+           "split_estimate_caveat": "URL proxy hashed twice; actual intake requires a verified canonical listing_id and may yield different D3/V3/F2 counts",
+           "privacy_and_intake_eligibility_not_verified": True,
+           "counts": dict(c), "products": dict(prod),
            "surviving_reviews_by_split_if_rights_were_confirmed": dict(split_reviews), "surviving_products_by_split": {k: len(v) for k, v in split_products.items()},
            "targets": intake.TARGET, "product_groups_with_surviving_reviews": dict(groups)}
     print(json.dumps(out, indent=1))

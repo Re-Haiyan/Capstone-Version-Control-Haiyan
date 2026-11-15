@@ -139,3 +139,21 @@ jobs:
           python -m unittest discover -s tests -p "test_phase4_intake.py" -q
       # Do not collect or upload raw Phase 4 reviews in CI. The tests are
       # synthetic; historical CSV is read only to validate exclusions.
+
+  pre-vm-audit:
+    name: Pre-VM backup integrity preflight (synthetic only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify read-only SQLite checks, separation and fail-closed safety
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p "test_pre_vm_audit.py" -q
+          python -m unittest discover -s tests -p "test_phase4_supply_audit.py" -q
+      # Never connect to or deploy to the production VM from this workflow.
+      # The tests contain synthetic SQLite rows only.
