@@ -51,8 +51,13 @@ The **0.80 target** for precision, recall and F1 remains a target; unmet targets
 
 ## 7. Deployment gates remain separate
 
-Even a successful F2 result does not waive independent human evaluation of the product card/words, real category coverage, staging benchmark, original-backend sync dry run, or the written recommendation-policy decision. The production default remains **off / no promotion** until `../RELEASE_GATES.md` is satisfied.
+Even a successful F2 result does not waive independent assessment of the product card/words, real category coverage, staging benchmark, original-backend sync dry run, or the written recommendation-policy decision. The owner-selected AI-only exploratory study does **not** require human annotators, but also cannot establish independently verified accuracy or production readiness. The production default remains **off / no promotion** until `../RELEASE_GATES.md` is satisfied.
 
 ## Amendments
 
-None.
+### 2026-11-15 — owner-selected AI-only exploratory evaluation
+
+Before Phase 4 data collection/candidate development, the owner instructed the project to use the existing GPT-6-assisted annotations **without assigning human annotators**. This is an explicit methodological change for the **exploratory AI-only study**, not a completed human evaluation. The frozen Phase 3 reference scores and their Claude-assisted provenance remain unchanged; the existing 35-product GPT-6 cards were **non-blind** and must not be reused as an unseen validation set. The AI-only summary triage has no 1–5 ratings.
+
+AI-assisted Phase 4 labels may support exploratory comparisons only if the annotator model, prompts, date, access to system output, data splits and class-specific uncertainty are recorded. Such comparisons must be called *against an AI-assisted proxy reference*, not independently verified accuracy. Preserve the original prospective candidate thresholds and final set, but state clearly that the independent-review condition cannot be fulfilled by the existing GPT-6/Claude notes; therefore do not promote a candidate as satisfying the original production adoption rule. No Cohen's kappa between independent humans, independent human precision/recall, or fabricated ratings may be reported. Separate safety verification and true staging remain blocked; no production change authorized.
+
