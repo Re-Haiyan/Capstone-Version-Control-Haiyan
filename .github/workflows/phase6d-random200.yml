@@ -1,0 +1,41 @@
+name: Phase 6D random-200 AI annotation provenance (research only)
+on:
+  push:
+    branches:
+      - research/phase6d-gpt6-random-200-20261115
+  pull_request:
+    branches:
+      - research/neutral-phase2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: AI annotation integrity and agreement / Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify locked random 200 annotations and protected sources
+        run: |
+          python -m unittest discover -s tests -p 'test_phase6d_random200.py' -v
+      - name: AI-to-AI agreement only, not a final model test
+        run: |
+          python research/xlmr_optimization/phase6_annotation/phase6d_audit.py --output /tmp/phase6d-ai-agreement
+      - name: Store metadata-only AI agreement and proposed-only differences
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase6d-random200-ai-agreement-py${{ matrix.python }}
+          path: /tmp/phase6d-ai-agreement/
+          retention-days: 7
+          if-no-files-found: warn
