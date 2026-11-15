@@ -85,3 +85,27 @@ python -m unittest discover -s tests -p 'test_phase4_intake.py' -q
 ```
 
 All synthetic text in the test file exists **solely to test the intake gates**. Real Phase 4 research metrics require independently sourced records and cannot be filled from these examples.
+
+## Status audit, 2026-11-15 (Claude Code session; supply estimate only, no data collected)
+
+**Still zero accepted Phase 4 reviews. D3, V3 and F2 were not created, nothing was annotated, no candidate (C6 to C9) was developed or scored, and C3 remains the baseline (T1 precision 0.852, recall 0.371, F1 0.517 against a single AI-assisted reference).**
+
+What was checked: the only locally held source of real marketplace reviews is the project's saved-product database (182 Lazada gadget products, written reviews captured by the app). `supply_audit.py` (read-only, aggregate counts only, no rights attestation) applied the intake's historical gates to it:
+
+| Check | Result |
+| --- | --- |
+| Products in the database | 182 |
+| Excluded as Phase 3 products (link-hash match / title overlap) | 11 / 15 |
+| Products not matching any Phase 3 product | 156 (152 with surviving reviews) |
+| Reviews in those products | 18,842 |
+| Dropped as historical-text duplicates / within-supply duplicates | 955 / 926 |
+| Surviving reviews if rights were confirmed (D3 / V3 / F2 by the frozen product hash) | 9,409 / 3,768 / 3,784 (79 / 36 / 37 products) |
+
+Why this does not start Phase 4:
+
+1. **Rights are not established.** A database copy of marketplace reviews is not evidence of permission to use it as research data; `rights_confirmed=yes` is an attestation only the owner can make, and the intake requires `--confirm-rights`. I did not set it and did not run the intake on this data. Decision needed from the owner: is this database, or a specific authorised export, usable under `source_kind=team_owned` or `authorized_export`, with the permission citation recorded in the access-controlled evidence log?
+2. **Category coverage is absent.** All 152 products are gadgets (the group field is empty in the saved JSON). The protocol also asks for appliances, clothing and footwear, skincare and haircare, food and supplements, and motorcycle parts. The database cannot satisfy that, so even with rights confirmed, the category gate (RELEASE_GATES gate 4) stays blocked; a gadget-only D3 could support only an explicitly gadget-scoped exploratory study.
+3. **Reuse caveat.** Most of these products' reviews were also used by the separate sentiment-neutral research track (candidate pool, impact study) and the 182 products anchor the saved-verdict regression checks; they were not in the Phase 3 product-feature packs, which is the exclusion that this protocol requires, but the owner should accept that overlap knowingly.
+4. **No scraping or access bypass was attempted** to obtain other categories; no source outside the project's own files was used.
+
+`tests/test_phase4_supply_audit.py` covers the audit with synthetic rows only.
