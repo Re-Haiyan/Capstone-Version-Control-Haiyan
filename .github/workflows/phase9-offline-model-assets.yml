@@ -1,0 +1,142 @@
+name: Phase 9 offline model assets for private paired evaluation
+
+on:
+  push:
+    branches:
+      - research/xlmr-offline-compare-assets-20261116
+    paths:
+      - .github/workflows/phase9-offline-model-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  model-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned CPU training-model dependencies
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install 'transformers==4.46.3' 'sentencepiece==0.2.0' 'protobuf>=4.25,<6' 'safetensors>=0.4,<0.6'
+      - name: Recover exactly pinned source checkpoint and configured deployed ONNX
+        run: |
+          python - <<'PY'
+          from transformers import AutoModelForSequenceClassification, AutoTokenizer
+          from pathlib import Path
+          import os,json,shutil,hashlib
+          revision='f2f1202b1bdeb07342385c3f807f9c07cd8f5cf8'
+          base='cardiffnlp/twitter-xlm-roberta-base-sentiment'
+          output=Path(os.environ['RUNNER_TEMP'])/'xlmr-assets'
+          model_dir=output/'base'
+          model_dir.mkdir(parents=True,exist_ok=True)
+          model=AutoModelForSequenceClassification.from_pretrained(base,revision=revision,trust_remote_code=False)
+          tokenizer=AutoTokenizer.from_pretrained(base,revision=revision,use_fast=False,trust_remote_code=False)
+          model.save_pretrained(str(model_dir),safe_serialization=True,max_shard_size='190MB')
+          tokenizer.save_pretrained(str(model_dir))
+          configured=Path('backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1')
+          dest=output/'deployed'
+          shutil.copytree(configured,dest)
+          man=json.loads((dest/'manifest.json').read_text())
+          for name,sha in man['files'].items():
+              check=hashlib.sha256((dest/name).read_bytes()).hexdigest()
+              if check!=sha: raise RuntimeError('Deployed artifact digest mismatch: '+name)
+          (output/'provenance.json').write_text(json.dumps({'base_model':base,'base_revision':revision,'deployed_model':man['model_version'],'private_reviews_included':False},indent=2))
+          print('Offline inference weights ready; no customer reviews included')
+          PY
+      - name: Tar and split offline assets (≤175MiB per download)
+        run: |
+          mkdir -p "$RUNNER_TEMP/parts"
+          tar -C "$RUNNER_TEMP/xlmr-assets" -cf "$RUNNER_TEMP/xlmr-assets.tar" .
+          split -b 175M -d -a 2 --additional-suffix=.part "$RUNNER_TEMP/xlmr-assets.tar" "$RUNNER_TEMP/parts/assets_"
+          find "$RUNNER_TEMP/parts" -type f -printf '%f %s bytes\n'
+      - name: Upload asset part 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-00
+          path: ${{ runner.temp }}/parts/assets_00.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-01
+          path: ${{ runner.temp }}/parts/assets_01.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-02
+          path: ${{ runner.temp }}/parts/assets_02.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-03
+          path: ${{ runner.temp }}/parts/assets_03.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-04
+          path: ${{ runner.temp }}/parts/assets_04.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-05
+          path: ${{ runner.temp }}/parts/assets_05.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 06
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-06
+          path: ${{ runner.temp }}/parts/assets_06.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 07
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-07
+          path: ${{ runner.temp }}/parts/assets_07.part
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Upload asset part 08
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9-model-assets-08
+          path: ${{ runner.temp }}/parts/assets_08.part
+          retention-days: 7
+          if-no-files-found: ignore
+  python-wheels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download cp313 offline inference dependencies
+        run: |
+          python -m pip download --only-binary=:all: -d "$RUNNER_TEMP/wheels" \
+            'transformers==4.46.3' 'onnxruntime==1.23.2' 'numpy>=2,<3' 'huggingface-hub<1' \
+            'sentencepiece>=0.2.0' 'protobuf>=5,<7' 'safetensors>=0.4,<0.6'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase9-python313-wheelhouse
+          path: ${{ runner.temp }}/wheels/
+          retention-days: 7
+          if-no-files-found: error
