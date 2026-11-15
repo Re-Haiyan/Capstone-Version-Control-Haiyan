@@ -37,8 +37,10 @@ SPLITS = (
 # regex classifiers and should not be used for automatic sentiment correction.
 DEFECT = re.compile(
     r"(?i)(?:\b(?:di|hindi|hnd|walang)\s+(?:gumagana|umandar|working|nagc?cha[r]?ge|nagana|nagfu?function)"
-    r"|\b(?:not\s+working|doesn.t\s+work|stopped\s+working|broke[n]?|defective|damaged|fake|counterfeit)"
-    r"|\b(?:sira|nasira|sirang|mabagal|malowbat|wrong\s+(?:item|size|product))\b)"
+    r"|\b(?:not\s+working|doesn.t\s+work|stopped\s+working|broke[n]?|defective|fake|counterfeit)"
+    r"|\b(?:(?:arrived|received|came|item|unit|product)\s+damaged|damaged\s+(?:item|unit|product|on\s+arrival))\b"
+    r"|\b(?:sira|nasira|sirang|mabagal|wrong\s+(?:item|size|product))\b"
+    r"|(?:madaling|mabilis|bilis|agad)\s+malowbat\b)"
 )
 PERSONAL = re.compile(r"(?i)\b(?:ako|ko|akin|namin|nagamit|nasubukan|nakita|bought|"
                       r"i|my|mine|we|our|tried|tested|received|works|working|"

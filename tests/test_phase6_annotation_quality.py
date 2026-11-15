@@ -52,6 +52,25 @@ class Phase6AnnotationTests(unittest.TestCase):
         self.assertIn("negative_cue_in_no_opinion",flags)
         self.assertEqual(r["sentiment"],"neutral")
 
+    def test_battery_endurance_praise_is_not_defect(self):
+        good=annotated()
+        good["review_text"]="Ang ganda ng item at matagal malowbat."
+        self.assertNotIn("negative_cue_in_no_opinion",
+                         qa.flags_for(good,None,qa.shape(good["review_text"])))
+        bad=annotated()
+        bad["review_text"]="Madaling malowbat ang battery."
+        self.assertIn("negative_cue_in_no_opinion",
+                      qa.flags_for(bad,None,qa.shape(bad["review_text"])))
+
+    def test_damaged_replacement_descriptions_are_not_product_defects(self):
+        row=annotated()
+        row["review_text"]="Convenient replacement for damaged lids, fits a bottle."
+        self.assertNotIn("negative_cue_in_no_opinion",
+                         qa.flags_for(row,None,qa.shape(row["review_text"])))
+        row["review_text"]="The item arrived damaged, hindi gumagana."
+        self.assertIn("negative_cue_in_no_opinion",
+                      qa.flags_for(row,None,qa.shape(row["review_text"])))
+
     def test_label_format_checks_no_opinion_and_aspects(self):
         qa.validate_pair({"D000":original()},{"D000":annotated()},"dev",1)
         wrong=annotated();wrong["sentiment"]="positive"
