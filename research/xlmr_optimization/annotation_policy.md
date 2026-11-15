@@ -1,42 +1,59 @@
-# Sentiment annotation policy (proposed v1, for the owner's approval)
+# Sentiment annotation policy v1 (APPROVED by the owner; FROZEN before labelling)
 
-Purpose: independent human labels of the **sentiment of a marketplace review**, so that a sentiment model can be trained, selected and finally tested on labels whose provenance is known. This policy is **sentiment only**. Defect, counterfeit, safety, quality, delivery and not-as-advertised flags are a different task (`research/annotation_policy_v2.md`) and are not labelled here.
+**Status: approved.** The owner approved decisions S1 to S4 with the clarifications written below. This text is version **v1**. Its SHA-256 is recorded in `annotation/policy_v1.lock.json`; any change to this file after labelling starts is a **new version (v2)** and must be written under a new file name, never over this one. Both annotators and the adjudicator use v1 only; the version is named in every file name and provenance line. Nothing in this folder has been labelled by a person.
 
-**Status:** a proposal. It becomes "v1" only when the owner approves it in writing; both annotators must use the same version, named in their file names. Nothing in this folder has been labelled by a person.
+Purpose: independent human labels of the **sentiment of a marketplace review**, to train, select and finally test a three-class (positive, neutral, negative) sentiment model on labels whose provenance is known. Defect, counterfeit, safety, quality, delivery and not-as-advertised **flags** are a different task (`research/annotation_policy_v2.md`) and are not labelled here.
 
-## Labels (sentiment column)
+## 1. What the annotator records (three kinds of information, kept separate)
 
-| Label | Use it when | Do not use it when |
+| Column | Values | Meaning |
 |---|---|---|
-| `positive` | The reviewer clearly evaluates the product or purchase favourably, and states no clear complaint. | Praise is only a polite closing ("thank you seller") with nothing else, or is contradicted later in the text. |
-| `negative` | The reviewer clearly evaluates it unfavourably, and states no clear praise. A report that something broke, is fake, is wrong or is unsafe is negative. | The reviewer only worries ("baka masira") or asks a question. |
-| `neutral` | No clear positive or negative evaluation: facts or a feature list, "not yet used", a question, a lukewarm "okay lang / so-so / pwede na" with nothing good or bad stated. | The text states a clear good point and a clear bad point (that is `mixed`). |
-| `mixed` | At least one clear favourable and one clear unfavourable evaluation, usually of different aspects ("maganda pero mabilis masira"). | Only one side is clear. Do **not** turn mixed into neutral to make a choice easy. |
-| `unclear` | A person cannot decide from the text alone (too short, unintelligible, needs the listing). | You can decide but are unsure: label it and set `confidence` to `low`. |
+| `sentiment` | `positive`, `neutral`, `negative`, `mixed`, `unclear` | the three-class label, or `mixed` only when neither polarity dominates (S1), or `unclear` |
+| `tags` | zero or more of `mixed`, `delivery-only`, `no-opinion`, joined with `;` (blank if none) | what kind of review it is |
+| `positive_aspect`, `negative_aspect` | a few words each | required when `mixed` is in `tags`: the favourable and the unfavourable thing, as aspect-level evidence |
+| `confidence` | `high`, `low` | a `low` row is not scored as a disagreement; it costs nothing |
+| `rationale` | free text | why, in a few words |
 
-`mixed` and `unclear` are **not** collapsed into `neutral` by this project's tools. The three-class model labels (negative, neutral, positive) are scored on reviews both annotators labelled with those three; `mixed` and `unclear` are reported separately. How a mixed review counts in a product conclusion is an owner decision (below).
+## 2. The decisions (S1 to S4)
 
-## What to judge
+**S1. Mixed sentiment.** The model stays three-class. `mixed` is recorded as a **tag**, and the review's positive and negative experiences are preserved as aspect-level evidence (`positive_aspect`, `negative_aspect`).
+* One polarity clearly dominates (the reviewer's overall verdict is plain): put that polarity in `sentiment` and add the tag `mixed`. Example: "maganda ang tunog, medyo mahina lang ang bass, sulit pa rin" is `positive` + `mixed`.
+* Neither dominates: `sentiment` = `mixed` (with the tag). Such a review is kept in a **separate mixed evaluation set** and is **never forced into `neutral`**. It is excluded from the three-class scores and reported separately.
+* A mixed review is **one review**. It is never counted as two independent reviews. In any sentiment percentage it adds 1 to exactly one three-class bucket (its dominant polarity) or, if neither dominates, to the separate mixed count, so shares of reviews never exceed 100%. Its two aspects are counted only in aspect-level tallies, which are reported separately and never summed with review percentages.
+* `neutral` plus `mixed` is not allowed (neutral means no clear evaluation; mixed means two clear ones).
 
-* Judge **the text only**. The star rating is hidden on purpose: a star rating is not sentiment ground truth, and stars often contradict the words (a 5-star "sira agad" is negative).
-* Read the product title first: "mabilis uminit" is bad on a charger and may be good on a phone.
-* **Kinds of review.** Start every `rationale` with one tag so the kinds can be counted later: `[product]` an opinion of the item, `[delivery-only]` only about delivery, packing or the seller, `[both]` product and delivery opinions, `[no-opinion]` facts, a feature list or "not yet used", `[mixed]`, `[unclear]`. For a delivery-only review, label the feeling it states (positive or negative) and tag it `[delivery-only]`.
-* Sarcasm: label the intended opinion. Negation and double negation ("hindi naman pangit") by meaning. Emojis count only when they carry an explicit opinion. Listing text copied into the review ("Ribbed texture prevents collapse") and template fields ("Performance: ok") are judged by what they say; a list of features with no opinion is `neutral` with `[no-opinion]`.
+**S2. Delivery-only feedback.** Label the sentiment the reviewer explicitly expresses and add the tag `delivery-only` when the review is only about delivery, packing, the rider or the seller. A review about both delivery and the product is not `delivery-only`.
+* Sentiment performance is reported **both including and excluding** `delivery-only` reviews.
+* Positive delivery feedback is **not** evidence that the product performs well. Product-level conclusions must separate delivery satisfaction from product satisfaction; a `delivery-only` review is not product evidence.
+
+**S3. "Okay lang".** A standalone, lukewarm expression ("okay lang", "so-so", "pwede na") is `neutral`. Read the whole review: explicit praise ("okay lang pero sulit na sulit") or dissatisfaction ("okay lang pero sira agad") justifies another label.
+
+**S4. Feature lists without opinions.** Feature descriptions with no expressed opinion ("Adjustable temperature settings, LED display") are `neutral` with the tag `no-opinion`. The star rating is hidden and is never evidence: a five-star review is not proof of a positive product experience.
+
+## 3. Labels in detail
+
+| `sentiment` | Use it when | Do not use it when |
+|---|---|---|
+| `positive` | The reviewer clearly evaluates the product or purchase favourably and the favourable side dominates. | Praise is only a polite closing with nothing else, or is contradicted. |
+| `negative` | The reviewer clearly evaluates it unfavourably and the unfavourable side dominates. A report that something broke, is fake, is wrong or is unsafe is negative. | The reviewer only worries ("baka masira") or asks a question. |
+| `neutral` | No clear positive or negative evaluation: facts, a feature list, "not yet used", a question, a standalone lukewarm remark. | Two clear opposite evaluations exist. |
+| `mixed` | Two clear opposite evaluations and **neither dominates**. | One side dominates (use that side plus the tag). |
+| `unclear` | A person cannot decide from the text alone (too short, unintelligible, needs the listing). | You can decide but are unsure: label it and use `low` confidence. |
+
+## 4. What to judge
+
+* Judge **the text only**. The star rating is hidden. Read the product title first.
+* Sarcasm: label the intended opinion. Negation and double negation by meaning. Emojis count only when they carry an explicit opinion. Listing text copied into a review and template fields ("Performance: ok") are judged by what they say.
 * Filipino, English and Taglish are all in scope. A word you do not know: say so in the rationale and use `low` confidence.
+* Never edit any column other than the six above.
 
-## Columns the annotator fills
+## 5. Disagreement, adjudication and agreement
 
-`sentiment` (one label above, lower case), `confidence` (`high` or `low`; a `low` row is not scored as a disagreement and costs nothing), `rationale` (a tag from above plus a few words). Never edit any other column. Never leave `sentiment` blank for a review you can decide.
+A third person (`A03`) who has not labelled the reviews sees both labels, tags, aspects and rationales (not model output, not stars) and decides each disagreement in `adjudication_sheet.csv`, writing the final label, tags, rule or reason, policy version and date. The original sheets are never changed. Agreement (Cohen's kappa with an interval, per-class agreement, the confusion table, and agreement on each tag) is computed from the two untouched sheets before adjudication and reported in full, including low agreement.
 
-## Disagreement and adjudication
+## 6. Reporting rules that follow from the approval
 
-After both sheets are returned (`annotation_execution_guide.md`), a third person who has not labelled the reviews sees both labels and rationales (not the model output, not the stars) and decides each disagreement in `adjudication_sheet.csv`, writing the final label, the rule or reason, the policy version and the date. The original sheets are never changed. Agreement (Cohen's kappa, per-class agreement, the confusion table) is computed from the two untouched sheets before adjudication.
-
-## Decisions the owner must make before labelling (recommended answers)
-
-| # | Question | Recommended |
-|---|---|---|
-| S1 | Is `mixed` a fourth class for the model, or does the model stay three-class with `mixed` handled in product aggregation? | Keep the model three-class; score `mixed` separately; count a mixed review as one positive and one negative mention in aggregation. |
-| S2 | Does a delivery-only review count as sentiment about the product? | Label the feeling, tag `[delivery-only]`, and report model scores with and without delivery-only reviews. |
-| S3 | Is a lukewarm "okay lang" neutral? | Yes. |
-| S4 | Is a feature list with no opinion neutral? | Yes (`[no-opinion]`). |
+1. Three-class scores use only rows both annotators (or the adjudicated label) mark `positive`, `neutral` or `negative`; `mixed` (no dominant) rows form a separate evaluation set.
+2. Every sentiment score is reported with and without `delivery-only` reviews.
+3. No sentiment percentage may exceed 100%; a review is one unit.
+4. No label is fabricated, simulated or machine-completed. The frozen final test is scored once, after labels and adjudication exist, and never used to select a model.

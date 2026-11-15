@@ -6,7 +6,7 @@
 |---|---|
 | `model_audit.md` | which model runs (verified on the VM), checkpoint provenance (the fine-tuned FP32 is missing), what could be reproduced |
 | `dataset_audit.md` | inventory with hashes, class imbalance, duplicates, leakage, the "fresh" sets that are not fresh, the frozen sampling plan |
-| `annotation_policy.md`, `annotation_execution_guide.md` | sentiment labelling policy (proposed, for approval) and instructions for two independent annotators |
+| `annotation_policy.md`, `annotation_execution_guide.md` | sentiment labelling policy **v1 (approved and frozen)** and instructions for two independent annotators |
 | `baseline_results.md` | the deployed model re-scored (FiReCS 0.833 reproduced exactly) |
 | `error_analysis.md` | error taxonomy with counts and likely causes |
 | `experiment_log.md` | every run, settings, seeds; which experiments were skipped and why |

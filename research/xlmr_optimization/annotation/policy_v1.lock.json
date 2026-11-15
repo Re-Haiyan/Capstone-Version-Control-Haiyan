@@ -1,0 +1,9 @@
+{
+ "policy_version": "v1",
+ "file": "research/xlmr_optimization/annotation_policy.md",
+ "sha256": "5875f98e454f2d4ea77a6b7f6bd9f7cd0b869f731ed667e6b27ca4352bb6d96d",
+ "approved_by": "owner (written approval of S1 to S4 with clarifications, 2026-11-15)",
+ "frozen_before_any_labelling": true,
+ "human_labels_in_repository": 0,
+ "rule": "A change to the policy after labelling starts is a new version under a new file name; v1 is never edited."
+}

@@ -98,7 +98,7 @@ def main(db):
         for r in chosen[part]:
             k = (r["group"], star_bucket(r["stars"]))
             r["weight"] = round((nat[0][k] / len(base)) / (nat[1][k] / len(chosen[part])), 4)
-    cols = ["id", "product", "category_group", "platform", "language_hint", "review_text", "sentiment", "confidence", "rationale"]
+    cols = ["id", "product", "category_group", "platform", "language_hint", "review_text", "sentiment", "tags", "positive_aspect", "negative_aspect", "confidence", "rationale"]
     ids = {}
     with open(OUT / "PRIVATE_id_map.csv", "w", newline="", encoding="utf-8") as pm:
         w = csv.writer(pm)
@@ -116,7 +116,7 @@ def main(db):
             w = csv.writer(f)
             w.writerow(cols)
             for r in rr:
-                w.writerow([r["sid"], " ".join(r["product"].split())[:140], r["group"], r["platform"], metrics_x.lang_of(r["text"]), r["text"].replace("\r", " ").replace("\n", " "), "", "", ""])
+                w.writerow([r["sid"], " ".join(r["product"].split())[:140], r["group"], r["platform"], metrics_x.lang_of(r["text"]), r["text"].replace("\r", " ").replace("\n", " "), "", "", "", "", "", ""])
     write("final_test_sheet_A.csv", chosen["final_test"], 1)
     write("final_test_sheet_B.csv", chosen["final_test"], 2)
     write("dev_pool_sheet.csv", chosen["dev_pool"], 3)

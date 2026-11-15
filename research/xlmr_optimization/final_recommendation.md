@@ -19,7 +19,7 @@
 
 ## Exact next steps before any production deployment
 
-1. The owner approves the sentiment annotation policy (`annotation_policy.md`, decisions S1 to S4).
+1. ~~The owner approves the sentiment annotation policy~~ **Done (2026-11-15): policy v1 approved with clarifications and frozen** (`annotation_policy.md`, hash in `annotation/policy_v1.lock.json`).
 2. Two independent annotators label `final_test_sheet_A/B.csv` and a third adjudicates (`annotation_execution_guide.md`); provenance and agreement are recorded. Also label the dev pool.
 3. Scan home, fashion, beauty, food and automotive products so the test represents more than electronics; freeze that sample the same way.
 4. Re-fine-tune (3 or more seeds) on FiReCS plus **verified** marketplace labels, selecting on a verified validation split; vary learning rate and epochs; consider continuing from a recovered FP32 checkpoint if the team still has it.

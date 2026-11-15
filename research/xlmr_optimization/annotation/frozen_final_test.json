@@ -4,9 +4,9 @@
  "source_database_sha256": "ba71bf5861a8c23f0c87668d3f890eaa5a224466c6780ef71b3bd546f1389a00",
  "final_test_ids_and_texts_sha256": "5d4384bb68b379fa0652a8b94b8df6234dbccb8ad1f861a856b70546f249908b",
  "sheet_sha256": {
-  "final_test_sheet_A.csv": "0b65aacfdd2241ea24962c3b022737ce58b7c10e8c4e2c9197e5d9321a69fd8e",
-  "final_test_sheet_B.csv": "57689ddcae823f26f240e5a1d232d3731816043e192c5a7df75b96e5b279ce97",
-  "dev_pool_sheet.csv": "b74630646f5afda5e2ba5fbd384e80ec641882998a0c71e89836513b46cdc0cd",
+  "final_test_sheet_A.csv": "b9831412679ec038763465ef61ba00a0061ff1c58315dda56717010891924bce",
+  "final_test_sheet_B.csv": "e6d67659538e60e9db1440db2665e255b892a39574b25e4cd1708ad5309f6108",
+  "dev_pool_sheet.csv": "c0f5566e79d7802ab255f7c848846bfcda20332e23664edf12063614b61038a2",
   "PRIVATE_id_map.csv": "52d68296e4332eccd5b92fb7b22a42125f908ac8ac95b35e272d1531dc008c27"
  },
  "plan": {
@@ -121,5 +121,6 @@
  },
  "max_reviews_per_product": 6,
  "stars_shown_to_annotators": false,
- "human_labels_in_files": 0
+ "human_labels_in_files": 0,
+ "columns_revised_for_policy_v1": "2026-11-15: the empty columns tags, positive_aspect, negative_aspect were added to the sheets after the owner approved policy v1; no id, no review text, no row order and no label changed (final_test_ids_and_texts_sha256 is unchanged); the sheet hashes above are of the revised files"
 }
