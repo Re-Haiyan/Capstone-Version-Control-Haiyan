@@ -36,7 +36,7 @@ What the feature does is described in `README.md` and `architecture.md`.
 
 | Check | Result |
 |---|---|
-| Backend tests, Python 3.11.9 (this PC) | **400 run: 400 passed, 0 failed, 0 skipped** (re-run 2026-11-15 on the committed code plus the evaluation-pipeline additions; the earlier run was 393) |
+| Backend tests, Python 3.11.9 (this PC) | **402 run: 402 passed, 0 failed, 0 skipped** (re-run 2026-11-15 after the single-set scoring tests were added; 393 before this work) |
 | Backend tests, **Python 3.12.10 with the VM's exact library versions** (NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0) | **400 run: 400 passed, 0 failed, 0 skipped** (same suite, re-run 2026-11-15) |
 | New test files | `test_product_conclusion`, `test_sync_backend`, `test_recommendation_policy`, `test_text_rating`, `test_final_eval_pack` |
 | Existing sentiment, hazard, category tests | pass, unchanged |
@@ -130,6 +130,10 @@ the whole existing e2e suite **481 passed, 36 failed**, the same totals and the 
 feature) was **not repeated**: its throw-away worktree no longer exists and no feature or front-end source changed since it was made (only tests, research scripts and documents), so the earlier comparison is cited, not re-measured.
 Evidence verification: 0 problems in 3,535 lines. Quality audit: 0 issues in all 8 categories on 3 pools. Behaviour probes on constructed reviews (English, Filipino, Taglish, neutral, negation, hypothetical, contradiction inside one review,
 repetition inside one review, copy-pasted reviews) found no failing example, so no extraction code was changed.
+
+### AI-assisted evaluation (Claude-assisted annotation; one set; not independent; not human)
+
+Source: Claude Sonnet 5.5 via Claude Code, 2026-11-15, no person reviewed the labels, ChatGPT did none of it (`ai_annotation/claude_session_1/`). Features, 150 reviews: precision 0.718, recall 0.285, **F1 0.408**; **target 0.80 not met**, nothing tuned or relabelled in response. Claims, 80: 63 correct (78.8%, 95% interval 68.6 to 86.3%); direction accuracy 63 of 67 (94.0%); 7 of 80 (8.8%) not supported by their quotation; 10 unclear. Card sheet, words sheet (unsupported-statement rate, safety-error rate, preference, usefulness) and agreement between annotation sets: **pending**. Independent human evaluation: **still pending** (no written amendment). Details and caveats: `human_evaluation.md`.
 
 ## H. Benchmark
 

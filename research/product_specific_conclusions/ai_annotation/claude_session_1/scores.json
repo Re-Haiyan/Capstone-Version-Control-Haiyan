@@ -1,0 +1,112 @@
+{
+ "note": "computed only from the annotator's sheets; developer judgements are not used anywhere",
+ "provenance": {
+  "mode": "single_annotation_set",
+  "annotator_A": {
+   "label": "Team Label 1",
+   "type": "ai_assisted",
+   "annotator": "Claude (Claude-assisted annotation). NOT ChatGPT: ChatGPT performed none of these labels.",
+   "model_version": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+   "interface": "Claude Code in a VS Code extension session (interactive; no API script)",
+   "dates": "2026-11-15",
+   "prompt_file": "research/product_specific_conclusions/ai_annotation/claude_session_1/annotation_process_record.md",
+   "human_review_of_labels": "none recorded: no person reviewed or edited these labels before scoring"
+  },
+  "annotator_B": null,
+  "independent_of_each_other": false,
+  "reference_standard": "AI-assisted reference standard (not independent human annotation)",
+  "independent_human_evaluation_completed": false,
+  "wording_rule": "Report scores as agreement with the AI-assisted reference labels; do not call them human inter-annotator reliability or ground truth."
+ },
+ "claims": {
+  "claims": 80,
+  "label_counts": {
+   "correct": 63,
+   "wrong_direction": 4,
+   "unclear": 10,
+   "not_about_the_product": 1,
+   "wrong_aspect": 2
+  },
+  "claim_precision_correct_share": [
+   63,
+   80,
+   [
+    0.686,
+    0.863
+   ]
+  ],
+  "direction_accuracy_among_claims_about_the_right_aspect": [
+   63,
+   67,
+   [
+    0.856,
+    0.977
+   ]
+  ],
+  "quotation_does_not_support_the_claim_rate": [
+   7,
+   80,
+   [
+    0.043,
+    0.17
+   ]
+  ],
+  "unclear_share": [
+   10,
+   80,
+   [
+    0.069,
+    0.215
+   ]
+  ],
+  "claims_whose_quotation_is_a_marketplace_suggestion_list": [
+   7,
+   80
+  ],
+  "note": "'correct' means the quotation says this about the product in this direction. Claim precision is NOT recall and is not an F1."
+ },
+ "features": {
+  "reviews": 150,
+  "reviews_with_a_reference_feature": 96,
+  "system_vs_reference": {
+   "tp": 51,
+   "fp": 20,
+   "fn": 128,
+   "precision": 0.718,
+   "recall": 0.285,
+   "f1": 0.408
+  },
+  "sensitivity_only_reviews_without_a_suggestion_list": {
+   "reviews": 93,
+   "tp": 47,
+   "fp": 13,
+   "fn": 111,
+   "precision": 0.783,
+   "recall": 0.297,
+   "f1": 0.431
+  },
+  "per_direction": {
+   "positive": {
+    "tp": 34,
+    "fp": 12,
+    "fn": 67,
+    "precision": 0.739,
+    "recall": 0.337,
+    "f1": 0.463
+   },
+   "negative": {
+    "tp": 17,
+    "fp": 8,
+    "fn": 61,
+    "precision": 0.68,
+    "recall": 0.218,
+    "f1": 0.33
+   }
+  },
+  "target": 0.8,
+  "note": "micro-averaged over (review, feature, direction) pairs from a random sample of reviews; the reference is ONE annotation set and its policy choices (suggestion lists ignored; bare 'ok' and generic praise neutral) are documented in human_evaluation.md"
+ },
+ "card": "pending: no annotation exists for this section",
+ "words": "pending: no annotation exists for this section",
+ "agreement_between_annotation_sets": "pending: only one annotation set exists"
+}

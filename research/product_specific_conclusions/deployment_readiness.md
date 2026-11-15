@@ -2,7 +2,7 @@
 
 ## Verdict: **READY FOR STAGING. NOT READY FOR PRODUCTION.**
 
-Why staging: the feature is complete, backward compatible, switchable off, covered by 400 passing tests (on Python 3.11 and on Python 3.12 with the VM's library versions), and its main risks (a changed
+Why staging: the feature is complete, backward compatible, switchable off, covered by 402 passing tests (on Python 3.11 and on Python 3.12 with the VM's library versions), and its main risks (a changed
 decision, a hidden hazard, an untraceable claim, a slow first page) have each been checked and found clean on the saved products.
 Putting it on a staging copy exposes nobody and is the only way to measure the two things that cannot be measured from this PC.
 
@@ -28,7 +28,7 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 | 7 | Claims are the *right* claims | **not verified independently** | developer-judged only (`aspect_validation.md`); annotation pending |
 | 8 | Existing saved reports still load | **verified** | `test_saved_report_compat`, `test_saved_pool`, the 182-product regression; a report without review text falls back to the plain wording |
 | 9 | Missing evidence handled | **verified** | empty, missing-id, no-text, no-category tests; `evidence_status` "limited"/"unavailable" |
-| 10 | Backend tests | **400 pass, 0 fail**, on Python 3.11.9 and on Python 3.12.10 with the VM's NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0 | `regression_results.md` |
+| 10 | Backend tests | **402 pass, 0 fail**, on Python 3.11.9 and on Python 3.12.10 with the VM's NumPy 2.4.6, scikit-learn 1.9.0, joblib 1.5.3, onnxruntime 1.31.0 | `regression_results.md` |
 | 11 | Front-end build | passes | `npm run build` |
 | 12 | Browser test, 360 / 390 / 1280 px, 7 cases incl. 3 real non-electronics | **passes** | `tests/e2e/product-conclusion.mjs`: no horizontal scroll, long names, warnings visible and outside any collapsed section, quotations exact |
 | 13 | Accessibility | axe (WCAG 2.0/2.1 A and AA) passes on the card at every width; **no manual screen-reader test** | same test |
@@ -38,6 +38,8 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 | 16 | Performance | measured on this PC and in the VM's runtime limited to 2 CPUs (an emulation); **not on the VM or a staging copy** | `performance_benchmark.md`: first read 72 ms median / 256 ms p95 (3.12, 2 CPUs: 72 / 249), cached 1 ms, no model loaded, cold start 0.4 s |
 | 17 | Operator off-switch | done | `DEFAKETIVE_CONCLUSION_REASONS=0` (read at start) returns every page to the plain conclusion; tested |
 | 18 | Reviewer privacy | **verified** | no author or reviewer field in any payload (test + `evidence_verification`); quotations are public review text, so check the team's data policy before publishing any in the thesis |
+| 19a | AI-assisted evaluation | **partly done, target not met** | Claude-assisted annotation (one set, not ChatGPT, not human, not independent) of 150 reviews and 80 claims: features precision 0.718, recall 0.285, F1 0.408 (target 0.80 not met); claims 78.8% correct; card, words, agreement pending (`human_evaluation.md`) |
+| 19b | Independent human evaluation | **PENDING (requirement not amended)** | no written amendment replacing it exists; AI-assisted results do not satisfy it |
 | 19 | Human evaluation | **not done** | sheets ready (cards, claims, words, features); AI-assisted labelling approved but not performed; scoring refuses without annotations and without `provenance.json`; AI labels are reported as an AI-assisted reference (`human_evaluation.md`) |
 | 20 | Category validation | partial | hair, skin, apparel, food, appliance: some real reviews; footwear and motorcycle: none (`aspect_validation.md`) |
 | 21 | Decision-policy change | **not adopted** | candidate is experimental and not wired in; 1 of 182 saved products would differ (`recommendation_policy_comparison.md`) |
@@ -51,6 +53,8 @@ micro-benchmark at the lowest priority (a temp file, removed afterwards).
 - A burst of uncached first page reads queues (about 9 per second per process on this PC).
 
 ## What staging must show before production
+
+0. Staging procedure: `staging_procedure.md` (not yet performed).
 
 1. The same `benchmark.py --cpus 2 --tag staging` on a staging VM of production's size; first-read p95 under about a second and a burst of 8 uncached reads under a few seconds is a reasonable bar (the team's to set).
 2. A run of `scripts/sync_backend.py --dry-run` against the real original, with every conflict resolved by a person.

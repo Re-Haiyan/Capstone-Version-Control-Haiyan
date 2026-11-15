@@ -273,6 +273,37 @@ class Scoring(unittest.TestCase):
         with self.assertRaises(SystemExit):
             fp.score(self.tmp)
 
+    def test_single_annotation_set_scores_what_exists_and_leaves_the_rest_pending(self):
+        import json
+        (self.tmp / "provenance.json").write_text(json.dumps({"mode": "single_annotation_set", "annotator_A": {"label": "Team Label 1", "type": "ai_assisted", "annotator": "synthetic test fixture", "model_version": "x", "interface": "x", "dates": "x", "prompt_file": "x", "human_review_of_labels": "none"}, "annotator_B": None}), encoding="utf-8")
+        rows = read(PACK / "claims_sheet_A.csv")
+        for i, r in enumerate(rows):
+            r["label"] = "correct" if i % 4 else "wrong_direction"
+        write(self.tmp / "claims_sheet_A.csv", rows, fp.CLAIM_COLS)
+        keyrows = {k["item_id"]: k["system_features"] for k in read(PACK / "features_key_private.csv")}
+        sheet = read(PACK / "features_sheet_A.csv")
+        for r in sheet:
+            r["features"] = keyrows[r["item_id"]] or "none"
+        write(self.tmp / "features_sheet_A.csv", sheet, fp.FEATURE_COLS)
+        out = fp.score(self.tmp)
+        self.assertEqual(out["provenance"]["mode"], "single_annotation_set")
+        self.assertFalse(out["provenance"]["independent_human_evaluation_completed"])
+        self.assertEqual(out["claims"]["claims"], len(rows))
+        self.assertEqual(out["features"]["system_vs_reference"]["fp"] + out["features"]["system_vs_reference"]["fn"], 0)
+        for section in ("card", "words", "agreement_between_annotation_sets"):
+            self.assertTrue(str(out[section]).startswith("pending"), section)
+
+    def test_single_mode_refuses_a_second_annotator_record_and_too_few_labels(self):
+        import json
+        entry = {"label": "L", "type": "ai_assisted", "annotator": "x", "model_version": "x", "interface": "x", "dates": "x", "prompt_file": "x", "human_review_of_labels": "none"}
+        (self.tmp / "provenance.json").write_text(json.dumps({"mode": "single_annotation_set", "annotator_A": entry, "annotator_B": entry}), encoding="utf-8")
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
+        (self.tmp / "provenance.json").write_text(json.dumps({"mode": "single_annotation_set", "annotator_A": entry, "annotator_B": None}), encoding="utf-8")
+        write(self.tmp / "claims_sheet_A.csv", read(PACK / "claims_sheet_A.csv"), fp.CLAIM_COLS)  # blank labels
+        with self.assertRaises(SystemExit):
+            fp.score(self.tmp)
+
     def test_agreement_statistics_on_known_cases(self):
         self.assertAlmostEqual(fp.kappa(list("aabb"), list("abab")), 0.0)
         self.assertAlmostEqual(fp.kappa(list("aabb"), list("aabb")), 1.0)

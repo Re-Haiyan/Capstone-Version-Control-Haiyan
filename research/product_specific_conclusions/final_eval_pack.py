@@ -51,7 +51,7 @@ WORDS_COLS = ["product_id", "product", "assessment_shown", "text_1", "text_2"] +
 FEATURE_COLS = ["item_id", "product_id", "review_no", "profile", "stars", "review_text", "features", "note"]
 MIN_FEATURE_ITEMS = 40  # reviews judged by both annotators before recall and F1 are computed
 N_FEATURE_REVIEWS = 150
-ANNOTATOR_TYPES = ("human", "ai_assisted")
+ANNOTATOR_TYPES = ("human", "ai_assisted")  # ai_assisted covers any AI: the provenance record names which (ChatGPT, Claude ...) and who actually did the work
 PROVENANCE_KEYS = ("label", "type", "annotator", "model_version", "interface", "dates", "prompt_file", "human_review_of_labels")
 TARGET_F1 = 0.80
 MIN_PRODUCTS = 30
@@ -345,21 +345,25 @@ def load_provenance(folder: Path) -> dict:
     if not path.is_file():
         raise SystemExit(f"{path} is missing. Describe how each label set was produced (see provenance_template.json). Nothing is scored.")
     data = json.loads(path.read_text(encoding="utf-8"))
-    for who in ("annotator_A", "annotator_B"):
+    single = data.get("mode") == "single_annotation_set"
+    if single and data.get("annotator_B") is not None:
+        raise SystemExit("provenance.json: mode single_annotation_set requires annotator_B to be null. Nothing is scored.")
+    for who in ("annotator_A",) if single else ("annotator_A", "annotator_B"):
         entry = data.get(who) or {}
         missing = [k for k in PROVENANCE_KEYS if not str(entry.get(k, "")).strip()]
         if missing:
             raise SystemExit(f"provenance.json {who}: missing {missing}. Write 'not recorded' if it is unknown. Nothing is scored.")
         if entry["type"] not in ANNOTATOR_TYPES:
             raise SystemExit(f"provenance.json {who}: type must be one of {ANNOTATOR_TYPES}. Nothing is scored.")
-    types = {data["annotator_A"]["type"], data["annotator_B"]["type"]}
+    types = {data["annotator_A"]["type"]} | ({data["annotator_B"]["type"]} if not single else set())
     ai = "ai_assisted" in types
     return {
+        "mode": "single_annotation_set" if single else "two_annotation_sets",
         "annotator_A": data["annotator_A"],
-        "annotator_B": data["annotator_B"],
+        "annotator_B": data.get("annotator_B"),
         "independent_of_each_other": data.get("independent_of_each_other", "not stated"),
         "reference_standard": "AI-assisted reference standard (not independent human annotation)" if ai else "human reference standard",
-        "independent_human_evaluation_completed": (not ai) and data.get("independent_of_each_other") is True,
+        "independent_human_evaluation_completed": (not ai) and (not single) and data.get("independent_of_each_other") is True,
         "wording_rule": "Report scores as agreement with the AI-assisted reference labels; do not call them human inter-annotator reliability or ground truth." if ai else "",
     }
 
@@ -422,10 +426,68 @@ def score_features(folder: Path):
     return out
 
 
+def score_single(folder: Path, provenance: dict) -> dict:
+    """One annotation set (sheet A only): precision, recall and F1 against that set. Agreement between sets, the card and the words ratings are reported as pending, never filled in."""
+    out: dict = {"note": "computed only from the annotator's sheets; developer judgements are not used anywhere", "provenance": provenance}
+    pending = "pending: no annotation exists for this section"
+    claims_path = folder / "claims_sheet_A.csv"
+    if claims_path.is_file():
+        rows = [r for r in read_rows(claims_path) if r["label"].strip() in CLAIM_LABELS]
+        if len(rows) < MIN_CLAIMS:
+            raise SystemExit(f"Claims sheet: only {len(rows)} claims labelled; at least {MIN_CLAIMS} are needed. Nothing is scored.")
+        counts = collections.Counter(r["label"].strip() for r in rows)
+        n = len(rows)
+        good = counts["correct"]
+        decided = good + counts["wrong_direction"]
+        unsupported = counts["wrong_aspect"] + counts["wrong_direction"] + counts["not_about_the_product"]
+        menu = [r for r in rows if "menu-tag" in r.get("note", "").lower()]
+        out["claims"] = {
+            "claims": n,
+            "label_counts": dict(counts),
+            "claim_precision_correct_share": [good, n, wilson(good, n)],
+            "direction_accuracy_among_claims_about_the_right_aspect": [good, decided, wilson(good, decided)] if decided else "n/a",
+            "quotation_does_not_support_the_claim_rate": [unsupported, n, wilson(unsupported, n)],
+            "unclear_share": [counts["unclear"], n, wilson(counts["unclear"], n)],
+            "claims_whose_quotation_is_a_marketplace_suggestion_list": [len(menu), n],
+            "note": "'correct' means the quotation says this about the product in this direction. Claim precision is NOT recall and is not an F1.",
+        }
+    else:
+        out["claims"] = pending
+    features = None
+    if (folder / "features_sheet_A.csv").is_file():
+        key = {r["item_id"]: {tuple(x.split(":")) for x in r["system_features"].split(";") if x} for r in read_rows(PACK / "features_key_private.csv")}
+        sheet = {r["item_id"]: r for r in read_rows(folder / "features_sheet_A.csv")}
+        ids = sorted(i for i in key if i in sheet and parse_features(sheet[i]["features"]) is not None)
+        if len(ids) < MIN_FEATURE_ITEMS:
+            raise SystemExit(f"Features sheet: only {len(ids)} reviews labelled; at least {MIN_FEATURE_ITEMS} are needed. Nothing is scored.")
+        system = [key[i] for i in ids]
+        ref = [parse_features(sheet[i]["features"]) for i in ids]
+        plain = [i for i in ids if "menu-tag" not in sheet[i].get("note", "").lower()]
+        features = {
+            "reviews": len(ids),
+            "reviews_with_a_reference_feature": sum(bool(r) for r in ref),
+            "system_vs_reference": prf(system, ref),
+            "sensitivity_only_reviews_without_a_suggestion_list": {"reviews": len(plain), **prf([key[i] for i in plain], [parse_features(sheet[i]["features"]) for i in plain])},
+            "per_direction": {d: prf([{x for x in key[i] if x[1] == d} for i in ids], [{x for x in parse_features(sheet[i]["features"]) if x[1] == d} for i in ids]) for d in ("positive", "negative")},
+            "target": TARGET_F1,
+            "note": "micro-averaged over (review, feature, direction) pairs from a random sample of reviews; the reference is ONE annotation set and its policy choices (suggestion lists ignored; bare 'ok' and generic praise neutral) are documented in human_evaluation.md",
+        }
+        out["features"] = features
+    else:
+        out["features"] = pending
+    out["card"] = pending
+    out["words"] = pending
+    out["agreement_between_annotation_sets"] = "pending: only one annotation set exists"
+    return out
+
+
 def score(folder: Path) -> dict:
+    provenance = load_provenance(folder)
+    if provenance["mode"] == "single_annotation_set":
+        return score_single(folder, provenance)
     key = {r["product_id"]: r for r in read_rows(PACK / "key_private.csv")}
     out: dict = {"note": "computed only from the annotators' sheets; developer judgements are not used anywhere"}
-    out["provenance"] = load_provenance(folder)
+    out["provenance"] = provenance
 
     def both(prefix: str, id_col: str, complete) -> tuple[dict, dict, list[str]]:
         a = {r[id_col]: r for r in read_rows(folder / f"{prefix}_A.csv") if complete(r)}

@@ -1,0 +1,23 @@
+{
+ "mode": "single_annotation_set",
+ "annotator_A": {
+  "label": "Team Label 1",
+  "type": "ai_assisted",
+  "annotator": "Claude (Claude-assisted annotation). NOT ChatGPT: ChatGPT performed none of these labels.",
+  "model_version": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+  "interface": "Claude Code in a VS Code extension session (interactive; no API script)",
+  "dates": "2026-11-15",
+  "prompt_file": "research/product_specific_conclusions/ai_annotation/claude_session_1/annotation_process_record.md",
+  "human_review_of_labels": "none recorded: no person reviewed or edited these labels before scoring"
+ },
+ "annotator_B": null,
+ "independent_of_each_other": false,
+ "dataset": "human_eval_pack (pack built by final_eval_pack.py make; sheet A order)",
+ "input_sha256": {
+  "features_sheet_A.csv": "6ca252ad9e1463f1bfc0e3ea8811f325df5fe76fb478858f4b5fcb1dbb3b869d",
+  "claims_sheet_A.csv": "ba9163615b0c4cee60154603ce63c42eafeb18a75c3fc64ed257db21ff810051",
+  "reviews.csv": "e89f14241f9a9c7eb5fe6bf50be73da7879b3cdc8367c3727e0a01a1834aa993",
+  "aspect_vocabulary.csv": "ee1fc398189108ba53854882f381549c443416a659e32e65863ec1e6d7ffbcd5",
+  "INSTRUCTIONS.md": "3e280361b65a22dbb89df5a9b2cd0914d25b6a33e60996d4b04228708b8b6bf7"
+ }
+}

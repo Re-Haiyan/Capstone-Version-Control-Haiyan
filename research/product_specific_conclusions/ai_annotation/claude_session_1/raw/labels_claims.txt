@@ -1,0 +1,29 @@
+C001 correct;C002 correct;C003 correct;C004 correct;C005 correct;C006 unclear;C007 correct;C008 correct;C009 correct;C010 correct
+C011 correct;C012 correct;C013 correct;C014 correct;C015 unclear;C016 correct;C017 correct;C018 unclear;C019 wrong_direction;C020 correct
+C021 correct;C022 correct;C023 correct;C024 correct;C025 wrong_aspect;C026 correct;C027 correct;C028 correct;C029 correct;C030 correct
+C031 correct;C032 correct;C033 correct;C034 correct;C035 correct;C036 unclear;C037 unclear;C038 correct;C039 wrong_direction;C040 correct
+C041 unclear;C042 unclear;C043 correct;C044 correct;C045 correct;C046 correct;C047 correct;C048 unclear;C049 correct;C050 correct
+C051 wrong_aspect;C052 correct;C053 correct;C054 unclear;C055 correct;C056 correct;C057 correct;C058 correct;C059 correct;C060 correct
+C061 correct;C062 correct;C063 correct;C064 correct;C065 correct;C066 correct;C067 correct;C068 correct;C069 not_about_the_product;C070 unclear
+C071 correct;C072 correct;C073 correct;C074 correct;C075 correct;C076 correct;C077 wrong_direction;C078 wrong_direction;C079 correct;C080 correct
+
+NOTES
+{
+ "C006": "a wish (maganda sana tumagal), not an experience",
+ "C015": "'(as advertised)' is ambiguous",
+ "C018": "menu-tag list: marketplace suggestion, not the reviewer's own words",
+ "C025": "about missing/unbranded items, not charging",
+ "C036": "works but music skips: mixed, not clearly positive",
+ "C037": "menu-tag list: marketplace suggestion",
+ "C041": "menu-tag list: product description copy",
+ "C042": "menu-tag list: marketplace suggestion",
+ "C048": "menu-tag list: marketplace suggestion",
+ "C054": "menu-tag list plus generic praise",
+ "C070": "menu-tag list: marketplace suggestion",
+ "C031": "damaged item on arrival counted as a fault",
+ "C023": "context (full review) shows noise cancellation fails",
+ "C069": "generalisation about devices bought on the platform, not this product",
+ "C051": "about a defective case, not the effect",
+ "C039": "says it removes odour: the claim has the wrong direction",
+ "C019": "the three statements are all favourable"
+}

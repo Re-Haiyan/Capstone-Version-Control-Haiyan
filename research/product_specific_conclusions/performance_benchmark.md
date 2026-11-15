@@ -102,3 +102,5 @@ The product-detail response gains about 7.5 KB (median) and at most 17 KB of con
 `performance_results_local_rerun.json`: first read median 34.8 ms, p95 129.5 ms, max 208 ms (182 saved products); cached 0.58 ms median; real non-electronics 49 to 71 ms median per profile; plain verdict without reasons 0.19 ms; 8 simultaneous first reads
 median 306 ms, p95 1,190 ms (one process, queueing); peak memory 448.6 MiB (benchmark process); cold start 162 ms import, no heavy library loaded. No errors. The earlier run (72 ms / 256 ms / 1 ms) and this one were taken on the same PC at different times
 and differ by about 2x: treat both as "this PC under variable load". **Neither is a staging or VM measurement.** The staging procedure is unchanged: `benchmark.py --cpus 2 --tag staging` on a machine of production's size.
+
+Staging procedure: `staging_procedure.md` (pending; no staging environment).

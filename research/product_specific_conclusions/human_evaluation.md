@@ -78,9 +78,9 @@ Two independent annotators, each a few hours (35 products, 80 claims). Until the
 ## AI-assisted evaluation (approved by the panel and adviser; stated by the owner)
 
 The research panel and adviser approved AI-assisted annotation, with ChatGPT as the primary AI-assisted annotator and the identifiers **Team Label 1** (sheet A) and **Team Label 2** (sheet B).
-This repository's earlier study handled the same situation for sentiment labels (`research/xlmr_optimization/ai_assisted_annotation_methodology.md` on the `deployment` branch); the rules below follow it.
+This repository's earlier study handled the same situation for sentiment labels (`research/xlmr_optimization/ai_assisted_annotation_methodology.md` on the `deployment` branch); the rules below follow it. ChatGPT remains the approved primary annotator, but **the labels that exist were produced by Claude, and are recorded as such**.
 
-**Status: PENDING.** No sheet has been filled, by anyone or anything. Nothing in this folder is an annotation. Claude Code, which built the pack, did not label it, and no number below is a result.
+**Status: PARTLY DONE.** `human_eval_pack/` itself stays blank (the pack is never written to). One Claude-assisted annotation set, covering the features and claims sheets only, was made on 2026-11-15 and is reported in the last section, with its provenance in `ai_annotation/claude_session_1/`. The card and words sheets, a second annotation set, and the independent human evaluation are pending.
 
 ### Rules
 1. **AI-assisted labels are never called human annotation.** `final_eval_pack.py score` refuses to run without `provenance.json` next to the filled sheets (template: `human_eval_pack/provenance_template.json`). Each label set states its type (`ai_assisted` or `human`), annotator, exact model version, interface, dates, the file holding the complete prompts, and how much a person reviewed. Unknown values must be written as `not recorded`.
@@ -109,3 +109,42 @@ python research/product_specific_conclusions/final_eval_pack.py make      # alre
 python research/product_specific_conclusions/final_eval_pack.py score <working folder>
 ```
 The scoring arithmetic is tested on synthetic sheets in a temporary folder only (`tests/test_final_eval_pack.py`); those numbers are not evidence about the system.
+
+## AI-assisted evaluation results (Claude-assisted annotation, 2026-11-15; one annotation set)
+
+**Source, stated exactly:** the labels were produced by **Claude (Claude Sonnet 5.5, via Claude Code)**, not by ChatGPT and not by a person. They are **Claude-assisted annotation**, one set ("Team Label 1"); no person reviewed them. Full record, interpretation rules and raw labels: `ai_annotation/claude_session_1/` (`annotation_process_record.md`, `provenance.json`, `raw/`, `scores.json`). The annotator is the assistant that built the system, so these results are **not independent**; they are reported as agreement with an AI-assisted reference and as nothing stronger. Independent human evaluation: **still pending**, because no written amendment replacing that requirement exists in the repository.
+
+**Blindness:** the features sheet contains no system output and the answer keys were not opened before the labels were final. The claims sheet shows the system's claims by design.
+
+### Feature extraction (150 random reviews of the 35 products; 96 have at least one reference feature)
+
+| | Precision | Recall | F1 |
+|---|---|---|---|
+| All reviews (51 correct, 20 spurious, 128 missed) | **0.718** | **0.285** | **0.408** |
+| Only the 93 reviews with no marketplace suggestion list (sensitivity to interpretation rule 1) | 0.783 | 0.297 | 0.431 |
+| Positive statements | 0.739 | 0.337 | 0.463 |
+| Negative statements | 0.680 | 0.218 | 0.330 |
+
+**The 0.80 target is not met** for precision, recall or F1. Recall is the main shortfall: the extractor is deliberately conservative (it reads a clause only when a cue is present, and ignores lists, hypotheticals, comparisons and habit), so it reports a minority of what reviewers say. Of the 128 missed pairs, 95 were product features, 30 service (delivery, packaging, seller, freebies, arrival) and 3 authenticity. By profile (tiny samples, descriptive only): powerbank F1 0.44 (35 reviews), hair 0.45 (32), skin 0.24 (24), appliance 0.35 (15), earbuds 0.40 (14), apparel 0.54 (13), food 0.40 (13), general 0.67 (4). **Nothing was tuned, relabelled, removed or re-sampled in response**; the extractor version evaluated is `asp2` as committed. Reading these misses to improve the extractor would make this sample no longer unseen, so any improvement must be evaluated on fresh reviews.
+
+What this means for the product: the conclusion text says "the reviews include reports of ..." with counts of distinct reviews and never claims to summarise everything, so low recall makes the explanation incomplete, not false; precision of the statements is the safety-relevant figure.
+
+### Claims (80 claims: 40 real non-electronics, 40 electronics)
+
+| Measure | Result | 95% Wilson interval |
+|---|---|---|
+| Claim correct (the quotation says this about the product, in this direction) | **63 of 80 (78.8%)** | 68.6 to 86.3% |
+| Direction accuracy among claims about the right aspect | 63 of 67 (94.0%) | 85.6 to 97.7% |
+| Quotation does not support the claim (wrong aspect 2, wrong direction 4, not about the product 1) | 7 of 80 (8.8%) | 4.3 to 17.0% |
+| Unclear (wish, ambiguous wording, or a marketplace suggestion list) | 10 of 80 (12.5%) | 6.9 to 21.5% |
+
+Claim correctness is a **precision-type** figure and is not an F1. Seven of the 80 quotations are marketplace suggestion lists; the rest of the unclear cases are wishes and ambiguous wording. Interval upper ends are above 0.80 and lower ends below it: this sample does not show the 0.80 target met or missed for claim correctness, only an estimate near it.
+
+### Pending (not annotated by anyone)
+| Question | Why pending |
+|---|---|
+| Overall assessment agreement (card sheet, 35 products) | needs all 5,946 reviews read; no sample substituted |
+| Unsupported-statement rate, safety and authenticity wording errors, conclusion preference, overall usefulness (words sheet) | same; the rating of "factual" and "faithful" needs the full review set of each product |
+| Agreement between annotation sets | only one set exists |
+| Review evidence counts | not judged by annotators; verified mechanically (distinct review ids; `evidence_verification.md`) |
+| Human-reviewed results | none exist; reported separately here when they do |
