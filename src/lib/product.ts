@@ -375,6 +375,12 @@ export function categoryPlace(category: string): number {
 export const seriousness = (review: Review): number =>
 	Math.min(CATEGORY_ORDER.length, ...reviewTags(review).map(categoryPlace));
 
+/** True when a word-list entry is a pattern, not a plain word or phrase. */
+export const isPattern = (entry: string): boolean => /[\\()[\]|?*+^$]/.test(entry);
+/** The matched text as a reader would write it: lower case, no punctuation left at the edges. */
+export const matchedText = (raw: string): string =>
+	raw.trim().toLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '');
+
 /** The words the check matched in a review: only words from a label the sentence was tagged with, never a negated one. */
 export function matchedWords(review: Review): Map<string, string> {
 	const found = new Map<string, string>();
@@ -383,7 +389,10 @@ export function matchedWords(review: Review): Map<string, string> {
 		for (const term of sentenceTerms(sentence)) {
 			if (term.negated || !term.category || !tags.has(term.category)) continue;
 			const raw = Array.isArray(term.span) ? String(sentence.text_raw ?? '').slice(term.span[0], term.span[1]) : '';
-			const word = String(term.ngram || raw).trim().toLowerCase();
+			// A list entry can be a pattern ("makati|nangati|itch(?:y|ing)"). Show the words the review used, never the pattern;
+			// a pattern with no matched text is left out rather than shown.
+			const listed = String(term.ngram ?? '').trim();
+			const word = isPattern(listed) ? matchedText(raw) : (listed || raw).trim().toLowerCase();
 			if (word && !found.has(word)) found.set(word, term.category);
 		}
 	}
