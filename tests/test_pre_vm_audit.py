@@ -48,7 +48,7 @@ class PreVMAuditTests(unittest.TestCase):
             side_effect=lambda _, *cmd: (
                 "0123456789abcdef" if cmd == ("rev-parse", "HEAD") else
                 "deployment" if cmd == ("branch", "--show-current") else
-                "" if cmd == ("status", "--porcelain", "--untracked-files=no") else
+                "" if cmd == ("status", "--porcelain", "--untracked-files=normal") else
                 None
             ),
         )
@@ -98,6 +98,17 @@ class PreVMAuditTests(unittest.TestCase):
         path.write_text("not a real SQLite database", encoding="utf-8")
         self.assertEqual(AUDIT._sqlite_check(path)["integrity"], "unreadable")
         self.assertFalse(AUDIT.inspect(self.live, self.backup)["preflight_checks_pass"])
+
+    def test_stale_backups_fail_closed(self):
+        import os
+        import time
+        old = time.time() - 48 * 3600
+        path = self.backup / "accounts.db"
+        os.utime(path, (old, old))
+        report = AUDIT.inspect(self.live, self.backup)
+        self.assertFalse(report["databases"]["accounts.db"]["snapshot_recent_enough"])
+        self.assertFalse(report["preflight_checks_pass"])
+        self.assertTrue(AUDIT.inspect(self.live, self.backup, max_backup_age_hours=72)["preflight_checks_pass"])
 
     def test_git_unknown_or_dirty_fails_closed(self):
         for git_result in (None, " M serve.py"):
