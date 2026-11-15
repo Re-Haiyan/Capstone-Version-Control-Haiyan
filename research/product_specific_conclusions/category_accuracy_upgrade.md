@@ -13,6 +13,20 @@ Status: experimental. No merge or deployment; no new measured category accuracy,
 - Adds an "Auto-detected category" entry to the report details. Unknown categories appear as "Unclassified"; old reports without this backend field show "Not recorded (older report)" rather than a guessed value.
 - Adds synthetic regression cases and profile mapping tests. The original locked 150-review feature evaluation and 80-claim evaluation remain untouched.
 
+## Executed validation on the isolated branch
+
+Latest checked commit: `be13af3cdbb4aaab9f4e8937bbf7071a06c10167`.
+
+- GitHub Actions: all four jobs passed — Python 3.11: **407 tests, 8 skipped, 0 failed**; Python 3.12: **407 tests, 8 skipped, 0 failed**; Svelte check/build passed; saved-review audit passed.
+- The repository's **15 documented previously problematic real listing titles**: correct category assignment went from **6/15** at original commit `a5ea4de` to **15/15** with pc5. These are known development examples and **not** an independent accuracy estimate. Every old-to-new title change is recorded in the downloadable GitHub Actions audit artifact.
+- **182 genuine saved products**: 0 category changes in the comparison. All sampled reviews were from the existing development saved pool, with up to 30 written reviews per product.
+- **46/182 product aspect snapshots changed**: 45 charger/cable products now use the narrower charger profile, 1 automotive product uses general instead of motorcycle. Across the sampled reviews, 6 inappropriate capacity claims from 4 charging accessories and 1 durability claim from the generic automotive product disappeared. Charging/overheating evidence was preserved for charger/cable products.
+- Saved sentiment and verdict **snapshots** remain identical, because this audit did not re-run those models. This **does not prove** live hazard/verdict invariance after re-scanning; category changes on other product types may affect the hazard checker.
+- Frontend job used a temporary npm install with `--no-package-lock` because the pre-existing `package-lock.json` and `package.json` are out of sync. This did not modify the committed lockfile.
+- Neither the locked 150-review feature evaluation nor the 80-claim evaluation was used for tuning or rescored.
+
+The PR also targets a feature branch being edited by a separate Claude Code session. Its newest backend aspect and extractor changes require a **combined-branch CI validation** before this patch is merged. Do not overwrite Claude's newer work.
+
 ## Validation required before integration
 
 1. Run the full Python suite: python -m unittest discover -s tests -p "test_*.py"

@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - feature/category-accuracy-20261115
+  pull_request:
+    branches:
+      - feature/product-specific-conclusions
   workflow_dispatch:
 
 permissions:
