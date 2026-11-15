@@ -1,0 +1,39 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+C051,negative,,,,high,complaint
+C052,positive,mixed,strong,small,high,positive dominates
+C053,positive,mixed,many freebies,two power banks suggestion,low,positive slightly dominates
+C054,negative,,,,high,complaint
+C055,positive,,,,high,own praise
+C056,positive,,,,high,own praise
+C057,positive,,,,high,own praise
+C058,positive,,,,high,own praise
+C059,positive,,,,low,template or typed attribute ratings read as praise
+C060,unclear,,,,high,one word
+C061,neutral,no-opinion,,,high,listing feature claims
+C062,positive,,,,high,own praise
+C063,positive,,,,high,own praise
+C064,positive,mixed,fast charging easy to carry,shuts down quickly with 3 lights,high,positive dominates
+C065,negative,mixed,sound is nice,right earbud broken and heats up,high,negative dominates
+C066,neutral,no-opinion,,,high,listing feature claims
+C067,negative,,,,high,complaint
+C068,negative,,,,high,complaint
+C069,neutral,no-opinion,,,high,listing feature claims
+C070,neutral,no-opinion,,,high,listing feature claims
+C071,positive,,,,high,own praise
+C072,positive,,,,low,template or typed attribute ratings read as praise
+C073,neutral,no-opinion,,,low,description or tags without own experience
+C074,positive,mixed,works well affordable,male connector short,low,positive dominates
+C075,neutral,no-opinion,,,high,listing feature claims
+C076,negative,,,,high,complaint
+C077,neutral,no-opinion,,,high,listing feature claims
+C078,negative,,,,high,complaint
+C079,negative,mixed,light for its size,not fast charging,high,negative dominates
+C080,neutral,no-opinion,,,high,listing feature claims
+C081,neutral,no-opinion,,,low,description or tags without own experience
+C082,positive,,,,high,own praise
+C083,neutral,no-opinion,,,low,description or tags without own experience
+C084,positive,,,,high,own praise
+C085,positive,,,,high,own praise
+C086,negative,,,,high,complaint
+C087,neutral,no-opinion,,,high,listing feature claims
+C088,negative,,,,high,complaint

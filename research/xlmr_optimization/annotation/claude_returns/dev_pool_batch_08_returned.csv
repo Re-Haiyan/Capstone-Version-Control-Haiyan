@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D355,negative,,,,high,fake not mechanical refund refused
+D329,positive,,,,low,works hopes it lasts
+D254,positive,,,,high,worth the price will order again
+D046,positive,mixed,still likes it,no LED function despite description,high,positive dominates
+D386,neutral,no-opinion,,,high,feature claims
+D284,positive,,,,high,thick sturdy excellent
+D313,positive,delivery-only,,,high,safely arrived
+D390,unclear,,,,high,unintelligible
+D260,positive,,,,high,very nice kind rider
+D155,positive,,,,high,pretty good
+D047,negative,,,,high,very bad no refund
+D389,positive,,,,high,legit long battery good sound
+D103,negative,delivery-only,,,high,seller does not answer questions
+D392,neutral,no-opinion,,,low,feature claims plus thanks
+D042,negative,,,,high,hard to drill stops turning
+D170,positive,,,,high,authentic prompt delivery
+D230,positive,,,,high,great sound battery and delivery
+D240,negative,,,,high,broken light does not blink
+D115,positive,,,,high,love it sturdy portable
+D024,negative,,,,high,defective worst
+D330,positive,,,,high,good value tested good
+D027,neutral,no-opinion,,,high,claims list
+D161,neutral,,,,high,sakto lang lukewarm
+D335,mixed,mixed,solid build quality,battery meh and small display,low,no clear dominance
+D326,neutral,no-opinion,,,high,feature claims
+D065,negative,,,,low,returned the item
+D056,positive,,,,high,good battery excellent camera
+D388,positive,,,,high,ratings 10
+D261,neutral,no-opinion,,,high,feature claims
+D048,positive,,,,high,great service and works
+D268,positive,,,,high,amazing arrived well packed
+D110,positive,,,,high,good sound cute packaging
+D025,positive,,,,high,tested working sulit
+D188,positive,,,,high,satisfied fast delivery
+D168,neutral,no-opinion,,,high,feature claims
+D271,positive,,,,high,great feel trusts quality
+D029,positive,,,,high,nice fits laptop
+D222,positive,,,,high,nice for the price
+D166,negative,,,,high,sound cuts out drains fast
+D263,positive,,,,high,ratings 9 as advertised
+D280,negative,,,,high,bad sound
+D023,positive,,,,high,excellent experience
+D339,neutral,no-opinion,,,high,will test legit
+D327,positive,,,,high,great deal
+D267,negative,,,,high,stopped charging on day two
+D145,positive,,,,high,awesome sound
+D382,negative,,,,high,bad sound output
+D160,negative,,,,high,missing holder
+D131,neutral,no-opinion,,,high,feature claims
+D058,positive,,,,high,legit freebie fast delivery

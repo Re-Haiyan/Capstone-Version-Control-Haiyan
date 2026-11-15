@@ -1,0 +1,24 @@
+{
+ "locked_at_utc": "2026-11-15T09:59:16+00:00",
+ "rule": "Written before the confirmation set was built or annotated. Each locked configuration is scored once on it; the set selects nothing and nothing is tuned afterwards.",
+ "T0": {
+  "artifact": "research/artifacts/sentiment_head_v1.joblib",
+  "sha256": "f168de2da3723fe51070388cef7b232c708e7b5372d851426a08ec01c03524e9"
+ },
+ "T7": {
+  "artifact": "research/artifacts/sentiment_head_v2_t7.joblib",
+  "sha256": "9ae0b8f127d0d6aa1a43b64b3ac3ab854f78e3521e1952526779a47864615323",
+  "training_rows": 12755,
+  "training_labels": {
+   "negative": 6494,
+   "neutral": 665,
+   "positive": 5596
+  },
+  "v1_rows_in_training": 193,
+  "dev_pool_rows_in_training": 0,
+  "selection_note": "T7 was chosen among eight configurations on the 303-row policy-v1 dev validation (Claude-annotated); its dev score is therefore optimistic; the confirmation set is the unbiased check"
+ },
+ "selection_evidence": "results/phase3_experiments.json",
+ "shipped_model_unchanged": true,
+ "frozen_test_and_heldout_v2_used": false
+}

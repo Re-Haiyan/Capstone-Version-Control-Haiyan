@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+C151,positive,,,,low,brief or implicit praise
+C152,negative,,,,high,complaint
+C153,positive,,,,high,own praise
+C154,negative,,,,high,complaint
+C155,positive,,,,high,own praise
+C156,positive,,,,low,brief or implicit praise
+C157,neutral,no-opinion,,,high,listing claims
+C158,negative,,,,high,complaint
+C159,neutral,no-opinion,,,high,listing claims
+C160,neutral,no-opinion,,,high,listing claims
+C161,negative,,,,high,complaint
+C162,negative,mixed,performance good,heats up very disappointing,high,negative dominates
+C163,positive,,,,low,brief or implicit praise
+C164,negative,,,,high,complaint
+C165,neutral,no-opinion,,,low,personalised tag list
+C166,neutral,,,,low,ok lukewarm
+C167,positive,mixed,sounds okay thanks,small indoor only,low,positive slightly dominates
+C168,positive,,,,high,own praise
+C169,mixed,mixed;delivery-only,item in good condition rider followed request,late delivery unresponsive seller no receipt,low,delivery and seller only
+C170,mixed,mixed,charging 8/10 durable,heavy 7/10,low,lukewarm
+C171,negative,,,,high,complaint
+C172,negative,,,,high,complaint
+C173,mixed,mixed,gets the job done,not premium feel not type c,low,lukewarm
+C174,positive,mixed,beautiful indicator,late overseas arrival,high,positive dominates
+C175,positive,,,,low,brief or implicit praise
+C176,positive,,,,high,own praise
+C177,unclear,,,,high,gibberish
+C178,positive,,,,high,own praise
+C179,positive,,,,high,own praise
+C180,negative,,,,high,complaint
+C181,negative,,,,low,missing feature
+C182,mixed,mixed,portability 4 stars,charging speed and capacity 2 stars,low,no clear dominance
+C183,neutral,no-opinion,,,high,listing claims
+C184,neutral,no-opinion,,,high,listing claims
+C185,neutral,,,,low,ok lukewarm
+C186,positive,,,,high,own praise
+C187,positive,,,,high,own praise
+C188,negative,,,,high,complaint
+C189,positive,,,,high,own praise
+C190,positive,,,,high,own praise
+C191,mixed,mixed,nice and comfortable,too small,low,no clear dominance
+C192,negative,mixed,looks nice,does not work,high,negative dominates
+C193,positive,,,,high,own praise
+C194,neutral,no-opinion,,,high,listing claims
+C195,positive,,,,high,own praise
+C196,positive,,,,high,own praise
+C197,negative,,,,high,complaint
+C198,positive,,,,high,own praise
+C199,negative,,,,high,complaint
+C200,positive,,,,high,own praise

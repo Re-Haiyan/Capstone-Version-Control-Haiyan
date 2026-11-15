@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1451,neutral,no-opinion,,,high,listing feature claims
+N1452,neutral,no-opinion,,,high,listing feature claims
+N1453,neutral,no-opinion,,,high,listing feature claims
+N1454,neutral,no-opinion,,,high,listing feature claims
+N1455,positive,,,,high,working legit battery fast delivery
+N1456,neutral,no-opinion,,,low,voltage reading only
+N1457,neutral,no-opinion,,,high,listing feature claims
+N1458,neutral,no-opinion,,,high,listing feature claims
+N1459,neutral,no-opinion,,,high,listing feature claims
+N1460,neutral,no-opinion,,,high,listing feature claims
+N1461,neutral,no-opinion,,,high,listing feature claims
+N1462,neutral,no-opinion,,,high,listing feature claims
+N1463,neutral,no-opinion,,,high,listing feature claims
+N1464,neutral,no-opinion,,,high,listing feature claims
+N1465,neutral,no-opinion,,,high,listing feature claims
+N1466,neutral,no-opinion,,,high,listing feature claims
+N1467,positive,,,,high,sound clear comfort battery very long
+N1468,neutral,no-opinion,,,high,listing feature claims
+N1469,mixed,mixed,ok indoors,cuts out on a bus,low,no clear dominance
+N1470,negative,,,,low,not good for big hands
+N1471,neutral,no-opinion,,,high,listing feature claims
+N1472,neutral,no-opinion,,,high,listing feature claims
+N1473,negative,,,,low,first unit broke after 2 months
+N1474,neutral,no-opinion,,,high,listing feature claims
+N1475,neutral,no-opinion,,,high,listing feature claims
+N1476,neutral,no-opinion,,,high,listing feature claims
+N1477,neutral,no-opinion,,,high,listing feature claims
+N1478,neutral,no-opinion,,,high,listing feature claims
+N1479,positive,,,,high,comfort very good sound good
+N1480,neutral,no-opinion,,,high,listing feature claims
+N1481,neutral,no-opinion,,,high,listing feature claims
+N1482,neutral,no-opinion,,,high,listing feature claims
+N1483,neutral,no-opinion,,,high,listing feature claims
+N1484,positive,,,,high,durable sturdy nice design
+N1485,neutral,no-opinion,,,high,listing feature claims
+N1486,mixed,mixed,cool look affordable,right click broke after weeks,low,no clear dominance
+N1487,positive,,,,high,cooling effect true to claim
+N1488,mixed,mixed,still works correct item,needed repair battery disconnected,low,no clear dominance
+N1489,neutral,no-opinion,,,low,claims in template fields
+N1490,unclear,,,,high,empty field
+N1491,neutral,no-opinion,,,high,listing feature claims
+N1492,neutral,no-opinion,,,high,listing feature claims
+N1493,negative,,,,high,one side not working
+N1494,neutral,no-opinion,,,high,listing feature claims
+N1495,neutral,no-opinion,,,high,listing feature claims
+N1496,neutral,no-opinion,,,high,listing feature claims
+N1497,neutral,no-opinion,,,high,listing feature claims
+N1498,neutral,no-opinion,,,high,listing feature claims
+N1499,neutral,no-opinion,,,high,listing feature claims
+N1500,neutral,no-opinion,,,high,listing feature claims

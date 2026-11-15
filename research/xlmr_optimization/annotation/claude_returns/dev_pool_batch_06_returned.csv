@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D061,negative,,,,high,cannot connect broken
+D234,negative,,,,high,battery dead immediately poor quality
+D200,positive,,,,high,clear pickup consistent battery
+D094,mixed,mixed,material good small and compact,overpriced for the sound and still too big,low,no clear dominance
+D123,positive,delivery-only,,,high,securely packed thanks
+D266,positive,,,,high,nice charger looks durable
+D144,negative,,,,high,not working broken
+D163,neutral,no-opinion,,,low,claims list
+D138,positive,mixed,keeping it camera great,overpriced even with discount,high,positive dominates
+D228,positive,,,,high,so far good fast delivery
+D087,positive,,,,low,thanks and fast arrival with feature list
+D177,negative,mixed,ok naman,dusty and wrong color,low,flaws dominate
+D119,negative,,,,high,arrived broken weak speaker
+D178,positive,,,,low,emoji ratings
+D275,positive,,,,high,fits perfectly
+D334,positive,,,,high,very fast charging nicely packed
+D225,mixed,mixed,shipped immediately correct item,rider had a child deliver,low,no clear dominance
+D017,positive,,,,high,fast ship good packaging compatible
+D189,negative,,,,high,microphone not working
+D372,mixed,mixed,okay for the price,not loud enough quality could be better,low,lukewarm
+D366,positive,,,,high,so nice thanks
+D019,negative,delivery-only,,,low,box deformed no packaging
+D239,neutral,no-opinion,,,low,question about language option
+D101,positive,mixed,received in good condition,case color mismatch,low,positive slightly dominates
+D140,positive,,,,high,bright display worked well swimming
+D117,neutral,no-opinion,,,low,claims list
+D309,positive,,,,high,nice and durable ok na
+D181,positive,,,,high,great quality repeat purchase
+D399,negative,,,,low,reality differs from image
+D093,positive,mixed,excellent camera battery performance,adapter not included,high,positive dominates
+D328,positive,,,,high,recommends store and fan
+D276,positive,,,,high,easy great quality
+D332,positive,,,,high,very excellent
+D219,positive,mixed,pretty good,power usage fast,high,positive dominates
+D073,positive,,,,high,legit compatible
+D340,negative,delivery-only,,,high,rude rider
+D259,positive,,,,high,100 percent satisfied
+D012,positive,,,,high,cheaper compatible fast delivery
+D362,negative,,,,high,microphone broken
+D255,positive,,,,high,great functionality
+D197,negative,,,,high,mouse moves by itself
+D396,negative,,,,high,wrong size received
+D391,negative,,,,high,not working
+D238,positive,,,,high,well made affordable good quality
+D153,unclear,,,,high,gibberish
+D174,negative,,,,high,damaged thin cover not happy
+D172,negative,,,,high,not fast charging
+D095,negative,,,,high,sound becomes bad cheap
+D018,negative,,,,high,only one works terrible
+D207,positive,mixed,good condition as advertised many light options,fan not strong,high,positive dominates

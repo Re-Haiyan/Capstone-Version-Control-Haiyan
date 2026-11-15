@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D209,unclear,,,,high,gibberish
+D122,negative,delivery-only,,,high,item never arrived
+D203,positive,,,,high,very satisfied repeat buyer
+D341,neutral,no-opinion,,,high,feature claims list
+D333,positive,,,,high,good quiet soft typing
+D220,positive,,,,high,child happy beautiful
+D218,negative,,,,high,hard setup music not working
+D320,negative,,,,high,sound not good
+D236,mixed,mixed,charger works fast charging; refund issued and reordered,included cable damaged and seller reply poor,low,no clear dominance
+D151,negative,,,,high,arrived broken
+D075,positive,,,,low,very pretty
+D135,negative,,,,high,wrong refurbished item scam
+D281,positive,,,,high,worth the price
+D134,positive,,,,high,ang ganda
+D357,neutral,no-opinion,,,high,feature claims
+D397,negative,,,,low,wanted it bigger mild dissatisfaction
+D162,neutral,no-opinion,,,high,not yet used
+D114,positive,mixed,sound 10/10 cute small,medyo uncomfortable,high,positive dominates
+D118,mixed,mixed,working for the most part,left earbud battery drains faster,low,no clear dominance
+D078,neutral,no-opinion,,,high,feature claims
+D141,negative,mixed,otherwise product OK,light too dim and advises let it go,low,discouraging overall
+D147,positive,delivery-only,,,high,delivered early
+D001,neutral,no-opinion,,,low,not tested yet
+D380,positive,,,,high,reliable superb decent
+D080,positive,mixed,great budget tablet worth it,not for heavy gaming,high,positive with caveat
+D109,neutral,no-opinion,,,high,feature claims
+D217,positive,,,,high,maganda hopes lasts
+D149,neutral,no-opinion,,,high,feature claims
+D060,positive,,,,high,ratings 100
+D358,negative,,,,high,damaged poor quality
+D077,neutral,no-opinion,,,high,feature claims
+D246,positive,mixed,good quality packaging legit check,not fully charged on delivery,high,positive dominates
+D028,negative,mixed,arrived safely and works,wrong color hard to connect powers off,high,negative dominates
+D393,positive,,,,high,ok product clear audio thank you
+D076,mixed,mixed,easy to wash,dislikes the material,low,no clear dominance
+D221,neutral,no-opinion,,,high,feature claims
+D379,positive,,,,high,nice product
+D196,negative,,,,high,distorted sound
+D020,positive,,,,high,ratings 10/10 long lasting
+D064,positive,,,,low,working so far
+D128,positive,,,,low,ok good condition
+D113,positive,,,,high,cute loud works well packed
+D187,positive,,,,high,loud comfortable long battery worth it
+D264,positive,delivery-only,,,high,legit seller thanks
+D133,negative,,,,high,damaged item refund rejected
+D249,negative,,,,high,not working return refused
+D205,negative,,,,high,cheap item
+D367,positive,,,,high,5 stars
+D250,positive,,,,high,good compatibility fast
+D040,positive,,,,high,very nice for price

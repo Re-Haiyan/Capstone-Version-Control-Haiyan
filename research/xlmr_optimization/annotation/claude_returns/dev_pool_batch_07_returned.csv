@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D290,neutral,no-opinion,,,high,feature claims
+D211,neutral,no-opinion,,,low,claims list and gibberish
+D068,negative,,,,high,misleading size
+D383,negative,delivery-only,,,high,no bubble wrap
+D185,negative,,,,high,broken speaker and mic
+D279,positive,delivery-only,,,low,items intact
+D106,positive,,,,high,satisfied
+D370,mixed,mixed,ok naman,airflow not strong,low,lukewarm with flaw
+D242,negative,,,,high,no volume
+D364,neutral,no-opinion,,,high,feature claims
+D195,positive,,,,low,ok not broken thanks
+D213,mixed,mixed,long battery life,weak sound left side weak,low,no clear dominance
+D316,neutral,no-opinion,,,high,feature claims
+D285,negative,,,,high,broken cables
+D354,neutral,no-opinion,,,high,feature claims
+D227,positive,,,,high,all good packaging working good price
+D148,positive,,,,high,happy great product
+D037,negative,mixed,not bad for 50 pesos,weak sound drains quickly meh comfort,high,negative dominates
+D351,mixed,mixed,well packed feels durable,arrived after almost 2 weeks and not yet tested,low,no clear dominance
+D315,positive,,,,high,very good dual use
+D194,neutral,no-opinion,,,high,feature claims
+D039,neutral,no-opinion,,,low,screen okay and water resistance not tested
+D241,negative,,,,high,not working
+D013,neutral,no-opinion,,,high,feature claim
+D348,negative,,,,high,bad low end mic
+D069,positive,,,,high,good phone packaging
+D210,neutral,no-opinion,,,high,feature claims
+D346,positive,,,,high,working and cute
+D105,positive,,,,high,so good 5 stars
+D283,neutral,no-opinion,,,high,feature claims
+D270,negative,,,,low,misleading title own variant mistake
+D053,positive,,,,low,template ratings good
+D216,positive,,,,high,speechless amazing
+D369,mixed,mixed,easy to use battery 100,sound mediocre,low,no clear dominance
+D349,neutral,no-opinion,,,high,feature claims
+D169,negative,,,,high,thin weak material
+D317,negative,,,,high,no sound 1 star
+D150,positive,,,,high,wow nice
+D130,neutral,no-opinion,,,high,feature claims
+D035,neutral,no-opinion,,,high,feature claims
+D201,positive,,,,high,good item fits recommended
+D022,negative,delivery-only,,,low,box opened
+D156,positive,,,,low,okay and good ratings
+D062,positive,,,,high,good and recommended
+D356,positive,,,,high,legit thanks for freebies
+D226,positive,,,,low,works with phone compact fits bag
+D126,positive,,,,high,beautiful legit
+D152,positive,mixed,all good loved by workmates,not good if others are noise sensitive,high,positive dominates
+D208,positive,,,,high,works great right size
+D245,negative,,,,high,lags

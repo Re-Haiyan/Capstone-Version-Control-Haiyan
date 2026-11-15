@@ -1,0 +1,13 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+C089,positive,,,,high,list plus own praise of quality
+C090,negative,,,,high,useless charges 2 percent
+C091,neutral,no-opinion,,,high,listing feature claims
+C092,positive,,,,high,excellent condition secure packaging
+C093,positive,,,,low,typed attribute praise
+C094,negative,,,,high,not working
+C095,negative,,,,high,very bad sound
+C096,neutral,no-opinion,,,low,tags and gibberish
+C097,neutral,no-opinion,,,high,listing feature claims
+C098,positive,,,,low,okay affordable durable
+C099,neutral,no-opinion,,,low,tags without experience
+C100,neutral,,,,low,ok lukewarm

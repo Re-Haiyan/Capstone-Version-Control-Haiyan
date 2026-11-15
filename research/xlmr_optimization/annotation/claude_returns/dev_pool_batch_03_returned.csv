@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D031,neutral,no-opinion,,,high,feature claims
+D086,positive,,,,high,performance great after 5 days
+D223,negative,mixed,looks nice,very weak audio hard to hear,high,negative dominates
+D007,negative,delivery-only,,,high,not delivered wrong signature
+D102,neutral,no-opinion,,,high,feature claims
+D021,neutral,no-opinion,,,high,product description
+D206,negative,,,,high,defective earbuds
+D347,positive,,,,low,good quality first impression
+D321,positive,mixed,long battery fast charge nice design still working,headband hurts after long use,high,positive dominates
+D032,neutral,no-opinion,,,high,feature claims
+D142,negative,,,,low,disappointed freebie
+D338,positive,,,,high,likes quality recommends
+D262,positive,,,,high,good sound thanks
+D063,neutral,no-opinion,,,high,feature claims and gift note
+D233,positive,,,,high,excellent
+D377,neutral,no-opinion,,,low,feature claims plus thanks only
+D034,positive,,,,high,really like it
+D129,positive,mixed,fast shipping light all keys working,cheap quality,low,positive slightly dominates
+D395,neutral,,,,low,ok but smaller than expected lukewarm
+D295,negative,,,,high,not working zero quality
+D090,positive,,,,low,easy to connect and use
+D394,positive,delivery-only,,,high,thanks fast delivery
+D154,negative,,,,high,broken headset waste
+D231,positive,,,,high,good item affordable
+D361,positive,,,,high,comfortable works well thanks
+D302,positive,delivery-only,,,high,fast delivery not used yet
+D253,positive,,,,high,impressive results
+D373,positive,,,,high,good quality fast charging
+D010,positive,delivery-only,,,high,smooth transaction thanks
+D191,negative,,,,high,capacity far below claim
+D251,positive,,,,high,great cleaner legit
+D204,negative,,,,high,much smaller than picture
+D116,positive,,,,high,convenient easy install
+D051,positive,,,,high,does not leak fits well
+D009,negative,,,,high,left earbud not working
+D323,negative,,,,high,regrets buying uncomfortable
+D299,positive,,,,high,really liked it thanks
+D215,mixed,mixed,looks good good for devices,always goes to sleep mode annoying,low,no clear dominance
+D125,negative,,,,high,scam sends broken item
+D398,neutral,no-opinion,,,high,feature claim
+D360,positive,,,,high,great for the price easy connection
+D235,neutral,no-opinion,,,low,freebie thanks only
+D336,positive,mixed,son likes it,scratched looks old,low,positive slightly dominates
+D030,positive,,,,high,liked it big discount
+D038,positive,,,,high,fast data stable connection
+D121,neutral,no-opinion,,,high,feature claims
+D015,positive,,,,low,good quality thumbs up after claims
+D288,positive,,,,high,good so far
+D312,positive,,,,high,good product
+D112,neutral,no-opinion,,,high,feature claims

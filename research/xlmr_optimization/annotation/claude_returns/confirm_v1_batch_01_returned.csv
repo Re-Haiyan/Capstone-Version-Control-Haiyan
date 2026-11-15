@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+C001,negative,delivery-only,,,high,packaging should improve
+C002,positive,,,,high,in love with the phone
+C003,negative,,,,high,too small does not fit
+C004,positive,,,,high,powerful sound great value
+C005,positive,,,,high,easy setup sturdy happy
+C006,neutral,no-opinion,,,high,feature claims
+C007,mixed,mixed,ok and arrived fine,drains quickly,low,lukewarm with flaw
+C008,negative,,,,high,malfunction after 2 weeks
+C009,positive,,,,high,all working
+C010,positive,,,,high,excellent good packing full charge
+C011,positive,,,,high,solid
+C012,negative,delivery-only,,,high,not received
+C013,positive,,,,high,did what hoped
+C014,negative,,,,high,mono low volume
+C015,negative,,,,high,bad sound
+C016,negative,,,,high,not original not 20W
+C017,positive,,,,high,good camera helps a lot
+C018,neutral,no-opinion,,,high,feature claims
+C019,positive,mixed,satisfied all ports work good product,slow arrival and disconnects easily,high,positive dominates
+C020,neutral,no-opinion,,,high,feature claims
+C021,positive,,,,low,good display thanks legit
+C022,neutral,no-opinion,,,high,feature claims
+C023,positive,mixed,earphone good good condition,no free gift,high,positive dominates
+C024,positive,delivery-only,,,high,thanks well packed no damage
+C025,neutral,no-opinion,,,high,not tried yet
+C026,negative,delivery-only,,,low,damaged bottom due to packaging
+C027,negative,,,,high,wrong color
+C028,positive,,,,high,satisfied works perfectly
+C029,positive,mixed,works well good quality,thin packaging,high,positive dominates
+C030,positive,,,,low,charging speed legit
+C031,positive,,,,high,great good accurate
+C032,positive,,,,high,sound good durable
+C033,neutral,no-opinion,,,low,joke without evaluation
+C034,positive,,,,high,very legit
+C035,negative,,,,high,not working
+C036,positive,,,,high,thanks nice
+C037,positive,mixed,item looks great,box damaged not tested,low,mostly positive
+C038,negative,,,,high,wrong items
+C039,neutral,no-opinion,,,low,thanks only
+C040,positive,,,,low,good and okay ratings
+C041,neutral,no-opinion,,,high,feature claims
+C042,neutral,no-opinion,,,low,tag list
+C043,negative,,,,high,drains fast
+C044,positive,,,,high,good ratings
+C045,positive,,,,high,very good repeated
+C046,positive,mixed,product is nice,dead battery needed replacement,low,positive dominates
+C047,positive,,,,high,likes it classy
+C048,mixed,mixed,good for price decent sound,wrong color inconsistent battery,low,no clear dominance
+C049,positive,,,,high,works well fast
+C050,neutral,no-opinion,,,high,feature claims

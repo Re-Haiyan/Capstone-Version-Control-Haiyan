@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0001,unclear,,,,high,gibberish
+N0002,positive,,,,high,praises battery build and value
+N0003,positive,,,,high,fast delivery all good handy
+N0004,neutral,no-opinion,,,low,okay ratings and not yet used
+N0005,positive,,,,low,good appearance not yet installed
+N0006,neutral,no-opinion,,,high,not yet tried
+N0007,positive,,,,low,looks good quality functions well not fully tested
+N0008,neutral,no-opinion,,,high,arrived good not yet tested
+N0009,positive,,,,low,authentic legit store
+N0010,positive,,,,high,sturdy strong handy
+N0011,neutral,no-opinion,,,low,not tried yet
+N0012,positive,,,,low,clear good performance fair quality
+N0013,positive,,,,high,handy best value works best
+N0014,positive,,,,high,small but strong worth buying
+N0015,positive,,,,high,superb build
+N0016,positive,mixed,ok item strong ANC,4 days late,high,positive dominates
+N0017,positive,,,,low,functional small
+N0018,neutral,no-opinion,,,high,not yet tried
+N0019,neutral,no-opinion,,,low,just arrived will update
+N0020,positive,,,,low,fast delivery seems durable still testing
+N0021,neutral,no-opinion,,,low,claims and not yet tried
+N0022,mixed,mixed,item works,wire nearly broken within a week,low,no clear dominance
+N0023,positive,,,,high,good quality strong
+N0024,positive,,,,high,good useful
+N0025,positive,,,,high,great product
+N0026,neutral,no-opinion,,,low,not yet tested hopeful
+N0027,positive,,,,high,not fake thanks
+N0028,positive,mixed,strong handy cute,noisy,high,positive dominates
+N0029,positive,delivery-only,,,high,legit seller
+N0030,positive,,,,high,legit brand new no damage
+N0031,positive,,,,low,nice tablet not yet tested
+N0032,positive,,,,low,legit okay good
+N0033,neutral,no-opinion,,,high,warranty claims and untested
+N0034,mixed,mixed,looks and feels ok,arrived a week late,low,lukewarm
+N0035,positive,,,,high,good sound comfort
+N0036,positive,,,,high,nice sulit legit
+N0037,positive,,,,high,nice and clear
+N0038,positive,,,,high,very sulit
+N0039,negative,,,,high,too small
+N0040,positive,,,,low,nice design lightweight
+N0041,negative,,,,high,cannot be used scam
+N0042,positive,,,,high,nice affordable
+N0043,negative,,,,high,not working
+N0044,neutral,no-opinion,,,low,effectiveness unknown
+N0045,neutral,no-opinion,,,high,not yet tested
+N0046,neutral,no-opinion,,,high,not yet tried
+N0047,neutral,no-opinion,,,high,not yet tried hopeful
+N0048,positive,,,,high,very useful strong
+N0049,neutral,no-opinion,,,low,not tried yet
+N0050,positive,,,,low,okay saves electricity

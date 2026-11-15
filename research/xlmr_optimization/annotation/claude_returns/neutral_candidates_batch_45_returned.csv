@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2201,positive,,,,low,single value tag with exclamation
+N2202,positive,,,,high,own praise
+N2203,positive,,,,high,own praise
+N2204,positive,,,,high,own praise
+N2205,neutral,no-opinion,,,low,claims list with a vague tag
+N2206,neutral,no-opinion,,,high,tag list without own experience
+N2207,neutral,no-opinion,,,high,tag list without own experience
+N2208,neutral,no-opinion,,,high,tag list without own experience
+N2209,neutral,no-opinion,,,high,tag list without own experience
+N2210,neutral,no-opinion,,,high,tag list without own experience
+N2211,neutral,no-opinion,,,high,tag list without own experience
+N2212,neutral,no-opinion,,,high,tag list without own experience
+N2213,neutral,no-opinion,,,high,tag list without own experience
+N2214,neutral,no-opinion,,,high,tag list without own experience
+N2215,neutral,no-opinion,,,high,tag list without own experience
+N2216,neutral,no-opinion,,,high,tag list without own experience
+N2217,positive,,,,high,own praise
+N2218,positive,,,,high,own praise
+N2219,neutral,no-opinion,,,high,tag list without own experience
+N2220,neutral,no-opinion,,,high,tag list without own experience
+N2221,neutral,no-opinion,,,high,tag list without own experience
+N2222,neutral,no-opinion,,,high,tag list without own experience
+N2223,neutral,no-opinion,,,high,tag list without own experience
+N2224,neutral,no-opinion,,,high,tag list without own experience
+N2225,neutral,no-opinion,,,high,tag list without own experience
+N2226,neutral,no-opinion,,,high,tag list without own experience
+N2227,neutral,no-opinion,,,high,tag list without own experience
+N2228,negative,delivery-only,,,high,bad customer service
+N2229,neutral,no-opinion,,,high,tag list without own experience
+N2230,neutral,no-opinion,,,low,claims list with a vague tag
+N2231,neutral,no-opinion,,,high,tag list without own experience
+N2232,negative,,,,high,complaint or fake claim
+N2233,positive,,,,high,own praise
+N2234,negative,mixed,works well,item is fake,high,fake claim dominates
+N2235,negative,,,,high,complaint or fake claim
+N2236,positive,,,,low,own mild praise
+N2237,negative,,,,high,complaint or fake claim
+N2238,negative,,,,high,complaint or fake claim
+N2239,negative,,,,high,complaint or fake claim
+N2240,negative,,,,high,complaint or fake claim
+N2241,negative,,,,high,complaint or fake claim
+N2242,negative,,,,high,complaint or fake claim
+N2243,negative,,,,high,complaint or fake claim
+N2244,negative,,,,high,complaint or fake claim
+N2245,negative,,,,high,complaint or fake claim
+N2246,neutral,no-opinion,,,high,tag list without own experience
+N2247,positive,,,,low,own mild praise
+N2248,neutral,no-opinion,,,high,tag list without own experience
+N2249,positive,,,,low,own mild praise
+N2250,positive,,,,high,own praise

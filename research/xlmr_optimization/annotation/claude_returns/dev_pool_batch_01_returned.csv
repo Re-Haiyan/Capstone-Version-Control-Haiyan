@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D282,neutral,no-opinion,,,high,listing feature list without own opinion
+D277,positive,mixed,very good quality,hard to use at first,high,good quality dominates minor early difficulty
+D387,neutral,no-opinion,,,high,product description copied
+D002,positive,mixed,cheap and works,medyo maliit,high,works and cheap; slightly small
+D074,neutral,no-opinion,,,high,feature list
+D265,neutral,no-opinion,,,high,feature claims
+D136,negative,,,hard to configure and malware,high,reports malware and difficult setup
+D256,positive,,,,high,maganda; long battery life
+D269,positive,,,,low,template ratings 100 emoji on claims
+D099,negative,,,,high,hard to assemble weak airflow
+D096,negative,,,,low,suspects not original
+D066,negative,,,,high,waste of money
+D291,positive,,,,low,feature list plus fast delivery own remark
+D257,positive,,,,high,arrived undamaged works well good
+D055,neutral,no-opinion,,,high,feature list
+D214,positive,,,,low,easy to pair and fast delivery
+D359,positive,,,,high,super nice
+D343,mixed,mixed,template fields rated good,picture not related,low,good ratings but picture mismatch no clear dominance
+D146,negative,,,,high,wrong cable type received
+D286,positive,,,,high,good as laptop stand
+D081,positive,,,,high,excellent quality and seller
+D120,positive,mixed,responsive fast clicks good,mid scroller bad,high,mostly good 4 stars own words
+D003,neutral,no-opinion,,,high,feature list
+D365,neutral,no-opinion,,,high,feature list
+D273,positive,mixed,ok item arrived intact fits use,medyo maliit,high,positive with minor size remark
+D307,positive,,,,low,reports compatibility small size full charge in 2 hours
+D107,positive,,,,high,compatible good build quality
+D384,negative,,,,low,still slow charging
+D193,positive,,,,high,legit item secure packaging freebies
+D287,positive,,,,high,sound and comfort rated 10 happy
+D342,neutral,no-opinion,,,high,feature list
+D324,positive,,,,high,fast charging good material compatible
+D229,neutral,,,,low,ok naman plus thanks to seller and rider only polite
+D089,positive,,,,high,serves purpose legit fast charging
+D045,positive,mixed,ok and comfortable,medyo mahina ang volume,high,positive despite weak volume
+D071,neutral,no-opinion,,,high,feature list
+D173,positive,,,,high,ratings 10/10 safe and useful
+D258,negative,,,,high,units not functioning
+D033,negative,,,,high,damaged parts wants refund
+D292,negative,,,,high,bad and used
+D137,neutral,no-opinion,,,high,feature list
+D345,positive,,,,high,nice product responsive seller fast delivery
+D298,neutral,no-opinion,,,low,oks only and not yet opened
+D371,negative,,,,high,not worth it quiet
+D244,negative,,,,high,hard to use low volume
+D054,neutral,no-opinion,,,high,feature list
+D306,neutral,no-opinion,,,high,feature list
+D011,positive,,,,low,Sound Quality 100%
+D085,neutral,no-opinion,,,high,feature claims
+D158,negative,,,,high,wrong connector received

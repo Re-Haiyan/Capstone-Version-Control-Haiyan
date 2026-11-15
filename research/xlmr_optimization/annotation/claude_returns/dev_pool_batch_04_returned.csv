@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D375,positive,,,,high,praises speed build and value
+D300,negative,,,,high,received wrong item and no support
+D363,negative,,,,high,wrong item
+D171,neutral,no-opinion,,,high,feature claims
+D247,positive,,,,high,so cute decent
+D322,negative,,,,high,useless broken
+D192,positive,,,,high,very good quality
+D237,positive,,,,high,superb freebies
+D190,positive,,,,high,loves it
+D041,positive,,,,high,own praise and seller thanks
+D296,positive,mixed,great performance sleek portable,price dropped 2k after purchase,high,positive dominates
+D132,positive,delivery-only,,,high,legit shop repeat purchase
+D159,positive,,,,high,good display battery build and shop
+D319,positive,,,,high,maganda ok
+D293,positive,,,,high,excellent condition
+D004,neutral,no-opinion,,,high,feature claim
+D026,neutral,no-opinion,,,high,feature claims
+D289,neutral,no-opinion,,,high,feature claims
+D376,positive,,,,high,small loud full sound long battery
+D184,positive,,,,high,ok loud sound
+D179,negative,,,,low,misleading product name option
+D202,positive,mixed,happy with phone,wrong freebies,high,positive dominates
+D091,neutral,no-opinion,,,high,feature claims
+D104,positive,mixed,bright and big ok,cracked at the side,low,positive slightly dominates
+D252,mixed,mixed,ok naman item,delivered to the wrong person,low,no clear dominance
+D057,negative,,,,high,wrong color
+D325,negative,,,,high,no lock low quality
+D143,positive,,,,high,liked it good for price
+D108,negative,mixed,looks really cute,no turbo charging not faster than 20W,low,disappointed with charging speed
+D378,positive,,,,high,received well cheap ok delivery
+D400,negative,delivery-only,,,high,delivered to wrong house
+D082,positive,delivery-only,good packaging secured,slow delivery,low,only about packaging and delivery
+D318,positive,,,,high,durable clear sound
+D072,neutral,no-opinion,,,high,feature claims
+D183,positive,mixed,10/10 worth the wait,slow delivery,high,positive dominates
+D243,neutral,no-opinion,,,high,feature claims
+D127,positive,mixed,all goods product,weak volume,low,lukewarm positive
+D052,positive,,,,high,nice for the price
+D167,neutral,no-opinion,,,high,feature claims
+D310,negative,,,,high,no charger included
+D180,negative,,,,high,not smooth
+D278,positive,,,,low,legit good sound own claim
+D350,negative,mixed,sound quality great,box damaged and both sides broke in two days,high,negative dominates
+D374,positive,,,,high,ratings 10 8 10
+D139,positive,,,,low,good condition
+D016,mixed,mixed,rotation ok,bits not durable,low,no clear dominance
+D059,positive,,,,high,everything perfect
+D070,neutral,no-opinion,,,high,feature claims
+D006,negative,,,,high,broke within a week
+D157,negative,,,,high,ugly weak speaker

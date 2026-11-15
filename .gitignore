@@ -62,3 +62,5 @@ research/xlmr_optimization/runs/*.done
 research/xlmr_optimization/data/head/
 research/xlmr_optimization/annotation/PRIVATE_neutral_candidate_map.csv
 research/xlmr_optimization/annotation/heldout_v2/PRIVATE_id_map.csv
+research/xlmr_optimization/annotation/PRIVATE_confirm_map.csv
+research/xlmr_optimization/annotation/_show_batch.py

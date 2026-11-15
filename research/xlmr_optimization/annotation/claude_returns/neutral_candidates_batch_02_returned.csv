@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0051,positive,,,,high,one word good
+N0052,neutral,no-opinion,,,low,arrived good yet to try
+N0053,positive,,,,high,working perfectly
+N0054,neutral,,,,low,packaging could be better no issue so far
+N0055,positive,,,,high,perfect sulit
+N0056,positive,,,,high,ratings 9 good quality
+N0057,positive,,,,high,legit repeated
+N0058,negative,,,,low,off color dirty white
+N0059,positive,,,,high,superb quality
+N0060,neutral,no-opinion,,,low,reasonable price only
+N0061,positive,,,,high,quality 10 stylish
+N0062,neutral,no-opinion,,,high,performance not verified
+N0063,positive,,,,high,excellent cute
+N0064,positive,mixed,good sleek nice,a bit small,high,positive dominates
+N0065,positive,,,,high,good legit strong
+N0066,positive,,,,high,legit nice
+N0067,neutral,no-opinion,,,low,not yet tried
+N0068,positive,,,,low,looks durable great appearance
+N0069,positive,,,,low,ratings good not yet tried
+N0070,neutral,no-opinion,,,low,received no problem
+N0071,positive,,,,high,working thanks five stars
+N0072,positive,,,,high,repeat buyer legit
+N0073,positive,,,,high,nice long lasting
+N0074,neutral,no-opinion,,,low,thanks only
+N0075,neutral,no-opinion,,,low,under observation factual checks
+N0076,negative,,,,low,smaller than expected and stickers for kids
+N0077,neutral,no-opinion,,,high,claims and not tried
+N0078,neutral,no-opinion,,,high,claims and not tested
+N0079,positive,,,,high,super legit
+N0080,neutral,no-opinion,,,high,will update later
+N0081,negative,,,,high,wrong item
+N0082,neutral,no-opinion,,,low,hopes it lasts
+N0083,positive,,,,high,goods after hesitation
+N0084,negative,,,,high,stick drift broke quickly
+N0085,negative,,,,high,defective
+N0086,positive,delivery-only,,,low,fast and complete delivery
+N0087,positive,,,,low,fast original discreet
+N0088,positive,,,,high,great love it
+N0089,negative,,,,high,wrong color given
+N0090,negative,delivery-only,,,high,not delivered
+N0091,neutral,no-opinion,,,high,not yet tested
+N0092,neutral,no-opinion,,,high,arrived complete yet to try
+N0093,positive,,,,low,legit item not yet tested
+N0094,neutral,no-opinion,,,low,looks good not tried
+N0095,negative,,,,high,battery drains quickly
+N0096,negative,,,,high,cracked on arrival bad sound
+N0097,positive,,,,high,nice working
+N0098,neutral,no-opinion,,,high,not yet tested
+N0099,neutral,no-opinion,,,high,not yet used
+N0100,negative,delivery-only,,,high,parcel not received

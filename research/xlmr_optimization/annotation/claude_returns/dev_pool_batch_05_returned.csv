@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+D176,mixed,mixed,quality ok for price and superb customer service,does not fit perfectly and is small,low,no clear dominance
+D043,positive,,,,high,very portable really fast charging impressed
+D111,positive,,,,high,good for trails battery lasts longer than expected
+D248,positive,,,,low,better than previous model; some fields not tested
+D084,negative,,,,high,does not fit head
+D381,negative,,,,high,battery faulty
+D212,positive,,,,low,looks good well packed reasonable price prompt delivery
+D100,positive,,,,high,good quality perfect fit will order again
+D303,positive,,,,high,ratings excellent thanks
+D274,negative,,,,high,does not charge at claimed speed
+D308,neutral,no-opinion,,,high,feature claims
+D344,negative,,,,high,no backlight wants return
+D186,positive,,,,high,chef kiss ratings
+D165,positive,,,,high,good condition great faith
+D353,negative,,,,high,poor quality does not charge
+D164,positive,,,,high,nice item well wrapped thanks
+D079,unclear,,,,high,gibberish
+D036,positive,mixed,good light output,switch only fits motorcycles,high,positive dominates
+D232,positive,,,,high,nice sound
+D352,negative,delivery-only,,,low,received an item they did not order
+D297,positive,,,,high,good condition worth the price
+D044,negative,,,,high,defective
+D067,neutral,no-opinion,,,low,quality review to follow
+D083,positive,,,,high,good product repeated
+D124,negative,delivery-only,,,high,no packaging by courier
+D337,neutral,no-opinion,,,high,feature claims
+D008,positive,,,,high,nice portable fast charging
+D301,positive,,,,high,easy clear sound good seller
+D097,negative,mixed,delivered earlier than expected,received 2m instead of 5m cable,high,negative dominates
+D385,negative,,,,high,false freebie advertisement
+D199,mixed,mixed,okay in quiet places,cannot hear in noisy places,low,no clear dominance
+D294,neutral,no-opinion,,,high,feature claims
+D098,mixed,mixed,second purchase good,first order wrong color and return refused,low,text cut off no clear dominance
+D272,positive,,,,high,affordable nice fabric
+D049,negative,,,,low,wings smaller than expected
+D311,neutral,no-opinion,,,low,question about FM setup
+D014,positive,,,,low,loud for its size
+D305,positive,mixed,super happy pretty compact,no SIM slot,high,positive dominates
+D182,positive,mixed,quality still good,smaller than expected,high,positive dominates
+D198,mixed,mixed,drill ok,accessories inferior and not original Makita,low,no clear dominance
+D304,negative,,,,high,defective light
+D005,negative,,,,high,missing clip
+D175,positive,,,,high,quiet keys good value
+D088,positive,,,,high,great deal complete neatly packed
+D092,mixed,mixed,pwede na for the price,rings many times for one press,low,lukewarm with defect
+D368,positive,mixed,fast delivery premium works well,a bit heavy,high,positive dominates
+D331,neutral,no-opinion,,,high,feature claims
+D314,negative,mixed,packed nice delivered quick,sound quality bad,high,product judgment negative
+D050,negative,,,,high,stopped working after 2 days
+D224,positive,,,,high,loves the phone

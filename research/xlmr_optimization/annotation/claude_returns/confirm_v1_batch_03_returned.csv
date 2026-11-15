@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+C101,negative,,,,high,complaint
+C102,mixed,mixed,ok,left light always on,low,lukewarm with flaw
+C103,positive,,,,high,own praise
+C104,negative,mixed,sounds okay,dies after one song,high,negative dominates
+C105,neutral,no-opinion,,,low,doubt or uncertainty only
+C106,negative,mixed,item acceptable,misleading buy 1 take 1,high,negative dominates
+C107,neutral,no-opinion,,,high,listing claims
+C108,negative,,,,high,complaint
+C109,positive,,,,high,own praise
+C110,negative,,,,high,complaint
+C111,positive,,,,high,own praise
+C112,negative,,,,high,complaint
+C113,negative,,,,high,complaint
+C114,mixed,mixed,all in all okay,no charger,low,lukewarm
+C115,positive,,,,high,own praise
+C116,positive,,,,high,own praise
+C117,negative,mixed,very fast shipment,wrong model and capacity,high,negative dominates
+C118,positive,,,,high,own praise
+C119,negative,,,,high,complaint
+C120,negative,,,,high,complaint
+C121,positive,,,,low,mild own praise
+C122,negative,,,,high,complaint
+C123,mixed,mixed,sound and comfort good,battery poor,low,no clear dominance
+C124,neutral,no-opinion,,,low,doubt or uncertainty only
+C125,positive,,,,high,own praise
+C126,positive,,,,high,own praise
+C127,negative,,,,high,complaint
+C128,mixed,mixed,easy setup,hard to open and bigger than expected,low,no clear dominance
+C129,negative,delivery-only,,,high,not received
+C130,mixed,mixed,goods item cheap,rider threw the parcel,low,no clear dominance
+C131,positive,,,,high,own praise
+C132,positive,,,,high,own praise
+C133,neutral,no-opinion,,,high,listing claims
+C134,negative,mixed,sound quality good,one side not working,high,negative dominates
+C135,positive,,,,high,own praise
+C136,mixed,mixed,fast charging compact,drains and shuts down early,low,no clear dominance
+C137,positive,,,,high,own praise
+C138,negative,,,,high,complaint
+C139,neutral,no-opinion,,,high,listing claims
+C140,negative,,,,low,items not sealed
+C141,neutral,no-opinion,,,high,listing claims
+C142,positive,,,,high,own praise
+C143,positive,mixed,charging 4/5,bulky 3/5,low,positive slightly dominates
+C144,positive,,,,high,own praise
+C145,negative,,,,high,complaint
+C146,negative,,,,high,complaint
+C147,positive,,,,low,mild own praise
+C148,mixed,mixed,works,will not connect to other phones,low,no clear dominance
+C149,positive,,,,high,own praise
+C150,positive,,,,high,own praise

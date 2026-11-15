@@ -1,0 +1,308 @@
+{
+ "rows": 200,
+ "three_class_rows": 184,
+ "mixed": 14,
+ "unclear": 2,
+ "labels": {
+  "negative": 57,
+  "neutral": 41,
+  "positive": 86
+ },
+ "reference": "AI-assisted (Claude, policy v1); not independent human ground truth",
+ "models": {
+  "T0": {
+   "all": {
+    "n": 184,
+    "accuracy": 0.7445652173913043,
+    "macro_precision": 0.6706896551724139,
+    "macro_recall": 0.6545113492750594,
+    "macro_f1": 0.6260571325674767,
+    "weighted_f1": 0.6914626851320738,
+    "classes": {
+     "negative": {
+      "precision": 0.9310344827586207,
+      "recall": 0.9473684210526315,
+      "f1": 0.9391304347826087,
+      "support": 57
+     },
+     "neutral": {
+      "precision": 0.4,
+      "recall": 0.0975609756097561,
+      "f1": 0.15686274509803924,
+      "support": 41
+     },
+     "positive": {
+      "precision": 0.6810344827586207,
+      "recall": 0.9186046511627907,
+      "f1": 0.7821782178217822,
+      "support": 86
+     }
+    },
+    "confusion": [
+     [
+      54,
+      2,
+      1
+     ],
+     [
+      1,
+      4,
+      36
+     ],
+     [
+      3,
+      4,
+      79
+     ]
+    ],
+    "macro_f1_ci95_product_bootstrap": [
+     0.5664331127050422,
+     0.694401541102226
+    ]
+   },
+   "cue_stratum": {
+    "n": 95,
+    "accuracy": 0.6631578947368421,
+    "macro_precision": 0.6564102564102564,
+    "macro_recall": 0.6571428571428571,
+    "macro_f1": 0.5889009809531288,
+    "weighted_f1": 0.5784528863193088,
+    "classes": {
+     "negative": {
+      "precision": 0.8846153846153846,
+      "recall": 1.0,
+      "f1": 0.9387755102040816,
+      "support": 23
+     },
+     "neutral": {
+      "precision": 0.5,
+      "recall": 0.06666666666666667,
+      "f1": 0.11764705882352941,
+      "support": 30
+     },
+     "positive": {
+      "precision": 0.5846153846153846,
+      "recall": 0.9047619047619048,
+      "f1": 0.7102803738317757,
+      "support": 42
+     }
+    },
+    "confusion": [
+     [
+      23,
+      0,
+      0
+     ],
+     [
+      1,
+      2,
+      27
+     ],
+     [
+      2,
+      2,
+      38
+     ]
+    ]
+   },
+   "no_cue_stratum": {
+    "n": 89,
+    "accuracy": 0.8314606741573034,
+    "macro_precision": 0.702001633986928,
+    "macro_recall": 0.6751336898395722,
+    "macro_f1": 0.6792819839259469,
+    "weighted_f1": 0.8146806359767712,
+    "classes": {
+     "negative": {
+      "precision": 0.96875,
+      "recall": 0.9117647058823529,
+      "f1": 0.9393939393939394,
+      "support": 34
+     },
+     "neutral": {
+      "precision": 0.3333333333333333,
+      "recall": 0.18181818181818182,
+      "f1": 0.23529411764705885,
+      "support": 11
+     },
+     "positive": {
+      "precision": 0.803921568627451,
+      "recall": 0.9318181818181818,
+      "f1": 0.8631578947368421,
+      "support": 44
+     }
+    },
+    "confusion": [
+     [
+      31,
+      2,
+      1
+     ],
+     [
+      0,
+      2,
+      9
+     ],
+     [
+      1,
+      2,
+      41
+     ]
+    ]
+   },
+   "population_weighted_macro_f1": 0.6440293024851423,
+   "population_weighted_f1_per_class": {
+    "negative": 0.9392418822132639,
+    "neutral": 0.1802812838731631,
+    "positive": 0.8125647413689999
+   }
+  },
+  "T7": {
+   "all": {
+    "n": 184,
+    "accuracy": 0.7608695652173914,
+    "macro_precision": 0.7494819065837718,
+    "macro_recall": 0.7436437093869103,
+    "macro_f1": 0.7433287324591672,
+    "weighted_f1": 0.7692636600954181,
+    "classes": {
+     "negative": {
+      "precision": 0.9411764705882353,
+      "recall": 0.8421052631578947,
+      "f1": 0.8888888888888888,
+      "support": 57
+     },
+     "neutral": {
+      "precision": 0.49019607843137253,
+      "recall": 0.6097560975609756,
+      "f1": 0.5434782608695652,
+      "support": 41
+     },
+     "positive": {
+      "precision": 0.8170731707317073,
+      "recall": 0.7790697674418605,
+      "f1": 0.7976190476190477,
+      "support": 86
+     }
+    },
+    "confusion": [
+     [
+      48,
+      9,
+      0
+     ],
+     [
+      1,
+      25,
+      15
+     ],
+     [
+      2,
+      17,
+      67
+     ]
+    ],
+    "macro_f1_ci95_product_bootstrap": [
+     0.6719056222504306,
+     0.7945417949501992
+    ]
+   },
+   "cue_stratum": {
+    "n": 95,
+    "accuracy": 0.7263157894736842,
+    "macro_precision": 0.7377717391304347,
+    "macro_recall": 0.7390614216701173,
+    "macro_f1": 0.7380585867569756,
+    "weighted_f1": 0.7275663588554392,
+    "classes": {
+     "negative": {
+      "precision": 0.8695652173913043,
+      "recall": 0.8695652173913043,
+      "f1": 0.8695652173913043,
+      "support": 23
+     },
+     "neutral": {
+      "precision": 0.59375,
+      "recall": 0.6333333333333333,
+      "f1": 0.6129032258064516,
+      "support": 30
+     },
+     "positive": {
+      "precision": 0.75,
+      "recall": 0.7142857142857143,
+      "f1": 0.7317073170731706,
+      "support": 42
+     }
+    },
+    "confusion": [
+     [
+      20,
+      3,
+      0
+     ],
+     [
+      1,
+      19,
+      10
+     ],
+     [
+      2,
+      10,
+      30
+     ]
+    ]
+   },
+   "no_cue_stratum": {
+    "n": 89,
+    "accuracy": 0.797752808988764,
+    "macro_precision": 0.7322472848788638,
+    "macro_recall": 0.7366310160427808,
+    "macro_f1": 0.7212303075768943,
+    "weighted_f1": 0.8198892419734147,
+    "classes": {
+     "negative": {
+      "precision": 1.0,
+      "recall": 0.8235294117647058,
+      "f1": 0.9032258064516129,
+      "support": 34
+     },
+     "neutral": {
+      "precision": 0.3157894736842105,
+      "recall": 0.5454545454545454,
+      "f1": 0.39999999999999997,
+      "support": 11
+     },
+     "positive": {
+      "precision": 0.8809523809523809,
+      "recall": 0.8409090909090909,
+      "f1": 0.8604651162790699,
+      "support": 44
+     }
+    },
+    "confusion": [
+     [
+      28,
+      6,
+      0
+     ],
+     [
+      0,
+      6,
+      5
+     ],
+     [
+      0,
+      7,
+      37
+     ]
+    ]
+   },
+   "population_weighted_macro_f1": 0.7395704842778791,
+   "population_weighted_f1_per_class": {
+    "negative": 0.8949535694777092,
+    "neutral": 0.5012951152778337,
+    "positive": 0.8224627680780945
+   }
+  }
+ }
+}

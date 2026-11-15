@@ -1,0 +1,13 @@
+# AI annotation provenance (Phase 3)
+
+Every row in the `*_ai_v1.csv` files in this folder was labelled by **Claude** (model `claude-sonnet-5-5`, through Claude Code), directly by the assistant reading the review text in-session, at the owner's request, on 2026-11-15, applying policy v1 (`annotation_policy.md`, hash in `../policy_v1.lock.json`, unchanged). **None of these rows was labelled by ChatGPT.** They are a separate AI-assisted label source and are recorded as such in `../ai_annotation_log.csv` (model, submitter, date, hashes of the returned file and of the rubric prompt, per batch).
+
+| File | Rows | Source batches |
+|---|---:|---|
+| `dev_pool_sheet_ai_v1.csv` | 400 | `dev_pool_batch_01..08` (all) |
+| `neutral_candidate_pool_ai_v1.csv` | 200 of 3,000 | `neutral_candidates_batch_01, 02, 30, 45` (the other 56 batches are **not** annotated) |
+| `confirm_v1_sheet_ai_v1.csv` | 200 | `confirm_v1_batch_01..04` (batch 02 was imported in two parts, `02` with 38 rows and `02b` with 12) |
+
+How the labelling was done (facts): the batch files were blind (review id, product title, language hint, review text; no star rating, model prediction or earlier label). The assistant read each batch and wrote the returned CSV; every returned file was validated by `import_ai_annotations.py` (ids belong to the sheet, no repeats, allowed values, policy-v1 rules); no script or model produced a label; the confirmation set was frozen (`../confirm_v1_manifest.json`) before it was annotated and before any configuration was scored on it. The rubric text the assistant followed is `../chatgpt_prompt_policy_v1.md` (written for ChatGPT; the same rubric, different annotator).
+
+Known limitations: one annotator, no second annotator, no human review; the same annotator labelled the development, candidate and confirmation sets, so a classifier trained on some of these labels and scored on others partly measures consistency with this annotator's reading of policy v1 (especially for feature lists and lukewarm text); low-confidence rows are marked and were not removed; the annotator also labelled ambiguous cases under the rule "tag lists without personal experience are neutral, no-opinion", which is the debated S4 boundary. These labels are **not** independent human ground truth.

@@ -1,0 +1,20 @@
+{
+ "frozen_at_utc": "2026-11-15T10:00:11+00:00",
+ "rule": "Frozen before annotation and before any Phase 3 configuration is scored on it. Configurations are locked in phase3_lock.json first; this set is scored once per locked configuration and chooses nothing.",
+ "source_database_sha256": "ba71bf5861a8c23f0c87668d3f890eaa5a224466c6780ef71b3bd546f1389a00",
+ "reviews": 200,
+ "products": 103,
+ "usable_population_after_exclusions": 13272,
+ "removed": {
+  "blocked product": 50614,
+  "equal to a blocked text": 5782,
+  "duplicate": 1456,
+  "near duplicate (cosine >= 0.9)": 494
+ },
+ "by_stratum": {
+  "cue": 100,
+  "no_cue": 100
+ },
+ "sheet_sha256": "0ae486c1358a5e789f916f0c34170dbcffa7dbfefb90750a17e0555744a6115e",
+ "labels_in_files": 0
+}
