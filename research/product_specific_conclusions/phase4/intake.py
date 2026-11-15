@@ -188,8 +188,16 @@ def parse_entry(raw: object, line_no: int) -> Entry:
         raise IntakeError(f"line {line_no}: invalid marketplace/listing identifier")
     url = raw["listing_url"].strip()
     parsed = urlsplit(url)
-    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
-        raise IntakeError(f"line {line_no}: listing_url must be a public HTTPS listing URL, without credentials")
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.username or
+            parsed.password or not parsed.path.strip("/")):
+        raise IntakeError(f"line {line_no}: listing_url must be a public HTTPS product URL, without credentials")
+    # Only enforce marketplace domains we can unambiguously recognize.
+    # Other marketplace/source kinds still require separate source-rights review.
+    expected_host = {"lazada": "lazada.com.ph", "shopee": "shopee.ph"}.get(market)
+    if expected_host and not (
+        parsed.hostname == expected_host or parsed.hostname.endswith("." + expected_host)
+    ):
+        raise IntakeError(f"line {line_no}: listing_url host does not match {market}")
     if raw["language"] not in LANGUAGES:
         raise IntakeError(f"line {line_no}: language must be en, fil, taglish, other or unknown")
     if not SAFE_ID.fullmatch(raw["source_id"]):
@@ -289,18 +297,21 @@ def build(entries: list[Entry], historic: tuple[OverlapIndex, set[str], set[str]
     index, old_titles, old_hashes = historic
     selected: dict[str, list[dict]] = {"D3": [], "V3": [], "F2": []}
     reasons: Counter[str] = Counter()
-    product_info: dict[str, tuple[str, str, str]] = {}
-    seen_prod: set[str] = set()
+    product_info: dict[str, tuple[str, str, str, tuple[str, str]]] = {}
+    url_to_key: dict[tuple[str, str], str] = {}
     for entry in entries:
         key = entry.canonical_key
-        product_info.setdefault(key, (norm(entry.listing_title), entry.category, entry.group))
-        if product_info[key] != (norm(entry.listing_title), entry.category, entry.group):
-            raise IntakeError("conflicting product title/category for a canonical listing ID")
-        # Re-running against an unsorted input must yield the same result.
+        parsed = urlsplit(entry.listing_url)
+        canonical_url = (parsed.hostname.casefold(), parsed.path.rstrip("/").casefold())
+        observed = (norm(entry.listing_title), entry.category, entry.group, canonical_url)
+        product_info.setdefault(key, observed)
+        if product_info[key] != observed:
+            raise IntakeError("conflicting title/category/URL for a canonical listing ID")
+        if canonical_url in url_to_key and url_to_key[canonical_url] != key:
+            raise IntakeError("one canonical URL was assigned multiple listing identifiers")
+        url_to_key[canonical_url] = key
+    # Re-running against an unsorted input must yield the same result.
     for entry in sorted(entries, key=lambda x: (x.hashed_product, sha(norm(x.review_text)))):
-        key = entry.canonical_key
-        if key not in seen_prod:
-            seen_prod.add(key)
         if historic_link_hash(entry.listing_url) in old_hashes or title_overlaps(entry.listing_title, old_titles):
             reasons["historical_product_overlap"] += 1
             continue
