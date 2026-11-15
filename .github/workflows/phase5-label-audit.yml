@@ -1,0 +1,27 @@
+name: Phase 5 source-only label integrity
+on:
+  push:
+    branches:
+      - research/phase5-label-quality-audit
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Phase 5 unit tests
+        run: python -m unittest discover -s tests -p 'test_phase5_label_quality.py' -v
+      - name: Full text integrity and distribution audit
+        run: python research/xlmr_optimization/phase5/label_quality_audit.py --out-dir /tmp/phase5-audit
+      - name: Upload non-adjudicated review queue and aggregate counts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-label-audit
+          path: /tmp/phase5-audit/
+          if-no-files-found: error
