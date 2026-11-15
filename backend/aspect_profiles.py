@@ -27,7 +27,7 @@ import re
 from dataclasses import dataclass, field, replace
 from typing import Iterable
 
-ASPECT_RULES_VERSION = "asp2"  # bump when a table or the reading rules change; cached results are keyed on it
+ASPECT_RULES_VERSION = "asp3"  # bump when a table or the reading rules change; cached results are keyed on it
 
 # ---------------------------------------------------------------------------------------------------------------
 # How much evidence a sentence needs. These are policy, not statistics: no outcome of shoppers was used to set
@@ -1239,7 +1239,41 @@ APPLIANCE = _patch(
 # wash with. These profiles say "overall quality" and do not read durability at all ("long-lasting fragrance" is not durability).
 _OVERALL_QUALITY = replace(BUILD, label="overall quality")
 HAIR, SKIN, FOOD = HAIR + (_OVERALL_QUALITY,), SKIN + (_OVERALL_QUALITY,), FOOD + (_OVERALL_QUALITY,)
-EXCLUDE_GENERAL: dict[str, frozenset[str]] = {"hair": frozenset({"durability"}), "skin": frozenset({"durability"}), "food": frozenset({"durability"})}
+EXCLUDE_GENERAL: dict[str, frozenset[str]] = {"hair": frozenset({"durability"}), "skin": frozenset({"durability"}), "food": frozenset({"durability"}), "supplements": frozenset({"durability"})}
+
+
+# Narrow, experimental profiles: avoid applying apparel, snack and device
+# cues to unrelated categories. Test on fresh real reviews before deployment.
+BAGS = (
+    Aspect(
+        "storage",
+        "storage capacity",
+        pos=_re([
+            r"\b(?:spacious|roomy|maluwag\s+(?:ang|yung)\s+(?:bag|loob)|maraming\s+(?:bulsa|pockets?|compartments?))\b",
+        ]),
+        neg=_re([
+            r"\b(?:kulang\s+(?:ang|sa)\s+(?:space|storage|compartments?)|maliit\s+(?:ang\s+)?(?:bag|loob|capacity)|too\s+(?:small|little)\s+(?:for\s+)?(?:my\s+)?(?:things|stuff|items))\b",
+        ]),
+    ),
+    Aspect(
+        "zipper",
+        "zipper and closures",
+        pos=_re([
+            r"\b(?:smooth|good|great|matibay|maayos|maganda)\s+(?:ang\s+|na\s+)?(?:zipper|zip|zippers)\b",
+        ]),
+        neg=_re([
+            r"\b(?:broken|stuck|jammed|sira|nasira|sirang|natanggal)\s+(?:ang\s+|na\s+)?(?:zipper|zip|zippers)\b",
+            r"\b(?:zipper|zip)\s+(?:is\s+|was\s+)?(?:broken|stuck|jammed|sira)\b",
+        ]),
+    ),
+)
+# A bedsheet has fabric characteristics, not clothing fit-and-sizing.
+HOME_TEXTILE = (APPAREL[0],)
+# Supplements are not snacks: expiry and taste are relevant; food spoilage
+# terms and build durability should not be imported.
+SUPPLEMENTS = tuple(aspect for aspect in FOOD if aspect.id in {"taste", "expiry"}) + (
+    replace(BUILD, label="overall quality"),
+)
 
 # Which profile reads which product category (product_category.py names). Anything not listed uses its group's
 # profile when there is one, otherwise only the GENERAL aspects.
@@ -1250,6 +1284,9 @@ PROFILES: dict[str, tuple[Aspect, ...]] = {
     "earbuds": EARBUDS,
     "powerbank": POWERBANK,
     "apparel": APPAREL,
+    "bags": BAGS,
+    "home_textile": HOME_TEXTILE,
+    "supplements": SUPPLEMENTS,
     "footwear": FOOTWEAR,
     "food": FOOD,
     "appliance": APPLIANCE,
@@ -1265,21 +1302,21 @@ CATEGORY_PROFILE = {
     "tablet": "phone",
     "audio": "earbuds",
     "powerbank": "powerbank",
-    "charger_cable": "powerbank",
-    "battery_solar": "powerbank",
+    "charger_cable": "general",
+    "battery_solar": "general",
     "apparel": "apparel",
-    "bags": "apparel",
-    "eyewear": "apparel",
-    "home_textile": "apparel",
+    "bags": "bags",
+    "eyewear": "general",
+    "home_textile": "home_textile",
     "footwear": "footwear",
     "food_beverage": "food",
-    "health_supplements": "food",
+    "health_supplements": "supplements",
     "small_appliance": "appliance",
-    "kitchen_dining": "appliance",
-    "tv_display": "appliance",
+    "kitchen_dining": "general",
+    "tv_display": "general",
     "household_cleaning": "general",
     "motorcycle": "motorcycle",
-    "automotive": "motorcycle",
+    "automotive": "general",
 }
 # What to call the product in a sentence. A category name never tells us the exact product ("haircare" is a
 # shampoo, a conditioner or a mask), so the noun is deliberately the category's plain word, and plural where English is.
@@ -1290,6 +1327,9 @@ NOUNS: dict[str, tuple[str, bool]] = {
     "earbuds": ("audio product", False),
     "powerbank": ("power product", False),
     "apparel": ("item", False),
+    "bags": ("bag", False),
+    "home_textile": ("home textile", False),
+    "supplements": ("supplement", False),
     "footwear": ("pair of shoes", False),
     "food": ("food product", False),
     "appliance": ("appliance", False),
@@ -1306,6 +1346,9 @@ CATEGORY_NOUN = {
     "powerbank": ("power bank", False),
     "charger_cable": ("charger or cable", False),
     "apparel": ("clothing item", False),
+    "bags": ("bag", False),
+    "home_textile": ("home textile", False),
+    "health_supplements": ("supplement", False),
     "footwear": ("pair of shoes", False),
     "food_beverage": ("food product", False),
     "small_appliance": ("appliance", False),
@@ -1316,9 +1359,7 @@ CATEGORY_NOUN = {
 }
 
 GROUP_PROFILE = {
-    "automotive_tools": "motorcycle",
     "food_grocery": "food",
-    "fashion": "apparel",
 }
 
 

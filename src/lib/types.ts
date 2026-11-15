@@ -175,6 +175,9 @@ export interface Product {
 	price?: string;
 	rating?: number;
 	category?: string;
+	/** Rule-derived from the listing title; `other` means no recognized category. */
+	product_category?: string;
+	product_group?: string;
 	platform?: string;
 	img?: string;
 	image?: string;
