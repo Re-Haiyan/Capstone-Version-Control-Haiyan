@@ -103,7 +103,8 @@ class PackSourceAuditTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             dest = Path(folder) / "report.csv"
             audit.write_csv(self.report, dest)
-            rows = list(csv.DictReader(dest.open(encoding="utf-8", newline="")))
+            with dest.open(encoding="utf-8", newline="") as handle:
+                rows = list(csv.DictReader(handle))
             self.assertEqual(len(rows), 35)
             self.assertTrue(all("review_text" not in row for row in rows))
             for row in rows:
