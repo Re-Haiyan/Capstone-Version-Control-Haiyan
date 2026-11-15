@@ -1,0 +1,130 @@
+{
+ "tag": "local",
+ "date": "2026-11-15T04:09:01+00:00",
+ "machine": "Windows 10, Python 3.11.9, AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD, 12 logical CPUs",
+ "emulated_cpus": null,
+ "note": "Not emulated: this machine's own CPUs.",
+ "cold_start": {
+  "runs": 5,
+  "import_ms_median": 339,
+  "first_read_150_reviews_ms_median": 13,
+  "heavy_modules_loaded": []
+ },
+ "saved_electronics_182": {
+  "products": 182,
+  "reviews": 21878,
+  "plain_verdict_as_before": {
+   "n": 182,
+   "median_ms": 0.34,
+   "p95_ms": 1.55,
+   "max_ms": 3.72
+  },
+  "with_reasons_first_read": {
+   "n": 182,
+   "median_ms": 72.02,
+   "p95_ms": 255.76,
+   "max_ms": 430.67
+  },
+  "with_reasons_cached": {
+   "n": 182,
+   "median_ms": 1.12,
+   "p95_ms": 2.81,
+   "max_ms": 4.31
+  },
+  "cpu_seconds_over_wall_seconds_for_all_first_reads": 0.97
+ },
+ "real_non_electronics": {
+  "products": 21,
+  "reviews_per_product_median": 224,
+  "first_read_by_profile": {
+   "apparel": {
+    "n": 4,
+    "median_ms": 122.47,
+    "p95_ms": 136.05,
+    "max_ms": 136.05
+   },
+   "appliance": {
+    "n": 5,
+    "median_ms": 123.27,
+    "p95_ms": 133.74,
+    "max_ms": 133.74
+   },
+   "food": {
+    "n": 5,
+    "median_ms": 116.6,
+    "p95_ms": 138.15,
+    "max_ms": 138.15
+   },
+   "hair": {
+    "n": 1,
+    "median_ms": 146.02,
+    "p95_ms": 146.02,
+    "max_ms": 146.02
+   },
+   "skin": {
+    "n": 6,
+    "median_ms": 119.14,
+    "p95_ms": 198.88,
+    "max_ms": 198.88
+   }
+  }
+ },
+ "review_set_size": {
+  "100": {
+   "seconds_median": 0.067,
+   "peak_extra_memory_kib": 87
+  },
+  "300": {
+   "seconds_median": 0.218,
+   "peak_extra_memory_kib": 151
+  },
+  "1000": {
+   "seconds_median": 0.687,
+   "peak_extra_memory_kib": 280
+  },
+  "3000": {
+   "seconds_median": 1.817,
+   "peak_extra_memory_kib": 656
+  }
+ },
+ "simultaneous_first_reads_threads": {
+  "note": "One Python process, threads: the GIL means no speed-up is expected; the figures show queueing, not parallel work.",
+  "1": {
+   "requests": 80,
+   "throughput_per_second": 9.0,
+   "n": 80,
+   "median_ms": 82.63,
+   "p95_ms": 257.74,
+   "max_ms": 365.03
+  },
+  "2": {
+   "requests": 80,
+   "throughput_per_second": 9.8,
+   "n": 80,
+   "median_ms": 155.25,
+   "p95_ms": 481.31,
+   "max_ms": 650.3
+  },
+  "4": {
+   "requests": 80,
+   "throughput_per_second": 8.9,
+   "n": 80,
+   "median_ms": 337.23,
+   "p95_ms": 1079.21,
+   "max_ms": 1337.64
+  },
+  "8": {
+   "requests": 80,
+   "throughput_per_second": 9.2,
+   "n": 80,
+   "median_ms": 641.96,
+   "p95_ms": 2244.2,
+   "max_ms": 2903.25
+  }
+ },
+ "existing_pipeline": {
+  "files_changed_in_analysis_models_or_data_store_vs_deployment": "none",
+  "plain_verdict_per_product_median_ms": 0.34
+ },
+ "peak_memory_mib_of_this_process": 447.2
+}

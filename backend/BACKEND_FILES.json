@@ -1,5 +1,5 @@
 {
- "what": "Files copied byte for byte from the original app by scripts/sync_backend.py. Do not edit them here.",
+ "what": "Files copied from the original app by scripts/sync_backend.py. A file edited here since is never overwritten (see the script). 'local_modules' exist only here.",
  "original": {
   "commit": "09daafe30083c08eee23bd73d74f181fdbc17424",
   "branch": "html-css-migration"
@@ -99,5 +99,12 @@
   "lazada-scraper/src/__init__.py": "77852dbd967ba8537c871292f37279e4a1886b9e9558c65bc505acfee0269abf",
   "lazada-scraper/src/lazada_scraper.py": "e37bf5f0210e4485ad3f58123b166d55ee3786410a1aa80b420e455f56c1c9aa",
   "lazada-scraper/LICENSE": "5ec60552231eafe70e370ed50be40cf247d3ef7d7e67c8fd86445fdd4903313b"
+ },
+ "local_modules": {
+  "category_copy.py": "7ccc8bab59608ab7e8185334cef7426792b544ab6ceb3cd4cedca8806ec677e3",
+  "aspect_profiles.py": "c439916b081d6dff7d077b85d97d1fb6ab74dbc0b5db1055e6e2d62e202471cc",
+  "aspects.py": "5d37196fca6277c3affce9537093995a437148c3157c54b7f16213b470bebda6",
+  "recommendation_policy.py": "969cf12d3286a04e3875339b6f26c40a3c4ef95b6a1238d4392217b5e5b900b6",
+  "conclusion_text.py": "c5f160e75daf60fc40a96934e8baa6bfeda702c57dcefae457bd6536b59462e9"
  }
 }

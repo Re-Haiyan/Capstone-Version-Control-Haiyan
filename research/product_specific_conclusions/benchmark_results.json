@@ -1,0 +1,30 @@
+{
+ "machine": "Windows 10, Python 3.11.9, AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+ "products": 182,
+ "reviews_in_total": 21878,
+ "reviews_per_product_median": 89.0,
+ "import_and_compile_rules_ms": 264,
+ "plain_verdict_per_product": {
+  "median_ms": 0.38,
+  "p95_ms": 1.42,
+  "max_ms": 4.99
+ },
+ "with_aspects_cold_per_product": {
+  "median_ms": 58.46,
+  "p95_ms": 201.45,
+  "max_ms": 386.51
+ },
+ "with_aspects_cached_per_product": {
+  "median_ms": 0.96,
+  "p95_ms": 2.52,
+  "max_ms": 12.23
+ },
+ "extra_cost_cold_median_ms": 58.09,
+ "peak_extra_memory_to_read_one_product_kib_median": 131,
+ "peak_extra_memory_to_read_one_product_kib_max": 162,
+ "memory_the_cache_keeps_for_all_products_kib": 3922,
+ "cache_entries_limit": 256,
+ "conclusion_json_bytes_plain_median": 944,
+ "conclusion_json_bytes_with_evidence_median": 7523,
+ "conclusion_json_bytes_with_evidence_max": 16738
+}

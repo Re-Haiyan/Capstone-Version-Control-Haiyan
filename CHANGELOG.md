@@ -9,6 +9,12 @@
   (by adding an account as an admin); *Make admin* / *Remove admin* and `scripts/admin_accounts.py` are gone.
 
 ### Added
+- Reasons behind the conclusion (not yet deployed). The card now says what reviewers praised and criticised about the
+  product itself (softness, battery life, fit, freshness ...), counted from distinct reviews, with "Why this conclusion?"
+  showing every count and the reviewers' own words. Delivery and packaging never make a product "well reviewed";
+  safety and authenticity still come from the hazard checker and are worded as reports. The decision, the verdict and
+  all thresholds are unchanged (checked on all 182 saved products). Fixed: the paragraph called a product "mostly
+  negative" from its positive share alone (25% positive, 65% neutral). See `research/product_specific_conclusions/`.
 - A conclusion on every report, as the review panel asked: "Based on the reviews of this product, it looks okay to
   buy / opinions are mixed / think twice / we advise against buying it", with the reviewers' positive and negative
   share. It follows the verdict (a safety warning is never "okay to buy", however happy the reviews) and says it is a

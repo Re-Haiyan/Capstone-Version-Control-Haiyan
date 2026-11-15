@@ -88,12 +88,12 @@ class ConclusionTests(unittest.TestCase):
         ]
         result = decide("possible_safety_issue", summary(476, 10, 26, 0.9), found, usable=512)
         self.assertEqual(result["assessment"], "Some concerns")
-        self.assertIn("According to the 512 customer reviews analyzed", result["summary"])
-        for phrase in ("(93%)", "product defects (82 reviews)", "weak or poor build quality (46 reviews)",
+        self.assertIn("About 93% of the 512 reviews were positive, 2% neutral or unclear and 5% negative", result["summary"])
+        for phrase in ("product defects (82 reviews)", "weak or poor build quality (46 reviews)",
                        "differences from the product description (8 reviews)", "possible authenticity concerns (3 reviews)",
                        "one review mentioning a potential safety concern"):
             self.assertIn(phrase, result["summary"])
-        self.assertEqual(result["lead"], "According to the reviews, this product is generally well-received, but some concerns were reported.")
+        self.assertEqual(result["lead"], "Reviews are generally favorable, but some concerns were reported.")
 
     def test_a_product_with_no_concerns_names_none_and_never_says_it_is_safe(self) -> None:
         result = decide("no_warning_signs", summary(85, 5, 10, 0.78), badges())

@@ -1,0 +1,840 @@
+{
+ "split_rule": "sha1(link) even = development half (read to write the real-review additions); odd = held-out half (not read first)",
+ "apparel": {
+  "dev": {
+   "products": 2,
+   "real_reviews_with_text_after_dedupe": 208,
+   "reviews_with_a_product_aspect_claim": 52,
+   "share_with_a_claim": 0.25,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "comfort": [
+     15,
+     0
+    ],
+    "size": [
+     8,
+     4
+    ],
+    "fabric": [
+     8,
+     3
+    ],
+    "matches_listing": [
+     0,
+     8
+    ],
+    "appearance": [
+     7,
+     0
+    ],
+    "build": [
+     5,
+     0
+    ],
+    "value": [
+     4,
+     0
+    ],
+    "stitching": [
+     0,
+     1
+    ],
+    "durability": [
+     1,
+     0
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 0,
+    "duplicate": 0,
+    "duplicate_text": 35,
+    "empty": 0,
+    "hypothetical": 16,
+    "comparison": 3,
+    "sarcasm_or_emoji": 0,
+    "conflict": 0,
+    "menu_tag": 52
+   }
+  },
+  "test": {
+   "products": 6,
+   "real_reviews_with_text_after_dedupe": 1377,
+   "reviews_with_a_product_aspect_claim": 322,
+   "share_with_a_claim": 0.234,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "fabric": [
+     95,
+     25
+    ],
+    "size": [
+     46,
+     24
+    ],
+    "comfort": [
+     54,
+     3
+    ],
+    "matches_listing": [
+     1,
+     55
+    ],
+    "build": [
+     38,
+     4
+    ],
+    "value": [
+     34,
+     4
+    ],
+    "appearance": [
+     15,
+     3
+    ],
+    "stitching": [
+     3,
+     6
+    ],
+    "durability": [
+     1,
+     0
+    ],
+    "functionality": [
+     0,
+     1
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 1,
+    "duplicate": 0,
+    "duplicate_text": 64,
+    "empty": 0,
+    "hypothetical": 107,
+    "comparison": 10,
+    "sarcasm_or_emoji": 8,
+    "conflict": 3,
+    "menu_tag": 540
+   }
+  }
+ },
+ "appliance": {
+  "dev": {
+   "products": 9,
+   "real_reviews_with_text_after_dedupe": 2065,
+   "reviews_with_a_product_aspect_claim": 484,
+   "share_with_a_claim": 0.234,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "functionality": [
+     59,
+     93
+    ],
+    "value": [
+     103,
+     22
+    ],
+    "build": [
+     82,
+     25
+    ],
+    "ease": [
+     76,
+     6
+    ],
+    "size": [
+     3,
+     44
+    ],
+    "durability": [
+     28,
+     13
+    ],
+    "appearance": [
+     29,
+     1
+    ],
+    "performance": [
+     19,
+     4
+    ],
+    "matches_listing": [
+     3,
+     15
+    ],
+    "noise": [
+     2,
+     1
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 27,
+    "duplicate": 0,
+    "duplicate_text": 82,
+    "empty": 0,
+    "hypothetical": 378,
+    "comparison": 41,
+    "sarcasm_or_emoji": 1,
+    "conflict": 4,
+    "menu_tag": 488
+   }
+  },
+  "test": {
+   "products": 10,
+   "real_reviews_with_text_after_dedupe": 2162,
+   "reviews_with_a_product_aspect_claim": 470,
+   "share_with_a_claim": 0.217,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "functionality": [
+     65,
+     88
+    ],
+    "value": [
+     72,
+     30
+    ],
+    "build": [
+     58,
+     34
+    ],
+    "ease": [
+     65,
+     7
+    ],
+    "size": [
+     2,
+     47
+    ],
+    "matches_listing": [
+     7,
+     22
+    ],
+    "appearance": [
+     25,
+     0
+    ],
+    "durability": [
+     8,
+     16
+    ],
+    "performance": [
+     16,
+     1
+    ],
+    "noise": [
+     2,
+     1
+    ],
+    "power_use": [
+     1,
+     0
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 22,
+    "duplicate": 0,
+    "duplicate_text": 84,
+    "empty": 0,
+    "hypothetical": 326,
+    "comparison": 31,
+    "sarcasm_or_emoji": 3,
+    "conflict": 2,
+    "menu_tag": 608
+   }
+  }
+ },
+ "food": {
+  "dev": {
+   "products": 12,
+   "real_reviews_with_text_after_dedupe": 2968,
+   "reviews_with_a_product_aspect_claim": 430,
+   "share_with_a_claim": 0.145,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "value": [
+     144,
+     7
+    ],
+    "taste": [
+     108,
+     7
+    ],
+    "functionality": [
+     65,
+     23
+    ],
+    "build": [
+     54,
+     3
+    ],
+    "texture": [
+     26,
+     1
+    ],
+    "matches_listing": [
+     6,
+     17
+    ],
+    "freshness": [
+     16,
+     1
+    ],
+    "expiry": [
+     7,
+     9
+    ],
+    "mixability": [
+     7,
+     3
+    ],
+    "appearance": [
+     6,
+     4
+    ],
+    "ease": [
+     5,
+     0
+    ],
+    "quantity": [
+     0,
+     3
+    ],
+    "size": [
+     0,
+     2
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 1,
+    "habit": 28,
+    "duplicate": 0,
+    "duplicate_text": 28,
+    "empty": 0,
+    "hypothetical": 322,
+    "comparison": 59,
+    "sarcasm_or_emoji": 0,
+    "conflict": 6,
+    "menu_tag": 1515
+   }
+  },
+  "test": {
+   "products": 7,
+   "real_reviews_with_text_after_dedupe": 1700,
+   "reviews_with_a_product_aspect_claim": 211,
+   "share_with_a_claim": 0.124,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "taste": [
+     68,
+     7
+    ],
+    "functionality": [
+     50,
+     5
+    ],
+    "value": [
+     42,
+     8
+    ],
+    "build": [
+     16,
+     2
+    ],
+    "quantity": [
+     1,
+     13
+    ],
+    "texture": [
+     10,
+     1
+    ],
+    "size": [
+     0,
+     7
+    ],
+    "matches_listing": [
+     3,
+     3
+    ],
+    "freshness": [
+     4,
+     1
+    ],
+    "mixability": [
+     4,
+     0
+    ],
+    "expiry": [
+     0,
+     4
+    ],
+    "ease": [
+     1,
+     0
+    ],
+    "appearance": [
+     1,
+     0
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 5,
+    "duplicate": 0,
+    "duplicate_text": 26,
+    "empty": 0,
+    "hypothetical": 213,
+    "comparison": 40,
+    "sarcasm_or_emoji": 0,
+    "conflict": 1,
+    "menu_tag": 935
+   }
+  }
+ },
+ "footwear": {
+  "dev": {
+   "products": 0,
+   "real_reviews": 0
+  },
+  "test": {
+   "products": 0,
+   "real_reviews": 0
+  },
+  "note": "no real reviews of this product type in the project's scans"
+ },
+ "hair": {
+  "dev": {
+   "products": 3,
+   "real_reviews_with_text_after_dedupe": 680,
+   "reviews_with_a_product_aspect_claim": 124,
+   "share_with_a_claim": 0.182,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "fragrance": [
+     65,
+     3
+    ],
+    "value": [
+     39,
+     1
+    ],
+    "softness": [
+     36,
+     3
+    ],
+    "functionality": [
+     20,
+     10
+    ],
+    "manageability": [
+     3,
+     2
+    ],
+    "dryness": [
+     0,
+     3
+    ],
+    "build": [
+     3,
+     0
+    ],
+    "hair_fall": [
+     0,
+     2
+    ],
+    "scalp_irritation": [
+     0,
+     2
+    ],
+    "appearance": [
+     1,
+     0
+    ],
+    "ease": [
+     1,
+     0
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 3,
+    "duplicate": 0,
+    "duplicate_text": 19,
+    "empty": 1,
+    "hypothetical": 46,
+    "comparison": 6,
+    "sarcasm_or_emoji": 2,
+    "conflict": 3,
+    "menu_tag": 385
+   }
+  },
+  "test": {
+   "products": 6,
+   "real_reviews_with_text_after_dedupe": 2127,
+   "reviews_with_a_product_aspect_claim": 333,
+   "share_with_a_claim": 0.157,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "fragrance": [
+     140,
+     6
+    ],
+    "softness": [
+     104,
+     3
+    ],
+    "functionality": [
+     58,
+     43
+    ],
+    "value": [
+     59,
+     11
+    ],
+    "manageability": [
+     13,
+     4
+    ],
+    "matches_listing": [
+     2,
+     14
+    ],
+    "build": [
+     15,
+     0
+    ],
+    "size": [
+     3,
+     9
+    ],
+    "hair_fall": [
+     0,
+     9
+    ],
+    "ease": [
+     3,
+     1
+    ],
+    "scalp_irritation": [
+     0,
+     3
+    ],
+    "appearance": [
+     2,
+     0
+    ],
+    "dryness": [
+     0,
+     2
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 11,
+    "duplicate": 0,
+    "duplicate_text": 24,
+    "empty": 0,
+    "hypothetical": 227,
+    "comparison": 27,
+    "sarcasm_or_emoji": 1,
+    "conflict": 2,
+    "menu_tag": 1131
+   }
+  }
+ },
+ "motorcycle": {
+  "dev": {
+   "products": 0,
+   "real_reviews": 0
+  },
+  "test": {
+   "products": 0,
+   "real_reviews": 0
+  },
+  "note": "no real reviews of this product type in the project's scans"
+ },
+ "skin": {
+  "dev": {
+   "products": 14,
+   "real_reviews_with_text_after_dedupe": 3108,
+   "reviews_with_a_product_aspect_claim": 463,
+   "share_with_a_claim": 0.149,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "functionality": [
+     172,
+     12
+    ],
+    "value": [
+     70,
+     22
+    ],
+    "fragrance": [
+     46,
+     29
+    ],
+    "texture": [
+     46,
+     17
+    ],
+    "gentleness": [
+     59,
+     1
+    ],
+    "build": [
+     27,
+     3
+    ],
+    "oiliness": [
+     0,
+     27
+    ],
+    "skin_irritation": [
+     0,
+     20
+    ],
+    "absorption": [
+     12,
+     2
+    ],
+    "matches_listing": [
+     1,
+     11
+    ],
+    "appearance": [
+     8,
+     4
+    ],
+    "ease": [
+     9,
+     1
+    ],
+    "size": [
+     1,
+     3
+    ],
+    "dryness": [
+     0,
+     2
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 44,
+    "duplicate": 0,
+    "duplicate_text": 85,
+    "empty": 0,
+    "hypothetical": 345,
+    "comparison": 56,
+    "sarcasm_or_emoji": 0,
+    "conflict": 26,
+    "menu_tag": 1423
+   }
+  },
+  "test": {
+   "products": 11,
+   "real_reviews_with_text_after_dedupe": 2077,
+   "reviews_with_a_product_aspect_claim": 368,
+   "share_with_a_claim": 0.177,
+   "products_with_limited_product_evidence": 0,
+   "aspects_positive_negative_reviews": {
+    "functionality": [
+     177,
+     16
+    ],
+    "value": [
+     76,
+     6
+    ],
+    "gentleness": [
+     52,
+     0
+    ],
+    "texture": [
+     20,
+     27
+    ],
+    "fragrance": [
+     19,
+     8
+    ],
+    "build": [
+     17,
+     1
+    ],
+    "ease": [
+     16,
+     0
+    ],
+    "appearance": [
+     10,
+     6
+    ],
+    "absorption": [
+     13,
+     0
+    ],
+    "skin_irritation": [
+     0,
+     12
+    ],
+    "matches_listing": [
+     1,
+     3
+    ],
+    "dryness": [
+     0,
+     3
+    ],
+    "size": [
+     0,
+     1
+    ]
+   },
+   "skipped_clauses": {
+    "truncated_reviews": 0,
+    "promotional": 0,
+    "habit": 31,
+    "duplicate": 0,
+    "duplicate_text": 103,
+    "empty": 0,
+    "hypothetical": 306,
+    "comparison": 30,
+    "sarcasm_or_emoji": 1,
+    "conflict": 4,
+    "menu_tag": 865
+   }
+  }
+ },
+ "classifier_disagreements": {
+  "hair_shampoo": [
+   {
+    "product": "Ginger Shampoo Strengthen Hair Root Promotes New Hair Deep Nourish Rep",
+    "classified_as": "household_cleaning",
+    "profile_read": "general",
+    "intended_profile": "hair",
+    "reviews": 31
+   },
+   {
+    "product": "( BUY 1 TAKE 1 ) NEW Cetaphil Baby Gentle Wash & Shampoo 400ml",
+    "classified_as": "baby",
+    "profile_read": "general",
+    "intended_profile": "hair",
+    "reviews": 249
+   }
+  ],
+  "lipstick": [
+   {
+    "product": "【BUY 2 GIFT 1】O.TWO.O Matte Lipstick Lip Tink Non-stick Cup Soft Matte",
+    "classified_as": "kitchen_dining",
+    "profile_read": "appliance",
+    "intended_profile": "skin",
+    "reviews": 677
+   },
+   {
+    "product": "Herorange Matte Lipstick Waterproof Moisturizing Smooth Liptint Makeup",
+    "classified_as": "kitchen_dining",
+    "profile_read": "appliance",
+    "intended_profile": "skin",
+    "reviews": 290
+   },
+   {
+    "product": "Magic Lipstick Waterproof Matte Moisturizing Non-drying High Pigment S",
+    "classified_as": "kitchen_dining",
+    "profile_read": "appliance",
+    "intended_profile": "skin",
+    "reviews": 242
+   },
+   {
+    "product": "5pcs/set lipstick matte waterproof lip gloss set lip clay lipstick lip",
+    "classified_as": "kitchen_dining",
+    "profile_read": "appliance",
+    "intended_profile": "skin",
+    "reviews": 269
+   }
+  ],
+  "protein_powder": [
+   {
+    "product": "Optimum Nutrition Gold Standard 100% Whey Protein 2 lbs",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 451
+   },
+   {
+    "product": "Wheyl JUST Whey Protein 454g",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 60
+   },
+   {
+    "product": "Optimum Nutrition Gold Standard 100% Whey Protein 5 lbs [FREE Shaker N",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 422
+   },
+   {
+    "product": "Optimum Nutrition Gold Standard 100% Whey Protein 10 lbs",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 244
+   },
+   {
+    "product": "Optimum Nutrition Gold Standard 100% Isolate Protein 5 lbs",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 231
+   }
+  ],
+  "vitamins_supplement": [
+   {
+    "product": "Ceelin Gummies with Zinc 30s Bottle",
+    "classified_as": "kitchen_dining",
+    "profile_read": "appliance",
+    "intended_profile": "food",
+    "reviews": 208
+   },
+   {
+    "product": "[BUY 3, GET 1] Buy Centrum Silver Advance 30s x3, get FREE Centrum Sil",
+    "classified_as": "other",
+    "profile_read": "general",
+    "intended_profile": "food",
+    "reviews": 208
+   }
+  ],
+  "whitening_serum": [
+   {
+    "product": "Kiehl's Clearly Corrective Dark Spot Solution Dark Spot and Pimple Mar",
+    "classified_as": "health_supplements",
+    "profile_read": "food",
+    "intended_profile": "skin",
+    "reviews": 498
+   },
+   {
+    "product": "VIBRANT GLAMOUR FDA Natural Retinol Facial Serum Anti-aging Anti-wrink",
+    "classified_as": "health_supplements",
+    "profile_read": "food",
+    "intended_profile": "skin",
+    "reviews": 100
+   }
+  ]
+ }
+}

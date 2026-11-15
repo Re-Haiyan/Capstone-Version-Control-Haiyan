@@ -1,0 +1,36 @@
+﻿product_id,pool,decision,system_card,text_1,text_2,state,reviews,filipino_or_taglish_share,safety_reports,authenticity_reports,defect_reports,evidence_status
+F001,"real non-electronics, unread",recommended,Well reviewed,new,old,no_warning_signs,163,0.49,2,5,1,supported
+F002,"real non-electronics, unread",caution,Some concerns,new,old,possible_safety_issue,97,0.29,1,0,3,supported
+F003,"real non-electronics, unread",mixed,Mixed reviews,new,old,no_warning_signs,47,0.28,0,0,1,supported
+F004,"real non-electronics, unread",mixed,Mixed reviews,old,new,no_warning_signs,84,0.2,0,1,4,supported
+F005,"real non-electronics, unread",recommended,Well reviewed,new,old,no_warning_signs,306,0.35,1,1,47,supported
+F006,saved electronics,caution,Some concerns,old,new,possible_safety_issue,117,0.53,1,1,50,supported
+F007,saved electronics,mixed,Mixed reviews,new,old,no_warning_signs,133,0.5,0,0,23,supported
+F008,saved electronics,caution,Some concerns,new,old,possible_safety_issue,164,0.45,5,9,45,supported
+F009,saved electronics,not_enough,Too few reviews,old,new,insufficient_evidence,27,0.0,0,1,10,supported
+F010,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,281,0.44,0,0,3,supported
+F011,"real non-electronics, unread",not_recommended,Not recommended,old,new,safety_warning,315,0.25,7,1,8,supported
+F012,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,390,0.24,1,1,9,supported
+F013,saved electronics,caution,Some concerns,new,old,possible_safety_issue,111,0.52,1,1,29,supported
+F014,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,210,0.16,1,1,4,supported
+F015,saved electronics,mixed,Mixed reviews,old,new,no_warning_signs,51,0.25,0,0,1,supported
+F016,saved electronics,not_recommended,Not recommended,new,old,safety_warning,83,0.48,3,2,14,supported
+F017,"real non-electronics, unread",not_recommended,Not recommended,new,old,safety_warning,269,0.42,4,1,38,supported
+F018,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,295,0.37,1,2,6,supported
+F019,"real non-electronics, unread",caution,Some concerns,old,new,possible_counterfeit_or_defect,63,0.43,1,6,1,supported
+F020,saved electronics,not_enough,Too few reviews,old,new,insufficient_evidence,29,0.0,1,0,14,supported
+F021,saved electronics,not_enough,Too few reviews,old,new,insufficient_evidence,8,0.0,0,0,4,supported
+F022,saved electronics,caution,Some concerns,new,old,possible_safety_issue,277,0.57,2,6,81,supported
+F023,saved electronics,not_recommended,Not recommended,new,old,safety_warning,287,0.56,4,16,154,supported
+F024,saved electronics,not_recommended,Not recommended,new,old,safety_warning,152,0.5,9,9,56,supported
+F025,saved electronics,caution,Some concerns,new,old,possible_safety_issue,182,0.42,5,8,68,supported
+F026,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,318,0.43,0,0,7,supported
+F027,saved electronics,not_recommended,Not recommended,new,old,safety_warning,296,0.52,13,16,115,supported
+F028,saved electronics,mixed,Mixed reviews,old,new,no_warning_signs,105,0.3,0,0,5,supported
+F029,"real non-electronics, unread",recommended,Well reviewed,new,old,no_warning_signs,322,0.22,1,17,7,supported
+F030,saved electronics,not_enough,Too few reviews,old,new,insufficient_evidence,16,0.44,1,0,1,supported
+F031,saved electronics,mixed,Mixed reviews,old,new,no_warning_signs,86,0.5,0,0,18,supported
+F032,"real non-electronics, unread",caution,Some concerns,new,old,possible_safety_issue,305,0.26,6,3,38,supported
+F033,"real non-electronics, unread",recommended,Well reviewed,old,new,no_warning_signs,211,0.45,0,0,3,supported
+F034,saved electronics,not_recommended,Not recommended,old,new,safety_warning,52,0.31,2,1,12,supported
+F035,saved electronics,not_recommended,Not recommended,new,old,safety_warning,94,0.29,6,1,26,supported

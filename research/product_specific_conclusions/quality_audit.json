@@ -1,0 +1,53 @@
+[
+ {
+  "pool": "saved electronics",
+  "products": 182,
+  "conclusions": 182,
+  "issues": {
+   "contradiction": 0,
+   "majority": 0,
+   "neutral": 0,
+   "hazard": 0,
+   "benefit": 0,
+   "delivery": 0,
+   "authenticity": 0,
+   "evidence": 0
+  },
+  "words_max": 100,
+  "flagged": {}
+ },
+ {
+  "pool": "real non-electronics (read while tuning)",
+  "products": 21,
+  "conclusions": 21,
+  "issues": {
+   "contradiction": 0,
+   "majority": 0,
+   "neutral": 0,
+   "hazard": 0,
+   "benefit": 0,
+   "delivery": 0,
+   "authenticity": 0,
+   "evidence": 0
+  },
+  "words_max": 99,
+  "flagged": {}
+ },
+ {
+  "pool": "real non-electronics (unread)",
+  "products": 16,
+  "conclusions": 16,
+  "issues": {
+   "contradiction": 0,
+   "majority": 0,
+   "neutral": 0,
+   "hazard": 0,
+   "benefit": 0,
+   "delivery": 0,
+   "authenticity": 0,
+   "evidence": 0
+  },
+  "words_max": 99,
+  "flagged": {}
+ }
+]

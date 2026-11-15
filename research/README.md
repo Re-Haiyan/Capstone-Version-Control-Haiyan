@@ -21,6 +21,7 @@ The research round of the review-classification work. Start with `final_implemen
 | `clause_context.md` | Clause-level context: the mechanism, its switch and its measured cost |
 | `sentiment_calibration_review.md` | Calibrator audit, shortcut test, shadow-mode effect on 60 products |
 | `product_conclusion_evaluation_protocol.md` | How to judge product conclusions independently (sheets in `conclusion_eval/`) |
+| `product_specific_conclusions/README.md` | Product-specific conclusions: the reasons behind each conclusion, counted from distinct reviews with their quotations (architecture, evidence policy, benchmark, limitations; human rating sheets in the same folder) |
 | `fresh_eval/README.md` | The proposed fresh evaluation set, its roles and what more data is needed |
 | `final_implementation_summary.md` | What was implemented, run, demonstrated, left uncertain, blocked on annotation, ready to deploy |
 | `evaluation_report.md` | The numbers: rules with confidence intervals, per group, sentiment, conclusions, thresholds, what a valid final claim still needs |
