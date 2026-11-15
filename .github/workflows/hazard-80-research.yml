@@ -56,5 +56,29 @@ jobs:
           python-version: "3.12"
       - name: Compile and run pure-Python gate tests
         run: |
-          python -m py_compile research/hazard_80_gate.py research/hazard_predict.py tests/test_hazard_80_gate.py
+          python -m py_compile research/hazard_80_gate.py research/hazard_predict.py research/hazard_historical_diagnostic.py tests/test_hazard_80_gate.py
           python -m unittest discover -s tests -p "test_hazard_80_gate.py" -v
+
+  historical-read-only-diagnostic:
+    name: Historical-only metrics (NOT independent)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Read-only, known-inspected historical comparison
+        env:
+          DEFAKETIVE_MODEL_MODE: hazard_badges
+          DEFAKETIVE_HAZARD_MODEL: learned
+          DEFAKETIVE_SENTIMENT_MODEL: xlmr
+          PYTHONPATH: backend:backend/sentiment-analysis
+        run: python research/hazard_historical_diagnostic.py
