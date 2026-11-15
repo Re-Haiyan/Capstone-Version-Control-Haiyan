@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2101,positive,mixed,works fine,no orange RGB preset,low,mixed evaluation
+N2102,positive,,,,high,reviewed
+N2103,neutral,no-opinion,,,high,copied tag list without personal experience
+N2104,positive,,,,high,reviewed
+N2105,neutral,no-opinion,,,high,copied tag list without personal experience
+N2106,neutral,no-opinion,,,high,copied tag list without personal experience
+N2107,neutral,no-opinion,,,high,copied tag list without personal experience
+N2108,neutral,no-opinion,,,high,copied tag list without personal experience
+N2109,neutral,no-opinion,,,high,copied tag list without personal experience
+N2110,neutral,no-opinion,,,high,copied tag list without personal experience
+N2111,neutral,no-opinion,,,high,copied tag list without personal experience
+N2112,positive,,,,low,reviewed
+N2113,neutral,no-opinion,,,high,copied tag list without personal experience
+N2114,positive,,,,high,reviewed
+N2115,neutral,no-opinion,,,high,copied tag list without personal experience
+N2116,neutral,no-opinion,,,high,copied tag list without personal experience
+N2117,neutral,no-opinion,,,high,copied tag list without personal experience
+N2118,neutral,no-opinion,,,high,copied tag list without personal experience
+N2119,neutral,no-opinion,,,high,copied tag list without personal experience
+N2120,neutral,no-opinion,,,high,copied tag list without personal experience
+N2121,neutral,no-opinion,,,high,copied tag list without personal experience
+N2122,neutral,no-opinion,,,high,copied tag list without personal experience
+N2123,neutral,no-opinion,,,high,copied tag list without personal experience
+N2124,neutral,no-opinion,,,high,copied tag list without personal experience
+N2125,neutral,no-opinion,,,high,copied tag list without personal experience
+N2126,neutral,no-opinion,,,high,copied tag list without personal experience
+N2127,positive,,,,high,reviewed
+N2128,neutral,no-opinion,,,high,copied tag list without personal experience
+N2129,neutral,no-opinion,,,high,copied tag list without personal experience
+N2130,neutral,no-opinion,,,high,copied tag list without personal experience
+N2131,neutral,no-opinion,,,high,copied tag list without personal experience
+N2132,neutral,no-opinion,,,high,copied tag list without personal experience
+N2133,neutral,no-opinion,,,high,copied tag list without personal experience
+N2134,neutral,no-opinion,,,high,copied tag list without personal experience
+N2135,neutral,no-opinion,,,high,copied tag list without personal experience
+N2136,positive,,,,high,reviewed
+N2137,neutral,no-opinion,,,high,copied tag list without personal experience
+N2138,neutral,no-opinion,,,high,copied tag list without personal experience
+N2139,neutral,no-opinion,,,high,copied tag list without personal experience
+N2140,positive,,,,high,reviewed
+N2141,positive,,,,high,reviewed
+N2142,neutral,no-opinion,,,high,copied tag list without personal experience
+N2143,neutral,no-opinion,,,high,copied tag list without personal experience
+N2144,positive,,,,high,reviewed
+N2145,positive,delivery-only,,,high,reviewed
+N2146,positive,,,,high,reviewed
+N2147,positive,,,,high,reviewed
+N2148,neutral,no-opinion,,,high,copied tag list without personal experience
+N2149,positive,,,,high,reviewed
+N2150,positive,,,,low,reviewed

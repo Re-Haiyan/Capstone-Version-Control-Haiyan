@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2301,neutral,no-opinion,,,high,copied tag list without personal experience
+N2302,neutral,no-opinion,,,high,copied tag list without personal experience
+N2303,neutral,no-opinion,,,high,copied tag list without personal experience
+N2304,neutral,no-opinion,,,high,copied tag list without personal experience
+N2305,neutral,no-opinion,,,high,copied tag list without personal experience
+N2306,neutral,no-opinion,,,high,copied tag list without personal experience
+N2307,neutral,no-opinion,,,high,copied tag list without personal experience
+N2308,neutral,no-opinion,,,high,copied tag list without personal experience
+N2309,positive,delivery-only,,,high,reviewed
+N2310,positive,,,,low,reviewed
+N2311,positive,,,,high,reviewed
+N2312,neutral,no-opinion,,,high,copied tag list without personal experience
+N2313,neutral,no-opinion,,,high,copied tag list without personal experience
+N2314,positive,,,,low,reviewed
+N2315,neutral,no-opinion,,,high,copied tag list without personal experience
+N2316,neutral,no-opinion,,,high,copied tag list without personal experience
+N2317,neutral,no-opinion,,,high,copied tag list without personal experience
+N2318,neutral,no-opinion,,,high,copied tag list without personal experience
+N2319,neutral,no-opinion,,,high,copied tag list without personal experience
+N2320,neutral,no-opinion,,,high,copied tag list without personal experience
+N2321,neutral,no-opinion,,,high,copied tag list without personal experience
+N2322,neutral,no-opinion,,,high,copied tag list without personal experience
+N2323,neutral,no-opinion,,,high,copied tag list without personal experience
+N2324,neutral,no-opinion,,,high,copied tag list without personal experience
+N2325,neutral,no-opinion,,,high,copied tag list without personal experience
+N2326,neutral,no-opinion,,,high,copied tag list without personal experience
+N2327,neutral,no-opinion,,,high,copied tag list without personal experience
+N2328,neutral,no-opinion,,,high,copied tag list without personal experience
+N2329,neutral,no-opinion,,,high,copied tag list without personal experience
+N2330,negative,,,,high,reviewed
+N2331,neutral,no-opinion,,,high,copied tag list without personal experience
+N2332,neutral,no-opinion,,,high,copied tag list without personal experience
+N2333,neutral,no-opinion,,,high,copied tag list without personal experience
+N2334,neutral,no-opinion,,,high,copied tag list without personal experience
+N2335,positive,delivery-only,,,high,reviewed
+N2336,neutral,no-opinion,,,high,copied tag list without personal experience
+N2337,positive,,,,high,reviewed
+N2338,neutral,no-opinion,,,high,copied tag list without personal experience
+N2339,positive,,,,high,reviewed
+N2340,neutral,no-opinion,,,high,copied tag list without personal experience
+N2341,neutral,no-opinion,,,high,copied tag list without personal experience
+N2342,neutral,no-opinion,,,high,copied tag list without personal experience
+N2343,neutral,no-opinion,,,high,copied tag list without personal experience
+N2344,neutral,no-opinion,,,high,copied tag list without personal experience
+N2345,neutral,no-opinion,,,high,copied tag list without personal experience
+N2346,neutral,no-opinion,,,high,copied tag list without personal experience
+N2347,neutral,no-opinion,,,high,copied tag list without personal experience
+N2348,positive,,,,low,reviewed
+N2349,neutral,no-opinion,,,high,copied tag list without personal experience
+N2350,neutral,no-opinion,,,high,copied tag list without personal experience

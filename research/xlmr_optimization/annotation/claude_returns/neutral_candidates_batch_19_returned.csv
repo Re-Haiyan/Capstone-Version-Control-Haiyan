@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0901,neutral,no-opinion,,,high,copied tag list without personal experience
+N0902,neutral,no-opinion,,,high,copied tag list without personal experience
+N0903,neutral,no-opinion,,,high,copied tag list without personal experience
+N0904,neutral,no-opinion,,,high,copied tag list without personal experience
+N0905,neutral,no-opinion,,,high,copied tag list without personal experience
+N0906,neutral,no-opinion,,,high,copied tag list without personal experience
+N0907,neutral,no-opinion,,,high,copied tag list without personal experience
+N0908,neutral,no-opinion,,,high,copied tag list without personal experience
+N0909,neutral,no-opinion,,,high,copied tag list without personal experience
+N0910,neutral,no-opinion,,,high,copied tag list without personal experience
+N0911,positive,,,,low,reviewed
+N0912,neutral,no-opinion,,,high,copied tag list without personal experience
+N0913,neutral,no-opinion,,,high,copied tag list without personal experience
+N0914,negative,,,,high,reviewed
+N0915,neutral,no-opinion,,,high,copied tag list without personal experience
+N0916,positive,,,,high,reviewed
+N0917,neutral,no-opinion,,,high,copied tag list without personal experience
+N0918,neutral,no-opinion,,,high,copied tag list without personal experience
+N0919,neutral,no-opinion,,,high,copied tag list without personal experience
+N0920,neutral,no-opinion,,,high,copied tag list without personal experience
+N0921,positive,,,,low,reviewed
+N0922,neutral,no-opinion,,,high,copied tag list without personal experience
+N0923,neutral,no-opinion,,,high,copied tag list without personal experience
+N0924,neutral,no-opinion,,,high,copied tag list without personal experience
+N0925,neutral,no-opinion,,,high,copied tag list without personal experience
+N0926,neutral,no-opinion,,,high,copied tag list without personal experience
+N0927,neutral,no-opinion,,,high,copied tag list without personal experience
+N0928,neutral,no-opinion,,,high,copied tag list without personal experience
+N0929,neutral,no-opinion,,,high,copied tag list without personal experience
+N0930,neutral,no-opinion,,,high,copied tag list without personal experience
+N0931,neutral,no-opinion,,,high,copied tag list without personal experience
+N0932,negative,mixed,legit 20K mAh,bulky heavy not worth it for travel,low,mixed evaluation
+N0933,negative,,,,high,reviewed
+N0934,positive,,,,high,reviewed
+N0935,positive,delivery-only,,,high,reviewed
+N0936,negative,,,,high,reviewed
+N0937,neutral,no-opinion,,,high,copied tag list without personal experience
+N0938,negative,,,,high,reviewed
+N0939,positive,,,,high,reviewed
+N0940,neutral,,,,low,reviewed
+N0941,positive,delivery-only,,,high,reviewed
+N0942,negative,,,,high,reviewed
+N0943,unclear,,,,high,reviewed
+N0944,neutral,no-opinion,,,high,copied tag list without personal experience
+N0945,positive,,,,low,reviewed
+N0946,negative,,,,high,reviewed
+N0947,mixed,mixed,attached cable allows fast charging,charger itself not fast,low,mixed evaluation
+N0948,negative,,,,high,reviewed
+N0949,neutral,no-opinion,,,high,copied tag list without personal experience
+N0950,neutral,no-opinion,,,high,copied tag list without personal experience

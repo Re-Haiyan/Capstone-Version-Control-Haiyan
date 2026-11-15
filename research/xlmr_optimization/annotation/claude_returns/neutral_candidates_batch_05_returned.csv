@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0201,neutral,no-opinion,,,high,copied tag list without personal experience
+N0202,neutral,no-opinion,,,high,copied tag list without personal experience
+N0203,neutral,no-opinion,,,high,copied tag list without personal experience
+N0204,neutral,no-opinion,,,high,copied tag list without personal experience
+N0205,neutral,no-opinion,,,high,copied tag list without personal experience
+N0206,neutral,no-opinion,,,high,copied tag list without personal experience
+N0207,neutral,no-opinion,,,high,copied tag list without personal experience
+N0208,neutral,no-opinion,,,high,copied tag list without personal experience
+N0209,neutral,no-opinion,,,high,copied tag list without personal experience
+N0210,positive,,,,low,reviewed
+N0211,neutral,no-opinion,,,high,copied tag list without personal experience
+N0212,neutral,no-opinion,,,high,copied tag list without personal experience
+N0213,neutral,no-opinion,,,high,copied tag list without personal experience
+N0214,neutral,no-opinion,,,high,copied tag list without personal experience
+N0215,neutral,no-opinion,,,high,copied tag list without personal experience
+N0216,neutral,no-opinion,,,high,copied tag list without personal experience
+N0217,neutral,no-opinion,,,high,copied tag list without personal experience
+N0218,neutral,no-opinion,,,high,copied tag list without personal experience
+N0219,neutral,no-opinion,,,high,copied tag list without personal experience
+N0220,neutral,no-opinion,,,high,copied tag list without personal experience
+N0221,neutral,no-opinion,,,high,copied tag list without personal experience
+N0222,neutral,no-opinion,,,high,copied tag list without personal experience
+N0223,positive,delivery-only,,,high,reviewed
+N0224,neutral,no-opinion,,,high,copied tag list without personal experience
+N0225,neutral,no-opinion,,,high,copied tag list without personal experience
+N0226,neutral,no-opinion,,,high,copied tag list without personal experience
+N0227,neutral,no-opinion,,,high,copied tag list without personal experience
+N0228,neutral,no-opinion,,,high,copied tag list without personal experience
+N0229,positive,delivery-only,,,high,reviewed
+N0230,neutral,no-opinion,,,high,copied tag list without personal experience
+N0231,neutral,no-opinion,,,high,copied tag list without personal experience
+N0232,neutral,no-opinion,,,high,copied tag list without personal experience
+N0233,neutral,no-opinion,,,high,copied tag list without personal experience
+N0234,neutral,no-opinion,,,high,copied tag list without personal experience
+N0235,neutral,no-opinion,,,high,copied tag list without personal experience
+N0236,unclear,,,,high,reviewed
+N0237,neutral,no-opinion,,,high,copied tag list without personal experience
+N0238,negative,,,,high,reviewed
+N0239,positive,,,,high,reviewed
+N0240,negative,,,,high,reviewed
+N0241,negative,,,,high,reviewed
+N0242,negative,mixed,it works,rated capacity far below claim,low,mixed evaluation
+N0243,mixed,mixed,okay for everyday use,drains quickly,low,mixed evaluation
+N0244,neutral,no-opinion,,,high,copied tag list without personal experience
+N0245,neutral,no-opinion,,,high,copied tag list without personal experience
+N0246,positive,,,,high,reviewed
+N0247,neutral,no-opinion,,,high,copied tag list without personal experience
+N0248,neutral,no-opinion,,,high,copied tag list without personal experience
+N0249,positive,,,,high,reviewed
+N0250,neutral,no-opinion,,,high,copied tag list without personal experience

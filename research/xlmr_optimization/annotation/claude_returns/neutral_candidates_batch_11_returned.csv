@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0501,negative,,,,high,reviewed
+N0502,negative,,,,high,reviewed
+N0503,neutral,no-opinion,,,high,copied tag list without personal experience
+N0504,neutral,no-opinion,,,high,copied tag list without personal experience
+N0505,neutral,no-opinion,,,high,copied tag list without personal experience
+N0506,positive,,,,low,reviewed
+N0507,positive,,,,low,reviewed
+N0508,neutral,no-opinion,,,high,copied tag list without personal experience
+N0509,neutral,no-opinion,,,high,copied tag list without personal experience
+N0510,negative,,,,high,reviewed
+N0511,positive,,,,high,reviewed
+N0512,negative,,,,high,reviewed
+N0513,positive,,,,high,reviewed
+N0514,positive,,,,high,reviewed
+N0515,positive,,,,high,reviewed
+N0516,positive,,,,high,reviewed
+N0517,positive,,,,high,reviewed
+N0518,positive,,,,high,reviewed
+N0519,positive,mixed,fast arrival nice sound soft cushion,light material hope it lasts,low,mixed evaluation
+N0520,positive,mixed,fast arrival nice color ok for cheap,not very loud,low,mixed evaluation
+N0521,positive,delivery-only,,,high,reviewed
+N0522,positive,,,,high,reviewed
+N0523,positive,,,,high,reviewed
+N0524,negative,,,,high,reviewed
+N0525,negative,,,,high,reviewed
+N0526,negative,,,,high,reviewed
+N0527,negative,,,,high,reviewed
+N0528,negative,,,,high,reviewed
+N0529,positive,,,,high,reviewed
+N0530,positive,,,,high,reviewed
+N0531,positive,,,,high,reviewed
+N0532,positive,,,,low,reviewed
+N0533,positive,,,,high,reviewed
+N0534,positive,,,,high,reviewed
+N0535,positive,,,,high,reviewed
+N0536,positive,,,,high,reviewed
+N0537,negative,,,,high,reviewed
+N0538,negative,,,,high,reviewed
+N0539,negative,,,,high,reviewed
+N0540,positive,,,,high,reviewed
+N0541,positive,,,,high,reviewed
+N0542,positive,,,,high,reviewed
+N0543,positive,mixed,pocket 2 nice legit,free SD card missing,low,mixed evaluation
+N0544,positive,mixed,nice sound delivered in 48 hours,no bubble wrap,low,mixed evaluation
+N0545,positive,,,,high,reviewed
+N0546,positive,,,,high,reviewed
+N0547,positive,,,,high,reviewed
+N0548,positive,,,,high,reviewed
+N0549,positive,,,,high,reviewed
+N0550,positive,,,,high,reviewed

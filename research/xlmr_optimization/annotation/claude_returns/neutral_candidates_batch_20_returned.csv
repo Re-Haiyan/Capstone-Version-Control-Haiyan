@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0951,neutral,no-opinion,,,high,copied tag list without personal experience
+N0952,neutral,no-opinion,,,high,copied tag list without personal experience
+N0953,neutral,no-opinion,,,high,copied tag list without personal experience
+N0954,positive,,,,high,reviewed
+N0955,positive,,,,high,reviewed
+N0956,positive,,,,high,reviewed
+N0957,positive,,,,high,reviewed
+N0958,positive,,,,high,reviewed
+N0959,positive,,,,high,reviewed
+N0960,positive,,,,low,reviewed
+N0961,positive,,,,high,reviewed
+N0962,positive,,,,low,reviewed
+N0963,mixed,mixed,sturdy durable product okay,medyo mabagal charging and heavy,low,mixed evaluation
+N0964,positive,,,,high,reviewed
+N0965,positive,,,,high,reviewed
+N0966,positive,,,,high,reviewed
+N0967,positive,,,,low,reviewed
+N0968,positive,,,,high,reviewed
+N0969,positive,,,,high,reviewed
+N0970,positive,,,,high,reviewed
+N0971,negative,,,,high,reviewed
+N0972,negative,,,,high,reviewed
+N0973,negative,,,,high,reviewed
+N0974,unclear,,,,high,reviewed
+N0975,unclear,,,,high,reviewed
+N0976,unclear,,,,high,reviewed
+N0977,positive,,,,low,reviewed
+N0978,neutral,no-opinion,,,high,copied tag list without personal experience
+N0979,neutral,no-opinion,,,high,copied tag list without personal experience
+N0980,neutral,no-opinion,,,high,copied tag list without personal experience
+N0981,neutral,no-opinion,,,high,copied tag list without personal experience
+N0982,neutral,no-opinion,,,high,copied tag list without personal experience
+N0983,neutral,no-opinion,,,high,copied tag list without personal experience
+N0984,neutral,no-opinion,,,high,copied tag list without personal experience
+N0985,neutral,no-opinion,,,high,copied tag list without personal experience
+N0986,neutral,no-opinion,,,high,copied tag list without personal experience
+N0987,positive,,,,high,reviewed
+N0988,positive,,,,low,reviewed
+N0989,neutral,no-opinion,,,high,copied tag list without personal experience
+N0990,neutral,no-opinion,,,high,copied tag list without personal experience
+N0991,positive,,,,low,reviewed
+N0992,neutral,no-opinion,,,high,copied tag list without personal experience
+N0993,neutral,no-opinion,,,high,copied tag list without personal experience
+N0994,neutral,no-opinion,,,high,copied tag list without personal experience
+N0995,positive,,,,low,reviewed
+N0996,positive,,,,low,reviewed
+N0997,neutral,no-opinion,,,high,copied tag list without personal experience
+N0998,neutral,no-opinion,,,high,copied tag list without personal experience
+N0999,neutral,no-opinion,,,high,copied tag list without personal experience
+N1000,neutral,no-opinion,,,high,copied tag list without personal experience

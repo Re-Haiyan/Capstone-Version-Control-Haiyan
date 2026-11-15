@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2501,mixed,mixed,cheap lightweight usable casual,not suitable for hard gaming,low,mixed evaluation
+N2502,negative,,,,high,reviewed
+N2503,positive,,,,high,reviewed
+N2504,positive,,,,low,reviewed
+N2505,negative,,,,high,reviewed
+N2506,negative,,,,high,reviewed
+N2507,neutral,,,,low,reviewed
+N2508,positive,,,,high,reviewed
+N2509,positive,,,,high,reviewed
+N2510,positive,,,,high,reviewed
+N2511,positive,,,,low,reviewed
+N2512,positive,,,,low,reviewed
+N2513,positive,,,,low,reviewed
+N2514,positive,,,,high,reviewed
+N2515,positive,,,,low,reviewed
+N2516,positive,,,,low,reviewed
+N2517,positive,mixed,convenient easy to use lightweight,only moderately responsive,low,mixed evaluation
+N2518,neutral,no-opinion,,,low,reviewed
+N2519,positive,,,,high,reviewed
+N2520,positive,,,,high,reviewed
+N2521,positive,,,,high,reviewed
+N2522,unclear,,,,high,reviewed
+N2523,negative,,,,high,reviewed
+N2524,positive,,,,high,reviewed
+N2525,unclear,,,,high,reviewed
+N2526,negative,,,,high,reviewed
+N2527,positive,,,,low,reviewed
+N2528,neutral,,,,low,reviewed
+N2529,positive,,,,low,reviewed
+N2530,neutral,,,,low,reviewed
+N2531,mixed,mixed,ok for the price still usable,poor sound cracked,low,mixed evaluation
+N2532,positive,,,,high,reviewed
+N2533,negative,mixed,useful as backup,drains fast and gets hot,low,mixed evaluation
+N2534,positive,,,,high,reviewed
+N2535,positive,,,,high,reviewed
+N2536,mixed,mixed,functionality great,design not nice,low,mixed evaluation
+N2537,positive,,,,low,reviewed
+N2538,positive,,,,high,reviewed
+N2539,mixed,mixed,working,scratches,low,mixed evaluation
+N2540,positive,mixed,working fully,rubber smell,low,mixed evaluation
+N2541,positive,,,,high,reviewed
+N2542,unclear,,,,high,reviewed
+N2543,negative,,,,high,reviewed
+N2544,positive,,,,high,reviewed
+N2545,neutral,no-opinion,,,high,copied tag list without personal experience
+N2546,neutral,,,,low,reviewed
+N2547,neutral,no-opinion,,,high,copied tag list without personal experience
+N2548,neutral,no-opinion,,,high,copied tag list without personal experience
+N2549,positive,,,,low,reviewed
+N2550,positive,,,,high,reviewed

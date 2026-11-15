@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2451,neutral,no-opinion,,,high,copied tag list without personal experience
+N2452,neutral,no-opinion,,,high,copied tag list without personal experience
+N2453,positive,mixed,functions well good sound,damage on arrival,low,mixed evaluation
+N2454,neutral,no-opinion,,,high,copied tag list without personal experience
+N2455,neutral,no-opinion,,,high,copied tag list without personal experience
+N2456,neutral,no-opinion,,,high,copied tag list without personal experience
+N2457,unclear,,,,high,reviewed
+N2458,neutral,no-opinion,,,high,copied tag list without personal experience
+N2459,positive,,,,high,reviewed
+N2460,positive,,,,low,reviewed
+N2461,positive,,,,high,reviewed
+N2462,positive,,,,high,reviewed
+N2463,positive,,,,high,reviewed
+N2464,positive,,,,high,reviewed
+N2465,positive,,,,high,reviewed
+N2466,positive,,,,high,reviewed
+N2467,positive,,,,high,reviewed
+N2468,positive,,,,high,reviewed
+N2469,positive,,,,high,reviewed
+N2470,positive,mixed,functions 10 not bad quality fast charge,quality 6 of 10,low,mixed evaluation
+N2471,negative,,,,high,reviewed
+N2472,negative,,,,high,reviewed
+N2473,positive,,,,low,reviewed
+N2474,neutral,,,,low,reviewed
+N2475,negative,mixed,cute and cheap acceptable,weak sound crackling mic,low,mixed evaluation
+N2476,mixed,mixed,items work,wrong colour box dented,low,mixed evaluation
+N2477,positive,,,,high,reviewed
+N2478,positive,,,,low,reviewed
+N2479,positive,,,,low,reviewed
+N2480,negative,,,,high,reviewed
+N2481,mixed,mixed,good material,slow charging cable,low,mixed evaluation
+N2482,neutral,no-opinion,,,high,copied tag list without personal experience
+N2483,neutral,no-opinion,,,high,copied tag list without personal experience
+N2484,neutral,no-opinion,,,high,copied tag list without personal experience
+N2485,neutral,no-opinion,,,high,copied tag list without personal experience
+N2486,neutral,no-opinion,,,high,copied tag list without personal experience
+N2487,positive,,,,high,reviewed
+N2488,positive,,,,high,reviewed
+N2489,positive,,,,high,reviewed
+N2490,positive,,,,low,reviewed
+N2491,positive,,,,high,reviewed
+N2492,neutral,no-opinion,,,high,copied tag list without personal experience
+N2493,neutral,no-opinion,,,high,copied tag list without personal experience
+N2494,positive,,,,high,reviewed
+N2495,neutral,no-opinion,,,high,copied tag list without personal experience
+N2496,mixed,mixed,good quality decent material,not for gaming smaller than expected,low,mixed evaluation
+N2497,neutral,no-opinion,,,high,copied tag list without personal experience
+N2498,neutral,no-opinion,,,high,copied tag list without personal experience
+N2499,neutral,no-opinion,,,high,copied tag list without personal experience
+N2500,positive,,,,high,reviewed

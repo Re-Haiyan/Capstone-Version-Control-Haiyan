@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2751,positive,,,,high,reviewed
+N2752,positive,,,,high,reviewed
+N2753,positive,,,,high,reviewed
+N2754,positive,,,,high,reviewed
+N2755,positive,,,,high,reviewed
+N2756,positive,,,,high,reviewed
+N2757,positive,,,,high,reviewed
+N2758,positive,,,,low,reviewed
+N2759,neutral,no-opinion,,,high,copied tag list without personal experience
+N2760,neutral,no-opinion,,,high,copied tag list without personal experience
+N2761,positive,,,,low,reviewed
+N2762,neutral,no-opinion,,,high,copied tag list without personal experience
+N2763,neutral,no-opinion,,,high,copied tag list without personal experience
+N2764,neutral,no-opinion,,,high,copied tag list without personal experience
+N2765,neutral,no-opinion,,,high,copied tag list without personal experience
+N2766,neutral,no-opinion,,,high,copied tag list without personal experience
+N2767,neutral,no-opinion,,,high,copied tag list without personal experience
+N2768,positive,,,,low,reviewed
+N2769,neutral,no-opinion,,,high,copied tag list without personal experience
+N2770,neutral,no-opinion,,,high,copied tag list without personal experience
+N2771,neutral,no-opinion,,,high,copied tag list without personal experience
+N2772,neutral,no-opinion,,,high,copied tag list without personal experience
+N2773,neutral,no-opinion,,,high,copied tag list without personal experience
+N2774,neutral,no-opinion,,,high,copied tag list without personal experience
+N2775,neutral,no-opinion,,,high,copied tag list without personal experience
+N2776,neutral,no-opinion,,,high,copied tag list without personal experience
+N2777,neutral,no-opinion,,,high,copied tag list without personal experience
+N2778,positive,mixed,great sound isolation comfortable,drains fast,low,mixed evaluation
+N2779,positive,,,,high,reviewed
+N2780,mixed,mixed,clear audio value,small size no box or instructions,low,mixed evaluation
+N2781,neutral,no-opinion,,,high,copied tag list without personal experience
+N2782,neutral,no-opinion,,,high,copied tag list without personal experience
+N2783,neutral,no-opinion,,,high,copied tag list without personal experience
+N2784,neutral,no-opinion,,,high,copied tag list without personal experience
+N2785,neutral,no-opinion,,,high,copied tag list without personal experience
+N2786,neutral,no-opinion,,,high,copied tag list without personal experience
+N2787,positive,,,,low,reviewed
+N2788,neutral,no-opinion,,,high,copied tag list without personal experience
+N2789,neutral,no-opinion,,,high,copied tag list without personal experience
+N2790,positive,mixed,nice product value speed OK,setup registering fiddly,low,mixed evaluation
+N2791,neutral,no-opinion,,,high,copied tag list without personal experience
+N2792,neutral,no-opinion,,,high,copied tag list without personal experience
+N2793,neutral,no-opinion,,,high,copied tag list without personal experience
+N2794,neutral,no-opinion,,,high,copied tag list without personal experience
+N2795,neutral,no-opinion,,,high,copied tag list without personal experience
+N2796,positive,,,,low,reviewed
+N2797,neutral,no-opinion,,,high,copied tag list without personal experience
+N2798,positive,,,,high,reviewed
+N2799,neutral,no-opinion,,,high,copied tag list without personal experience
+N2800,neutral,no-opinion,,,high,copied tag list without personal experience

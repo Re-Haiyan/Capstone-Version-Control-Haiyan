@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2251,neutral,no-opinion,,,high,copied tag list without personal experience
+N2252,negative,mixed,fast delivery fashionable,quite noisy weaker than expected,low,mixed evaluation
+N2253,neutral,no-opinion,,,high,copied tag list without personal experience
+N2254,positive,,,,high,reviewed
+N2255,neutral,no-opinion,,,high,copied tag list without personal experience
+N2256,neutral,no-opinion,,,high,copied tag list without personal experience
+N2257,neutral,no-opinion,,,high,copied tag list without personal experience
+N2258,neutral,no-opinion,,,high,copied tag list without personal experience
+N2259,neutral,no-opinion,,,high,copied tag list without personal experience
+N2260,neutral,no-opinion,,,high,copied tag list without personal experience
+N2261,neutral,no-opinion,,,high,copied tag list without personal experience
+N2262,neutral,no-opinion,,,high,copied tag list without personal experience
+N2263,neutral,no-opinion,,,high,copied tag list without personal experience
+N2264,neutral,no-opinion,,,high,copied tag list without personal experience
+N2265,mixed,mixed,fast tracking long cable,double clicking,low,mixed evaluation
+N2266,neutral,no-opinion,,,high,copied tag list without personal experience
+N2267,neutral,no-opinion,,,high,copied tag list without personal experience
+N2268,neutral,no-opinion,,,high,copied tag list without personal experience
+N2269,positive,,,,high,reviewed
+N2270,positive,,,,high,reviewed
+N2271,neutral,no-opinion,,,high,copied tag list without personal experience
+N2272,neutral,no-opinion,,,high,copied tag list without personal experience
+N2273,neutral,no-opinion,,,high,copied tag list without personal experience
+N2274,neutral,no-opinion,,,high,copied tag list without personal experience
+N2275,positive,,,,high,reviewed
+N2276,neutral,no-opinion,,,high,copied tag list without personal experience
+N2277,positive,,,,high,reviewed
+N2278,neutral,no-opinion,,,high,copied tag list without personal experience
+N2279,positive,,,,high,reviewed
+N2280,neutral,no-opinion,,,high,copied tag list without personal experience
+N2281,negative,,,,high,reviewed
+N2282,neutral,no-opinion,,,high,copied tag list without personal experience
+N2283,positive,delivery-only,,,high,reviewed
+N2284,positive,,,,low,reviewed
+N2285,positive,,,,low,reviewed
+N2286,neutral,no-opinion,,,high,copied tag list without personal experience
+N2287,neutral,no-opinion,,,high,copied tag list without personal experience
+N2288,neutral,no-opinion,,,high,copied tag list without personal experience
+N2289,neutral,no-opinion,,,high,copied tag list without personal experience
+N2290,neutral,no-opinion,,,high,copied tag list without personal experience
+N2291,positive,,,,high,reviewed
+N2292,positive,,,,low,reviewed
+N2293,neutral,no-opinion,,,high,copied tag list without personal experience
+N2294,neutral,no-opinion,,,high,copied tag list without personal experience
+N2295,neutral,no-opinion,,,high,copied tag list without personal experience
+N2296,neutral,no-opinion,,,high,copied tag list without personal experience
+N2297,neutral,no-opinion,,,high,copied tag list without personal experience
+N2298,positive,,,,high,reviewed
+N2299,positive,,,,high,reviewed
+N2300,positive,,,,low,reviewed

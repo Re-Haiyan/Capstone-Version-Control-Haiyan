@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2701,neutral,no-opinion,,,high,copied tag list without personal experience
+N2702,neutral,no-opinion,,,high,copied tag list without personal experience
+N2703,neutral,no-opinion,,,high,copied tag list without personal experience
+N2704,neutral,no-opinion,,,high,copied tag list without personal experience
+N2705,neutral,no-opinion,,,high,copied tag list without personal experience
+N2706,neutral,no-opinion,,,high,copied tag list without personal experience
+N2707,neutral,no-opinion,,,high,copied tag list without personal experience
+N2708,neutral,no-opinion,,,high,copied tag list without personal experience
+N2709,positive,,,,high,reviewed
+N2710,positive,delivery-only,,,high,reviewed
+N2711,neutral,no-opinion,,,high,copied tag list without personal experience
+N2712,positive,,,,low,reviewed
+N2713,neutral,no-opinion,,,high,copied tag list without personal experience
+N2714,neutral,no-opinion,,,high,copied tag list without personal experience
+N2715,neutral,no-opinion,,,high,copied tag list without personal experience
+N2716,neutral,no-opinion,,,high,copied tag list without personal experience
+N2717,positive,delivery-only,,,high,reviewed
+N2718,neutral,no-opinion,,,high,copied tag list without personal experience
+N2719,positive,,,,low,reviewed
+N2720,neutral,,,,low,reviewed
+N2721,mixed,mixed,great for iPhone fast charging good packaging,free gift not received,low,mixed evaluation
+N2722,positive,,,,high,reviewed
+N2723,neutral,no-opinion,,,high,copied tag list without personal experience
+N2724,neutral,no-opinion,,,high,copied tag list without personal experience
+N2725,neutral,no-opinion,,,high,copied tag list without personal experience
+N2726,neutral,no-opinion,,,high,copied tag list without personal experience
+N2727,positive,,,,low,reviewed
+N2728,neutral,no-opinion,,,high,copied tag list without personal experience
+N2729,neutral,no-opinion,,,high,copied tag list without personal experience
+N2730,neutral,no-opinion,,,high,copied tag list without personal experience
+N2731,positive,,,,low,reviewed
+N2732,mixed,mixed,ok nice for sports,looks only sturdy no box,low,mixed evaluation
+N2733,positive,,,,low,reviewed
+N2734,neutral,no-opinion,,,high,copied tag list without personal experience
+N2735,neutral,no-opinion,,,high,copied tag list without personal experience
+N2736,neutral,no-opinion,,,high,copied tag list without personal experience
+N2737,neutral,no-opinion,,,high,copied tag list without personal experience
+N2738,mixed,mixed,stylish fairly priced,charging cable not working,low,mixed evaluation
+N2739,neutral,no-opinion,,,high,copied tag list without personal experience
+N2740,positive,,,,low,reviewed
+N2741,positive,,,,high,reviewed
+N2742,positive,,,,high,reviewed
+N2743,positive,,,,high,reviewed
+N2744,neutral,no-opinion,,,high,copied tag list without personal experience
+N2745,neutral,no-opinion,,,high,copied tag list without personal experience
+N2746,neutral,no-opinion,,,high,copied tag list without personal experience
+N2747,neutral,no-opinion,,,high,copied tag list without personal experience
+N2748,neutral,no-opinion,,,high,copied tag list without personal experience
+N2749,positive,,,,high,reviewed
+N2750,positive,,,,high,reviewed

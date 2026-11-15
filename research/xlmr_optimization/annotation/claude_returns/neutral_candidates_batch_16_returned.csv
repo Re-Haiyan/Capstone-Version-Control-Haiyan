@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0751,positive,,,,high,reviewed
+N0752,positive,,,,high,reviewed
+N0753,positive,,,,high,reviewed
+N0754,positive,,,,high,reviewed
+N0755,positive,,,,high,reviewed
+N0756,positive,,,,high,reviewed
+N0757,positive,,,,high,reviewed
+N0758,negative,,,,high,reviewed
+N0759,positive,,,,high,reviewed
+N0760,negative,mixed,strong wind worth it,no cord included,low,mixed evaluation
+N0761,positive,,,,high,reviewed
+N0762,negative,,,,high,reviewed
+N0763,negative,,,,high,reviewed
+N0764,neutral,,,,low,reviewed
+N0765,neutral,,,,low,reviewed
+N0766,positive,,,,high,reviewed
+N0767,positive,,,,high,reviewed
+N0768,positive,,,,high,reviewed
+N0769,positive,delivery-only,,,high,reviewed
+N0770,positive,delivery-only,,,high,reviewed
+N0771,positive,,,,high,reviewed
+N0772,positive,,,,high,reviewed
+N0773,unclear,,,,high,reviewed
+N0774,positive,,,,high,reviewed
+N0775,neutral,no-opinion,,,low,reviewed
+N0776,negative,,,,high,reviewed
+N0777,negative,,,,high,reviewed
+N0778,positive,,,,low,reviewed
+N0779,mixed,mixed,works,blade dull,low,mixed evaluation
+N0780,neutral,no-opinion,,,high,copied tag list without personal experience
+N0781,neutral,no-opinion,,,high,copied tag list without personal experience
+N0782,positive,,,,low,reviewed
+N0783,neutral,no-opinion,,,high,copied tag list without personal experience
+N0784,neutral,no-opinion,,,high,copied tag list without personal experience
+N0785,neutral,no-opinion,,,high,copied tag list without personal experience
+N0786,neutral,no-opinion,,,high,copied tag list without personal experience
+N0787,positive,,,,high,reviewed
+N0788,neutral,no-opinion,,,high,copied tag list without personal experience
+N0789,positive,,,,high,reviewed
+N0790,neutral,no-opinion,,,high,copied tag list without personal experience
+N0791,neutral,no-opinion,,,high,copied tag list without personal experience
+N0792,neutral,no-opinion,,,high,copied tag list without personal experience
+N0793,neutral,no-opinion,,,high,copied tag list without personal experience
+N0794,neutral,no-opinion,,,high,copied tag list without personal experience
+N0795,neutral,no-opinion,,,high,copied tag list without personal experience
+N0796,neutral,no-opinion,,,high,copied tag list without personal experience
+N0797,neutral,no-opinion,,,high,copied tag list without personal experience
+N0798,neutral,no-opinion,,,high,copied tag list without personal experience
+N0799,positive,,,,low,reviewed
+N0800,neutral,no-opinion,,,high,copied tag list without personal experience

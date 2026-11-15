@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2401,neutral,no-opinion,,,high,copied tag list without personal experience
+N2402,neutral,,,,low,reviewed
+N2403,positive,,,,low,reviewed
+N2404,positive,,,,low,reviewed
+N2405,negative,,,,high,reviewed
+N2406,positive,,,,high,reviewed
+N2407,positive,,,,high,reviewed
+N2408,positive,,,,high,reviewed
+N2409,positive,,,,high,reviewed
+N2410,positive,,,,high,reviewed
+N2411,positive,,,,high,reviewed
+N2412,positive,,,,low,reviewed
+N2413,positive,,,,high,reviewed
+N2414,positive,,,,high,reviewed
+N2415,positive,,,,high,reviewed
+N2416,positive,,,,low,reviewed
+N2417,positive,,,,high,reviewed
+N2418,positive,,,,high,reviewed
+N2419,negative,,,,high,reviewed
+N2420,mixed,mixed,excellent material,not true to size,low,mixed evaluation
+N2421,neutral,,,,low,reviewed
+N2422,positive,,,,low,reviewed
+N2423,positive,,,,high,reviewed
+N2424,neutral,no-opinion,,,high,copied tag list without personal experience
+N2425,positive,delivery-only,,,high,reviewed
+N2426,neutral,no-opinion,,,high,copied tag list without personal experience
+N2427,neutral,,,,low,reviewed
+N2428,positive,,,,high,reviewed
+N2429,positive,,,,high,reviewed
+N2430,neutral,no-opinion,,,high,copied tag list without personal experience
+N2431,neutral,no-opinion,,,high,copied tag list without personal experience
+N2432,neutral,no-opinion,,,high,copied tag list without personal experience
+N2433,positive,,,,low,reviewed
+N2434,neutral,no-opinion,,,high,copied tag list without personal experience
+N2435,neutral,,,,low,reviewed
+N2436,negative,,,,high,reviewed
+N2437,unclear,,,,high,reviewed
+N2438,positive,,,,low,reviewed
+N2439,positive,,,,low,reviewed
+N2440,neutral,no-opinion,,,high,copied tag list without personal experience
+N2441,neutral,,,,low,reviewed
+N2442,positive,,,,high,reviewed
+N2443,positive,mixed,still a good buy,only USB 2.0,low,mixed evaluation
+N2444,neutral,no-opinion,,,high,copied tag list without personal experience
+N2445,negative,mixed,quick charge high capacity,disconnects when moving,low,mixed evaluation
+N2446,negative,,,,high,reviewed
+N2447,negative,,,,high,reviewed
+N2448,neutral,,,,low,reviewed
+N2449,neutral,,,,low,reviewed
+N2450,positive,,,,high,reviewed

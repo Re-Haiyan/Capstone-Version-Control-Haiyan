@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2001,positive,,,,high,reviewed
+N2002,neutral,no-opinion,,,high,copied tag list without personal experience
+N2003,neutral,no-opinion,,,high,copied tag list without personal experience
+N2004,neutral,no-opinion,,,high,copied tag list without personal experience
+N2005,neutral,no-opinion,,,high,copied tag list without personal experience
+N2006,neutral,no-opinion,,,high,copied tag list without personal experience
+N2007,positive,,,,high,reviewed
+N2008,neutral,no-opinion,,,high,copied tag list without personal experience
+N2009,positive,,,,low,reviewed
+N2010,positive,,,,low,reviewed
+N2011,neutral,no-opinion,,,high,copied tag list without personal experience
+N2012,neutral,no-opinion,,,high,copied tag list without personal experience
+N2013,neutral,no-opinion,,,high,copied tag list without personal experience
+N2014,neutral,no-opinion,,,high,copied tag list without personal experience
+N2015,neutral,no-opinion,,,high,copied tag list without personal experience
+N2016,neutral,no-opinion,,,high,copied tag list without personal experience
+N2017,neutral,no-opinion,,,high,copied tag list without personal experience
+N2018,positive,,,,high,reviewed
+N2019,negative,mixed,pricing delivery ok,charging slow small capacity,low,mixed evaluation
+N2020,neutral,no-opinion,,,high,copied tag list without personal experience
+N2021,neutral,no-opinion,,,high,copied tag list without personal experience
+N2022,neutral,no-opinion,,,high,copied tag list without personal experience
+N2023,neutral,no-opinion,,,high,copied tag list without personal experience
+N2024,neutral,no-opinion,,,high,copied tag list without personal experience
+N2025,neutral,no-opinion,,,high,copied tag list without personal experience
+N2026,neutral,no-opinion,,,high,copied tag list without personal experience
+N2027,neutral,no-opinion,,,high,copied tag list without personal experience
+N2028,neutral,no-opinion,,,high,copied tag list without personal experience
+N2029,neutral,no-opinion,,,high,copied tag list without personal experience
+N2030,neutral,no-opinion,,,high,copied tag list without personal experience
+N2031,neutral,no-opinion,,,high,copied tag list without personal experience
+N2032,neutral,no-opinion,,,high,copied tag list without personal experience
+N2033,neutral,no-opinion,,,high,copied tag list without personal experience
+N2034,neutral,no-opinion,,,high,copied tag list without personal experience
+N2035,positive,,,,high,reviewed
+N2036,neutral,no-opinion,,,high,copied tag list without personal experience
+N2037,neutral,,,,low,reviewed
+N2038,negative,,,,high,reviewed
+N2039,neutral,no-opinion,,,high,copied tag list without personal experience
+N2040,neutral,no-opinion,,,high,copied tag list without personal experience
+N2041,neutral,no-opinion,,,high,copied tag list without personal experience
+N2042,neutral,no-opinion,,,high,copied tag list without personal experience
+N2043,neutral,no-opinion,,,high,copied tag list without personal experience
+N2044,positive,,,,low,reviewed
+N2045,neutral,no-opinion,,,high,copied tag list without personal experience
+N2046,positive,,,,high,reviewed
+N2047,positive,,,,high,reviewed
+N2048,neutral,no-opinion,,,high,copied tag list without personal experience
+N2049,neutral,no-opinion,,,high,copied tag list without personal experience
+N2050,neutral,no-opinion,,,high,copied tag list without personal experience

@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1101,neutral,no-opinion,,,high,copied tag list without personal experience
+N1102,neutral,no-opinion,,,high,copied tag list without personal experience
+N1103,neutral,no-opinion,,,high,copied tag list without personal experience
+N1104,neutral,no-opinion,,,high,copied tag list without personal experience
+N1105,negative,,,,high,reviewed
+N1106,neutral,no-opinion,,,high,copied tag list without personal experience
+N1107,neutral,no-opinion,,,high,copied tag list without personal experience
+N1108,positive,,,,high,reviewed
+N1109,neutral,no-opinion,,,high,copied tag list without personal experience
+N1110,neutral,no-opinion,,,high,copied tag list without personal experience
+N1111,positive,,,,high,reviewed
+N1112,neutral,no-opinion,,,high,copied tag list without personal experience
+N1113,neutral,no-opinion,,,high,copied tag list without personal experience
+N1114,neutral,no-opinion,,,high,copied tag list without personal experience
+N1115,neutral,no-opinion,,,high,copied tag list without personal experience
+N1116,mixed,mixed,compact versatile practical,not polished finish,low,mixed evaluation
+N1117,mixed,mixed,compact cute cooling ok,noisy fan small,low,mixed evaluation
+N1118,neutral,no-opinion,,,high,copied tag list without personal experience
+N1119,positive,,,,high,reviewed
+N1120,neutral,no-opinion,,,high,copied tag list without personal experience
+N1121,neutral,no-opinion,,,high,copied tag list without personal experience
+N1122,positive,,,,low,reviewed
+N1123,neutral,no-opinion,,,high,copied tag list without personal experience
+N1124,neutral,no-opinion,,,high,copied tag list without personal experience
+N1125,neutral,,,,low,reviewed
+N1126,neutral,no-opinion,,,high,copied tag list without personal experience
+N1127,neutral,no-opinion,,,high,copied tag list without personal experience
+N1128,neutral,no-opinion,,,high,copied tag list without personal experience
+N1129,neutral,no-opinion,,,high,copied tag list without personal experience
+N1130,neutral,no-opinion,,,high,copied tag list without personal experience
+N1131,negative,,,,high,reviewed
+N1132,neutral,no-opinion,,,high,copied tag list without personal experience
+N1133,neutral,no-opinion,,,high,copied tag list without personal experience
+N1134,neutral,no-opinion,,,high,copied tag list without personal experience
+N1135,neutral,no-opinion,,,high,copied tag list without personal experience
+N1136,neutral,no-opinion,,,high,copied tag list without personal experience
+N1137,neutral,no-opinion,,,high,copied tag list without personal experience
+N1138,positive,delivery-only,,,high,reviewed
+N1139,positive,,,,high,reviewed
+N1140,neutral,no-opinion,,,high,copied tag list without personal experience
+N1141,neutral,no-opinion,,,high,copied tag list without personal experience
+N1142,neutral,no-opinion,,,high,copied tag list without personal experience
+N1143,neutral,no-opinion,,,high,copied tag list without personal experience
+N1144,neutral,no-opinion,,,high,copied tag list without personal experience
+N1145,neutral,no-opinion,,,high,copied tag list without personal experience
+N1146,neutral,,,,low,reviewed
+N1147,neutral,no-opinion,,,low,reviewed
+N1148,neutral,no-opinion,,,high,copied tag list without personal experience
+N1149,positive,,,,low,reviewed
+N1150,mixed,mixed,good connection,mediocre sound,low,mixed evaluation

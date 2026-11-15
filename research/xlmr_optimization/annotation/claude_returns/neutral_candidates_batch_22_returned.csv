@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1051,neutral,no-opinion,,,high,copied tag list without personal experience
+N1052,neutral,no-opinion,,,high,copied tag list without personal experience
+N1053,neutral,no-opinion,,,high,copied tag list without personal experience
+N1054,positive,,,,high,reviewed
+N1055,positive,,,,high,reviewed
+N1056,neutral,no-opinion,,,high,copied tag list without personal experience
+N1057,neutral,no-opinion,,,high,copied tag list without personal experience
+N1058,neutral,no-opinion,,,high,copied tag list without personal experience
+N1059,neutral,no-opinion,,,high,copied tag list without personal experience
+N1060,neutral,no-opinion,,,high,copied tag list without personal experience
+N1061,positive,,,,low,reviewed
+N1062,neutral,no-opinion,,,high,copied tag list without personal experience
+N1063,neutral,no-opinion,,,high,copied tag list without personal experience
+N1064,neutral,no-opinion,,,high,copied tag list without personal experience
+N1065,neutral,no-opinion,,,high,copied tag list without personal experience
+N1066,neutral,no-opinion,,,high,copied tag list without personal experience
+N1067,neutral,no-opinion,,,high,copied tag list without personal experience
+N1068,neutral,no-opinion,,,high,copied tag list without personal experience
+N1069,neutral,no-opinion,,,high,copied tag list without personal experience
+N1070,neutral,no-opinion,,,high,copied tag list without personal experience
+N1071,positive,,,,high,reviewed
+N1072,neutral,no-opinion,,,high,copied tag list without personal experience
+N1073,neutral,no-opinion,,,high,copied tag list without personal experience
+N1074,neutral,no-opinion,,,high,copied tag list without personal experience
+N1075,neutral,no-opinion,,,high,copied tag list without personal experience
+N1076,positive,,,,high,reviewed
+N1077,positive,,,,low,reviewed
+N1078,neutral,no-opinion,,,high,copied tag list without personal experience
+N1079,neutral,no-opinion,,,high,copied tag list without personal experience
+N1080,neutral,no-opinion,,,high,copied tag list without personal experience
+N1081,neutral,no-opinion,,,high,copied tag list without personal experience
+N1082,neutral,no-opinion,,,high,copied tag list without personal experience
+N1083,neutral,no-opinion,,,high,copied tag list without personal experience
+N1084,neutral,no-opinion,,,high,copied tag list without personal experience
+N1085,neutral,no-opinion,,,high,copied tag list without personal experience
+N1086,neutral,no-opinion,,,high,copied tag list without personal experience
+N1087,neutral,no-opinion,,,high,copied tag list without personal experience
+N1088,neutral,no-opinion,,,high,copied tag list without personal experience
+N1089,positive,,,,high,reviewed
+N1090,positive,,,,high,reviewed
+N1091,neutral,no-opinion,,,high,copied tag list without personal experience
+N1092,neutral,no-opinion,,,high,copied tag list without personal experience
+N1093,neutral,no-opinion,,,high,copied tag list without personal experience
+N1094,neutral,no-opinion,,,high,copied tag list without personal experience
+N1095,neutral,no-opinion,,,high,copied tag list without personal experience
+N1096,neutral,no-opinion,,,high,copied tag list without personal experience
+N1097,neutral,no-opinion,,,high,copied tag list without personal experience
+N1098,neutral,no-opinion,,,high,copied tag list without personal experience
+N1099,neutral,no-opinion,,,high,copied tag list without personal experience
+N1100,neutral,no-opinion,,,high,copied tag list without personal experience

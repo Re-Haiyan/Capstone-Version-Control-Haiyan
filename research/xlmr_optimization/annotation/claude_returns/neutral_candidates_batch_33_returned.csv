@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1601,neutral,,,,low,reviewed
+N1602,negative,,,,high,reviewed
+N1603,negative,,,,high,reviewed
+N1604,negative,,,,high,reviewed
+N1605,negative,,,,high,reviewed
+N1606,negative,,,,high,reviewed
+N1607,negative,,,,high,reviewed
+N1608,negative,,,,high,reviewed
+N1609,negative,,,,high,reviewed
+N1610,neutral,no-opinion,,,high,copied tag list without personal experience
+N1611,neutral,no-opinion,,,high,copied tag list without personal experience
+N1612,neutral,,,,low,reviewed
+N1613,unclear,,,,high,reviewed
+N1614,neutral,no-opinion,,,high,copied tag list without personal experience
+N1615,negative,,,,high,reviewed
+N1616,negative,,,,high,reviewed
+N1617,negative,,,,high,reviewed
+N1618,negative,,,,high,reviewed
+N1619,positive,,,,low,reviewed
+N1620,neutral,no-opinion,,,high,copied tag list without personal experience
+N1621,negative,,,,high,reviewed
+N1622,neutral,no-opinion,,,high,copied tag list without personal experience
+N1623,negative,,,,high,reviewed
+N1624,negative,,,,high,reviewed
+N1625,negative,,,,high,reviewed
+N1626,mixed,mixed,many pockets ok for price,little structure gets squashed,low,mixed evaluation
+N1627,positive,delivery-only,,,high,reviewed
+N1628,positive,,,,low,reviewed
+N1629,neutral,no-opinion,,,high,copied tag list without personal experience
+N1630,neutral,no-opinion,,,high,copied tag list without personal experience
+N1631,neutral,no-opinion,,,high,copied tag list without personal experience
+N1632,unclear,,,,high,reviewed
+N1633,negative,,,,high,reviewed
+N1634,positive,,,,low,reviewed
+N1635,negative,,,,high,reviewed
+N1636,neutral,no-opinion,,,high,copied tag list without personal experience
+N1637,neutral,no-opinion,,,high,copied tag list without personal experience
+N1638,positive,,,,low,reviewed
+N1639,neutral,no-opinion,,,high,copied tag list without personal experience
+N1640,neutral,no-opinion,,,high,copied tag list without personal experience
+N1641,positive,,,,low,reviewed
+N1642,negative,,,,high,reviewed
+N1643,positive,delivery-only,,,high,reviewed
+N1644,neutral,no-opinion,,,high,copied tag list without personal experience
+N1645,negative,,,,high,reviewed
+N1646,neutral,,,,low,reviewed
+N1647,positive,,,,high,reviewed
+N1648,positive,,,,high,reviewed
+N1649,positive,,,,high,reviewed
+N1650,positive,,,,high,reviewed

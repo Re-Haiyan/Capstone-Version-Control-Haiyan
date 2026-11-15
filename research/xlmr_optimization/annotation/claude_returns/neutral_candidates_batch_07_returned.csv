@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0301,positive,,,,high,reviewed
+N0302,positive,,,,high,reviewed
+N0303,positive,,,,high,reviewed
+N0304,negative,,,,high,reviewed
+N0305,positive,,,,low,reviewed
+N0306,positive,mixed,very light great value,single speaker sound 6/10,low,mixed evaluation
+N0307,neutral,no-opinion,,,high,copied tag list without personal experience
+N0308,neutral,no-opinion,,,high,copied tag list without personal experience
+N0309,neutral,no-opinion,,,high,copied tag list without personal experience
+N0310,neutral,no-opinion,,,high,copied tag list without personal experience
+N0311,mixed,mixed,just right for emergency,charging needs close monitoring,low,mixed evaluation
+N0312,neutral,no-opinion,,,high,copied tag list without personal experience
+N0313,neutral,no-opinion,,,high,copied tag list without personal experience
+N0314,neutral,,,,low,reviewed
+N0315,neutral,no-opinion,,,high,copied tag list without personal experience
+N0316,neutral,no-opinion,,,high,copied tag list without personal experience
+N0317,positive,,,,high,reviewed
+N0318,neutral,no-opinion,,,high,copied tag list without personal experience
+N0319,positive,,,,low,reviewed
+N0320,neutral,no-opinion,,,high,copied tag list without personal experience
+N0321,neutral,no-opinion,,,high,copied tag list without personal experience
+N0322,neutral,no-opinion,,,high,copied tag list without personal experience
+N0323,neutral,no-opinion,,,high,copied tag list without personal experience
+N0324,neutral,no-opinion,,,high,copied tag list without personal experience
+N0325,neutral,no-opinion,,,high,copied tag list without personal experience
+N0326,mixed,mixed,delivered on time no damage good for price,not satisfied with audio,low,mixed evaluation
+N0327,positive,,,,high,reviewed
+N0328,positive,,,,high,reviewed
+N0329,positive,,,,high,reviewed
+N0330,neutral,no-opinion,,,low,reviewed
+N0331,positive,,,,low,reviewed
+N0332,positive,,,,high,reviewed
+N0333,neutral,no-opinion,,,high,copied tag list without personal experience
+N0334,neutral,no-opinion,,,high,copied tag list without personal experience
+N0335,negative,,,,high,reviewed
+N0336,positive,,,,high,reviewed
+N0337,neutral,,,,low,reviewed
+N0338,mixed,mixed,might buy again,one switch defective,low,mixed evaluation
+N0339,neutral,no-opinion,,,high,copied tag list without personal experience
+N0340,neutral,no-opinion,,,high,copied tag list without personal experience
+N0341,positive,,,,high,reviewed
+N0342,neutral,no-opinion,,,high,copied tag list without personal experience
+N0343,neutral,no-opinion,,,high,copied tag list without personal experience
+N0344,positive,,,,high,reviewed
+N0345,mixed,mixed,great sound quality,box dent and compartment issue,low,mixed evaluation
+N0346,neutral,,,,low,reviewed
+N0347,neutral,no-opinion,,,high,copied tag list without personal experience
+N0348,positive,,,,high,reviewed
+N0349,neutral,no-opinion,,,high,copied tag list without personal experience
+N0350,neutral,no-opinion,,,high,copied tag list without personal experience

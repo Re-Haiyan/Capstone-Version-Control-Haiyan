@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1901,neutral,no-opinion,,,high,copied tag list without personal experience
+N1902,neutral,no-opinion,,,high,copied tag list without personal experience
+N1903,neutral,no-opinion,,,high,copied tag list without personal experience
+N1904,neutral,no-opinion,,,high,copied tag list without personal experience
+N1905,neutral,no-opinion,,,high,copied tag list without personal experience
+N1906,neutral,no-opinion,,,high,copied tag list without personal experience
+N1907,neutral,no-opinion,,,high,copied tag list without personal experience
+N1908,neutral,,,,low,reviewed
+N1909,neutral,no-opinion,,,high,copied tag list without personal experience
+N1910,neutral,no-opinion,,,high,copied tag list without personal experience
+N1911,neutral,no-opinion,,,high,copied tag list without personal experience
+N1912,neutral,no-opinion,,,high,copied tag list without personal experience
+N1913,neutral,no-opinion,,,high,copied tag list without personal experience
+N1914,neutral,no-opinion,,,high,copied tag list without personal experience
+N1915,neutral,no-opinion,,,high,copied tag list without personal experience
+N1916,mixed,mixed,okay for the price,keyboard is stiff,low,mixed evaluation
+N1917,neutral,no-opinion,,,high,copied tag list without personal experience
+N1918,neutral,no-opinion,,,high,copied tag list without personal experience
+N1919,neutral,no-opinion,,,high,copied tag list without personal experience
+N1920,positive,,,,low,reviewed
+N1921,neutral,no-opinion,,,high,copied tag list without personal experience
+N1922,positive,delivery-only,,,high,reviewed
+N1923,neutral,no-opinion,,,high,copied tag list without personal experience
+N1924,neutral,no-opinion,,,high,copied tag list without personal experience
+N1925,positive,delivery-only,,,high,reviewed
+N1926,positive,,,,low,reviewed
+N1927,neutral,no-opinion,,,high,copied tag list without personal experience
+N1928,neutral,no-opinion,,,high,copied tag list without personal experience
+N1929,neutral,no-opinion,,,high,copied tag list without personal experience
+N1930,neutral,no-opinion,,,high,copied tag list without personal experience
+N1931,positive,,,,low,reviewed
+N1932,neutral,no-opinion,,,high,copied tag list without personal experience
+N1933,neutral,no-opinion,,,high,copied tag list without personal experience
+N1934,neutral,no-opinion,,,high,copied tag list without personal experience
+N1935,neutral,no-opinion,,,high,copied tag list without personal experience
+N1936,neutral,no-opinion,,,high,copied tag list without personal experience
+N1937,neutral,no-opinion,,,high,copied tag list without personal experience
+N1938,neutral,no-opinion,,,high,copied tag list without personal experience
+N1939,neutral,no-opinion,,,high,copied tag list without personal experience
+N1940,neutral,no-opinion,,,high,copied tag list without personal experience
+N1941,neutral,no-opinion,,,high,copied tag list without personal experience
+N1942,neutral,no-opinion,,,high,copied tag list without personal experience
+N1943,neutral,no-opinion,,,high,copied tag list without personal experience
+N1944,positive,,,,high,reviewed
+N1945,neutral,no-opinion,,,high,copied tag list without personal experience
+N1946,positive,,,,high,reviewed
+N1947,positive,,,,high,reviewed
+N1948,neutral,no-opinion,,,high,copied tag list without personal experience
+N1949,neutral,no-opinion,,,high,copied tag list without personal experience
+N1950,neutral,no-opinion,,,high,copied tag list without personal experience

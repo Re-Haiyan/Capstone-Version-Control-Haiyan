@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2351,neutral,no-opinion,,,high,copied tag list without personal experience
+N2352,neutral,no-opinion,,,high,copied tag list without personal experience
+N2353,neutral,no-opinion,,,high,copied tag list without personal experience
+N2354,neutral,no-opinion,,,high,copied tag list without personal experience
+N2355,neutral,no-opinion,,,high,copied tag list without personal experience
+N2356,neutral,no-opinion,,,high,copied tag list without personal experience
+N2357,neutral,no-opinion,,,high,copied tag list without personal experience
+N2358,neutral,no-opinion,,,high,copied tag list without personal experience
+N2359,neutral,no-opinion,,,high,copied tag list without personal experience
+N2360,neutral,no-opinion,,,high,copied tag list without personal experience
+N2361,neutral,no-opinion,,,high,copied tag list without personal experience
+N2362,neutral,no-opinion,,,high,copied tag list without personal experience
+N2363,positive,delivery-only,,,high,reviewed
+N2364,positive,,,,low,reviewed
+N2365,positive,,,,low,reviewed
+N2366,positive,,,,high,reviewed
+N2367,positive,,,,high,reviewed
+N2368,positive,,,,high,reviewed
+N2369,positive,,,,high,reviewed
+N2370,mixed,mixed,legit imei checked,heats up fast,low,mixed evaluation
+N2371,positive,delivery-only,,,high,reviewed
+N2372,neutral,,,,low,reviewed
+N2373,neutral,no-opinion,,,high,copied tag list without personal experience
+N2374,neutral,no-opinion,,,high,copied tag list without personal experience
+N2375,positive,,,,high,reviewed
+N2376,positive,,,,low,reviewed
+N2377,positive,mixed,very nice overall good,a bit heavy to carry,low,mixed evaluation
+N2378,neutral,no-opinion,,,high,copied tag list without personal experience
+N2379,positive,delivery-only,,,high,reviewed
+N2380,neutral,no-opinion,,,high,copied tag list without personal experience
+N2381,positive,,,,high,reviewed
+N2382,positive,,,,low,reviewed
+N2383,positive,,,,low,reviewed
+N2384,neutral,no-opinion,,,high,copied tag list without personal experience
+N2385,neutral,no-opinion,,,high,copied tag list without personal experience
+N2386,neutral,no-opinion,,,high,copied tag list without personal experience
+N2387,neutral,no-opinion,,,high,copied tag list without personal experience
+N2388,neutral,no-opinion,,,high,copied tag list without personal experience
+N2389,positive,,,,low,reviewed
+N2390,neutral,no-opinion,,,high,copied tag list without personal experience
+N2391,neutral,no-opinion,,,high,copied tag list without personal experience
+N2392,neutral,no-opinion,,,high,copied tag list without personal experience
+N2393,neutral,no-opinion,,,high,copied tag list without personal experience
+N2394,positive,delivery-only,,,high,reviewed
+N2395,neutral,no-opinion,,,high,copied tag list without personal experience
+N2396,neutral,no-opinion,,,high,copied tag list without personal experience
+N2397,neutral,no-opinion,,,high,copied tag list without personal experience
+N2398,positive,,,,high,reviewed
+N2399,neutral,no-opinion,,,high,copied tag list without personal experience
+N2400,neutral,no-opinion,,,high,copied tag list without personal experience

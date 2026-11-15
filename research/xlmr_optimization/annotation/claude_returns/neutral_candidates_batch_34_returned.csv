@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1651,positive,,,,low,reviewed
+N1652,neutral,no-opinion,,,high,copied tag list without personal experience
+N1653,positive,,,,high,reviewed
+N1654,positive,,,,high,reviewed
+N1655,neutral,no-opinion,,,high,copied tag list without personal experience
+N1656,neutral,no-opinion,,,high,copied tag list without personal experience
+N1657,positive,,,,high,reviewed
+N1658,neutral,no-opinion,,,high,copied tag list without personal experience
+N1659,neutral,no-opinion,,,high,copied tag list without personal experience
+N1660,positive,,,,high,reviewed
+N1661,positive,,,,low,reviewed
+N1662,positive,,,,low,reviewed
+N1663,neutral,no-opinion,,,high,copied tag list without personal experience
+N1664,neutral,no-opinion,,,high,copied tag list without personal experience
+N1665,neutral,no-opinion,,,high,copied tag list without personal experience
+N1666,neutral,no-opinion,,,high,copied tag list without personal experience
+N1667,positive,,,,high,reviewed
+N1668,negative,,,,high,reviewed
+N1669,positive,,,,high,reviewed
+N1670,positive,,,,high,reviewed
+N1671,positive,,,,high,reviewed
+N1672,neutral,no-opinion,,,high,copied tag list without personal experience
+N1673,positive,,,,high,reviewed
+N1674,positive,,,,high,reviewed
+N1675,positive,,,,high,reviewed
+N1676,neutral,,,,low,reviewed
+N1677,positive,,,,low,reviewed
+N1678,positive,,,,low,reviewed
+N1679,unclear,,,,high,reviewed
+N1680,positive,,,,low,reviewed
+N1681,positive,,,,low,reviewed
+N1682,neutral,,,,low,reviewed
+N1683,negative,mixed,suits the price ok,damaged edge thin,low,mixed evaluation
+N1684,neutral,no-opinion,,,high,copied tag list without personal experience
+N1685,positive,,,,high,reviewed
+N1686,neutral,no-opinion,,,high,copied tag list without personal experience
+N1687,neutral,no-opinion,,,high,copied tag list without personal experience
+N1688,neutral,no-opinion,,,high,copied tag list without personal experience
+N1689,neutral,no-opinion,,,high,copied tag list without personal experience
+N1690,neutral,no-opinion,,,high,copied tag list without personal experience
+N1691,neutral,no-opinion,,,high,copied tag list without personal experience
+N1692,negative,,,,high,reviewed
+N1693,neutral,no-opinion,,,high,copied tag list without personal experience
+N1694,neutral,no-opinion,,,high,copied tag list without personal experience
+N1695,neutral,no-opinion,,,high,copied tag list without personal experience
+N1696,neutral,no-opinion,,,high,copied tag list without personal experience
+N1697,neutral,no-opinion,,,high,copied tag list without personal experience
+N1698,neutral,no-opinion,,,high,copied tag list without personal experience
+N1699,neutral,no-opinion,,,high,copied tag list without personal experience
+N1700,neutral,no-opinion,,,high,copied tag list without personal experience

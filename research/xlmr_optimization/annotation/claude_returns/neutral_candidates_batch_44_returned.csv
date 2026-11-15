@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2151,neutral,,,,low,reviewed
+N2152,positive,,,,high,reviewed
+N2153,neutral,no-opinion,,,high,copied tag list without personal experience
+N2154,neutral,no-opinion,,,high,copied tag list without personal experience
+N2155,neutral,no-opinion,,,high,copied tag list without personal experience
+N2156,neutral,no-opinion,,,high,copied tag list without personal experience
+N2157,neutral,no-opinion,,,high,copied tag list without personal experience
+N2158,neutral,no-opinion,,,high,copied tag list without personal experience
+N2159,neutral,no-opinion,,,high,copied tag list without personal experience
+N2160,neutral,no-opinion,,,high,copied tag list without personal experience
+N2161,neutral,no-opinion,,,high,copied tag list without personal experience
+N2162,neutral,no-opinion,,,high,copied tag list without personal experience
+N2163,neutral,no-opinion,,,high,copied tag list without personal experience
+N2164,neutral,no-opinion,,,high,copied tag list without personal experience
+N2165,positive,,,,high,reviewed
+N2166,neutral,no-opinion,,,high,copied tag list without personal experience
+N2167,neutral,no-opinion,,,high,copied tag list without personal experience
+N2168,neutral,no-opinion,,,high,copied tag list without personal experience
+N2169,neutral,no-opinion,,,high,copied tag list without personal experience
+N2170,neutral,no-opinion,,,high,copied tag list without personal experience
+N2171,positive,,,,low,reviewed
+N2172,positive,,,,high,reviewed
+N2173,neutral,no-opinion,,,high,copied tag list without personal experience
+N2174,positive,,,,low,reviewed
+N2175,positive,,,,high,reviewed
+N2176,positive,,,,high,reviewed
+N2177,positive,,,,high,reviewed
+N2178,positive,,,,high,reviewed
+N2179,positive,,,,high,reviewed
+N2180,neutral,no-opinion,,,high,copied tag list without personal experience
+N2181,neutral,no-opinion,,,high,copied tag list without personal experience
+N2182,neutral,no-opinion,,,high,copied tag list without personal experience
+N2183,neutral,no-opinion,,,high,copied tag list without personal experience
+N2184,neutral,no-opinion,,,high,copied tag list without personal experience
+N2185,neutral,no-opinion,,,high,copied tag list without personal experience
+N2186,neutral,no-opinion,,,high,copied tag list without personal experience
+N2187,neutral,no-opinion,,,high,copied tag list without personal experience
+N2188,neutral,no-opinion,,,high,copied tag list without personal experience
+N2189,neutral,no-opinion,,,high,copied tag list without personal experience
+N2190,neutral,no-opinion,,,high,copied tag list without personal experience
+N2191,positive,,,,high,reviewed
+N2192,neutral,no-opinion,,,high,copied tag list without personal experience
+N2193,neutral,no-opinion,,,high,copied tag list without personal experience
+N2194,neutral,no-opinion,,,high,copied tag list without personal experience
+N2195,neutral,no-opinion,,,high,copied tag list without personal experience
+N2196,neutral,no-opinion,,,high,copied tag list without personal experience
+N2197,neutral,no-opinion,,,high,copied tag list without personal experience
+N2198,neutral,no-opinion,,,high,copied tag list without personal experience
+N2199,neutral,no-opinion,,,high,copied tag list without personal experience
+N2200,neutral,no-opinion,,,high,copied tag list without personal experience

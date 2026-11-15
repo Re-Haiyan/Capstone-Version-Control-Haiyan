@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2601,negative,mixed,good for karaoke,weak and cuts out,low,mixed evaluation
+N2602,positive,mixed,good quality size ok,rust on buckle,low,mixed evaluation
+N2603,positive,,,,high,reviewed
+N2604,positive,,,,high,reviewed
+N2605,mixed,mixed,good item with mouse pad,seems to break quickly,low,mixed evaluation
+N2606,positive,,,,low,reviewed
+N2607,positive,,,,high,reviewed
+N2608,negative,,,,high,reviewed
+N2609,positive,,,,high,reviewed
+N2610,mixed,mixed,affordable good enough,poor audio quality,low,mixed evaluation
+N2611,positive,,,,high,reviewed
+N2612,mixed,mixed,good,one cable not compatible,low,mixed evaluation
+N2613,positive,,,,high,reviewed
+N2614,neutral,no-opinion,,,high,copied tag list without personal experience
+N2615,positive,,,,high,reviewed
+N2616,neutral,no-opinion,,,high,copied tag list without personal experience
+N2617,positive,,,,high,reviewed
+N2618,positive,,,,high,reviewed
+N2619,positive,,,,high,reviewed
+N2620,positive,,,,high,reviewed
+N2621,positive,,,,high,reviewed
+N2622,positive,,,,high,reviewed
+N2623,positive,,,,high,reviewed
+N2624,positive,,,,high,reviewed
+N2625,positive,mixed,good purchase heavy quality for price,not fast charging,low,mixed evaluation
+N2626,positive,,,,high,reviewed
+N2627,positive,,,,high,reviewed
+N2628,positive,,,,high,reviewed
+N2629,positive,,,,high,reviewed
+N2630,positive,,,,high,reviewed
+N2631,positive,,,,high,reviewed
+N2632,positive,,,,high,reviewed
+N2633,positive,,,,high,reviewed
+N2634,neutral,no-opinion,,,high,copied tag list without personal experience
+N2635,neutral,no-opinion,,,high,copied tag list without personal experience
+N2636,positive,,,,low,reviewed
+N2637,positive,,,,high,reviewed
+N2638,positive,,,,high,reviewed
+N2639,positive,,,,low,reviewed
+N2640,positive,,,,high,reviewed
+N2641,positive,,,,high,reviewed
+N2642,positive,,,,high,reviewed
+N2643,negative,mixed,good sound quality,painful to wear,low,mixed evaluation
+N2644,mixed,mixed,good sound small fits,left side defective,low,mixed evaluation
+N2645,positive,,,,high,reviewed
+N2646,positive,,,,high,reviewed
+N2647,positive,,,,high,reviewed
+N2648,neutral,no-opinion,,,high,copied tag list without personal experience
+N2649,neutral,no-opinion,,,high,copied tag list without personal experience
+N2650,neutral,no-opinion,,,high,copied tag list without personal experience

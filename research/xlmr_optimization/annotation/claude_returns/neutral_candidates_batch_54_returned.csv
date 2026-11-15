@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2651,neutral,no-opinion,,,high,copied tag list without personal experience
+N2652,positive,,,,high,reviewed
+N2653,positive,,,,low,reviewed
+N2654,positive,,,,high,reviewed
+N2655,mixed,mixed,item good,expected free t-shirt not included,low,mixed evaluation
+N2656,neutral,,,,low,reviewed
+N2657,mixed,mixed,good,hard to adjust slight eyestrain,low,mixed evaluation
+N2658,mixed,mixed,looks good,does not look strong,low,mixed evaluation
+N2659,positive,,,,high,reviewed
+N2660,positive,,,,high,reviewed
+N2661,positive,,,,low,reviewed
+N2662,positive,,,,low,reviewed
+N2663,positive,,,,high,reviewed
+N2664,positive,,,,high,reviewed
+N2665,positive,,,,low,reviewed
+N2666,positive,,,,low,reviewed
+N2667,positive,,,,high,reviewed
+N2668,positive,,,,high,reviewed
+N2669,positive,mixed,goods,very slow delivery,low,mixed evaluation
+N2670,positive,,,,high,reviewed
+N2671,positive,,,,high,reviewed
+N2672,positive,mixed,heavy and solid goods overall,handle and lid get hot,low,mixed evaluation
+N2673,positive,,,,high,reviewed
+N2674,positive,,,,high,reviewed
+N2675,neutral,,,,low,reviewed
+N2676,positive,,,,high,reviewed
+N2677,positive,,,,low,reviewed
+N2678,positive,,,,low,reviewed
+N2679,positive,,,,high,reviewed
+N2680,positive,,,,high,reviewed
+N2681,positive,,,,high,reviewed
+N2682,positive,,,,low,reviewed
+N2683,negative,,,,high,reviewed
+N2684,positive,,,,high,reviewed
+N2685,negative,,,,high,reviewed
+N2686,negative,,,,high,reviewed
+N2687,negative,,,,high,reviewed
+N2688,negative,,,,high,reviewed
+N2689,positive,,,,high,reviewed
+N2690,positive,,,,low,reviewed
+N2691,positive,,,,high,reviewed
+N2692,positive,,,,high,reviewed
+N2693,positive,,,,high,reviewed
+N2694,positive,,,,high,reviewed
+N2695,positive,,,,high,reviewed
+N2696,positive,,,,high,reviewed
+N2697,neutral,no-opinion,,,high,copied tag list without personal experience
+N2698,neutral,no-opinion,,,high,copied tag list without personal experience
+N2699,neutral,no-opinion,,,high,copied tag list without personal experience
+N2700,neutral,no-opinion,,,high,copied tag list without personal experience

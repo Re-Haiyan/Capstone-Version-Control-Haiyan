@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2551,positive,,,,low,reviewed
+N2552,positive,,,,low,reviewed
+N2553,positive,,,,high,reviewed
+N2554,positive,,,,low,reviewed
+N2555,positive,,,,high,reviewed
+N2556,positive,,,,high,reviewed
+N2557,positive,,,,high,reviewed
+N2558,positive,,,,high,reviewed
+N2559,positive,,,,high,reviewed
+N2560,positive,,,,high,reviewed
+N2561,positive,,,,high,reviewed
+N2562,positive,,,,high,reviewed
+N2563,positive,,,,low,reviewed
+N2564,positive,,,,high,reviewed
+N2565,positive,,,,high,reviewed
+N2566,positive,,,,high,reviewed
+N2567,negative,,,,high,reviewed
+N2568,neutral,no-opinion,,,high,copied tag list without personal experience
+N2569,positive,mixed,genuine JBL good sound overall satisfied,wrong power cord needs modification,low,mixed evaluation
+N2570,unclear,,,,high,reviewed
+N2571,negative,,,,high,reviewed
+N2572,negative,mixed,good loud sound,charger pin broke after 2 days,low,mixed evaluation
+N2573,mixed,mixed,good product shipped fast,poorly packaged,low,mixed evaluation
+N2574,positive,,,,high,reviewed
+N2575,positive,,,,high,reviewed
+N2576,mixed,mixed,good vision overall,app sometimes disconnects,low,mixed evaluation
+N2577,positive,,,,high,reviewed
+N2578,positive,,,,high,reviewed
+N2579,positive,,,,high,reviewed
+N2580,positive,,,,high,reviewed
+N2581,neutral,no-opinion,,,high,copied tag list without personal experience
+N2582,neutral,no-opinion,,,high,copied tag list without personal experience
+N2583,neutral,no-opinion,,,high,copied tag list without personal experience
+N2584,neutral,no-opinion,,,high,copied tag list without personal experience
+N2585,neutral,no-opinion,,,high,copied tag list without personal experience
+N2586,mixed,mixed,good,heats quickly,low,mixed evaluation
+N2587,positive,,,,high,reviewed
+N2588,positive,,,,high,reviewed
+N2589,positive,,,,high,reviewed
+N2590,neutral,no-opinion,,,high,copied tag list without personal experience
+N2591,neutral,no-opinion,,,high,copied tag list without personal experience
+N2592,neutral,no-opinion,,,high,copied tag list without personal experience
+N2593,neutral,no-opinion,,,high,copied tag list without personal experience
+N2594,positive,,,,high,reviewed
+N2595,positive,,,,low,reviewed
+N2596,neutral,,,,low,reviewed
+N2597,mixed,mixed,good enough price works,lacks bass confusing pairing,low,mixed evaluation
+N2598,positive,,,,low,reviewed
+N2599,mixed,mixed,good for general purpose,scroll wheel jumps lift-off high,low,mixed evaluation
+N2600,positive,mixed,good for price okay,pixelated in low light,low,mixed evaluation

@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0151,neutral,no-opinion,,,high,copied tag list without personal experience
+N0152,positive,,,,high,reviewed
+N0153,positive,,,,high,reviewed
+N0154,positive,,,,high,reviewed
+N0155,positive,,,,high,reviewed
+N0156,positive,,,,high,reviewed
+N0157,positive,,,,high,reviewed
+N0158,positive,,,,high,reviewed
+N0159,positive,,,,high,reviewed
+N0160,positive,,,,high,reviewed
+N0161,positive,,,,low,reviewed
+N0162,positive,,,,high,reviewed
+N0163,positive,,,,high,reviewed
+N0164,positive,,,,high,reviewed
+N0165,positive,,,,high,reviewed
+N0166,positive,,,,high,reviewed
+N0167,positive,,,,high,reviewed
+N0168,positive,,,,high,reviewed
+N0169,positive,,,,high,reviewed
+N0170,positive,,,,high,reviewed
+N0171,negative,,,,high,reviewed
+N0172,positive,,,,low,reviewed
+N0173,neutral,no-opinion,,,high,copied tag list without personal experience
+N0174,neutral,no-opinion,,,high,copied tag list without personal experience
+N0175,neutral,no-opinion,,,high,copied tag list without personal experience
+N0176,neutral,no-opinion,,,high,copied tag list without personal experience
+N0177,neutral,no-opinion,,,high,copied tag list without personal experience
+N0178,positive,,,,high,reviewed
+N0179,neutral,no-opinion,,,high,copied tag list without personal experience
+N0180,neutral,no-opinion,,,high,copied tag list without personal experience
+N0181,neutral,no-opinion,,,high,copied tag list without personal experience
+N0182,neutral,no-opinion,,,high,copied tag list without personal experience
+N0183,neutral,no-opinion,,,high,copied tag list without personal experience
+N0184,neutral,no-opinion,,,high,copied tag list without personal experience
+N0185,neutral,no-opinion,,,high,copied tag list without personal experience
+N0186,positive,,,,high,reviewed
+N0187,positive,,,,high,reviewed
+N0188,negative,,,,high,reviewed
+N0189,neutral,no-opinion,,,high,copied tag list without personal experience
+N0190,neutral,no-opinion,,,high,copied tag list without personal experience
+N0191,neutral,no-opinion,,,high,copied tag list without personal experience
+N0192,neutral,no-opinion,,,high,copied tag list without personal experience
+N0193,neutral,no-opinion,,,high,copied tag list without personal experience
+N0194,neutral,no-opinion,,,high,copied tag list without personal experience
+N0195,positive,,,,high,reviewed
+N0196,neutral,no-opinion,,,high,copied tag list without personal experience
+N0197,positive,,,,low,reviewed
+N0198,neutral,no-opinion,,,high,copied tag list without personal experience
+N0199,positive,,,,low,reviewed
+N0200,neutral,no-opinion,,,high,copied tag list without personal experience

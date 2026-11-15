@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2051,neutral,no-opinion,,,high,copied tag list without personal experience
+N2052,neutral,no-opinion,,,high,copied tag list without personal experience
+N2053,neutral,no-opinion,,,high,copied tag list without personal experience
+N2054,neutral,no-opinion,,,high,copied tag list without personal experience
+N2055,mixed,mixed,order finally received,long wait,low,mixed evaluation
+N2056,neutral,no-opinion,,,high,copied tag list without personal experience
+N2057,neutral,no-opinion,,,high,copied tag list without personal experience
+N2058,neutral,no-opinion,,,high,copied tag list without personal experience
+N2059,positive,,,,high,reviewed
+N2060,neutral,no-opinion,,,high,copied tag list without personal experience
+N2061,neutral,no-opinion,,,high,copied tag list without personal experience
+N2062,neutral,no-opinion,,,high,copied tag list without personal experience
+N2063,neutral,no-opinion,,,high,copied tag list without personal experience
+N2064,positive,,,,high,reviewed
+N2065,neutral,no-opinion,,,high,copied tag list without personal experience
+N2066,neutral,no-opinion,,,high,copied tag list without personal experience
+N2067,neutral,no-opinion,,,high,copied tag list without personal experience
+N2068,neutral,no-opinion,,,high,copied tag list without personal experience
+N2069,negative,,,,high,reviewed
+N2070,unclear,,,,high,reviewed
+N2071,positive,,,,low,reviewed
+N2072,positive,,,,low,reviewed
+N2073,neutral,no-opinion,,,high,copied tag list without personal experience
+N2074,neutral,no-opinion,,,high,copied tag list without personal experience
+N2075,positive,,,,high,reviewed
+N2076,neutral,no-opinion,,,high,copied tag list without personal experience
+N2077,positive,,,,low,reviewed
+N2078,neutral,no-opinion,,,high,copied tag list without personal experience
+N2079,neutral,no-opinion,,,high,copied tag list without personal experience
+N2080,neutral,no-opinion,,,high,copied tag list without personal experience
+N2081,neutral,no-opinion,,,high,copied tag list without personal experience
+N2082,neutral,no-opinion,,,high,copied tag list without personal experience
+N2083,neutral,no-opinion,,,high,copied tag list without personal experience
+N2084,positive,,,,low,reviewed
+N2085,neutral,no-opinion,,,high,copied tag list without personal experience
+N2086,positive,,,,low,reviewed
+N2087,neutral,,,,low,reviewed
+N2088,mixed,mixed,ergonomic design,cheap USB not durable,low,mixed evaluation
+N2089,positive,,,,low,reviewed
+N2090,neutral,no-opinion,,,high,copied tag list without personal experience
+N2091,neutral,no-opinion,,,high,copied tag list without personal experience
+N2092,positive,,,,high,reviewed
+N2093,neutral,no-opinion,,,high,copied tag list without personal experience
+N2094,neutral,no-opinion,,,high,copied tag list without personal experience
+N2095,positive,,,,low,reviewed
+N2096,neutral,no-opinion,,,high,copied tag list without personal experience
+N2097,neutral,no-opinion,,,high,copied tag list without personal experience
+N2098,neutral,no-opinion,,,high,copied tag list without personal experience
+N2099,neutral,no-opinion,,,high,copied tag list without personal experience
+N2100,positive,,,,high,reviewed

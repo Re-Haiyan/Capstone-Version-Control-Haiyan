@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0651,mixed,mixed,well-built compact usb-c,works more like an air circulator,low,mixed evaluation
+N0652,positive,,,,high,reviewed
+N0653,negative,,,,high,reviewed
+N0654,mixed,mixed,trusted product,courier delivered it around,low,mixed evaluation
+N0655,positive,,,,high,reviewed
+N0656,negative,,,,high,reviewed
+N0657,negative,,,,high,reviewed
+N0658,negative,,,,high,reviewed
+N0659,positive,,,,high,reviewed
+N0660,positive,,,,low,reviewed
+N0661,positive,,,,low,reviewed
+N0662,positive,,,,high,reviewed
+N0663,positive,,,,high,reviewed
+N0664,positive,,,,high,reviewed
+N0665,mixed,mixed,authentic nice design fast charging,battery life not great needs calibration,low,mixed evaluation
+N0666,positive,,,,low,reviewed
+N0667,neutral,no-opinion,,,high,copied tag list without personal experience
+N0668,neutral,,,,low,reviewed
+N0669,neutral,no-opinion,,,high,copied tag list without personal experience
+N0670,neutral,no-opinion,,,high,copied tag list without personal experience
+N0671,neutral,no-opinion,,,high,copied tag list without personal experience
+N0672,positive,,,,low,reviewed
+N0673,positive,,,,high,reviewed
+N0674,positive,,,,high,reviewed
+N0675,mixed,mixed,charging ok,very slow to recharge,low,mixed evaluation
+N0676,mixed,mixed,works,left touch sensor does not work,low,mixed evaluation
+N0677,negative,mixed,charger ok,cable too short cannot charge with a case,low,mixed evaluation
+N0678,neutral,,,,low,reviewed
+N0679,positive,,,,high,reviewed
+N0680,positive,,,,high,reviewed
+N0681,positive,,,,high,reviewed
+N0682,positive,,,,high,reviewed
+N0683,positive,,,,high,reviewed
+N0684,negative,,,,high,reviewed
+N0685,negative,,,,high,reviewed
+N0686,positive,,,,high,reviewed
+N0687,neutral,no-opinion,,,high,copied tag list without personal experience
+N0688,positive,,,,low,reviewed
+N0689,mixed,mixed,nice items,bad packaging,low,mixed evaluation
+N0690,negative,,,,high,reviewed
+N0691,negative,,,,high,reviewed
+N0692,negative,delivery-only,,,high,reviewed
+N0693,positive,,,,high,reviewed
+N0694,negative,,,,high,reviewed
+N0695,negative,,,,high,reviewed
+N0696,negative,,,,high,reviewed
+N0697,negative,,,,high,reviewed
+N0698,positive,,,,high,reviewed
+N0699,negative,delivery-only,,,high,reviewed
+N0700,negative,,,,high,reviewed

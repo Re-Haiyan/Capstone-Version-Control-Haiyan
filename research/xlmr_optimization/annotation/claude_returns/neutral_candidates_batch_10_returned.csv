@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0451,positive,,,,high,reviewed
+N0452,positive,,,,high,reviewed
+N0453,negative,,,,high,reviewed
+N0454,positive,mixed,item goods,no free keychain and tshirt,low,mixed evaluation
+N0455,neutral,,,,low,reviewed
+N0456,neutral,,,,low,reviewed
+N0457,positive,,,,low,reviewed
+N0458,positive,,,,high,reviewed
+N0459,positive,mixed,designs nice fast delivery,thin fabric,low,mixed evaluation
+N0460,positive,,,,high,reviewed
+N0461,positive,mixed,all good ok for office,small hands not for gaming,low,mixed evaluation
+N0462,positive,,,,high,reviewed
+N0463,positive,,,,high,reviewed
+N0464,positive,,,,high,reviewed
+N0465,positive,,,,high,reviewed
+N0466,positive,,,,high,reviewed
+N0467,positive,,,,high,reviewed
+N0468,positive,,,,high,reviewed
+N0469,positive,,,,high,reviewed
+N0470,positive,,,,high,reviewed
+N0471,positive,,,,high,reviewed
+N0472,positive,,,,high,reviewed
+N0473,positive,,,,high,reviewed
+N0474,positive,,,,high,reviewed
+N0475,positive,,,,high,reviewed
+N0476,positive,mixed,all is good,packaging not in the box,low,mixed evaluation
+N0477,positive,,,,high,reviewed
+N0478,positive,,,,high,reviewed
+N0479,positive,,,,high,reviewed
+N0480,positive,mixed,goods,nozzle cannot lock,low,mixed evaluation
+N0481,positive,delivery-only,,,high,reviewed
+N0482,positive,,,,high,reviewed
+N0483,positive,,,,high,reviewed
+N0484,positive,,,,high,reviewed
+N0485,positive,,,,low,reviewed
+N0486,positive,,,,high,reviewed
+N0487,positive,,,,high,reviewed
+N0488,positive,,,,high,reviewed
+N0489,positive,mixed,all good working came early,charger had some dirt,low,mixed evaluation
+N0490,positive,,,,high,reviewed
+N0491,positive,,,,high,reviewed
+N0492,positive,,,,high,reviewed
+N0493,positive,,,,high,reviewed
+N0494,positive,,,,high,reviewed
+N0495,neutral,no-opinion,,,high,copied tag list without personal experience
+N0496,positive,,,,high,reviewed
+N0497,positive,,,,high,reviewed
+N0498,positive,,,,high,reviewed
+N0499,positive,,,,high,reviewed
+N0500,negative,,,,high,reviewed

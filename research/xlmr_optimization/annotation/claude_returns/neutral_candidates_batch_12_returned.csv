@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0551,positive,,,,high,reviewed
+N0552,positive,,,,high,reviewed
+N0553,positive,,,,high,reviewed
+N0554,positive,,,,high,reviewed
+N0555,positive,,,,high,reviewed
+N0556,positive,,,,high,reviewed
+N0557,positive,,,,high,reviewed
+N0558,positive,,,,high,reviewed
+N0559,positive,,,,high,reviewed
+N0560,positive,,,,high,reviewed
+N0561,positive,,,,high,reviewed
+N0562,positive,,,,high,reviewed
+N0563,negative,,,,high,reviewed
+N0564,negative,,,,high,reviewed
+N0565,negative,,,,high,reviewed
+N0566,positive,,,,high,reviewed
+N0567,negative,,,,high,reviewed
+N0568,negative,,,,high,reviewed
+N0569,positive,,,,low,reviewed
+N0570,negative,,,,high,reviewed
+N0571,negative,,,,high,reviewed
+N0572,mixed,mixed,best feature compact size,louder than others,low,mixed evaluation
+N0573,negative,delivery-only,,,high,reviewed
+N0574,negative,,,,high,reviewed
+N0575,negative,,,,high,reviewed
+N0576,positive,,,,high,reviewed
+N0577,positive,,,,high,reviewed
+N0578,positive,,,,high,reviewed
+N0579,mixed,mixed,sound impressive per tags,slow arrival,low,mixed evaluation
+N0580,positive,mixed,ok well wrapped,slow arrival,low,mixed evaluation
+N0581,positive,,,,high,reviewed
+N0582,positive,,,,high,reviewed
+N0583,unclear,,,,high,reviewed
+N0584,neutral,no-opinion,,,high,copied tag list without personal experience
+N0585,positive,delivery-only,,,high,reviewed
+N0586,positive,,,,low,reviewed
+N0587,positive,mixed,cutesy fast shipping,medyo maingay,low,mixed evaluation
+N0588,positive,,,,high,reviewed
+N0589,positive,,,,high,reviewed
+N0590,positive,,,,high,reviewed
+N0591,positive,,,,low,reviewed
+N0592,positive,mixed,maganda mukhang matibay,madaling malowbat,low,mixed evaluation
+N0593,positive,,,,low,reviewed
+N0594,positive,,,,high,reviewed
+N0595,positive,,,,high,reviewed
+N0596,positive,,,,high,reviewed
+N0597,positive,,,,high,reviewed
+N0598,positive,,,,high,reviewed
+N0599,positive,,,,high,reviewed
+N0600,positive,,,,high,reviewed

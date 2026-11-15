@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2801,positive,,,,high,reviewed
+N2802,neutral,no-opinion,,,high,copied tag list without personal experience
+N2803,positive,,,,high,reviewed
+N2804,positive,,,,high,reviewed
+N2805,neutral,no-opinion,,,high,copied tag list without personal experience
+N2806,neutral,no-opinion,,,high,copied tag list without personal experience
+N2807,neutral,no-opinion,,,high,copied tag list without personal experience
+N2808,positive,,,,high,reviewed
+N2809,neutral,no-opinion,,,high,copied tag list without personal experience
+N2810,neutral,no-opinion,,,high,copied tag list without personal experience
+N2811,neutral,no-opinion,,,high,copied tag list without personal experience
+N2812,positive,,,,high,reviewed
+N2813,neutral,no-opinion,,,high,copied tag list without personal experience
+N2814,neutral,no-opinion,,,high,copied tag list without personal experience
+N2815,neutral,no-opinion,,,high,copied tag list without personal experience
+N2816,neutral,no-opinion,,,high,copied tag list without personal experience
+N2817,positive,,,,low,reviewed
+N2818,positive,,,,low,reviewed
+N2819,neutral,no-opinion,,,high,copied tag list without personal experience
+N2820,neutral,no-opinion,,,high,copied tag list without personal experience
+N2821,neutral,no-opinion,,,high,copied tag list without personal experience
+N2822,positive,,,,high,reviewed
+N2823,positive,,,,high,reviewed
+N2824,neutral,no-opinion,,,high,copied tag list without personal experience
+N2825,neutral,no-opinion,,,high,copied tag list without personal experience
+N2826,neutral,no-opinion,,,high,copied tag list without personal experience
+N2827,neutral,no-opinion,,,high,copied tag list without personal experience
+N2828,neutral,no-opinion,,,high,copied tag list without personal experience
+N2829,neutral,no-opinion,,,high,copied tag list without personal experience
+N2830,neutral,no-opinion,,,high,copied tag list without personal experience
+N2831,mixed,mixed,easy to use value,reads SSD but not HDD,low,mixed evaluation
+N2832,neutral,no-opinion,,,high,copied tag list without personal experience
+N2833,neutral,no-opinion,,,high,copied tag list without personal experience
+N2834,neutral,no-opinion,,,high,copied tag list without personal experience
+N2835,neutral,no-opinion,,,high,copied tag list without personal experience
+N2836,neutral,no-opinion,,,high,copied tag list without personal experience
+N2837,neutral,no-opinion,,,high,copied tag list without personal experience
+N2838,neutral,no-opinion,,,high,copied tag list without personal experience
+N2839,neutral,no-opinion,,,high,copied tag list without personal experience
+N2840,neutral,no-opinion,,,high,copied tag list without personal experience
+N2841,neutral,no-opinion,,,high,copied tag list without personal experience
+N2842,positive,,,,low,reviewed
+N2843,neutral,no-opinion,,,high,copied tag list without personal experience
+N2844,positive,,,,high,reviewed
+N2845,positive,,,,high,reviewed
+N2846,positive,mixed,works strong wind vs other brands,no battery percent indicator,low,mixed evaluation
+N2847,positive,,,,low,reviewed
+N2848,positive,,,,high,reviewed
+N2849,neutral,no-opinion,,,low,reviewed
+N2850,neutral,no-opinion,,,high,copied tag list without personal experience

@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1001,neutral,no-opinion,,,high,copied tag list without personal experience
+N1002,negative,,,,high,reviewed
+N1003,positive,,,,high,reviewed
+N1004,negative,,,,high,reviewed
+N1005,positive,mixed,colorful and classy,no setup manual,low,mixed evaluation
+N1006,neutral,no-opinion,,,high,copied tag list without personal experience
+N1007,positive,,,,high,reviewed
+N1008,neutral,no-opinion,,,high,copied tag list without personal experience
+N1009,positive,,,,high,reviewed
+N1010,positive,,,,low,reviewed
+N1011,negative,,,,high,reviewed
+N1012,positive,,,,high,reviewed
+N1013,positive,,,,high,reviewed
+N1014,positive,,,,high,reviewed
+N1015,mixed,mixed,color ok,material mid low,low,mixed evaluation
+N1016,positive,,,,high,reviewed
+N1017,neutral,no-opinion,,,high,copied tag list without personal experience
+N1018,neutral,no-opinion,,,high,copied tag list without personal experience
+N1019,neutral,no-opinion,,,high,copied tag list without personal experience
+N1020,neutral,no-opinion,,,high,copied tag list without personal experience
+N1021,neutral,no-opinion,,,high,copied tag list without personal experience
+N1022,neutral,no-opinion,,,high,copied tag list without personal experience
+N1023,positive,mixed,nice item clear mic,some noise wind noise,low,mixed evaluation
+N1024,negative,,,,high,reviewed
+N1025,neutral,no-opinion,,,low,reviewed
+N1026,positive,,,,high,reviewed
+N1027,positive,,,,high,reviewed
+N1028,neutral,,,,low,reviewed
+N1029,neutral,,,,low,reviewed
+N1030,neutral,no-opinion,,,high,copied tag list without personal experience
+N1031,neutral,no-opinion,,,high,copied tag list without personal experience
+N1032,negative,,,,high,reviewed
+N1033,neutral,no-opinion,,,high,copied tag list without personal experience
+N1034,neutral,no-opinion,,,high,copied tag list without personal experience
+N1035,positive,,,,low,reviewed
+N1036,positive,,,,high,reviewed
+N1037,neutral,no-opinion,,,high,copied tag list without personal experience
+N1038,neutral,no-opinion,,,high,copied tag list without personal experience
+N1039,neutral,no-opinion,,,high,copied tag list without personal experience
+N1040,positive,,,,high,reviewed
+N1041,neutral,no-opinion,,,high,copied tag list without personal experience
+N1042,positive,,,,high,reviewed
+N1043,neutral,no-opinion,,,high,copied tag list without personal experience
+N1044,neutral,no-opinion,,,high,copied tag list without personal experience
+N1045,neutral,no-opinion,,,high,copied tag list without personal experience
+N1046,neutral,no-opinion,,,high,copied tag list without personal experience
+N1047,neutral,no-opinion,,,high,copied tag list without personal experience
+N1048,neutral,no-opinion,,,high,copied tag list without personal experience
+N1049,neutral,no-opinion,,,high,copied tag list without personal experience
+N1050,positive,,,,high,reviewed

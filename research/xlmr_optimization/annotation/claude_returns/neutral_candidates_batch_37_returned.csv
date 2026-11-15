@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1801,neutral,no-opinion,,,high,copied tag list without personal experience
+N1802,positive,,,,high,reviewed
+N1803,positive,,,,high,reviewed
+N1804,neutral,no-opinion,,,high,copied tag list without personal experience
+N1805,neutral,no-opinion,,,high,copied tag list without personal experience
+N1806,neutral,no-opinion,,,high,copied tag list without personal experience
+N1807,positive,,,,high,reviewed
+N1808,neutral,no-opinion,,,high,copied tag list without personal experience
+N1809,neutral,no-opinion,,,high,copied tag list without personal experience
+N1810,neutral,no-opinion,,,high,copied tag list without personal experience
+N1811,positive,,,,low,reviewed
+N1812,neutral,no-opinion,,,high,copied tag list without personal experience
+N1813,neutral,no-opinion,,,high,copied tag list without personal experience
+N1814,neutral,no-opinion,,,high,copied tag list without personal experience
+N1815,neutral,no-opinion,,,high,copied tag list without personal experience
+N1816,neutral,no-opinion,,,high,copied tag list without personal experience
+N1817,negative,,,,high,reviewed
+N1818,negative,,,,high,reviewed
+N1819,neutral,no-opinion,,,high,copied tag list without personal experience
+N1820,neutral,no-opinion,,,high,copied tag list without personal experience
+N1821,neutral,no-opinion,,,high,copied tag list without personal experience
+N1822,positive,,,,low,reviewed
+N1823,neutral,no-opinion,,,high,copied tag list without personal experience
+N1824,neutral,no-opinion,,,high,copied tag list without personal experience
+N1825,neutral,no-opinion,,,high,copied tag list without personal experience
+N1826,neutral,,,,low,reviewed
+N1827,positive,,,,low,reviewed
+N1828,positive,mixed,very affordable easy to use,blade bothered me durability 7,low,mixed evaluation
+N1829,positive,,,,high,reviewed
+N1830,neutral,no-opinion,,,high,copied tag list without personal experience
+N1831,neutral,no-opinion,,,high,copied tag list without personal experience
+N1832,neutral,no-opinion,,,high,copied tag list without personal experience
+N1833,neutral,no-opinion,,,high,copied tag list without personal experience
+N1834,neutral,no-opinion,,,high,copied tag list without personal experience
+N1835,neutral,no-opinion,,,high,copied tag list without personal experience
+N1836,positive,,,,high,reviewed
+N1837,neutral,no-opinion,,,high,copied tag list without personal experience
+N1838,positive,,,,low,reviewed
+N1839,neutral,,,,low,reviewed
+N1840,positive,,,,low,reviewed
+N1841,neutral,,,,low,reviewed
+N1842,mixed,mixed,nice product,battery drained quickly,low,mixed evaluation
+N1843,positive,,,,high,reviewed
+N1844,neutral,no-opinion,,,high,copied tag list without personal experience
+N1845,neutral,no-opinion,,,high,copied tag list without personal experience
+N1846,negative,,,,high,reviewed
+N1847,neutral,no-opinion,,,high,copied tag list without personal experience
+N1848,neutral,no-opinion,,,high,copied tag list without personal experience
+N1849,neutral,no-opinion,,,high,copied tag list without personal experience
+N1850,neutral,,,,low,reviewed

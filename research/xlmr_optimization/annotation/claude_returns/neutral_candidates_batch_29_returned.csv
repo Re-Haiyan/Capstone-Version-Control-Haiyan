@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1401,neutral,no-opinion,,,high,copied tag list without personal experience
+N1402,neutral,no-opinion,,,high,copied tag list without personal experience
+N1403,neutral,no-opinion,,,high,copied tag list without personal experience
+N1404,neutral,no-opinion,,,high,copied tag list without personal experience
+N1405,negative,,,,high,reviewed
+N1406,neutral,no-opinion,,,high,copied tag list without personal experience
+N1407,neutral,no-opinion,,,high,copied tag list without personal experience
+N1408,neutral,no-opinion,,,high,copied tag list without personal experience
+N1409,neutral,no-opinion,,,high,copied tag list without personal experience
+N1410,neutral,no-opinion,,,high,copied tag list without personal experience
+N1411,positive,,,,low,reviewed
+N1412,neutral,no-opinion,,,high,copied tag list without personal experience
+N1413,positive,,,,low,reviewed
+N1414,neutral,no-opinion,,,high,copied tag list without personal experience
+N1415,neutral,no-opinion,,,high,copied tag list without personal experience
+N1416,positive,mixed,impressive performance,quite heavy,low,mixed evaluation
+N1417,neutral,no-opinion,,,high,copied tag list without personal experience
+N1418,neutral,no-opinion,,,high,copied tag list without personal experience
+N1419,neutral,no-opinion,,,high,copied tag list without personal experience
+N1420,positive,,,,high,reviewed
+N1421,neutral,no-opinion,,,high,copied tag list without personal experience
+N1422,neutral,no-opinion,,,high,copied tag list without personal experience
+N1423,neutral,no-opinion,,,high,copied tag list without personal experience
+N1424,neutral,no-opinion,,,high,copied tag list without personal experience
+N1425,neutral,no-opinion,,,high,copied tag list without personal experience
+N1426,neutral,no-opinion,,,high,copied tag list without personal experience
+N1427,neutral,no-opinion,,,high,copied tag list without personal experience
+N1428,neutral,no-opinion,,,high,copied tag list without personal experience
+N1429,neutral,no-opinion,,,high,copied tag list without personal experience
+N1430,neutral,no-opinion,,,high,copied tag list without personal experience
+N1431,neutral,no-opinion,,,high,copied tag list without personal experience
+N1432,neutral,no-opinion,,,high,copied tag list without personal experience
+N1433,neutral,no-opinion,,,high,copied tag list without personal experience
+N1434,neutral,no-opinion,,,high,copied tag list without personal experience
+N1435,positive,,,,high,reviewed
+N1436,positive,mixed,3D experience clear visuals,free headphones not included,low,mixed evaluation
+N1437,positive,delivery-only,,,high,reviewed
+N1438,neutral,no-opinion,,,high,copied tag list without personal experience
+N1439,mixed,mixed,product seems good,scratched unit not yet tested,low,mixed evaluation
+N1440,neutral,no-opinion,,,high,copied tag list without personal experience
+N1441,neutral,no-opinion,,,high,copied tag list without personal experience
+N1442,neutral,no-opinion,,,high,copied tag list without personal experience
+N1443,neutral,no-opinion,,,high,copied tag list without personal experience
+N1444,neutral,no-opinion,,,high,copied tag list without personal experience
+N1445,neutral,no-opinion,,,high,copied tag list without personal experience
+N1446,neutral,no-opinion,,,high,copied tag list without personal experience
+N1447,neutral,no-opinion,,,high,copied tag list without personal experience
+N1448,neutral,no-opinion,,,high,copied tag list without personal experience
+N1449,neutral,no-opinion,,,high,copied tag list without personal experience
+N1450,neutral,no-opinion,,,high,copied tag list without personal experience

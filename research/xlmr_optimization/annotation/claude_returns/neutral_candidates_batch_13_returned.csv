@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0601,positive,mixed,maganda matibay malinaw,minsan nagchoppy,low,mixed evaluation
+N0602,positive,,,,high,reviewed
+N0603,positive,,,,high,reviewed
+N0604,positive,,,,high,reviewed
+N0605,positive,,,,high,reviewed
+N0606,neutral,no-opinion,,,high,copied tag list without personal experience
+N0607,positive,,,,high,reviewed
+N0608,positive,,,,low,reviewed
+N0609,positive,,,,high,reviewed
+N0610,positive,,,,low,reviewed
+N0611,positive,,,,high,reviewed
+N0612,positive,,,,high,reviewed
+N0613,mixed,mixed,good for its price,wrong variant pocket not deep,low,mixed evaluation
+N0614,positive,,,,high,reviewed
+N0615,positive,,,,high,reviewed
+N0616,positive,,,,high,reviewed
+N0617,neutral,,,,low,reviewed
+N0618,mixed,mixed,okay naman soft,basag,low,mixed evaluation
+N0619,neutral,,,,low,reviewed
+N0620,negative,mixed,good condition soft,not satisfied wrong brand,low,mixed evaluation
+N0621,positive,,,,high,reviewed
+N0622,positive,,,,high,reviewed
+N0623,positive,delivery-only,,,high,reviewed
+N0624,positive,,,,low,reviewed
+N0625,neutral,no-opinion,,,high,copied tag list without personal experience
+N0626,neutral,no-opinion,,,high,copied tag list without personal experience
+N0627,neutral,no-opinion,,,high,copied tag list without personal experience
+N0628,neutral,no-opinion,,,high,copied tag list without personal experience
+N0629,neutral,no-opinion,,,high,copied tag list without personal experience
+N0630,neutral,no-opinion,,,high,copied tag list without personal experience
+N0631,neutral,no-opinion,,,high,copied tag list without personal experience
+N0632,neutral,no-opinion,,,high,copied tag list without personal experience
+N0633,neutral,no-opinion,,,high,copied tag list without personal experience
+N0634,neutral,no-opinion,,,high,copied tag list without personal experience
+N0635,neutral,no-opinion,,,high,copied tag list without personal experience
+N0636,positive,delivery-only,,,high,reviewed
+N0637,positive,,,,low,reviewed
+N0638,positive,mixed,works sticks decently cable provided,cheap packaging,low,mixed evaluation
+N0639,neutral,no-opinion,,,low,reviewed
+N0640,positive,,,,high,reviewed
+N0641,positive,,,,high,reviewed
+N0642,positive,,,,low,reviewed
+N0643,positive,delivery-only,,,high,reviewed
+N0644,positive,,,,high,reviewed
+N0645,positive,,,,high,reviewed
+N0646,positive,,,,high,reviewed
+N0647,positive,,,,high,reviewed
+N0648,negative,delivery-only,,,high,reviewed
+N0649,positive,,,,low,reviewed
+N0650,positive,,,,high,reviewed

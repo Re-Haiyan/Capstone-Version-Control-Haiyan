@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2901,positive,,,,low,reviewed
+N2902,neutral,no-opinion,,,high,copied tag list without personal experience
+N2903,neutral,no-opinion,,,high,copied tag list without personal experience
+N2904,neutral,no-opinion,,,high,copied tag list without personal experience
+N2905,neutral,no-opinion,,,high,copied tag list without personal experience
+N2906,neutral,no-opinion,,,high,copied tag list without personal experience
+N2907,neutral,no-opinion,,,high,copied tag list without personal experience
+N2908,neutral,no-opinion,,,high,copied tag list without personal experience
+N2909,neutral,no-opinion,,,high,copied tag list without personal experience
+N2910,neutral,no-opinion,,,high,copied tag list without personal experience
+N2911,neutral,no-opinion,,,high,copied tag list without personal experience
+N2912,neutral,no-opinion,,,high,copied tag list without personal experience
+N2913,positive,,,,high,reviewed
+N2914,positive,,,,high,reviewed
+N2915,neutral,no-opinion,,,high,copied tag list without personal experience
+N2916,neutral,no-opinion,,,high,copied tag list without personal experience
+N2917,positive,,,,low,reviewed
+N2918,neutral,no-opinion,,,high,copied tag list without personal experience
+N2919,positive,,,,low,reviewed
+N2920,neutral,no-opinion,,,high,copied tag list without personal experience
+N2921,neutral,no-opinion,,,high,copied tag list without personal experience
+N2922,neutral,no-opinion,,,high,copied tag list without personal experience
+N2923,neutral,no-opinion,,,high,copied tag list without personal experience
+N2924,neutral,,,,low,reviewed
+N2925,neutral,no-opinion,,,high,copied tag list without personal experience
+N2926,neutral,no-opinion,,,high,copied tag list without personal experience
+N2927,neutral,no-opinion,,,high,copied tag list without personal experience
+N2928,neutral,no-opinion,,,high,copied tag list without personal experience
+N2929,neutral,no-opinion,,,high,copied tag list without personal experience
+N2930,neutral,no-opinion,,,high,copied tag list without personal experience
+N2931,neutral,no-opinion,,,high,copied tag list without personal experience
+N2932,neutral,no-opinion,,,high,copied tag list without personal experience
+N2933,neutral,no-opinion,,,high,copied tag list without personal experience
+N2934,neutral,no-opinion,,,high,copied tag list without personal experience
+N2935,neutral,no-opinion,,,high,copied tag list without personal experience
+N2936,neutral,no-opinion,,,high,copied tag list without personal experience
+N2937,neutral,no-opinion,,,high,copied tag list without personal experience
+N2938,neutral,no-opinion,,,high,copied tag list without personal experience
+N2939,neutral,no-opinion,,,high,copied tag list without personal experience
+N2940,neutral,no-opinion,,,high,copied tag list without personal experience
+N2941,positive,,,,low,reviewed
+N2942,positive,,,,low,reviewed
+N2943,neutral,no-opinion,,,high,copied tag list without personal experience
+N2944,neutral,no-opinion,,,high,copied tag list without personal experience
+N2945,neutral,no-opinion,,,high,copied tag list without personal experience
+N2946,neutral,no-opinion,,,high,copied tag list without personal experience
+N2947,neutral,no-opinion,,,high,copied tag list without personal experience
+N2948,neutral,no-opinion,,,high,copied tag list without personal experience
+N2949,neutral,no-opinion,,,high,copied tag list without personal experience
+N2950,neutral,no-opinion,,,high,copied tag list without personal experience

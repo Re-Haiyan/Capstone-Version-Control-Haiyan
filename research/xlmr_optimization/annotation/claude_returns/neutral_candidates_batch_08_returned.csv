@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0351,neutral,no-opinion,,,high,copied tag list without personal experience
+N0352,neutral,no-opinion,,,high,copied tag list without personal experience
+N0353,positive,,,,low,reviewed
+N0354,negative,,,,high,reviewed
+N0355,neutral,no-opinion,,,high,copied tag list without personal experience
+N0356,neutral,no-opinion,,,high,copied tag list without personal experience
+N0357,neutral,no-opinion,,,high,copied tag list without personal experience
+N0358,neutral,no-opinion,,,high,copied tag list without personal experience
+N0359,neutral,no-opinion,,,high,copied tag list without personal experience
+N0360,neutral,no-opinion,,,high,copied tag list without personal experience
+N0361,neutral,no-opinion,,,high,copied tag list without personal experience
+N0362,neutral,no-opinion,,,high,copied tag list without personal experience
+N0363,neutral,no-opinion,,,high,copied tag list without personal experience
+N0364,neutral,no-opinion,,,high,copied tag list without personal experience
+N0365,neutral,no-opinion,,,high,copied tag list without personal experience
+N0366,neutral,no-opinion,,,high,copied tag list without personal experience
+N0367,positive,,,,low,reviewed
+N0368,positive,mixed,goods works strong,clip damaged,low,mixed evaluation
+N0369,positive,,,,high,reviewed
+N0370,neutral,no-opinion,,,high,copied tag list without personal experience
+N0371,neutral,no-opinion,,,high,copied tag list without personal experience
+N0372,positive,,,,low,reviewed
+N0373,positive,,,,high,reviewed
+N0374,neutral,no-opinion,,,high,copied tag list without personal experience
+N0375,neutral,no-opinion,,,high,copied tag list without personal experience
+N0376,neutral,no-opinion,,,high,copied tag list without personal experience
+N0377,neutral,no-opinion,,,high,copied tag list without personal experience
+N0378,neutral,no-opinion,,,high,copied tag list without personal experience
+N0379,neutral,no-opinion,,,high,copied tag list without personal experience
+N0380,neutral,no-opinion,,,high,copied tag list without personal experience
+N0381,neutral,no-opinion,,,high,copied tag list without personal experience
+N0382,neutral,no-opinion,,,high,copied tag list without personal experience
+N0383,neutral,no-opinion,,,high,copied tag list without personal experience
+N0384,neutral,no-opinion,,,low,reviewed
+N0385,negative,,,,high,reviewed
+N0386,neutral,no-opinion,,,high,copied tag list without personal experience
+N0387,neutral,no-opinion,,,high,copied tag list without personal experience
+N0388,neutral,no-opinion,,,high,copied tag list without personal experience
+N0389,neutral,no-opinion,,,high,copied tag list without personal experience
+N0390,positive,,,,high,reviewed
+N0391,unclear,,,,high,reviewed
+N0392,positive,mixed,does the job overall,challenging to set up and pair,low,mixed evaluation
+N0393,negative,,,,high,reviewed
+N0394,positive,,,,high,reviewed
+N0395,neutral,no-opinion,,,low,reviewed
+N0396,neutral,no-opinion,,,low,reviewed
+N0397,positive,,,,high,reviewed
+N0398,positive,,,,high,reviewed
+N0399,neutral,no-opinion,,,high,copied tag list without personal experience
+N0400,neutral,no-opinion,,,high,copied tag list without personal experience

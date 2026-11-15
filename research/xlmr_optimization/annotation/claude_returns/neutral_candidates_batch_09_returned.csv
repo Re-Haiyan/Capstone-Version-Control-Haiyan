@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0401,neutral,no-opinion,,,high,copied tag list without personal experience
+N0402,positive,,,,low,reviewed
+N0403,neutral,no-opinion,,,high,copied tag list without personal experience
+N0404,neutral,no-opinion,,,high,copied tag list without personal experience
+N0405,neutral,no-opinion,,,high,copied tag list without personal experience
+N0406,neutral,no-opinion,,,high,copied tag list without personal experience
+N0407,neutral,no-opinion,,,high,copied tag list without personal experience
+N0408,unclear,,,,high,reviewed
+N0409,positive,,,,high,reviewed
+N0410,positive,,,,high,reviewed
+N0411,neutral,no-opinion,,,high,copied tag list without personal experience
+N0412,positive,,,,low,reviewed
+N0413,neutral,no-opinion,,,low,reviewed
+N0414,neutral,no-opinion,,,high,copied tag list without personal experience
+N0415,neutral,no-opinion,,,high,copied tag list without personal experience
+N0416,neutral,no-opinion,,,high,copied tag list without personal experience
+N0417,negative,,,,high,reviewed
+N0418,negative,,,,high,reviewed
+N0419,negative,,,,high,reviewed
+N0420,positive,,,,high,reviewed
+N0421,positive,,,,high,reviewed
+N0422,negative,,,,high,reviewed
+N0423,neutral,no-opinion,,,high,copied tag list without personal experience
+N0424,neutral,no-opinion,,,high,copied tag list without personal experience
+N0425,neutral,no-opinion,,,high,copied tag list without personal experience
+N0426,neutral,no-opinion,,,high,copied tag list without personal experience
+N0427,neutral,no-opinion,,,high,copied tag list without personal experience
+N0428,neutral,no-opinion,,,high,copied tag list without personal experience
+N0429,neutral,no-opinion,,,high,copied tag list without personal experience
+N0430,neutral,no-opinion,,,high,copied tag list without personal experience
+N0431,neutral,no-opinion,,,high,copied tag list without personal experience
+N0432,positive,,,,high,reviewed
+N0433,neutral,no-opinion,,,high,copied tag list without personal experience
+N0434,neutral,no-opinion,,,high,copied tag list without personal experience
+N0435,neutral,no-opinion,,,high,copied tag list without personal experience
+N0436,neutral,no-opinion,,,high,copied tag list without personal experience
+N0437,neutral,no-opinion,,,high,copied tag list without personal experience
+N0438,neutral,no-opinion,,,high,copied tag list without personal experience
+N0439,neutral,no-opinion,,,high,copied tag list without personal experience
+N0440,negative,,,,high,reviewed
+N0441,positive,,,,low,reviewed
+N0442,positive,,,,high,reviewed
+N0443,positive,,,,high,reviewed
+N0444,positive,,,,low,reviewed
+N0445,neutral,no-opinion,,,high,copied tag list without personal experience
+N0446,neutral,no-opinion,,,high,copied tag list without personal experience
+N0447,neutral,no-opinion,,,high,copied tag list without personal experience
+N0448,positive,mixed,sulit solid mouse,no bubble wrap box damaged,low,mixed evaluation
+N0449,positive,,,,high,reviewed
+N0450,positive,,,,high,reviewed

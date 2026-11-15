@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1501,neutral,no-opinion,,,high,copied tag list without personal experience
+N1502,neutral,no-opinion,,,high,copied tag list without personal experience
+N1503,positive,,,,high,reviewed
+N1504,neutral,no-opinion,,,high,copied tag list without personal experience
+N1505,neutral,no-opinion,,,high,copied tag list without personal experience
+N1506,neutral,no-opinion,,,high,copied tag list without personal experience
+N1507,neutral,no-opinion,,,high,copied tag list without personal experience
+N1508,neutral,no-opinion,,,high,copied tag list without personal experience
+N1509,neutral,no-opinion,,,high,copied tag list without personal experience
+N1510,neutral,no-opinion,,,high,copied tag list without personal experience
+N1511,positive,,,,low,reviewed
+N1512,neutral,no-opinion,,,high,copied tag list without personal experience
+N1513,neutral,no-opinion,,,high,copied tag list without personal experience
+N1514,neutral,no-opinion,,,high,copied tag list without personal experience
+N1515,neutral,no-opinion,,,high,copied tag list without personal experience
+N1516,neutral,no-opinion,,,high,copied tag list without personal experience
+N1517,neutral,no-opinion,,,high,copied tag list without personal experience
+N1518,neutral,no-opinion,,,high,copied tag list without personal experience
+N1519,positive,,,,high,reviewed
+N1520,positive,,,,low,reviewed
+N1521,mixed,mixed,cute pink excellent audio,speaker sound weak,low,mixed evaluation
+N1522,neutral,no-opinion,,,high,copied tag list without personal experience
+N1523,positive,,,,low,reviewed
+N1524,positive,,,,low,reviewed
+N1525,negative,,,,high,reviewed
+N1526,negative,,,,high,reviewed
+N1527,negative,,,,high,reviewed
+N1528,negative,,,,high,reviewed
+N1529,negative,delivery-only,,,high,reviewed
+N1530,positive,,,,low,reviewed
+N1531,negative,,,,high,reviewed
+N1532,negative,,,,high,reviewed
+N1533,negative,,,,high,reviewed
+N1534,negative,,,,high,reviewed
+N1535,negative,,,,high,reviewed
+N1536,positive,,,,high,reviewed
+N1537,negative,,,,high,reviewed
+N1538,mixed,mixed,still works fast delivery,damaged box,low,mixed evaluation
+N1539,negative,,,,high,reviewed
+N1540,negative,,,,high,reviewed
+N1541,positive,,,,low,reviewed
+N1542,positive,delivery-only,,,high,reviewed
+N1543,negative,,,,high,reviewed
+N1544,negative,,,,high,reviewed
+N1545,negative,,,,high,reviewed
+N1546,negative,,,,high,reviewed
+N1547,negative,,,,high,reviewed
+N1548,negative,,,,high,reviewed
+N1549,negative,,,,high,reviewed
+N1550,negative,,,,high,reviewed

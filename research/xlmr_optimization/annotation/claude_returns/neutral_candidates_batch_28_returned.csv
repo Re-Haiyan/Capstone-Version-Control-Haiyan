@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1351,neutral,no-opinion,,,high,copied tag list without personal experience
+N1352,neutral,no-opinion,,,high,copied tag list without personal experience
+N1353,positive,,,,low,reviewed
+N1354,neutral,no-opinion,,,high,copied tag list without personal experience
+N1355,neutral,no-opinion,,,high,copied tag list without personal experience
+N1356,neutral,no-opinion,,,high,copied tag list without personal experience
+N1357,neutral,no-opinion,,,high,copied tag list without personal experience
+N1358,neutral,no-opinion,,,high,copied tag list without personal experience
+N1359,neutral,no-opinion,,,high,copied tag list without personal experience
+N1360,neutral,no-opinion,,,high,copied tag list without personal experience
+N1361,positive,,,,low,reviewed
+N1362,positive,,,,high,reviewed
+N1363,positive,,,,low,reviewed
+N1364,neutral,no-opinion,,,high,copied tag list without personal experience
+N1365,neutral,no-opinion,,,high,copied tag list without personal experience
+N1366,neutral,no-opinion,,,high,copied tag list without personal experience
+N1367,neutral,no-opinion,,,high,copied tag list without personal experience
+N1368,neutral,no-opinion,,,high,copied tag list without personal experience
+N1369,neutral,no-opinion,,,high,copied tag list without personal experience
+N1370,neutral,no-opinion,,,high,copied tag list without personal experience
+N1371,neutral,no-opinion,,,high,copied tag list without personal experience
+N1372,neutral,no-opinion,,,high,copied tag list without personal experience
+N1373,neutral,no-opinion,,,high,copied tag list without personal experience
+N1374,neutral,no-opinion,,,high,copied tag list without personal experience
+N1375,neutral,,,,low,reviewed
+N1376,neutral,no-opinion,,,high,copied tag list without personal experience
+N1377,neutral,no-opinion,,,high,copied tag list without personal experience
+N1378,neutral,no-opinion,,,high,copied tag list without personal experience
+N1379,neutral,no-opinion,,,high,copied tag list without personal experience
+N1380,positive,,,,high,reviewed
+N1381,neutral,no-opinion,,,high,copied tag list without personal experience
+N1382,neutral,no-opinion,,,high,copied tag list without personal experience
+N1383,positive,,,,high,reviewed
+N1384,neutral,no-opinion,,,high,copied tag list without personal experience
+N1385,neutral,no-opinion,,,high,copied tag list without personal experience
+N1386,positive,,,,high,reviewed
+N1387,neutral,no-opinion,,,high,copied tag list without personal experience
+N1388,neutral,no-opinion,,,high,copied tag list without personal experience
+N1389,neutral,no-opinion,,,high,copied tag list without personal experience
+N1390,neutral,no-opinion,,,high,copied tag list without personal experience
+N1391,neutral,no-opinion,,,high,copied tag list without personal experience
+N1392,neutral,no-opinion,,,high,copied tag list without personal experience
+N1393,neutral,no-opinion,,,high,copied tag list without personal experience
+N1394,neutral,no-opinion,,,high,copied tag list without personal experience
+N1395,neutral,no-opinion,,,high,copied tag list without personal experience
+N1396,neutral,no-opinion,,,high,copied tag list without personal experience
+N1397,neutral,no-opinion,,,high,copied tag list without personal experience
+N1398,neutral,no-opinion,,,high,copied tag list without personal experience
+N1399,neutral,no-opinion,,,high,copied tag list without personal experience
+N1400,neutral,no-opinion,,,high,copied tag list without personal experience

@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2851,negative,,,,high,reviewed
+N2852,negative,,,,high,reviewed
+N2853,unclear,,,,high,reviewed
+N2854,negative,,,,high,reviewed
+N2855,negative,,,,high,reviewed
+N2856,positive,,,,low,reviewed
+N2857,positive,,,,high,reviewed
+N2858,neutral,no-opinion,,,high,copied tag list without personal experience
+N2859,neutral,no-opinion,,,high,copied tag list without personal experience
+N2860,neutral,no-opinion,,,high,copied tag list without personal experience
+N2861,neutral,no-opinion,,,high,copied tag list without personal experience
+N2862,neutral,no-opinion,,,high,copied tag list without personal experience
+N2863,neutral,no-opinion,,,high,copied tag list without personal experience
+N2864,positive,,,,low,reviewed
+N2865,unclear,,,,high,reviewed
+N2866,neutral,no-opinion,,,high,copied tag list without personal experience
+N2867,neutral,no-opinion,,,high,copied tag list without personal experience
+N2868,neutral,,,,low,reviewed
+N2869,positive,,,,high,reviewed
+N2870,neutral,no-opinion,,,high,copied tag list without personal experience
+N2871,mixed,mixed,very light,drains fast charging ok,low,mixed evaluation
+N2872,neutral,no-opinion,,,high,copied tag list without personal experience
+N2873,neutral,,,,low,reviewed
+N2874,negative,,,,high,reviewed
+N2875,neutral,no-opinion,,,high,copied tag list without personal experience
+N2876,neutral,no-opinion,,,high,copied tag list without personal experience
+N2877,neutral,no-opinion,,,high,copied tag list without personal experience
+N2878,neutral,no-opinion,,,high,copied tag list without personal experience
+N2879,neutral,no-opinion,,,high,copied tag list without personal experience
+N2880,positive,,,,low,reviewed
+N2881,neutral,no-opinion,,,high,copied tag list without personal experience
+N2882,neutral,no-opinion,,,high,copied tag list without personal experience
+N2883,neutral,no-opinion,,,high,copied tag list without personal experience
+N2884,neutral,no-opinion,,,high,copied tag list without personal experience
+N2885,neutral,no-opinion,,,high,copied tag list without personal experience
+N2886,neutral,no-opinion,,,high,copied tag list without personal experience
+N2887,neutral,no-opinion,,,high,copied tag list without personal experience
+N2888,positive,,,,low,reviewed
+N2889,neutral,no-opinion,,,high,copied tag list without personal experience
+N2890,neutral,no-opinion,,,high,copied tag list without personal experience
+N2891,neutral,no-opinion,,,high,copied tag list without personal experience
+N2892,neutral,no-opinion,,,high,copied tag list without personal experience
+N2893,neutral,no-opinion,,,high,copied tag list without personal experience
+N2894,neutral,no-opinion,,,high,copied tag list without personal experience
+N2895,neutral,no-opinion,,,high,copied tag list without personal experience
+N2896,neutral,no-opinion,,,high,copied tag list without personal experience
+N2897,neutral,no-opinion,,,high,copied tag list without personal experience
+N2898,neutral,no-opinion,,,high,copied tag list without personal experience
+N2899,neutral,no-opinion,,,high,copied tag list without personal experience
+N2900,neutral,no-opinion,,,high,copied tag list without personal experience

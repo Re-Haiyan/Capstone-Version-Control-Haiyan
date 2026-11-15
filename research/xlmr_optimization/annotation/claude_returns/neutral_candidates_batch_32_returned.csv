@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1551,neutral,no-opinion,,,high,copied tag list without personal experience
+N1552,neutral,no-opinion,,,high,copied tag list without personal experience
+N1553,neutral,no-opinion,,,high,copied tag list without personal experience
+N1554,negative,delivery-only,,,high,reviewed
+N1555,positive,mixed,works well fast delivery,crooked on glass,low,mixed evaluation
+N1556,positive,delivery-only,,,high,reviewed
+N1557,neutral,,,,low,reviewed
+N1558,negative,delivery-only,,,high,reviewed
+N1559,neutral,,,,low,reviewed
+N1560,positive,delivery-only,,,high,reviewed
+N1561,positive,delivery-only,,,high,reviewed
+N1562,neutral,,,,low,reviewed
+N1563,positive,delivery-only,,,high,reviewed
+N1564,neutral,,,,low,reviewed
+N1565,positive,mixed,cable is good,slow delivery,low,mixed evaluation
+N1566,positive,,,,high,reviewed
+N1567,positive,delivery-only,,,high,reviewed
+N1568,negative,,,,high,reviewed
+N1569,positive,,,,high,reviewed
+N1570,positive,,,,high,reviewed
+N1571,positive,,,,low,reviewed
+N1572,neutral,no-opinion,,,high,copied tag list without personal experience
+N1573,neutral,,,,low,reviewed
+N1574,positive,,,,low,reviewed
+N1575,neutral,no-opinion,,,high,copied tag list without personal experience
+N1576,positive,,,,high,reviewed
+N1577,neutral,no-opinion,,,high,copied tag list without personal experience
+N1578,neutral,,,,low,reviewed
+N1579,neutral,no-opinion,,,high,copied tag list without personal experience
+N1580,positive,,,,high,reviewed
+N1581,positive,,,,high,reviewed
+N1582,positive,,,,high,reviewed
+N1583,positive,,,,high,reviewed
+N1584,positive,,,,high,reviewed
+N1585,negative,,,,high,reviewed
+N1586,neutral,,,,low,reviewed
+N1587,positive,,,,high,reviewed
+N1588,positive,,,,high,reviewed
+N1589,positive,,,,high,reviewed
+N1590,neutral,,,,low,reviewed
+N1591,mixed,mixed,design okay,weak wind,low,mixed evaluation
+N1592,positive,mixed,unique fashionable light,not water resistant,low,mixed evaluation
+N1593,negative,,,,high,reviewed
+N1594,neutral,no-opinion,,,high,copied tag list without personal experience
+N1595,neutral,no-opinion,,,high,copied tag list without personal experience
+N1596,negative,,,,high,reviewed
+N1597,negative,,,,high,reviewed
+N1598,neutral,no-opinion,,,low,reviewed
+N1599,neutral,no-opinion,,,low,reviewed
+N1600,negative,,,,high,reviewed

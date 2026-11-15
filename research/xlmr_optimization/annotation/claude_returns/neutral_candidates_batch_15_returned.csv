@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0701,mixed,mixed,lightweight compact charges fast,gets pretty hot advises against using,low,mixed evaluation
+N0702,positive,,,,high,reviewed
+N0703,positive,,,,high,reviewed
+N0704,neutral,no-opinion,,,high,copied tag list without personal experience
+N0705,positive,,,,high,reviewed
+N0706,positive,,,,high,reviewed
+N0707,positive,,,,low,reviewed
+N0708,positive,,,,high,reviewed
+N0709,unclear,,,,high,reviewed
+N0710,positive,,,,high,reviewed
+N0711,neutral,no-opinion,,,high,copied tag list without personal experience
+N0712,neutral,no-opinion,,,high,copied tag list without personal experience
+N0713,neutral,no-opinion,,,high,copied tag list without personal experience
+N0714,neutral,no-opinion,,,high,copied tag list without personal experience
+N0715,positive,,,,high,reviewed
+N0716,positive,,,,high,reviewed
+N0717,neutral,no-opinion,,,high,copied tag list without personal experience
+N0718,positive,,,,high,reviewed
+N0719,positive,,,,high,reviewed
+N0720,positive,,,,high,reviewed
+N0721,positive,,,,high,reviewed
+N0722,positive,,,,high,reviewed
+N0723,positive,,,,high,reviewed
+N0724,positive,,,,high,reviewed
+N0725,positive,,,,high,reviewed
+N0726,positive,,,,high,reviewed
+N0727,positive,,,,high,reviewed
+N0728,positive,,,,high,reviewed
+N0729,positive,,,,high,reviewed
+N0730,positive,,,,low,reviewed
+N0731,positive,,,,high,reviewed
+N0732,positive,,,,high,reviewed
+N0733,positive,,,,high,reviewed
+N0734,positive,,,,high,reviewed
+N0735,positive,,,,high,reviewed
+N0736,positive,,,,high,reviewed
+N0737,positive,,,,high,reviewed
+N0738,positive,,,,high,reviewed
+N0739,positive,,,,high,reviewed
+N0740,positive,,,,high,reviewed
+N0741,positive,,,,high,reviewed
+N0742,positive,,,,low,reviewed
+N0743,neutral,,,,low,reviewed
+N0744,neutral,,,,low,reviewed
+N0745,positive,,,,high,reviewed
+N0746,positive,,,,high,reviewed
+N0747,positive,,,,high,reviewed
+N0748,positive,,,,high,reviewed
+N0749,positive,,,,high,reviewed
+N0750,positive,mixed,ayus excellent,slow shipping,low,mixed evaluation

@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N0101,negative,mixed,sound goods,uncomfortable on ears,low,mixed evaluation
+N0102,neutral,no-opinion,,,low,reviewed
+N0103,negative,,,,high,reviewed
+N0104,positive,,,,low,reviewed
+N0105,positive,,,,high,reviewed
+N0106,neutral,,,,low,reviewed
+N0107,positive,,,,high,reviewed
+N0108,positive,mixed,very good quality comfort good,too much bass voice call bad,low,mixed evaluation
+N0109,neutral,no-opinion,,,high,copied tag list without personal experience
+N0110,negative,,,,high,reviewed
+N0111,positive,,,,high,reviewed
+N0112,neutral,no-opinion,,,high,copied tag list without personal experience
+N0113,positive,,,,high,reviewed
+N0114,positive,,,,high,reviewed
+N0115,negative,,,,high,reviewed
+N0116,positive,,,,high,reviewed
+N0117,positive,,,,high,reviewed
+N0118,positive,,,,high,reviewed
+N0119,positive,,,,high,reviewed
+N0120,positive,,,,high,reviewed
+N0121,negative,,,,high,reviewed
+N0122,positive,,,,low,reviewed
+N0123,negative,,,,high,reviewed
+N0124,negative,mixed,sleek lightweight,scratched not brand new slow charging,low,mixed evaluation
+N0125,positive,,,,low,reviewed
+N0126,positive,,,,high,reviewed
+N0127,positive,,,,high,reviewed
+N0128,positive,,,,low,reviewed
+N0129,unclear,,,,high,reviewed
+N0130,positive,delivery-only,,,high,reviewed
+N0131,unclear,,,,high,reviewed
+N0132,negative,,,,high,reviewed
+N0133,positive,,,,low,reviewed
+N0134,unclear,,,,high,reviewed
+N0135,negative,,,,high,reviewed
+N0136,negative,,,,high,reviewed
+N0137,negative,mixed,fast delivery,did not reach 100 Mbps,low,mixed evaluation
+N0138,negative,,,,high,reviewed
+N0139,negative,,,,high,reviewed
+N0140,negative,,,,high,reviewed
+N0141,negative,,,,high,reviewed
+N0142,neutral,no-opinion,,,high,copied tag list without personal experience
+N0143,neutral,no-opinion,,,high,copied tag list without personal experience
+N0144,neutral,,,,low,reviewed
+N0145,neutral,no-opinion,,,high,copied tag list without personal experience
+N0146,positive,,,,high,reviewed
+N0147,positive,,,,high,reviewed
+N0148,neutral,,,,low,reviewed
+N0149,neutral,no-opinion,,,high,copied tag list without personal experience
+N0150,neutral,no-opinion,,,high,copied tag list without personal experience

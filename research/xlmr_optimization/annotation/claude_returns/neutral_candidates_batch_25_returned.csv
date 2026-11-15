@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1201,positive,,,,high,reviewed
+N1202,neutral,no-opinion,,,high,copied tag list without personal experience
+N1203,neutral,no-opinion,,,high,copied tag list without personal experience
+N1204,positive,,,,low,reviewed
+N1205,neutral,no-opinion,,,high,copied tag list without personal experience
+N1206,positive,,,,high,reviewed
+N1207,positive,,,,high,reviewed
+N1208,positive,,,,low,reviewed
+N1209,positive,,,,low,reviewed
+N1210,positive,,,,high,reviewed
+N1211,neutral,no-opinion,,,high,copied tag list without personal experience
+N1212,positive,,,,high,reviewed
+N1213,neutral,no-opinion,,,high,copied tag list without personal experience
+N1214,neutral,no-opinion,,,high,copied tag list without personal experience
+N1215,mixed,mixed,sulit big discount okay,long wait,low,mixed evaluation
+N1216,positive,,,,low,reviewed
+N1217,negative,,,,high,reviewed
+N1218,neutral,no-opinion,,,high,copied tag list without personal experience
+N1219,neutral,no-opinion,,,high,copied tag list without personal experience
+N1220,positive,,,,low,reviewed
+N1221,neutral,,,,low,reviewed
+N1222,neutral,,,,low,reviewed
+N1223,neutral,no-opinion,,,high,copied tag list without personal experience
+N1224,neutral,no-opinion,,,high,copied tag list without personal experience
+N1225,positive,,,,high,reviewed
+N1226,positive,,,,high,reviewed
+N1227,positive,,,,high,reviewed
+N1228,neutral,no-opinion,,,high,copied tag list without personal experience
+N1229,neutral,no-opinion,,,high,copied tag list without personal experience
+N1230,neutral,no-opinion,,,low,reviewed
+N1231,unclear,,,,high,reviewed
+N1232,positive,,,,low,reviewed
+N1233,neutral,no-opinion,,,low,reviewed
+N1234,positive,,,,low,reviewed
+N1235,positive,,,,high,reviewed
+N1236,positive,,,,high,reviewed
+N1237,positive,,,,low,reviewed
+N1238,positive,,,,low,reviewed
+N1239,positive,,,,high,reviewed
+N1240,neutral,no-opinion,,,low,reviewed
+N1241,positive,,,,low,reviewed
+N1242,positive,,,,low,reviewed
+N1243,positive,,,,low,reviewed
+N1244,positive,,,,high,reviewed
+N1245,neutral,no-opinion,,,high,copied tag list without personal experience
+N1246,neutral,no-opinion,,,high,copied tag list without personal experience
+N1247,neutral,no-opinion,,,high,copied tag list without personal experience
+N1248,neutral,no-opinion,,,high,copied tag list without personal experience
+N1249,neutral,no-opinion,,,high,copied tag list without personal experience
+N1250,neutral,no-opinion,,,high,copied tag list without personal experience

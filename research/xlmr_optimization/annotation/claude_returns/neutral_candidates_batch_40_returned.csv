@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N1951,positive,,,,low,reviewed
+N1952,neutral,no-opinion,,,high,copied tag list without personal experience
+N1953,neutral,no-opinion,,,high,copied tag list without personal experience
+N1954,negative,,,,high,reviewed
+N1955,unclear,,,,high,reviewed
+N1956,neutral,no-opinion,,,high,copied tag list without personal experience
+N1957,neutral,no-opinion,,,high,copied tag list without personal experience
+N1958,positive,,,,low,reviewed
+N1959,positive,delivery-only,,,high,reviewed
+N1960,positive,,,,high,reviewed
+N1961,positive,,,,high,reviewed
+N1962,neutral,no-opinion,,,high,copied tag list without personal experience
+N1963,neutral,no-opinion,,,high,copied tag list without personal experience
+N1964,neutral,no-opinion,,,high,copied tag list without personal experience
+N1965,neutral,no-opinion,,,high,copied tag list without personal experience
+N1966,neutral,no-opinion,,,high,copied tag list without personal experience
+N1967,neutral,no-opinion,,,high,copied tag list without personal experience
+N1968,neutral,no-opinion,,,high,copied tag list without personal experience
+N1969,neutral,no-opinion,,,high,copied tag list without personal experience
+N1970,neutral,no-opinion,,,high,copied tag list without personal experience
+N1971,neutral,no-opinion,,,high,copied tag list without personal experience
+N1972,neutral,no-opinion,,,high,copied tag list without personal experience
+N1973,neutral,no-opinion,,,high,copied tag list without personal experience
+N1974,neutral,no-opinion,,,high,copied tag list without personal experience
+N1975,positive,mixed,item is good,delivery rider was rude,low,mixed evaluation
+N1976,neutral,no-opinion,,,high,copied tag list without personal experience
+N1977,positive,,,,low,reviewed
+N1978,neutral,no-opinion,,,high,copied tag list without personal experience
+N1979,neutral,no-opinion,,,high,copied tag list without personal experience
+N1980,neutral,no-opinion,,,high,copied tag list without personal experience
+N1981,neutral,no-opinion,,,high,copied tag list without personal experience
+N1982,neutral,no-opinion,,,low,reviewed
+N1983,neutral,no-opinion,,,low,reviewed
+N1984,positive,,,,low,reviewed
+N1985,positive,,,,high,reviewed
+N1986,neutral,no-opinion,,,low,reviewed
+N1987,positive,,,,high,reviewed
+N1988,positive,,,,high,reviewed
+N1989,neutral,,,,low,reviewed
+N1990,neutral,no-opinion,,,low,reviewed
+N1991,neutral,no-opinion,,,high,copied tag list without personal experience
+N1992,positive,,,,high,reviewed
+N1993,neutral,no-opinion,,,high,copied tag list without personal experience
+N1994,neutral,no-opinion,,,high,copied tag list without personal experience
+N1995,neutral,no-opinion,,,high,copied tag list without personal experience
+N1996,neutral,no-opinion,,,high,copied tag list without personal experience
+N1997,neutral,no-opinion,,,high,copied tag list without personal experience
+N1998,neutral,no-opinion,,,high,copied tag list without personal experience
+N1999,positive,,,,low,reviewed
+N2000,neutral,no-opinion,,,high,copied tag list without personal experience

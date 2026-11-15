@@ -1,0 +1,51 @@
+id,sentiment,tags,positive_aspect,negative_aspect,confidence,rationale
+N2951,neutral,no-opinion,,,high,copied tag list without personal experience
+N2952,neutral,no-opinion,,,high,copied tag list without personal experience
+N2953,neutral,no-opinion,,,high,copied tag list without personal experience
+N2954,neutral,no-opinion,,,high,copied tag list without personal experience
+N2955,neutral,no-opinion,,,high,copied tag list without personal experience
+N2956,neutral,no-opinion,,,high,copied tag list without personal experience
+N2957,positive,,,,low,reviewed
+N2958,neutral,no-opinion,,,high,copied tag list without personal experience
+N2959,neutral,no-opinion,,,high,copied tag list without personal experience
+N2960,neutral,no-opinion,,,high,copied tag list without personal experience
+N2961,neutral,no-opinion,,,high,copied tag list without personal experience
+N2962,neutral,no-opinion,,,high,copied tag list without personal experience
+N2963,positive,,,,high,reviewed
+N2964,negative,,,,high,reviewed
+N2965,negative,,,,high,reviewed
+N2966,negative,,,,high,reviewed
+N2967,positive,,,,high,reviewed
+N2968,neutral,no-opinion,,,low,reviewed
+N2969,positive,,,,low,reviewed
+N2970,neutral,no-opinion,,,low,reviewed
+N2971,neutral,no-opinion,,,low,reviewed
+N2972,neutral,no-opinion,,,low,reviewed
+N2973,negative,,,,high,reviewed
+N2974,negative,,,,high,reviewed
+N2975,negative,,,,high,reviewed
+N2976,negative,,,,high,reviewed
+N2977,negative,,,,high,reviewed
+N2978,negative,,,,high,reviewed
+N2979,negative,,,,high,reviewed
+N2980,negative,,,,high,reviewed
+N2981,negative,,,,high,reviewed
+N2982,negative,,,,high,reviewed
+N2983,negative,,,,high,reviewed
+N2984,negative,,,,high,reviewed
+N2985,negative,,,,high,reviewed
+N2986,negative,,,,high,reviewed
+N2987,neutral,,,,low,reviewed
+N2988,negative,,,,high,reviewed
+N2989,negative,,,,high,reviewed
+N2990,neutral,no-opinion,,,low,reviewed
+N2991,neutral,no-opinion,,,low,reviewed
+N2992,neutral,no-opinion,,,low,reviewed
+N2993,neutral,no-opinion,,,low,reviewed
+N2994,positive,,,,high,reviewed
+N2995,positive,,,,high,reviewed
+N2996,negative,mixed,thinner than Cat6 cable,not so tough,low,mixed evaluation
+N2997,neutral,no-opinion,,,low,reviewed
+N2998,neutral,,,,low,reviewed
+N2999,neutral,no-opinion,,,low,reviewed
+N3000,neutral,no-opinion,,,low,reviewed
