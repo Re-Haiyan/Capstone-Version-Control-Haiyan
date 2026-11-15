@@ -43,3 +43,11 @@ The extractor's measured result is unchanged and is not a production accuracy cl
 ## Rollback
 - Explanations: already off. To stay off, leave the override file as it is.
 - Code: `cd ~/defaketive && git merge --ff-only` is not a rollback; to return to the previous release, check out `2c6e056befe0ad7a24652bd12d4d28f7af236a8f` (recorded in `old.sha`), run `bash deploy/setup-server.sh`, and confirm the site. No database restore is needed for that, because nothing was migrated; the backups are there if one is ever wanted.
+
+## Rolled back (16 November 2026, at the owner's instruction)
+
+The VM was returned to `2c6e056befe0ad7a24652bd12d4d28f7af236a8f` on branch `deployment` (clean tree), the override file was removed (a copy is in the backup folder), the site was rebuilt and restarted, and local and public checks passed. The same 120 products compared with the capture taken before the deployment: verdict state, decision, headline, lead, summary, text, hazard badges and reviews analysed all identical (0 differences), so the original wording is back as well. The database was not restored because nothing in it had been changed; it now holds 399 products and 72,389 reviews (two products scanned by visitors in the meantime). Log on the VM: `/home/azureuser/rollback-2c6e056.log`. **The table at the top describes the state before this rollback.**
+
+## A separate bug reported on the live site: a raw pattern shown as a "warning word"
+
+Not caused by the release: it is in `2c6e056` too. Some entries in the hazard word lists are regular expressions, and the "Warning words found" card showed the entry instead of the words the review used. Measured on the production database (read-only): 11 of 399 products, 95 matches, and in all 95 the server already sends the position of the matched text. Fix: `src/lib/product.ts` shows the matched text and never a pattern (display only; the hazard checker, its lists, verdicts and counts are untouched), with `tests/warning-words.test.mjs`. It is on branch `fix/warning-words-pattern` (commit `09d9946`, based on the production commit) and on the feature branch. **Not deployed.**

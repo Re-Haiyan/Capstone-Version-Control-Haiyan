@@ -2,7 +2,7 @@
 
 # Deployment readiness
 
-## Verdict: **CODE DEPLOYED TO THE VM (15 Nov 2026) WITH EXPLANATIONS OFF. NOT READY TO SWITCH ON.** See `live_deployment_2026-11-15.md`.
+## Verdict: **DEPLOYED TO THE VM ON 15 NOV 2026, THEN ROLLED BACK ON 16 NOV 2026: THE VM RUNS `2c6e056`. NOT READY TO SWITCH ON.** See `live_deployment_2026-11-15.md`.
 
 Why staging: the feature is complete, backward compatible, switchable off, covered by 429 passing tests (on Python 3.11 and on Python 3.12 with the VM's library versions), and its main risks (a changed
 decision, a hidden hazard, an untraceable claim, a slow first page) have each been checked and found clean on the saved products.
