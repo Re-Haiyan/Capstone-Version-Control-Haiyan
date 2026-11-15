@@ -34,7 +34,7 @@ DIRECT_PATTERNS: dict[str, re.Pattern[str]] = {
         re.I,
     ),
     "burning_smoke": re.compile(
-        r"\b(?:smell(?:ed|s)?\s+of\s+smoke|smell(?:ed|s)?\s+(?:like\s+)?"
+        r"\b(?:smell(?:ed|s)?\s+(?:of\s+)?smoke|smell(?:ed|s)?\s+(?:like\s+)?"
         r"burning|amoy\s+sunog|nangamoy\s+sunog|"
         r"burn(?:ed|t)\s+(?:out|itself)|"
         r"(?:smoke|smoked|smoking)\s+(?:came|coming|from|out))\b",
@@ -113,7 +113,15 @@ def review_candidates(text: str) -> tuple[set[str], set[str], bool]:
     direct, denied = set(), set()
     for code, pattern in DIRECT_PATTERNS.items():
         for match in pattern.finditer(text):
-            if _denied(text, match):
+            # Feature claims such as "overheating protection" do not describe
+            # an incident. Genuine events later in the same review still count.
+            suffix = text[match.end():match.end() + 30]
+            if code == "overheating" and re.match(
+                r"^\s*(?:protection|prevention|control|guard|resistan\w*|proof)\b",
+                suffix, re.I
+            ):
+                denied.add("protection_feature_not_an_event")
+            elif _denied(text, match):
                 denied.add(code)
             else:
                 direct.add(code)
