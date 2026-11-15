@@ -75,3 +75,7 @@ These examples are candidate adjudication priorities, not a certified reference 
 - Future policy: `phase5/S4_V2_PROPOSAL.md`, **draft only**.
 
 No weights changed. No frozen test accessed. No production deployment.
+
+## Training data uncertainty ablation (not a retest)
+
+The development-only `phase5/training_ablation_manifest.py` generates three sample-weight columns: unchanged v1, exclude only the 71 cross-provider disputed items, and tentatively downweight all S4-ambiguous tag-shape rows to 0.25 while excluding disputed items. These are **candidate training views, not corrected annotations or new truth**. The GitHub Actions artifact records the effective class supports. Do not compare their F1 without independent product-grouped selection, and do not claim either alternative is better without experiments. No model training is performed by this script.

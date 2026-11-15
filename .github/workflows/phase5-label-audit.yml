@@ -32,6 +32,17 @@ jobs:
           name: phase5-ai-agreement
           path: /tmp/phase5-comparison/
           if-no-files-found: error
+      - name: Inspect quarantined or downweighted development samples (no reannotation)
+        run: |
+          python -m unittest discover -s tests -p 'test_phase5_training_manifest.py' -v
+          python research/xlmr_optimization/phase5/training_ablation_manifest.py --out-dir /tmp/phase5-training-ablation > /tmp/phase5-training-ablation.log
+          cat /tmp/phase5-training-ablation.log
+      - name: Export proposed training-only weights for reproducibility
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-training-ablation
+          path: /tmp/phase5-training-ablation/
+          if-no-files-found: error
       - name: Upload non-adjudicated review queue and aggregate counts
         uses: actions/upload-artifact@v4
         with:
