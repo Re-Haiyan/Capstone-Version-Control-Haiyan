@@ -109,6 +109,13 @@ class InputContract(unittest.TestCase):
                 with self.assertRaises(mod.IntakeError):
                     entry(row)
 
+    def test_marketplace_domain_and_listing_path_must_be_realistic(self):
+        with self.assertRaises(mod.IntakeError):
+            entry(raw(listing_url="https://fake-lazada.example.com/p/item"))
+        with self.assertRaises(mod.IntakeError):
+            entry(raw(listing_url="https://www.lazada.com.ph/"))
+        self.assertEqual(entry(raw()) .marketplace, "lazada")
+
     def test_refuses_malformed_jsonl_and_duplicate_unexpected_field(self):
         with tempfile.TemporaryDirectory() as folder:
             bad = Path(folder) / "bad.jsonl"
@@ -170,6 +177,26 @@ class SplitAndOverlap(unittest.TestCase):
         )
         self.assertEqual(result["manifest"]["rows_accepted"], 0)
         self.assertEqual(result["manifest"]["rows_rejected_by_reason"]["historical_or_internal_duplicate"], 2)
+
+    def test_reused_public_listing_url_cannot_get_different_product_ids(self):
+        first = entry(raw(listing_id="initial-product-key"))
+        second = entry(raw(
+            listing_id="renamed-product-key",
+            listing_url=first.listing_url,
+            review_text=distinct_review("changed"),
+        ))
+        with self.assertRaises(mod.IntakeError):
+            mod.build([first, second], fake_history())
+
+    def test_one_product_id_cannot_point_to_different_listing_urls(self):
+        first = entry(raw(listing_id="first-key"))
+        second = entry(raw(
+            listing_id="first-key",
+            listing_url="https://www.lazada.com.ph/products/different-key.html",
+            review_text=distinct_review("different-url"),
+        ))
+        with self.assertRaises(mod.IntakeError):
+            mod.build([first, second], fake_history())
 
     def test_multiple_reviews_cannot_leak_product_across_splits(self):
         keys = [f"sample-unique-item-{i}" for i in range(25)]
