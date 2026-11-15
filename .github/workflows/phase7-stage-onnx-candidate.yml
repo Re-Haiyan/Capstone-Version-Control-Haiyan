@@ -53,6 +53,10 @@ jobs:
           python research/xlmr_optimization/phase7/export_staging_onnx.py \
             --artifact "$RUNNER_TEMP/phase7-original" \
             --output "$RUNNER_TEMP/phase7-staging"
+      - name: Measure isolated ONNX-only CPU memory and latency with synthetic inputs
+        run: |
+          python research/xlmr_optimization/phase7/benchmark_staging_onnx.py \
+            --candidate "$RUNNER_TEMP/phase7-staging"
       - name: Enforce NOT release eligible and required outputs
         run: |
           python - <<'PY'
@@ -74,5 +78,6 @@ jobs:
             ${{ runner.temp }}/phase7-staging/model.onnx
             ${{ runner.temp }}/phase7-staging/tokenizer.json
             ${{ runner.temp }}/phase7-staging/manifest.json
+            ${{ runner.temp }}/phase7-staging/isolated_cpu_benchmark.json
           retention-days: 7
           if-no-files-found: error
