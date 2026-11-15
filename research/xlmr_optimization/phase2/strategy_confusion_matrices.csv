@@ -1,0 +1,217 @@
+strategy,C,evaluation,true,pred_negative,pred_neutral,pred_positive
+S0 baseline head,0.003,dev_market,negative,147,10,22
+S0 baseline head,0.003,dev_market,neutral,26,19,38
+S0 baseline head,0.003,dev_market,positive,11,14,208
+S0 baseline head,0.003,dev_ai_pool,negative,324,15,5
+S0 baseline head,0.003,dev_ai_pool,neutral,8,3,4
+S0 baseline head,0.003,dev_ai_pool,positive,4,5,309
+S0 baseline head,0.003,cv_market,negative,850,97,136
+S0 baseline head,0.003,cv_market,neutral,179,104,384
+S0 baseline head,0.003,cv_market,positive,58,113,1708
+S0 baseline head,0.003,cv_ai_pool,negative,3337,101,67
+S0 baseline head,0.003,cv_ai_pool,neutral,45,38,63
+S0 baseline head,0.003,cv_ai_pool,positive,39,79,3009
+S0 baseline head,0.003,cv_firecs,negative,2260,119,2
+S0 baseline head,0.003,cv_firecs,neutral,236,2184,129
+S0 baseline head,0.003,cv_firecs,positive,3,112,2295
+S0 baseline head,0.003,cv_all,negative,6447,317,205
+S0 baseline head,0.003,cv_all,neutral,460,2326,576
+S0 baseline head,0.003,cv_all,positive,100,304,7012
+S0 baseline head,0.03,dev_market,negative,144,11,24
+S0 baseline head,0.03,dev_market,neutral,27,17,39
+S0 baseline head,0.03,dev_market,positive,14,9,210
+S0 baseline head,0.03,dev_ai_pool,negative,324,15,5
+S0 baseline head,0.03,dev_ai_pool,neutral,8,2,5
+S0 baseline head,0.03,dev_ai_pool,positive,2,7,309
+S0 baseline head,0.03,cv_market,negative,854,83,146
+S0 baseline head,0.03,cv_market,neutral,185,113,369
+S0 baseline head,0.03,cv_market,positive,66,123,1690
+S0 baseline head,0.03,cv_ai_pool,negative,3312,123,70
+S0 baseline head,0.03,cv_ai_pool,neutral,47,39,60
+S0 baseline head,0.03,cv_ai_pool,positive,58,70,2999
+S0 baseline head,0.03,cv_firecs,negative,2250,128,3
+S0 baseline head,0.03,cv_firecs,neutral,236,2184,129
+S0 baseline head,0.03,cv_firecs,positive,2,125,2283
+S0 baseline head,0.03,cv_all,negative,6416,334,219
+S0 baseline head,0.03,cv_all,neutral,468,2336,558
+S0 baseline head,0.03,cv_all,positive,126,318,6972
+S1 class-weighted,0.003,dev_market,negative,141,18,20
+S1 class-weighted,0.003,dev_market,neutral,23,28,32
+S1 class-weighted,0.003,dev_market,positive,8,26,199
+S1 class-weighted,0.003,dev_ai_pool,negative,318,22,4
+S1 class-weighted,0.003,dev_ai_pool,neutral,5,8,2
+S1 class-weighted,0.003,dev_ai_pool,positive,3,10,305
+S1 class-weighted,0.003,cv_market,negative,803,172,108
+S1 class-weighted,0.003,cv_market,neutral,159,189,319
+S1 class-weighted,0.003,cv_market,positive,46,235,1598
+S1 class-weighted,0.003,cv_ai_pool,negative,3209,240,56
+S1 class-weighted,0.003,cv_ai_pool,neutral,40,58,48
+S1 class-weighted,0.003,cv_ai_pool,positive,32,156,2939
+S1 class-weighted,0.003,cv_firecs,negative,2178,202,1
+S1 class-weighted,0.003,cv_firecs,neutral,148,2319,82
+S1 class-weighted,0.003,cv_firecs,positive,0,195,2215
+S1 class-weighted,0.003,cv_all,negative,6190,614,165
+S1 class-weighted,0.003,cv_all,neutral,347,2566,449
+S1 class-weighted,0.003,cv_all,positive,78,586,6752
+S1 class-weighted,0.03,dev_market,negative,140,19,20
+S1 class-weighted,0.03,dev_market,neutral,23,27,33
+S1 class-weighted,0.03,dev_market,positive,10,24,199
+S1 class-weighted,0.03,dev_ai_pool,negative,316,23,5
+S1 class-weighted,0.03,dev_ai_pool,neutral,6,7,2
+S1 class-weighted,0.03,dev_ai_pool,positive,3,14,301
+S1 class-weighted,0.03,cv_market,negative,811,149,123
+S1 class-weighted,0.03,cv_market,neutral,168,199,300
+S1 class-weighted,0.03,cv_market,positive,53,244,1582
+S1 class-weighted,0.03,cv_ai_pool,negative,3219,225,61
+S1 class-weighted,0.03,cv_ai_pool,neutral,42,60,44
+S1 class-weighted,0.03,cv_ai_pool,positive,44,161,2922
+S1 class-weighted,0.03,cv_firecs,negative,2165,214,2
+S1 class-weighted,0.03,cv_firecs,neutral,160,2307,82
+S1 class-weighted,0.03,cv_firecs,positive,1,202,2207
+S1 class-weighted,0.03,cv_all,negative,6195,588,186
+S1 class-weighted,0.03,cv_all,neutral,370,2566,426
+S1 class-weighted,0.03,cv_all,positive,98,607,6711
+S2 balanced resampling,0.003,dev_market,negative,143,15,21
+S2 balanced resampling,0.003,dev_market,neutral,23,28,32
+S2 balanced resampling,0.003,dev_market,positive,7,28,198
+S2 balanced resampling,0.003,dev_ai_pool,negative,315,24,5
+S2 balanced resampling,0.003,dev_ai_pool,neutral,5,7,3
+S2 balanced resampling,0.003,dev_ai_pool,positive,2,13,303
+S2 balanced resampling,0.003,cv_market,negative,802,173,108
+S2 balanced resampling,0.003,cv_market,neutral,158,189,320
+S2 balanced resampling,0.003,cv_market,positive,46,248,1585
+S2 balanced resampling,0.003,cv_ai_pool,negative,3209,242,54
+S2 balanced resampling,0.003,cv_ai_pool,neutral,38,66,42
+S2 balanced resampling,0.003,cv_ai_pool,positive,35,165,2927
+S2 balanced resampling,0.003,cv_firecs,negative,2176,203,2
+S2 balanced resampling,0.003,cv_firecs,neutral,154,2315,80
+S2 balanced resampling,0.003,cv_firecs,positive,0,197,2213
+S2 balanced resampling,0.003,cv_all,negative,6187,618,164
+S2 balanced resampling,0.003,cv_all,neutral,350,2570,442
+S2 balanced resampling,0.003,cv_all,positive,81,610,6725
+S2 balanced resampling,0.03,dev_market,negative,142,19,18
+S2 balanced resampling,0.03,dev_market,neutral,22,26,35
+S2 balanced resampling,0.03,dev_market,positive,12,27,194
+S2 balanced resampling,0.03,dev_ai_pool,negative,314,26,4
+S2 balanced resampling,0.03,dev_ai_pool,neutral,8,6,1
+S2 balanced resampling,0.03,dev_ai_pool,positive,4,20,294
+S2 balanced resampling,0.03,cv_market,negative,802,161,120
+S2 balanced resampling,0.03,cv_market,neutral,166,206,295
+S2 balanced resampling,0.03,cv_market,positive,59,259,1561
+S2 balanced resampling,0.03,cv_ai_pool,negative,3187,258,60
+S2 balanced resampling,0.03,cv_ai_pool,neutral,40,64,42
+S2 balanced resampling,0.03,cv_ai_pool,positive,53,186,2888
+S2 balanced resampling,0.03,cv_firecs,negative,2165,214,2
+S2 balanced resampling,0.03,cv_firecs,neutral,173,2294,82
+S2 balanced resampling,0.03,cv_firecs,positive,3,199,2208
+S2 balanced resampling,0.03,cv_all,negative,6154,633,182
+S2 balanced resampling,0.03,cv_all,neutral,379,2564,419
+S2 balanced resampling,0.03,cv_all,positive,115,644,6657
+S3 neutral hard-example mining,0.003,dev_market,negative,140,19,20
+S3 neutral hard-example mining,0.003,dev_market,neutral,23,29,31
+S3 neutral hard-example mining,0.003,dev_market,positive,8,27,198
+S3 neutral hard-example mining,0.003,dev_ai_pool,negative,316,24,4
+S3 neutral hard-example mining,0.003,dev_ai_pool,neutral,6,7,2
+S3 neutral hard-example mining,0.003,dev_ai_pool,positive,3,13,302
+S3 neutral hard-example mining,0.003,cv_market,negative,800,175,108
+S3 neutral hard-example mining,0.003,cv_market,neutral,156,221,290
+S3 neutral hard-example mining,0.003,cv_market,positive,40,292,1547
+S3 neutral hard-example mining,0.003,cv_ai_pool,negative,3202,247,56
+S3 neutral hard-example mining,0.003,cv_ai_pool,neutral,38,65,43
+S3 neutral hard-example mining,0.003,cv_ai_pool,positive,33,169,2925
+S3 neutral hard-example mining,0.003,cv_firecs,negative,2159,221,1
+S3 neutral hard-example mining,0.003,cv_firecs,neutral,151,2304,94
+S3 neutral hard-example mining,0.003,cv_firecs,positive,0,197,2213
+S3 neutral hard-example mining,0.003,cv_all,negative,6161,643,165
+S3 neutral hard-example mining,0.003,cv_all,neutral,345,2590,427
+S3 neutral hard-example mining,0.003,cv_all,positive,73,658,6685
+S3 neutral hard-example mining,0.03,dev_market,negative,140,20,19
+S3 neutral hard-example mining,0.03,dev_market,neutral,22,28,33
+S3 neutral hard-example mining,0.03,dev_market,positive,10,27,196
+S3 neutral hard-example mining,0.03,dev_ai_pool,negative,313,27,4
+S3 neutral hard-example mining,0.03,dev_ai_pool,neutral,6,8,1
+S3 neutral hard-example mining,0.03,dev_ai_pool,positive,3,17,298
+S3 neutral hard-example mining,0.03,cv_market,negative,795,168,120
+S3 neutral hard-example mining,0.03,cv_market,neutral,164,228,275
+S3 neutral hard-example mining,0.03,cv_market,positive,47,296,1536
+S3 neutral hard-example mining,0.03,cv_ai_pool,negative,3186,259,60
+S3 neutral hard-example mining,0.03,cv_ai_pool,neutral,39,65,42
+S3 neutral hard-example mining,0.03,cv_ai_pool,positive,45,177,2905
+S3 neutral hard-example mining,0.03,cv_firecs,negative,2143,237,1
+S3 neutral hard-example mining,0.03,cv_firecs,neutral,161,2294,94
+S3 neutral hard-example mining,0.03,cv_firecs,positive,1,205,2204
+S3 neutral hard-example mining,0.03,cv_all,negative,6124,664,181
+S3 neutral hard-example mining,0.03,cv_all,neutral,364,2587,411
+S3 neutral hard-example mining,0.03,cv_all,positive,93,678,6645
+S4 bias calibration,0.003,dev_market,negative,147,10,22
+S4 bias calibration,0.003,dev_market,neutral,26,24,33
+S4 bias calibration,0.003,dev_market,positive,11,20,202
+S4 bias calibration,0.003,dev_ai_pool,negative,325,16,3
+S4 bias calibration,0.003,dev_ai_pool,neutral,8,3,4
+S4 bias calibration,0.003,dev_ai_pool,positive,4,6,308
+S4 bias calibration,0.003,cv_market,negative,845,114,124
+S4 bias calibration,0.003,cv_market,neutral,175,122,370
+S4 bias calibration,0.003,cv_market,positive,56,144,1679
+S4 bias calibration,0.003,cv_ai_pool,negative,3322,120,63
+S4 bias calibration,0.003,cv_ai_pool,neutral,44,43,59
+S4 bias calibration,0.003,cv_ai_pool,positive,44,90,2993
+S4 bias calibration,0.003,cv_firecs,negative,2243,136,2
+S4 bias calibration,0.003,cv_firecs,neutral,213,2223,113
+S4 bias calibration,0.003,cv_firecs,positive,1,128,2281
+S4 bias calibration,0.003,cv_all,negative,6410,370,189
+S4 bias calibration,0.003,cv_all,neutral,432,2388,542
+S4 bias calibration,0.003,cv_all,positive,101,362,6953
+S4 bias calibration,0.03,dev_market,negative,140,15,24
+S4 bias calibration,0.03,dev_market,neutral,24,21,38
+S4 bias calibration,0.03,dev_market,positive,11,17,205
+S4 bias calibration,0.03,dev_ai_pool,negative,318,20,6
+S4 bias calibration,0.03,dev_ai_pool,neutral,6,5,4
+S4 bias calibration,0.03,dev_ai_pool,positive,2,7,309
+S4 bias calibration,0.03,cv_market,negative,851,103,129
+S4 bias calibration,0.03,cv_market,neutral,192,133,342
+S4 bias calibration,0.03,cv_market,positive,65,162,1652
+S4 bias calibration,0.03,cv_ai_pool,negative,3312,133,60
+S4 bias calibration,0.03,cv_ai_pool,neutral,49,45,52
+S4 bias calibration,0.03,cv_ai_pool,positive,63,97,2967
+S4 bias calibration,0.03,cv_firecs,negative,2241,139,1
+S4 bias calibration,0.03,cv_firecs,neutral,221,2215,113
+S4 bias calibration,0.03,cv_firecs,positive,2,152,2256
+S4 bias calibration,0.03,cv_all,negative,6404,375,190
+S4 bias calibration,0.03,cv_all,neutral,462,2393,507
+S4 bias calibration,0.03,cv_all,positive,130,411,6875
+S5 weighted + mining + calibration,0.003,dev_market,negative,143,16,20
+S5 weighted + mining + calibration,0.003,dev_market,neutral,25,24,34
+S5 weighted + mining + calibration,0.003,dev_market,positive,11,22,200
+S5 weighted + mining + calibration,0.003,dev_ai_pool,negative,322,17,5
+S5 weighted + mining + calibration,0.003,dev_ai_pool,neutral,7,6,2
+S5 weighted + mining + calibration,0.003,dev_ai_pool,positive,4,7,307
+S5 weighted + mining + calibration,0.003,cv_market,negative,827,138,118
+S5 weighted + mining + calibration,0.003,cv_market,neutral,168,167,332
+S5 weighted + mining + calibration,0.003,cv_market,positive,48,210,1621
+S5 weighted + mining + calibration,0.003,cv_ai_pool,negative,3268,167,70
+S5 weighted + mining + calibration,0.003,cv_ai_pool,neutral,44,51,51
+S5 weighted + mining + calibration,0.003,cv_ai_pool,positive,40,125,2962
+S5 weighted + mining + calibration,0.003,cv_firecs,negative,2218,161,2
+S5 weighted + mining + calibration,0.003,cv_firecs,neutral,208,2196,145
+S5 weighted + mining + calibration,0.003,cv_firecs,positive,2,143,2265
+S5 weighted + mining + calibration,0.003,cv_all,negative,6313,466,190
+S5 weighted + mining + calibration,0.003,cv_all,neutral,420,2414,528
+S5 weighted + mining + calibration,0.003,cv_all,positive,90,478,6848
+S5 weighted + mining + calibration,0.03,dev_market,negative,140,18,21
+S5 weighted + mining + calibration,0.03,dev_market,neutral,22,24,37
+S5 weighted + mining + calibration,0.03,dev_market,positive,8,22,203
+S5 weighted + mining + calibration,0.03,dev_ai_pool,negative,314,23,7
+S5 weighted + mining + calibration,0.03,dev_ai_pool,neutral,8,5,2
+S5 weighted + mining + calibration,0.03,dev_ai_pool,positive,2,10,306
+S5 weighted + mining + calibration,0.03,cv_market,negative,835,126,122
+S5 weighted + mining + calibration,0.03,cv_market,neutral,185,182,300
+S5 weighted + mining + calibration,0.03,cv_market,positive,67,227,1585
+S5 weighted + mining + calibration,0.03,cv_ai_pool,negative,3262,179,64
+S5 weighted + mining + calibration,0.03,cv_ai_pool,neutral,47,52,47
+S5 weighted + mining + calibration,0.03,cv_ai_pool,positive,66,145,2916
+S5 weighted + mining + calibration,0.03,cv_firecs,negative,2198,180,3
+S5 weighted + mining + calibration,0.03,cv_firecs,neutral,245,2163,141
+S5 weighted + mining + calibration,0.03,cv_firecs,positive,5,170,2235
+S5 weighted + mining + calibration,0.03,cv_all,negative,6295,485,189
+S5 weighted + mining + calibration,0.03,cv_all,neutral,477,2397,488
+S5 weighted + mining + calibration,0.03,cv_all,positive,138,542,6736

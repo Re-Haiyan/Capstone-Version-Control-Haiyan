@@ -1,0 +1,35 @@
+{
+ "candidates_before_exclusions": 68741,
+ "removed": {
+  "already in the training corpus": 13103,
+  "equal to a frozen-test or dev-pool review": 441,
+  "duplicate among candidates": 7176,
+  "near duplicate (cosine >= 0.9) of a frozen-test or dev-pool review": 147
+ },
+ "usable_after_exclusions": 47874,
+ "usable_with_a_cue": 14155,
+ "cue_counts": {
+  "very_short": 4201,
+  "feature_list": 9216,
+  "not_yet_used": 851
+ },
+ "selected_for_annotation": 3000,
+ "selected_by_source": {
+  "production_db": 2950,
+  "review_pool_10000": 50
+ },
+ "selected_by_cue": {
+  "feature_list": 2464,
+  "very_short": 479,
+  "not_yet_used": 170
+ },
+ "products_represented": 279,
+ "language_hint": {
+  "unknown (under 4 words)": 250,
+  "english": 2050,
+  "unknown": 329,
+  "taglish": 228,
+  "filipino": 143
+ },
+ "note": "Cues only prioritise what is sent to the annotator. The share of these reviews that policy v1 labels neutral is UNKNOWN until they are annotated; 3,000 candidates do not guarantee 1,500 neutral rows."
+}

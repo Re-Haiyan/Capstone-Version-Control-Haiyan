@@ -1,0 +1,217 @@
+strategy,C,evaluation,n,class,precision,recall,f1,support,accuracy,macro_precision,macro_recall,macro_f1,weighted_f1
+S0 baseline head,0.003,dev_market,495,negative,0.799,0.821,0.810,179,0.756,0.672,0.648,0.647,0.734
+S0 baseline head,0.003,dev_market,495,neutral,0.442,0.229,0.302,83,0.756,0.672,0.648,0.647,0.734
+S0 baseline head,0.003,dev_market,495,positive,0.776,0.893,0.830,233,0.756,0.672,0.648,0.647,0.734
+S0 baseline head,0.003,dev_ai_pool,677,negative,0.964,0.942,0.953,344,0.939,0.689,0.705,0.694,0.944
+S0 baseline head,0.003,dev_ai_pool,677,neutral,0.130,0.200,0.158,15,0.939,0.689,0.705,0.694,0.944
+S0 baseline head,0.003,dev_ai_pool,677,positive,0.972,0.972,0.972,318,0.939,0.689,0.705,0.694,0.944
+S0 baseline head,0.003,cv_market,3629,negative,0.782,0.785,0.783,1083,0.734,0.627,0.617,0.609,0.703
+S0 baseline head,0.003,cv_market,3629,neutral,0.331,0.156,0.212,667,0.734,0.627,0.617,0.609,0.703
+S0 baseline head,0.003,cv_market,3629,positive,0.767,0.909,0.832,1879,0.734,0.627,0.617,0.609,0.703
+S0 baseline head,0.003,cv_ai_pool,6778,negative,0.975,0.952,0.964,3505,0.942,0.703,0.725,0.711,0.946
+S0 baseline head,0.003,cv_ai_pool,6778,neutral,0.174,0.260,0.209,146,0.942,0.703,0.725,0.711,0.946
+S0 baseline head,0.003,cv_ai_pool,6778,positive,0.959,0.962,0.960,3127,0.942,0.703,0.725,0.711,0.946
+S0 baseline head,0.003,cv_firecs,7340,negative,0.904,0.949,0.926,2381,0.918,0.918,0.919,0.918,0.918
+S0 baseline head,0.003,cv_firecs,7340,neutral,0.904,0.857,0.880,2549,0.918,0.918,0.919,0.918,0.918
+S0 baseline head,0.003,cv_firecs,7340,positive,0.946,0.952,0.949,2410,0.918,0.918,0.919,0.918,0.918
+S0 baseline head,0.003,cv_all,17747,negative,0.920,0.925,0.923,6969,0.889,0.870,0.854,0.861,0.887
+S0 baseline head,0.003,cv_all,17747,neutral,0.789,0.692,0.737,3362,0.889,0.870,0.854,0.861,0.887
+S0 baseline head,0.003,cv_all,17747,positive,0.900,0.946,0.922,7416,0.889,0.870,0.854,0.861,0.887
+S0 baseline head,0.03,dev_market,495,negative,0.778,0.804,0.791,179,0.749,0.669,0.637,0.635,0.724
+S0 baseline head,0.03,dev_market,495,neutral,0.459,0.205,0.283,83,0.749,0.669,0.637,0.635,0.724
+S0 baseline head,0.03,dev_market,495,positive,0.769,0.901,0.830,233,0.749,0.669,0.637,0.635,0.724
+S0 baseline head,0.03,dev_ai_pool,677,negative,0.970,0.942,0.956,344,0.938,0.674,0.682,0.676,0.944
+S0 baseline head,0.03,dev_ai_pool,677,neutral,0.083,0.133,0.103,15,0.938,0.674,0.682,0.676,0.944
+S0 baseline head,0.03,dev_ai_pool,677,positive,0.969,0.972,0.970,318,0.938,0.674,0.682,0.676,0.944
+S0 baseline head,0.03,cv_market,3629,negative,0.773,0.789,0.781,1083,0.732,0.631,0.619,0.612,0.704
+S0 baseline head,0.03,cv_market,3629,neutral,0.354,0.169,0.229,667,0.732,0.631,0.619,0.612,0.704
+S0 baseline head,0.03,cv_market,3629,positive,0.766,0.899,0.828,1879,0.732,0.631,0.619,0.612,0.704
+S0 baseline head,0.03,cv_ai_pool,6778,negative,0.969,0.945,0.957,3505,0.937,0.699,0.724,0.707,0.942
+S0 baseline head,0.03,cv_ai_pool,6778,neutral,0.168,0.267,0.206,146,0.937,0.699,0.724,0.707,0.942
+S0 baseline head,0.03,cv_ai_pool,6778,positive,0.958,0.959,0.959,3127,0.937,0.699,0.724,0.707,0.942
+S0 baseline head,0.03,cv_firecs,7340,negative,0.904,0.945,0.924,2381,0.915,0.915,0.916,0.916,0.915
+S0 baseline head,0.03,cv_firecs,7340,neutral,0.896,0.857,0.876,2549,0.915,0.915,0.916,0.916,0.915
+S0 baseline head,0.03,cv_firecs,7340,positive,0.945,0.947,0.946,2410,0.915,0.915,0.916,0.916,0.915
+S0 baseline head,0.03,cv_all,17747,negative,0.915,0.921,0.918,6969,0.886,0.866,0.852,0.858,0.884
+S0 baseline head,0.03,cv_all,17747,neutral,0.782,0.695,0.736,3362,0.886,0.866,0.852,0.858,0.884
+S0 baseline head,0.03,cv_all,17747,positive,0.900,0.940,0.919,7416,0.886,0.866,0.852,0.858,0.884
+S1 class-weighted,0.003,dev_market,495,negative,0.820,0.788,0.803,179,0.743,0.667,0.660,0.662,0.738
+S1 class-weighted,0.003,dev_market,495,neutral,0.389,0.337,0.361,83,0.743,0.667,0.660,0.662,0.738
+S1 class-weighted,0.003,dev_market,495,positive,0.793,0.854,0.822,233,0.743,0.667,0.660,0.662,0.738
+S1 class-weighted,0.003,dev_ai_pool,677,negative,0.975,0.924,0.949,344,0.932,0.719,0.806,0.737,0.944
+S1 class-weighted,0.003,dev_ai_pool,677,neutral,0.200,0.533,0.291,15,0.932,0.719,0.806,0.737,0.944
+S1 class-weighted,0.003,dev_ai_pool,677,positive,0.981,0.959,0.970,318,0.932,0.719,0.806,0.737,0.944
+S1 class-weighted,0.003,cv_market,3629,negative,0.797,0.741,0.768,1083,0.714,0.634,0.625,0.629,0.708
+S1 class-weighted,0.003,cv_market,3629,neutral,0.317,0.283,0.299,667,0.714,0.634,0.625,0.629,0.708
+S1 class-weighted,0.003,cv_market,3629,positive,0.789,0.850,0.819,1879,0.714,0.634,0.625,0.629,0.708
+S1 class-weighted,0.003,cv_ai_pool,6778,negative,0.978,0.916,0.946,3505,0.916,0.691,0.751,0.697,0.933
+S1 class-weighted,0.003,cv_ai_pool,6778,neutral,0.128,0.397,0.193,146,0.916,0.691,0.751,0.697,0.933
+S1 class-weighted,0.003,cv_ai_pool,6778,positive,0.966,0.940,0.953,3127,0.916,0.691,0.751,0.697,0.933
+S1 class-weighted,0.003,cv_firecs,7340,negative,0.936,0.915,0.925,2381,0.914,0.918,0.915,0.916,0.915
+S1 class-weighted,0.003,cv_firecs,7340,neutral,0.854,0.910,0.881,2549,0.914,0.918,0.915,0.916,0.915
+S1 class-weighted,0.003,cv_firecs,7340,positive,0.964,0.919,0.941,2410,0.914,0.918,0.915,0.916,0.915
+S1 class-weighted,0.003,cv_all,17747,negative,0.936,0.888,0.911,6969,0.874,0.845,0.854,0.848,0.876
+S1 class-weighted,0.003,cv_all,17747,neutral,0.681,0.763,0.720,3362,0.874,0.845,0.854,0.848,0.876
+S1 class-weighted,0.003,cv_all,17747,positive,0.917,0.910,0.914,7416,0.874,0.845,0.854,0.848,0.876
+S1 class-weighted,0.03,dev_market,495,negative,0.809,0.782,0.795,179,0.739,0.662,0.654,0.656,0.733
+S1 class-weighted,0.03,dev_market,495,neutral,0.386,0.325,0.353,83,0.739,0.662,0.654,0.656,0.733
+S1 class-weighted,0.03,dev_market,495,positive,0.790,0.854,0.821,233,0.739,0.662,0.654,0.656,0.733
+S1 class-weighted,0.03,dev_ai_pool,677,negative,0.972,0.919,0.945,344,0.922,0.703,0.777,0.715,0.937
+S1 class-weighted,0.03,dev_ai_pool,677,neutral,0.159,0.467,0.237,15,0.922,0.703,0.777,0.715,0.937
+S1 class-weighted,0.03,dev_ai_pool,677,positive,0.977,0.947,0.962,318,0.922,0.703,0.777,0.715,0.937
+S1 class-weighted,0.03,cv_market,3629,negative,0.786,0.749,0.767,1083,0.714,0.637,0.630,0.633,0.709
+S1 class-weighted,0.03,cv_market,3629,neutral,0.336,0.298,0.316,667,0.714,0.637,0.630,0.633,0.709
+S1 class-weighted,0.03,cv_market,3629,positive,0.789,0.842,0.815,1879,0.714,0.637,0.630,0.633,0.709
+S1 class-weighted,0.03,cv_ai_pool,6778,negative,0.974,0.918,0.945,3505,0.915,0.691,0.755,0.699,0.931
+S1 class-weighted,0.03,cv_ai_pool,6778,neutral,0.135,0.411,0.203,146,0.915,0.691,0.755,0.699,0.931
+S1 class-weighted,0.03,cv_ai_pool,6778,positive,0.965,0.934,0.950,3127,0.915,0.691,0.755,0.699,0.931
+S1 class-weighted,0.03,cv_firecs,7340,negative,0.931,0.909,0.920,2381,0.910,0.914,0.910,0.911,0.911
+S1 class-weighted,0.03,cv_firecs,7340,neutral,0.847,0.905,0.875,2549,0.910,0.914,0.910,0.911,0.911
+S1 class-weighted,0.03,cv_firecs,7340,positive,0.963,0.916,0.939,2410,0.910,0.914,0.910,0.911,0.911
+S1 class-weighted,0.03,cv_all,17747,negative,0.930,0.889,0.909,6969,0.872,0.843,0.852,0.847,0.874
+S1 class-weighted,0.03,cv_all,17747,neutral,0.682,0.763,0.720,3362,0.872,0.843,0.852,0.847,0.874
+S1 class-weighted,0.03,cv_all,17747,positive,0.916,0.905,0.911,7416,0.872,0.843,0.852,0.847,0.874
+S2 balanced resampling,0.003,dev_market,495,negative,0.827,0.799,0.812,179,0.745,0.670,0.662,0.665,0.740
+S2 balanced resampling,0.003,dev_market,495,neutral,0.394,0.337,0.364,83,0.745,0.670,0.662,0.665,0.740
+S2 balanced resampling,0.003,dev_market,495,positive,0.789,0.850,0.818,233,0.745,0.670,0.662,0.665,0.740
+S2 balanced resampling,0.003,dev_ai_pool,677,negative,0.978,0.916,0.946,344,0.923,0.704,0.778,0.716,0.938
+S2 balanced resampling,0.003,dev_ai_pool,677,neutral,0.159,0.467,0.237,15,0.923,0.704,0.778,0.716,0.938
+S2 balanced resampling,0.003,dev_ai_pool,677,positive,0.974,0.953,0.963,318,0.923,0.704,0.778,0.716,0.938
+S2 balanced resampling,0.003,cv_market,3629,negative,0.797,0.741,0.768,1083,0.710,0.631,0.622,0.626,0.705
+S2 balanced resampling,0.003,cv_market,3629,neutral,0.310,0.283,0.296,667,0.710,0.631,0.622,0.626,0.705
+S2 balanced resampling,0.003,cv_market,3629,positive,0.787,0.844,0.814,1879,0.710,0.631,0.622,0.626,0.705
+S2 balanced resampling,0.003,cv_ai_pool,6778,negative,0.978,0.916,0.946,3505,0.915,0.695,0.768,0.704,0.933
+S2 balanced resampling,0.003,cv_ai_pool,6778,neutral,0.140,0.452,0.213,146,0.915,0.695,0.768,0.704,0.933
+S2 balanced resampling,0.003,cv_ai_pool,6778,positive,0.968,0.936,0.952,3127,0.915,0.695,0.768,0.704,0.933
+S2 balanced resampling,0.003,cv_firecs,7340,negative,0.934,0.914,0.924,2381,0.913,0.917,0.913,0.915,0.914
+S2 balanced resampling,0.003,cv_firecs,7340,neutral,0.853,0.908,0.880,2549,0.913,0.917,0.913,0.915,0.914
+S2 balanced resampling,0.003,cv_firecs,7340,positive,0.964,0.918,0.941,2410,0.913,0.917,0.913,0.915,0.914
+S2 balanced resampling,0.003,cv_all,17747,negative,0.935,0.888,0.911,6969,0.872,0.843,0.853,0.847,0.875
+S2 balanced resampling,0.003,cv_all,17747,neutral,0.677,0.764,0.718,3362,0.872,0.843,0.853,0.847,0.875
+S2 balanced resampling,0.003,cv_all,17747,positive,0.917,0.907,0.912,7416,0.872,0.843,0.853,0.847,0.875
+S2 balanced resampling,0.03,dev_market,495,negative,0.807,0.793,0.800,179,0.731,0.651,0.646,0.648,0.726
+S2 balanced resampling,0.03,dev_market,495,neutral,0.361,0.313,0.335,83,0.731,0.651,0.646,0.648,0.726
+S2 balanced resampling,0.03,dev_market,495,positive,0.785,0.833,0.808,233,0.731,0.651,0.646,0.648,0.726
+S2 balanced resampling,0.03,dev_ai_pool,677,negative,0.963,0.913,0.937,344,0.907,0.687,0.746,0.690,0.928
+S2 balanced resampling,0.03,dev_ai_pool,677,neutral,0.115,0.400,0.179,15,0.907,0.687,0.746,0.690,0.928
+S2 balanced resampling,0.03,dev_ai_pool,677,positive,0.983,0.925,0.953,318,0.907,0.687,0.746,0.690,0.928
+S2 balanced resampling,0.03,cv_market,3629,negative,0.781,0.741,0.760,1083,0.708,0.633,0.627,0.630,0.705
+S2 balanced resampling,0.03,cv_market,3629,neutral,0.329,0.309,0.319,667,0.708,0.633,0.627,0.630,0.705
+S2 balanced resampling,0.03,cv_market,3629,positive,0.790,0.831,0.810,1879,0.708,0.633,0.627,0.630,0.705
+S2 balanced resampling,0.03,cv_ai_pool,6778,negative,0.972,0.909,0.939,3505,0.906,0.688,0.757,0.693,0.926
+S2 balanced resampling,0.03,cv_ai_pool,6778,neutral,0.126,0.438,0.196,146,0.906,0.688,0.757,0.693,0.926
+S2 balanced resampling,0.03,cv_ai_pool,6778,positive,0.966,0.924,0.944,3127,0.906,0.688,0.757,0.693,0.926
+S2 balanced resampling,0.03,cv_firecs,7340,negative,0.925,0.909,0.917,2381,0.908,0.912,0.908,0.910,0.909
+S2 balanced resampling,0.03,cv_firecs,7340,neutral,0.847,0.900,0.873,2549,0.908,0.912,0.908,0.910,0.909
+S2 balanced resampling,0.03,cv_firecs,7340,positive,0.963,0.916,0.939,2410,0.908,0.912,0.908,0.910,0.909
+S2 balanced resampling,0.03,cv_all,17747,negative,0.926,0.883,0.904,6969,0.866,0.837,0.848,0.841,0.869
+S2 balanced resampling,0.03,cv_all,17747,neutral,0.668,0.763,0.712,3362,0.866,0.837,0.848,0.841,0.869
+S2 balanced resampling,0.03,cv_all,17747,positive,0.917,0.898,0.907,7416,0.866,0.837,0.848,0.841,0.869
+S3 neutral hard-example mining,0.003,dev_market,495,negative,0.819,0.782,0.800,179,0.741,0.667,0.660,0.663,0.738
+S3 neutral hard-example mining,0.003,dev_market,495,neutral,0.387,0.349,0.367,83,0.741,0.667,0.660,0.663,0.738
+S3 neutral hard-example mining,0.003,dev_market,495,positive,0.795,0.850,0.822,233,0.741,0.667,0.660,0.663,0.738
+S3 neutral hard-example mining,0.003,dev_ai_pool,677,negative,0.972,0.919,0.945,344,0.923,0.704,0.778,0.716,0.938
+S3 neutral hard-example mining,0.003,dev_ai_pool,677,neutral,0.159,0.467,0.237,15,0.923,0.704,0.778,0.716,0.938
+S3 neutral hard-example mining,0.003,dev_ai_pool,677,positive,0.981,0.950,0.965,318,0.923,0.704,0.778,0.716,0.938
+S3 neutral hard-example mining,0.003,cv_market,3629,negative,0.803,0.739,0.770,1083,0.708,0.640,0.631,0.635,0.709
+S3 neutral hard-example mining,0.003,cv_market,3629,neutral,0.321,0.331,0.326,667,0.708,0.640,0.631,0.635,0.709
+S3 neutral hard-example mining,0.003,cv_market,3629,positive,0.795,0.823,0.809,1879,0.708,0.640,0.631,0.635,0.709
+S3 neutral hard-example mining,0.003,cv_ai_pool,6778,negative,0.978,0.914,0.945,3505,0.914,0.694,0.765,0.701,0.932
+S3 neutral hard-example mining,0.003,cv_ai_pool,6778,neutral,0.135,0.445,0.207,146,0.914,0.694,0.765,0.701,0.932
+S3 neutral hard-example mining,0.003,cv_ai_pool,6778,positive,0.967,0.935,0.951,3127,0.914,0.694,0.765,0.701,0.932
+S3 neutral hard-example mining,0.003,cv_firecs,7340,negative,0.935,0.907,0.920,2381,0.910,0.913,0.910,0.911,0.910
+S3 neutral hard-example mining,0.003,cv_firecs,7340,neutral,0.846,0.904,0.874,2549,0.910,0.913,0.910,0.911,0.910
+S3 neutral hard-example mining,0.003,cv_firecs,7340,positive,0.959,0.918,0.938,2410,0.910,0.913,0.910,0.911,0.910
+S3 neutral hard-example mining,0.003,cv_all,17747,negative,0.936,0.884,0.910,6969,0.870,0.840,0.852,0.845,0.873
+S3 neutral hard-example mining,0.003,cv_all,17747,neutral,0.666,0.770,0.714,3362,0.870,0.840,0.852,0.845,0.873
+S3 neutral hard-example mining,0.003,cv_all,17747,positive,0.919,0.901,0.910,7416,0.870,0.840,0.852,0.845,0.873
+S3 neutral hard-example mining,0.03,dev_market,495,negative,0.814,0.782,0.798,179,0.735,0.659,0.654,0.656,0.732
+S3 neutral hard-example mining,0.03,dev_market,495,neutral,0.373,0.337,0.354,83,0.735,0.659,0.654,0.656,0.732
+S3 neutral hard-example mining,0.03,dev_market,495,positive,0.790,0.841,0.815,233,0.735,0.659,0.654,0.656,0.732
+S3 neutral hard-example mining,0.03,dev_ai_pool,677,negative,0.972,0.910,0.940,344,0.914,0.703,0.793,0.713,0.934
+S3 neutral hard-example mining,0.03,dev_ai_pool,677,neutral,0.154,0.533,0.239,15,0.914,0.703,0.793,0.713,0.934
+S3 neutral hard-example mining,0.03,dev_ai_pool,677,positive,0.983,0.937,0.960,318,0.914,0.703,0.793,0.713,0.934
+S3 neutral hard-example mining,0.03,cv_market,3629,negative,0.790,0.734,0.761,1083,0.705,0.638,0.631,0.634,0.706
+S3 neutral hard-example mining,0.03,cv_market,3629,neutral,0.329,0.342,0.336,667,0.705,0.638,0.631,0.634,0.706
+S3 neutral hard-example mining,0.03,cv_market,3629,positive,0.795,0.817,0.806,1879,0.705,0.638,0.631,0.634,0.706
+S3 neutral hard-example mining,0.03,cv_ai_pool,6778,negative,0.974,0.909,0.941,3505,0.908,0.690,0.761,0.696,0.928
+S3 neutral hard-example mining,0.03,cv_ai_pool,6778,neutral,0.130,0.445,0.201,146,0.908,0.690,0.761,0.696,0.928
+S3 neutral hard-example mining,0.03,cv_ai_pool,6778,positive,0.966,0.929,0.947,3127,0.908,0.690,0.761,0.696,0.928
+S3 neutral hard-example mining,0.03,cv_firecs,7340,negative,0.930,0.900,0.915,2381,0.905,0.909,0.905,0.906,0.906
+S3 neutral hard-example mining,0.03,cv_firecs,7340,neutral,0.838,0.900,0.868,2549,0.905,0.909,0.905,0.906,0.906
+S3 neutral hard-example mining,0.03,cv_firecs,7340,positive,0.959,0.915,0.936,2410,0.905,0.909,0.905,0.906,0.906
+S3 neutral hard-example mining,0.03,cv_all,17747,negative,0.931,0.879,0.904,6969,0.865,0.836,0.848,0.840,0.868
+S3 neutral hard-example mining,0.03,cv_all,17747,neutral,0.658,0.769,0.710,3362,0.865,0.836,0.848,0.840,0.868
+S3 neutral hard-example mining,0.03,cv_all,17747,positive,0.918,0.896,0.907,7416,0.865,0.836,0.848,0.840,0.868
+S4 bias calibration,0.003,dev_market,495,negative,0.799,0.821,0.810,179,0.754,0.676,0.659,0.662,0.740
+S4 bias calibration,0.003,dev_market,495,neutral,0.444,0.289,0.350,83,0.754,0.676,0.659,0.662,0.740
+S4 bias calibration,0.003,dev_market,495,positive,0.786,0.867,0.824,233,0.754,0.676,0.659,0.662,0.740
+S4 bias calibration,0.003,dev_ai_pool,677,negative,0.964,0.945,0.954,344,0.939,0.687,0.704,0.693,0.945
+S4 bias calibration,0.003,dev_ai_pool,677,neutral,0.120,0.200,0.150,15,0.939,0.687,0.704,0.693,0.945
+S4 bias calibration,0.003,dev_ai_pool,677,positive,0.978,0.969,0.973,318,0.939,0.687,0.704,0.693,0.945
+S4 bias calibration,0.003,cv_market,3629,negative,0.785,0.780,0.783,1083,0.729,0.626,0.619,0.615,0.706
+S4 bias calibration,0.003,cv_market,3629,neutral,0.321,0.183,0.233,667,0.729,0.626,0.619,0.615,0.706
+S4 bias calibration,0.003,cv_market,3629,positive,0.773,0.894,0.829,1879,0.729,0.626,0.619,0.615,0.706
+S4 bias calibration,0.003,cv_ai_pool,6778,negative,0.974,0.948,0.961,3505,0.938,0.702,0.733,0.712,0.944
+S4 bias calibration,0.003,cv_ai_pool,6778,neutral,0.170,0.295,0.216,146,0.938,0.702,0.733,0.712,0.944
+S4 bias calibration,0.003,cv_ai_pool,6778,positive,0.961,0.957,0.959,3127,0.938,0.702,0.733,0.712,0.944
+S4 bias calibration,0.003,cv_firecs,7340,negative,0.913,0.942,0.927,2381,0.919,0.920,0.920,0.920,0.919
+S4 bias calibration,0.003,cv_firecs,7340,neutral,0.894,0.872,0.883,2549,0.919,0.920,0.920,0.920,0.919
+S4 bias calibration,0.003,cv_firecs,7340,positive,0.952,0.946,0.949,2410,0.919,0.920,0.920,0.920,0.919
+S4 bias calibration,0.003,cv_all,17747,negative,0.923,0.920,0.922,6969,0.888,0.864,0.856,0.860,0.886
+S4 bias calibration,0.003,cv_all,17747,neutral,0.765,0.710,0.737,3362,0.888,0.864,0.856,0.860,0.886
+S4 bias calibration,0.003,cv_all,17747,positive,0.905,0.938,0.921,7416,0.888,0.864,0.856,0.860,0.886
+S4 bias calibration,0.03,dev_market,495,negative,0.800,0.782,0.791,179,0.739,0.655,0.638,0.640,0.724
+S4 bias calibration,0.03,dev_market,495,neutral,0.396,0.253,0.309,83,0.739,0.655,0.638,0.640,0.724
+S4 bias calibration,0.03,dev_market,495,positive,0.768,0.880,0.820,233,0.739,0.655,0.638,0.640,0.724
+S4 bias calibration,0.03,dev_ai_pool,677,negative,0.975,0.924,0.949,344,0.934,0.700,0.743,0.711,0.943
+S4 bias calibration,0.03,dev_ai_pool,677,neutral,0.156,0.333,0.213,15,0.934,0.700,0.743,0.711,0.943
+S4 bias calibration,0.03,dev_ai_pool,677,positive,0.969,0.972,0.970,318,0.934,0.700,0.743,0.711,0.943
+S4 bias calibration,0.03,cv_market,3629,negative,0.768,0.786,0.777,1083,0.726,0.627,0.621,0.617,0.705
+S4 bias calibration,0.03,cv_market,3629,neutral,0.334,0.199,0.250,667,0.726,0.627,0.621,0.617,0.705
+S4 bias calibration,0.03,cv_market,3629,positive,0.778,0.879,0.826,1879,0.726,0.627,0.621,0.617,0.705
+S4 bias calibration,0.03,cv_ai_pool,6778,negative,0.967,0.945,0.956,3505,0.933,0.698,0.734,0.709,0.940
+S4 bias calibration,0.03,cv_ai_pool,6778,neutral,0.164,0.308,0.214,146,0.933,0.698,0.734,0.709,0.940
+S4 bias calibration,0.03,cv_ai_pool,6778,positive,0.964,0.949,0.956,3127,0.933,0.698,0.734,0.709,0.940
+S4 bias calibration,0.03,cv_firecs,7340,negative,0.909,0.941,0.925,2381,0.914,0.915,0.915,0.915,0.914
+S4 bias calibration,0.03,cv_firecs,7340,neutral,0.884,0.869,0.876,2549,0.914,0.915,0.915,0.915,0.914
+S4 bias calibration,0.03,cv_firecs,7340,positive,0.952,0.936,0.944,2410,0.914,0.915,0.915,0.915,0.914
+S4 bias calibration,0.03,cv_all,17747,negative,0.915,0.919,0.917,6969,0.883,0.859,0.853,0.855,0.882
+S4 bias calibration,0.03,cv_all,17747,neutral,0.753,0.712,0.732,3362,0.883,0.859,0.853,0.855,0.882
+S4 bias calibration,0.03,cv_all,17747,positive,0.908,0.927,0.917,7416,0.883,0.859,0.853,0.855,0.882
+S5 weighted + mining + calibration,0.003,dev_market,495,negative,0.799,0.799,0.799,179,0.741,0.658,0.649,0.650,0.731
+S5 weighted + mining + calibration,0.003,dev_market,495,neutral,0.387,0.289,0.331,83,0.741,0.658,0.649,0.650,0.731
+S5 weighted + mining + calibration,0.003,dev_market,495,positive,0.787,0.858,0.821,233,0.741,0.658,0.649,0.650,0.731
+S5 weighted + mining + calibration,0.003,dev_ai_pool,677,negative,0.967,0.936,0.951,344,0.938,0.715,0.767,0.730,0.946
+S5 weighted + mining + calibration,0.003,dev_ai_pool,677,neutral,0.200,0.400,0.267,15,0.938,0.715,0.767,0.730,0.946
+S5 weighted + mining + calibration,0.003,dev_ai_pool,677,positive,0.978,0.965,0.972,318,0.938,0.715,0.767,0.730,0.946
+S5 weighted + mining + calibration,0.003,cv_market,3629,negative,0.793,0.764,0.778,1083,0.721,0.633,0.626,0.627,0.709
+S5 weighted + mining + calibration,0.003,cv_market,3629,neutral,0.324,0.250,0.283,667,0.721,0.633,0.626,0.627,0.709
+S5 weighted + mining + calibration,0.003,cv_market,3629,positive,0.783,0.863,0.821,1879,0.721,0.633,0.626,0.627,0.709
+S5 weighted + mining + calibration,0.003,cv_ai_pool,6778,negative,0.975,0.932,0.953,3505,0.927,0.695,0.743,0.705,0.937
+S5 weighted + mining + calibration,0.003,cv_ai_pool,6778,neutral,0.149,0.349,0.209,146,0.927,0.695,0.743,0.705,0.937
+S5 weighted + mining + calibration,0.003,cv_ai_pool,6778,positive,0.961,0.947,0.954,3127,0.927,0.695,0.743,0.705,0.937
+S5 weighted + mining + calibration,0.003,cv_firecs,7340,negative,0.914,0.932,0.922,2381,0.910,0.910,0.911,0.911,0.910
+S5 weighted + mining + calibration,0.003,cv_firecs,7340,neutral,0.878,0.862,0.870,2549,0.910,0.910,0.911,0.911,0.910
+S5 weighted + mining + calibration,0.003,cv_firecs,7340,positive,0.939,0.940,0.939,2410,0.910,0.910,0.911,0.911,0.910
+S5 weighted + mining + calibration,0.003,cv_all,17747,negative,0.925,0.906,0.915,6969,0.878,0.850,0.849,0.849,0.878
+S5 weighted + mining + calibration,0.003,cv_all,17747,neutral,0.719,0.718,0.718,3362,0.878,0.850,0.849,0.849,0.878
+S5 weighted + mining + calibration,0.003,cv_all,17747,positive,0.905,0.923,0.914,7416,0.878,0.850,0.849,0.849,0.878
+S5 weighted + mining + calibration,0.03,dev_market,495,negative,0.824,0.782,0.802,179,0.741,0.659,0.648,0.650,0.732
+S5 weighted + mining + calibration,0.03,dev_market,495,neutral,0.375,0.289,0.327,83,0.741,0.659,0.648,0.650,0.732
+S5 weighted + mining + calibration,0.03,dev_market,495,positive,0.778,0.871,0.822,233,0.741,0.659,0.648,0.650,0.732
+S5 weighted + mining + calibration,0.03,dev_ai_pool,677,negative,0.969,0.913,0.940,344,0.923,0.691,0.736,0.699,0.936
+S5 weighted + mining + calibration,0.03,dev_ai_pool,677,neutral,0.132,0.333,0.189,15,0.923,0.691,0.736,0.699,0.936
+S5 weighted + mining + calibration,0.03,dev_ai_pool,677,positive,0.971,0.962,0.967,318,0.923,0.691,0.736,0.699,0.936
+S5 weighted + mining + calibration,0.03,cv_market,3629,negative,0.768,0.771,0.770,1083,0.717,0.633,0.629,0.629,0.708
+S5 weighted + mining + calibration,0.03,cv_market,3629,neutral,0.340,0.273,0.303,667,0.717,0.633,0.629,0.629,0.708
+S5 weighted + mining + calibration,0.03,cv_market,3629,positive,0.790,0.844,0.816,1879,0.717,0.633,0.629,0.629,0.708
+S5 weighted + mining + calibration,0.03,cv_ai_pool,6778,negative,0.967,0.931,0.948,3505,0.919,0.689,0.740,0.698,0.932
+S5 weighted + mining + calibration,0.03,cv_ai_pool,6778,neutral,0.138,0.356,0.199,146,0.919,0.689,0.740,0.698,0.932
+S5 weighted + mining + calibration,0.03,cv_ai_pool,6778,positive,0.963,0.933,0.948,3127,0.919,0.689,0.740,0.698,0.932
+S5 weighted + mining + calibration,0.03,cv_firecs,7340,negative,0.898,0.923,0.910,2381,0.899,0.899,0.900,0.899,0.899
+S5 weighted + mining + calibration,0.03,cv_firecs,7340,neutral,0.861,0.849,0.855,2549,0.899,0.899,0.900,0.899,0.899
+S5 weighted + mining + calibration,0.03,cv_firecs,7340,positive,0.939,0.927,0.933,2410,0.899,0.899,0.900,0.899,0.899
+S5 weighted + mining + calibration,0.03,cv_all,17747,negative,0.911,0.903,0.907,6969,0.869,0.840,0.842,0.841,0.870
+S5 weighted + mining + calibration,0.03,cv_all,17747,neutral,0.700,0.713,0.706,3362,0.869,0.840,0.842,0.841,0.870
+S5 weighted + mining + calibration,0.03,cv_all,17747,positive,0.909,0.908,0.908,7416,0.869,0.840,0.842,0.841,0.870

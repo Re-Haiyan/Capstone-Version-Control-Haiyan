@@ -60,3 +60,5 @@ research/xlmr_optimization/runs/queue*.out
 research/xlmr_optimization/runs/queue*.err
 research/xlmr_optimization/runs/*.done
 research/xlmr_optimization/data/head/
+research/xlmr_optimization/annotation/PRIVATE_neutral_candidate_map.csv
+research/xlmr_optimization/annotation/heldout_v2/PRIVATE_id_map.csv

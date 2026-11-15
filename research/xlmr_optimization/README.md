@@ -15,6 +15,7 @@
 | `conclusion_impact.md` | effect on product conclusions |
 | `ai_assisted_annotation_methodology.md`, `protocol_amendment_ai_assisted_annotation.md` | the labels are AI-assisted (ChatGPT, panel-approved): methodology, limits, protocol amendment |
 | `optimization_report.md`, `final_human_evaluation/` | head optimisation with cross-validation, frozen-test scoring against the AI-assisted reference, provenance, agreement, adjudication sheet, leakage audit, Chapter 4/5 drafts |
+| `phase2/phase2_report.md` | Phase 2 (neutral recovery): denominators, S4 recommendation, neutral error analysis, strategy comparison, annotation batches for ChatGPT, held-out v2 protocol, blockers |
 | `limitations.md`, `final_recommendation.md` | validity threats; ADOPT / DO NOT ADOPT / INSUFFICIENT EVIDENCE |
 | `results/`, `predictions/`, `confusion_matrices/`, `runs/` | every metric, prediction, confusion matrix and training log behind the reports |
 

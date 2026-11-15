@@ -1,0 +1,26 @@
+{
+ "dev_pool_vs_frozen_test": {
+  "exact": 0,
+  "near": 0
+ },
+ "neutral_candidates_vs_frozen_test": {
+  "exact": 0,
+  "near": 0
+ },
+ "neutral_candidates_vs_dev_pool": {
+  "exact": 0,
+  "near": 0
+ },
+ "neutral_candidates_vs_training_corpus": {
+  "exact": 0
+ },
+ "dev_pool_vs_training_corpus": {
+  "exact": 73,
+  "near": 77
+ },
+ "product_overlap": {
+  "frozen_test_and_dev_pool": 0,
+  "frozen_test_and_neutral_candidates": 0,
+  "dev_pool_and_neutral_candidates": 0
+ }
+}
