@@ -37,17 +37,30 @@
 					<CircleHelpIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
 				{/if}
 				<span>{heading}</span>
-				<span class="text-muted-foreground font-normal">· What reviewers report</span>
+				{#if chip.kind !== 'clear'}
+					<span class="text-muted-foreground font-normal">· What reviewers report</span>
+				{/if}
 			</div>
 
-			<h2 class="mt-2 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">{verdict.headline}</h2>
+			<h2 class="mt-2 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
+				{chip.kind === 'clear' ? 'What do reviewers say about this product?' : verdict.headline}
+			</h2>
 			{#if verdict.detail}
-				<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
+				{#if chip.kind === 'clear'}
+					<details class="mt-3 rounded-lg border border-(--tone)/25 bg-background/50 px-3 py-2.5">
+						<summary class="cursor-pointer text-xs font-medium">How was this result reached?</summary>
+						<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
+					</details>
+				{:else}
+					<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
+				{/if}
 			{/if}
 
-			<div class="mt-3 rounded-lg border border-(--tone)/25 bg-background/65 px-3 py-2.5">
-				<h3 class="text-xs font-semibold">Quick review summary</h3>
-				<p class="mt-1 text-sm leading-relaxed">{guidance.text}</p>
+			<div class="mt-3 rounded-lg border border-(--tone)/25 bg-background/65 px-3 py-2.5" aria-label="Quick review summary">
+				{#if chip.kind !== 'clear'}
+					<h3 class="text-xs font-semibold">Quick review summary</h3>
+				{/if}
+				<p class={chip.kind === 'clear' ? 'text-sm leading-relaxed' : 'mt-1 text-sm leading-relaxed'}>{guidance.text}</p>
 			</div>
 			<p class="mt-2 text-xs text-muted-foreground">Review signals are a guide, not proof.</p>
 		</section>
