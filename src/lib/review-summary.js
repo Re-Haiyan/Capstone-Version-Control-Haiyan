@@ -26,7 +26,7 @@ export function reviewSummary(product) {
 	const negative = Math.max(0, Number(counts?.negative) || 0);
 	const uncertain = Math.max(0, Number(counts?.uncertain ?? counts?.neutral) || 0);
 	const tally = positive + negative + uncertain;
-	const note = 'Note: This summary is based on analyzed customer reviews, not independent verification or a guarantee of product safety, quality, or authenticity.';
+	const note = 'This summary describes review patterns only; it is not a purchase recommendation.';
 
 	if (!view?.available || analyzed === 0) {
 		return {
@@ -39,14 +39,14 @@ export function reviewSummary(product) {
 	const sentiment = tally === 0
 		? 'The analyzed reviews do not provide a clear sentiment breakdown.'
 		: positive > tally / 2
-			? 'Most of the ' + analyzed + ' analyzed reviews express positive sentiment.'
+			? 'According to the ' + tally + ' sentiment-labelled reviews, most feedback is positive.'
 			: negative > tally / 2
-				? 'Most of the ' + analyzed + ' analyzed reviews express negative sentiment.'
+				? 'According to the ' + tally + ' sentiment-labelled reviews, most feedback is negative.'
 				: positive > negative
-					? 'Positive feedback is more common than negative feedback among the ' + analyzed + ' analyzed reviews.'
+					? 'According to the ' + tally + ' sentiment-labelled reviews, positive feedback is more common than negative feedback.'
 					: negative > positive
-						? 'Negative feedback is more common than positive feedback among the ' + analyzed + ' analyzed reviews.'
-						: 'The ' + analyzed + ' analyzed reviews show mixed or unclear sentiment.';
+						? 'According to the ' + tally + ' sentiment-labelled reviews, negative feedback is more common than positive feedback.'
+						: 'The ' + tally + ' sentiment-labelled reviews show mixed or unclear feedback.';
 
 	const badges = (view.badges ?? []).filter((badge) => Number(badge.mentions) > 0);
 	const safety = badges.find((badge) => badge.category === 'safety');
