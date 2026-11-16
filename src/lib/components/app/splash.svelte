@@ -65,13 +65,13 @@
 		</div>
 		<span class="swoosh tl" aria-hidden="true"></span>
 		<span class="swoosh br" aria-hidden="true"></span>
-		<section class="stack">
+		<section class="stack" aria-labelledby="splash-title">
 			<img src={logo} alt="" class="mark" />
 			<div class="name" aria-hidden="true"><span>De</span><span class="f">F</span><span>aketive</span></div>
 			<div class="tag"><i></i><span>A SAFER YOU</span><i></i></div>
 			<h1 id="splash-title" class="hero-title">Know what buyers really say before you buy.</h1>
 			<p id="splash-description" class="hero-description">See what shoppers liked, what went wrong, and possible safety concerns—based on customer reviews.</p>
-			<button type="button" class="go" onclick={enter} bind:this={exploreButton} aria-label="Explore DeFaketive">
+			<button type="button" class="go" onclick={enter} aria-label="Explore DeFaketive" bind:this={exploreButton}>
 				<span>Explore DeFaketive</span>
 				<ArrowRightIcon class="go-arrow" size={21} strokeWidth={2.5} aria-hidden="true" />
 			</button>
