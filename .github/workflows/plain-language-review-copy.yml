@@ -8,6 +8,8 @@ on:
       - "src/lib/review-guidance.js"
       - "src/lib/product.ts"
       - "src/lib/components/report/verdict-block.svelte"
+      - "src/lib/components/report/report-view.svelte"
+      - "tests/report-visible-fields.test.mjs"
       - "tests/review-guidance.test.mjs"
       - ".github/workflows/plain-language-review-copy.yml"
   pull_request:
@@ -35,7 +37,7 @@ jobs:
           npm ci --no-audit --no-fund
       - name: Verify human-friendly review summaries and evidence restrictions
         run: |
-          node --test tests/review-guidance.test.mjs tests/positive-highlights.test.mjs
+          node --test tests/review-guidance.test.mjs tests/positive-highlights.test.mjs tests/report-visible-fields.test.mjs
       - name: Typecheck
         run: npm run check
       - name: Production build
