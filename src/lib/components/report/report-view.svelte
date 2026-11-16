@@ -165,15 +165,18 @@
 	const identity = $derived([platformName(product), product?.price ? money(product.price) : ''].filter(Boolean).join(' · '));
 	// Older reports may have no classifier category. Do not substitute the
 	// marketplace's generic category field, which can name the wrong product.
+	const displayCategorySlug = $derived(product?.product_category_display ?? product?.product_category);
 	const detectedCategory = $derived(
-		!product?.product_category
+		!displayCategorySlug
 			? 'Not recorded (older report)'
-			: product.product_category === 'other'
+			: displayCategorySlug === 'other'
 				? 'Unclassified'
-				: product.product_category
-						.split('_')
-						.map((word) => word === 'tv' ? 'TV' : word.charAt(0).toUpperCase() + word.slice(1))
-						.join(' ')
+				: displayCategorySlug === 'battery_solar'
+					? 'Battery & Solar'
+					: displayCategorySlug
+							.split('_')
+							.map((word) => word === 'tv' ? 'TV' : word.charAt(0).toUpperCase() + word.slice(1))
+							.join(' ')
 	);
 	// The label is automatically detected, not verified ground truth.
 	const details = $derived([
@@ -427,7 +430,11 @@
 			{#if behindChecker(product)}
 				<!-- A saved report does not change when the checker does. Say so instead of showing it as today's. -->
 				<p class="bg-muted text-muted-foreground rounded-lg px-3 py-2 text-sm" data-behind-checker>
-					This report was made with an earlier version of the checker.
+					{#if product.category_needs_recheck}
+						<strong>Category correction:</strong> This listing now matches <strong>{detectedCategory}</strong>, but its saved review analysis used <strong>Gaming</strong>. Existing safety and defect reports have not been recalculated.
+					{:else}
+						This report was made with an earlier version of the checker.
+					{/if}
 					{#if checkable}
 						<a class="tap text-primary font-medium underline underline-offset-4" href={checkHref}>Check it again</a>
 						to bring it up to date.
