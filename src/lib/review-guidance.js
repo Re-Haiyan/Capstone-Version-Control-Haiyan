@@ -85,7 +85,7 @@ export function reviewGuidance(product) {
 	}
 
 	const safetyReports = issueCounts.get('safety') || 0;
-	const hasSafety = safetyReports > 0 || report.state === 'safety_warning' || report.tone === 'high';
+	const hasSafety = safetyReports > 0 || ['safety_warning', 'possible_safety_issue'].includes(report.state) || report.tone === 'high';
 	const isInsufficient = report.state === 'insufficient_evidence' || report.state === 'not_analyzed'
 		|| report.tone === 'unknown';
 	const otherIssues = REVIEWED_ISSUES
