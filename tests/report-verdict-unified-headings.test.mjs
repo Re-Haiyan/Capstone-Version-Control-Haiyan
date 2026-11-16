@@ -30,7 +30,7 @@ test('explanation control lives with review actions and opens the real checker d
 	const actionStart = view.indexOf('<!-- One thing to do next, chosen by the verdict.');
 	const actionEnd = view.indexOf('<!-- The numbers behind the report.', actionStart);
 	const action = view.slice(actionStart, actionEnd);
-	assert.match(action, /Read the \{flagged\.length\} flagged reviews/);
+	assert.match(action, /Read the \$\{flagged\.length\} flagged reviews/);
 	assert.match(action, /How was this result reached\?/);
 	assert.match(action, /\(explanationOpen = true\)/);
 	assert.match(action, /What do these labels mean\?/);
