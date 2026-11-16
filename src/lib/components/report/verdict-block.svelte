@@ -15,11 +15,7 @@
 	const verdict = $derived(view(product));
 	const chip = $derived(chipFor(product));
 	const guidance = $derived(reviewGuidance(product));
-	const heading = $derived(
-		chip.kind === 'safety' ? 'Safety warning' :
-		chip.kind === 'caution' ? 'Caution' :
-		chip.kind === 'clear' ? 'Review check' : 'Review status'
-	);
+	const heading = $derived(chip.label);
 </script>
 
 {#key product.link}
@@ -50,7 +46,7 @@
 			{/if}
 
 			<div class="mt-3 rounded-lg border border-(--tone)/25 bg-background/65 px-3 py-2.5">
-				<h3 class="text-xs font-semibold">Review-based summary</h3>
+				<h3 class="text-xs font-semibold">Quick review summary</h3>
 				<p class="mt-1 text-sm leading-relaxed">{guidance.text}</p>
 			</div>
 			<p class="mt-2 text-xs text-muted-foreground">Review signals are a guide, not proof.</p>
