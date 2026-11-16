@@ -37,30 +37,22 @@
 					<CircleHelpIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
 				{/if}
 				<span>{heading}</span>
-				{#if chip.kind !== 'clear'}
-					<span class="text-muted-foreground font-normal">· What reviewers report</span>
-				{/if}
 			</div>
 
+			<!-- The status label above gives the warning level once for every
+			     result type. The heading below always introduces the evidence. -->
 			<h2 class="mt-2 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
-				{chip.kind === 'clear' ? 'What do reviewers say about this product?' : verdict.headline}
+				What do reviewers say about this product?
 			</h2>
-			{#if verdict.detail}
-				{#if chip.kind === 'clear'}
-					<details class="mt-3 rounded-lg border border-(--tone)/25 bg-background/50 px-3 py-2.5">
-						<summary class="cursor-pointer text-xs font-medium">How was this result reached?</summary>
-						<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
-					</details>
-				{:else}
-					<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
-				{/if}
+			{#if verdict.detail && chip.kind !== 'clear'}
+				<!-- Never hide a safety/caution finding or an unknown-report
+				     limitation just because the full reasoning is available
+				     through the adjacent link beside the review button. -->
+				<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
 			{/if}
 
 			<div class="mt-3 rounded-lg border border-(--tone)/25 bg-background/65 px-3 py-2.5" aria-label="Quick review summary">
-				{#if chip.kind !== 'clear'}
-					<h3 class="text-xs font-semibold">Quick review summary</h3>
-				{/if}
-				<p class={chip.kind === 'clear' ? 'text-sm leading-relaxed' : 'mt-1 text-sm leading-relaxed'}>{guidance.text}</p>
+				<p class="text-sm leading-relaxed">{guidance.text}</p>
 			</div>
 			<p class="mt-2 text-xs text-muted-foreground">Review signals are a guide, not proof.</p>
 		</section>
