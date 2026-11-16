@@ -177,6 +177,10 @@ export interface Product {
 	category?: string;
 	/** Rule-derived from the listing title; `other` means no recognized category. */
 	product_category?: string;
+	/** Read-time title correction only; never changes the stored analysis category. */
+	product_category_display?: string;
+	/** True if the saved analysis category disagrees with the corrected title rules. */
+	category_needs_recheck?: boolean;
 	product_group?: string;
 	platform?: string;
 	img?: string;
