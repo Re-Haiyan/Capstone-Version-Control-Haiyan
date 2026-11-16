@@ -253,6 +253,7 @@
 	}
 
 	let photoOpen = $state(false);
+	let explanationOpen = $state(false);
 
 	// A guest who is out of free scans is told so on a report, and can dismiss it for this visit.
 	const LIMIT_KEY = 'defaketive-limit-dismissed';
@@ -463,6 +464,12 @@
 				{:else if reviews.length}
 					<Button variant="outline" onclick={() => showReviews('all')}>Read the reviews we have <ArrowRightIcon /></Button>
 				{/if}
+				{#if verdict.detail}
+					<!-- Keep the full checker explanation accessible next to
+					     the review action, without repeating the verdict inside
+					     the coloured status card. -->
+					<Button variant="link" size="sm" class="text-muted-foreground" onclick={() => (explanationOpen = true)}>How was this result reached?</Button>
+				{/if}
 				<Button variant="link" size="sm" class="text-muted-foreground" onclick={showGuide}>What do these labels mean?</Button>
 			</div>
 		</div>
@@ -522,6 +529,22 @@
 			<img src={image} alt="Photo of {name}" class="max-h-[75svh] w-full rounded-lg object-contain" />
 		</DialogContent>
 	</Dialog>
+
+	<Dialog bind:open={explanationOpen}>
+		<DialogContent class="sm:max-w-xl">
+			<DialogHeader><DialogTitle>How was this result reached?</DialogTitle></DialogHeader>
+			<div class="space-y-3 text-sm leading-relaxed">
+				<p class="font-medium">{chipFor(product).label}</p>
+				{#if verdict.detail}
+					<p>{verdict.detail}</p>
+				{:else}
+					<p>No detailed checker explanation is available for this report.</p>
+				{/if}
+				<p class="text-xs text-muted-foreground">This explanation is based on customer reviews, not independent product testing. Reported concerns are not verified incidents.</p>
+			</div>
+		</DialogContent>
+	</Dialog>
+
 
 	<p class="text-muted-foreground text-xs">
 		This report analyzes a sample of public reviews. It supports shopping decisions but does not prove that a listing or product
