@@ -50,6 +50,11 @@ COMPILED = {k: re.compile(v, re.I) for k, v in CUES.items()}
 @lru_cache(maxsize=4096)
 def title_category(title: str) -> tuple[str, str]:
     category = classify_listing({"name": title})
+    # Known cross-category ambiguity: an MPPT solar inverter includes the
+    # word "controller", which older rules can mistake for a gamepad.
+    # Fail closed in the *sentiment adapter*; do not silently fix hazard tags.
+    if category == "gaming" and re.search(r"\b(?:solar|inverter|mppt|lifepo4)\b", title, re.I):
+        return "other", "other"
     return category, group_of(category)
 
 
@@ -101,6 +106,11 @@ def validate_manifest(path: str | Path, expected_encoder_sha256: str) -> dict[st
         raise ValueError("not a research-only shadow artifact")
     if manifest.get("base_encoder_sha256") != expected_encoder_sha256:
         raise ValueError("RoBERTa encoder hash mismatch")
+    category_source = Path(__file__).with_name("product_category.py")
+    with category_source.open("rb") as source:
+        category_sha = hashlib.file_digest(source, "sha256").hexdigest()
+    if manifest.get("source_code_sha256") != category_sha:
+        raise ValueError("product category rules changed; retrain the shadow adapter")
     with candidate.open("rb") as fh:
         digest = hashlib.file_digest(fh, "sha256").hexdigest()
     if digest != manifest.get("artifact_sha256"):
