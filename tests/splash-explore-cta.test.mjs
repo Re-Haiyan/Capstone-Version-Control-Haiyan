@@ -12,11 +12,14 @@ test('primary Explore action remains a real accessible button with its old desti
 	assert.match(splash, /sessionStorage\.setItem\('splash-seen', '1'\)/);
 });
 
-test('CTA dominates the product collage and is large enough for touch', () => {
-	assert.match(splash, /min-height:\s*3\.75rem/);
-	assert.match(splash, /min-width:\s*15rem/);
+test('CTA returns to compact dimensions while retaining a 44px touch height', () => {
+	assert.match(splash, /min-height:\s*2\.75rem/);
+	assert.match(splash, /min-width:\s*8rem/);
 	assert.match(splash, /background:\s*linear-gradient\(180deg, #ffd15f/);
 	assert.match(splash, /color:\s*var\(--navy\)/);
+	assert.match(splash, /font:\s*750 0\.875rem/);
+	assert.match(splash, /size=\{17\}/);
+	assert.doesNotMatch(splash, /min-width:\s*15rem/);
 	assert.match(splash, /box-shadow:[^\n]+rgba\(255, 255, 255/);
 	assert.match(splash, /\.go:hover/);
 	assert.match(splash, /\.go:focus-visible/);

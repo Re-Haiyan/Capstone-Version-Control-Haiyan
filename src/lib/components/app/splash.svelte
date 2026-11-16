@@ -62,7 +62,7 @@
 			<div class="tag"><i></i><span>A SAFER YOU</span><i></i></div>
 			<button type="button" class="go" onclick={enter} aria-label="Explore">
 				<span>Explore</span>
-				<ArrowRightIcon class="go-arrow" size={21} strokeWidth={2.5} aria-hidden="true" />
+				<ArrowRightIcon class="go-arrow" size={17} strokeWidth={2.5} aria-hidden="true" />
 			</button>
 		</div>
 	</div>
@@ -195,27 +195,27 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.85rem;
-		margin-top: 1.1rem;
-		min-height: 3.75rem;
-		min-width: 15rem;
+		gap: 0.5rem;
+		margin-top: 0.6rem;
+		min-height: 2.75rem;
+		min-width: 8rem;
 		max-width: calc(100vw - 2.5rem);
-		padding: 0.85rem 1.65rem;
+		padding: 0.55rem 1.2rem;
 		border: 2px solid var(--navy);
 		border-radius: 999px;
 		background: linear-gradient(180deg, #ffd15f 0%, var(--mustard) 60%, #ed9f05 100%);
 		color: var(--navy);
-		font: 800 clamp(1.1rem, 1.6vw, 1.3rem) / 1.2 Inter, system-ui, sans-serif;
+		font: 750 0.875rem / 1.2 Inter, system-ui, sans-serif;
 		letter-spacing: 0.01em;
 		white-space: nowrap;
-		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.82), 0 0 26px rgba(245, 176, 20, 0.42), 0 14px 28px -7px rgba(5, 14, 40, 0.75);
+		box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.86), 0 0 13px rgba(245, 176, 20, 0.3), 0 7px 16px -5px rgba(5, 14, 40, 0.6);
 		cursor: pointer;
 		transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 		animation: up 0.65s ease-out 0.85s both;
 	}
 	.go:hover {
 		background: linear-gradient(180deg, #ffe08b 0%, #ffc444 100%);
-		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.92), 0 18px 32px -7px rgba(5, 14, 40, 0.8);
+		box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.92), 0 0 17px rgba(245, 176, 20, 0.37), 0 9px 19px -5px rgba(5, 14, 40, 0.7);
 		transform: translateY(-2px);
 	}
 	.go:active {
@@ -234,7 +234,7 @@
 	}
 	@media (max-width: 480px) {
 		.go {
-			width: min(19rem, 83vw);
+			min-width: 8rem;
 		}
 	}
 	.swoosh {
