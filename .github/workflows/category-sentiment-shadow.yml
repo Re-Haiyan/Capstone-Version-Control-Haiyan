@@ -1,0 +1,67 @@
+name: Category-aware sentiment shadow research
+
+on:
+  push:
+    branches:
+      - research/category-aware-sentiment-shadow-20261116
+    paths:
+      - "backend/sentiment-analysis/defaketive_sentiment/category_sentiment.py"
+      - "backend/sentiment-analysis/defaketive_sentiment/hazard_model.py"
+      - "tests/test_category_sentiment_shadow.py"
+      - ".github/workflows/category-sentiment-shadow.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend dependencies
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Check syntax
+        run: |
+          python -m py_compile \
+            backend/sentiment-analysis/defaketive_sentiment/category_sentiment.py \
+            backend/sentiment-analysis/defaketive_sentiment/hazard_model.py \
+            tests/test_category_sentiment_shadow.py
+      - name: Test shadow-mode category sentiment and no-effect invariants
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+        run: |
+          python -m unittest discover -s tests -p 'test_category_sentiment_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_product_category.py' -q
+          python -m unittest discover -s tests -p 'test_category_wording.py' -q
+          python -m unittest discover -s tests -p 'test_sentiment_shadow.py' -q
+
+  ui_smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Ensure UI still compiles
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+          npm run check
+          npm run build
