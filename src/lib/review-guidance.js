@@ -108,7 +108,7 @@ export function reviewGuidance(product) {
 	if (safetyReports > 0) {
 		issueSentences.push(
 			reviewCount(safetyReports)
-			+ (safetyReports === 1 ? ' also mentioned' : ' also mentioned')
+			+ ' also mentioned'
 			+ ' a possible safety concern.'
 		);
 	} else if (hasSafety) {
