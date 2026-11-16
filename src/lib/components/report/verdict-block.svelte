@@ -17,7 +17,8 @@
 	const highlights = $derived(positiveHighlights(verdict.conclusion));
 	const analyzed = $derived(Number(verdict.reviews_analyzed) || highlights.reviewed || 0);
 	const reported = $derived((verdict.badges ?? []).filter((item) => Number(item.mentions) > 0));
-	const important = $derived(reported.filter((item) => !item.informs_only));
+	const noWarningButReports = $derived(chip.kind === 'clear' && reported.length > 0);
+	const checkerHeadline = $derived(noWarningButReports ? 'Issues reported, below warning level' : verdict.headline);
 	const caution = $derived(chip.kind === 'caution' || chip.kind === 'safety');
 	const first = $derived(highlights.product[0]);
 	const explanation = $derived(
@@ -35,7 +36,11 @@
 		<div class="grid min-w-0 gap-4 p-4 sm:p-5 md:grid-cols-[minmax(0,1fr)_minmax(12rem,15rem)] md:gap-6">
 			<div class="grid min-w-0 content-start gap-3">
 				<div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
-					<CircleCheckIcon class="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+					{#if highlights.product.length}
+						<CircleCheckIcon class="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+					{:else}
+						<CircleHelpIcon class="size-4 text-muted-foreground" aria-hidden="true" />
+					{/if}
 					<h2 class="font-semibold">What reviewers liked</h2>
 					<span class="text-muted-foreground font-normal">· positive review themes</span>
 				</div>
@@ -63,7 +68,7 @@
 					</div>
 					<p class="text-foreground/80 text-sm">{explanation}</p>
 				{:else}
-					<p class="text-foreground/80 text-sm">No specific positive product quality could be reliably identified from the available review text.</p>
+					<p class="text-foreground/80 text-sm">No positive product qualities could be confirmed from the available review text. This does not mean every review was negative.</p>
 				{/if}
 
 				{#if highlights.service.length}
@@ -83,6 +88,8 @@
 						<TriangleAlertIcon class="size-4 text-destructive" aria-hidden="true" />
 					{:else if caution}
 						<CircleAlertIcon class="size-4 text-amber-600" aria-hidden="true" />
+					{:else if noWarningButReports}
+						<CircleAlertIcon class="size-4 text-amber-600" aria-hidden="true" />
 					{:else if chip.kind === 'clear'}
 						<CircleCheckIcon class="size-4 text-emerald-600" aria-hidden="true" />
 					{:else}
@@ -90,11 +97,14 @@
 					{/if}
 					<span>Review checks</span>
 				</div>
-				<p class={cn('text-sm font-semibold', chip.kind === 'safety' && 'text-destructive')}>{verdict.headline}</p>
+				<p class={cn('text-sm font-semibold', chip.kind === 'safety' && 'text-destructive')}>{checkerHeadline}</p>
 				<p class="text-muted-foreground text-xs">{verdict.detail}</p>
-				{#if important.length}
+				{#if reported.length}
+					{#if noWarningButReports}
+						<p class="text-xs font-medium text-amber-700 dark:text-amber-400">These concerns did not trigger a warning-level result, but they are still worth reading.</p>
+					{/if}
 					<ul class="grid gap-1.5 text-xs">
-						{#each important.slice(0, 3) as item (item.category)}
+						{#each reported.slice(0, 5) as item (item.category)}
 							<li class="flex items-start justify-between gap-2 rounded-md bg-background/70 px-2 py-1.5">
 								<span>{item.label}</span>
 								<b class="shrink-0 tabular-nums">{reviewMentionCount(item.mentions)}</b>

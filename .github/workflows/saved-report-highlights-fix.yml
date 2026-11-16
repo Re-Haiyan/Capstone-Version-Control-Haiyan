@@ -1,0 +1,68 @@
+name: Saved report highlight regression
+
+on:
+  push:
+    branches:
+      - fix/saved-report-highlights-20261116
+    paths:
+      - server.py
+      - src/lib/components/report/verdict-block.svelte
+      - tests/test_saved_detail_highlights.py
+      - .github/workflows/saved-report-highlights-fix.yml
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend requirements
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Test exact saved detail route and grounded evidence
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CONCLUSION_REASONS: "1"
+        run: python -m unittest discover -s tests -p 'test_saved_detail_highlights.py' -v
+      - name: Test existing conclusion engine without model changes
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CONCLUSION_REASONS: "1"
+        run: python -m unittest discover -s tests -p 'test_product_conclusion.py' -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+      - name: Test keyword ranking
+        run: node --test tests/positive-highlights.test.mjs
+      - name: Typecheck and build UI
+        run: |
+          npm run check
+          npm run build
