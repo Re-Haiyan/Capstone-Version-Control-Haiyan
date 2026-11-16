@@ -138,7 +138,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     ("battery_solar", "electronics",
      r"\b(?:lifepo4|lithium (?:ion )?batter(?:y|ies)|batter(?:y|ies) (?:packs?|cells?)|(?:car|motorcycle|solar|deep cycle|"
      r"rechargeable|aa|aaa|9v) batter(?:y|ies)|\d+ ?v ?\d+ ?ah|18650|solar (?:inverters?|chargers?|generators?|"
-     r"power|batter(?:y|ies)|panel (?:kits?|sets?|systems?)|(?:charge |mppt )?controllers?)|mppt (?:solar )?(?:charge )?controllers?|inverters?|generators?|power stations?|battery chargers?)\b"),
+     r"power|batter(?:y|ies)|panel (?:kits?|sets?|systems?)|(?:charg(?:e|ing) |mppt )?controllers?)|mppt (?:solar )?(?:charge )?controllers?|inverters?|generators?|power stations?|battery chargers?)\b"),
     ("motorcycle", "automotive_tools",
      r"\b(?:mufflers?|exhaust|handlebars?|bar ?ends?|side mirrors?|tail ?lights?|sprockets?|"
      r"drive chain|clutch (?:lever|cable|plate|cover)|brake pads?|scooter parts?|mio (?:sporty|soul|i)|nmax|aerox|click ?125|xrm|power ?pipe|"
