@@ -62,7 +62,7 @@ export function reviewSummary(product) {
 		return {
 			kind: 'safety',
 			text: sentiment + ' However, ' + (safetyCount > 0
-				? count(safetyCount) + ' mention possible safety concerns.'
+				? count(safetyCount) + (safetyCount === 1 ? ' mentions' : ' mention') + ' possible safety concerns.'
 				: 'the checker flags a potential safety concern.') + ' Read the flagged reviews carefully before deciding.',
 			note, analyzed
 		};
