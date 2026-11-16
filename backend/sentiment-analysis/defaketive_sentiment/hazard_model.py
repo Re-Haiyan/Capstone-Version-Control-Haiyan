@@ -68,6 +68,7 @@ from .listing_context import review_rules as listing_review_rules
 from .model import DefaketiveSentimentModel
 from .product_category import PRODUCT_CATEGORY_REVISION, classify_listing, exemption as category_exemption
 from . import product_category
+from . import category_sentiment
 from .product_badges import (
     CATEGORIES,
     COUNTERFEIT,
@@ -2008,6 +2009,11 @@ class HazardBadgeModel:
             if shadow["mode"] == "on":
                 sentiment_block["deployed_label"] = label
                 label = sentiment_block["label"] = shadow["calibrated"]["label"]
+        # Category context is a research-only shadow signal. The actual label
+        # stays unchanged, including the sentiment gate used by learned hazards.
+        category_shadow = category_sentiment.suggest(review, listing, label)
+        if category_shadow is not None:
+            sentiment_block["category_shadow"] = category_shadow
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
