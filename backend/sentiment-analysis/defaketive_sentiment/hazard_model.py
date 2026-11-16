@@ -69,6 +69,7 @@ from .model import DefaketiveSentimentModel
 from .product_category import PRODUCT_CATEGORY_REVISION, classify_listing, exemption as category_exemption
 from . import product_category
 from . import category_sentiment
+from . import category_adapter
 from .product_badges import (
     CATEGORIES,
     COUNTERFEIT,
@@ -2014,6 +2015,16 @@ class HazardBadgeModel:
         category_shadow = category_sentiment.suggest(review, listing, label)
         if category_shadow is not None:
             sentiment_block["category_shadow"] = category_shadow
+        # Optional learned adapter uses the already-running XLM-R probabilities,
+        # not new ONNX inputs, and writes only additional research metadata.
+        cls = getattr(self.sentiment, "trained_classifier", None)
+        encoder_sha = (getattr(cls, "manifest", None) or {}).get("files", {}).get("model.onnx")
+        candidate = category_adapter.shadow(
+            str(review or ""), rating, sentiment_block["probabilities"],
+            listing, label, encoder_sha,
+        )
+        if candidate is not None:
+            sentiment_block["category_adapter_shadow"] = candidate
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
