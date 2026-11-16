@@ -1,0 +1,38 @@
+name: Balanced review-highlight layout
+
+on:
+  push:
+    branches:
+      - feature/balanced-review-highlights-20261116
+    paths:
+      - "src/lib/components/report/verdict-block.svelte"
+      - ".github/workflows/review-highlight-layout.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-fund --no-audit
+      - name: Test keyword evidence and typecheck
+        run: |
+          node --test tests/positive-highlights.test.mjs
+          npm run check
+      - name: Compile production UI
+        run: npm run build
