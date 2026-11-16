@@ -1,0 +1,42 @@
+name: Unified verdict headings and checker reason
+
+on:
+  push:
+    branches:
+      - fix/all-verdict-labels-reason-link-20261116
+    paths:
+      - "src/lib/components/report/verdict-block.svelte"
+      - "src/lib/components/report/report-view.svelte"
+      - "tests/report-verdict-unified-headings.test.mjs"
+      - ".github/workflows/verdict-unified-headings.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+      - name: Test all-status headings and reachable explanation
+        run: |
+          node --test tests/report-verdict-unified-headings.test.mjs
+          node --test tests/review-guidance.test.mjs
+      - name: Svelte typecheck
+        run: npm run check
+      - name: Production frontend build
+        run: npm run build
