@@ -60,8 +60,8 @@
 			<img src={logo} alt="" class="mark" />
 			<div class="name" aria-hidden="true"><span>De</span><span class="f">F</span><span>aketive</span></div>
 			<div class="tag"><i></i><span>A SAFER YOU</span><i></i></div>
-			<button type="button" class="go" onclick={enter} aria-label="Explore DeFaketive">
-				<span>Explore DeFaketive</span>
+			<button type="button" class="go" onclick={enter} aria-label="Explore">
+				<span>Explore</span>
 				<ArrowRightIcon class="go-arrow" size={21} strokeWidth={2.5} aria-hidden="true" />
 			</button>
 		</div>
@@ -203,18 +203,18 @@
 		padding: 0.85rem 1.65rem;
 		border: 2px solid var(--navy);
 		border-radius: 999px;
-		background: var(--mustard);
+		background: linear-gradient(180deg, #ffd15f 0%, var(--mustard) 60%, #ed9f05 100%);
 		color: var(--navy);
-		font: 800 clamp(1rem, 1.35vw, 1.15rem) / 1.2 Inter, system-ui, sans-serif;
+		font: 800 clamp(1.1rem, 1.6vw, 1.3rem) / 1.2 Inter, system-ui, sans-serif;
 		letter-spacing: 0.01em;
 		white-space: nowrap;
-		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.78), 0 14px 28px -7px rgba(5, 14, 40, 0.75);
+		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.82), 0 0 26px rgba(245, 176, 20, 0.42), 0 14px 28px -7px rgba(5, 14, 40, 0.75);
 		cursor: pointer;
 		transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 		animation: up 0.65s ease-out 0.85s both;
 	}
 	.go:hover {
-		background: #ffd064;
+		background: linear-gradient(180deg, #ffe08b 0%, #ffc444 100%);
 		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.92), 0 18px 32px -7px rgba(5, 14, 40, 0.8);
 		transform: translateY(-2px);
 	}
