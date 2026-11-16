@@ -1,0 +1,41 @@
+name: Clear splash hero layout
+
+on:
+  push:
+    branches:
+      - feature/clear-hero-splash-20261116
+    paths:
+      - "src/lib/components/app/splash.svelte"
+      - "tests/splash-hero-layout.test.mjs"
+      - "tests/splash-explore-cta.test.mjs"
+      - ".github/workflows/splash-hero-layout.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+      - name: Splash copy, hierarchy and CTA checks
+        run: |
+          node --test tests/splash-hero-layout.test.mjs tests/splash-explore-cta.test.mjs
+      - name: Svelte a11y and typecheck
+        run: npm run check
+      - name: Build production frontend
+        run: npm run build

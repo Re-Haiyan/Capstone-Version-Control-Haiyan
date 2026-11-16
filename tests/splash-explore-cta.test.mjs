@@ -5,7 +5,7 @@ import { test } from 'node:test';
 const splash = readFileSync(new URL('../src/lib/components/app/splash.svelte', import.meta.url), 'utf8');
 
 test('primary Explore action remains a real accessible button with its old destination', () => {
-	assert.match(splash, /<button type="button" class="go" onclick=\{enter\} aria-label="Explore DeFaketive">/);
+	assert.match(splash, /<button type="button" class="go" onclick=\{enter\} aria-label="Explore DeFaketive" bind:this=\{exploreButton\}>/);
 	assert.match(splash, /<span>Explore DeFaketive<\/span>/);
 	assert.match(splash, /ArrowRightIcon class="go-arrow"/);
 	assert.match(splash, /void goto\('\/enter'\)/);

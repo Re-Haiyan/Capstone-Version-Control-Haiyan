@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import logo from '#lib/assets/logo.png';
@@ -11,11 +11,12 @@
 	const mixed = photos.map((_, i) => photos[(i * 7) % photos.length]);
 	const columns = Array.from({ length: 8 }, (_, c) => mixed.filter((_, i) => i % 8 === c));
 
-	// The screen people see first: the logo, the name and the tagline over the product collage. Explore leads to the
-	// sign-in page (/enter). It stays until the person presses Explore,
+	// First-time welcome: a readable hero over the existing product collage. Explore leads to
+	// the entry page (/enter) with sign-in, sign-up and guest options. The splash stays until Explore,
 	// and is not shown again in that browser tab after that (a reload or a new page does not play it again).
 	let show = $state(false);
 	let leaving = $state(false);
+	let exploreButton: HTMLButtonElement | undefined = $state();
 
 	function enter() {
 		if (leaving) return;
@@ -36,13 +37,21 @@
 			// Storage blocked: show the screen.
 		}
 		show = true;
+		// The splash is a modal with only one action. Make that action reachable
+		// immediately via Enter/Space and restore a visible keyboard focus target.
+		void tick().then(() => exploreButton?.focus({ preventScroll: true }));
 	});
 </script>
 
-<svelte:window onkeydown={(e) => show && e.key === 'Enter' && enter()} />
+<svelte:window onkeydown={(event) => {
+	if (show && !leaving && event.key === 'Tab') {
+		event.preventDefault();
+		exploreButton?.focus();
+	}
+}} />
 
 {#if show}
-	<div class="splash" class:leaving role="dialog" aria-label="DeFaketive. A safer you.">
+	<div class="splash" class:leaving role="dialog" aria-modal="true" aria-labelledby="splash-title" aria-describedby="splash-description">
 		<div class="collage" aria-hidden="true">
 			{#each columns as col, c (c)}
 				<div class="col" style:--dur="{34 + (c % 4) * 9}s" style:--off="{-((c * 37) % 100) / 100}">
@@ -56,15 +65,18 @@
 		</div>
 		<span class="swoosh tl" aria-hidden="true"></span>
 		<span class="swoosh br" aria-hidden="true"></span>
-		<div class="stack">
+		<section class="stack" aria-labelledby="splash-title">
 			<img src={logo} alt="" class="mark" />
 			<div class="name" aria-hidden="true"><span>De</span><span class="f">F</span><span>aketive</span></div>
 			<div class="tag"><i></i><span>A SAFER YOU</span><i></i></div>
-			<button type="button" class="go" onclick={enter} aria-label="Explore DeFaketive">
+			<h1 id="splash-title" class="hero-title">Know what buyers really say before you buy.</h1>
+			<p id="splash-description" class="hero-description">See what shoppers liked, what went wrong, and possible safety concerns—based on customer reviews.</p>
+			<button type="button" class="go" onclick={enter} aria-label="Explore DeFaketive" bind:this={exploreButton}>
 				<span>Explore DeFaketive</span>
 				<ArrowRightIcon class="go-arrow" size={21} strokeWidth={2.5} aria-hidden="true" />
 			</button>
-		</div>
+			<p class="hero-note">Review-based guidance, not independent product testing.</p>
+		</section>
 	</div>
 {/if}
 
@@ -77,7 +89,9 @@
 		z-index: 200;
 		display: grid;
 		place-items: center;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: clamp(1rem, 3vmin, 2rem);
 		background: #0b1f4d;
 		color: var(--navy);
 		transition: opacity 0.5s ease, transform 0.5s ease;
@@ -136,35 +150,60 @@
 			transform: translateY(0);
 		}
 	}
+	/* Frosted paper card: products remain recognizable around the edges,
+	   while the message and gold CTA form one clear reading path. */
 	.stack {
 		position: relative;
 		z-index: 1;
-		padding: clamp(1rem, 3vw, 2rem) !important;
-		display: grid;
-		justify-items: center;
-		gap: 0.8rem;
-		padding: 1.5rem;
+		width: min(36rem, 100%);
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.65rem;
+		padding: clamp(1.35rem, 3vw, 2.35rem);
+		border: 1px solid rgba(255, 255, 255, 0.96);
+		border-top: 4px solid var(--mustard);
+		border-radius: 1.6rem;
+		background: rgba(255, 255, 255, 0.94);
+		box-shadow: 0 22px 68px rgba(5, 14, 40, 0.35), 0 0 0 1px rgba(11, 31, 77, 0.10);
+		-webkit-backdrop-filter: blur(14px);
+		backdrop-filter: blur(14px);
 		text-align: center;
 	}
-	.stack::before {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		inset: -34% -46%;
-		pointer-events: none;
-		background: radial-gradient(closest-side, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.62) 45%, rgba(255, 255, 255, 0) 100%);
+	.hero-title {
+		max-width: 25ch;
+		margin: 0.7rem 0 0;
+		color: var(--navy);
+		font: 800 clamp(1.4rem, 3.2vw, 2.05rem) / 1.18 Inter, system-ui, sans-serif;
+		letter-spacing: -0.035em;
+		text-wrap: balance;
+		animation: up 0.5s ease-out 0.4s both;
+	}
+	.hero-description {
+		max-width: 43ch;
+		margin: 0;
+		color: #3f4b64;
+		font: 450 clamp(0.93rem, 1.55vw, 1.05rem) / 1.55 Inter, system-ui, sans-serif;
+		text-wrap: pretty;
+		animation: up 0.5s ease-out 0.5s both;
+	}
+	.hero-note {
+		margin: 0.35rem 0 0;
+		color: #4e5870;
+		font: 500 0.77rem / 1.4 Inter, system-ui, sans-serif;
 	}
 	.mark {
-		width: clamp(4.5rem, 12vw, 6.5rem);
-		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 22px rgba(255, 255, 255, 0.6));
-		animation: pop 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.25) 0.15s both;
+		width: clamp(3.5rem, 9vw, 4.65rem);
+		filter: drop-shadow(0 4px 7px rgba(11, 31, 77, 0.14));
+		animation: pop 0.65s cubic-bezier(0.2, 0.9, 0.3, 1.25) 0.1s both;
 	}
 	.name {
-		font: 900 clamp(1.8rem, 5.5vw, 3.2rem) / 1 'Archivo Black', 'Arial Black', Impact, sans-serif;
-		text-shadow: 0 0 10px rgba(255, 255, 255, 0.95), 0 0 24px rgba(255, 255, 255, 0.7), 0 0 2px #fff;
+		color: var(--navy);
+		font: 900 clamp(1.8rem, 5.5vw, 2.5rem) / 1 'Archivo Black', 'Arial Black', Impact, sans-serif;
 		font-style: italic;
-		letter-spacing: -0.02em;
-		animation: up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.7s both;
+		letter-spacing: -0.03em;
+		animation: up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
 	}
 	.f {
 		color: var(--mustard);
@@ -172,12 +211,11 @@
 	.tag {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		font: 600 clamp(0.65rem, 1.8vw, 0.85rem) / 1 Inter, system-ui, sans-serif;
-		letter-spacing: 0.45em;
-		font-weight: 800;
-		text-shadow: 0 0 8px #fff, 0 0 18px rgba(255, 255, 255, 0.85);
-		animation: up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 1.1s both;
+		gap: 0.8rem;
+		color: #293d67;
+		font: 800 clamp(0.63rem, 1.65vw, 0.75rem) / 1 Inter, system-ui, sans-serif;
+		letter-spacing: 0.34em;
+		animation: up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both;
 	}
 	.tag i {
 		display: block;
@@ -187,7 +225,7 @@
 		border-radius: 2px;
 		background: var(--navy);
 		transform-origin: center;
-		animation: grow 0.7s ease-out 1.4s both;
+		animation: grow 0.55s ease-out 0.45s both;
 	}
 	/* One obvious first action: large enough for touch, gold against the navy
 	   collage, with a light separation ring so the product photos don't compete. */
@@ -196,7 +234,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.85rem;
-		margin-top: 1.1rem;
+		margin-top: 0.85rem;
 		min-height: 3.75rem;
 		min-width: 15rem;
 		max-width: calc(100vw - 2.5rem);
@@ -211,7 +249,7 @@
 		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.78), 0 14px 28px -7px rgba(5, 14, 40, 0.75);
 		cursor: pointer;
 		transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-		animation: up 0.65s ease-out 0.85s both;
+		animation: up 0.55s ease-out 0.6s both;
 	}
 	.go:hover {
 		background: #ffd064;
@@ -233,9 +271,23 @@
 		transform: translateX(3px);
 	}
 	@media (max-width: 480px) {
+		.stack {
+			border-radius: 1.2rem;
+			padding: 1.35rem 1.1rem;
+		}
 		.go {
 			width: min(19rem, 83vw);
 		}
+	}
+	@media (max-height: 650px) {
+		.stack {
+			gap: 0.4rem;
+			padding: 1rem 1.25rem;
+		}
+		.mark { width: 3.2rem; }
+		.hero-title { margin-top: 0.4rem; font-size: 1.35rem; }
+		.hero-description { font-size: 0.91rem; line-height: 1.35; }
+		.go { min-height: 3.25rem; margin-top: 0.4rem; }
 	}
 	.swoosh {
 		position: absolute;
@@ -303,6 +355,8 @@
 		.name,
 		.tag,
 		.tag i,
+		.hero-title,
+		.hero-description,
 		.go,
 		.track,
 		.swoosh {
