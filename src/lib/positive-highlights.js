@@ -55,6 +55,7 @@ export function positiveHighlights(conclusion, limit = 4) {
 		else service.push(entry);
 	}
 
+	/** @type {(a: PositiveHighlight, b: PositiveHighlight) => number} */
 	const order = (a, b) => b.reviews - a.reviews || a.label.localeCompare(b.label);
 	product.sort(order);
 	service.sort(order);
