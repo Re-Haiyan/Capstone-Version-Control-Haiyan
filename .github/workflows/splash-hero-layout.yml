@@ -7,6 +7,7 @@ on:
     paths:
       - "src/lib/components/app/splash.svelte"
       - "tests/splash-hero-layout.test.mjs"
+      - "tests/splash-explore-cta.test.mjs"
       - ".github/workflows/splash-hero-layout.yml"
   pull_request:
     branches:
