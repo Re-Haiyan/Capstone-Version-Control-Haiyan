@@ -28,7 +28,7 @@ test('a single reported safety concern always overrides a positive majority', ()
 		badges: [{ category: 'safety', label: 'Safety problem', mentions: 1 }]
 	}));
 	assert.equal(out.kind, 'safety');
-	assert.match(out.text, /1 review mention possible safety concerns/);
+	assert.match(out.text, /1 review mentions possible safety concerns/);
 	assert.match(out.text, /Read the flagged reviews carefully/);
 	assert.doesNotMatch(out.text, /safe to buy/i);
 });
