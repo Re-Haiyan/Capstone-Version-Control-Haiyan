@@ -1,0 +1,44 @@
+name: Shopper-friendly result wording
+
+on:
+  push:
+    branches:
+      - feature/plain-language-universal-summary-20261116
+    paths:
+      - "src/lib/review-guidance.js"
+      - "src/lib/product.ts"
+      - "src/lib/components/report/verdict-block.svelte"
+      - "src/lib/components/report/report-view.svelte"
+      - "tests/report-visible-fields.test.mjs"
+      - "tests/review-guidance.test.mjs"
+      - ".github/workflows/plain-language-review-copy.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install pinned dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+      - name: Verify human-friendly review summaries and evidence restrictions
+        run: |
+          node --test tests/review-guidance.test.mjs tests/positive-highlights.test.mjs tests/report-visible-fields.test.mjs
+      - name: Typecheck
+        run: npm run check
+      - name: Production build
+        run: npm run build

@@ -1,24 +1,21 @@
 /**
- * Short review-based suitability context for the classic DeFaketive report.
+ * Plain-language review summary, shared by every marketplace product category.
+ * Never guess the product's purpose or audience: only mention specific traits
+ * supported by existing distinct-review aspect evidence.
  *
- * Grounds *all* highlighted qualities in distinct, quoted review-aspect
- * evidence, and always prioritizes risk flags. This is never proof of product
- * safety, real-world suitability, authenticity, or a recommendation to buy.
- *
- * The archived report's saved model results are never changed here.
+ * This is descriptive buyer context, NOT a safety claim or a recommendation.
  */
-
 import { positiveHighlights } from './positive-highlights.js';
 
-/** @param {number} value */
-const reviews = (value) => value === 1 ? '1 review' : value + ' reviews';
+/** @param {number} count */
+const reviewCount = (count) => count === 1 ? '1 review' : count + ' reviews';
 
-/** @param {string[]} labels */
-function list(labels) {
-	if (labels.length === 0) return '';
-	if (labels.length === 1) return labels[0];
-	if (labels.length === 2) return labels.join(' and ');
-	return labels.slice(0, -1).join(', ') + ', and ' + labels[labels.length - 1];
+/** @param {string[]} items */
+function joinNaturally(items) {
+	if (!items.length) return '';
+	if (items.length === 1) return items[0];
+	if (items.length === 2) return items.join(' and ');
+	return items.slice(0, -1).join(', ') + ', and ' + items[items.length - 1];
 }
 
 /**
@@ -26,67 +23,66 @@ function list(labels) {
  * @returns {{ text: string, support: number, analyzed: number, safety: boolean }}
  */
 export function reviewGuidance(product) {
-	const view = product?.badge_view;
-	const analyzed = Math.max(0, Number(view?.reviews_analyzed) || 0);
+	const report = product?.badge_view;
+	const analyzed = Math.max(0, Number(report?.reviews_analyzed) || 0);
 	const fallback = {
-		text: 'Not enough analyzed review evidence is available to describe who this product may suit.',
+		text: 'There are not enough reviews yet to say what people liked or disliked about this product.',
 		support: 0,
 		analyzed,
 		safety: false
 	};
-	if (!view?.available || analyzed < 1) return fallback;
+	if (!report?.available || analyzed < 1) return fallback;
 
-	const highlights = positiveHighlights(view.conclusion, 3).product;
-	const supported = highlights.filter((item) => Number(item.reviews) >= 2);
-	const qualities = supported.map((item) => item.label.toLowerCase());
-	const badges = (view.badges ?? []).filter((item) => Number(item.mentions) > 0);
-	const safety = Math.max(
-		0,
-		Number(view.counts?.safety) || 0,
-		...badges.filter((item) => item.category === 'safety').map((item) => Number(item.mentions) || 0)
+	// Real, positive product-specific aspect mentions only; never delivery,
+	// seller praise, guesses from listing title, or generic AI claims.
+	const qualities = positiveHighlights(report.conclusion, 3).product
+		.filter((item) => Number.isInteger(item.reviews) && item.reviews >= 2);
+	const praise = qualities.length
+		? 'Some reviews praised ' + joinNaturally(
+			qualities.map((item) => item.label.toLowerCase() + ' (' + reviewCount(item.reviews) + ')')
+		) + '.'
+		: "The reviews don't clearly point to specific product qualities that people liked.";
+
+	const badges = (report.badges ?? []).filter((item) => Number(item.mentions) > 0);
+	const safetyReports = Math.max(
+		0, Number(report.counts?.safety) || 0,
+		...badges.filter((item) => item.category === 'safety')
+			.map((item) => Number(item.mentions) || 0)
 	);
-	const highRisk = safety > 0 || view.tone === 'high';
-	const otherIssues = badges
+	const safetyWarning = safetyReports > 0 || report.tone === 'high';
+	const topProblem = badges
 		.filter((item) => item.category !== 'safety')
-		.sort((a, b) => Number(b.mentions) - Number(a.mentions));
-	const topIssue = otherIssues[0];
-	const countLabel = 'According to ' + analyzed + ' analyzed customer ' + (analyzed === 1 ? 'review, ' : 'reviews, ');
-	const q = supported.map((item) => item.label.toLowerCase() + ' (' + reviews(item.reviews) + ')');
-	const praise = supported.length
-		? 'some reviewers praised ' + list(q) + '.'
-		: 'there is not enough specific positive-quality evidence to identify a clear buyer preference.';
+		.sort((a, b) => Number(b.mentions) - Number(a.mentions))[0];
+	const lead = 'We looked at ' + reviewCount(analyzed) + '. ';
 
-	if (highRisk) {
+	if (safetyWarning) {
+		const warning = safetyReports
+			? reviewCount(safetyReports) + (safetyReports === 1 ? ' mentions' : ' mention') + ' a possible safety problem.'
+			: 'The review checker found a possible serious safety problem.';
 		return {
-			text: countLabel + praise + ' However, ' + (safety > 0
-				? reviews(safety) + (safety === 1 ? ' mentions' : ' mention') + ' a possible safety concern.'
-				: 'the checker raised a serious safety warning.') +
-				' Review these reports carefully; this product cannot be considered safe based on customer reviews alone.',
-			support: supported.length,
-			analyzed,
-			safety: true
+			text: lead + praise + ' However, ' + warning +
+				' Please read those reports carefully before deciding whether to buy.',
+			support: qualities.length, analyzed, safety: true
 		};
 	}
 
 	const sentiment = product?.sentiment_summary?.sentiment_counts;
-	const positive = Number(sentiment?.positive) || 0;
-	const negative = Number(sentiment?.negative) || 0;
-	const hasPositiveLean = positive > negative && positive > 0;
-
-	const appeal = supported.length && hasPositiveLean
-		? ' It may appeal to shoppers who prioritize ' + list(qualities) + '.'
+	const positive = Math.max(0, Number(sentiment?.positive) || 0);
+	const negative = Math.max(0, Number(sentiment?.negative) || 0);
+	const positiveLean = positive > negative && positive > 0;
+	const appeal = qualities.length && positiveLean
+		? ' If these qualities matter to you, the product may be worth a closer look.'
 		: '';
-	const concern = topIssue
-		? ' However, ' + reviews(Number(topIssue.mentions)) + ' reported ' +
-			String(topIssue.label || 'a problem').toLowerCase() + '; check those reviews before deciding.'
-		: view.tone === 'moderate'
-			? ' The checker also found concerns worth reviewing before any purchase.'
-			: ' This does not establish product quality or suitability.';
+	const concern = topProblem
+		? ' However, ' + reviewCount(Number(topProblem.mentions)) +
+			' mentioned ' + String(topProblem.label || 'a problem').toLowerCase() +
+			'. Read those reviews too.'
+		: report.tone === 'moderate'
+			? ' The checker also found some concerns worth reading before buying.'
+			: ' Reviews alone cannot confirm the product is safe or good quality.';
 
 	return {
-		text: countLabel + praise + appeal + concern,
-		support: supported.length,
-		analyzed,
-		safety: false
+		text: lead + praise + appeal + concern,
+		support: qualities.length, analyzed, safety: false
 	};
 }

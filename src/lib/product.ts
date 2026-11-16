@@ -87,10 +87,10 @@ export type ChipKind = 'safety' | 'caution' | 'clear' | 'unknown';
  * The sentence under a chip (the verdict headline) is the server's and says why.
  */
 export const GROUP_NAMES: Record<ChipKind, string> = {
-	clear: 'No red flags',
-	caution: 'Some concerns',
-	safety: 'Safety reports',
-	unknown: 'No result yet'
+	clear: 'No major warnings',
+	caution: 'Some concerns reported',
+	safety: 'Safety concerns reported',
+	unknown: 'Not enough information'
 };
 
 /**
@@ -481,12 +481,12 @@ export const groupOfTone = (value: string): ChipKind =>
 
 /** The four groups, and what each one means. The order runs from calm to serious, then the one with no answer. */
 export const VERDICT_GROUPS: { kind: ChipKind; label: string; meaning: string }[] = [
-	{ kind: 'clear', label: GROUP_NAMES.clear, meaning: "Enough reviews and nothing at a warning level. Not proof it's safe." },
-	{ kind: 'caution', label: GROUP_NAMES.caution, meaning: 'More fakes or defects than usual, or a safety concern, even from one reviewer.' },
-	{ kind: 'safety', label: GROUP_NAMES.safety, meaning: 'Two or more reports of a serious hazard, or safety problems that are common.' },
-	{ kind: 'unknown', label: GROUP_NAMES.unknown, meaning: 'Too few reviews, reviews that may not be trustworthy, or not analyzed yet.' }
+	{ kind: 'clear', label: GROUP_NAMES.clear, meaning: "We did not find enough serious or repeated problems to raise a warning. Some reviews may still mention issues." },
+	{ kind: 'caution', label: GROUP_NAMES.caution, meaning: 'Some reviews mention problems worth checking before you buy.' },
+	{ kind: 'safety', label: GROUP_NAMES.safety, meaning: 'Reviews mention possible safety problems that need closer attention.' },
+	{ kind: 'unknown', label: GROUP_NAMES.unknown, meaning: "There are too few usable reviews, some may be unreliable, or the product hasn't been checked yet." }
 ];
 
 /** Said wherever the verdicts are listed against their groups. */
 export const SAFETY_LIFT_NOTE =
-	'A product with any safety mention is shown as "Some concerns" at least, whatever its result, so one report is never hidden.';
+	'When even one review mentions a safety problem, the product is shown with at least a caution so the report is easy to notice.';
