@@ -1,0 +1,47 @@
+name: Classic product report UI and review summary
+
+on:
+  push:
+    branches:
+      - feature/restore-classic-report-short-summary-20261116
+    paths:
+      - "src/lib/review-guidance.js"
+      - "src/lib/components/report/verdict-block.svelte"
+      - "src/lib/components/report/words-card.svelte"
+      - "src/lib/components/report/checks-card.svelte"
+      - "src/lib/components/report/sentiment-card.svelte"
+      - "src/lib/components/report/verdict-guide.svelte"
+      - "tests/review-guidance.test.mjs"
+      - ".github/workflows/classic-report-short-summary.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked packages
+        run: |
+          npm install -g npm@11
+          npm ci --no-audit --no-fund
+      - name: Verify review-specific recommendations never override safety
+        run: |
+          node --test tests/review-guidance.test.mjs \
+            tests/positive-highlights.test.mjs \
+            tests/review-summary.test.mjs
+      - name: Svelte typecheck
+        run: npm run check
+      - name: Production frontend build
+        run: npm run build
