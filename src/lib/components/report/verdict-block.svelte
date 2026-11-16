@@ -6,6 +6,7 @@
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 	import { chipFor, view } from '#lib/product.js';
 	import { positiveHighlights, reviewMentionCount } from '#lib/positive-highlights.js';
+	import { reviewSummary } from '#lib/review-summary.js';
 	import type { Product } from '#lib/types.js';
 
 	// The card only arranges existing review-backed evidence. Never infer
@@ -14,6 +15,7 @@
 	const verdict = $derived(view(product));
 	const chip = $derived(chipFor(product));
 	const highlights = $derived(positiveHighlights(verdict.conclusion));
+	const summary = $derived(reviewSummary(product));
 	const analyzed = $derived(Number(verdict.reviews_analyzed) || highlights.reviewed || 0);
 	const reported = $derived(
 		(verdict.badges ?? [])
@@ -60,7 +62,7 @@
 		</header>
 
 		<div class="grid min-w-0 md:grid-cols-2">
-			<div class="min-w-0 space-y-3 px-4 py-4 sm:px-5">
+			<div class="min-w-0 space-y-3 border-l-4 border-emerald-600/55 bg-emerald-50/80 px-4 py-4 sm:px-5 dark:bg-emerald-950/20">
 				<div class="flex items-start gap-2">
 					{#if highlights.product.length}
 						<CircleCheckIcon class="mt-0.5 size-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
@@ -113,7 +115,11 @@
 				{/if}
 			</div>
 
-			<div class="min-w-0 space-y-3 border-t border-border/70 bg-muted/20 px-4 py-4 sm:px-5 md:border-l md:border-t-0">
+			<div class={safetyMentioned || chip.kind === 'safety'
+				? 'min-w-0 space-y-3 border-l-4 border-rose-600 bg-rose-50/80 px-4 py-4 sm:px-5 dark:bg-rose-950/20'
+				: serious || belowWarning
+					? 'min-w-0 space-y-3 border-l-4 border-amber-500 bg-amber-50/80 px-4 py-4 sm:px-5 dark:bg-amber-950/20'
+					: 'min-w-0 space-y-3 border-l-4 border-sky-500/60 bg-sky-50/60 px-4 py-4 sm:px-5 dark:bg-sky-950/20'}>
 				<div class="flex flex-wrap items-start justify-between gap-2">
 					<div class="flex items-start gap-2">
 						{#if safetyMentioned || chip.kind === 'safety'}
@@ -159,9 +165,25 @@
 			</div>
 		</div>
 
-		<footer class="border-t border-border/70 px-4 py-2.5 text-xs text-muted-foreground sm:px-5">
-			Counts represent reviews, not verified incidents. One review may mention multiple qualities or issues.
-			Review reports do not prove a product is safe or unsafe.
+		<div class="border-t border-border/70 px-4 py-3 sm:px-5">
+			<section class={summary.kind === 'safety'
+				? 'rounded-xl border border-rose-300/80 bg-rose-50 p-3.5 text-rose-950 dark:border-rose-800 dark:bg-rose-950/25 dark:text-rose-100'
+				: summary.kind === 'caution'
+					? 'rounded-xl border border-amber-300/80 bg-amber-50 p-3.5 text-amber-950 dark:border-amber-800 dark:bg-amber-950/25 dark:text-amber-100'
+					: summary.kind === 'balanced'
+						? 'rounded-xl border border-teal-300/80 bg-teal-50 p-3.5 text-teal-950 dark:border-teal-800 dark:bg-teal-950/25 dark:text-teal-100'
+						: 'rounded-xl border border-border bg-muted/50 p-3.5'} aria-label="Review summary">
+				<div class="mb-1.5 flex flex-wrap items-center justify-between gap-2">
+					<h3 class="text-sm font-semibold">Review summary</h3>
+					<span class="rounded-full border border-current/20 px-2 py-0.5 text-[11px] font-medium">Advisory only</span>
+				</div>
+				<p class="text-sm leading-relaxed">{summary.text}</p>
+			</section>
+		</div>
+
+		<footer class="border-t border-border/70 bg-muted/25 px-4 py-3 text-xs leading-relaxed text-muted-foreground sm:px-5" aria-label="DeFaketive disclaimer">
+			<p class="mb-1 font-semibold text-foreground/80">Disclaimer</p>
+			<p>DeFaketive is not 100% accurate and may occasionally produce incorrect classifications, overlook genuine product concerns, or flag reviews that do not indicate an actual problem. The system analyzes customer reviews to provide advisory information and does not guarantee a product's authenticity, quality, or safety. Users are encouraged to examine the supporting reviews, product details, and seller information before making a purchase. The final decision to purchase or avoid a product remains the responsibility of the user.</p>
 		</footer>
 	</section>
 {/key}
