@@ -1,103 +1,95 @@
 <script lang="ts">
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
-	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
-	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 	import Highlighted from '#lib/components/app/highlighted.svelte';
+	import CountUp from '#lib/components/app/count-up.svelte';
 	import { Button } from '#lib/components/ui/button/index.js';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '#lib/components/ui/card/index.js';
-	import { categoryPlace, segments, view } from '#lib/product.js';
+	import { Progress } from '#lib/components/ui/progress/index.js';
+	import { categoryPlace, chipFor, segments, view } from '#lib/product.js';
 	import type { Badge, Product } from '#lib/types.js';
 
-	let { product, uniqueCount, onread }: { product: Product; uniqueCount: number; onread: (category: string) => void } = $props();
-	const badges = $derived([...(view(product).badges ?? [])].sort((a, b) => categoryPlace(a.category) - categoryPlace(b.category)));
-	const found = $derived(badges.filter((badge) => badge.mentions > 0));
-	const notFound = $derived(badges.filter((badge) => !badge.mentions));
-	const safety = $derived(found.some((badge) => badge.category === 'safety'));
-	const countText = (n: number) => n === 1 ? '1 review' : String(n) + ' reviews';
+	// One block per label the check ran, worded by the server, with the strongest quote.
+	let {
+		product,
+		uniqueCount,
+		onread
+	}: { product: Product; uniqueCount: number; onread: (category: string) => void } = $props();
+
+	// Most serious first, in two groups: the kinds of problem that can change the verdict, then the ones that can't.
+	const badges = $derived(
+		[...(view(product).badges ?? [])].sort((a, b) => categoryPlace(a.category) - categoryPlace(b.category))
+	);
+	const deciding = $derived(badges.filter((badge) => !badge.informs_only));
+	const informing = $derived(badges.filter((badge) => badge.informs_only));
+	// The safety bar takes the product's own colour: red only when the reports are serious or repeated.
+	// Every other bar is plain: a count of reviews is never shown in the brand colour.
+	const safetyBar = $derived(chipFor(product).kind === 'safety' ? '[&>div]:bg-destructive' : '[&>div]:bg-warning');
+	const plainBar = '[&>div]:bg-foreground';
+	const width = (mentions: number) =>
+		uniqueCount ? Math.min(100, Math.max(mentions ? 3 : 0, (mentions / uniqueCount) * 100)) : 0;
 </script>
 
-{#snippet result(badge: Badge)}
+{#snippet block(badge: Badge, index: number)}
 	{@const quote = badge.evidence?.[0]}
-	<div class="grid gap-2 rounded-xl border bg-card p-3 sm:p-4">
-		<div class="flex flex-wrap items-start justify-between gap-2">
-			<div class="grid gap-0.5">
-				<div class="flex items-center gap-2">
-					{#if badge.category === 'safety'}
-						<TriangleAlertIcon class="size-4 text-destructive" aria-hidden="true" />
-					{/if}
-					<h4 class="text-sm font-semibold">{badge.label}</h4>
-				</div>
-				{#if badge.helper}<p class="text-muted-foreground text-xs">{badge.helper}</p>{/if}
-			</div>
-			<b class="text-sm tabular-nums">{countText(badge.mentions)}</b>
+	<div class="reveal bg-card flex h-full flex-col gap-2 rounded-xl border p-4" style="--i:{index}">
+		<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+			<span class="font-medium">{badge.label}</span>
+			<b class="text-muted-foreground text-xs font-medium tabular-nums"><CountUp value={badge.mentions} /> review{badge.mentions === 1 ? '' : 's'}</b>
 		</div>
-		<p class="text-foreground/85 text-sm">{badge.summary}</p>
-		{#if badge.category === 'safety' && quote}
-			<blockquote class="border-destructive/40 bg-destructive/5 rounded-lg border-l-2 px-3 py-2 text-sm">
-				<Highlighted pieces={segments(quote.text, quote.highlights)} />
+		<!-- What this label covers, in the server's own words. -->
+		{#if badge.helper}<p class="text-muted-foreground -mt-1 text-xs max-sm:hidden">{badge.helper}</p>{/if}
+		<Progress
+			value={width(badge.mentions)}
+			aria-label="{badge.mentions} of {uniqueCount} reviews"
+			class={badge.category === 'safety' && badge.mentions ? safetyBar : plainBar}
+		/>
+		<p class="text-sm">{badge.summary}</p>
+		{#if quote}
+			<blockquote class="bg-muted/50 grid gap-1.5 rounded-lg border-s-0 p-3 text-sm">
+				<p class="line-clamp-5 break-words"><Highlighted pieces={segments(quote.text, quote.highlights)} /></p>
+				{#if quote.hazard || quote.rating}
+					<small class="text-muted-foreground text-xs">
+						{[quote.hazard ? `Reports ${quote.hazard}` : '', quote.rating ? `${Number(quote.rating).toFixed(0)}-star review` : ''].filter(Boolean).join(' · ')}
+					</small>
+				{/if}
 			</blockquote>
-		{:else if quote}
-			<details class="group/quote rounded-md bg-muted/40 px-3 py-2">
-				<summary class="flex cursor-pointer items-center gap-2 text-xs font-medium [&::-webkit-details-marker]:hidden">
-					<ChevronDownIcon class="size-3.5 transition-transform group-open/quote:rotate-180" aria-hidden="true" />
-					Read a supporting review
-				</summary>
-				<blockquote class="text-foreground/85 break-words pt-2 text-sm">
-					<Highlighted pieces={segments(quote.text, quote.highlights)} />
-				</blockquote>
-			</details>
+			<Button variant="link" size="sm" class="mt-auto w-fit px-0" onclick={() => onread(badge.category)}>
+				Read all {badge.mentions} <ArrowRightIcon />
+			</Button>
 		{/if}
-		<Button size="sm" variant="outline" class="w-fit" onclick={() => onread(badge.category)}>
-			Read {countText(badge.mentions)} <ArrowRightIcon />
-		</Button>
 	</div>
 {/snippet}
 
-<Card id="report-findings" tabindex={-1} class="gap-4">
-	<CardHeader class="gap-1.5">
-		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Review checks</p>
-		<CardTitle class="text-lg">Issues mentioned</CardTitle>
-		<CardDescription>
-			{#if found.length}
-				{found.length} issue {found.length === 1 ? 'type was' : 'types were'} flagged across {uniqueCount} analyzed reviews. Each category counts distinct reviews.
-			{:else if badges.length}
-				No matching issue reports were flagged in {uniqueCount} analyzed reviews. This does not prove the product has no problems.
-			{:else}
-				No results from the current checker are available.
-			{/if}
-		</CardDescription>
+<Card id="report-findings" tabindex={-1}>
+	<CardHeader>
+		<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">What reviewers reported</p>
+		<CardTitle class="text-xl">Each check, in their own words</CardTitle>
+		<CardDescription>The sentences the check flagged, with the words it matched highlighted.</CardDescription>
 	</CardHeader>
-	<CardContent class="grid gap-3">
-		{#if safety}
-			<p class="border-destructive/40 bg-destructive/5 text-destructive flex items-start gap-2 rounded-lg border px-3 py-2 text-sm font-medium">
-				<TriangleAlertIcon class="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-				Read the reported safety concerns before relying on positive reviews.
-			</p>
+	<CardContent class="grid gap-6 max-sm:px-4">
+		{#if deciding.length}
+			<section class="grid gap-4" aria-labelledby="checks-deciding">
+				<h3 id="checks-deciding" class="text-sm font-semibold">Can change the result</h3>
+				<!-- Side by side on a wide screen, so the card is not one long strip. -->
+				<div class="grid grid-cols-1 items-stretch gap-3 md:grid-cols-2 xl:grid-cols-3">
+					{#each deciding as badge, index (badge.category)}{@render block(badge, index)}{/each}
+				</div>
+			</section>
 		{/if}
-		{#if found.length}
-			<div class="grid gap-3 lg:grid-cols-2">
-				{#each found as badge (badge.category)}
-					{@render result(badge)}
-				{/each}
-			</div>
+		{#if informing.length}
+			<!-- Said once for the group, instead of a tag on each block. -->
+			<section class={['grid gap-4', deciding.length && 'border-t pt-6']} aria-labelledby="checks-informing">
+				<div class="grid gap-1">
+					<h3 id="checks-informing" class="text-sm font-semibold">Doesn't change the result</h3>
+					<p class="text-muted-foreground text-xs">Still worth knowing before you buy.</p>
+				</div>
+				<div class="grid grid-cols-1 items-stretch gap-3 md:grid-cols-2 xl:grid-cols-3">
+					{#each informing as badge, index (badge.category)}{@render block(badge, deciding.length + index)}{/each}
+				</div>
+			</section>
 		{/if}
-		{#if notFound.length}
-			<details class="group/none rounded-lg border bg-muted/30 px-3 py-2">
-				<summary class="flex min-h-7 cursor-pointer items-center gap-2 text-sm [&::-webkit-details-marker]:hidden">
-					<ChevronDownIcon class="size-4 transition-transform group-open/none:rotate-180" aria-hidden="true" />
-					<span>Checks with no matching reports</span>
-					<b class="ml-auto tabular-nums">{notFound.length}</b>
-				</summary>
-				<ul class="grid gap-2 border-t pt-3">
-					{#each notFound as badge (badge.category)}
-						<li class="flex flex-wrap items-start justify-between gap-2 text-sm">
-							<span class="font-medium">{badge.label}</span>
-							<span class="text-muted-foreground">{badge.summary}</span>
-						</li>
-					{/each}
-				</ul>
-			</details>
+		{#if !badges.length}
+			<p class="text-muted-foreground text-sm">This product has not been checked with the current review model.</p>
 		{/if}
-		<p class="text-muted-foreground text-xs">Reported concerns are not independently verified; absence of a flag is not a safety guarantee.</p>
 	</CardContent>
 </Card>
