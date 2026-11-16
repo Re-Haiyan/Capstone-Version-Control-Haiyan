@@ -27,11 +27,8 @@
 	import {
 		behindChecker,
 		chipFor,
-		counts,
-		GROUP_NAMES,
 		LAZADA_EXTENSION_REVIEWS_PER_STAR,
 		LAZADA_REVIEWS_PER_STAR,
-		liftedBySafety,
 		listingLabel,
 		money,
 		platformName,
@@ -215,8 +212,6 @@
 
 	// --- The next step, right under the verdict ----------------------------------
 	const group = $derived(chipFor(product).kind);
-	const lifted = $derived(liftedBySafety(product));
-	const safetyMentions = $derived(counts(product).safety);
 	const negativeCount = $derived(reviews.filter((item) => sentimentLabel(item) === 'negative').length);
 
 	/** Open the list of reviews on one kind of review, with nothing else narrowing it. */
@@ -406,13 +401,6 @@
 				</div>
 			</div>
 			<VerdictBlock {product} />
-			{#if lifted}
-				<!-- The verdict alone would not be orange: say why this product is. -->
-				<p class="bg-muted rounded-lg px-3 py-2 text-sm">
-					This product is shown as <b>{GROUP_NAMES.caution}</b> because {safetyMentions} review{safetyMentions === 1 ? ' mentions' : 's mention'} a
-					safety concern. One mention is enough for a closer look, whatever the overall result says.
-				</p>
-			{/if}
 			{#if behindChecker(product)}
 				<!-- A saved report does not change when the checker does. Say so instead of showing it as today's. -->
 				<p class="bg-muted text-muted-foreground rounded-lg px-3 py-2 text-sm" data-behind-checker>

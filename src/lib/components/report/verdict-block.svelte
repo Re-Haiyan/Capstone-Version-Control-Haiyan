@@ -3,7 +3,7 @@
 	import CircleCheckIcon from '@lucide/svelte/icons/circle-check';
 	import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
-	import { chipFor, view } from '#lib/product.js';
+	import { chipFor } from '#lib/product.js';
 	import { reviewGuidance } from '#lib/review-guidance.js';
 	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
@@ -12,7 +12,6 @@
 	// source-grounded buyer-context sentence; no positive-keyword split panels
 	// or fabricated "safe to buy" conclusion.
 	let { product }: { product: Product } = $props();
-	const verdict = $derived(view(product));
 	const chip = $derived(chipFor(product));
 	const guidance = $derived(reviewGuidance(product));
 	const heading = $derived(chip.label);
@@ -39,22 +38,25 @@
 				<span>{heading}</span>
 			</div>
 
-			<!-- The status label above gives the warning level once for every
-			     result type. The heading below always introduces the evidence. -->
+			<!-- All four statuses use the same clear, single narrative.
+			     Backend checker detail remains in the adjacent explanation
+			     dialog rather than being repeated above this summary. -->
 			<h2 class="mt-2 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
 				What do reviewers say about this product?
 			</h2>
-			{#if verdict.detail && chip.kind !== 'clear'}
-				<!-- Never hide a safety/caution finding or an unknown-report
-				     limitation just because the full reasoning is available
-				     through the adjacent link beside the review button. -->
-				<p class="mt-2 text-sm leading-relaxed text-foreground/85">{verdict.detail}</p>
-			{/if}
 
-			<div class="mt-3 rounded-lg border border-(--tone)/25 bg-background/65 px-3 py-2.5" aria-label="Quick review summary">
-				<p class="text-sm leading-relaxed">{guidance.text}</p>
+			<div class="mt-3 space-y-3 text-sm leading-relaxed text-foreground/90" aria-label="What the reviews reported">
+				<p>{guidance.intro} {guidance.praise}</p>
+				{#if guidance.concerns}
+					<p>{guidance.concerns}</p>
+				{/if}
 			</div>
-			<p class="mt-2 text-xs text-muted-foreground">Review signals are a guide, not proof.</p>
+
+			<div class="mt-4 border-t border-(--tone)/25 pt-3" aria-label="DeFaketive assessment">
+				<h3 class="text-sm font-semibold">DeFaketive's assessment</h3>
+				<p class="mt-1 text-sm leading-relaxed text-foreground/90">{guidance.assessment}</p>
+			</div>
+			<p class="mt-3 text-xs leading-relaxed text-muted-foreground">{guidance.note}</p>
 		</section>
 
 		<div class="rounded-lg border border-border/70 bg-muted/25 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground" aria-label="DeFaketive disclaimer">

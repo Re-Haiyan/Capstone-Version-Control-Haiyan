@@ -16,12 +16,15 @@ test('all verdict states use one question heading and keep a single visible seve
 	assert.doesNotMatch(box, /<h3[^>]*>Quick review summary<\/h3>/);
 });
 
-test('dangerous or uncertain checker details remain prominent', () => {
-	assert.match(box, /\{#if verdict\.detail && chip\.kind !== 'clear'\}/);
-	assert.match(box, /<p class="mt-2 text-sm leading-relaxed text-foreground\/85">\{verdict\.detail\}<\/p>/);
-	assert.match(box, /aria-label="Quick review summary"/);
-	assert.match(box, /\{guidance\.text\}/);
+test('one unified summary includes concerns and an assessment, with the original reason accessible on demand', () => {
+	assert.match(box, /\{guidance\.intro\} \{guidance\.praise\}/);
+	assert.match(box, /\{guidance\.concerns\}/);
+	assert.match(box, /\{guidance\.assessment\}/);
+	assert.match(box, /DeFaketive's assessment/);
 	assert.match(box, /DeFaketive is not 100% accurate/);
+	assert.doesNotMatch(box, /\{verdict\.detail\}/);
+	assert.doesNotMatch(view, /\{#if lifted\}/);
+	assert.doesNotMatch(view, /This product is shown as/);
 });
 
 test('explanation control lives with review actions and opens the real checker detail', () => {
