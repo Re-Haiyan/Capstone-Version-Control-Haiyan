@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import logo from '#lib/assets/logo.png';
 
 	// The backdrop: a collage of product photos, like the items people check on shopping sites.
@@ -59,7 +60,10 @@
 			<img src={logo} alt="" class="mark" />
 			<div class="name" aria-hidden="true"><span>De</span><span class="f">F</span><span>aketive</span></div>
 			<div class="tag"><i></i><span>A SAFER YOU</span><i></i></div>
-			<button type="button" class="go" onclick={enter}>Explore</button>
+			<button type="button" class="go" onclick={enter} aria-label="Explore DeFaketive">
+				<span>Explore DeFaketive</span>
+				<ArrowRightIcon class="go-arrow" size={21} strokeWidth={2.5} aria-hidden="true" />
+			</button>
 		</div>
 	</div>
 {/if}
@@ -185,21 +189,53 @@
 		transform-origin: center;
 		animation: grow 0.7s ease-out 1.4s both;
 	}
+	/* One obvious first action: large enough for touch, gold against the navy
+	   collage, with a light separation ring so the product photos don't compete. */
 	.go {
-		margin-top: 0.6rem;
-		padding: 0.55rem 1.8rem;
-		border: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.85rem;
+		margin-top: 1.1rem;
+		min-height: 3.75rem;
+		min-width: 15rem;
+		max-width: calc(100vw - 2.5rem);
+		padding: 0.85rem 1.65rem;
+		border: 2px solid var(--navy);
 		border-radius: 999px;
-		background: var(--navy);
-		color: #fff;
-		font: 600 0.85rem Inter, system-ui, sans-serif;
-		box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.55);
+		background: var(--mustard);
+		color: var(--navy);
+		font: 800 clamp(1rem, 1.35vw, 1.15rem) / 1.2 Inter, system-ui, sans-serif;
+		letter-spacing: 0.01em;
+		white-space: nowrap;
+		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.78), 0 14px 28px -7px rgba(5, 14, 40, 0.75);
 		cursor: pointer;
-		animation: up 0.7s ease-out 1.8s both;
+		transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+		animation: up 0.65s ease-out 0.85s both;
 	}
 	.go:hover {
-		background: #14357f;
-		box-shadow: 0 0 0 3px var(--mustard);
+		background: #ffd064;
+		box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.92), 0 18px 32px -7px rgba(5, 14, 40, 0.8);
+		transform: translateY(-2px);
+	}
+	.go:active {
+		transform: translateY(1px);
+	}
+	.go:focus-visible {
+		outline: 4px solid #315ec9;
+		outline-offset: 7px;
+	}
+	.go-arrow {
+		flex: none;
+		transition: transform 180ms ease;
+	}
+	.go:hover .go-arrow {
+		transform: translateX(3px);
+	}
+	@media (max-width: 480px) {
+		.go {
+			width: min(19rem, 83vw);
+		}
 	}
 	.swoosh {
 		position: absolute;
@@ -274,6 +310,10 @@
 		}
 		.splash {
 			transition: opacity 0.2s;
+		}
+		.go,
+		.go-arrow {
+			transition: none;
 		}
 	}
 </style>
