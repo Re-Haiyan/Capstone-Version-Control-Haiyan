@@ -1,0 +1,38 @@
+name: Legacy warning card with positive review highlights
+
+on:
+  push:
+    branches:
+      - feature/legacy-verdict-plus-highlights-20261116
+    paths:
+      - "src/lib/components/report/verdict-block.svelte"
+      - ".github/workflows/legacy-verdict-plus-highlights.yml"
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm install -g npm@11
+          npm ci --no-fund --no-audit
+      - name: Verify grounded positive themes
+        run: node --test tests/positive-highlights.test.mjs
+      - name: Svelte typecheck
+        run: npm run check
+      - name: Production frontend build
+        run: npm run build
