@@ -90,6 +90,15 @@ test('positive praise does not override safety even when the backend state is cl
 	assert.doesNotMatch(result.assessment, /No major warning was triggered/);
 });
 
+test('a legacy possible-safety state stays cautious even without an itemized safety badge', () => {
+	const result = reviewGuidance(example({
+		state: 'possible_safety_issue', tone: 'moderate', badges: [], counts: {}
+	}));
+	assert.equal(result.safety, true);
+	assert.match(result.concerns, /checker also raised a possible safety warning/);
+	assert.match(result.assessment, /possible safety concern deserves careful attention/i);
+});
+
 test('backend badge and counts are overlapping evidence, not added together', () => {
 	const result = reviewGuidance(example({
 		analyzed: 94, counts: { safety: 1, defect: 14, quality: 2 },
