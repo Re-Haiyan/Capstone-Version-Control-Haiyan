@@ -1169,8 +1169,33 @@ def product_group(product: dict[str, Any]) -> str | None:
         return None
 
 
+def corrected_title_category(product: dict[str, Any]) -> str | None:
+    """A narrow read-time repair for old solar listings saved as gaming.
+
+    The saved report's original category and hazard results are NOT modified.
+    Expose the corrected title category with a recheck notice until a new,
+    explicitly requested scan regenerates the report using the current rules.
+    """
+    if product.get("product_category") != "gaming":
+        return None
+    name = str(product.get("name") or "")
+    if not re.search(r"\b(?:solar|inverters?|mppt|lifepo4)\b", name, re.I):
+        return None
+    try:
+        _ensure_sentiment_path()
+        from defaketive_sentiment.product_category import classify_listing
+
+        category = classify_listing({"name": name})
+        return category if category == "battery_solar" else None
+    except Exception:
+        return None
+
+
 def product_category_of(product: dict[str, Any]) -> str | None:
-    """The product's category (haircare, phone, audio ...): the saved one, or read again from its title."""
+    """A corrected title category for read-only aspects; otherwise the saved category."""
+    corrected = corrected_title_category(product)
+    if corrected:
+        return corrected
     saved = product.get("product_category")
     if saved:
         return str(saved)
@@ -1306,8 +1331,13 @@ def badge_view(product: dict[str, Any], aspects: bool = False) -> dict[str, Any]
 
 
 def with_badge_view(product: dict[str, Any], aspects: bool = False) -> dict[str, Any]:
-    """Return a shallow copy of a product carrying its display view."""
-    return {**product, "badge_view": badge_view(product, aspects)}
+    """Read-only display view; never rewrite the recorded analysis category."""
+    result = {**product, "badge_view": badge_view(product, aspects)}
+    corrected = corrected_title_category(product)
+    if corrected:
+        result["product_category_display"] = corrected
+        result["category_needs_recheck"] = True
+    return result
 
 
 def review_rows(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1396,6 +1426,11 @@ def analysis_is_current(products: list[dict[str, Any]]) -> bool:
             return False
         summary = product.get("sentiment_summary") or {}
         if not (is_badge_summary(summary) or summary.get("risk_score_scale")):
+            return False
+        # Category rules now distinguish solar MPPT controllers from gaming.
+        # A saved report analysed under the wrong category must request recheck,
+        # even when its sentiment-model weights have not changed.
+        if corrected_title_category(product):
             return False
         for review in product.get("comments") or []:
             if not isinstance(review, dict):
