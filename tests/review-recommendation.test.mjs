@@ -36,7 +36,7 @@ test('recommend considering only for a positive majority and clear checker verdi
 	const rec = reviewRecommendation(report());
 	assert.equal(rec.kind, 'consider');
 	assert.match(rec.headline, /we recommend considering this product/i);
-	assert.match(rec.headline, /no warning-level issues/i);
+	assert.match(rec.headline, /no warning-level concerns/i);
 });
 
 test('a serious safety warning overrides even 99 percent positive sentiment', () => {
@@ -46,7 +46,7 @@ test('a serious safety warning overrides even 99 percent positive sentiment', ()
 	}));
 	assert.equal(rec.kind, 'alternatives');
 	assert.match(rec.headline, /considering alternative products/i);
-	assert.match(rec.headline, /reported safety concerns/i);
+	assert.match(rec.headline, /reported possible safety concerns/i);
 });
 
 test('one safety mention lifts an otherwise low-risk product to caution', () => {
@@ -126,4 +126,29 @@ test('stale saved reports are never presented as current purchase guidance', () 
 	}));
 	assert.equal(staleWarning.kind, 'insufficient');
 	assert.match(staleWarning.headline, /possible safety concerns/i);
+});
+
+
+test('each outcome is expressed as a single natural sentence rather than a label list', () => {
+	const cases = [
+		report(),
+		report({ state: 'safety_warning', tone: 'high', safety: 3 }),
+		report({ state: 'possible_safety_issue', tone: 'moderate', safety: 1 }),
+		report({ state: 'possible_counterfeit_or_defect', tone: 'moderate' }),
+		report({ state: 'insufficient_evidence', tone: 'unknown' }),
+		report({ state: 'insufficient_evidence', tone: 'unknown', safety: 1 }),
+		report({ state: 'reviews_may_be_unreliable', tone: 'unknown' }),
+		report({ checked_with_current: false }),
+		report({ checked_with_current: false, state: 'safety_warning', tone: 'high', safety: 1 }),
+		report({ available: false }),
+		report({ positive: 0, negative: 0, uncertain: 0 }),
+		report({ shares: { positive: 0.2, negative: 0.6, uncertain: 0.2 } }),
+		report({ shares: { positive: 0.4, negative: 0.4, uncertain: 0.2 } }),
+		null
+	];
+	for (const input of cases) {
+		const { headline } = reviewRecommendation(input);
+		assert.equal((headline.match(/[.!?](?=\\s|$)/g) ?? []).length, 1, headline);
+		assert.ok(headline.length <= 230, 'Summary should remain compact');
+	}
 });
