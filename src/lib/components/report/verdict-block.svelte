@@ -6,6 +6,7 @@
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 	import { chipFor, view } from '#lib/product.js';
 	import { positiveHighlights } from '#lib/positive-highlights.js';
+	import { reviewRecommendation } from '#lib/review-recommendation.js';
 	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
 
@@ -54,19 +55,9 @@
 		return [...byCategory.values()].sort((a, b) => b.reviews - a.reviews || a.label.localeCompare(b.label));
 	});
 
-	// Even a single review mentioning a safety problem lifts the result to a caution (or is kept
-	// visible when evidence is thin), so the wording must name it too, not only the badge below.
-	const safetyReported = $derived(chip.kind === 'safety' || Number(verdict.counts?.safety ?? 0) > 0);
-
-	const headline = $derived(
-		safetyReported
-			? 'A possible safety concern was reported.'
-			: chip.kind === 'caution'
-				? 'Some product concerns were reported.'
-				: chip.kind === 'clear'
-					? 'No warning-level concerns were detected.'
-					: 'There is not enough evidence for a clear result.'
-	);
+	// This short recommendation replaces the old repeated status sentence.
+	// Checker severity always outranks sentiment; unavailable data is not endorsed.
+	const recommendation = $derived(reviewRecommendation(product));
 </script>
 
 {#key product.link}
@@ -94,7 +85,7 @@
 				</h2>
 				<span class="rounded-full border border-(--tone)/35 bg-background/75 px-2.5 py-1 text-xs font-medium text-foreground">{heading}</span>
 			</div>
-			<p class="mt-2 text-lg font-semibold leading-snug tracking-tight sm:text-xl">{headline}</p>
+			<p class="mt-2 text-lg font-semibold leading-snug tracking-tight sm:text-xl">{recommendation.headline}</p>
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
