@@ -45,7 +45,7 @@ test('a serious safety warning overrides even 99 percent positive sentiment', ()
 		shares: { positive: 0.99, negative: 0.01, uncertain: 0 }
 	}));
 	assert.equal(rec.kind, 'alternatives');
-	assert.match(rec.headline, /considering alternative products/i);
+	assert.match(rec.headline, /considering other products/i);
 	assert.match(rec.headline, /reported possible safety concerns/i);
 });
 
