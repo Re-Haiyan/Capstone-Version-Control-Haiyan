@@ -59,7 +59,9 @@ export function positiveHighlights(conclusion, limit = 4) {
 	const order = (a, b) => b.reviews - a.reviews || a.label.localeCompare(b.label);
 	product.sort(order);
 	service.sort(order);
-	const max = Number.isInteger(limit) ? Math.max(0, Math.min(limit, 6)) : 4;
+	// An explicit Infinity requests all evidence-backed aspects for the report badges.
+	// Ordinary callers retain the compact default and six-item cap.
+	const max = limit === Infinity ? product.length : Number.isInteger(limit) ? Math.max(0, Math.min(limit, 6)) : 4;
 
 	return {
 		product: product.slice(0, max),
