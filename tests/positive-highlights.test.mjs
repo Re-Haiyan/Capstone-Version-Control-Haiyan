@@ -60,3 +60,16 @@ test('drops invalid or empty labels and shows grammatically correct counts', () 
 	assert.equal(reviewMentionCount(1), '1 review');
 	assert.equal(reviewMentionCount(2), '2 reviews');
 });
+
+
+test('an explicit all-badges request returns every distinct backed positive theme', () => {
+	const rows = Array.from({ length: 9 }, (_, i) =>
+		why('Feature ' + (i + 1), 'product', 'positive', 9 - i)
+	);
+	const compact = positiveHighlights(make(rows), 4);
+	const expanded = positiveHighlights(make(rows), Infinity);
+	assert.equal(compact.product.length, 4);
+	assert.equal(expanded.product.length, 9);
+	assert.equal(expanded.product[0].reviews, 9);
+	assert.equal(expanded.product.at(-1).reviews, 1);
+});
