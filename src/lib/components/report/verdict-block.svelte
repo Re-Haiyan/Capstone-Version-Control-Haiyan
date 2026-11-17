@@ -14,7 +14,6 @@
 	const chip = $derived(chipFor(product));
 	const verdict = $derived(view(product));
 	const heading = $derived(chip.label);
-	const analyzed = $derived(Math.max(0, Number(verdict.reviews_analyzed) || 0));
 
 	// Include every review-backed product quality, rather than only the top three.
 	// Seller / delivery compliments are not product-quality evidence.
@@ -68,15 +67,6 @@
 					? 'No warning-level concerns were detected.'
 					: 'There is not enough evidence for a clear result.'
 	);
-	const nextStep = $derived(
-		safetyReported
-			? 'Reported concerns are unverified. Read the flagged reviews carefully before deciding to buy.'
-			: chip.kind === 'caution'
-				? 'Compare the flagged reviews with the product listing before deciding to buy.'
-				: chip.kind === 'clear'
-					? 'This does not guarantee the product is safe, authentic, or reliable.'
-					: 'Examine the available reviews, product details, and seller information before buying.'
-	);
 </script>
 
 {#key product.link}
@@ -105,12 +95,6 @@
 				<span class="rounded-full border border-(--tone)/35 bg-background/75 px-2.5 py-1 text-xs font-medium text-foreground">{heading}</span>
 			</div>
 			<p class="mt-2 text-lg font-semibold leading-snug tracking-tight sm:text-xl">{headline}</p>
-			<p class="mt-2 text-sm leading-relaxed text-foreground/85">
-				{#if analyzed > 0}
-					We analyzed {analyzed.toLocaleString()} review{analyzed === 1 ? '' : 's'}.
-				{/if}
-				{nextStep}
-			</p>
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
