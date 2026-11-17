@@ -11,6 +11,8 @@ test('minimal review summary presents one purchase-guidance headline with the ex
 	assert.match(box, /Review Summary/);
 	assert.match(box, /reviewRecommendation\(product\)/);
 	assert.match(box, /\{recommendation\.headline\}/);
+	assert.match(box, /'verdict-box tone-' \+ visualTone/);
+	assert.match(box, /recommendation\.kind === 'caution' \? 'caution'/);
 	assert.doesNotMatch(box, /We analyzed \{analyzed\.toLocaleString\(\)\}/);
 	assert.doesNotMatch(box, /DeFaketive's assessment/);
 	assert.doesNotMatch(box, /What do reviewers say about this product\?/);
