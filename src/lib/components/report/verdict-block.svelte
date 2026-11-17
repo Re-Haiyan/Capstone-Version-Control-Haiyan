@@ -93,7 +93,7 @@
 				</h2>
 				<span class="rounded-full border border-(--tone)/35 bg-background/75 px-2.5 py-1 text-xs font-medium text-foreground">{heading}</span>
 			</div>
-			<p class="mt-2 text-lg font-semibold leading-snug tracking-tight sm:text-xl">{recommendation.headline}</p>
+			<p class="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{recommendation.headline}</p>
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
