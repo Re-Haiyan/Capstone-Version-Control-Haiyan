@@ -6,6 +6,7 @@
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 	import { chipFor, view } from '#lib/product.js';
 	import { positiveHighlights } from '#lib/positive-highlights.js';
+	import { reviewRecommendation } from '#lib/review-recommendation.js';
 	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
 
@@ -14,7 +15,6 @@
 	const chip = $derived(chipFor(product));
 	const verdict = $derived(view(product));
 	const heading = $derived(chip.label);
-	const analyzed = $derived(Math.max(0, Number(verdict.reviews_analyzed) || 0));
 
 	// Include every review-backed product quality, rather than only the top three.
 	// Seller / delivery compliments are not product-quality evidence.
@@ -55,27 +55,16 @@
 		return [...byCategory.values()].sort((a, b) => b.reviews - a.reviews || a.label.localeCompare(b.label));
 	});
 
-	// Even a single review mentioning a safety problem lifts the result to a caution (or is kept
-	// visible when evidence is thin), so the wording must name it too, not only the badge below.
-	const safetyReported = $derived(chip.kind === 'safety' || Number(verdict.counts?.safety ?? 0) > 0);
-
-	const headline = $derived(
-		safetyReported
-			? 'A possible safety concern was reported.'
-			: chip.kind === 'caution'
-				? 'Some product concerns were reported.'
-				: chip.kind === 'clear'
-					? 'No warning-level concerns were detected.'
-					: 'There is not enough evidence for a clear result.'
-	);
-	const nextStep = $derived(
-		safetyReported
-			? 'Reported concerns are unverified. Read the flagged reviews carefully before deciding to buy.'
-			: chip.kind === 'caution'
-				? 'Compare the flagged reviews with the product listing before deciding to buy.'
-				: chip.kind === 'clear'
-					? 'This does not guarantee the product is safe, authentic, or reliable.'
-					: 'Examine the available reviews, product details, and seller information before buying.'
+	// This short recommendation replaces the old repeated status sentence.
+	// Checker severity always outranks sentiment; unavailable data is not endorsed.
+	const recommendation = $derived(reviewRecommendation(product));
+	// The recommendation can call for caution even when the checker found no
+	// warning-level hazards (for example, predominantly negative reviews).
+	// Keep the status chip truthful while using the advisory's own visual tone.
+	const visualTone = $derived(
+		chip.kind === 'safety' ? 'safety' :
+		recommendation.kind === 'caution' ? 'caution' :
+		recommendation.kind === 'insufficient' ? 'unknown' : chip.kind
 	);
 </script>
 
@@ -83,7 +72,7 @@
 	<div class="grid min-w-0 gap-3">
 		<section
 			class={cn(
-				'verdict-box tone-' + chip.kind,
+				'verdict-box tone-' + visualTone,
 				'min-w-0 rounded-xl border border-(--tone)/60 bg-(--tone-soft) p-4 text-foreground shadow-xs [overflow-wrap:anywhere] sm:p-5'
 			)}
 			role="group"
@@ -91,11 +80,11 @@
 		>
 			<div class="flex flex-wrap items-center justify-between gap-2">
 				<h2 class="flex items-center gap-2 text-sm font-semibold">
-					{#if chip.kind === 'safety'}
+					{#if visualTone === 'safety'}
 						<TriangleAlertIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					{:else if chip.kind === 'caution'}
+					{:else if visualTone === 'caution'}
 						<CircleAlertIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					{:else if chip.kind === 'clear'}
+					{:else if visualTone === 'clear'}
 						<CircleCheckIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
 					{:else}
 						<CircleHelpIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
@@ -104,13 +93,7 @@
 				</h2>
 				<span class="rounded-full border border-(--tone)/35 bg-background/75 px-2.5 py-1 text-xs font-medium text-foreground">{heading}</span>
 			</div>
-			<p class="mt-2 text-lg font-semibold leading-snug tracking-tight sm:text-xl">{headline}</p>
-			<p class="mt-2 text-sm leading-relaxed text-foreground/85">
-				{#if analyzed > 0}
-					We analyzed {analyzed.toLocaleString()} review{analyzed === 1 ? '' : 's'}.
-				{/if}
-				{nextStep}
-			</p>
+			<p class="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{recommendation.headline}</p>
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
