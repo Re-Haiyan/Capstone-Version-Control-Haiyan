@@ -5,43 +5,52 @@ import { test } from 'node:test';
 const box = readFileSync(new URL('../src/lib/components/report/verdict-block.svelte', import.meta.url), 'utf8');
 const view = readFileSync(new URL('../src/lib/components/report/report-view.svelte', import.meta.url), 'utf8');
 
-test('all verdict states use one question heading and keep a single visible severity label', () => {
+test('a single minimal summary uses the existing severity classification', () => {
+	assert.match(box, /const chip = \$derived\(chipFor\(product\)\)/);
 	assert.match(box, /const heading = \$derived\(chip\.label\)/);
-	assert.match(box, /<span>\{heading\}<\/span>/);
-	assert.match(box, /What do reviewers say about this product\?/);
+	assert.match(box, /Review Summary/);
+	assert.match(box, /A possible safety concern was reported/);
+	assert.match(box, /No warning-level concerns were detected/);
+	assert.match(box, /We analyzed \{analyzed\.toLocaleString\(\)\}/);
+	assert.doesNotMatch(box, /DeFaketive's assessment/);
+	assert.doesNotMatch(box, /What do reviewers say about this product\?/);
 	assert.doesNotMatch(box, /No red flags found/);
-	assert.doesNotMatch(box, /\{chip\.kind === 'clear' \? 'What do reviewers/);
-	assert.doesNotMatch(box, /\{verdict\.headline\}/);
-	assert.doesNotMatch(box, /· What reviewers report/);
-	assert.doesNotMatch(box, /<h3[^>]*>Quick review summary<\/h3>/);
 });
 
-test('one unified summary includes concerns and an assessment, with the original reason accessible on demand', () => {
-	assert.match(box, /\{guidance\.intro\} \{guidance\.praise\}/);
-	assert.match(box, /\{guidance\.concerns\}/);
-	assert.match(box, /\{guidance\.assessment\}/);
-	assert.match(box, /DeFaketive's assessment/);
+test('both highlight panels include every available evidence-backed badge', () => {
+	assert.match(box, /positiveHighlights\(verdict\.conclusion, Infinity\)/);
+	assert.match(box, /What reviewers liked/);
+	assert.match(box, /Common concerns/);
+	assert.match(box, /Object\.entries\(verdict\.counts \?\? \{\}\)/);
+	assert.match(box, /for \(const badge of verdict\.badges \?\? \[\]\)/);
+	assert.match(box, /Math\.max\(old\?\.reviews \?\? 0, reviews\)/);
+	assert.match(box, /\{#each highlights\.product as item/);
+	assert.match(box, /\{#each concerns as item/);
+	assert.match(box, /single review may appear under more than one badge/);
+	assert.match(box, /Delivery or seller praise is excluded/);
+});
+
+test('summary retains conservative wording and advisory disclaimer', () => {
+	assert.match(box, /Reported concerns are unverified/);
+	assert.match(box, /does not guarantee the product is safe, authentic, or reliable/);
 	assert.match(box, /DeFaketive is not 100% accurate/);
-	assert.doesNotMatch(box, /\{verdict\.detail\}/);
-	assert.doesNotMatch(view, /\{#if lifted\}/);
-	assert.doesNotMatch(view, /This product is shown as/);
+	assert.match(box, /final decision to purchase or avoid a product remains the responsibility of the user/);
+	assert.doesNotMatch(box, /safe to buy/i);
+	assert.doesNotMatch(box, /recommended product/i);
 });
 
-test('explanation control lives with review actions and opens the real checker detail', () => {
+test('explanation control and review navigation remain outside the summary', () => {
 	assert.doesNotMatch(box, /How was this result reached\?/);
 	assert.match(view, /let explanationOpen = \$state\(false\)/);
-	const actionStart = view.indexOf('<!-- One thing to do next, chosen by the verdict.');
-	const actionEnd = view.indexOf('<!-- The numbers behind the report.', actionStart);
-	const action = view.slice(actionStart, actionEnd);
-	assert.match(action, /Read the \$\{flagged\.length\} flagged reviews/);
-	assert.match(action, /How was this result reached\?/);
-	assert.match(action, /\(explanationOpen = true\)/);
-	assert.match(action, /What do these labels mean\?/);
+	assert.match(view, /Read the \$\{flagged\.length\} flagged reviews/);
+	assert.match(view, /How was this result reached\?/);
+	assert.match(view, /\(explanationOpen = true\)/);
+	assert.match(view, /What do these labels mean\?/);
 	assert.match(view, /<Dialog bind:open=\{explanationOpen\}>/);
 	assert.match(view, /<p>\{verdict\.detail\}<\/p>/);
 });
 
-test('counted flags, result severity and models are not changed by this UI-only PR', () => {
+test('counted flags, server verdict and model behavior are unchanged by this UI-only edit', () => {
 	assert.match(view, /const flagged = \$derived\(reviews\.filter/);
 	assert.match(view, /<VerdictBlock \{product\} \/>/);
 	assert.match(view, /showReviews\('reported'\)/);
