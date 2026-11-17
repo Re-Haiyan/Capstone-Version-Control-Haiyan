@@ -21,11 +21,11 @@ const nonnegative = (value) => {
  * valid; otherwise use analyzed review counts. Listing stars are not evidence
  * of a sentiment majority.
  *
- * @param {import('./types.js').Product} product
+ * @param {import('./types.js').Product | null | undefined} product
  * @returns {{positive:number, negative:number} | null}
  */
 function sentimentShares(product) {
-	const summary = product.sentiment_summary;
+	const summary = product?.sentiment_summary;
 	const counts = summary?.sentiment_counts;
 	const countPositive = nonnegative(counts?.positive);
 	const countNegative = nonnegative(counts?.negative);
