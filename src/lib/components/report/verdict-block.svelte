@@ -58,13 +58,21 @@
 	// This short recommendation replaces the old repeated status sentence.
 	// Checker severity always outranks sentiment; unavailable data is not endorsed.
 	const recommendation = $derived(reviewRecommendation(product));
+	// The recommendation can call for caution even when the checker found no
+	// warning-level hazards (for example, predominantly negative reviews).
+	// Keep the status chip truthful while using the advisory's own visual tone.
+	const visualTone = $derived(
+		chip.kind === 'safety' ? 'safety' :
+		recommendation.kind === 'caution' ? 'caution' :
+		recommendation.kind === 'insufficient' ? 'unknown' : chip.kind
+	);
 </script>
 
 {#key product.link}
 	<div class="grid min-w-0 gap-3">
 		<section
 			class={cn(
-				'verdict-box tone-' + chip.kind,
+				'verdict-box tone-' + visualTone,
 				'min-w-0 rounded-xl border border-(--tone)/60 bg-(--tone-soft) p-4 text-foreground shadow-xs [overflow-wrap:anywhere] sm:p-5'
 			)}
 			role="group"
@@ -72,11 +80,11 @@
 		>
 			<div class="flex flex-wrap items-center justify-between gap-2">
 				<h2 class="flex items-center gap-2 text-sm font-semibold">
-					{#if chip.kind === 'safety'}
+					{#if visualTone === 'safety'}
 						<TriangleAlertIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					{:else if chip.kind === 'caution'}
+					{:else if visualTone === 'caution'}
 						<CircleAlertIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
-					{:else if chip.kind === 'clear'}
+					{:else if visualTone === 'clear'}
 						<CircleCheckIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
 					{:else}
 						<CircleHelpIcon class="size-4 shrink-0 text-(--tone)" aria-hidden="true" />
