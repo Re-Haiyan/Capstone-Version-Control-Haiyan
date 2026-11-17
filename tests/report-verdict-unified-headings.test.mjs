@@ -5,12 +5,12 @@ import { test } from 'node:test';
 const box = readFileSync(new URL('../src/lib/components/report/verdict-block.svelte', import.meta.url), 'utf8');
 const view = readFileSync(new URL('../src/lib/components/report/report-view.svelte', import.meta.url), 'utf8');
 
-test('a headline-only summary uses the existing severity classification', () => {
+test('minimal review summary presents one purchase-guidance headline with the existing checker status', () => {
 	assert.match(box, /const chip = \$derived\(chipFor\(product\)\)/);
 	assert.match(box, /const heading = \$derived\(chip\.label\)/);
 	assert.match(box, /Review Summary/);
-	assert.match(box, /A possible safety concern was reported/);
-	assert.match(box, /No warning-level concerns were detected/);
+	assert.match(box, /reviewRecommendation\(product\)/);
+	assert.match(box, /\{recommendation\.headline\}/);
 	assert.doesNotMatch(box, /We analyzed \{analyzed\.toLocaleString\(\)\}/);
 	assert.doesNotMatch(box, /DeFaketive's assessment/);
 	assert.doesNotMatch(box, /What do reviewers say about this product\?/);
@@ -41,10 +41,11 @@ test('summary retains conservative wording and advisory disclaimer', () => {
 	assert.doesNotMatch(box, /recommended product/i);
 });
 
-test('any reported safety problem is named in the summary wording, not only as a badge', () => {
-	assert.match(box, /const safetyReported = \$derived\(chip\.kind === 'safety' \|\| Number\(verdict\.counts\?\.safety \?\? 0\) > 0\)/);
-	assert.match(box, /safetyReported\s*\?\s*'A possible safety concern was reported\.'/);
+test('all report states render conservative guidance without adding a redundant paragraph', () => {
+	assert.match(box, /const recommendation = \$derived\(reviewRecommendation\(product\)\)/);
 	assert.doesNotMatch(box, /const nextStep =/);
+	assert.doesNotMatch(box, /\{nextStep\}/);
+	assert.doesNotMatch(box, /\{headline\}/);
 });
 
 test('badge counts are readable by screen readers and are never summed', () => {
