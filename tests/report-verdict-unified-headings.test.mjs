@@ -39,6 +39,18 @@ test('summary retains conservative wording and advisory disclaimer', () => {
 	assert.doesNotMatch(box, /recommended product/i);
 });
 
+test('any reported safety problem is named in the summary wording, not only as a badge', () => {
+	assert.match(box, /const safetyReported = \$derived\(chip\.kind === 'safety' \|\| Number\(verdict\.counts\?\.safety \?\? 0\) > 0\)/);
+	assert.match(box, /safetyReported\s*\?\s*'A possible safety concern was reported\.'/);
+	assert.match(box, /safetyReported\s*\?\s*'Reported concerns are unverified\./);
+});
+
+test('badge counts are readable by screen readers and are never summed', () => {
+	assert.match(box, /<span class="sr-only"> \{item\.reviews === 1 \? 'review' : 'reviews'\}<\/span>/);
+	assert.doesNotMatch(box, /\.reduce\(/);
+	assert.doesNotMatch(box, /concerns\.length\s*\+|\+\s*highlights\.product\.length/);
+});
+
 test('explanation control and review navigation remain outside the summary', () => {
 	assert.doesNotMatch(box, /How was this result reached\?/);
 	assert.match(view, /let explanationOpen = \$state\(false\)/);

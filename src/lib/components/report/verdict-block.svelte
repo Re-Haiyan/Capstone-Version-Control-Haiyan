@@ -55,8 +55,12 @@
 		return [...byCategory.values()].sort((a, b) => b.reviews - a.reviews || a.label.localeCompare(b.label));
 	});
 
+	// Even a single review mentioning a safety problem lifts the result to a caution (or is kept
+	// visible when evidence is thin), so the wording must name it too, not only the badge below.
+	const safetyReported = $derived(chip.kind === 'safety' || Number(verdict.counts?.safety ?? 0) > 0);
+
 	const headline = $derived(
-		chip.kind === 'safety'
+		safetyReported
 			? 'A possible safety concern was reported.'
 			: chip.kind === 'caution'
 				? 'Some product concerns were reported.'
@@ -65,7 +69,7 @@
 					: 'There is not enough evidence for a clear result.'
 	);
 	const nextStep = $derived(
-		chip.kind === 'safety'
+		safetyReported
 			? 'Reported concerns are unverified. Read the flagged reviews carefully before deciding to buy.'
 			: chip.kind === 'caution'
 				? 'Compare the flagged reviews with the product listing before deciding to buy.'
@@ -120,7 +124,7 @@
 						{#each highlights.product as item (item.key)}
 							<li class="max-w-full rounded-full border border-emerald-600/25 bg-background/75 px-3 py-1.5 text-xs leading-snug sm:text-sm">
 								<span class="break-words font-medium">{item.label}</span>
-								<span class="ml-1 whitespace-nowrap text-muted-foreground">({item.reviews})</span>
+								<span class="ml-1 whitespace-nowrap text-muted-foreground">({item.reviews}<span class="sr-only"> {item.reviews === 1 ? 'review' : 'reviews'}</span>)</span>
 							</li>
 						{/each}
 					</ul>
@@ -141,7 +145,7 @@
 						{#each concerns as item (item.category)}
 							<li class="max-w-full rounded-full border border-amber-600/30 bg-background/75 px-3 py-1.5 text-xs leading-snug sm:text-sm">
 								<span class="break-words font-medium">{item.label}</span>
-								<span class="ml-1 whitespace-nowrap text-muted-foreground">({item.reviews})</span>
+								<span class="ml-1 whitespace-nowrap text-muted-foreground">({item.reviews}<span class="sr-only"> {item.reviews === 1 ? 'review' : 'reviews'}</span>)</span>
 							</li>
 						{/each}
 					</ul>
