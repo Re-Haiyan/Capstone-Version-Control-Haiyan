@@ -19,7 +19,9 @@ the matches that are NOT a complaint for that kind of product:
     term     a regular expression; it must match the whole flagged phrase
     label    the label it applies to (quality)
     unless   optional regular expression, matched as whole words; when one of the
-             3 words either side of the phrase matches it, the exception does not apply
+             3 words either side of the phrase matches it, the exception does not apply.
+             Starting it with `*` makes it read the phrase's own words too, as one run with
+             the 3 words either side (see _Unless): for a wide phrase whose cue words sit inside it
     when     optional regular expression, matched as whole words; the exception applies
              ONLY when one of the 3 words either side of the phrase matches it ("sakto lang
              ang nipis" is not a complaint; "manipis" alone still is)
@@ -301,10 +303,30 @@ def _rows(path: Path, width: int) -> list[list[str]]:
         return [(values + [""] * width)[:width] for values in csv.reader(lines, delimiter="	")]
 
 
+class _Unless:
+    """The `unless` column of an exception row: the words that cancel the exception.
+
+    By default only the 3 words either side of the phrase are read. A row whose `unless` starts with `*` also reads the words of the
+    phrase itself, as one run with the words around it. That matters when the phrase is wide: the battery-drain term takes up to 2 words
+    on each side of "lowbat", which is exactly where "wala pang 10 min lowbat na agad" keeps its "agad" and its number, so a cue
+    that sat inside the phrase was never seen and a measurable failure was explained away as a bare remark.
+    """
+
+    __slots__ = ("pattern", "reads_phrase")
+
+    def __init__(self, text: str) -> None:
+        text = text.strip()
+        self.reads_phrase = text.startswith("*")
+        self.pattern = re.compile(rf"\b(?:{text[1:].strip() if self.reads_phrase else text})\b", re.I)
+
+    def cancels(self, nearby: str, window: str) -> bool:
+        return bool(self.pattern.search(window if self.reads_phrase else nearby))
+
+
 @lru_cache(maxsize=None)
 def _exceptions(
     category: str,
-) -> tuple[tuple[re.Pattern[str], str, re.Pattern[str] | None, str, re.Pattern[str] | None], ...]:
+) -> tuple[tuple[re.Pattern[str], str, _Unless | None, str, re.Pattern[str] | None], ...]:
     rows = []
     for path in _files(category, ".tsv"):
         for term, label, unless, reason, when in _rows(path, 5):
@@ -313,7 +335,7 @@ def _exceptions(
                     (
                         re.compile(term.strip(), re.I),
                         label.strip(),
-                        re.compile(rf"\b(?:{unless.strip()})\b", re.I) if unless.strip() else None,
+                        _Unless(unless) if unless.strip() else None,
                         reason.strip(),
                         re.compile(rf"\b(?:{when.strip()})\b", re.I) if when.strip() else None,
                     )
@@ -356,8 +378,17 @@ def clear_cache() -> None:
 # without any damage", "safe and non-toxic"). Read on the sentence, for the labels the category rules add.
 _W = r"(?:[a-z']+\s+){0,2}"
 _NO = r"\b(?:(?:weren|wasn|isn|aren|didn|doesn|don)['’]?t|not|no|never|without|withoy|withot|walang|wala|hindi|di)"
+# The words allowed between the negation and the damage word are never a failure verb: "not WORKING sira agad ung saksakan" says that
+# it does not work AND broke at once, not "not (working) broken". Without this the denial swallowed both failure phrases of such a
+# review, each of which is a defect on its own.
+_FAIL_VERB = (
+    r"(?:working|works?|worked|functioning|functions?|gumagana|gumana|nagana|umaandar|umandar|nag-?on|bumukas|"
+    r"nagcha-?charge|nag-?charge|mag-?charge|nacha-?charge|na-?charge|charging|connect\w*|nakaka-?connect|ma-?connect|"
+    r"turn\w*|power\w*)"
+)
+_W_NOFAIL = r"(?:(?!" + _FAIL_VERB + r"\b)[a-z']+\s+){0,2}"
 _DENIED_DAMAGE = re.compile(
-    _NO + r"\s+(?:any\s+|naman\s+|po\s+)?" + _W + r"(?:damag\w*|dents?|dented|broke\w*|basag|sira\w*|yupi\w*|leak\w*|tagas|cracks?|cracked)"
+    _NO + r"\s+(?:any\s+|naman\s+|po\s+)?" + _W_NOFAIL + r"(?:damag\w*|dents?|dented|broke\w*|basag|sira\w*|yupi\w*|leak\w*|tagas|cracks?|cracked)"
 )
 _PRAISE_SAFE = re.compile(
     r"non[- ]?toxic|not toxic|bpa[- ]?free|(?:free|walang)\s+(?:from|of|ng)?\s*(?:toxic|chemicals?|lead)|safe(?:\s+(?:and|for|na|to|po|ang|sa)|\s*$)|"
@@ -450,8 +481,9 @@ def sentence_exempt(category: str | None, label: str, normalized: str) -> str | 
         found = term.search(normalized)
         if not found:
             continue
-        nearby = " ".join(normalized[: found.start()].split()[-3:] + normalized[found.end():].split()[:3])
-        if unless is not None and unless.search(nearby):
+        before, after = normalized[: found.start()].split()[-3:], normalized[found.end():].split()[:3]
+        nearby = " ".join(before + after)
+        if unless is not None and unless.cancels(nearby, " ".join(before + [found.group(0)] + after)):
             continue
         if when is not None and not when.search(nearby):
             continue
@@ -472,11 +504,13 @@ def exemption(category: str | None, label: str, normalized: str, span: tuple[int
     if reason:
         return reason
     phrase = normalized[start:end].strip()
-    nearby = " ".join(normalized[:start].split()[-reach:] + normalized[end:].split()[:reach])
+    before, after = normalized[:start].split()[-reach:], normalized[end:].split()[:reach]
+    nearby = " ".join(before + after)
+    window = " ".join(before + [phrase] + after)
     for term, row_label, unless, reason, when in _exceptions(category):
         if row_label != label or not term.fullmatch(phrase):
             continue
-        if unless is not None and unless.search(nearby):
+        if unless is not None and unless.cancels(nearby, window):
             continue
         if when is not None and not when.search(nearby):
             continue
