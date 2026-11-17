@@ -65,7 +65,7 @@ export function reviewRecommendation(product) {
 	if (!view?.available || nonnegative(view.reviews_analyzed) === 0 || view.state === 'not_analyzed') {
 		return {
 			kind: 'insufficient',
-			headline: 'There is not enough analyzed review evidence to recommend or advise against this product.'
+			headline: 'Based on the available information, we cannot recommend or advise against this product because too few analyzed reviews are available.'
 		};
 	}
 
@@ -75,8 +75,8 @@ export function reviewRecommendation(product) {
 		return {
 			kind: 'insufficient',
 			headline: hasSafety
-				? 'This older report includes possible safety concerns. Check the product again before deciding.'
-				: 'This report uses an earlier checker. Check the product again for updated purchase guidance.'
+				? 'Because this older report includes possible safety concerns, we recommend checking the product again before deciding whether to buy.'
+				: 'Because this report used an earlier checker, we recommend checking the product again for updated purchase guidance.'
 		};
 	}
 
@@ -84,15 +84,15 @@ export function reviewRecommendation(product) {
 		return {
 			kind: 'insufficient',
 			headline: hasSafety
-				? 'There is not enough reliable review evidence for a recommendation, and a possible safety concern was reported.'
-				: 'There is not enough reliable review evidence to recommend or advise against this product.'
+				? 'Based on the available reviews, we cannot make a reliable purchase recommendation because the evidence is limited and a possible safety concern was reported.'
+				: 'Based on the available reviews, we cannot recommend or advise against this product because the evidence is insufficient or unreliable.'
 		};
 	}
 
 	if (view.tone === 'high') {
 		return {
 			kind: 'alternatives',
-			headline: 'Based on the analyzed reviews, we recommend considering alternative products due to reported safety concerns.'
+			headline: 'Based on the analyzed reviews, we recommend considering other products because some reviewers reported possible safety concerns.'
 		};
 	}
 
@@ -100,8 +100,8 @@ export function reviewRecommendation(product) {
 		return {
 			kind: 'caution',
 			headline: hasSafety
-				? 'Based on the analyzed reviews, we recommend caution before buying because possible safety concerns were reported.'
-				: 'Based on the analyzed reviews, we recommend caution before buying because reviewers reported product concerns.'
+				? 'Based on the analyzed reviews, we recommend buying with caution because some reviewers mentioned possible safety concerns.'
+				: 'Based on the analyzed reviews, we recommend buying with caution because some reviewers reported problems with the product.'
 		};
 	}
 
@@ -112,25 +112,25 @@ export function reviewRecommendation(product) {
 		if (!sentiment) {
 			return {
 				kind: 'insufficient',
-				headline: 'No warning-level issues were detected, but there is not enough sentiment evidence for a purchase recommendation.'
+				headline: 'Although the checker found no warning-level issues, we cannot recommend buying this product because there is not enough sentiment evidence.'
 			};
 		}
 		if (sentiment.positive > 0.5 && sentiment.positive > sentiment.negative) {
 			return {
 				kind: 'consider',
-				headline: 'Based on the analyzed reviews, we recommend considering this product. Most feedback is positive, with no warning-level issues detected.'
+				headline: 'Based on the analyzed reviews, we recommend considering this product because most feedback is positive and no warning-level concerns were detected.'
 			};
 		}
 		return {
 			kind: 'caution',
 			headline: sentiment.negative > sentiment.positive
-				? 'Based on the analyzed reviews, we recommend comparing alternatives because negative feedback is more common.'
-				: 'Based on the analyzed reviews, we recommend reading more feedback before buying because opinions are mixed or unclear.'
+				? 'Based on the analyzed reviews, we recommend comparing other products because negative feedback is more common than positive feedback.'
+				: 'Based on the analyzed reviews, we recommend reviewing more customer feedback before buying because opinions are mixed or unclear.'
 		};
 	}
 
 	return {
 		kind: 'insufficient',
-		headline: 'The available review evidence does not support a purchase recommendation.'
+		headline: 'Based on the available reviews, we cannot make a reliable purchase recommendation without stronger evidence.'
 	};
 }
