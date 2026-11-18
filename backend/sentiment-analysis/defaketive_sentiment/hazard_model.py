@@ -1974,6 +1974,7 @@ class HazardBadgeModel:
     ) -> dict[str, Any]:
         explanation = self.sentiment.analyze(review, rating)
         label = explanation.get("label")
+        initial_sentiment_label = label  # preserve the model's initial output for stage 3
         sentiment_block: dict[str, Any] = {"label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
         shadow = calibrated_sentiment(str(review or ""), rating, sentiment_block["probabilities"])
         if shadow:  # opt-in (DEFAKETIVE_SENTIMENT_CALIBRATOR); "shadow" records it, "on" lets it decide
@@ -1984,7 +1985,7 @@ class HazardBadgeModel:
         # Panel step 3: apply category meaning to the INITIAL XLM-R reading.
         # This is an audit-only contextual check, NOT a sentiment correction.
         # It cannot alter hazard evidence, flags, review counts or the verdict.
-        contextual = category_context.check(review, listing, label)
+        contextual = category_context.check(review, listing, initial_sentiment_label)
         if contextual is not None:
             sentiment_block["category_context"] = contextual
         # Panel-requested step 3: compare INITIAL sentiment with title-derived
