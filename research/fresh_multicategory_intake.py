@@ -19,7 +19,9 @@ import argparse
 import csv
 from collections import Counter, defaultdict
 from datetime import date
+from functools import lru_cache
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import random
@@ -139,12 +141,23 @@ def history(root: Path, extra: Path | None) -> tuple[set[str], set[str], int]:
     return titles, texts, sources
 
 
-def _groups():
-    sys.path.insert(0, str(ROOT / "backend/sentiment-analysis"))
-    from defaketive_sentiment.product_category import (
-        CATEGORIES, OTHER, classify_listing, group_of
-    )
-    return set(CATEGORIES) - {OTHER}, classify_listing, group_of
+@lru_cache(maxsize=1)
+def _taxonomy():
+    """Load the stdlib-only taxonomy module without importing model/joblib.
+
+    Only product-category rules are relevant to data intake. Importing the
+    sentiment package would unexpectedly require heavy inference dependencies
+    just to create blank human annotation sheets.
+    """
+    path = ROOT / "backend/sentiment-analysis/defaketive_sentiment/product_category.py"
+    if not path.is_file():
+        raise ValueError("Shipped category taxonomy is missing")
+    spec = importlib.util.spec_from_file_location("fresh_eval_product_category", path)
+    if spec is None or spec.loader is None:
+        raise ValueError("Cannot inspect shipped category taxonomy")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.CATEGORIES, module.OTHER, module.classify_listing, module.group_of
 
 
 def ingest(
@@ -154,11 +167,8 @@ def ingest(
     extra: Path | None = None,
 ) -> tuple[list[dict[str, str]], Counter, dict[str, Any]]:
     historical_titles, historical_texts, history_files = history(root, extra)
-    # Import the exact current taxonomy from the requested root, not whichever
-    # package an unrelated Python environment has installed.
-    sys.path.insert(0, str(root / "backend/sentiment-analysis"))
-    from defaketive_sentiment.product_category import CATEGORIES, OTHER, classify_listing, group_of
-
+    # Use the shipped taxonomy without loading any sentiment/ONNX packages.
+    CATEGORIES, OTHER, classify_listing, group_of = _taxonomy()
     valid_categories = set(CATEGORIES) - {OTHER}
     rows = csv_rows(source)
     if not rows:
