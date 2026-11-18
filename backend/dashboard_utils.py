@@ -1386,8 +1386,52 @@ def require_model() -> None:
     load_model()
 
 
+def _pc4_report_compatible(product: dict[str, Any], expected_version: str) -> bool:
+    """Accept an earlier pc4 report ONLY when pc6 chooses the same category.
+
+    The shipped sentiment/learned hazard assets, lexicons and thresholds are
+    identical in this candidate. The only authoritative difference is the
+    product-title classifier. If it returns the same known category, it takes
+    exactly the same category-specific hazard path. Old reports with a missing,
+    unknown or newly changed category remain stale until an explicit recheck.
+
+    Never strip version tags or mark other model-version upgrades as current.
+    """
+    if "+pc6+" not in expected_version:
+        return False
+    previous = expected_version.replace("+pc6+", "+pc4+", 1)
+    if previous == expected_version:
+        return False
+    category = product.get("product_category")
+    if not isinstance(category, str) or not category or category == "other":
+        return False
+    try:
+        _ensure_sentiment_path()
+        from defaketive_sentiment.product_category import classify_listing, group_of
+
+        name = str(product.get("name") or "")
+        if not name or classify_listing({"name": name}) != category:
+            return False
+        stored_group = product.get("product_group")
+        if stored_group and str(stored_group) != group_of(category):
+            return False
+    except (ImportError, AttributeError, TypeError, ValueError):
+        return False
+    for review in product.get("comments") or []:
+        if not isinstance(review, dict) or review.get("included_in_analysis") is False:
+            continue
+        if (review.get("sentiment_analysis") or {}).get("model_version") != previous:
+            return False
+    return True
+
+
 def analysis_is_current(products: list[dict[str, Any]]) -> bool:
-    """Return whether every saved analysis uses the active model version."""
+    """Check exact-model matches or narrowly validated pc4/pc6 equivalence.
+
+    An equivalent pc4 category is safe to read as before. Changed categories
+    are never falsely relabelled as new: users see the stored version and must
+    explicitly recheck before treating those old findings as current.
+    """
     if not products:
         return False
     expected_version = sentiment_model_version()
@@ -1397,14 +1441,15 @@ def analysis_is_current(products: list[dict[str, Any]]) -> bool:
         summary = product.get("sentiment_summary") or {}
         if not (is_badge_summary(summary) or summary.get("risk_score_scale")):
             return False
-        for review in product.get("comments") or []:
-            if not isinstance(review, dict):
-                continue
-            if review.get("included_in_analysis") is False:
-                continue
-            analysis = review.get("sentiment_analysis") or {}
-            if analysis.get("model_version") != expected_version:
-                return False
+        versions = [
+            (review.get("sentiment_analysis") or {}).get("model_version")
+            for review in product.get("comments") or []
+            if isinstance(review, dict) and review.get("included_in_analysis") is not False
+        ]
+        if all(value == expected_version for value in versions):
+            continue
+        if not _pc4_report_compatible(product, expected_version):
+            return False
     return True
 
 
