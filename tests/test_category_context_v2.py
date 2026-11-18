@@ -32,7 +32,7 @@ class TestCategoryContextV2(unittest.TestCase):
             if category!="other":
                 examples.setdefault(category,title)
         self.assertEqual(set(examples),set(CATEGORIES)-{"other"})
-        self.assertEqual(cc.REVISION,"category-context-v2")
+        self.assertEqual(cc.REVISION, "category-context-v2.1")
         for category,title in examples.items():
             with self.subTest(category=category):
                 profile=cc._profiles()["profiles"][category]
@@ -47,6 +47,31 @@ class TestCategoryContextV2(unittest.TestCase):
                     self.assertFalse(output["used_for_decision"])
                     self.assertFalse(output["sentiment_overridden"])
                 self.assertIsNone(result_expected["context_signal"])
+
+    def test_shared_traits_follow_the_product_and_surrounding_words(self):
+        cases = (
+            ("Laptop Computer 14 inch", "The laptop is thin and easy to carry.", "positive"),
+            ("Laptop Computer 14 inch", "The thin laptop lid feels flimsy.", "negative"),
+            ("Cotton T Shirt", "The thin fabric feels breathable.", "positive"),
+            ("Cotton T Shirt", "Manipis ang tela at kita ang loob.", "negative"),
+            ("Cotton T Shirt", "Manipis pero presko ang tela.", "positive"),
+            ("Bluetooth Speaker", "The speaker is loud enough for outdoor use.", "positive"),
+            ("Bluetooth Speaker", "The speaker is too loud at minimum volume.", "negative"),
+            ("Electric Stand Fan", "Maingay ang fan kahit naka-low.", "negative"),
+            ("Dining Chair", "Masyadong magaan ang upuan at natutumba.", "negative"),
+            ("Cotton T Shirt", "The laptop is thin and easy to carry.", None),
+            ("Laptop Computer 14 inch", "The thin fabric is see-through.", None),
+            ("Bluetooth Speaker", "The fan is loud on the lowest setting.", None),
+            ("Laptop Computer 14 inch", "Thin.", None),
+            ("Laptop Computer 14 inch", "Hindi magaan dalhin ang laptop.", None),
+            ("Bluetooth Speaker", "The speaker is loud enough for outdoor use, but it sparked.", None),
+        )
+        for title, review, signal in cases:
+            with self.subTest(title=title, review=review):
+                result = self.classify(title, review)
+                self.assertEqual(result["context_signal"], signal, result)
+                self.assertFalse(result["used_for_decision"])
+                self.assertFalse(result["sentiment_overridden"])
 
     def test_expected_operation_is_not_a_sentiment_override(self):
         examples=(

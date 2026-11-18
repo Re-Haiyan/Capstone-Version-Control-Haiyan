@@ -280,12 +280,16 @@
       "positive_phrases": [
         "thin and lightweight design",
         "magaan at manipis ang laptop",
-        "slim and fast laptop"
+        "slim and fast laptop",
+        "laptop is thin and easy to carry",
+        "magaan dalhin ang laptop"
       ],
       "negative_phrases": [
         "overheats while idle",
         "umiinit ang laptop habang idle",
-        "laptop shuts down randomly"
+        "laptop shuts down randomly",
+        "thin laptop lid feels flimsy",
+        "manipis at madaling mabaluktot ang takip ng laptop"
       ],
       "expected_behavior_phrases": [
         "manipis ang body",
@@ -438,7 +442,9 @@
       "negative_phrases": [
         "chair wobbles under weight",
         "umaalog ang upuan",
-        "table leg broke"
+        "table leg broke",
+        "chair is too light and tips over",
+        "masyadong magaan ang upuan at natutumba"
       ],
       "expected_behavior_phrases": [
         "mabigat ang mesa",
@@ -569,12 +575,16 @@
       "positive_phrases": [
         "fabric is breathable",
         "sakto ang fit",
-        "presko at maganda ang tela"
+        "presko at maganda ang tela",
+        "thin fabric feels breathable",
+        "manipis pero presko ang tela"
       ],
       "negative_phrases": [
         "sobrang nipis ng tela",
         "see through ang tela",
-        "sobrang manipis ang damit"
+        "sobrang manipis ang damit",
+        "thin fabric is see through",
+        "manipis ang tela at kita ang loob"
       ],
       "expected_behavior_phrases": [
         "regular fit",
@@ -909,7 +919,9 @@
         ],
         "negative_phrases": [
           "mahina ang buga",
-          "fan motor overheats"
+          "fan motor overheats",
+          "fan is loud on the lowest setting",
+          "maingay ang fan kahit naka low"
         ],
         "expected_behavior_phrases": [
           "malakas ang hangin",
@@ -947,13 +959,16 @@
         ],
         "positive_phrases": [
           "clear kahit malakas",
-          "loud and clear sound"
+          "loud and clear sound",
+          "speaker is loud enough for outdoor use",
+          "malakas ang speaker at malinaw sa labas"
         ],
         "negative_phrases": [
           "distorted at high volume",
           "basag pag malakas",
           "basag ang speaker",
-          "crackling at high volume"
+          "crackling at high volume",
+          "speaker is too loud at minimum volume"
         ],
         "expected_behavior_phrases": [
           "malakas ang tunog",

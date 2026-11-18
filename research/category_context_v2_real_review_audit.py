@@ -60,7 +60,7 @@ def main() -> int:
         output = model.analyze(text, rating, listing={"name": title})
         ctx = (output.get("sentiment") or {}).get("category_context")
         category = product_category.classify_listing({"name": title})
-        if not isinstance(ctx, dict) or ctx.get("revision") != "category-context-v2":
+        if not isinstance(ctx, dict) or ctx.get("revision") != category_context.REVISION:
             invalid += 1
             continue
         if (

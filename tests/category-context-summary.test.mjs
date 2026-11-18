@@ -25,7 +25,7 @@ test('v2 expected features are not counted as positive or negative corrections',
   const summary = categoryContextSummary({comments:[
     review('expected_behavior', {revision:'category-context-v2'}),
     review('agrees', {revision:'category-context-v2'}),
-    review('differs', {revision:'category-context-v2'}),
+    review('differs', {revision:'category-context-v2.1'}),
     review('unavailable', {revision:'category-context-v2'})
   ]});
   assert.equal(summary.checked,4);

@@ -20,7 +20,7 @@ from typing import Any, Mapping
 
 from .product_category import CATEGORIES, OTHER, classify_listing
 
-REVISION = "category-context-v2"
+REVISION = "category-context-v2.1"
 _PROFILES_PATH = Path(__file__).with_name("category_context_profiles.json")
 _LABELS = frozenset(("positive", "neutral", "negative"))
 _NEGATORS = frozenset((
@@ -32,7 +32,7 @@ _MAX_REVIEW = 5000
 # These are reasons to abstain from treating an otherwise expected feature
 # as harmless. They NEVER suppress the independent safety detector.
 _SAFETY_WORDS = frozenset((
-    "smoke", "smoking", "usok", "umusok", "spark", "sparks", "sparking",
+    "smoke", "smoked", "smoking", "usok", "umusok", "spark", "sparks", "sparked", "sparking",
     "shock", "shocks", "nakuryente", "sunog", "nasunog", "burn", "burning",
     "burns", "paso", "napaso", "overheat", "overheats", "overheating",
     "fire", "explosion", "swollen", "namaga", "pumutok", "rash", "rashes",
