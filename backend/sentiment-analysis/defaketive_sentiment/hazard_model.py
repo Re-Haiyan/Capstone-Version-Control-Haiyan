@@ -269,7 +269,10 @@ def _extra_addon() -> Any:
     return _EXTRA_ADDON["scorer"]
 
 
-SAFETY_GUIDE16_REVISION = "s1"
+# s1h: exact normal heating-function exclusion, with report-level safety
+# alarms preserved. A rules change gets a new model stamp so older reports
+# are never silently reinterpreted.
+SAFETY_GUIDE16_REVISION = "s1h"
 S1_OFF: set[str] = set()
 SAFETY_GAPS = (
     re.compile(
@@ -281,6 +284,53 @@ SAFETY_GAPS = (
     re.compile(r"(?<!\w)(?:umiinit|uminit|nag\s*iinit|nainit|iinit)(?=[^\s\w]+[a-z])"),
 )
 SAFETY_GAP_SEVERITY = (2, 2, 3, 2)
+# A normal warming appliance heating up quickly is not by itself a hazard.
+# This does NOT waive hot handles, dangerous overheating, smoke, shocks, etc.
+# The guard applies only to s1's "heats up" gap, not to genuine lexicon
+# matches, other heat patterns or the independent safety model.
+_NORMAL_HEATING_TITLE = re.compile(
+    r"(?<!\w)(?:water\s+heater|(?:electric|space|room|portable|instant)\s+heater|"
+    r"heaters?|electric\s+kettle|rice\s+cooker|air\s+fryer|"
+    r"electric\s+(?:stove|oven|grill)|induction\s+(?:stove|cooktop|cooker)|"
+    r"hot\s+plate|hair\s+straightener|curling\s+iron|"
+    r"heated\s+(?:blanket|pad)|heating\s+pad)(?!\w)",
+    re.IGNORECASE,
+)
+_NORMAL_HEATING_PHRASE = re.compile(
+    r"(?<!\w)(?:heat(?:s|ing)?\s+up\s+"
+    r"(?:(?:very|really|quite|so|pretty|super)\s+){0,2}"
+    r"(?:quickly|fast|rapidly|evenly|nicely|well)|"
+    r"(?:quickly|rapidly)\s+heat(?:s|ing)?\s+up)(?!\w)",
+    re.IGNORECASE,
+)
+_HEATING_DANGER = re.compile(
+    r"(?<!\w)(?:overheat\w*|danger\w*|unsafe|hazard\w*|"
+    r"smok\w*|usok|umusok|sunog|nasunog|fire|flame\w*|"
+    r"spark\w*|shock\w*|electrocut\w*|kuryente|nakuryente|"
+    r"burn\w*|burnt|paso|napaso|scald\w*|melt\w*|"
+    r"explod\w*|sumabog|pumutok|swollen|swelling|lumobo|"
+    r"leak\w*|tagas|scary|afraid|worried|nakakatakot|delikado|"
+    r"too\s+hot|sobrang\s+init|masyadong\s+mainit|"
+    r"(?:hot|mainit)\s+(?:plug|socket|cord|wire|cable|handle|casing|body|motor|battery)|"
+    r"(?:plug|socket|cord|wire|cable|handle|casing|body|motor|battery)"
+    r"\s+(?:gets?|is|became|becomes?)?\s*(?:hot|mainit))(?!\w)",
+    re.IGNORECASE,
+)
+
+
+def _intended_normal_heating(sentence: str, title: str | None) -> bool:
+    """A narrow, evidence-preserving expected-use exception.
+
+    A high-star review is NOT enough. Normal heating must be explicit and
+    product type must actually be heating equipment. Any risk cue abstains.
+    """
+    return bool(
+        title and _NORMAL_HEATING_TITLE.search(title)
+        and _NORMAL_HEATING_PHRASE.search(sentence)
+        and not _HEATING_DANGER.search(sentence)
+    )
+
+
 FEAR_WORDS = frozenset({"baka", "bka", "maybe", "might", "could", "possibly", "probably"})
 # "baka pumutok yan sa sobrang init": after "sa" (or "kasi") the heat is the cause, not the guess.
 FEAR_ENDS = frozenset({"sa", "kasi", "dahil", "because", "due", "from"})
@@ -1021,7 +1071,7 @@ class LexiconHazardTagger:
                 return cue_class
         return None
 
-    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None) -> dict[str, Any]:
+    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None, product_title: str | None = None) -> dict[str, Any]:
         normalized, spans = text_norm.normalize_with_spans(raw)
         scores: dict[str, float] = {}
         tags: list[str] = []
@@ -1268,7 +1318,7 @@ class LexiconHazardTagger:
         if self.rules == "0.4":
             self._safety_guide16(
                 normalized, spans, matches, tags, scores, severities, confidence, filtered, safety_at,
-                about_the_product, suppressed,
+                about_the_product, suppressed, product_title,
             )
             self._round19_rules(raw, spans, matches, tags, scores, severities, confidence, about_the_product, suppressed, product_kind)
 
@@ -1367,6 +1417,7 @@ class LexiconHazardTagger:
         safety_at: list[tuple[int, int, str]],
         about_the_product: bool,
         suppressed: dict[str, str],
+        product_title: str | None = None,
     ) -> None:
         """Rules s1 (guide 1.6, Rule 11): safety words the list misses, and the
         three readings that are not a report. Works in place on the result."""
@@ -1374,6 +1425,14 @@ class LexiconHazardTagger:
             for pattern, severity in zip(SAFETY_GAPS, SAFETY_GAP_SEVERITY):
                 found = pattern.search(normalized)
                 if found is None or self._is_negated(normalized, found.start()):
+                    continue
+                # "Heats up very quickly" on a water heater is ordinary
+                # function, not an event of overheating. The alarm guard
+                # abstains if even one real safety cue is present.
+                if (
+                    pattern is SAFETY_GAPS[1]
+                    and _intended_normal_heating(normalized, product_title)
+                ):
                     continue
                 raw_span = self._raw_span(found.span(), spans)
                 matches.append(
@@ -1676,9 +1735,13 @@ class LexiconHazardTagger:
         next sentence. A caller without a listing still gets the next-sentence part."""
         segments = list(text_norm.segment_sentences(text))
         kind = classify_listing(listing) if listing is not None and self.listing_context else None
+        product_title = str((listing or {}).get("name") or "") if listing is not None else None
         tagged = []
         for index, sentence in enumerate(segments):
-            result = self.tag_sentence(sentence, rating, product_kind=kind) if kind else self.tag_sentence(sentence, rating)
+            result = (
+                self.tag_sentence(sentence, rating, product_kind=kind, product_title=product_title)
+                if kind else self.tag_sentence(sentence, rating)
+            )
             result["index"] = index
             tagged.append(result)
         if self.rules == "0.4":

@@ -1,0 +1,61 @@
+name: Heating-function safety guard (candidate; validation only)
+
+on:
+  push:
+    branches: [fix/heater-normal-heating-safety-20261118]
+  pull_request:
+    branches: [deployment]
+
+permissions:
+  contents: read
+
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Changed safety logic is explicit; model weights, DB and frontend unchanged
+        run: |
+          set -euo pipefail
+          BASE=38b551ae60bbe7cf84bc7d1518fbfee88442a38f
+          git cat-file -e "${BASE}^{commit}"
+          CHANGES="$(git diff --name-only "$BASE" HEAD)"
+          printf '%s\n' "$CHANGES"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/defaketive.db backend/requirements.txt backend/dashboard_utils.py backend/data_store.py src)"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/defaketive_sentiment/category_context.py backend/sentiment-analysis/defaketive_sentiment/lexicons)"
+
+  syntax_and_regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend runtime for full tagger and scorer
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Exact screenshot, other products, serious safety and existing regression
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
+          DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
+        run: |
+          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/hazard_model.py
+          python -m unittest discover -s tests -p 'test_safety_regression.py' -v
+          python -m unittest discover -s tests -p 'test_safety_s5.py' -v
+          python -m unittest discover -s tests -p 'test_product_category.py' -q
+          python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -q

@@ -35,6 +35,68 @@ class FeatureClaimsAreNotHazards(unittest.TestCase):
         self.assertFalse(safety("di ko pa nababatad para sa burn test, so far gumagana naman", "LED Monitor", 5))
 
 
+class NormalHeatingIsNotAReportedSafetyIssue(unittest.TestCase):
+    """Real-world screenshot reproductions and non-heating counterexamples.
+
+    Tagger-only checks isolate the rule independently of the model's learned
+    filter, while the shipped model still undergoes a separate paired VM audit.
+    """
+
+    def _tag(self, sentence, title):
+        from defaketive_sentiment.hazard_model import LexiconHazardTagger, SHIPPED_COUNTERFEIT_RULES
+        # Production runs c2, which enables listing-derived product category.
+        # A legacy c1 research tagger intentionally has no listing context.
+        tagger = LexiconHazardTagger(
+            rules="0.4", counterfeit_rules=SHIPPED_COUNTERFEIT_RULES, learned=None
+        )
+        return tagger.tag_review(sentence, 5, listing={"name": title})
+
+    def test_screenshot_water_heater_praise_is_not_safety(self):
+        texts = (
+            "Not only does it look beautiful, but it also heats up very quickly, and you can feel the warmth in just a few seconds.",
+            "It is small and beautiful, has good water output, and heats up quickly. I give it a thumbs up.",
+            "Water heater heats up quickly and works great.",
+            "The rice cooker heats up fast and cooks evenly.",
+            "The air fryer heats up very quickly and works well.",
+            "Hair straightener heats up rapidly and is easy to use.",
+        )
+        names = (
+            "Instant Water Heater 3500W",
+            "Instant Water Heater 3500W",
+            "Electric Water Heater",
+            "Rice Cooker 1.8L",
+            "Air Fryer 4L",
+            "Ceramic Hair Straightener",
+        )
+        for title, review in zip(names, texts):
+            with self.subTest(title=title, review=review):
+                analyses = self._tag(review, title)
+                self.assertFalse(any("safety" in item["tags"] for item in analyses), analyses)
+
+    def test_unrelated_electronics_still_flag_rapid_heating(self):
+        for title in ("Power Bank 20000mAh", "Smartphone 128GB", "USB Fast Charger 30W"):
+            with self.subTest(title=title):
+                self.assertTrue(any(
+                    "safety" in s["tags"]
+                    for s in self._tag("It heats up very quickly while charging", title)
+                ))
+
+    def test_heating_product_with_actual_warning_is_never_exempt(self):
+        samples = (
+            "The water heater heats up quickly, but the plug starts smoking.",
+            "It heats up quickly and burned my hand on the handle.",
+            "The heater heats up too hot and smells like burning plastic.",
+            "It heats up quickly, but the power cord gets hot.",
+            "It heats up quickly and sparks come out from the socket.",
+        )
+        for text in samples:
+            with self.subTest(text=text):
+                self.assertTrue(any(
+                    "safety" in s["tags"]
+                    for s in self._tag(text, "Instant Water Heater 3500W")
+                ))
+
+
 class RealHazardsWithTheSameWordsStay(unittest.TestCase):
     def test_collapse(self):
         self.assertTrue(safety("The crib collapsed while my baby was in it", BOTTLE, 1))
