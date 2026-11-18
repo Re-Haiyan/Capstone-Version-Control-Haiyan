@@ -1,0 +1,45 @@
+name: Category badge UI-only release guard
+
+on:
+  push:
+    branches:
+      - feature/conclusion-category-label-ui-only-20261118
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  unchanged_engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: No model, backend, dependency, or DB mutations
+        run: |
+          set -euo pipefail
+          BASE=fc56fa956732c46d9b2d0149ff9c28dbb1bb814c
+          git cat-file -e "${BASE}^{commit}"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/ scripts/requirements-lock.txt package.json package-lock.json deploy/)"
+          echo "UNCHANGED: backend, model, rules, databases, release/setup tooling, dependencies"
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Test category display and existing report invariants
+        run: |
+          npm ci --no-fund --no-audit
+          node --test tests/product-category-label.test.mjs tests/report-visible-fields.test.mjs tests/report-verdict-unified-headings.test.mjs
+          npm run check
+          npm run build
