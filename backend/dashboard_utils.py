@@ -1425,12 +1425,54 @@ def _pc4_report_compatible(product: dict[str, Any], expected_version: str) -> bo
     return True
 
 
-def analysis_is_current(products: list[dict[str, Any]]) -> bool:
-    """Check exact-model matches or narrowly validated pc4/pc6 equivalence.
+def _pc7_report_compatible(product: dict[str, Any], expected_version: str) -> bool:
+    """Narrowly accept pc4/pc6 reports under pc7 only for unchanged categories.
 
-    An equivalent pc4 category is safe to read as before. Changed categories
-    are never falsely relabelled as new: users see the stored version and must
-    explicitly recheck before treating those old findings as current.
+    pc7 disambiguates "air conditioner" vs "hair conditioner"; it changes no
+    model weights, hazard words or thresholds. Identical title-derived category
+    and group ensure the same category-specific hazard rule path. A changed
+    category MUST remain historical and require an explicit recheck.
+    """
+    if "+pc7+" not in expected_version:
+        return False
+    category = product.get("product_category")
+    if not isinstance(category, str) or not category:
+        return False
+    name = str(product.get("name") or "")
+    if not name:
+        return False
+    try:
+        _ensure_sentiment_path()
+        from defaketive_sentiment.product_category import classify_listing, group_of
+
+        if classify_listing({"name": name}) != category:
+            return False
+        stored_group = product.get("product_group")
+        if stored_group and str(stored_group) != group_of(category):
+            return False
+    except (ImportError, AttributeError, TypeError, ValueError):
+        return False
+
+    versions = [
+        (review.get("sentiment_analysis") or {}).get("model_version")
+        for review in product.get("comments") or []
+        if isinstance(review, dict) and review.get("included_in_analysis") is not False
+    ]
+    if not versions:
+        return False
+    for earlier in ("pc6", "pc4"):
+        previous = expected_version.replace("+pc7+", f"+{earlier}+", 1)
+        if previous != expected_version and all(value == previous for value in versions):
+            return True
+    return False
+
+
+def analysis_is_current(products: list[dict[str, Any]]) -> bool:
+    """Check exact-model matches or narrowly validated pc4/pc6/pc7 equivalence.
+
+    All previously generated outputs remain byte-identical. An unchanged title
+    category under pc7 can safely follow the same hazard path; changed or
+    unknown categories remain stale until explicitly checked with pc7.
     """
     if not products:
         return False
@@ -1448,7 +1490,10 @@ def analysis_is_current(products: list[dict[str, Any]]) -> bool:
         ]
         if all(value == expected_version for value in versions):
             continue
-        if not _pc4_report_compatible(product, expected_version):
+        if not (
+            _pc4_report_compatible(product, expected_version)
+            or _pc7_report_compatible(product, expected_version)
+        ):
             return False
     return True
 
