@@ -529,11 +529,11 @@
 					<p>No detailed checker explanation is available for this report.</p>
 				{/if}
 				<ol class="list-decimal space-y-1.5 pl-5" aria-label="Five stages of the product review analysis">
-					<li><strong>Product category:</strong> Estimated from the listing title; it may be imperfect.</li>
-					<li><strong>Sentiment:</strong> XLM-RoBERTa classifies each analyzed review as positive, neutral, or negative.</li>
-					<li><strong>Category context:</strong> Product-specific phrases help interpret words such as “hot,” “thin,” or “loud.” This step only records notes; it never overrides sentiment.</li>
-					<li><strong>Concern checks:</strong> The five issue categories are checked independently of sentiment. A positive review can still describe a hazard.</li>
-					<li><strong>Conclusion:</strong> The system summarizes reviewed evidence and concerns to offer cautious purchase guidance, not a guarantee.</li>
+					<li><strong>Product and reviews.</strong> DeFaketive uses the listing title and a sample of customer reviews.</li>
+					<li><strong>Review sentiment.</strong> XLM-RoBERTa classifies each analyzed review as positive, neutral, or negative.</li>
+					<li><strong>What the wording means for this product.</strong> DeFaketive estimates the product category from the title and checks for phrases that may describe praise, a complaint, or normal use. This check leaves the original sentiment label in place.</li>
+					<li><strong>Independent concern checks.</strong> Reviews are checked for safety, defects, poor quality, possible counterfeits, and listing mismatches. A positive review can still describe a hazard.</li>
+					<li><strong>Product conclusion.</strong> The Review Summary brings together what reviewers liked, common concerns, and purchase guidance.</li>
 				</ol>
 				{#if behindChecker(product)}
 					<p class="font-medium text-muted-foreground">This saved report uses an earlier checker version; its findings were not silently recalculated.</p>
