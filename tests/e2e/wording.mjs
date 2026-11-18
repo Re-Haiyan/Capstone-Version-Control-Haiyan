@@ -14,11 +14,11 @@ const check = (ok, what) => {
 };
 
 const LABELS = [
-	{ category: 'safety', label: 'Safety problem', helper: 'Overheating, smoke, sparks or shocks', informs_only: false },
-	{ category: 'defect', label: 'Faulty or broken', helper: "Doesn't work or stops working", informs_only: false },
-	{ category: 'quality', label: 'Poor quality', helper: 'Weak, flimsy or scratched', informs_only: true },
-	{ category: 'counterfeit', label: 'Possible fake', helper: 'A copy, not the original brand', informs_only: false },
-	{ category: 'not_as_described', label: 'Not as advertised', helper: 'Differs from the listing', informs_only: true }
+	{ category: 'safety', label: 'Safety concerns', helper: 'Overheating, smoke, sparks or shocks', informs_only: false },
+	{ category: 'defect', label: 'Functionality or damage concerns', helper: "Doesn't work or stops working", informs_only: false },
+	{ category: 'quality', label: 'Quality concerns', helper: 'Weak, flimsy or scratched', informs_only: true },
+	{ category: 'counterfeit', label: 'Authenticity concerns', helper: 'A copy, not the original brand', informs_only: false },
+	{ category: 'not_as_described', label: 'Listing differences', helper: 'Differs from the listing', informs_only: true }
 ];
 const QUOTES = {
 	safety: { text: 'There is a smell on it like a burn wire.', rating: 1, hazard: 'smoke or a burning smell', highlights: [[30, 34]] },
@@ -125,7 +125,7 @@ async function reportFacts(page) {
 	const cards = await page.evaluate(() =>
 		[...document.querySelectorAll('[data-slot="card"]')].map((card) => {
 			const chip = [...card.querySelectorAll('[data-slot="badge"]')].find((b) => b.querySelector('svg'));
-			const safety = [...card.querySelectorAll('[data-slot="badge"]')].find((b) => /^Safety problem/.test(b.textContent.trim()));
+			const safety = [...card.querySelectorAll('[data-slot="badge"]')].find((b) => /^Safety concerns/.test(b.textContent.trim()));
 			return { name: card.querySelector('a[title]')?.getAttribute('title') ?? '', label: chip?.textContent.trim(), cls: chip?.className ?? '', safetyCls: safety?.className ?? '' };
 		})
 	);
@@ -135,7 +135,7 @@ async function reportFacts(page) {
 	}
 	const alpha = cards.find((c) => c.name.startsWith('Alpha'));
 	const bravo = cards.find((c) => c.name.startsWith('Bravo'));
-	check(toneOf(alpha.safetyCls) === 'safety' && toneOf(bravo.safetyCls) === 'caution', 'the "Safety problem" count is red only on the serious product, orange on the mild one');
+	check(toneOf(alpha.safetyCls) === 'safety' && toneOf(bravo.safetyCls) === 'caution', 'the "Safety concerns" count is red only on the serious product, orange on the mild one');
 	check(cards.filter((c) => toneOf(c.cls) === 'safety').length === 1, 'exactly one product is red: the one with serious reports');
 	await page.screenshot({ path: 'tests/e2e/shots/wording_products.png', fullPage: true });
 
