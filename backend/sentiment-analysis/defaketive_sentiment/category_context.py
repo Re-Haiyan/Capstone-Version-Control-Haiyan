@@ -25,7 +25,8 @@ _PROFILES_PATH = Path(__file__).with_name("category_context_profiles.json")
 _LABELS = frozenset(("positive", "neutral", "negative"))
 _NEGATORS = frozenset((
     "no", "not", "never", "without", "hindi", "di", "wala", "walang",
-    "wlang", "hinde", "hnd", "dont", "doesnt", "didnt", "isnt",
+    "wlang", "hinde", "hnd", "huwag", "wag", "dont", "doesnt", "didnt", "isnt",
+    "don", "doesn", "didn", "isn", "wasn", "weren", "aren", "cant", "cannot",
 ))
 _MAX_REVIEW = 5000
 
@@ -40,9 +41,8 @@ def _normalize(value: str) -> str:
 def _profiles() -> dict[str, dict[str, Any]]:
     payload = json.loads(_PROFILES_PATH.read_text(encoding="utf-8"))
     profiles = payload["profiles"]
-    assert set(profiles) == set(CATEGORIES) - {OTHER}, (
-        "Category context profile coverage must match exactly 49 known types"
-    )
+    if set(profiles) != set(CATEGORIES) - {OTHER}:
+        raise ValueError("Category context profile coverage must match all known types")
     for slug, profile in profiles.items():
         for side in ("positive_phrases", "negative_phrases"):
             if not isinstance(profile.get(side), list) or not all(
@@ -115,8 +115,13 @@ def check(
         return {**base, "status": "no_signal"}
 
     # If both kinds of phrases occur or an explicit denial is found, abstain.
-    positive, pos_denied, pos_phrase = _find_context(norm, _phrases(category, "positive"))
-    negative, neg_denied, neg_phrase = _find_context(norm, _phrases(category, "negative"))
+    try:
+        positive, pos_denied, pos_phrase = _find_context(norm, _phrases(category, "positive"))
+        negative, neg_denied, neg_phrase = _find_context(norm, _phrases(category, "negative"))
+    except (OSError, ValueError, KeyError, TypeError):
+        # A missing/malformed context profile must never take the checker down
+        # or influence authoritative XLM-R sentiment or hazard decisions.
+        return {**base, "status": "unavailable"}
     if pos_denied or neg_denied or (positive and negative):
         return {**base, "status": "ambiguous"}
     if not positive and not negative:
