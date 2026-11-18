@@ -65,6 +65,19 @@ NEW_MODEL_SHA="$(sha256sum "$CANDIDATE/$MODEL_REL" | cut -d ' ' -f 1)"
 echo "Live SHA: $OLD_SHA"
 echo "Candidate SHA: $CANDIDATE_SHA"
 echo "XLM-RoBERTa ONNX SHA256 unchanged"
+# The category revision bump invalidates saved analysis versions. The web app
+# can recompute these on catalog load; report the actual pending workload.
+"$PYTHON" - "$DB" <<'PY'
+import sqlite3
+import sys
+from pathlib import Path
+db = Path(sys.argv[1]).resolve(strict=True)
+with sqlite3.connect(f"file:{db.as_posix()}?mode=ro", uri=True) as con:
+    products = con.execute("SELECT COUNT(*) FROM products").fetchone()[0]
+    reviews = con.execute("SELECT COUNT(*) FROM reviews WHERE length(content) >= 12").fetchone()[0]
+print(f"Saved products: {products}; eligible review texts: {reviews}")
+print("WARNING: category version pc6 can mark saved analyses stale; benchmark reanalysis on isolated staging before production restart.")
+PY
 free -m | head -n 2
 df -h "$REPO" | tail -n 1
 if [[ "$MODE" == "--check" ]]; then
