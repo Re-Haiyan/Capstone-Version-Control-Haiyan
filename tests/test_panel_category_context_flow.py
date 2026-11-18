@@ -72,6 +72,16 @@ class StageContext(unittest.TestCase):
         self.assertEqual(self.evaluate("Instant Coffee",123)["status"],"no_signal")
         self.assertIsNone(self.evaluate("Instant Coffee","Masarap",None))
 
+    def test_missing_profiles_fail_closed_without_changing_model_decisions(self):
+        with mock.patch.object(context, "_phrases", side_effect=OSError("context file missing")):
+            report=self.evaluate("Instant Coffee", "Mainit at bagong luto", "negative")
+        self.assertEqual(report["status"],"unavailable")
+        self.assertFalse(report["sentiment_overridden"])
+
+    def test_contraction_negation_abstains(self):
+        review="Don't say mainit at bagong luto"
+        self.assertEqual(self.evaluate("Instant Coffee",review,"negative")["status"],"ambiguous")
+
     def test_profile_matching_requires_whole_words(self):
         self.assertEqual(self.evaluate("Instant Coffee","Mainit at bagong lutong-luto")["status"],"no_signal")
         self.assertEqual(self.evaluate("Instant Coffee","Mainit at bagong luto!")["context_signal"],"positive")
