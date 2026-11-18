@@ -176,9 +176,12 @@ def check(
     # Never endorse a review describing damage or injury just because it
     # also mentions an expected feature (e.g. a hot heater with a hot plug).
     danger = _unsafe_context(text)
-    if pos_denied or neg_denied or expected_denied or (positive and negative):
+    if pos_denied or neg_denied or (positive and negative) or (expected_denied and not negative):
+        # "hindi umiinit ang heater" can match a valid explicit failure as
+        # well as a denied expected trait. The failure remains a complaint.
         return {**base, "status": "ambiguous", "interpretation": "mixed_or_negated"}
-    if danger and (positive or expected_hit):
+    if danger and (positive or expected_hit or not negative):
+        # A risk cue is never evidence of intended behavior or praise.
         return {**base, "status": "ambiguous", "interpretation": "possible_hazard"}
     if positive or negative:
         signal = "positive" if positive else "negative"
