@@ -9,6 +9,7 @@ This compares predictions, not ground-truth precision/recall or VM staging.
 from __future__ import annotations
 
 import argparse
+import csv
 from collections import Counter, defaultdict
 import gzip
 import hashlib
@@ -32,7 +33,31 @@ def load_products(root: Path) -> list[dict]:
     with gzip.open(src, "rt", encoding="utf-8") as stream:
         rows = json.load(stream)
     products = [x.get("product") for x in rows if isinstance(x, dict)]
-    return [x for x in products if isinstance(x, dict) and str(x.get("name") or "").strip()]
+    products = [x for x in products if isinstance(x, dict) and str(x.get("name") or "").strip()]
+
+    # Broaden beyond the electronics-heavy starter pool using already-versioned,
+    # historical development reviews. They are NOT an independent holdout; no
+    # ground-truth or label column is read, scored, or republished.
+    seen = set()
+    evaluation: dict[str, list[dict]] = defaultdict(list)
+    for path in sorted((root / "evaluation").glob("**/*.csv")):
+        with path.open("r", encoding="utf-8-sig", newline="") as stream:
+            reader = csv.DictReader(stream)
+            if not {"review_text", "product", "stars"} <= set(reader.fieldnames or ()):
+                continue
+            for record in reader:
+                title = str(record.get("product") or "").strip()
+                review = str(record.get("review_text") or "").strip()
+                if not title or len(review) < 12:
+                    continue
+                identifier = digest(title, review)
+                if identifier in seen:
+                    continue
+                seen.add(identifier)
+                evaluation[title].append({"content": review, "rating": record.get("stars")})
+    products.extend({"name": name, "comments": comments}
+                    for name, comments in sorted(evaluation.items()))
+    return products
 
 
 def _rating(comment: dict) -> int:
@@ -119,7 +144,7 @@ def scan(args: argparse.Namespace) -> int:
 
     payload = {
         "schema": "panel-category-paired-1",
-        "corpus": "bundled development saved reports (not independent, not live VM)",
+        "corpus": "bundled saved reports plus historical evaluation development reviews (not independent, not live VM)",
         "model": "existing XLM-RoBERTa and learned hazard scorer",
         "category_revision": product_category.PRODUCT_CATEGORY_REVISION,
         "product_count": len(mapped),
