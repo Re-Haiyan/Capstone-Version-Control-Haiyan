@@ -7,6 +7,7 @@
 	import { chipFor, view } from '#lib/product.js';
 	import { positiveHighlights } from '#lib/positive-highlights.js';
 	import { reviewRecommendation } from '#lib/review-recommendation.js';
+	import { categoryForReport } from '#lib/product-category-label.js';
 	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
 
@@ -15,6 +16,8 @@
 	const chip = $derived(chipFor(product));
 	const verdict = $derived(view(product));
 	const heading = $derived(chip.label);
+	// Show the exact category saved by the backend; never silently guess a new one.
+	const detectedCategory = $derived(categoryForReport(product));
 
 	// Include every review-backed product quality, rather than only the top three.
 	// Seller / delivery compliments are not product-quality evidence.
@@ -94,6 +97,18 @@
 				<span class="rounded-full border border-(--tone)/35 bg-background/75 px-2.5 py-1 text-xs font-medium text-foreground">{heading}</span>
 			</div>
 			<p class="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{recommendation.headline}</p>
+			<!-- Compact diagnostic: read the stored category, not a browser-side guess.
+			     On older reports the label is historical until the item is rescanned. -->
+			<p class="mt-2 flex flex-wrap items-center gap-1.5 text-xs" data-product-category>
+				<span class="text-foreground/70">Category:</span>
+				<span class="inline-flex max-w-full items-center rounded-full border border-foreground/20 bg-background/75 px-2 py-0.5 font-medium text-foreground" title={detectedCategory.explanation}>
+					{detectedCategory.label}
+				</span>
+				{#if detectedCategory.stale}
+					<span class="text-foreground/65">(earlier report)</span>
+				{/if}
+				<span class="sr-only">{detectedCategory.explanation}</span>
+			</p>
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
