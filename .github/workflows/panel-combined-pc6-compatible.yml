@@ -43,6 +43,7 @@ jobs:
           python -m py_compile research/pc6_saved_compat_audit.py
           bash -n deploy/panel-category-vm-preflight.sh
           python -m unittest discover -s tests -p 'test_panel_category_refinement.py' -v
+          python -m unittest discover -s tests -p 'test_category_aspect_profiles.py' -v
           python -m unittest discover -s tests -p 'test_category_sentiment_shadow.py' -v
           python -m unittest discover -s tests -p 'test_product_category.py' -q
           python -m unittest discover -s tests -p 'test_pc6_saved_compatibility.py' -v
