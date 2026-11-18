@@ -58,14 +58,18 @@ test('badge counts are readable by screen readers and are never summed', () => {
 
 test('explanation modal documents the five-stage panel flow without changing decisions', () => {
   assert.match(view,/Five stages of the product review analysis/);
-  assert.match(view,/Product category:/);
-  assert.match(view,/Sentiment:/);
-  assert.match(view,/Category context:/);
-  assert.match(view,/Concern checks:/);
-  assert.match(view,/Conclusion:/);
+  const headings=['Product and reviews:','Review sentiment:','What the wording means for this product:','Independent concern checks:','Product conclusion:'];
+  const positions=headings.map((heading)=>view.indexOf(`<strong>${heading}</strong>`));
+  assert.ok(positions.every((index)=>index>=0),'all five headings are present');
+  assert.deepEqual([...positions].sort((a,b)=>a-b),positions,'headings appear in order');
+  assert.doesNotMatch(view,/<strong>(?:Product category|Sentiment|Category context|Concern checks|Conclusion):<\/strong>/);
+  assert.match(view,/can indicate praise, complaints, or normal use/);
+  assert.match(view,/The original sentiment stays in place/);
   assert.match(view,/it never overrides sentiment/);
   assert.match(view,/A positive review can still describe a hazard/);
+  assert.match(view,/<p>\{verdict\.detail\}<\/p>/);
   assert.match(view,/This saved report uses an earlier checker version/);
+  assert.match(view,/This explanation is based on customer reviews, not independent product testing/);
 });
 
 test('explanation control and review navigation remain outside the summary', () => {
