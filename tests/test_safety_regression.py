@@ -43,8 +43,12 @@ class NormalHeatingIsNotAReportedSafetyIssue(unittest.TestCase):
     """
 
     def _tag(self, sentence, title):
-        from defaketive_sentiment.hazard_model import LexiconHazardTagger
-        tagger = LexiconHazardTagger(rules="0.4", learned=None)
+        from defaketive_sentiment.hazard_model import LexiconHazardTagger, SHIPPED_COUNTERFEIT_RULES
+        # Production runs c2, which enables listing-derived product category.
+        # A legacy c1 research tagger intentionally has no listing context.
+        tagger = LexiconHazardTagger(
+            rules="0.4", counterfeit_rules=SHIPPED_COUNTERFEIT_RULES, learned=None
+        )
         return tagger.tag_review(sentence, 5, listing={"name": title})
 
     def test_screenshot_water_heater_praise_is_not_safety(self):
