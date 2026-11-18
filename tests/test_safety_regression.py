@@ -66,7 +66,8 @@ class NormalHeatingIsNotAReportedSafetyIssue(unittest.TestCase):
         )
         for title, review in zip(names, texts):
             with self.subTest(title=title, review=review):
-                self.assertFalse(any("safety" in s["tags"] for s in self._tag(review, title)))
+                analyses = self._tag(review, title)
+                self.assertFalse(any("safety" in item["tags"] for item in analyses), analyses)
 
     def test_unrelated_electronics_still_flag_rapid_heating(self):
         for title in ("Power Bank 20000mAh", "Smartphone 128GB", "USB Fast Charger 30W"):
