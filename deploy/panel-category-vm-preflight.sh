@@ -101,6 +101,11 @@ print("WARNING: category version pc6 can mark saved analyses stale; benchmark re
 PY
 free -m | head -n 2
 df -h "$REPO" | tail -n 1
+# A major pc4 -> pc6 revision must never mark all saved reports obsolete.
+# Compute the exact compatible/stale counts without re-analysis or DB writes.
+DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW="" "$PYTHON" \
+  "$CANDIDATE/research/pc6_saved_compat_audit.py" \
+  --checkout "$CANDIDATE" --database "$DB" --strict
 if [[ "$MODE" == "--check" ]]; then
   echo "READ-ONLY PREFLIGHT PASSED. This is not approval to deploy."
   exit 0
