@@ -15,6 +15,7 @@ import gzip
 import hashlib
 import json
 import os
+import sqlite3
 from pathlib import Path
 import sys
 
@@ -26,7 +27,28 @@ def digest(*parts: object) -> str:
     return hashlib.sha256(json.dumps(parts, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:20]
 
 
-def load_products(root: Path) -> list[dict]:
+def load_products(root: Path, db_path: Path | None = None) -> list[dict]:
+    if db_path is not None:
+        source = db_path.resolve(strict=True)
+        if not source.is_file():
+            raise RuntimeError("Selected VM database missing")
+        by_name: dict[str, list[dict]] = defaultdict(list)
+        # SQLite read-only mode. No migrations, writes, private text in logs
+        # or input to any cloud service.
+        with sqlite3.connect(f"file:{source.as_posix()}?mode=ro", uri=True, timeout=30) as connection:
+            rows = connection.execute(
+                "SELECT COALESCE(p.name, ''), COALESCE(r.rating, 3), r.content "
+                "FROM reviews r LEFT JOIN products p ON p.link = r.product_link "
+                "WHERE length(r.content) >= 12"
+            ).fetchall()
+        for title, rating, review in rows:
+            name, text = str(title or "").strip(), str(review or "").strip()
+            if name and len(text) >= 12:
+                by_name[name].append({"content": text, "rating": rating})
+        if not by_name:
+            raise RuntimeError("VM database had no eligible reviews; cannot issue GO")
+        return [{"name": name, "comments": comments}
+                for name, comments in sorted(by_name.items())]
     src = root / "backend/seed/saved_products.json.gz"
     if not src.is_file():
         raise RuntimeError("Bundled review corpus missing; cannot claim coverage")
@@ -109,7 +131,7 @@ def scan(args: argparse.Namespace) -> int:
     sys.path.insert(0, str(root / "backend"))
     from defaketive_sentiment import registry, product_category  # noqa: E402
 
-    products = load_products(root)
+    products = load_products(root, Path(args.database) if args.database else None)
     selections = prepare_rows(products, args.limit)
     if not selections:
         raise RuntimeError("Empty or unreadable sample: no GO claim allowed")
@@ -142,9 +164,16 @@ def scan(args: argparse.Namespace) -> int:
         summary = model.summarize(results, reviews_available=len(results), product_type=cat)
         product_verdicts[product_key] = (summary.get("verdict") or {}).get("state")
 
+    model_asset = root / "backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/model.onnx"
+    if not model_asset.is_file():
+        raise RuntimeError("XLM-RoBERTa ONNX asset missing from checkout")
+    with model_asset.open("rb") as stream:
+        fingerprint = hashlib.file_digest(stream, "sha256").hexdigest()
     payload = {
         "schema": "panel-category-paired-1",
-        "corpus": "bundled saved reports plus historical evaluation development reviews (not independent, not live VM)",
+        "corpus": "local VM database in SQLite read-only mode" if args.database else
+                  "bundled saved reports plus historical evaluation development reviews (not independent, not live VM)",
+        "model_sha256": fingerprint,
         "model": "existing XLM-RoBERTa and learned hazard scorer",
         "category_revision": product_category.PRODUCT_CATEGORY_REVISION,
         "product_count": len(mapped),
@@ -172,6 +201,10 @@ def compare(args: argparse.Namespace) -> int:
         raise RuntimeError("Mismatched corpus: comparison invalid")
     if set(old["reviews"]) != set(new["reviews"]):
         raise RuntimeError("Mismatched sampled reviews: comparison invalid")
+    if old.get("model_sha256") != new.get("model_sha256"):
+        raise RuntimeError("Model ONNX hashes differ: cannot isolate category rule changes")
+    if old["corpus"] != new["corpus"]:
+        raise RuntimeError("The corpus source differs between baseline and candidate")
     product_changes = [{
         "id": key, "old": old["products"][key]["category"], "new": new["products"][key]["category"]
     } for key in sorted(old["products"])
@@ -198,6 +231,7 @@ def compare(args: argparse.Namespace) -> int:
         "independent_accuracy_measured": False,
         "vm_deployment_verified": False,
         "same_review_corpus": True,
+        "vm_readonly_snapshot": old["corpus"] == "local VM database in SQLite read-only mode",
         "baseline_revision": old["category_revision"],
         "candidate_revision": new["category_revision"],
         "products_compared": old["product_count"],
@@ -230,6 +264,8 @@ def main() -> int:
     scan_cmd.add_argument("--checkout", required=True)
     scan_cmd.add_argument("--out", required=True)
     scan_cmd.add_argument("--limit", type=int, default=600)
+    scan_cmd.add_argument("--database", default=None,
+                          help="Optional absolute path to VM SQLite review DB, read only; no raw review output")
     compare_cmd = sub.add_parser("compare")
     compare_cmd.add_argument("--baseline", required=True)
     compare_cmd.add_argument("--candidate", required=True)
