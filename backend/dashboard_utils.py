@@ -693,34 +693,34 @@ HAZARD_LABELS = {
 # "verb" is (singular, plural): "1 review says", "3 reviews say".
 BADGE_COPY = {
     "safety": {
-        "label": "Safety problem",
+        "label": "Safety concerns",
         "helper": "Overheating, smoke, sparks or shocks",
         "verb": ("mentions", "mention"),
         "none": "No reviews mention fire, smoke, shocks or overheating",
     },
     "defect": {
-        "label": "Faulty or broken",
+        "label": "Functionality or damage concerns",
         "helper": "Doesn't work, stops working, drains fast or charges slowly",
         "verb": ("says", "say"),
         "claim": "it is faulty or stopped working",
         "none": "No reviews say it is faulty or broken",
     },
     "quality": {
-        "label": "Poor quality",
+        "label": "Quality concerns",
         "helper": "Works, but weak, flimsy or scratched",
         "verb": ("says", "say"),
         "claim": "it works but is weak, flimsy or marked",
         "none": "No reviews call it weak, flimsy or scratched",
     },
     "counterfeit": {
-        "label": "Possible fake",
+        "label": "Authenticity concerns",
         "helper": "Reviewers say it is a copy, not the original brand",
         "verb": ("says", "say"),
         "claim": "it may not be genuine",
         "none": "No reviews say it is fake",
     },
     "not_as_described": {
-        "label": "Not as advertised",
+        "label": "Listing differences",
         "helper": "Size, capacity, features or looks differ from the listing",
         "verb": ("says", "say"),
         "claim": "it differs from the listing",
