@@ -1,0 +1,76 @@
+name: Cross-category context v2 - 49-category interpretation regression
+
+on:
+  push:
+    branches:
+      - feature/cross-category-context-v2-20261118
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  unchanged_decisions:
+    name: Existing ONNX, category/hazard detector, databases unchanged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: |
+          set -euo pipefail
+          BASE=dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26
+          git cat-file -e "${BASE}^{commit}"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/product_category.py backend/sentiment-analysis/defaketive_sentiment/product_badges.py backend/sentiment-analysis/defaketive_sentiment/lexicons backend/requirements.txt backend/dashboard_utils.py backend/category_copy.py backend/webapp.py backend/data_store.py)"
+          echo 'Original sentiment and hazard engines, category detector, model assets and database handling unchanged.'
+
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Verify all 49 contexts and 10 product subtypes with hazard equivalence
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
+          DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
+        run: |
+          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/category_context.py
+          python -m unittest discover -s tests -p 'test_category_context_v2.py' -v
+          python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
+          python -m unittest discover -s tests -p 'test_category_wording.py' -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: |
+          npm ci --no-fund --no-audit
+          node --test tests/category-context-summary.test.mjs tests/report-verdict-unified-headings.test.mjs tests/report-visible-fields.test.mjs
+          npm run check
+          npm run build
