@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install application dependencies for the original inference package
+        run: python -m pip install -r backend/requirements.txt
       - name: Check syntax and execute historical paired study
         run: |
           python -m py_compile research/category_sentiment/audit_category_rules.py
