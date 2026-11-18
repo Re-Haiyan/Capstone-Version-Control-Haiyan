@@ -1403,7 +1403,7 @@ def _pc4_report_compatible(product: dict[str, Any], expected_version: str) -> bo
     if previous == expected_version:
         return False
     category = product.get("product_category")
-    if not isinstance(category, str) or not category or category == "other":
+    if not isinstance(category, str) or not category:
         return False
     try:
         _ensure_sentiment_path()
