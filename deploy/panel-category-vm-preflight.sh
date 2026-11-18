@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# Guarded, read-only preflight for panel category pc6. Run on Azure VM via
+# an authenticated operator terminal. NEVER deploys, changes branches,
+# restarts a service, or edits SQLite. Requires an isolated candidate checkout.
+set -euo pipefail
+
+MODE="${1:-}"
+if [[ "$MODE" != "--check" && "$MODE" != "--paired" ]]; then
+  echo "Usage: EXPECTED_VM_SHA=<full-40-hex> CANDIDATE_SHA=<full-40-hex> DEFAKETIVE_CANDIDATE=<absolute-path> $0 --check|--paired" >&2
+  exit 2
+fi
+REPO="${DEFAKETIVE_REPO:-$HOME/defaketive}"
+CANDIDATE="${DEFAKETIVE_CANDIDATE:-}"
+SITE="${DEFAKETIVE_SITE:-https://defaketive.duckdns.org}"
+MAX_REVIEWS="${DEFAKETIVE_AUDIT_REVIEWS:-900}"
+DB="${DEFAKETIVE_DB:-$REPO/backend/defaketive.db}"
+SERVICE="${DEFAKETIVE_SERVICE:-defaketive}"
+OLD_SHA="${EXPECTED_VM_SHA:-}"
+CANDIDATE_SHA="${CANDIDATE_SHA:-}"
+[[ "$OLD_SHA" =~ ^[0-9a-f]{40}$ && "$CANDIDATE_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+  echo "Both full expected commit SHAs are mandatory. Never guess the running VM SHA." >&2
+  exit 2
+}
+[[ -d "$REPO/.git" && -d "$CANDIDATE" && "$REPO" != "$CANDIDATE" ]] || {
+  echo "Need distinct live and candidate Git checkouts" >&2
+  exit 1
+}
+[[ "$(cd "$REPO" && git rev-parse HEAD)" == "$OLD_SHA" ]] || {
+  echo "VM HEAD differs from approved EXPECTED_VM_SHA: NO-GO" >&2
+  exit 1
+}
+[[ "$(cd "$CANDIDATE" && git rev-parse HEAD)" == "$CANDIDATE_SHA" ]] || {
+  echo "Candidate HEAD differs from approved CANDIDATE_SHA: NO-GO" >&2
+  exit 1
+}
+[[ -z "$(git -C "$REPO" status --porcelain --untracked-files=no)" ]] || {
+  echo "Live VM tracked working tree is dirty: NO-GO" >&2
+  exit 1
+}
+[[ -z "$(git -C "$CANDIDATE" status --porcelain --untracked-files=no)" ]] || {
+  echo "Candidate tracked working tree is dirty: NO-GO" >&2
+  exit 1
+}
+PYTHON="$REPO/backend/.venv/bin/python"
+[[ -x "$PYTHON" && -s "$DB" ]] || { echo "Missing live Python environment or saved-reviews DB" >&2; exit 1; }
+[[ -f "$CANDIDATE/research/panel_category_release_audit.py" ]] || {
+  echo "Candidate lacks paired audit implementation" >&2; exit 1
+}
+systemctl is-active --quiet "$SERVICE" || { echo "DeFaketive service inactive" >&2; exit 1; }
+curl -fsS --max-time 15 http://127.0.0.1:8080/ >/dev/null || {
+  echo "Local app HTTP health failed" >&2; exit 1
+}
+curl -fsS --max-time 15 "$SITE/" >/dev/null || {
+  echo "Public app HTTP health failed" >&2; exit 1
+}
+MODEL_REL="backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/model.onnx"
+[[ -f "$REPO/$MODEL_REL" && -f "$CANDIDATE/$MODEL_REL" ]] || {
+  echo "ONNX model file missing" >&2; exit 1
+}
+OLD_MODEL_SHA="$(sha256sum "$REPO/$MODEL_REL" | cut -d ' ' -f 1)"
+NEW_MODEL_SHA="$(sha256sum "$CANDIDATE/$MODEL_REL" | cut -d ' ' -f 1)"
+[[ "$OLD_MODEL_SHA" == "$NEW_MODEL_SHA" ]] || {
+  echo "Candidate would alter shipped XLM-RoBERTa model: NO-GO" >&2; exit 1
+}
+echo "Live SHA: $OLD_SHA"
+echo "Candidate SHA: $CANDIDATE_SHA"
+echo "XLM-RoBERTa ONNX SHA256 unchanged"
+free -m | head -n 2
+df -h "$REPO" | tail -n 1
+if [[ "$MODE" == "--check" ]]; then
+  echo "READ-ONLY PREFLIGHT PASSED. This is not approval to deploy."
+  exit 0
+fi
+[[ "$MAX_REVIEWS" =~ ^[1-9][0-9]*$ ]] || { echo "Invalid review limit" >&2; exit 2; }
+TMPDIR_PRIVATE="$(mktemp -d)"
+chmod 700 "$TMPDIR_PRIVATE"
+trap 'rm -rf "$TMPDIR_PRIVATE"' EXIT
+# Both commands read the same LIVE DB with SQLite mode=ro, but run separate
+# processes so the Python import tree corresponds to each commit.
+export TOKENIZERS_PARALLELISM=false
+export OPENBLAS_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+"$PYTHON" "$CANDIDATE/research/panel_category_release_audit.py" scan \
+  --checkout "$REPO" --database "$DB" --limit "$MAX_REVIEWS" \
+  --out "$TMPDIR_PRIVATE/baseline.json"
+"$PYTHON" "$CANDIDATE/research/panel_category_release_audit.py" scan \
+  --checkout "$CANDIDATE" --database "$DB" --limit "$MAX_REVIEWS" \
+  --out "$TMPDIR_PRIVATE/candidate.json"
+"$PYTHON" "$CANDIDATE/research/panel_category_release_audit.py" compare \
+  --baseline "$TMPDIR_PRIVATE/baseline.json" \
+  --candidate "$TMPDIR_PRIVATE/candidate.json" \
+  --out "$TMPDIR_PRIVATE/aggregate.json" --strict
+echo "PAIRED READ-ONLY VM AUDIT PASSED. Still requires reviewed release SHA, backups, live E2E and operator authorization."
