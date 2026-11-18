@@ -27,12 +27,14 @@ class StageContext(unittest.TestCase):
 
     def test_full_product_taxonomy_exactly_49_plus_other(self):
         self.assertEqual(len(CATEGORIES),50)
-        self.assertEqual(len(context._profiles()),49)
-        self.assertEqual(set(context._profiles()),set(CATEGORIES)-{OTHER})
-        for category in context._profiles():
+        profiles = context._profiles()["profiles"]
+        self.assertEqual(len(profiles),49)
+        self.assertEqual(set(profiles),set(CATEGORIES)-{OTHER})
+        for category, profile in profiles.items():
             with self.subTest(category=category):
-                self.assertTrue(context._phrases(category,"positive"))
-                self.assertTrue(context._phrases(category,"negative"))
+                self.assertTrue(profile["positive_phrases"])
+                self.assertTrue(profile["negative_phrases"])
+                self.assertTrue(profile["expected_behavior_phrases"])
 
     def test_each_category_has_a_reachable_title_and_phrase(self):
         # Titles are already validated by the shipped marketplace taxonomy tests.
@@ -40,10 +42,10 @@ class StageContext(unittest.TestCase):
         for title, category in [*TITLES.items(), *PC3_TITLES.items()]:
             if category != OTHER:
                 examples.setdefault(category,title)
-        self.assertEqual(set(examples),set(context._profiles()))
+        self.assertEqual(set(examples),set(context._profiles()["profiles"]))
         for category,title in examples.items():
             with self.subTest(category=category):
-                profile=context._profiles()[category]
+                profile=context._profiles()["profiles"][category]
                 pos=self.evaluate(title,profile["positive_phrases"][0],"neutral")
                 neg=self.evaluate(title,profile["negative_phrases"][0],"neutral")
                 self.assertEqual(pos["product_category"],category)
@@ -93,7 +95,7 @@ class StageContext(unittest.TestCase):
         self.assertIsNone(self.evaluate("Instant Coffee","Masarap",None))
 
     def test_missing_profiles_fail_closed_without_changing_model_decisions(self):
-        with mock.patch.object(context, "_phrases", side_effect=OSError("context file missing")):
+        with mock.patch.object(context, "_profiles", side_effect=OSError("context file missing")):
             report=self.evaluate("Instant Coffee", "Mainit at bagong luto", "negative")
         self.assertEqual(report["status"],"unavailable")
         self.assertFalse(report["sentiment_overridden"])
@@ -103,7 +105,11 @@ class StageContext(unittest.TestCase):
         self.assertEqual(self.evaluate("Instant Coffee",review,"negative")["status"],"ambiguous")
 
     def test_profile_matching_requires_whole_words(self):
-        self.assertEqual(self.evaluate("Instant Coffee","Mainit at bagong lutong-luto")["status"],"no_signal")
+        # The explicit "mainit at bagong luto" praise is NOT present as a
+        # complete phrase. A generic "mainit" may still be expected behavior.
+        similar = self.evaluate("Instant Coffee","Mainit at bagong lutong-luto")
+        self.assertIsNone(similar["context_signal"])
+        self.assertNotEqual(similar["matched_profile_phrase"], "mainit at bagong luto")
         self.assertEqual(self.evaluate("Instant Coffee","Mainit at bagong luto!")["context_signal"],"positive")
 
 

@@ -17,8 +17,21 @@ test('counts backend contextual evidence without interpreting mismatches as mode
     review('agrees'), review('differs'), review('ambiguous'), review('no_signal'),
     review('unclassified'), review('agrees', {included_in_analysis:false})
   ]}), {
-    checked:5,agrees:1,differs:1,ambiguous:1,noSignal:1,unclassified:1,matched:2
+    checked:5,agrees:1,differs:1,ambiguous:1,noSignal:1,unclassified:1,matched:2,expectedBehavior:0,unavailable:0
   });
+});
+
+test('v2 expected features are not counted as positive or negative corrections', () => {
+  const summary = categoryContextSummary({comments:[
+    review('expected_behavior', {revision:'category-context-v2'}),
+    review('agrees', {revision:'category-context-v2'}),
+    review('differs', {revision:'category-context-v2'}),
+    review('unavailable', {revision:'category-context-v2'})
+  ]});
+  assert.equal(summary.checked,4);
+  assert.equal(summary.expectedBehavior,1);
+  assert.equal(summary.matched,2);
+  assert.equal(summary.unavailable,1);
 });
 
 test('old reports and unsafe/unknown metadata never invent a completed check', () => {

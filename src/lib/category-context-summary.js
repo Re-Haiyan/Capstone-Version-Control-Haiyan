@@ -7,18 +7,20 @@
 export function categoryContextSummary(product) {
   const counts = {
     checked: 0, agrees: 0, differs: 0, ambiguous: 0, noSignal: 0,
-    unclassified: 0, matched: 0
+    unclassified: 0, matched: 0, expectedBehavior: 0, unavailable: 0
   };
   for (const review of product?.comments ?? []) {
     if (review?.included_in_analysis === false) continue;
     const data = review?.sentiment_analysis?.sentiment?.category_context;
-    if (!data || data.revision !== 'category-context-v1' ||
+    if (!data || !['category-context-v1', 'category-context-v2'].includes(data.revision) ||
         data.used_for_decision !== false || data.sentiment_overridden !== false) continue;
     counts.checked++;
     if (data.status === 'agrees') { counts.agrees++; counts.matched++; }
     else if (data.status === 'differs') { counts.differs++; counts.matched++; }
     else if (data.status === 'ambiguous') counts.ambiguous++;
     else if (data.status === 'unclassified') counts.unclassified++;
+    else if (data.status === 'unavailable') counts.unavailable++;
+    else if (data.status === 'expected_behavior') counts.expectedBehavior++;
     else counts.noSignal++;
   }
   return counts;

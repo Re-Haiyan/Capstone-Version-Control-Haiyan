@@ -15,7 +15,7 @@ from defaketive_sentiment import product_category
 
 
 CASES = {
-    # Specific product-title disambiguation (pc5), now included in pc6.
+    # Specific product-title disambiguation (pc5/pc6), retained under pc7.
     "Matte Lipstick in Travel Cup": "makeup",
     "Collagen Face Serum Vitamin C 30ml": "skincare",
     "Herbal Shampoo with Dish Soap Gift": "haircare",
@@ -41,6 +41,11 @@ CASES = {
     "Gaming Controller Bluetooth Wireless for Android": "gaming",
     "Game Controller USB for PC": "gaming",
     "Samsung Refrigerator Inverter 2 Door": "small_appliance",
+    "Window Air Conditioner 1HP": "small_appliance",
+    "Portable Air-Conditioner 1HP": "small_appliance",
+    "Portable Air Conditioner 12000 BTU": "small_appliance",
+    "Hair Conditioner With Keratin 200mL": "haircare",
+    "Shampoo Conditioner Set": "haircare",
     "3KW Off Grid Solar Inverter 48V": "battery_solar",
     "Random Seller Item 123": "other",
 }
@@ -54,7 +59,7 @@ class PanelCategoryRefinementTests(unittest.TestCase):
 
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
-        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc6")
+        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc7")
 
     def test_descriptions_do_not_choose_category(self) -> None:
         self.assertEqual(product_category.classify_listing(

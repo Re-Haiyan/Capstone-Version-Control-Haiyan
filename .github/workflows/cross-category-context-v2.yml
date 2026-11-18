@@ -1,0 +1,124 @@
+name: Cross-category context v2 - 49-category interpretation regression
+
+on:
+  push:
+    branches:
+      - feature/cross-category-context-v2-20261118
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  unchanged_decisions:
+    name: Existing ONNX, category/hazard detector, databases unchanged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: |
+          set -euo pipefail
+          BASE=dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26
+          git cat-file -e "${BASE}^{commit}"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/product_badges.py backend/sentiment-analysis/defaketive_sentiment/lexicons backend/requirements.txt backend/category_copy.py backend/webapp.py backend/data_store.py)"
+          echo 'Original XLM-R and hazard engines, weights, thresholds, dependencies and database handling unchanged; pc7 category rule audited separately.'
+
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Verify all 49 contexts and 10 product subtypes with hazard equivalence
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
+          DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
+        run: |
+          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/category_context.py
+          python -m py_compile research/pc7_saved_compat_audit.py research/category_context_v2_real_review_audit.py backend/dashboard_utils.py
+          bash -n deploy/pc7-vm-preflight.sh
+          python -m unittest discover -s tests -p 'test_category_context_v2.py' -v
+          python -m unittest discover -s tests -p 'test_pc7_saved_compatibility.py' -v
+          python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
+          python -m unittest discover -s tests -p 'test_category_wording.py' -q
+          python -m unittest discover -s tests -p 'test_product_category.py' -q
+          python research/pc7_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --strict
+
+  historical_marketplace_audit:
+    name: Read-only paired real-review audit (development data; not accuracy)
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install exact backend dependencies
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Prepare isolated pc6 production baseline
+        run: |
+          git cat-file -e 'dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26^{commit}'
+          git worktree add --detach "$RUNNER_TEMP/context-pc6-baseline" dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26
+      - name: Real historical marketplace review paired baseline/candidate
+        env:
+          OMP_NUM_THREADS: '1'
+          OPENBLAS_NUM_THREADS: '1'
+          TOKENIZERS_PARALLELISM: 'false'
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
+          DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
+        run: |
+          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/context-pc6-baseline" --out "$RUNNER_TEMP/pc6-paired.json" --limit 800
+          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/pc7-paired.json" --limit 800
+          python research/panel_category_release_audit.py compare --baseline "$RUNNER_TEMP/pc6-paired.json" --candidate "$RUNNER_TEMP/pc7-paired.json" --out "$RUNNER_TEMP/pc7-compare.json" --strict
+          python research/category_context_v2_real_review_audit.py --checkout "$GITHUB_WORKSPACE" --limit 800 --out "$GITHUB_WORKSPACE/context-v2-aggregate.json"
+      - name: Upload ONLY aggregate context audit (no review text)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: context-v2-historical-review-aggregate
+          path: context-v2-aggregate.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: |
+          npm ci --no-fund --no-audit
+          node --test tests/category-context-summary.test.mjs tests/report-verdict-unified-headings.test.mjs tests/report-visible-fields.test.mjs
+          npm run check
+          npm run build

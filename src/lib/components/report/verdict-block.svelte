@@ -114,6 +114,9 @@
 			{#if contextualChecks.checked > 0}
 				<p class="mt-1.5 text-xs leading-relaxed text-foreground/75" data-category-context-summary>
 					Category context check: {contextualChecks.matched} of {contextualChecks.checked} reviews matched explicit product-context examples.
+					{#if contextualChecks.expectedBehavior > 0}
+						{contextualChecks.expectedBehavior} described expected product behavior (not necessarily praise).
+					{/if}
 					{#if contextualChecks.differs > 0}
 						{contextualChecks.differs} differed from the initial sentiment.
 					{/if}

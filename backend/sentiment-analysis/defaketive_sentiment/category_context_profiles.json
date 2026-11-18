@@ -1,88 +1,159 @@
 {
-  "schema": "category-context-v1",
-  "intent": "Illustrative explicit review phrase matching for context metadata ONLY; not verified sentiment prediction or automatic label correction.",
-  "fallback": "When no explicit cue matches, abstain. For Other products, use the unchanged generic XLM-R label.",
+  "schema": "category-context-profiles-v2",
+  "intent": "Illustrative, product-aware explicit reviews and intended behaviors for audit-only interpretation; no authoritative sentiment labels or safety suppression.",
+  "fallback": "Unmatched, Other, negated, mixed or ambiguous text abstains. An expected behavior is NOT automatically Positive. All five hazard checks still run.",
   "profiles": {
     "digital_goods": {
       "ambiguous_term": "valid",
       "positive_phrases": [
-        "redeemed successfully"
+        "redeemed successfully",
+        "the code worked",
+        "working code"
       ],
       "negative_phrases": [
-        "code is invalid"
+        "code is invalid",
+        "code already redeemed",
+        "hindi gumana ang code"
+      ],
+      "expected_behavior_phrases": [
+        "instant delivery",
+        "digital code"
       ]
     },
     "stationery_books": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "writes smoothly"
+        "writes smoothly",
+        "smooth magsulat",
+        "the pen writes clearly"
       ],
       "negative_phrases": [
-        "ink dried out"
+        "ink dried out",
+        "tuyong tinta",
+        "paper tears easily"
+      ],
+      "expected_behavior_phrases": [
+        "manipis na papel",
+        "thin paper"
       ]
     },
     "home_textile": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "soft and breathable"
+        "soft and breathable",
+        "presko ang tela",
+        "soft blanket"
       ],
       "negative_phrases": [
-        "sobrang nipis ng tela"
+        "sobrang nipis ng tela",
+        "bedsheet is see through",
+        "napunit ang bedsheet"
+      ],
+      "expected_behavior_phrases": [
+        "lightweight blanket",
+        "cooling blanket"
       ]
     },
     "accessory": {
       "ambiguous_term": "tight",
       "positive_phrases": [
-        "fits my device securely"
+        "fits my device securely",
+        "sakto sa phone",
+        "case fits perfectly"
       ],
       "negative_phrases": [
-        "does not fit my device"
+        "does not fit my device",
+        "di kasya ang case",
+        "protector cracked easily"
+      ],
+      "expected_behavior_phrases": [
+        "manipis ang case",
+        "thin case"
       ]
     },
     "powerbank": {
       "ambiguous_term": "hot",
       "positive_phrases": [
-        "charges my phone quickly"
+        "charges my phone quickly",
+        "mabilis mag charge",
+        "charges consistently"
       ],
       "negative_phrases": [
         "sobrang init habang nagcha-charge",
-        "sobrang init habang nagcha-charge"
+        "umiinit ang powerbank habang charging",
+        "won t charge"
+      ],
+      "expected_behavior_phrases": [
+        "slim powerbank",
+        "magaan ang powerbank"
       ]
     },
     "charger_cable": {
       "ambiguous_term": "fast",
       "positive_phrases": [
-        "supports fast charging"
+        "supports fast charging",
+        "fast charging works",
+        "mabilis mag charge"
       ],
       "negative_phrases": [
-        "does not charge at all"
+        "does not charge at all",
+        "hindi nag charge",
+        "cable disconnects"
+      ],
+      "expected_behavior_phrases": [
+        "mahaba ang cable",
+        "long cable"
       ]
     },
     "health_supplements": {
       "ambiguous_term": "effective",
       "positive_phrases": [
-        "tamper seal intact"
+        "tamper seal intact",
+        "sealed yung bote",
+        "intact safety seal"
       ],
       "negative_phrases": [
-        "expiry date already passed"
+        "expiry date already passed",
+        "expired na dumating",
+        "seal was broken"
+      ],
+      "expected_behavior_phrases": [
+        "strong taste",
+        "matapang ang lasa"
       ]
     },
     "audio": {
       "ambiguous_term": "loud",
       "positive_phrases": [
-        "clear sound"
+        "clear sound",
+        "malinaw ang tunog",
+        "clear bass"
       ],
       "negative_phrases": [
-        "sound keeps crackling"
+        "sound keeps crackling",
+        "basag ang tunog",
+        "static in the audio"
+      ],
+      "expected_behavior_phrases": [
+        "malakas ang volume",
+        "loud volume"
       ]
     },
     "wearable": {
       "ambiguous_term": "light",
       "positive_phrases": [
-        "tracks steps consistently"
+        "tracks steps consistently",
+        "accurate ang steps",
+        "accurate heart rate reading"
       ],
       "negative_phrases": [
-        "heart rate sensor does not work"
+        "heart rate sensor does not work",
+        "mali ang reading",
+        "watch stopped tracking"
+      ],
+      "expected_behavior_phrases": [
+        "magaan sa kamay",
+        "lightweight watch"
       ]
     },
     "phone": {
@@ -90,364 +161,923 @@
       "positive_phrases": [
         "thin and beautiful design",
         "ang nipis, ang ganda",
-        "ang manipis, maganda tingnan"
+        "ang manipis, maganda tingnan",
+        "nipis ng design ang ganda",
+        "maganda ang manipis na phone"
       ],
       "negative_phrases": [
-        "touchscreen unresponsive"
+        "touchscreen unresponsive",
+        "lag ang screen",
+        "phone restarts randomly"
+      ],
+      "expected_behavior_phrases": [
+        "ang nipis ng phone",
+        "slim phone"
       ]
     },
     "gaming": {
       "ambiguous_term": "responsive",
       "positive_phrases": [
-        "buttons respond immediately"
+        "buttons respond immediately",
+        "smooth ang buttons",
+        "no input lag"
       ],
       "negative_phrases": [
-        "controller has stick drift"
+        "controller has stick drift",
+        "may stick drift",
+        "buttons stopped responding"
+      ],
+      "expected_behavior_phrases": [
+        "mabilis controls",
+        "responsive controls"
       ]
     },
     "eyewear": {
       "ambiguous_term": "light",
       "positive_phrases": [
-        "clear lenses"
+        "clear lenses",
+        "malinaw ang lens",
+        "comfortable light frame"
       ],
       "negative_phrases": [
-        "lenses are blurry"
+        "lenses are blurry",
+        "malabo lens",
+        "frame cracked"
+      ],
+      "expected_behavior_phrases": [
+        "magaan ang frame",
+        "light glasses"
       ]
     },
     "camera": {
       "ambiguous_term": "sharp",
       "positive_phrases": [
-        "sharp photos"
+        "sharp photos",
+        "sharp ang picture",
+        "clear sharp images"
       ],
       "negative_phrases": [
-        "photos are blurry"
+        "photos are blurry",
+        "malabo mga picture",
+        "camera autofocus fails"
+      ],
+      "expected_behavior_phrases": [
+        "sharp lens",
+        "light camera"
       ]
     },
     "tv_display": {
       "ambiguous_term": "bright",
       "positive_phrases": [
-        "display is bright and clear"
+        "display is bright and clear",
+        "malinaw ang display",
+        "vibrant display"
       ],
       "negative_phrases": [
-        "dead pixels on screen"
+        "dead pixels on screen",
+        "may dead pixels",
+        "flickering display"
+      ],
+      "expected_behavior_phrases": [
+        "maliwanag ang display",
+        "bright screen"
       ]
     },
     "small_appliance": {
       "ambiguous_term": "hot",
       "positive_phrases": [
-        "operates quietly"
+        "operates quietly",
+        "tahimik ang motor",
+        "works as intended"
       ],
       "negative_phrases": [
-        "overheats during use"
+        "overheats during use",
+        "hindi gumagana ang appliance",
+        "smoke from the motor"
+      ],
+      "expected_behavior_phrases": [
+        "normal operating sound"
       ]
     },
     "smart_home": {
       "ambiguous_term": "connected",
       "positive_phrases": [
-        "paired on first try"
+        "paired on first try",
+        "madaling i pair",
+        "paired with wifi easily"
       ],
       "negative_phrases": [
-        "fails to pair with wifi"
+        "fails to pair with wifi",
+        "hindi ma connect",
+        "disconnects from wifi"
+      ],
+      "expected_behavior_phrases": [
+        "connected to wifi"
       ]
     },
     "laptop": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "thin and lightweight design"
+        "thin and lightweight design",
+        "magaan at manipis ang laptop",
+        "slim and fast laptop"
       ],
       "negative_phrases": [
-        "overheats while idle"
+        "overheats while idle",
+        "umiinit ang laptop habang idle",
+        "laptop shuts down randomly"
+      ],
+      "expected_behavior_phrases": [
+        "manipis ang body",
+        "slim laptop"
       ]
     },
     "tablet": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "lightweight and slim design"
+        "lightweight and slim design",
+        "magaan ang tablet",
+        "responsive tablet screen"
       ],
       "negative_phrases": [
-        "touchscreen keeps freezing"
+        "touchscreen keeps freezing",
+        "nagha hang ang tablet",
+        "tablet screen froze"
+      ],
+      "expected_behavior_phrases": [
+        "nipis ng tablet",
+        "lightweight tablet"
       ]
     },
     "computer_peripheral": {
       "ambiguous_term": "clicky",
       "positive_phrases": [
-        "keys respond consistently"
+        "keys respond consistently",
+        "responsive ang keyboard",
+        "reliable keyboard input"
       ],
       "negative_phrases": [
-        "keys stopped working"
+        "keys stopped working",
+        "hindi gumagana ang keys",
+        "mouse keeps disconnecting"
+      ],
+      "expected_behavior_phrases": [
+        "clicky ang keyboard",
+        "mechanical key sound"
       ]
     },
     "battery_solar": {
       "ambiguous_term": "hot",
       "positive_phrases": [
-        "charging current is stable"
+        "charging current is stable",
+        "stable ang output",
+        "charging works consistently"
       ],
       "negative_phrases": [
-        "battery overheats during charging"
+        "battery overheats during charging",
+        "nag overheat ang battery",
+        "battery swollen"
+      ],
+      "expected_behavior_phrases": [
+        "12 volt output",
+        "solar charge controller"
       ]
     },
     "motorcycle": {
       "ambiguous_term": "loud",
       "positive_phrases": [
-        "fits my motorcycle model"
+        "fits my motorcycle model",
+        "sakto sa mio sporty",
+        "fits the motor properly"
       ],
       "negative_phrases": [
-        "part does not fit my motorcycle"
+        "part does not fit my motorcycle",
+        "di kasya sa motor",
+        "mounting bracket broke"
+      ],
+      "expected_behavior_phrases": [
+        "rubber grip",
+        "metal finish"
       ]
     },
     "baby": {
       "ambiguous_term": "soft",
       "positive_phrases": [
-        "material feels gentle"
+        "material feels gentle",
+        "malambot sa balat ni baby",
+        "soft on baby skin"
       ],
       "negative_phrases": [
-        "diaper keeps leaking"
+        "diaper keeps leaking",
+        "nag leak ang diaper",
+        "stroller wheel broke"
+      ],
+      "expected_behavior_phrases": [
+        "soft baby blanket",
+        "lightweight stroller"
       ]
     },
     "garden_plants": {
       "ambiguous_term": "dry",
       "positive_phrases": [
-        "healthy new growth"
+        "healthy new growth",
+        "fresh yung halaman",
+        "healthy roots"
       ],
       "negative_phrases": [
-        "plant arrived wilted"
+        "plant arrived wilted",
+        "nalanta pagdating",
+        "plant arrived dead"
+      ],
+      "expected_behavior_phrases": [
+        "basa ang lupa",
+        "moist soil"
       ]
     },
     "home_decor_lighting": {
       "ambiguous_term": "bright",
       "positive_phrases": [
-        "light is bright and even"
+        "light is bright and even",
+        "maliwanag ang ilaw",
+        "bright and even lighting"
       ],
       "negative_phrases": [
-        "light keeps flickering"
+        "light keeps flickering",
+        "nag flicker ang bulb",
+        "lights stopped working"
+      ],
+      "expected_behavior_phrases": [
+        "bright led",
+        "warm white light"
       ]
     },
     "kitchen_dining": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "nonstick surface works well"
+        "nonstick surface works well",
+        "even ang init ng kawali",
+        "pan heats evenly"
       ],
       "negative_phrases": [
-        "nonstick coating is peeling"
+        "nonstick coating is peeling",
+        "nababalat ang nonstick",
+        "handle came loose"
+      ],
+      "expected_behavior_phrases": [
+        "stainless steel finish",
+        "nonstick finish"
       ]
     },
     "furniture": {
       "ambiguous_term": "heavy",
       "positive_phrases": [
-        "frame feels sturdy"
+        "frame feels sturdy",
+        "matibay ang frame",
+        "sturdy furniture"
       ],
       "negative_phrases": [
-        "chair wobbles under weight"
+        "chair wobbles under weight",
+        "umaalog ang upuan",
+        "table leg broke"
+      ],
+      "expected_behavior_phrases": [
+        "mabigat ang mesa",
+        "heavy table"
       ]
     },
     "household_cleaning": {
       "ambiguous_term": "strong",
       "positive_phrases": [
-        "removes stains well"
+        "removes stains well",
+        "natanggal ang mantsa",
+        "cleans stains well"
       ],
       "negative_phrases": [
-        "leaves sticky residue"
+        "leaves sticky residue",
+        "nag iwan ng sticky residue",
+        "does not remove stains"
+      ],
+      "expected_behavior_phrases": [
+        "matapang ang amoy",
+        "strong scent"
       ]
     },
     "tools_hardware": {
       "ambiguous_term": "sharp",
       "positive_phrases": [
-        "drill bit cuts cleanly"
+        "drill bit cuts cleanly",
+        "matalas ang blade",
+        "cuts smoothly"
       ],
       "negative_phrases": [
-        "drill bit snapped"
+        "drill bit snapped",
+        "bali ang drill bit",
+        "drill stopped working"
+      ],
+      "expected_behavior_phrases": [
+        "matalim ang tool",
+        "sharp blade"
       ]
     },
     "automotive": {
       "ambiguous_term": "smooth",
       "positive_phrases": [
-        "fits the car correctly"
+        "fits the car correctly",
+        "sakto sa sasakyan",
+        "compatible with my car"
       ],
       "negative_phrases": [
-        "brake part failed"
+        "brake part failed",
+        "di gumana ang preno",
+        "car part broke immediately"
+      ],
+      "expected_behavior_phrases": [
+        "maingay ang makina",
+        "engine noise"
       ]
     },
     "toys": {
       "ambiguous_term": "small",
       "positive_phrases": [
-        "toy is fun to play with"
+        "toy is fun to play with",
+        "masayang laruin",
+        "fun for the kids"
       ],
       "negative_phrases": [
-        "toy has sharp exposed edges"
+        "toy has sharp exposed edges",
+        "may matalim na gilid",
+        "toy fell apart"
+      ],
+      "expected_behavior_phrases": [
+        "compact toy",
+        "miniature toy"
       ]
     },
     "footwear": {
       "ambiguous_term": "tight",
       "positive_phrases": [
-        "comfortable fit"
+        "comfortable fit",
+        "sakto ang fit",
+        "comfortable shoes"
       ],
       "negative_phrases": [
-        "sole separated from shoe"
+        "sole separated from shoe",
+        "masakit sa paa",
+        "sole came off"
+      ],
+      "expected_behavior_phrases": [
+        "magaan ang sapatos",
+        "lightweight shoes"
       ]
     },
     "bags": {
       "ambiguous_term": "light",
       "positive_phrases": [
-        "zipper works smoothly"
+        "zipper works smoothly",
+        "maayos ang zipper",
+        "strong zipper"
       ],
       "negative_phrases": [
-        "zipper broke"
+        "zipper broke",
+        "sira ang zipper",
+        "bag strap snapped"
+      ],
+      "expected_behavior_phrases": [
+        "magaan ang bag",
+        "lightweight bag"
       ]
     },
     "jewelry_accessories": {
       "ambiguous_term": "light",
       "positive_phrases": [
-        "clasp fastens securely"
+        "clasp fastens securely",
+        "matibay ang clasp",
+        "secure clasp"
       ],
       "negative_phrases": [
-        "metal rusted quickly"
+        "metal rusted quickly",
+        "kalawang ang chain",
+        "earring clasp broke"
+      ],
+      "expected_behavior_phrases": [
+        "magaan ang earrings",
+        "lightweight necklace"
       ]
     },
     "apparel": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "fabric is breathable"
+        "fabric is breathable",
+        "sakto ang fit",
+        "presko at maganda ang tela"
       ],
       "negative_phrases": [
         "sobrang nipis ng tela",
-        "sobrang nipis ng tela"
+        "see through ang tela",
+        "sobrang manipis ang damit"
+      ],
+      "expected_behavior_phrases": [
+        "regular fit",
+        "cotton fabric"
       ]
     },
     "medical_devices": {
       "ambiguous_term": "sensitive",
       "positive_phrases": [
-        "readings are consistent"
+        "readings are consistent",
+        "consistent ang readings",
+        "accurate measurements"
       ],
       "negative_phrases": [
-        "device gives inconsistent readings"
+        "device gives inconsistent readings",
+        "mali ang reading",
+        "unreliable measurement"
+      ],
+      "expected_behavior_phrases": [
+        "sensitive ang sensor",
+        "sensitive monitor"
       ]
     },
     "makeup": {
       "ambiguous_term": "light",
       "positive_phrases": [
-        "applies evenly"
+        "applies evenly",
+        "smooth ang application",
+        "blends evenly"
       ],
       "negative_phrases": [
-        "makeup caused irritation"
+        "makeup caused irritation",
+        "nagkaroon ng skin irritation",
+        "cakey ang foundation"
+      ],
+      "expected_behavior_phrases": [
+        "matapang ang kulay",
+        "bold pigment"
       ]
     },
     "skincare": {
       "ambiguous_term": "strong",
       "positive_phrases": [
-        "absorbs without residue"
+        "absorbs without residue",
+        "hiyang sa balat ko",
+        "absorbs quickly"
       ],
       "negative_phrases": [
-        "skin became irritated"
+        "skin became irritated",
+        "nagka rash ako",
+        "caused redness"
+      ],
+      "expected_behavior_phrases": [
+        "strong smell",
+        "matapang ang amoy"
       ]
     },
     "haircare": {
       "ambiguous_term": "soft",
       "positive_phrases": [
-        "leaves hair feeling soft"
+        "leaves hair feeling soft",
+        "soft ang buhok",
+        "hair feels smooth"
       ],
       "negative_phrases": [
-        "hair felt dry after use"
+        "hair felt dry after use",
+        "dry ang buhok ko",
+        "itchy scalp after use"
+      ],
+      "expected_behavior_phrases": [
+        "mabango ang shampoo",
+        "strong shampoo scent"
       ]
     },
     "personal_care": {
       "ambiguous_term": "strong",
       "positive_phrases": [
-        "feels gentle on skin"
+        "feels gentle on skin",
+        "gentle sa balat",
+        "gentle on skin"
       ],
       "negative_phrases": [
-        "product caused irritation"
+        "product caused irritation",
+        "nagkaroon ng irritation",
+        "caused skin irritation"
+      ],
+      "expected_behavior_phrases": [
+        "strong ang scent",
+        "fragrant soap"
       ]
     },
     "sports_fitness": {
       "ambiguous_term": "heavy",
       "positive_phrases": [
-        "grip feels secure"
+        "grip feels secure",
+        "stable ang grip",
+        "equipment feels sturdy"
       ],
       "negative_phrases": [
-        "equipment slipped during use"
+        "equipment slipped during use",
+        "naputol ang resistance band",
+        "handle snapped during use"
+      ],
+      "expected_behavior_phrases": [
+        "rubber grip",
+        "resistance training"
       ]
     },
     "pet": {
       "ambiguous_term": "strong",
       "positive_phrases": [
-        "pet eats the food readily"
+        "pet eats the food readily",
+        "gusto ng aso ang pagkain",
+        "pet likes the food"
       ],
       "negative_phrases": [
-        "pet refuses to eat this food"
+        "pet refuses to eat this food",
+        "nagkasakit ang pusa",
+        "pet food smells rotten"
+      ],
+      "expected_behavior_phrases": [
+        "matapang ang amoy",
+        "strong pet food smell"
       ]
     },
     "musical_instruments": {
       "ambiguous_term": "bright",
       "positive_phrases": [
-        "stays in tune"
+        "stays in tune",
+        "maganda ang tunog",
+        "stays tuned"
       ],
       "negative_phrases": [
-        "strings broke easily"
+        "strings broke easily",
+        "hindi in tune",
+        "instrument string snapped"
+      ],
+      "expected_behavior_phrases": [
+        "malakas ang tunog",
+        "loud instrument"
       ]
     },
     "food_beverage": {
       "ambiguous_term": "hot",
       "positive_phrases": [
         "mainit at bagong luto",
-        "mainit at bagong luto"
+        "mainit at masarap",
+        "fresh at masarap"
       ],
       "negative_phrases": [
-        "food arrived spoiled"
+        "food arrived spoiled",
+        "panis ang pagkain",
+        "spoiled on arrival"
+      ],
+      "expected_behavior_phrases": [
+        "sealed packaging",
+        "freshly packed"
       ]
     },
     "collectibles_hobbies": {
       "ambiguous_term": "rare",
       "positive_phrases": [
-        "item arrived sealed"
+        "item arrived sealed",
+        "complete ang accessories",
+        "authentic sealed item"
       ],
       "negative_phrases": [
-        "collectible had missing parts"
+        "collectible had missing parts",
+        "missing ang parts",
+        "collectible arrived damaged"
+      ],
+      "expected_behavior_phrases": [
+        "rare yung card",
+        "rare card"
       ]
     },
     "crafts_diy": {
       "ambiguous_term": "thin",
       "positive_phrases": [
-        "material is easy to work with"
+        "material is easy to work with",
+        "madaling i shape ang clay",
+        "smooth clay texture"
       ],
       "negative_phrases": [
-        "material dries unevenly"
+        "material dries unevenly",
+        "malutong ang clay",
+        "material breaks easily"
+      ],
+      "expected_behavior_phrases": [
+        "manipis ang papel",
+        "thin craft paper"
       ]
     },
     "party_gifts": {
       "ambiguous_term": "bright",
       "positive_phrases": [
-        "decorations looked festive"
+        "decorations looked festive",
+        "matibay ang balloons",
+        "beautiful decorations"
       ],
       "negative_phrases": [
-        "balloons popped immediately"
+        "balloons popped immediately",
+        "pumutok agad ang balloon",
+        "decorations arrived broken"
+      ],
+      "expected_behavior_phrases": [
+        "maliwanag ang lights",
+        "bright party lights"
       ]
     },
     "office_equipment": {
       "ambiguous_term": "fast",
       "positive_phrases": [
-        "prints clearly"
+        "prints clearly",
+        "malinaw ang print",
+        "printer works smoothly"
       ],
       "negative_phrases": [
-        "printer keeps jamming"
+        "printer keeps jamming",
+        "paper jam lagi",
+        "printer jams frequently"
+      ],
+      "expected_behavior_phrases": [
+        "mabilis ang printer",
+        "fast printing"
       ]
     },
     "bath_plumbing": {
       "ambiguous_term": "tight",
       "positive_phrases": [
-        "no leaks after installation"
+        "no leaks after installation",
+        "walang tagas",
+        "no leaks"
       ],
       "negative_phrases": [
-        "pipe fitting leaks"
+        "pipe fitting leaks",
+        "tumutulo ang pipe",
+        "faucet leaks"
+      ],
+      "expected_behavior_phrases": [
+        "malakas ang daloy",
+        "strong water flow"
       ]
     },
     "electrical_supplies": {
       "ambiguous_term": "warm",
       "positive_phrases": [
-        "connections stay secure"
+        "connections stay secure",
+        "stable ang connection",
+        "secure electrical connection"
       ],
       "negative_phrases": [
-        "socket sparks under load"
+        "socket sparks under load",
+        "nag spark ang outlet",
+        "outlet sparks"
+      ],
+      "expected_behavior_phrases": [
+        "rated voltage",
+        "copper wiring"
       ]
     }
+  },
+  "subtypes": {
+    "small_appliance": [
+      {
+        "name": "heater",
+        "title_terms": [
+          "heater",
+          "heating pad",
+          "space heater",
+          "room heater",
+          "water heater"
+        ],
+        "positive_phrases": [
+          "heats the room quickly",
+          "mabilis magpainit",
+          "heats water fast"
+        ],
+        "negative_phrases": [
+          "heater not heating",
+          "hindi umiinit ang heater",
+          "ayaw uminit",
+          "only blows cold air",
+          "hindi mainit ang heater",
+          "di umiinit ang heater",
+          "no heat from heater"
+        ],
+        "expected_behavior_phrases": [
+          "mainit ang hangin",
+          "umiinit ang tubig",
+          "mainit ang heater",
+          "umiinit",
+          "mainit"
+        ]
+      },
+      {
+        "name": "air_conditioner",
+        "title_terms": [
+          "air conditioner",
+          "aircon",
+          "air con",
+          "ac unit"
+        ],
+        "positive_phrases": [
+          "mabilis lumamig ang kwarto",
+          "cooling works well"
+        ],
+        "negative_phrases": [
+          "hindi lumalamig ang aircon",
+          "still blowing hot air",
+          "hindi malamig ang aircon",
+          "di lumalamig ang aircon",
+          "mainit ang buga ng aircon"
+        ],
+        "expected_behavior_phrases": [
+          "malamig ang hangin",
+          "cold air"
+        ]
+      },
+      {
+        "name": "fan",
+        "title_terms": [
+          "stand fan",
+          "desk fan",
+          "electric fan",
+          "ceiling fan",
+          "portable fan"
+        ],
+        "positive_phrases": [
+          "malakas ang hangin at tahimik",
+          "strong airflow"
+        ],
+        "negative_phrases": [
+          "mahina ang buga",
+          "fan motor overheats"
+        ],
+        "expected_behavior_phrases": [
+          "malakas ang hangin",
+          "fan blows air"
+        ]
+      },
+      {
+        "name": "refrigerator",
+        "title_terms": [
+          "refrigerator",
+          "freezer",
+          "fridge"
+        ],
+        "positive_phrases": [
+          "mabilis lumamig ang laman",
+          "cools food evenly"
+        ],
+        "negative_phrases": [
+          "hindi lumalamig ang ref",
+          "fridge does not cool"
+        ],
+        "expected_behavior_phrases": [
+          "malamig sa loob",
+          "cold inside"
+        ]
+      }
+    ],
+    "audio": [
+      {
+        "name": "speaker",
+        "title_terms": [
+          "speaker",
+          "soundbar",
+          "amplifier"
+        ],
+        "positive_phrases": [
+          "clear kahit malakas",
+          "loud and clear sound"
+        ],
+        "negative_phrases": [
+          "distorted at high volume",
+          "basag pag malakas",
+          "basag ang speaker",
+          "crackling at high volume"
+        ],
+        "expected_behavior_phrases": [
+          "malakas ang tunog",
+          "loud sound"
+        ]
+      }
+    ],
+    "motorcycle": [
+      {
+        "name": "exhaust",
+        "title_terms": [
+          "exhaust",
+          "muffler",
+          "power pipe",
+          "powerpipe"
+        ],
+        "positive_phrases": [
+          "maganda ang tunog ng pipe",
+          "deep exhaust sound"
+        ],
+        "negative_phrases": [
+          "tunog lata",
+          "exhaust leaks"
+        ],
+        "expected_behavior_phrases": [
+          "maingay ang pipe",
+          "loud exhaust"
+        ]
+      }
+    ],
+    "sports_fitness": [
+      {
+        "name": "weights",
+        "title_terms": [
+          "dumbbell",
+          "barbell",
+          "kettlebell",
+          "weight plate"
+        ],
+        "positive_phrases": [
+          "comfortable grip",
+          "solid build"
+        ],
+        "negative_phrases": [
+          "handle broke",
+          "weight plate cracked"
+        ],
+        "expected_behavior_phrases": [
+          "mabigat ang dumbbell",
+          "heavy resistance",
+          "heavy weights"
+        ]
+      }
+    ],
+    "food_beverage": [
+      {
+        "name": "hot_prepared",
+        "title_terms": [
+          "coffee",
+          "soup",
+          "instant noodles",
+          "cooked meal",
+          "hotdog",
+          "pancit",
+          "hot chocolate"
+        ],
+        "positive_phrases": [
+          "hot and delicious",
+          "mainit at masarap"
+        ],
+        "negative_phrases": [
+          "dumating na malamig",
+          "arrived cold and stale"
+        ],
+        "expected_behavior_phrases": [
+          "mainit ang pagkain",
+          "hot food",
+          "mainit"
+        ]
+      },
+      {
+        "name": "cold_frozen",
+        "title_terms": [
+          "ice cream",
+          "frozen dessert",
+          "ice pop",
+          "frozen yogurt"
+        ],
+        "positive_phrases": [
+          "cold and fresh",
+          "properly frozen"
+        ],
+        "negative_phrases": [
+          "ice cream arrived melted",
+          "completely melted on arrival"
+        ],
+        "expected_behavior_phrases": [
+          "malamig ang dessert",
+          "cold ice cream"
+        ]
+      }
+    ],
+    "kitchen_dining": [
+      {
+        "name": "cookware",
+        "title_terms": [
+          "frying pan",
+          "cooking pan",
+          "saucepan",
+          "wok",
+          "cooking pot"
+        ],
+        "positive_phrases": [
+          "pantay ang init sa kawali"
+        ],
+        "negative_phrases": [
+          "handle overheats",
+          "pan handle burns"
+        ],
+        "expected_behavior_phrases": [
+          "mainit ang pan",
+          "hot frying pan"
+        ]
+      }
+    ]
   }
 }

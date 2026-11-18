@@ -13,6 +13,8 @@ permissions:
 
 jobs:
   backend:
+    # The pc4 -> pc6 release audit is specific to PR #47, not later pc7 candidates.
+    if: github.event_name != 'pull_request' || github.head_ref == 'feature/panel-flow-pc6-compatible-20261118'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     strategy:
@@ -64,6 +66,8 @@ jobs:
           echo "ONNX and learned hazard model assets unchanged"
 
   ui:
+    # The pc4 -> pc6 release audit is specific to PR #47, not later pc7 candidates.
+    if: github.event_name != 'pull_request' || github.head_ref == 'feature/panel-flow-pc6-compatible-20261118'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -82,6 +86,8 @@ jobs:
 
 
   paired_development_audit:
+    # The pc4 -> pc6 release audit is specific to PR #47, not later pc7 candidates.
+    if: github.event_name != 'pull_request' || github.head_ref == 'feature/panel-flow-pc6-compatible-20261118'
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
