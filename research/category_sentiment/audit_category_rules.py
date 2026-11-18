@@ -143,16 +143,16 @@ def main():
         "independent_holdout": False,
         "automatic_correction_qualified": False,
         "reason_not_qualified": "No untouched human-adjudicated reference, verified probabilities, or paired safety approval",
-        "training_oof_development_not_fresh": evaluate("train_v3", probability),
+        "historical_training_descriptive_no_cv": evaluate("train_v3", probability),
         "previously_inspected_historical_test_descriptive": evaluate("test_v3", probability),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("CATEGORY_SENTIMENT_RULE_AUDIT=" + json.dumps({
-        "trained_historical": {
-            "macro_f1_delta": report["training_oof_development_not_fresh"]["macro_f1_delta"],
-            "changes": report["training_oof_development_not_fresh"]["review_changes"],
-            "interval": report["training_oof_development_not_fresh"]["paired_product_bootstrap_macro_f1_delta_ci95"],
+        "training_descriptive": {
+            "macro_f1_delta": report["historical_training_descriptive_no_cv"]["macro_f1_delta"],
+            "changes": report["historical_training_descriptive_no_cv"]["review_changes"],
+            "interval": report["historical_training_descriptive_no_cv"]["paired_product_bootstrap_macro_f1_delta_ci95"],
         },
         "historical_descriptive": {
             "macro_f1_delta": report["previously_inspected_historical_test_descriptive"]["macro_f1_delta"],
