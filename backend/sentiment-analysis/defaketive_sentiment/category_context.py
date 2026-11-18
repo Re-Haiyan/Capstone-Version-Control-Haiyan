@@ -1,13 +1,13 @@
-"""Category-context review check for the panel's five-stage flow.
+"""Cross-category contextual review interpretation, version 2.
 
-Runs AFTER XLM-RoBERTa initial sentiment. All 49 recognized product categories
-have explicit contextual phrase examples; unmatched, denied, ambiguous, mixed
-and Other-category reviews abstain. This is an AUDITABLE INTERPRETATION,
-not a validated sentiment classifier or an automatic label replacement.
+Initial sentiment comes from the original XLM-RoBERTa model. This stage checks
+whether explicit opinion phrases fit the product, and separately recognizes
+*intended behavior* that is not itself praise or a problem. Context is never
+an authoritative label and NEVER suppresses any independent hazard checker.
 
-Input review, title category, and initial model label are untrusted as user
-content. The stage may never alter sentiment labels, hazard flags, verdicts,
-the model input, or the stored report's model version.
+Every category has review phrases and expected/ambiguous traits. A few broad
+categories also disambiguate subproducts by title, e.g. heater vs aircon vs fan.
+Unrecognized, negated, mixed, or hazard-like language abstains.
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from typing import Any, Mapping
 
 from .product_category import CATEGORIES, OTHER, classify_listing
 
-REVISION = "category-context-v1"
+REVISION = "category-context-v2"
 _PROFILES_PATH = Path(__file__).with_name("category_context_profiles.json")
 _LABELS = frozenset(("positive", "neutral", "negative"))
 _NEGATORS = frozenset((
@@ -29,54 +29,95 @@ _NEGATORS = frozenset((
     "don", "doesn", "didn", "isn", "wasn", "weren", "aren", "cant", "cannot",
 ))
 _MAX_REVIEW = 5000
+# These are reasons to abstain from treating an otherwise expected feature
+# as harmless. They NEVER suppress the independent safety detector.
+_SAFETY_WORDS = frozenset((
+    "smoke", "smoking", "usok", "umusok", "spark", "sparks", "sparking",
+    "shock", "shocks", "nakuryente", "sunog", "nasunog", "burn", "burning",
+    "burns", "paso", "napaso", "overheat", "overheats", "overheating",
+    "fire", "explosion", "swollen", "namaga", "pumutok", "rash", "rashes",
+    "allergy", "allergic", "injury", "injured", "choking", "gas", "leak",
+))
+_HEAT_EXCESS = re.compile(
+    r"\b(?:too|sobrang|masyadong|napaka|excessively|dangerously)\s+"
+    r"(?:hot|warm|mainit|init|umiinit|overheating)\b"
+)
+_HEAT_ON_PART = re.compile(
+    r"\b(?:hot|mainit|init|umiinit)\b.{0,35}\b"
+    r"(?:plug|socket|wire|wires|cord|cable|casing|housing|handle|battery)\b"
+    r"|\b(?:plug|socket|wire|wires|cord|cable|casing|housing|handle|battery)\b"
+    r".{0,35}\b(?:hot|mainit|init|umiinit)\b"
+)
 
 
 def _normalize(value: str) -> str:
-    """Preserve tokens while treating punctuation as spaces, including Taglish."""
+    """Token boundaries survive Filipino, English and mixed-script reviews."""
     plain = unicodedata.normalize("NFKC", value).casefold()
     return " ".join(re.findall(r"[^\W_]+", plain, re.UNICODE))
 
 
 @lru_cache(maxsize=1)
-def _profiles() -> dict[str, dict[str, Any]]:
+def _profiles() -> dict[str, Any]:
     payload = json.loads(_PROFILES_PATH.read_text(encoding="utf-8"))
     profiles = payload["profiles"]
     if set(profiles) != set(CATEGORIES) - {OTHER}:
-        raise ValueError("Category context profile coverage must match all known types")
-    for slug, profile in profiles.items():
-        for side in ("positive_phrases", "negative_phrases"):
-            if not isinstance(profile.get(side), list) or not all(
-                isinstance(s, str) and _normalize(s) for s in profile[side]
+        raise ValueError("Category context profiles must cover exactly the named taxonomy")
+    for category, profile in profiles.items():
+        for polarity in ("positive", "negative", "expected_behavior"):
+            field = f"{polarity}_phrases"
+            values = profile.get(field)
+            if not isinstance(values, list) or not values or not all(
+                isinstance(value, str) and _normalize(value) for value in values
             ):
-                raise ValueError(f"Invalid {side} for {slug}")
-    return profiles
+                raise ValueError(f"{category} has missing or invalid {field}")
+        if not isinstance(profile.get("ambiguous_term"), str):
+            raise ValueError(f"{category} missing ambiguous term")
+    for category, subtypes in payload.get("subtypes", {}).items():
+        if category not in profiles or not isinstance(subtypes, list):
+            raise ValueError(f"Unknown or invalid subtype category {category}")
+        for subtype in subtypes:
+            if not isinstance(subtype, dict) or not subtype.get("name"):
+                raise ValueError(f"Invalid subtype under {category}")
+            for field in ("title_terms", "positive_phrases", "negative_phrases", "expected_behavior_phrases"):
+                values = subtype.get(field)
+                if not isinstance(values, list) or not all(
+                    isinstance(v, str) and _normalize(v) for v in values
+                ):
+                    raise ValueError(f"Invalid subtype {subtype['name']} {field}")
+    return payload
 
 
-@lru_cache(maxsize=100)
-def _phrases(category: str, polarity: str) -> tuple[str, ...]:
-    profile = _profiles()[category]
-    return tuple(sorted({_normalize(s) for s in profile[f"{polarity}_phrases"]}, key=len, reverse=True))
+def _present(text: str, phrase: str) -> bool:
+    phrase = _normalize(phrase)
+    return bool(phrase and re.search(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", text))
 
 
-def _find_context(text: str, phrases: tuple[str, ...]) -> tuple[bool, bool, str | None]:
-    """(unnegated match, negated match, first matched profile phrase).
-
-    No substring hits inside larger words. A preceding denial within four
-    words prevents any candidate signal, even for a heavily negated review.
-    """
-    good, denied, witness = False, False, None
-    for phrase in phrases:
-        match = re.search(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", text)
-        if match is None:
+def _find_context(text: str, phrases: list[str]) -> tuple[bool, bool, str | None]:
+    """Exhaust all occurrences, including later negated and unnegated mentions."""
+    accepted, denied, matched = False, False, None
+    for phrase in dict.fromkeys(_normalize(p) for p in phrases):
+        if not phrase:
             continue
-        left = text[:match.start()].split()[-4:]
-        if any(word in _NEGATORS for word in left):
-            denied = True
-            continue
-        good = True
-        witness = phrase
-        break
-    return good, denied, witness
+        for hit in re.finditer(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", text):
+            before = text[: hit.start()].split()[-4:]
+            if any(w in _NEGATORS for w in before):
+                denied = True
+            else:
+                accepted = True
+                matched = matched or phrase
+    return accepted, denied, matched
+
+
+def _subproduct(title: str, category: str, payload: dict[str, Any]) -> dict[str, Any] | None:
+    for row in payload.get("subtypes", {}).get(category, ()):
+        if any(_present(title, term) for term in row["title_terms"]):
+            return row
+    return None
+
+
+def _unsafe_context(text: str) -> bool:
+    words = set(text.split())
+    return bool(words & _SAFETY_WORDS or _HEAT_EXCESS.search(text) or _HEAT_ON_PART.search(text))
 
 
 def check(
@@ -84,53 +125,83 @@ def check(
     listing: Mapping[str, Any] | None,
     initial_label: str | None,
 ) -> dict[str, Any] | None:
-    """Read-only per-review check: identify likely context and compare labels.
+    """Return audit metadata, never a decision that replaces XLM-R sentiment.
 
-    This assessment is metadata only. Even when a profile phrase conflicts
-    with XLM-R, it does NOT prove XLM-R was wrong. This function never assigns
-    the authoritative predicted sentiment or triggers a hazard.
+    Expected product behavior (e.g. a heater being hot, a camera being sharp,
+    a dumbbell being heavy) does NOT mean Positive; it explicitly abstains.
+    Negative and safety complaints still go through the hazard checker.
     """
     if not isinstance(listing, Mapping) or initial_label not in _LABELS:
         return None
-    category = classify_listing({"name": str(listing.get("name") or "")})
+    title = str(listing.get("name") or "")
+    category = classify_listing({"name": title})
     base = {
         "revision": REVISION,
         "stage": "after_initial_sentiment_before_conclusion",
         "source": "product_title_plus_review_phrase",
         "product_category": category,
+        "subproduct": None,
         "initial_label": initial_label,
         "status": "no_signal",
         "context_signal": None,
         "matched_profile_phrase": None,
+        "interpretation": None,
         "used_for_decision": False,
         "sentiment_overridden": False,
     }
     if category == OTHER:
         return {**base, "status": "unclassified"}
-    text = str(review or "")
-    if not text.strip() or len(text) > _MAX_REVIEW:
-        return {**base, "status": "no_signal"}
-    norm = _normalize(text)
-    if not norm:
-        return {**base, "status": "no_signal"}
-
-    # If both kinds of phrases occur or an explicit denial is found, abstain.
-    try:
-        positive, pos_denied, pos_phrase = _find_context(norm, _phrases(category, "positive"))
-        negative, neg_denied, neg_phrase = _find_context(norm, _phrases(category, "negative"))
-    except (OSError, ValueError, KeyError, TypeError):
-        # A missing/malformed context profile must never take the checker down
-        # or influence authoritative XLM-R sentiment or hazard decisions.
-        return {**base, "status": "unavailable"}
-    if pos_denied or neg_denied or (positive and negative):
-        return {**base, "status": "ambiguous"}
-    if not positive and not negative:
+    review_text = str(review or "")
+    if not review_text.strip() or len(review_text) > _MAX_REVIEW:
         return base
-    signal = "positive" if positive else "negative"
-    # A lexical indication is NOT a verified human annotation.
-    return {
-        **base,
-        "status": "agrees" if signal == initial_label else "differs",
-        "context_signal": signal,
-        "matched_profile_phrase": pos_phrase if positive else neg_phrase,
-    }
+    text = _normalize(review_text)
+    if not text:
+        return base
+    try:
+        payload = _profiles()
+        profile = payload["profiles"][category]
+        subtype = _subproduct(_normalize(title), category, payload)
+        base["subproduct"] = subtype["name"] if subtype else None
+        pos = list(profile["positive_phrases"]) + (list(subtype["positive_phrases"]) if subtype else [])
+        neg = list(profile["negative_phrases"]) + (list(subtype["negative_phrases"]) if subtype else [])
+        expected = list(profile["expected_behavior_phrases"]) + (list(subtype["expected_behavior_phrases"]) if subtype else [])
+        positive, pos_denied, pos_match = _find_context(text, pos)
+        negative, neg_denied, neg_match = _find_context(text, neg)
+        expected_hit, expected_denied, expected_match = _find_context(text, expected)
+        # No generic adjective alone can tell whether the shopper is happy.
+        ambiguous_trait = _present(text, profile["ambiguous_term"])
+    except (OSError, ValueError, KeyError, TypeError, re.error):
+        return {**base, "status": "unavailable"}
+
+    # Never endorse a review describing damage or injury just because it
+    # also mentions an expected feature (e.g. a hot heater with a hot plug).
+    danger = _unsafe_context(text)
+    if pos_denied or neg_denied or expected_denied or (positive and negative):
+        return {**base, "status": "ambiguous", "interpretation": "mixed_or_negated"}
+    if danger and (positive or expected_hit):
+        return {**base, "status": "ambiguous", "interpretation": "possible_hazard"}
+    if positive or negative:
+        signal = "positive" if positive else "negative"
+        return {
+            **base,
+            "status": "agrees" if signal == initial_label else "differs",
+            "context_signal": signal,
+            "matched_profile_phrase": pos_match if positive else neg_match,
+            "interpretation": "explicit_praise" if positive else "explicit_complaint",
+        }
+    if expected_hit:
+        # An ordinary feature is not evidence the reviewer liked the product.
+        # Explicit negative reports already took precedence above.
+        return {
+            **base,
+            "status": "expected_behavior",
+            "matched_profile_phrase": expected_match,
+            "interpretation": "intended_product_behavior",
+        }
+    if ambiguous_trait:
+        return {
+            **base, "status": "ambiguous",
+            "interpretation": "context_dependent_trait",
+            "matched_profile_phrase": _normalize(profile["ambiguous_term"]),
+        }
+    return base
