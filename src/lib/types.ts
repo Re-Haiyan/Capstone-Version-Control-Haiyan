@@ -156,7 +156,7 @@ export interface Review {
 		sentiment?: {
 			category_context?: {
 				revision: string;
-				status: 'agrees' | 'differs' | 'ambiguous' | 'no_signal' | 'unclassified';
+				status: 'agrees' | 'differs' | 'ambiguous' | 'no_signal' | 'unclassified' | 'unavailable';
 				initial_label: string;
 				context_signal: 'positive' | 'negative' | null;
 				used_for_decision: false;
