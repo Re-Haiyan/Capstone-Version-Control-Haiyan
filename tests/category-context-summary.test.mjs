@@ -51,17 +51,25 @@ test('old reports and unsafe/unknown metadata never invent a completed check', (
   assert.equal(categoryContextSummary({comments:[{},review('differs',{revision:'unknown'}),review('agrees',{used_for_decision:true}),review('differs',{sentiment_overridden:true})]}).checked,0);
 });
 
-test('summary UI presents research status only, preserving original labels and warnings', () => {
+test('shopper summary shows the recommendation and category, not research diagnostics', () => {
   const file=readFileSync(new URL('../src/lib/components/report/verdict-block.svelte',import.meta.url),'utf8');
-  assert.match(file,/categoryContextSummary\(product\)/);
-  assert.match(file,/data-category-context-summary/);
-  assert.match(file,/contextualChecks\.matched/);
-  assert.match(file,/contextualChecks\.differs/);
-  assert.match(file,/How product context was checked/);
-  assert.match(file,/Context is informational only/);
-  assert.match(file,/normal or expected product behavior/);
-  assert.match(file,/No explicit category-specific praise or complaint examples matched/);
-  assert.match(file,/These context notes belong to an earlier saved analysis/);
-  assert.match(file,/const verdict = \$derived\(view\(product\)\)/);
   assert.match(file,/reviewRecommendation\(product\)/);
+  assert.match(file,/const verdict = \$derived\(view\(product\)\)/);
+  assert.match(file,/data-product-category/);
+  assert.match(file,/What reviewers liked/);
+  assert.match(file,/Common concerns/);
+  assert.match(file,/DeFaketive is not 100% accurate/);
+  assert.doesNotMatch(file,/data-category-context-summary/);
+  assert.doesNotMatch(file,/How product context was checked/);
+  assert.doesNotMatch(file,/contextualChecks/);
+  assert.doesNotMatch(file,/categoryContextSummary\(product\)/);
+  assert.doesNotMatch(file,/No explicit category-specific praise or complaint examples matched/);
 });
+
+test('category context metadata processing remains available for developer audit', () => {
+  const code=readFileSync(new URL('../src/lib/category-context-summary.js', import.meta.url), 'utf8');
+  assert.match(code, /category_context/);
+  assert.match(code, /sentiment_overridden/);
+  assert.match(code, /expected_behavior/);
+});
+
