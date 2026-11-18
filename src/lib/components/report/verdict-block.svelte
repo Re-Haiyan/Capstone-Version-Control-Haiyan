@@ -4,7 +4,7 @@
 	import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
 	import ThumbsUpIcon from '@lucide/svelte/icons/thumbs-up';
 	import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
-	import { chipFor, view } from '#lib/product.js';
+	import { chipFor, concernLabel, view } from '#lib/product.js';
 	import { positiveHighlights } from '#lib/positive-highlights.js';
 	import { reviewRecommendation } from '#lib/review-recommendation.js';
 	import { categoryForReport } from '#lib/product-category-label.js';
@@ -24,13 +24,6 @@
 	const highlights = $derived(positiveHighlights(verdict.conclusion, Infinity));
 
 	type ConcernBadge = { category: string; label: string; reviews: number };
-	const fallbackLabels: Record<string, string> = {
-		safety: 'Possible safety concern',
-		defect: 'Faults or failures',
-		quality: 'Quality concerns',
-		counterfeit: 'Possible authenticity issue',
-		not_as_described: 'Different from listing'
-	};
 
 	// A saved report may have counts without expanded badges. Merge both sources
 	// and keep one entry per category, without adding overlapping review counts.
@@ -41,7 +34,7 @@
 			if (!Number.isSafeInteger(reviews) || reviews <= 0) continue;
 			byCategory.set(category, {
 				category,
-				label: fallbackLabels[category] ?? category.replaceAll('_', ' '),
+				label: concernLabel(category),
 				reviews
 			});
 		}
@@ -51,7 +44,7 @@
 			const old = byCategory.get(badge.category);
 			byCategory.set(badge.category, {
 				category: badge.category,
-				label: badge.label || old?.label || fallbackLabels[badge.category] || badge.category,
+				label: concernLabel(badge.category, badge.label || old?.label || badge.category),
 				reviews: Math.max(old?.reviews ?? 0, reviews)
 			});
 		}
