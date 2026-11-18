@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from contextlib import closing
 from collections import Counter, defaultdict
 from datetime import date
 from functools import lru_cache
@@ -110,8 +111,22 @@ def history(root: Path, extra: Path | None) -> tuple[set[str], set[str], int]:
         if extra.suffix.casefold() in {".db", ".sqlite", ".sqlite3"}:
             # SQLite read-only mode: do not write, vacuum, migrate or alter VM state.
             uri = f"file:{extra.resolve().as_posix()}?mode=ro"
-            with sqlite3.connect(uri, uri=True) as db:
+            # A sqlite3 connection's context manager commits/rolls back but
+            # does NOT close its handle. Close explicitly for Windows cleanup.
+            with closing(sqlite3.connect(uri, uri=True)) as db:
                 saved = db.execute("SELECT raw_json FROM products").fetchall()
+                # Save review fingerprints only; no raw review content leaves
+                # this function. Older schemas may lack a separate reviews table.
+                tables = {row[0] for row in db.execute(
+                    "SELECT name FROM sqlite_master WHERE type='table'"
+                )}
+                if "reviews" in tables:
+                    columns = {row[1] for row in db.execute("PRAGMA table_info(reviews)")}
+                    review_col = next((c for c in ("content", "review_text", "text") if c in columns), None)
+                    if review_col:
+                        for (content,) in db.execute(f'SELECT "{review_col}" FROM reviews'):
+                            if content and len(normal(content)) >= 12:
+                                texts.add(digest(normal(content)))
             if not saved:
                 raise ValueError("Saved-product database was empty; disjointness unknown")
             for (raw,) in saved:
@@ -132,12 +147,19 @@ def history(root: Path, extra: Path | None) -> tuple[set[str], set[str], int]:
                     row[k] for k in ("product", "product_title", "name", "title")
                     if str(row.get(k) or "").strip()
                 ), "")
-                if not title:
-                    raise ValueError("Known-product CSV lacks a product title")
-                titles.add(normal(title))
+                content = next((
+                    row[k] for k in ("review_text", "review", "content", "text")
+                    if str(row.get(k) or "").strip()
+                ), "")
+                if not title and not content:
+                    raise ValueError("Known-item CSV row lacks both product title and review text")
+                if title:
+                    titles.add(normal(title))
+                if content and len(normal(content)) >= 12:
+                    texts.add(digest(normal(content)))
             sources += 1
     if not files or not titles:
-        raise ValueError("Historical CSVs did not supply product titles; cannot verify")
+        raise ValueError("Historical/known-item sources did not supply product titles; cannot verify")
     return titles, texts, sources
 
 

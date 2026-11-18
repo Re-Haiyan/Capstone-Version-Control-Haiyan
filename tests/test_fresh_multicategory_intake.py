@@ -118,15 +118,42 @@ class IndependentEvaluationIntakeTests(unittest.TestCase):
         self.assertEqual(rejected["historical_review_text"], 1)
         self.assertEqual(len(eligible), 24)
 
+    def test_known_item_csv_checks_review_text_overlap(self) -> None:
+        known = self.root / "known_saved_items.csv"
+        write(known, ["name", "review_text"], [{
+            "name": "Unrelated Historical Product",
+            "review_text": self.rows[0]["review_text"]
+        }])
+        eligible, rejected, report = ingest(self.source, root=self.root, extra=known)
+        self.assertTrue(report["vm_saved_titles_checked"])
+        self.assertEqual(rejected["historical_review_text"], 1)
+        self.assertEqual(len(eligible), 26)
+
+    def test_vm_sqlite_reviews_content_checks_overlap(self) -> None:
+        import sqlite3
+        from contextlib import closing
+        db = self.root / "historical_saved.db"
+        with closing(sqlite3.connect(db)) as con:
+            con.execute("CREATE TABLE products (raw_json TEXT NOT NULL)")
+            con.execute("INSERT INTO products (raw_json) VALUES (?)", (json.dumps({"name": "Other Old Product"}),))
+            con.execute("CREATE TABLE reviews (content TEXT)")
+            con.execute("INSERT INTO reviews (content) VALUES (?)", (self.rows[0]["review_text"],))
+            con.commit()
+        eligible, rejected, _ = ingest(self.source, root=self.root, extra=db)
+        self.assertEqual(rejected["historical_review_text"], 1)
+        self.assertEqual(len(eligible), 26)
+
     def test_read_only_saved_sqlite_catalog_is_supported(self) -> None:
         import sqlite3
         db = self.root / "saved_products.db"
-        with sqlite3.connect(db) as con:
+        from contextlib import closing
+        with closing(sqlite3.connect(db)) as con:
             con.execute("CREATE TABLE products (raw_json TEXT NOT NULL)")
             con.execute(
                 "INSERT INTO products (raw_json) VALUES (?)",
                 (json.dumps({"name": "Cotton Shirt Model 0"}),),
             )
+            con.commit()
         eligible, rejected, report = ingest(self.source, root=self.root, extra=db)
         self.assertEqual(rejected["historical_product"], 3)
         self.assertEqual(len(eligible), 24)
