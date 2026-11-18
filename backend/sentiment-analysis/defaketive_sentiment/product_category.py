@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc4"  # pc4: shared all-product files, packing damage is delivery, evidence states, clause-level context; the stamp tells reports made by the earlier rules apart
+PRODUCT_CATEGORY_REVISION = "pc6"  # pc6: specific-title disambiguation plus solar-controller fixes; forces rechecking saved analyses
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -101,8 +101,9 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"^(?!.*\b(?:tablets?|ipad|laptops?|notebook|pad|tv|watch|projector|box|router|dash ?cam)\b).*?"
      r"\b(?:\d+ ?gb ?(?:ram|rom)|\d+ ?\+ ?\d+ ?gb|helio|dimensity|snapdragon|exynos|unisoc|mediatek|dual sim|"
      r"5g (?:smart)?phone)\b"),
+    # Bare "controller" is not proof of a gamepad (e.g., MPPT solar controllers).
     ("gaming", "electronics",
-     r"\b(?:game ?pads?|controllers?|joysticks?|consoles?|ps[2-5]|playstation|xbox|nintendo|switch lite|steam deck|"
+     r"\b(?:game ?pads?|(?:game|gaming) ?controllers?|joysticks?|consoles?|ps[2-5]|playstation|xbox|nintendo|switch lite|steam deck|"
      r"dual ?shock|double ?shock|dual ?sense|gaming chairs?)\b"),
     ("eyewear", "fashion",
      r"\b(?:sunglasses|eye ?glasses|reading glasses|contact lens(?:es)?|eyewear|spectacles|blue ?light glasses|"
@@ -136,7 +137,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     ("battery_solar", "electronics",
      r"\b(?:lifepo4|lithium (?:ion )?batter(?:y|ies)|batter(?:y|ies) (?:packs?|cells?)|(?:car|motorcycle|solar|deep cycle|"
      r"rechargeable|aa|aaa|9v) batter(?:y|ies)|\d+ ?v ?\d+ ?ah|18650|solar (?:inverters?|chargers?|generators?|"
-     r"power|batter(?:y|ies)|panel (?:kits?|sets?|systems?))|inverters?|generators?|power stations?|battery chargers?)\b"),
+     r"power|batter(?:y|ies)|panel (?:kits?|sets?|systems?)|(?:charg(?:e|ing) |mppt )?controllers?)|mppt (?:solar )?(?:charge )?controllers?|inverters?|generators?|power stations?|battery chargers?)\b"),
     ("motorcycle", "automotive_tools",
      r"\b(?:mufflers?|exhaust|handlebars?|bar ?ends?|side mirrors?|tail ?lights?|sprockets?|"
      r"drive chain|clutch (?:lever|cable|plate|cover)|brake pads?|scooter parts?|mio (?:sporty|soul|i)|nmax|aerox|click ?125|xrm|power ?pipe|"
@@ -251,6 +252,19 @@ _RULES: tuple[tuple[str, str, str], ...] = (
      r"fuses?|electrical tape|cable ties|wire connectors?|sockets?|lighting fixtures?)\b"),
 )
 _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in _RULES)
+# High-specificity head-of-title matches protect genuine product identity from
+# ambiguous accessory and general keywords in the same listing name.
+# This only identifies the product type; it does NOT decide sentiment.
+_SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
+    (name, re.compile(pattern, re.I))
+    for name, pattern in (
+        ("toys", r"\b(?:toy\s+cars?|rc\s+cars?|remote[- ]control(?:led)?\s+cars?|diecast(?:\s+cars?)?|hot\s+wheels)\b"),
+        ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
+        ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),
+        ("skincare", r"\b(?:face\s+serum|skin\s+serum|serums?|sunscreens?|sunblocks?|moisturi[sz]ers?|facial\s+cleansers?|face\s+wash)\b"),
+        ("health_supplements", r"\b(?:whey(?:\s+protein)?|isolate\s+protein|protein\s+(?:powders?|isolates?|concentrates?)|mass\s+gainers?|creatine|bcaa|pre[- ]workout|ceelin\s+gummies|centrum\s+silver)\b"),
+    )
+)
 # The head of a title ends at the first of these: what follows is what the product comes with or fits.
 _HEAD_END = re.compile(r"\s(?:for|with|w/|free|plus)\s|\s[+&|-]\s|[,(|]", re.I)
 # Shop names, slogans and bracketed promotions that say nothing about what the product is.
@@ -279,9 +293,21 @@ def classify_listing(listing: Any) -> str:
         return OTHER
     title = listing.get("name") if isinstance(listing, dict) else listing
     title = _PROMO.sub(" ", str(title or ""))
+    # A wash-and-shampoo listing should not turn into "baby" when "&" splits its title.
+    if re.search(r"\bwash\s*(?:&|and)\s*shampoo\b", title, re.I):
+        return "haircare"
     # The head first, then each later part, then the whole title: a title that opens with a shop name or a slogan
     # ("Official Store | Tapo C200C WiFi IP Camera") is read from the first part that names a product.
     segments = [part for part in _HEAD_END.split(title) if part.strip()]
+    head = segments[0] if segments else title
+    for name, pattern in _SPECIFIC_TITLE_RULES:
+        if pattern.search(head):
+            # A cosmetic case or protein shaker is NOT the named consumable.
+            if name == "makeup" and re.search(r"\blip\s?sticks?\s+(?:case|holder|organizer|storage)\b", head, re.I):
+                continue
+            if name == "health_supplements" and re.search(r"\b(?:(?:shaker|cup|bottle)\s+(?:for\s+)?(?:whey|protein)|(?:whey|protein)\s+(?:shaker|cup|bottle))\b", head, re.I):
+                continue
+            return name
     for text in (*segments, title):
         for name, pattern in _COMPILED:
             if pattern.search(text):
