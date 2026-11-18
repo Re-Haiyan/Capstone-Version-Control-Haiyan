@@ -143,7 +143,6 @@ class TestCategoryContextV2(unittest.TestCase):
 
     def test_negation_comparisons_and_mixed_opinions_abstain(self):
         samples=(
-            ("Portable Electric Heater","Hindi ganun kainit ang heater"),
             ("Bluetooth Speaker","Hindi malinaw ang tunog"),
             ("Earbuds Audio","Clear sound but sound keeps crackling"),
             ("Power Bank","Hindi sobrang init habang nagcha-charge"),
@@ -159,6 +158,7 @@ class TestCategoryContextV2(unittest.TestCase):
 
     def test_ambiguous_traits_are_not_automatically_positive_or_negative(self):
         samples=(
+            ("Portable Electric Heater","Hindi ganun kainit ang heater"),
             ("Bluetooth Speaker","Loud"),
             ("Smartphone","Thin"),
             ("Cotton T Shirt","Thin"),
