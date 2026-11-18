@@ -62,6 +62,27 @@ NEW_MODEL_SHA="$(sha256sum "$CANDIDATE/$MODEL_REL" | cut -d ' ' -f 1)"
 [[ "$OLD_MODEL_SHA" == "$NEW_MODEL_SHA" ]] || {
   echo "Candidate would alter shipped XLM-RoBERTa model: NO-GO" >&2; exit 1
 }
+# Preserve the learned hazard model's sentiment SHA gate, tokenizer, thresholds
+# and five-label auxiliary models. Unexpected artifact drift is a hard stop.
+CRITICAL_ASSETS=(
+  backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/tokenizer.json
+  backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/manifest.json
+  backend/sentiment-analysis/models/hazard_classifier_v6/manifest.json
+  backend/sentiment-analysis/models/hazard_classifier_v6/defect.joblib
+  backend/sentiment-analysis/models/hazard_classifier_v6/safety.joblib
+  backend/sentiment-analysis/models/extra_labels_v1/manifest.json
+  backend/sentiment-analysis/models/extra_labels_v1/not_as_described.joblib
+  backend/sentiment-analysis/models/extra_labels_v1/quality.joblib
+  backend/sentiment-analysis/models/reference_baselines_v1.json
+  backend/sentiment-analysis/defaketive_sentiment/lexicons/hazard_parameters_v1.json
+)
+for asset in "${CRITICAL_ASSETS[@]}"; do
+  if [[ ! -f "$REPO/$asset" || ! -f "$CANDIDATE/$asset" ]] || ! cmp -s "$REPO/$asset" "$CANDIDATE/$asset"; then
+    echo "Critical model/config asset differs: $asset; NO-GO" >&2
+    exit 1
+  fi
+done
+echo "All learned hazard, auxiliary label, threshold, tokenizer and model assets match"
 echo "Live SHA: $OLD_SHA"
 echo "Candidate SHA: $CANDIDATE_SHA"
 echo "XLM-RoBERTa ONNX SHA256 unchanged"
