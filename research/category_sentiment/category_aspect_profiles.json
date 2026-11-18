@@ -1,0 +1,303 @@
+{
+  "schema": "defaketive-category-aspect-profile-v1",
+  "status": "research_only_no_automatic_sentiment_override",
+  "coverage_claim": "49 named taxonomy categories, not all products online",
+  "description": "Example aspect phrases for future category-specific interpretation/annotation. Examples are hypotheses, not machine rules or verified sentiment predictions.",
+  "other_policy": "other: no category-aware corrections; use unchanged XLM-R sentiment and independent hazards",
+  "profiles": {
+    "digital_goods": {
+      "positive_example": "redeemed successfully",
+      "negative_example": "code is invalid",
+      "ambiguous_term": "valid",
+      "qualified_for_sentiment_override": false
+    },
+    "stationery_books": {
+      "positive_example": "writes smoothly",
+      "negative_example": "ink dried out",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "home_textile": {
+      "positive_example": "soft and breathable",
+      "negative_example": "sobrang nipis ng tela",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "accessory": {
+      "positive_example": "fits my device securely",
+      "negative_example": "does not fit my device",
+      "ambiguous_term": "tight",
+      "qualified_for_sentiment_override": false
+    },
+    "powerbank": {
+      "positive_example": "charges my phone quickly",
+      "negative_example": "sobrang init habang nagcha-charge",
+      "ambiguous_term": "hot",
+      "qualified_for_sentiment_override": false
+    },
+    "charger_cable": {
+      "positive_example": "supports fast charging",
+      "negative_example": "does not charge at all",
+      "ambiguous_term": "fast",
+      "qualified_for_sentiment_override": false
+    },
+    "health_supplements": {
+      "positive_example": "tamper seal intact",
+      "negative_example": "expiry date already passed",
+      "ambiguous_term": "effective",
+      "qualified_for_sentiment_override": false
+    },
+    "audio": {
+      "positive_example": "clear sound",
+      "negative_example": "sound keeps crackling",
+      "ambiguous_term": "loud",
+      "qualified_for_sentiment_override": false
+    },
+    "wearable": {
+      "positive_example": "tracks steps consistently",
+      "negative_example": "heart rate sensor does not work",
+      "ambiguous_term": "light",
+      "qualified_for_sentiment_override": false
+    },
+    "phone": {
+      "positive_example": "thin and beautiful design",
+      "negative_example": "touchscreen unresponsive",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "gaming": {
+      "positive_example": "buttons respond immediately",
+      "negative_example": "controller has stick drift",
+      "ambiguous_term": "responsive",
+      "qualified_for_sentiment_override": false
+    },
+    "eyewear": {
+      "positive_example": "clear lenses",
+      "negative_example": "lenses are blurry",
+      "ambiguous_term": "light",
+      "qualified_for_sentiment_override": false
+    },
+    "camera": {
+      "positive_example": "sharp photos",
+      "negative_example": "photos are blurry",
+      "ambiguous_term": "sharp",
+      "qualified_for_sentiment_override": false
+    },
+    "tv_display": {
+      "positive_example": "display is bright and clear",
+      "negative_example": "dead pixels on screen",
+      "ambiguous_term": "bright",
+      "qualified_for_sentiment_override": false
+    },
+    "small_appliance": {
+      "positive_example": "operates quietly",
+      "negative_example": "overheats during use",
+      "ambiguous_term": "hot",
+      "qualified_for_sentiment_override": false
+    },
+    "smart_home": {
+      "positive_example": "paired on first try",
+      "negative_example": "fails to pair with wifi",
+      "ambiguous_term": "connected",
+      "qualified_for_sentiment_override": false
+    },
+    "laptop": {
+      "positive_example": "thin and lightweight design",
+      "negative_example": "overheats while idle",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "tablet": {
+      "positive_example": "lightweight and slim design",
+      "negative_example": "touchscreen keeps freezing",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "computer_peripheral": {
+      "positive_example": "keys respond consistently",
+      "negative_example": "keys stopped working",
+      "ambiguous_term": "clicky",
+      "qualified_for_sentiment_override": false
+    },
+    "battery_solar": {
+      "positive_example": "charging current is stable",
+      "negative_example": "battery overheats during charging",
+      "ambiguous_term": "hot",
+      "qualified_for_sentiment_override": false
+    },
+    "motorcycle": {
+      "positive_example": "fits my motorcycle model",
+      "negative_example": "part does not fit my motorcycle",
+      "ambiguous_term": "loud",
+      "qualified_for_sentiment_override": false
+    },
+    "baby": {
+      "positive_example": "material feels gentle",
+      "negative_example": "diaper keeps leaking",
+      "ambiguous_term": "soft",
+      "qualified_for_sentiment_override": false
+    },
+    "garden_plants": {
+      "positive_example": "healthy new growth",
+      "negative_example": "plant arrived wilted",
+      "ambiguous_term": "dry",
+      "qualified_for_sentiment_override": false
+    },
+    "home_decor_lighting": {
+      "positive_example": "light is bright and even",
+      "negative_example": "light keeps flickering",
+      "ambiguous_term": "bright",
+      "qualified_for_sentiment_override": false
+    },
+    "kitchen_dining": {
+      "positive_example": "nonstick surface works well",
+      "negative_example": "nonstick coating is peeling",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "furniture": {
+      "positive_example": "frame feels sturdy",
+      "negative_example": "chair wobbles under weight",
+      "ambiguous_term": "heavy",
+      "qualified_for_sentiment_override": false
+    },
+    "household_cleaning": {
+      "positive_example": "removes stains well",
+      "negative_example": "leaves sticky residue",
+      "ambiguous_term": "strong",
+      "qualified_for_sentiment_override": false
+    },
+    "tools_hardware": {
+      "positive_example": "drill bit cuts cleanly",
+      "negative_example": "drill bit snapped",
+      "ambiguous_term": "sharp",
+      "qualified_for_sentiment_override": false
+    },
+    "automotive": {
+      "positive_example": "fits the car correctly",
+      "negative_example": "brake part failed",
+      "ambiguous_term": "smooth",
+      "qualified_for_sentiment_override": false
+    },
+    "toys": {
+      "positive_example": "toy is fun to play with",
+      "negative_example": "toy has sharp exposed edges",
+      "ambiguous_term": "small",
+      "qualified_for_sentiment_override": false
+    },
+    "footwear": {
+      "positive_example": "comfortable fit",
+      "negative_example": "sole separated from shoe",
+      "ambiguous_term": "tight",
+      "qualified_for_sentiment_override": false
+    },
+    "bags": {
+      "positive_example": "zipper works smoothly",
+      "negative_example": "zipper broke",
+      "ambiguous_term": "light",
+      "qualified_for_sentiment_override": false
+    },
+    "jewelry_accessories": {
+      "positive_example": "clasp fastens securely",
+      "negative_example": "metal rusted quickly",
+      "ambiguous_term": "light",
+      "qualified_for_sentiment_override": false
+    },
+    "apparel": {
+      "positive_example": "fabric is breathable",
+      "negative_example": "sobrang nipis ng tela",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "medical_devices": {
+      "positive_example": "readings are consistent",
+      "negative_example": "device gives inconsistent readings",
+      "ambiguous_term": "sensitive",
+      "qualified_for_sentiment_override": false
+    },
+    "makeup": {
+      "positive_example": "applies evenly",
+      "negative_example": "makeup caused irritation",
+      "ambiguous_term": "light",
+      "qualified_for_sentiment_override": false
+    },
+    "skincare": {
+      "positive_example": "absorbs without residue",
+      "negative_example": "skin became irritated",
+      "ambiguous_term": "strong",
+      "qualified_for_sentiment_override": false
+    },
+    "haircare": {
+      "positive_example": "leaves hair feeling soft",
+      "negative_example": "hair felt dry after use",
+      "ambiguous_term": "soft",
+      "qualified_for_sentiment_override": false
+    },
+    "personal_care": {
+      "positive_example": "feels gentle on skin",
+      "negative_example": "product caused irritation",
+      "ambiguous_term": "strong",
+      "qualified_for_sentiment_override": false
+    },
+    "sports_fitness": {
+      "positive_example": "grip feels secure",
+      "negative_example": "equipment slipped during use",
+      "ambiguous_term": "heavy",
+      "qualified_for_sentiment_override": false
+    },
+    "pet": {
+      "positive_example": "pet eats the food readily",
+      "negative_example": "pet refuses to eat this food",
+      "ambiguous_term": "strong",
+      "qualified_for_sentiment_override": false
+    },
+    "musical_instruments": {
+      "positive_example": "stays in tune",
+      "negative_example": "strings broke easily",
+      "ambiguous_term": "bright",
+      "qualified_for_sentiment_override": false
+    },
+    "food_beverage": {
+      "positive_example": "mainit at bagong luto",
+      "negative_example": "food arrived spoiled",
+      "ambiguous_term": "hot",
+      "qualified_for_sentiment_override": false
+    },
+    "collectibles_hobbies": {
+      "positive_example": "item arrived sealed",
+      "negative_example": "collectible had missing parts",
+      "ambiguous_term": "rare",
+      "qualified_for_sentiment_override": false
+    },
+    "crafts_diy": {
+      "positive_example": "material is easy to work with",
+      "negative_example": "material dries unevenly",
+      "ambiguous_term": "thin",
+      "qualified_for_sentiment_override": false
+    },
+    "party_gifts": {
+      "positive_example": "decorations looked festive",
+      "negative_example": "balloons popped immediately",
+      "ambiguous_term": "bright",
+      "qualified_for_sentiment_override": false
+    },
+    "office_equipment": {
+      "positive_example": "prints clearly",
+      "negative_example": "printer keeps jamming",
+      "ambiguous_term": "fast",
+      "qualified_for_sentiment_override": false
+    },
+    "bath_plumbing": {
+      "positive_example": "no leaks after installation",
+      "negative_example": "pipe fitting leaks",
+      "ambiguous_term": "tight",
+      "qualified_for_sentiment_override": false
+    },
+    "electrical_supplies": {
+      "positive_example": "connections stay secure",
+      "negative_example": "socket sparks under load",
+      "ambiguous_term": "warm",
+      "qualified_for_sentiment_override": false
+    }
+  }
+}
