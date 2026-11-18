@@ -1,0 +1,40 @@
+name: Category sentiment promotion evidence (research only)
+
+on:
+  push:
+    branches:
+      - feature/panel-flow-pc6-compatible-20261118
+  pull_request:
+    branches:
+      - deployment
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate_evaluation:
+    name: Paired sentiment rule audit (not production qualification)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install application dependencies for the original inference package
+        run: python -m pip install -r backend/requirements.txt
+      - name: Check syntax and execute historical paired study
+        run: |
+          python -m py_compile research/category_sentiment/audit_category_rules.py
+          python research/category_sentiment/audit_category_rules.py --output "$RUNNER_TEMP/category-sentiment-rule-audit.json"
+      - name: Upload aggregate scores (no review text)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: category-sentiment-rule-audit
+          path: ${{ runner.temp }}/category-sentiment-rule-audit.json
+          retention-days: 14
+          if-no-files-found: ignore

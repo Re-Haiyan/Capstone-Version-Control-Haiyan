@@ -1,0 +1,123 @@
+name: Combined pc6 panel pipeline and saved-report compatibility validation
+
+on:
+  push:
+    branches:
+      - feature/panel-flow-pc6-compatible-20261118
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend requirements
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+          python scripts/load_starter_data.py
+      - name: Validate syntax and category regression
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+        run: |
+          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/product_category.py backend/sentiment-analysis/defaketive_sentiment/category_sentiment.py backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/category_context.py
+          python -m py_compile research/panel_category_release_audit.py backend/dashboard_utils.py backend/webapp.py
+          python -m py_compile research/pc6_saved_compat_audit.py
+          bash -n deploy/panel-category-vm-preflight.sh
+          python -m unittest discover -s tests -p 'test_panel_category_refinement.py' -v
+          python -m unittest discover -s tests -p 'test_category_aspect_profiles.py' -v
+          python -m unittest discover -s tests -p 'test_category_sentiment_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
+          python -m unittest discover -s tests -p 'test_product_category.py' -q
+          python -m unittest discover -s tests -p 'test_pc6_saved_compatibility.py' -v
+          python research/pc6_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --strict
+          python -m unittest discover -s tests -p 'test_sentiment_shadow.py' -q
+      - name: Full backend regressions, candidate disabled
+        env:
+          PYTHONPATH: backend:backend/sentiment-analysis
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ""
+        run: python -m unittest discover -s tests -p 'test_*.py' -q
+      - name: Verify source assets were not replaced
+        run: |
+          set -euo pipefail
+          BASE=40aa8c6d2506f17aa2ecb695a1af47023257f9c1
+          git cat-file -e "${BASE}^{commit}"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/requirements.txt)"
+          echo "ONNX and learned hazard model assets unchanged"
+
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: |
+          npm ci --no-fund --no-audit
+          node --test tests/product-category-label.test.mjs tests/report-visible-fields.test.mjs tests/report-verdict-unified-headings.test.mjs tests/category-context-summary.test.mjs
+          npm run check
+          npm run build
+
+
+  paired_development_audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install exact application backend dependencies
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m nltk.downloader vader_lexicon
+      - name: Make isolated read-only baseline checkout
+        run: |
+          git cat-file -e '40aa8c6d2506f17aa2ecb695a1af47023257f9c1^{commit}'
+          git worktree add --detach "$RUNNER_TEMP/panel-pc4-baseline" 40aa8c6d2506f17aa2ecb695a1af47023257f9c1
+      - name: Paired baseline and candidate analysis on identical bundled development reviews
+        env:
+          OMP_NUM_THREADS: "1"
+          OPENBLAS_NUM_THREADS: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ""
+          DEFAKETIVE_SENTIMENT_CALIBRATOR: ""
+        run: |
+          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/panel-pc4-baseline" --out "$RUNNER_TEMP/panel-old.json" --limit 900
+          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/panel-new.json" --limit 900
+          python research/panel_category_release_audit.py compare --baseline "$RUNNER_TEMP/panel-old.json" --candidate "$RUNNER_TEMP/panel-new.json" --out "$GITHUB_WORKSPACE/panel-category-audit-summary.json" --strict
+      - name: Upload aggregate-only results (never review text)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: panel-category-audit-summary
+          path: panel-category-audit-summary.json
+          if-no-files-found: ignore
+          retention-days: 14

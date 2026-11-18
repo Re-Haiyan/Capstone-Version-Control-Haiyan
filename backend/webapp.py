@@ -293,13 +293,25 @@ def _store_analysis(key: tuple[Any, ...], products: list[dict[str, Any]]) -> Non
         pass
 
 
-def _analysed(key: tuple[Any, ...], load: Callable[[], list[dict[str, Any]]]) -> list[dict[str, Any]]:
-    """`load()`'s products, analysed at most once per source and model version."""
+def _analysed(
+    key: tuple[Any, ...],
+    load: Callable[[], list[dict[str, Any]]],
+    *,
+    preserve_saved_reports: bool = False,
+) -> list[dict[str, Any]]:
+    """Cache already-saved reports without overwriting historical analyses.
+
+    Previously one category-version mismatch forced a full synchronous model
+    re-run on application load. Saved report requests must not change the model
+    evidence or stall the VM: keep historical results and mark changed category
+    reports as out-of-date via server._checked_with_current. An explicitly
+    requested *new scan* still calls analyze_products with pc6.
+    """
     with _lock:
         cached = _analysed_files.get(key)
         if cached is None:
             products = load()
-            if products and not analysis_is_current(products):
+            if products and not analysis_is_current(products) and not preserve_saved_reports:
                 stored = _stored_analysis(key)
                 if stored is None:
                     stored = analyze_products(products)
@@ -312,15 +324,15 @@ def _analysed(key: tuple[Any, ...], load: Callable[[], list[dict[str, Any]]]) ->
 def _prepare_file(path: Path) -> list[dict[str, Any]]:
     stat = path.stat()
     key = (str(path), stat.st_mtime_ns, stat.st_size, sentiment_model_version())
-    return _analysed(key, lambda: load_products(path))
+    # Imported historical reports retain their exact saved flags and verdicts.
+    return _analysed(key, lambda: load_products(path), preserve_saved_reports=True)
 
 
 def _prepare_saved() -> list[dict[str, Any]]:
-    """The saved products, for when no result file is usable. They used to be
-    re-analysed for every browser session (108 s for 27 products)."""
+    """Load historical saved reports without any implicit category recheck."""
     saved = load_saved_products()
     key = ("saved products", _digest(json_bytes(saved)), sentiment_model_version())
-    return _analysed(key, lambda: saved)
+    return _analysed(key, lambda: saved, preserve_saved_reports=True)
 
 
 def _load_initial_catalog() -> list[dict[str, Any]]:

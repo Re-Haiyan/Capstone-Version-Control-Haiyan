@@ -1,0 +1,453 @@
+{
+  "schema": "category-context-v1",
+  "intent": "Illustrative explicit review phrase matching for context metadata ONLY; not verified sentiment prediction or automatic label correction.",
+  "fallback": "When no explicit cue matches, abstain. For Other products, use the unchanged generic XLM-R label.",
+  "profiles": {
+    "digital_goods": {
+      "ambiguous_term": "valid",
+      "positive_phrases": [
+        "redeemed successfully"
+      ],
+      "negative_phrases": [
+        "code is invalid"
+      ]
+    },
+    "stationery_books": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "writes smoothly"
+      ],
+      "negative_phrases": [
+        "ink dried out"
+      ]
+    },
+    "home_textile": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "soft and breathable"
+      ],
+      "negative_phrases": [
+        "sobrang nipis ng tela"
+      ]
+    },
+    "accessory": {
+      "ambiguous_term": "tight",
+      "positive_phrases": [
+        "fits my device securely"
+      ],
+      "negative_phrases": [
+        "does not fit my device"
+      ]
+    },
+    "powerbank": {
+      "ambiguous_term": "hot",
+      "positive_phrases": [
+        "charges my phone quickly"
+      ],
+      "negative_phrases": [
+        "sobrang init habang nagcha-charge",
+        "sobrang init habang nagcha-charge"
+      ]
+    },
+    "charger_cable": {
+      "ambiguous_term": "fast",
+      "positive_phrases": [
+        "supports fast charging"
+      ],
+      "negative_phrases": [
+        "does not charge at all"
+      ]
+    },
+    "health_supplements": {
+      "ambiguous_term": "effective",
+      "positive_phrases": [
+        "tamper seal intact"
+      ],
+      "negative_phrases": [
+        "expiry date already passed"
+      ]
+    },
+    "audio": {
+      "ambiguous_term": "loud",
+      "positive_phrases": [
+        "clear sound"
+      ],
+      "negative_phrases": [
+        "sound keeps crackling"
+      ]
+    },
+    "wearable": {
+      "ambiguous_term": "light",
+      "positive_phrases": [
+        "tracks steps consistently"
+      ],
+      "negative_phrases": [
+        "heart rate sensor does not work"
+      ]
+    },
+    "phone": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "thin and beautiful design",
+        "ang nipis, ang ganda",
+        "ang manipis, maganda tingnan"
+      ],
+      "negative_phrases": [
+        "touchscreen unresponsive"
+      ]
+    },
+    "gaming": {
+      "ambiguous_term": "responsive",
+      "positive_phrases": [
+        "buttons respond immediately"
+      ],
+      "negative_phrases": [
+        "controller has stick drift"
+      ]
+    },
+    "eyewear": {
+      "ambiguous_term": "light",
+      "positive_phrases": [
+        "clear lenses"
+      ],
+      "negative_phrases": [
+        "lenses are blurry"
+      ]
+    },
+    "camera": {
+      "ambiguous_term": "sharp",
+      "positive_phrases": [
+        "sharp photos"
+      ],
+      "negative_phrases": [
+        "photos are blurry"
+      ]
+    },
+    "tv_display": {
+      "ambiguous_term": "bright",
+      "positive_phrases": [
+        "display is bright and clear"
+      ],
+      "negative_phrases": [
+        "dead pixels on screen"
+      ]
+    },
+    "small_appliance": {
+      "ambiguous_term": "hot",
+      "positive_phrases": [
+        "operates quietly"
+      ],
+      "negative_phrases": [
+        "overheats during use"
+      ]
+    },
+    "smart_home": {
+      "ambiguous_term": "connected",
+      "positive_phrases": [
+        "paired on first try"
+      ],
+      "negative_phrases": [
+        "fails to pair with wifi"
+      ]
+    },
+    "laptop": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "thin and lightweight design"
+      ],
+      "negative_phrases": [
+        "overheats while idle"
+      ]
+    },
+    "tablet": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "lightweight and slim design"
+      ],
+      "negative_phrases": [
+        "touchscreen keeps freezing"
+      ]
+    },
+    "computer_peripheral": {
+      "ambiguous_term": "clicky",
+      "positive_phrases": [
+        "keys respond consistently"
+      ],
+      "negative_phrases": [
+        "keys stopped working"
+      ]
+    },
+    "battery_solar": {
+      "ambiguous_term": "hot",
+      "positive_phrases": [
+        "charging current is stable"
+      ],
+      "negative_phrases": [
+        "battery overheats during charging"
+      ]
+    },
+    "motorcycle": {
+      "ambiguous_term": "loud",
+      "positive_phrases": [
+        "fits my motorcycle model"
+      ],
+      "negative_phrases": [
+        "part does not fit my motorcycle"
+      ]
+    },
+    "baby": {
+      "ambiguous_term": "soft",
+      "positive_phrases": [
+        "material feels gentle"
+      ],
+      "negative_phrases": [
+        "diaper keeps leaking"
+      ]
+    },
+    "garden_plants": {
+      "ambiguous_term": "dry",
+      "positive_phrases": [
+        "healthy new growth"
+      ],
+      "negative_phrases": [
+        "plant arrived wilted"
+      ]
+    },
+    "home_decor_lighting": {
+      "ambiguous_term": "bright",
+      "positive_phrases": [
+        "light is bright and even"
+      ],
+      "negative_phrases": [
+        "light keeps flickering"
+      ]
+    },
+    "kitchen_dining": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "nonstick surface works well"
+      ],
+      "negative_phrases": [
+        "nonstick coating is peeling"
+      ]
+    },
+    "furniture": {
+      "ambiguous_term": "heavy",
+      "positive_phrases": [
+        "frame feels sturdy"
+      ],
+      "negative_phrases": [
+        "chair wobbles under weight"
+      ]
+    },
+    "household_cleaning": {
+      "ambiguous_term": "strong",
+      "positive_phrases": [
+        "removes stains well"
+      ],
+      "negative_phrases": [
+        "leaves sticky residue"
+      ]
+    },
+    "tools_hardware": {
+      "ambiguous_term": "sharp",
+      "positive_phrases": [
+        "drill bit cuts cleanly"
+      ],
+      "negative_phrases": [
+        "drill bit snapped"
+      ]
+    },
+    "automotive": {
+      "ambiguous_term": "smooth",
+      "positive_phrases": [
+        "fits the car correctly"
+      ],
+      "negative_phrases": [
+        "brake part failed"
+      ]
+    },
+    "toys": {
+      "ambiguous_term": "small",
+      "positive_phrases": [
+        "toy is fun to play with"
+      ],
+      "negative_phrases": [
+        "toy has sharp exposed edges"
+      ]
+    },
+    "footwear": {
+      "ambiguous_term": "tight",
+      "positive_phrases": [
+        "comfortable fit"
+      ],
+      "negative_phrases": [
+        "sole separated from shoe"
+      ]
+    },
+    "bags": {
+      "ambiguous_term": "light",
+      "positive_phrases": [
+        "zipper works smoothly"
+      ],
+      "negative_phrases": [
+        "zipper broke"
+      ]
+    },
+    "jewelry_accessories": {
+      "ambiguous_term": "light",
+      "positive_phrases": [
+        "clasp fastens securely"
+      ],
+      "negative_phrases": [
+        "metal rusted quickly"
+      ]
+    },
+    "apparel": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "fabric is breathable"
+      ],
+      "negative_phrases": [
+        "sobrang nipis ng tela",
+        "sobrang nipis ng tela"
+      ]
+    },
+    "medical_devices": {
+      "ambiguous_term": "sensitive",
+      "positive_phrases": [
+        "readings are consistent"
+      ],
+      "negative_phrases": [
+        "device gives inconsistent readings"
+      ]
+    },
+    "makeup": {
+      "ambiguous_term": "light",
+      "positive_phrases": [
+        "applies evenly"
+      ],
+      "negative_phrases": [
+        "makeup caused irritation"
+      ]
+    },
+    "skincare": {
+      "ambiguous_term": "strong",
+      "positive_phrases": [
+        "absorbs without residue"
+      ],
+      "negative_phrases": [
+        "skin became irritated"
+      ]
+    },
+    "haircare": {
+      "ambiguous_term": "soft",
+      "positive_phrases": [
+        "leaves hair feeling soft"
+      ],
+      "negative_phrases": [
+        "hair felt dry after use"
+      ]
+    },
+    "personal_care": {
+      "ambiguous_term": "strong",
+      "positive_phrases": [
+        "feels gentle on skin"
+      ],
+      "negative_phrases": [
+        "product caused irritation"
+      ]
+    },
+    "sports_fitness": {
+      "ambiguous_term": "heavy",
+      "positive_phrases": [
+        "grip feels secure"
+      ],
+      "negative_phrases": [
+        "equipment slipped during use"
+      ]
+    },
+    "pet": {
+      "ambiguous_term": "strong",
+      "positive_phrases": [
+        "pet eats the food readily"
+      ],
+      "negative_phrases": [
+        "pet refuses to eat this food"
+      ]
+    },
+    "musical_instruments": {
+      "ambiguous_term": "bright",
+      "positive_phrases": [
+        "stays in tune"
+      ],
+      "negative_phrases": [
+        "strings broke easily"
+      ]
+    },
+    "food_beverage": {
+      "ambiguous_term": "hot",
+      "positive_phrases": [
+        "mainit at bagong luto",
+        "mainit at bagong luto"
+      ],
+      "negative_phrases": [
+        "food arrived spoiled"
+      ]
+    },
+    "collectibles_hobbies": {
+      "ambiguous_term": "rare",
+      "positive_phrases": [
+        "item arrived sealed"
+      ],
+      "negative_phrases": [
+        "collectible had missing parts"
+      ]
+    },
+    "crafts_diy": {
+      "ambiguous_term": "thin",
+      "positive_phrases": [
+        "material is easy to work with"
+      ],
+      "negative_phrases": [
+        "material dries unevenly"
+      ]
+    },
+    "party_gifts": {
+      "ambiguous_term": "bright",
+      "positive_phrases": [
+        "decorations looked festive"
+      ],
+      "negative_phrases": [
+        "balloons popped immediately"
+      ]
+    },
+    "office_equipment": {
+      "ambiguous_term": "fast",
+      "positive_phrases": [
+        "prints clearly"
+      ],
+      "negative_phrases": [
+        "printer keeps jamming"
+      ]
+    },
+    "bath_plumbing": {
+      "ambiguous_term": "tight",
+      "positive_phrases": [
+        "no leaks after installation"
+      ],
+      "negative_phrases": [
+        "pipe fitting leaks"
+      ]
+    },
+    "electrical_supplies": {
+      "ambiguous_term": "warm",
+      "positive_phrases": [
+        "connections stay secure"
+      ],
+      "negative_phrases": [
+        "socket sparks under load"
+      ]
+    }
+  }
+}

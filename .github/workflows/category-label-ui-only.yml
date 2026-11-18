@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   unchanged_engine:
+    # Immutable-engine scope applies only to the UI-only category badge release.
+    # pc6 revisions have a separate full paired hazard and compatibility audit.
+    if: github.event_name == 'push' || startsWith(github.head_ref, 'feature/conclusion-category-label-ui-only-')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
