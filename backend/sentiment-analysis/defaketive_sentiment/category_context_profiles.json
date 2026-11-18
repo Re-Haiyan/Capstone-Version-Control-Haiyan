@@ -857,7 +857,10 @@
           "heater not heating",
           "hindi umiinit ang heater",
           "ayaw uminit",
-          "only blows cold air"
+          "only blows cold air",
+          "hindi mainit ang heater",
+          "di umiinit ang heater",
+          "no heat from heater"
         ],
         "expected_behavior_phrases": [
           "mainit ang hangin",
@@ -881,7 +884,10 @@
         ],
         "negative_phrases": [
           "hindi lumalamig ang aircon",
-          "still blowing hot air"
+          "still blowing hot air",
+          "hindi malamig ang aircon",
+          "di lumalamig ang aircon",
+          "mainit ang buga ng aircon"
         ],
         "expected_behavior_phrases": [
           "malamig ang hangin",
@@ -945,7 +951,9 @@
         ],
         "negative_phrases": [
           "distorted at high volume",
-          "basag pag malakas"
+          "basag pag malakas",
+          "basag ang speaker",
+          "crackling at high volume"
         ],
         "expected_behavior_phrases": [
           "malakas ang tunog",

@@ -111,6 +111,36 @@ class TestCategoryContextV2(unittest.TestCase):
                 self.assertNotEqual(result["status"],"expected_behavior",result)
                 self.assertNotEqual(result["context_signal"],"positive",result)
 
+    def test_expected_feature_with_other_complaint_must_abstain(self):
+        samples=(
+            ("Portable Heater","Mainit ang heater pero sira ang timer"),
+            ("Portable Heater","Mainit ang heater but broken switch"),
+            ("Bluetooth Speaker","Malakas ang tunog pero basag ang mic"),
+            ("Adjustable Dumbbell","Mabigat ang dumbbell but cracked handle"),
+            ("Nonstick Frying Pan","Mainit ang pan ngunit damaged ang handle"),
+            ("Acoustic Guitar","Malakas ang tunog but awful quality"),
+            ("Instant Coffee","Mainit ang pagkain pero panis"),
+        )
+        for title,review in samples:
+            with self.subTest(title=title,review=review):
+                result=self.classify(title,review)
+                self.assertEqual(result["status"],"ambiguous",result)
+                self.assertIsNone(result["context_signal"])
+
+    def test_explicit_functional_failure_in_expected_product_is_negative(self):
+        samples=(
+            ("Portable Electric Heater","Hindi mainit ang heater"),
+            ("Portable Electric Heater","Di umiinit ang heater"),
+            ("Window Air Conditioner","Hindi malamig ang aircon"),
+            ("Window Air Conditioner","Mainit ang buga ng aircon"),
+            ("Bluetooth Speaker","Basag ang speaker"),
+        )
+        for title,review in samples:
+            with self.subTest(title=title,review=review):
+                result=self.classify(title,review)
+                self.assertEqual(result["context_signal"],"negative",result)
+                self.assertFalse(result["sentiment_overridden"])
+
     def test_negation_comparisons_and_mixed_opinions_abstain(self):
         samples=(
             ("Portable Electric Heater","Hindi mainit ang heater"),

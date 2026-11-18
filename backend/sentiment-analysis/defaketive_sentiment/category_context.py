@@ -38,6 +38,26 @@ _SAFETY_WORDS = frozenset((
     "fire", "explosion", "swollen", "namaga", "pumutok", "rash", "rashes",
     "allergy", "allergic", "injury", "injured", "choking", "gas", "leak",
 ))
+# A description of an expected trait must not hide a different complaint
+# in the same review. This is deliberately conservative research metadata;
+# the independently running hazard model is the ONLY source of safety flags.
+_ADVERSE_WORDS = frozenset((
+    "sira", "sirang", "nasira", "basag", "basag", "broke", "broken",
+    "crack", "cracked", "cracks", "faulty", "defective", "defect", "damage",
+    "damaged", "malfunction", "malfunctioning", "failed", "failure",
+    "useless", "unusable", "pangit", "palpak", "poor", "terrible", "awful",
+    "disappointed", "unsafe", "danger", "dangerous", "burnt", "nasunog",
+    "sumabog", "nasisira", "naputol", "putol", "nabitak", "napunit",
+    "reklamo", "complaint", "overheated", "leaking", "tagas",
+))
+_ADVERSE_FAILURE = re.compile(
+    r"\b(?:doesn t|didn t|isn t|won t|can t|cannot|not|no|hindi|di|ayaw|"
+    r"wala|walang|never)\b.{0,38}\b(?:work|working|function|operate|"
+    r"charge|chargeable|heat|heating|cool|cooling|start|turn on|"
+    r"gumana|gumagana|uminit|umiinit|lumamig|lumalamig|andar|"
+    r"tumatakbo|mag charge|magcharge)\b"
+)
+
 _HEAT_EXCESS = re.compile(
     r"\b(?:too|sobrang|masyadong|napaka|excessively|dangerously)\s+"
     r"(?:hot|warm|mainit|init|umiinit|overheating)\b"
@@ -117,7 +137,12 @@ def _subproduct(title: str, category: str, payload: dict[str, Any]) -> dict[str,
 
 def _unsafe_context(text: str) -> bool:
     words = set(text.split())
-    return bool(words & _SAFETY_WORDS or _HEAT_EXCESS.search(text) or _HEAT_ON_PART.search(text))
+    return bool(
+        words & (_SAFETY_WORDS | _ADVERSE_WORDS)
+        or _ADVERSE_FAILURE.search(text)
+        or _HEAT_EXCESS.search(text)
+        or _HEAT_ON_PART.search(text)
+    )
 
 
 def check(
