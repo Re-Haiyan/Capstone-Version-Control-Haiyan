@@ -528,6 +528,16 @@
 				{:else}
 					<p>No detailed checker explanation is available for this report.</p>
 				{/if}
+				<ol class="list-decimal space-y-1.5 pl-5" aria-label="Five stages of the product review analysis">
+					<li><strong>Product category:</strong> Estimated from the listing title; it may be imperfect.</li>
+					<li><strong>Sentiment:</strong> XLM-RoBERTa classifies each analyzed review as positive, neutral, or negative.</li>
+					<li><strong>Category context:</strong> Product-specific phrases help interpret words such as “hot,” “thin,” or “loud.” This step only records notes; it never overrides sentiment.</li>
+					<li><strong>Concern checks:</strong> The five issue categories are checked independently of sentiment. A positive review can still describe a hazard.</li>
+					<li><strong>Conclusion:</strong> The system summarizes reviewed evidence and concerns to offer cautious purchase guidance, not a guarantee.</li>
+				</ol>
+				{#if behindChecker(product)}
+					<p class="font-medium text-muted-foreground">This saved report uses an earlier checker version; its findings were not silently recalculated.</p>
+				{/if}
 				<p class="text-xs text-muted-foreground">This explanation is based on customer reviews, not independent product testing. Reported concerns are not verified incidents.</p>
 			</div>
 		</DialogContent>

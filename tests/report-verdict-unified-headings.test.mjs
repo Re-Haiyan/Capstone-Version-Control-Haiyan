@@ -56,6 +56,18 @@ test('badge counts are readable by screen readers and are never summed', () => {
 	assert.doesNotMatch(box, /concerns\.length\s*\+|\+\s*highlights\.product\.length/);
 });
 
+test('explanation modal documents the five-stage panel flow without changing decisions', () => {
+  assert.match(view,/Five stages of the product review analysis/);
+  assert.match(view,/Product category:/);
+  assert.match(view,/Sentiment:/);
+  assert.match(view,/Category context:/);
+  assert.match(view,/Concern checks:/);
+  assert.match(view,/Conclusion:/);
+  assert.match(view,/it never overrides sentiment/);
+  assert.match(view,/A positive review can still describe a hazard/);
+  assert.match(view,/This saved report uses an earlier checker version/);
+});
+
 test('explanation control and review navigation remain outside the summary', () => {
 	assert.doesNotMatch(box, /How was this result reached\?/);
 	assert.match(view, /let explanationOpen = \$state\(false\)/);
