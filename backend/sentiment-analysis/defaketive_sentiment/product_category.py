@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc7"  # pc7: distinguish air conditioner from hair conditioner; older matching reports may be read as compatible
+PRODUCT_CATEGORY_REVISION = "pc8"  # Correct explicit ceiling fan, soundbar and skillet titles.
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -312,10 +312,22 @@ def classify_listing(listing: Any) -> str:
             if name == "haircare" and re.search(r"\bair[- ]?conditioners?\b", head, re.I):
                 continue
             return name
+    # USB power describes the ceiling fan; a replacement part still follows the standard rules.
+    if re.search(r"\busb[- ]ceiling fans?\b", head, re.I) and not re.search(
+        r"\b(?:replacement|spare|adapters?|covers?|mounts?|motors?|controllers?)\b", head, re.I
+    ):
+        return "small_appliance"
     for text in (*segments, title):
         for name, pattern in _COMPILED:
             if pattern.search(text):
                 return name
+    # Fill clear gaps without changing labels already assigned by the main rules.
+    if re.search(r"\b(?:replacement|spare|cases?|covers?|mounts?|handles?|lids?)\b", head, re.I):
+        return OTHER
+    if re.search(r"\bsound[- ]bars?\b", head, re.I):
+        return "audio"
+    if re.search(r"\b(?:cast[- ]iron|non[- ]stick) skillets?\b", head, re.I):
+        return "kitchen_dining"
     return OTHER
 
 

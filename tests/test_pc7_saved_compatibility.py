@@ -30,7 +30,7 @@ class TestPc7Compatibility(unittest.TestCase):
             return dashboard_utils.analysis_is_current([product])
 
     def test_hair_and_air_conditioners_are_not_conflated(self):
-        self.assertEqual(PRODUCT_CATEGORY_REVISION,"pc7")
+        self.assertEqual(PRODUCT_CATEGORY_REVISION,"pc8")
         self.assertEqual(classify_listing("Window Air Conditioner 1HP"),"small_appliance")
         self.assertEqual(classify_listing("Portable Air-Conditioner 1HP"),"small_appliance")
         self.assertEqual(classify_listing("Portable Air Conditioner 12000BTU"),"small_appliance")
@@ -53,6 +53,15 @@ class TestPc7Compatibility(unittest.TestCase):
     def test_pc4_legacy_preserved_only_with_identical_category(self):
         self.assertTrue(self.current(report("20000mAh Power Bank","powerbank",BASE.replace("+pc6+","+pc4+"))))
         self.assertFalse(self.current(report("Window Air Conditioner 1HP","haircare",BASE.replace("+pc6+","+pc4+"))))
+
+    def test_pc8_keeps_unchanged_pc7_reports_and_marks_reclassified_reports_stale(self):
+        with patch.object(dashboard_utils, "sentiment_model_version", return_value=NEW.replace("+pc7+", "+pc8+")):
+            unchanged = report("20000mAh Power Bank", "powerbank", NEW)
+            changed = report("USB Ceiling Fan 6 blade USB Cable Fan", "charger_cable", NEW)
+            before = copy.deepcopy(changed)
+            self.assertTrue(dashboard_utils.analysis_is_current([unchanged]))
+            self.assertFalse(dashboard_utils.analysis_is_current([changed]))
+            self.assertEqual(changed, before)
 
     def test_unrelated_model_changes_are_not_accepted(self):
         self.assertFalse(self.current(report("20000mAh Power Bank","powerbank","other-model+pc6+different")))

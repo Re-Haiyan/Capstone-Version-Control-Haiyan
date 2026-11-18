@@ -57,9 +57,22 @@ class PanelCategoryRefinementTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(product_category.classify_listing({"name": title}), expected)
 
+    def test_specific_products_and_accessories(self) -> None:
+        cases = {
+            "USB Ceiling Fan 6 blade ceiling fan USB Cable Fan": "small_appliance",
+            "USB Cable for Ceiling Fan": "charger_cable",
+            "Bluetooth Sound-Bar": "audio",
+            "Cast Iron Skillet": "kitchen_dining",
+            "Cast Iron Skillet Replacement Lid": "other",
+            "Unknown Clearance Item": "other",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing(title), expected)
+
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
-        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc7")
+        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc8")
 
     def test_descriptions_do_not_choose_category(self) -> None:
         self.assertEqual(product_category.classify_listing(
