@@ -7,6 +7,7 @@
 	import { tick } from 'svelte';
 	import { api, ApiError } from '#lib/api.js';
 	import { reportHref } from '#lib/nav.js';
+	import { categoryForReport } from '#lib/product-category-label.js';
 	import ProductImage from '#lib/components/app/product-image.svelte';
 	import { Dialog, DialogContent, DialogHeader, DialogTitle } from '#lib/components/ui/dialog/index.js';
 	import MaximizeIcon from '@lucide/svelte/icons/maximize-2';
@@ -122,6 +123,7 @@
 
 	// --- What the report shows ------------------------------------------------
 	const verdict = $derived(view(product));
+	const reportCategory = $derived(categoryForReport(product));
 	const summary = $derived(product?.sentiment_summary ?? {});
 	const allReviews = $derived(
 		Array.isArray(product?.comments) ? product.comments.filter((item) => item && typeof item === 'object') : []
@@ -529,11 +531,19 @@
 					<p>No detailed checker explanation is available for this report.</p>
 				{/if}
 				<ol class="list-decimal space-y-1.5 pl-5" aria-label="Five stages of the product review analysis">
-					<li><strong>Product and reviews.</strong> DeFaketive uses the listing title and a sample of customer reviews.</li>
-					<li><strong>Review sentiment.</strong> XLM-RoBERTa classifies each analyzed review as positive, neutral, or negative.</li>
-					<li><strong>What the wording means for this product.</strong> DeFaketive estimates the product category from the title and checks for phrases that may describe praise, a complaint, or normal use. This check leaves the original sentiment label in place.</li>
-					<li><strong>Independent concern checks.</strong> Reviews are checked for safety, defects, poor quality, possible counterfeits, and listing mismatches. A positive review can still describe a hazard.</li>
-					<li><strong>Product conclusion.</strong> The Review Summary brings together what reviewers liked, common concerns, and purchase guidance.</li>
+					<li>
+						<strong>Product and reviews.</strong> DeFaketive estimates the category from the listing title and analyzes a sample of public reviews.
+						<span class="block text-xs text-muted-foreground">
+							Saved category: {reportCategory.label}
+							{#if verdict.reviews_analyzed > 0}
+								<span aria-hidden="true"> · </span>{verdict.reviews_analyzed.toLocaleString()} {verdict.reviews_analyzed === 1 ? 'review' : 'reviews'} analyzed
+							{/if}
+						</span>
+					</li>
+					<li><strong>Sentiment of each review.</strong> XLM-RoBERTa classifies each review as positive, neutral, or negative.</li>
+					<li><strong>Interpret wording in context.</strong> A thin laptop may be easy to carry, while thin fabric may be unexpectedly see-through. The category check adds context and keeps the original sentiment label.</li>
+					<li><strong>Independent concern checks.</strong> The checker looks for safety issues, defects, poor quality, possible counterfeits, and listing mismatches. A positive review can still describe a hazard.</li>
+					<li><strong>Product conclusion.</strong> The Review Summary shows what reviewers liked, common concerns, and purchase guidance. Review Evidence shows what shoppers wrote.</li>
 				</ol>
 				{#if behindChecker(product)}
 					<p class="font-medium text-muted-foreground">This saved report uses an earlier checker version; its findings were not silently recalculated.</p>

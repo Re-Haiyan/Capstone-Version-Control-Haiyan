@@ -59,14 +59,16 @@ test('badge counts are readable by screen readers and are never summed', () => {
 test('explanation modal documents the five-stage panel flow without changing decisions', () => {
   assert.match(view,/Five stages of the product review analysis/);
   const stages = view.match(/<ol[^>]+aria-label="Five stages of the product review analysis">([\s\S]*?)<\/ol>/)[1];
-  assert.deepEqual(Array.from(stages.matchAll(/<li><strong>([^<]+)<\/strong>/g), (match) => match[1]), [
+  assert.deepEqual(Array.from(stages.matchAll(/<li>\s*<strong>([^<]+)<\/strong>/g), (match) => match[1]), [
     'Product and reviews.',
-    'Review sentiment.',
-    'What the wording means for this product.',
+    'Sentiment of each review.',
+    'Interpret wording in context.',
     'Independent concern checks.',
     'Product conclusion.'
   ]);
-  assert.match(view, /This check leaves the original sentiment label in place/);
+  assert.match(stages, /keeps the original sentiment label/);
+  assert.match(stages, /Saved category: \{reportCategory\.label\}/);
+  assert.match(stages, /verdict\.reviews_analyzed > 0/);
   assert.match(view,/A positive review can still describe a hazard/);
   assert.match(view,/This saved report uses an earlier checker version/);
 });
