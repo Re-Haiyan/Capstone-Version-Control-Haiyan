@@ -153,6 +153,16 @@ export interface Review {
 		review_tags?: string[];
 		review_extra_tags?: string[];
 		sentences?: Sentence[];
+		sentiment?: {
+			category_context?: {
+				revision: string;
+				status: 'agrees' | 'differs' | 'ambiguous' | 'no_signal' | 'unclassified';
+				initial_label: string;
+				context_signal: 'positive' | 'negative' | null;
+				used_for_decision: false;
+				sentiment_overridden: false;
+			};
+		};
 	};
 }
 
