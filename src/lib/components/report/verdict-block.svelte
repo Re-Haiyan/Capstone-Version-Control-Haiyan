@@ -8,6 +8,7 @@
 	import { positiveHighlights } from '#lib/positive-highlights.js';
 	import { reviewRecommendation } from '#lib/review-recommendation.js';
 	import { categoryForReport } from '#lib/product-category-label.js';
+	import { categoryContextSummary } from '#lib/category-context-summary.js';
 	import type { Product } from '#lib/types.js';
 	import { cn } from '#lib/utils.js';
 
@@ -18,6 +19,7 @@
 	const heading = $derived(chip.label);
 	// Show the exact category saved by the backend; never silently guess a new one.
 	const detectedCategory = $derived(categoryForReport(product));
+	const contextualChecks = $derived(categoryContextSummary(product));
 
 	// Include every review-backed product quality, rather than only the top three.
 	// Seller / delivery compliments are not product-quality evidence.
@@ -109,6 +111,15 @@
 				{/if}
 				<span class="sr-only">{detectedCategory.explanation}</span>
 			</p>
+			{#if contextualChecks.checked > 0}
+				<p class="mt-1.5 text-xs leading-relaxed text-foreground/75" data-category-context-summary>
+					Category context check: {contextualChecks.matched} of {contextualChecks.checked} reviews matched explicit product-context examples.
+					{#if contextualChecks.differs > 0}
+						{contextualChecks.differs} differed from the initial sentiment.
+					{/if}
+					<span class="font-medium"> Research only; sentiment labels and warnings are unchanged.</span>
+				</p>
+			{/if}
 		</section>
 
 		<div class="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2" aria-label="Review highlights">
