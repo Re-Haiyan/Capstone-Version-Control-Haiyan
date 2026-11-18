@@ -24,8 +24,8 @@ jobs:
           set -euo pipefail
           BASE=dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26
           git cat-file -e "${BASE}^{commit}"
-          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/product_category.py backend/sentiment-analysis/defaketive_sentiment/product_badges.py backend/sentiment-analysis/defaketive_sentiment/lexicons backend/requirements.txt backend/dashboard_utils.py backend/category_copy.py backend/webapp.py backend/data_store.py)"
-          echo 'Original sentiment and hazard engines, category detector, model assets and database handling unchanged.'
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/product_badges.py backend/sentiment-analysis/defaketive_sentiment/lexicons backend/requirements.txt backend/category_copy.py backend/webapp.py backend/data_store.py)"
+          echo 'Original XLM-R and hazard engines, weights, thresholds, dependencies and database handling unchanged; pc7 category rule audited separately.'
 
   backend:
     runs-on: ubuntu-latest
@@ -54,9 +54,12 @@ jobs:
           DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
         run: |
           python -m py_compile backend/sentiment-analysis/defaketive_sentiment/category_context.py
+          python -m py_compile research/pc7_saved_compat_audit.py backend/dashboard_utils.py
           python -m unittest discover -s tests -p 'test_category_context_v2.py' -v
+          python -m unittest discover -s tests -p 'test_pc7_saved_compatibility.py' -v
           python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
           python -m unittest discover -s tests -p 'test_category_wording.py' -q
+          python -m unittest discover -s tests -p 'test_product_category.py' -q
 
   frontend:
     runs-on: ubuntu-latest
