@@ -75,6 +75,16 @@ class CategoryShadowRules(unittest.TestCase):
             "Sobrang init", {"name": "Random Listing", "description": "Solar Inverter 5000W"}, "neutral",
         ))
 
+    def test_on_environment_does_not_activate_unqualified_corrections(self):
+        # An operator must not be able to turn unqualified model suggestions
+        # into authoritative predictions merely by setting "on".
+        with mock.patch.dict(os.environ, {cs.ENV: "on"}):
+            self.assertIsNone(self.get("Solar Inverter 3000W", "Sobrang init ng battery"))
+        with mock.patch.dict(os.environ, {cs.ENV: "shadow"}):
+            proposal = self.get("Solar Inverter 3000W", "Sobrang init ng battery")
+            self.assertIsNotNone(proposal)
+            self.assertFalse(proposal["used_for_decision"])
+
     def test_off_by_default_and_invalid_or_long_input(self):
         with mock.patch.dict(os.environ, {cs.ENV: ""}):
             self.assertIsNone(self.get("Solar Inverter", "sobrang init"))
