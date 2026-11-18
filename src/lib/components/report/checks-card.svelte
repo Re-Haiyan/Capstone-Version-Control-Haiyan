@@ -5,7 +5,7 @@
 	import { Button } from '#lib/components/ui/button/index.js';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '#lib/components/ui/card/index.js';
 	import { Progress } from '#lib/components/ui/progress/index.js';
-	import { categoryPlace, chipFor, segments, view } from '#lib/product.js';
+	import { categoryPlace, chipFor, concernLabel, segments, view } from '#lib/product.js';
 	import type { Badge, Product } from '#lib/types.js';
 
 	// One block per label the check ran, worded by the server, with the strongest quote.
@@ -33,7 +33,7 @@
 	{@const quote = badge.evidence?.[0]}
 	<div class="reveal bg-card flex h-full flex-col gap-2 rounded-xl border p-4" style="--i:{index}">
 		<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
-			<span class="font-medium">{badge.label}</span>
+			<span class="font-medium">{concernLabel(badge.category, badge.label)}</span>
 			<b class="text-muted-foreground text-xs font-medium tabular-nums"><CountUp value={badge.mentions} /> review{badge.mentions === 1 ? '' : 's'}</b>
 		</div>
 		<!-- What this label covers, in the server's own words. -->
