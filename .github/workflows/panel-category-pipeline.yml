@@ -102,8 +102,8 @@ jobs:
           DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ""
           DEFAKETIVE_SENTIMENT_CALIBRATOR: ""
         run: |
-          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/panel-pc4-baseline" --out "$RUNNER_TEMP/panel-old.json" --limit 360
-          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/panel-new.json" --limit 360
+          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/panel-pc4-baseline" --out "$RUNNER_TEMP/panel-old.json" --limit 900
+          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/panel-new.json" --limit 900
           python research/panel_category_release_audit.py compare --baseline "$RUNNER_TEMP/panel-old.json" --candidate "$RUNNER_TEMP/panel-new.json" --out "$GITHUB_WORKSPACE/panel-category-audit-summary.json" --strict
       - name: Upload aggregate-only results (never review text)
         if: always()
