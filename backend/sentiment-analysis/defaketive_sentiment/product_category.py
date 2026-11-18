@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc6"  # pc6: specific-title disambiguation plus solar-controller fixes; forces rechecking saved analyses
+PRODUCT_CATEGORY_REVISION = "pc7"  # pc7: distinguish air conditioner from hair conditioner; older matching reports may be read as compatible
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -306,6 +306,10 @@ def classify_listing(listing: Any) -> str:
             if name == "makeup" and re.search(r"\blip\s?sticks?\s+(?:case|holder|organizer|storage)\b", head, re.I):
                 continue
             if name == "health_supplements" and re.search(r"\b(?:(?:shaker|cup|bottle)\s+(?:for\s+)?(?:whey|protein)|(?:whey|protein)\s+(?:shaker|cup|bottle))\b", head, re.I):
+                continue
+            # Air conditioners are home appliances, not hair conditioners.
+            # The later small-appliance rule correctly matches the full title.
+            if name == "haircare" and re.search(r"\bair[- ]?conditioners?\b", head, re.I):
                 continue
             return name
     for text in (*segments, title):
