@@ -49,6 +49,7 @@ _ADVERSE_WORDS = frozenset((
     "disappointed", "unsafe", "danger", "dangerous", "burnt", "nasunog",
     "sumabog", "nasisira", "naputol", "putol", "nabitak", "napunit",
     "reklamo", "complaint", "overheated", "leaking", "tagas",
+    "panis", "spoiled", "bulok", "rotten", "stale", "moldy", "amag",
 ))
 _ADVERSE_FAILURE = re.compile(
     r"\b(?:doesn t|didn t|isn t|won t|can t|cannot|not|no|hindi|di|ayaw|"
