@@ -115,7 +115,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     # --- home appliances (before the brand-only phone rule) ---
     ("small_appliance", "home_living",
      r"\b(?:rice cookers?|air ?fryers?|blenders?|kettles?|toasters?|microwaves?|ovens?|mixers?|juicers?|coffee makers?|"
-     r"espresso machines?|(?:electric |stand |ceiling |rechargeable |usb |desk |mini )?(?<!cooling )(?<!cpu )(?<!case )(?<!pc )fans?|air ?con(?:ditioners?)?|"
+     r"espresso machines?|(?:electric |stand |ceiling |rechargeable |usb |desk |mini )?(?<!cooling )(?<!cpu )(?<!case )(?<!pc )fans?|air[- ]?con(?:ditioners?)?|"
      r"humidifiers?|dehumidifiers?|air purifiers?|vacuums?|(?:steam |electric |clothes )irons?|garment steamers?|"
      r"washing machines?|refrigerators?|freezers?|heaters?|water dispensers?|induction cookers?|electric stoves?|"
      r"hot ?plates?|pressure cookers?|slow cookers?|food processors?|grills?|sandwich makers?|waffle makers?|"

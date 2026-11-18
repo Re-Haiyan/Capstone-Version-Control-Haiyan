@@ -42,6 +42,7 @@ CASES = {
     "Game Controller USB for PC": "gaming",
     "Samsung Refrigerator Inverter 2 Door": "small_appliance",
     "Window Air Conditioner 1HP": "small_appliance",
+    "Portable Air-Conditioner 1HP": "small_appliance",
     "Portable Air Conditioner 12000 BTU": "small_appliance",
     "Hair Conditioner With Keratin 200mL": "haircare",
     "Shampoo Conditioner Set": "haircare",

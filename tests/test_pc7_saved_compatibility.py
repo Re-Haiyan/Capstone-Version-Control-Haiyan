@@ -32,6 +32,7 @@ class TestPc7Compatibility(unittest.TestCase):
     def test_hair_and_air_conditioners_are_not_conflated(self):
         self.assertEqual(PRODUCT_CATEGORY_REVISION,"pc7")
         self.assertEqual(classify_listing("Window Air Conditioner 1HP"),"small_appliance")
+        self.assertEqual(classify_listing("Portable Air-Conditioner 1HP"),"small_appliance")
         self.assertEqual(classify_listing("Portable Air Conditioner 12000BTU"),"small_appliance")
         self.assertEqual(classify_listing("Hair Conditioner With Keratin 200mL"),"haircare")
         self.assertEqual(classify_listing("Shampoo Conditioner Set"),"haircare")
