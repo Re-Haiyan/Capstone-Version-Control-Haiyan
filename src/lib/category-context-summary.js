@@ -18,7 +18,7 @@ export function categoryContextSummary(product) {
   for (const review of product?.comments ?? []) {
     if (review?.included_in_analysis === false) continue;
     const data = review?.sentiment_analysis?.sentiment?.category_context;
-    if (!data || !['category-context-v1', 'category-context-v2', 'category-context-v2.1'].includes(data.revision) ||
+    if (!data || !['category-context-v1', 'category-context-v2', 'category-context-v2.1', 'category-context-v2.2'].includes(data.revision) ||
         data.used_for_decision !== false || data.sentiment_overridden !== false ||
         !validStatuses.has(data.status)) continue;
     counts.checked++;

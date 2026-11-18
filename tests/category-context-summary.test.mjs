@@ -26,7 +26,7 @@ test('v2 expected features are not counted as positive or negative corrections',
     review('expected_behavior', {revision:'category-context-v2'}),
     review('agrees', {revision:'category-context-v2'}),
     review('differs', {revision:'category-context-v2.1'}),
-    review('unavailable', {revision:'category-context-v2'})
+    review('unavailable', {revision:'category-context-v2.2'})
   ]});
   assert.equal(summary.checked,4);
   assert.equal(summary.expectedBehavior,1);

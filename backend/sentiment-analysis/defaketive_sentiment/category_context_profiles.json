@@ -584,7 +584,10 @@
         "see through ang tela",
         "sobrang manipis ang damit",
         "thin fabric is see through",
-        "manipis ang tela at kita ang loob"
+        "manipis ang tela at kita ang loob",
+        "masyadong manipis kapalan",
+        "masyadong manipis ang tela",
+        "masyadong manipis ang damit"
       ],
       "expected_behavior_phrases": [
         "regular fit",
@@ -911,7 +914,12 @@
           "desk fan",
           "electric fan",
           "ceiling fan",
-          "portable fan"
+          "portable fan",
+          "handheld fan",
+          "hand held fan",
+          "clip fan",
+          "table fan",
+          "jet fan"
         ],
         "positive_phrases": [
           "malakas ang hangin at tahimik",
@@ -921,7 +929,10 @@
           "mahina ang buga",
           "fan motor overheats",
           "fan is loud on the lowest setting",
-          "maingay ang fan kahit naka low"
+          "maingay ang fan kahit naka low",
+          "kaso medyo maingay",
+          "fan is too noisy",
+          "maingay ang bentilador"
         ],
         "expected_behavior_phrases": [
           "malakas ang hangin",
@@ -955,7 +966,11 @@
         "title_terms": [
           "speaker",
           "soundbar",
-          "amplifier"
+          "amplifier",
+          "sound bar",
+          "sound bars",
+          "soundbars",
+          "speakers"
         ],
         "positive_phrases": [
           "clear kahit malakas",
@@ -1006,7 +1021,11 @@
           "dumbbell",
           "barbell",
           "kettlebell",
-          "weight plate"
+          "weight plate",
+          "dumbbells",
+          "barbells",
+          "kettlebells",
+          "weight plates"
         ],
         "positive_phrases": [
           "comfortable grip",

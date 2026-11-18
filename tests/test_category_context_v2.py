@@ -32,7 +32,7 @@ class TestCategoryContextV2(unittest.TestCase):
             if category!="other":
                 examples.setdefault(category,title)
         self.assertEqual(set(examples),set(CATEGORIES)-{"other"})
-        self.assertEqual(cc.REVISION, "category-context-v2.1")
+        self.assertEqual(cc.REVISION, "category-context-v2.2")
         for category,title in examples.items():
             with self.subTest(category=category):
                 profile=cc._profiles()["profiles"][category]
@@ -65,6 +65,37 @@ class TestCategoryContextV2(unittest.TestCase):
             ("Laptop Computer 14 inch", "Thin.", None),
             ("Laptop Computer 14 inch", "Hindi magaan dalhin ang laptop.", None),
             ("Bluetooth Speaker", "The speaker is loud enough for outdoor use, but it sparked.", None),
+        )
+        for title, review, signal in cases:
+            with self.subTest(title=title, review=review):
+                result = self.classify(title, review)
+                self.assertEqual(result["context_signal"], signal, result)
+                self.assertFalse(result["used_for_decision"])
+                self.assertFalse(result["sentiment_overridden"])
+
+    def test_title_variants_reach_the_intended_subtype(self):
+        cases = (
+            ("Portable High-Speed Handheld Fan USB-C Rechargeable", "fan"),
+            ("Portable Clip Fan", "fan"),
+            ("Wireless Table Fan", "fan"),
+            ("Portable Hand-held Fan", "fan"),
+            ("Rechargeable Portable Jet Fan", "fan"),
+            ("Computer Speakers with Bluetooth Sound-Bar", "speaker"),
+            ("USB Powered Computer Speakers", "speaker"),
+            ("Adjustable Kettlebells Set", "weights"),
+        )
+        for title, subtype in cases:
+            with self.subTest(title=title):
+                self.assertEqual(self.classify(title, "Okay naman.")["subproduct"], subtype)
+
+    def test_review_wording_requires_the_right_product_context(self):
+        cases = (
+            ("Portable Clip Fan", "Gumagana, kaso medyo maingay.", "negative"),
+            ("Portable Clip Fan", "Hindi maingay sa kwarto.", None),
+            ("Bluetooth Speaker", "Gumagana, kaso medyo maingay.", None),
+            ("Cotton T Shirt", "Yung materials masyadong manipis, kapalan niyo naman.", "negative"),
+            ("Cotton T Shirt", "Hindi masyadong manipis ang tela.", None),
+            ("Laptop Computer 14 inch", "Masyadong manipis ang tela.", None),
         )
         for title, review, signal in cases:
             with self.subTest(title=title, review=review):

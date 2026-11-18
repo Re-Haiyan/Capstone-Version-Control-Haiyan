@@ -20,7 +20,7 @@ from typing import Any, Mapping
 
 from .product_category import CATEGORIES, OTHER, classify_listing
 
-REVISION = "category-context-v2.1"
+REVISION = "category-context-v2.2"
 _PROFILES_PATH = Path(__file__).with_name("category_context_profiles.json")
 _LABELS = frozenset(("positive", "neutral", "negative"))
 _NEGATORS = frozenset((
