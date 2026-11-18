@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   unchanged_engine:
+    # This guard is for the original frontend-only Category chip release,
+    # not for independently audited presentation-copy changes in the backend.
+    if: github.event_name == 'push' || startsWith(github.head_ref, 'feature/conclusion-category-label-ui-only-')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

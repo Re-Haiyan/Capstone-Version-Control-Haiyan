@@ -27,6 +27,7 @@
 	import {
 		behindChecker,
 		chipFor,
+		concernLabel,
 		LAZADA_EXTENSION_REVIEWS_PER_STAR,
 		LAZADA_REVIEWS_PER_STAR,
 		listingLabel,
@@ -149,7 +150,7 @@
 	const positive = $derived(share('Positive'));
 	const negative = $derived(share('Negative'));
 	const weighted = $derived(Boolean(summary.sentiment_shares));
-	const labelNames = $derived(Object.fromEntries((verdict.labels ?? []).map((item) => [item.category, item.label])));
+	const labelNames = $derived(Object.fromEntries((verdict.labels ?? []).map((item) => [item.category, concernLabel(item.category, item.label)])));
 	const words = $derived(warningWords(reviews));
 	const name = $derived(product?.name || 'Unnamed product');
 	const image = $derived(product ? safeImage(product) : '');

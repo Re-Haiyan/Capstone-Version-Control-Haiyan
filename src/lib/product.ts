@@ -73,8 +73,24 @@ export const counts = (product?: Product | null) => ({
 	defect: 0,
 	...(view(product).counts ?? {})
 });
+// Shopper-friendly headings shared by report, concern filters and saved cards.
+// The server's five hazard identifiers remain unchanged. Historical reports can
+// carry older labels, so normalize at display time rather than rewriting data.
+export const CONCERN_NAMES: Record<Category, string> = {
+	safety: 'Safety concerns',
+	defect: 'Functionality or damage concerns',
+	quality: 'Quality concerns',
+	counterfeit: 'Authenticity concerns',
+	not_as_described: 'Listing differences'
+};
+
+export const concernLabel = (category: string, fallback?: string): string =>
+	Object.prototype.hasOwnProperty.call(CONCERN_NAMES, category)
+		? CONCERN_NAMES[category as Category]
+		: fallback || category.replaceAll('_', ' ');
+
 export const labelOf = (product: Product, category: Category) =>
-	view(product).labels?.find((item) => item.category === category)?.label ?? category;
+	concernLabel(category, view(product).labels?.find((item) => item.category === category)?.label);
 
 export const reviewCount = (product?: Product | null) =>
 	Number(view(product).reviews_analyzed || product?.comments?.length || product?.reviews_collected || 0) || 0;
