@@ -16,6 +16,8 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT / "backend"),str(ROOT / "backend/sentiment-analysis")]
 from defaketive_sentiment import category_context as context  # noqa: E402
 from defaketive_sentiment.product_category import CATEGORIES, OTHER  # noqa: E402
+sys.path.insert(0,str(ROOT / "tests"))
+from test_product_category import TITLES, PC3_TITLES  # noqa: E402
 from defaketive_sentiment.hazard_model import HazardBadgeModel, LexiconHazardTagger  # noqa: E402
 
 
@@ -31,6 +33,24 @@ class StageContext(unittest.TestCase):
             with self.subTest(category=category):
                 self.assertTrue(context._phrases(category,"positive"))
                 self.assertTrue(context._phrases(category,"negative"))
+
+    def test_each_category_has_a_reachable_title_and_phrase(self):
+        # Titles are already validated by the shipped marketplace taxonomy tests.
+        examples = {}
+        for title, category in [*TITLES.items(), *PC3_TITLES.items()]:
+            if category != OTHER:
+                examples.setdefault(category,title)
+        self.assertEqual(set(examples),set(context._profiles()))
+        for category,title in examples.items():
+            with self.subTest(category=category):
+                profile=context._profiles()[category]
+                pos=self.evaluate(title,profile["positive_phrases"][0],"neutral")
+                neg=self.evaluate(title,profile["negative_phrases"][0],"neutral")
+                self.assertEqual(pos["product_category"],category)
+                self.assertEqual(pos["context_signal"],"positive",pos)
+                self.assertEqual(neg["context_signal"],"negative",neg)
+                self.assertFalse(pos["sentiment_overridden"])
+                self.assertFalse(neg["sentiment_overridden"])
 
     def test_ambiguous_term_meanings_follow_product(self):
         cases=(
