@@ -11,6 +11,10 @@ permissions:
   contents: read
 jobs:
   scope:
+    # This immutable-engine guard is specifically for *conclusions-only* VM
+    # releases. Category changes use the dedicated paired five-hazard audit
+    # in panel-category-pipeline.yml; they must not be approved by this guard.
+    if: github.event_name == 'push' || startsWith(github.head_ref, 'release/vm-conclusions-')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
