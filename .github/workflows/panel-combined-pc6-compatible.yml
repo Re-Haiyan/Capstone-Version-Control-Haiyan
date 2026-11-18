@@ -76,7 +76,7 @@ jobs:
           cache: npm
       - run: |
           npm ci --no-fund --no-audit
-          node --test tests/product-category-label.test.mjs tests/report-visible-fields.test.mjs tests/report-verdict-unified-headings.test.mjs
+          node --test tests/product-category-label.test.mjs tests/report-visible-fields.test.mjs tests/report-verdict-unified-headings.test.mjs tests/category-context-summary.test.mjs
           npm run check
           npm run build
 
