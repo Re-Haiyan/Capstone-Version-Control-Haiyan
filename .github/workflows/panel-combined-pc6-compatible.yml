@@ -38,13 +38,14 @@ jobs:
         env:
           PYTHONPATH: backend:backend/sentiment-analysis
         run: |
-          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/product_category.py backend/sentiment-analysis/defaketive_sentiment/category_sentiment.py backend/sentiment-analysis/defaketive_sentiment/hazard_model.py
+          python -m py_compile backend/sentiment-analysis/defaketive_sentiment/product_category.py backend/sentiment-analysis/defaketive_sentiment/category_sentiment.py backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/category_context.py
           python -m py_compile research/panel_category_release_audit.py backend/dashboard_utils.py backend/webapp.py
           python -m py_compile research/pc6_saved_compat_audit.py
           bash -n deploy/panel-category-vm-preflight.sh
           python -m unittest discover -s tests -p 'test_panel_category_refinement.py' -v
           python -m unittest discover -s tests -p 'test_category_aspect_profiles.py' -v
           python -m unittest discover -s tests -p 'test_category_sentiment_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
           python -m unittest discover -s tests -p 'test_product_category.py' -q
           python -m unittest discover -s tests -p 'test_pc6_saved_compatibility.py' -v
           python research/pc6_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --strict
