@@ -24,6 +24,7 @@ import json
 from pathlib import Path
 import random
 import re
+import sqlite3
 import sys
 from typing import Any
 
@@ -80,10 +81,8 @@ def history(root: Path, extra: Path | None) -> tuple[set[str], set[str], int]:
         )
         if p.is_file()
     )
-    if extra is not None:
-        if not extra.is_file():
-            raise ValueError("Known-product export is missing")
-        files.append(extra)
+    if extra is not None and not extra.is_file():
+        raise ValueError("Known-product export or SQLite database is missing")
     titles: set[str] = set()
     texts: set[str] = set()
     sources = 0
@@ -105,6 +104,36 @@ def history(root: Path, extra: Path | None) -> tuple[set[str], set[str], int]:
             ), "")
             if content and len(normal(content)) >= 12:
                 texts.add(digest(normal(content)))
+    if extra is not None:
+        if extra.suffix.casefold() in {".db", ".sqlite", ".sqlite3"}:
+            # SQLite read-only mode: do not write, vacuum, migrate or alter VM state.
+            uri = f"file:{extra.resolve().as_posix()}?mode=ro"
+            with sqlite3.connect(uri, uri=True) as db:
+                saved = db.execute("SELECT raw_json FROM products").fetchall()
+            if not saved:
+                raise ValueError("Saved-product database was empty; disjointness unknown")
+            for (raw,) in saved:
+                try:
+                    product = json.loads(raw)
+                except (TypeError, ValueError) as e:
+                    raise ValueError("Malformed saved product: cannot prove disjointness") from e
+                if not isinstance(product, dict) or not str(product.get("name") or "").strip():
+                    raise ValueError("A saved product is missing its name")
+                titles.add(normal(product["name"]))
+            sources += 1
+        else:
+            rows = csv_rows(extra)
+            if not rows:
+                raise ValueError("Known-product CSV is empty; disjointness unknown")
+            for row in rows:
+                title = next((
+                    row[k] for k in ("product", "product_title", "name", "title")
+                    if str(row.get(k) or "").strip()
+                ), "")
+                if not title:
+                    raise ValueError("Known-product CSV lacks a product title")
+                titles.add(normal(title))
+            sources += 1
     if not files or not titles:
         raise ValueError("Historical CSVs did not supply product titles; cannot verify")
     return titles, texts, sources
@@ -183,6 +212,11 @@ def ingest(
             raise ValueError(f"Row {i}: one product ID has conflicting titles/categories")
         if normal(product) in historical_titles:
             rejected["historical_product"] += 1
+            continue
+        if product.lstrip().startswith(("=", "+", "-", "@")) or review.lstrip().startswith(("=", "+", "-", "@")):
+            # Never turn an untrusted marketplace review into an executable
+            # formula in an annotator's spreadsheet. Reject, do not rewrite.
+            rejected["spreadsheet_formula_risk"] += 1
             continue
         if len(normal(review)) < 12:
             rejected["very_short_review"] += 1
@@ -364,8 +398,8 @@ def prepare(args: argparse.Namespace) -> None:
             r["category"] != r["title_classifier_category"] for r in selected
         ),
         "annotation_sheets_sha256": {
-            paths[0].name: digest(paths[0].read_bytes().hex()),
-            paths[1].name: digest(paths[1].read_bytes().hex()),
+            paths[0].name: hashlib.sha256(paths[0].read_bytes()).hexdigest(),
+            paths[1].name: hashlib.sha256(paths[1].read_bytes()).hexdigest(),
         },
         "labels_present": False,
         "accuracy_measured": False,
@@ -390,7 +424,7 @@ def main() -> None:
     parser.add_argument("--out-dir", default="research/independent_eval_private/pilot1")
     parser.add_argument("--repo-root", default=str(ROOT))
     parser.add_argument("--known-extra", default=None,
-                        help="CSV of existing VM saved product titles; must stay local")
+                        help="Existing VM saved products SQLite DB (mode=ro), or CSV of their titles; keep local")
     parser.add_argument("--target", type=int, default=220)
     parser.add_argument("--max-per-product", type=int, default=5)
     parser.add_argument("--min-groups", type=int, default=8)

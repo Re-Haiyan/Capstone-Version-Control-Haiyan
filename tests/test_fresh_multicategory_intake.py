@@ -118,6 +118,28 @@ class IndependentEvaluationIntakeTests(unittest.TestCase):
         self.assertEqual(rejected["historical_review_text"], 1)
         self.assertEqual(len(eligible), 24)
 
+    def test_read_only_saved_sqlite_catalog_is_supported(self) -> None:
+        import sqlite3
+        db = self.root / "saved_products.db"
+        with sqlite3.connect(db) as con:
+            con.execute("CREATE TABLE products (raw_json TEXT NOT NULL)")
+            con.execute(
+                "INSERT INTO products (raw_json) VALUES (?)",
+                (json.dumps({"name": "Cotton Shirt Model 0"}),),
+            )
+        eligible, rejected, report = ingest(self.source, root=self.root, extra=db)
+        self.assertEqual(rejected["historical_product"], 3)
+        self.assertEqual(len(eligible), 24)
+        self.assertTrue(report["vm_saved_titles_checked"])
+
+    def test_spreadsheet_formula_in_marketplace_reviews_is_rejected(self) -> None:
+        rows = list(self.rows)
+        rows[0] = {**rows[0], "review_text": "=HYPERLINK(\"evil\",\"click\")"}
+        write(self.source, self.fields, rows)
+        eligible, rejected, _ = ingest(self.source, root=self.root)
+        self.assertEqual(rejected["spreadsheet_formula_risk"], 1)
+        self.assertEqual(len(eligible), 26)
+
     def test_disallow_unauthorized_data_and_unverified_labels(self) -> None:
         for field, value in (
             ("rights_confirmed", "no"),
@@ -144,7 +166,7 @@ class IndependentEvaluationIntakeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "eligible capped reviews"):
             choose(eligible, target=100, max_per_product=2, min_groups=2, min_products=2, seed=1)
         with self.assertRaisesRegex(ValueError, "distinct products"):
-            choose(eligible, target=6, max_per_product=2, min_groups=2, min_products=6, seed=1)
+            choose(eligible, target=6, max_per_product=2, min_groups=2, min_products=7, seed=1)
 
     def test_existing_history_folder_is_required(self) -> None:
         self.eval.unlink()
