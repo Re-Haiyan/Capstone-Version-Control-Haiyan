@@ -1,0 +1,47 @@
+name: Panel flow clarity — read-only UI checks
+
+on:
+  push:
+    branches:
+      - feature/panel-flow-clarity-20261118
+  pull_request:
+    branches:
+      - deployment
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-fund --no-audit
+      - name: Panel-flow disclosures, saved-report and label safety
+        run: |
+          node --test tests/category-context-summary.test.mjs tests/report-verdict-unified-headings.test.mjs tests/product-category-label.test.mjs tests/report-visible-fields.test.mjs
+      - run: npm run check
+      - run: npm run build
+  backend_unchanged:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: No changed hazard, sentiment, report, database or model implementation
+        run: |
+          set -euo pipefail
+          BASE=147eccbfcf206b37550ce9e8b0a71bba626dacc3
+          git cat-file -e "${BASE}^{commit}"
+          CHANGES=$(git diff --name-only "$BASE" HEAD)
+          printf '%s\n' "$CHANGES"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/ evaluation/ research/ deploy/ src/lib/review-recommendation.js src/lib/product.js)"
