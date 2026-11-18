@@ -143,7 +143,7 @@ class TestCategoryContextV2(unittest.TestCase):
 
     def test_negation_comparisons_and_mixed_opinions_abstain(self):
         samples=(
-            ("Portable Electric Heater","Hindi mainit ang heater"),
+            ("Portable Electric Heater","Hindi ganun kainit ang heater"),
             ("Bluetooth Speaker","Hindi malinaw ang tunog"),
             ("Earbuds Audio","Clear sound but sound keeps crackling"),
             ("Power Bank","Hindi sobrang init habang nagcha-charge"),

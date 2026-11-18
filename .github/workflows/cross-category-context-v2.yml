@@ -55,6 +55,7 @@ jobs:
         run: |
           python -m py_compile backend/sentiment-analysis/defaketive_sentiment/category_context.py
           python -m py_compile research/pc7_saved_compat_audit.py research/category_context_v2_real_review_audit.py backend/dashboard_utils.py
+          bash -n deploy/pc7-vm-preflight.sh
           python -m unittest discover -s tests -p 'test_category_context_v2.py' -v
           python -m unittest discover -s tests -p 'test_pc7_saved_compatibility.py' -v
           python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
