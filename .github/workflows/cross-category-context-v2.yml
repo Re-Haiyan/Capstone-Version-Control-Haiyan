@@ -60,6 +60,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
           python -m unittest discover -s tests -p 'test_category_wording.py' -q
           python -m unittest discover -s tests -p 'test_product_category.py' -q
+          python research/pc7_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --strict
 
   frontend:
     runs-on: ubuntu-latest
