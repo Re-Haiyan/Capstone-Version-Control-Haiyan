@@ -112,16 +112,39 @@
 				<span class="sr-only">{detectedCategory.explanation}</span>
 			</p>
 			{#if contextualChecks.checked > 0}
-				<p class="mt-1.5 text-xs leading-relaxed text-foreground/75" data-category-context-summary>
-					Category context check: {contextualChecks.matched} of {contextualChecks.checked} reviews matched explicit product-context examples.
-					{#if contextualChecks.expectedBehavior > 0}
-						{contextualChecks.expectedBehavior} described expected product behavior (not necessarily praise).
-					{/if}
-					{#if contextualChecks.differs > 0}
-						{contextualChecks.differs} differed from the initial sentiment.
-					{/if}
-					<span class="font-medium"> Research only; sentiment labels and warnings are unchanged.</span>
-				</p>
+				<!-- Context hints are not a product-verdict confidence measure.
+				     Keep research diagnostics available without crowding the shopper result. -->
+				<details class="mt-2 rounded-lg border border-foreground/15 bg-background/55 px-3 py-2 text-xs leading-relaxed" data-category-context-summary>
+					<summary class="cursor-pointer font-medium text-foreground/85 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+						How product context was checked
+					</summary>
+					<div class="mt-2 grid gap-1.5 text-foreground/75">
+						{#if detectedCategory.stale}
+							<p class="font-medium">These context notes belong to an earlier saved analysis. Recheck the product for up-to-date results.</p>
+						{/if}
+						{#if contextualChecks.matched > 0}
+							<p>{contextualChecks.matched} of {contextualChecks.checked} reviewed comments matched an explicit, category-specific praise or complaint example.</p>
+						{:else}
+							<p>No explicit category-specific praise or complaint examples matched in {contextualChecks.checked} reviewed comments. This does not mean the reviews were ignored or the product was found safe.</p>
+						{/if}
+						{#if contextualChecks.expectedBehavior > 0}
+							<p>{contextualChecks.expectedBehavior} mentioned normal or expected product behavior. Expected behavior alone is not praise.</p>
+						{/if}
+						{#if contextualChecks.ambiguous > 0}
+							<p>{contextualChecks.ambiguous} contained uncertain or context-dependent expressions. No opinion was inferred from these context checks.</p>
+						{/if}
+						{#if contextualChecks.differs > 0}
+							<p>{contextualChecks.differs} context suggestion{contextualChecks.differs === 1 ? '' : 's'} differed from the initial sentiment; that alone does not prove either interpretation is correct.</p>
+						{/if}
+						{#if contextualChecks.unclassified > 0}
+							<p>Category-specific examples were unavailable for {contextualChecks.unclassified} review{contextualChecks.unclassified === 1 ? '' : 's'} because the listing category was unclassified.</p>
+						{/if}
+						{#if contextualChecks.unavailable > 0}
+							<p>The contextual lookup was unavailable for {contextualChecks.unavailable} review{contextualChecks.unavailable === 1 ? '' : 's'}; normal sentiment and concern checks still ran.</p>
+						{/if}
+						<p class="font-medium">Context is informational only. Sentiment labels, concern flags, and purchase guidance are not changed by these suggestions.</p>
+					</div>
+				</details>
 			{/if}
 		</section>
 

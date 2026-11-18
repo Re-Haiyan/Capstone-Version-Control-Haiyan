@@ -34,6 +34,18 @@ test('v2 expected features are not counted as positive or negative corrections',
   assert.equal(summary.unavailable,1);
 });
 
+test('unknown statuses never inflate the number of contextual checks', () => {
+  const result = categoryContextSummary({comments:[
+    review('totally_new_status', {revision:'category-context-v2'}),
+    review(null, {revision:'category-context-v2'}),
+    review('expected_behavior', {revision:'category-context-v2'}),
+    review('no_signal', {revision:'category-context-v2'})
+  ]});
+  assert.equal(result.checked, 2);
+  assert.equal(result.noSignal, 1);
+  assert.equal(result.expectedBehavior, 1);
+});
+
 test('old reports and unsafe/unknown metadata never invent a completed check', () => {
   assert.equal(categoryContextSummary(null).checked,0);
   assert.equal(categoryContextSummary({comments:[{},review('differs',{revision:'unknown'}),review('agrees',{used_for_decision:true}),review('differs',{sentiment_overridden:true})]}).checked,0);
@@ -45,7 +57,11 @@ test('summary UI presents research status only, preserving original labels and w
   assert.match(file,/data-category-context-summary/);
   assert.match(file,/contextualChecks\.matched/);
   assert.match(file,/contextualChecks\.differs/);
-  assert.match(file,/Research only; sentiment labels and warnings are unchanged/);
+  assert.match(file,/How product context was checked/);
+  assert.match(file,/Context is informational only/);
+  assert.match(file,/normal or expected product behavior/);
+  assert.match(file,/No explicit category-specific praise or complaint examples matched/);
+  assert.match(file,/These context notes belong to an earlier saved analysis/);
   assert.match(file,/const verdict = \$derived\(view\(product\)\)/);
   assert.match(file,/reviewRecommendation\(product\)/);
 });
