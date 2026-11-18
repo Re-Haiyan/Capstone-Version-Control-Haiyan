@@ -46,8 +46,9 @@ export function categoryForReport(product) {
 		home_decor_lighting: 'Home Decor & Lighting',
 		crafts_diy: 'Crafts & DIY'
 	};
-	const label = /** @type {Record<string, string>} */ (special)[slug] ??
-		slug.split('_').filter(Boolean).map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+	const label = Object.hasOwn(special, slug)
+		? /** @type {Record<string, string>} */ (special)[slug]
+		: slug.split('_').filter(Boolean).map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 
 	return {
 		label,
