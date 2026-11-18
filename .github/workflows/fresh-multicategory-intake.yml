@@ -1,0 +1,32 @@
+name: Fresh multicategory evaluation intake (synthetic tests only)
+
+on:
+  push:
+    branches:
+      - research/fresh-multicategory-evaluation-intake-20261118
+  pull_request:
+    branches: [deployment]
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic_intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Read-only synthetic coverage; no marketplace review data
+        env:
+          PYTHONPATH: backend/sentiment-analysis:research
+        run: |
+          python -m py_compile research/fresh_multicategory_intake.py
+          python -m unittest discover -s tests -p 'test_fresh_multicategory_intake.py' -v
+          git diff --exit-code
