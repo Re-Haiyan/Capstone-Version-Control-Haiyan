@@ -69,6 +69,7 @@ from .model import DefaketiveSentimentModel
 from .product_category import PRODUCT_CATEGORY_REVISION, classify_listing, exemption as category_exemption
 from . import product_category
 from . import category_sentiment
+from . import category_context
 from .product_badges import (
     CATEGORIES,
     COUNTERFEIT,
@@ -1971,6 +1972,27 @@ class HazardBadgeModel:
     def analyze(
         self, review: object, rating: object = None, listing: Mapping[str, Any] | None = None
     ) -> dict[str, Any]:
+        explanation = self.sentiment.analyze(review, rating)
+        label = explanation.get("label")
+        sentiment_block: dict[str, Any] = {"label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
+        shadow = calibrated_sentiment(str(review or ""), rating, sentiment_block["probabilities"])
+        if shadow:  # opt-in (DEFAKETIVE_SENTIMENT_CALIBRATOR); "shadow" records it, "on" lets it decide
+            sentiment_block["calibrated"] = shadow["calibrated"]
+            if shadow["mode"] == "on":
+                sentiment_block["deployed_label"] = label
+                label = sentiment_block["label"] = shadow["calibrated"]["label"]
+        # Panel step 3: apply category meaning to the INITIAL XLM-R reading.
+        # This is an audit-only contextual check, NOT a sentiment correction.
+        # It cannot alter hazard evidence, flags, review counts or the verdict.
+        contextual = category_context.check(review, listing, label)
+        if contextual is not None:
+            sentiment_block["category_context"] = contextual
+        # Panel-requested step 3: compare INITIAL sentiment with title-derived
+        # category context. Research metadata only: do not change the label,
+        # hazard gating, aggregate review proportions, or final assessment.
+        category_shadow = category_sentiment.suggest(review, listing, label)
+        if category_shadow is not None:
+            sentiment_block["category_shadow"] = category_shadow
         sentences = (
             self.tagger.tag_review(review, rating, listing=listing)
             if listing is not None and getattr(self.tagger, "listing_context", False)
@@ -2000,21 +2022,6 @@ class HazardBadgeModel:
         if dropped:
             confident = [tag for tag in confident if tag in review_tags]
             evidence = {flag: entry for flag, entry in evidence.items() if flag in review_tags or flag in extra_tags}
-        explanation = self.sentiment.analyze(review, rating)
-        label = explanation.get("label")
-        sentiment_block: dict[str, Any] = {"label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
-        shadow = calibrated_sentiment(str(review or ""), rating, sentiment_block["probabilities"])
-        if shadow:  # opt-in (DEFAKETIVE_SENTIMENT_CALIBRATOR); "shadow" records it, "on" lets it decide
-            sentiment_block["calibrated"] = shadow["calibrated"]
-            if shadow["mode"] == "on":
-                sentiment_block["deployed_label"] = label
-                label = sentiment_block["label"] = shadow["calibrated"]["label"]
-        # Panel-requested step 3: compare INITIAL sentiment with title-derived
-        # category context. Research metadata only: do not change the label,
-        # hazard gating, aggregate review proportions, or final assessment.
-        category_shadow = category_sentiment.suggest(review, listing, label)
-        if category_shadow is not None:
-            sentiment_block["category_shadow"] = category_shadow
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
