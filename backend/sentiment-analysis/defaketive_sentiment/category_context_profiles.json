@@ -50,8 +50,8 @@
         "napunit ang bedsheet"
       ],
       "expected_behavior_phrases": [
-        "magaan ang kumot",
-        "thin blanket"
+        "lightweight blanket",
+        "cooling blanket"
       ]
     },
     "accessory": {
@@ -339,8 +339,8 @@
         "battery swollen"
       ],
       "expected_behavior_phrases": [
-        "slight warmth",
-        "warm battery casing"
+        "12 volt output",
+        "solar charge controller"
       ]
     },
     "motorcycle": {
@@ -356,8 +356,8 @@
         "mounting bracket broke"
       ],
       "expected_behavior_phrases": [
-        "maingay ang pipe",
-        "loud exhaust"
+        "rubber grip",
+        "metal finish"
       ]
     },
     "baby": {
@@ -424,8 +424,8 @@
         "handle came loose"
       ],
       "expected_behavior_phrases": [
-        "mainit ang pan",
-        "hot frying pan"
+        "stainless steel finish",
+        "nonstick finish"
       ]
     },
     "furniture": {
@@ -509,8 +509,8 @@
         "toy fell apart"
       ],
       "expected_behavior_phrases": [
-        "maliit ang piyesa",
-        "small toy pieces"
+        "compact toy",
+        "miniature toy"
       ]
     },
     "footwear": {
@@ -577,8 +577,8 @@
         "sobrang manipis ang damit"
       ],
       "expected_behavior_phrases": [
-        "manipis ang tela",
-        "magaan ang damit"
+        "regular fit",
+        "cotton fabric"
       ]
     },
     "medical_devices": {
@@ -679,8 +679,8 @@
         "handle snapped during use"
       ],
       "expected_behavior_phrases": [
-        "mabigat ang dumbbell",
-        "heavy resistance"
+        "rubber grip",
+        "resistance training"
       ]
     },
     "pet": {
@@ -730,8 +730,8 @@
         "spoiled on arrival"
       ],
       "expected_behavior_phrases": [
-        "mainit ang food",
-        "mainit ang pagkain"
+        "sealed packaging",
+        "freshly packed"
       ]
     },
     "collectibles_hobbies": {
@@ -832,8 +832,8 @@
         "outlet sparks"
       ],
       "expected_behavior_phrases": [
-        "warm connector",
-        "warm adapter"
+        "rated voltage",
+        "copper wiring"
       ]
     }
   },
@@ -997,6 +997,77 @@
           "mabigat ang dumbbell",
           "heavy resistance",
           "heavy weights"
+        ]
+      }
+    ],
+    "food_beverage": [
+      {
+        "name": "hot_prepared",
+        "title_terms": [
+          "coffee",
+          "soup",
+          "instant noodles",
+          "cooked meal",
+          "hotdog",
+          "pancit",
+          "hot chocolate"
+        ],
+        "positive_phrases": [
+          "hot and delicious",
+          "mainit at masarap"
+        ],
+        "negative_phrases": [
+          "dumating na malamig",
+          "arrived cold and stale"
+        ],
+        "expected_behavior_phrases": [
+          "mainit ang pagkain",
+          "hot food",
+          "mainit"
+        ]
+      },
+      {
+        "name": "cold_frozen",
+        "title_terms": [
+          "ice cream",
+          "frozen dessert",
+          "ice pop",
+          "frozen yogurt"
+        ],
+        "positive_phrases": [
+          "cold and fresh",
+          "properly frozen"
+        ],
+        "negative_phrases": [
+          "ice cream arrived melted",
+          "completely melted on arrival"
+        ],
+        "expected_behavior_phrases": [
+          "malamig ang dessert",
+          "cold ice cream"
+        ]
+      }
+    ],
+    "kitchen_dining": [
+      {
+        "name": "cookware",
+        "title_terms": [
+          "frying pan",
+          "cooking pan",
+          "saucepan",
+          "wok",
+          "cooking pot"
+        ],
+        "positive_phrases": [
+          "pantay ang init sa kawali"
+        ],
+        "negative_phrases": [
+          "handle overheats",
+          "pan handle burns"
+        ],
+        "expected_behavior_phrases": [
+          "mainit ang pan",
+          "hot frying pan"
         ]
       }
     ]
