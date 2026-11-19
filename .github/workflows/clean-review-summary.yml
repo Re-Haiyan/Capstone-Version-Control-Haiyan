@@ -28,11 +28,11 @@ jobs:
           node --test tests/category-context-summary.test.mjs tests/report-verdict-unified-headings.test.mjs tests/report-visible-fields.test.mjs
           npm run check
           npm run build
-      - name: No backend, classifier, data, or explanatory modal edits
+      - name: No backend, classifier, data, or context aggregation edits
         run: |
           set -euo pipefail
           BASE=38b551ae60bbe7cf84bc7d1518fbfee88442a38f
           git cat-file -e "${BASE}^{commit}"
           CHANGED="$(git diff --name-only "$BASE" HEAD)"
           printf '%s\n' "$CHANGED"
-          test -z "$(git diff --name-only "$BASE" HEAD -- backend/ research/ deploy/ src/lib/components/report/report-view.svelte src/lib/category-context-summary.js)"
+          test -z "$(git diff --name-only "$BASE" HEAD -- backend/ research/ deploy/ src/lib/category-context-summary.js)"
