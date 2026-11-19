@@ -1,0 +1,3 @@
+# term | label | severity | reason (tab-separated)
+(?:natunaw|natutunaw|tunaw)\s+(?:(?:ang|yung|ung)\s+)?(?:plug|saksakan|socket|kordon|cord|wire|cable)\b	safety	3	an electrical part melted
+(?:plug|saksakan|socket|kordon|cord|wire|cable)\s+(?:(?:has|had|got)\s+)?(?:melted|natunaw|natutunaw)\b	safety	3	an electrical part melted

@@ -74,5 +74,26 @@ class ExpiredItems(unittest.TestCase):
                 self.assertTrue(safety(text, CHEESE, 1))
 
 
+class ApplianceElectricalMelting(unittest.TestCase):
+    FAN = "Vone USB Ceiling Fan 6 blade ceiling fan USB Cable Fan"
+
+    def test_melted_plug_remains_a_safety_flag_with_praise_and_heat(self):
+        for text in (
+            "Gumagana nang maayos pero sobrang init at natunaw ang plug.",
+            "The fan works, but the plug melted.",
+            "Maayos ang fan. Natunaw ang saksakan.",
+        ):
+            with self.subTest(text=text):
+                self.assertTrue(safety(text, self.FAN, 5))
+
+    def test_ambient_heat_and_denied_melting_are_not_safety_flags(self):
+        for text in (
+            "Sobrang init sa kwarto pero malamig ang hangin ng fan.",
+            "Hindi natunaw ang plug.",
+        ):
+            with self.subTest(text=text):
+                self.assertFalse(safety(text, self.FAN, 5))
+
+
 if __name__ == "__main__":
     unittest.main()
