@@ -1021,7 +1021,8 @@ class LexiconHazardTagger:
                 return cue_class
         return None
 
-    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None) -> dict[str, Any]:
+    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None,
+                     *, review_context: str | None = None) -> dict[str, Any]:
         normalized, spans = text_norm.normalize_with_spans(raw)
         scores: dict[str, float] = {}
         tags: list[str] = []
@@ -1066,13 +1067,14 @@ class LexiconHazardTagger:
                     repeated = {"end": match.end(), "negated": negated}
                     raw_span = self._raw_span(match.span(), spans)
                     reason = self._excluded(category, term, normalized, match.span(), name_spans)
+                    category_reason = None
                     # Rules pc3: a phrase the product category's file lists is not a report on that kind of product
                     # ("init" is a heat hazard on a power bank and the weather on a shirt).
                     if (
                         reason is None
                         and product_kind
                         and self.rules == "0.4"
-                        and category_exemption(product_kind, category, normalized, match.span())
+                        and (category_reason := category_exemption(product_kind, category, normalized, match.span()))
                     ):
                         reason = "category"
                     if (
@@ -1112,6 +1114,7 @@ class LexiconHazardTagger:
                             "negated": negated,
                             "span": list(raw_span) if raw_span else None,
                             **({"excluded": reason} if reason else {}),
+                            **({"interpretation_reason": category_reason} if category_reason else {}),
                         }
                     )
                     if reason and not negated:
@@ -1367,7 +1370,7 @@ class LexiconHazardTagger:
             **({"gate_sentiment": gated} if gated else {}),
             **({"concern_interpretations": concern_interpretations} if concern_interpretations else {}),
             **(
-                self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind)
+                self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind, review_context=review_context)
                 if self.counterfeit_rules == EXTRA_RULES
                 else {}
             ),
@@ -1587,6 +1590,7 @@ class LexiconHazardTagger:
         spans: Sequence[text_norm.TokenSpan],
         extra_kw: Any = None,
         product_kind: str | None = None,
+        *, review_context: str | None = None,
     ) -> dict[str, Any]:
         """The two labels of guide 1.4 for one sentence, with the words behind
         them. Kept apart from "tags" and "terms": the badge categories, the
@@ -1610,7 +1614,7 @@ class LexiconHazardTagger:
         ):
             for start, end in _merged(found):
                 where = self._raw_span((start, end), spans)
-                reason = category_exemption(product_kind, label, normalized, (start, end))
+                reason = category_exemption(product_kind, label, normalized, (start, end), review_context=review_context)
                 if reason:
                     exempt.append(
                         {"ngram": normalized[start:end], "category": label, "product_category": product_kind,
@@ -1704,7 +1708,7 @@ class LexiconHazardTagger:
         kind = classify_listing(listing) if listing is not None and self.listing_context else None
         tagged = []
         for index, sentence in enumerate(segments):
-            result = self.tag_sentence(sentence, rating, product_kind=kind) if kind else self.tag_sentence(sentence, rating)
+            result = self.tag_sentence(sentence, rating, product_kind=kind, review_context=str(text or '')) if kind else self.tag_sentence(sentence, rating)
             result["index"] = index
             tagged.append(result)
         if self.rules == "0.4":
@@ -2055,6 +2059,9 @@ class HazardBadgeModel:
         interpretations = []
         for item in sentences:
             interpretations.extend(item.get("concern_interpretations") or [])
+            interpretations.extend({"category": term["category"], "text": item["text_raw"],
+                "reason": term["interpretation_reason"], "product_category": classify_listing(listing) if listing else None}
+                for term in item.get("terms") or [] if term.get("interpretation_reason"))
             interpretations.extend({"category": entry["category"], "text": item["text_raw"],
                 "reason": entry["reason"], "product_category": entry.get("product_category")}
                 for entry in item.get("category_exempt") or [] if entry.get("reason"))

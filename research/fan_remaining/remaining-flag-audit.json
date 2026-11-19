@@ -1,0 +1,4925 @@
+[
+  {
+    "version": "prior",
+    "review_index": 0,
+    "review_id": "107076151507",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "supported",
+    "judgment": "Explicit broken item received: Sira Yong pinadala.",
+    "review_excerpt": "Product Quality:0 Best Feature:0 Performance:0 Sira Yong pinadala na product",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.5545
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Product Quality:0 Best Feature:0 Performance:0 Sira Yong pinadala na product"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 47,
+        "end": 51,
+        "text": "Sira",
+        "review_start": 47,
+        "review_end": 51,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 47,
+        "end": 51,
+        "text": "Sira",
+        "review_start": 47,
+        "review_end": 51,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Explicit broken item received: Sira Yong pinadala."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 1,
+    "review_id": "107076151505",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Very weak output, weaker than the reviewer blowing air; wasted-money complaint.",
+    "review_excerpt": "Performance:1/10 Best Feature:0 Product Quality:0 Napakahina.grabe malakas pa buga ng hininga q.sayang ang pera cnungaling nagsav dto na malakas.ilang arw pang dineliver tapos eto lng matatanggap mo.bili ka na lng ng fan na maliit masulit ka pa kesa dto",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:1/10 Best Feature:0 Product Quality:0 Napakahina.grabe malakas pa buga ng hininga q.sayang ang pera cnungaling nagsav dto na malakas.ilang arw pang dineliver tapos eto lng matatanggap mo.bili ka na lng ng fan na maliit masulit ka pa kesa dto"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 50,
+        "end": 66,
+        "text": "Napakahina.grabe",
+        "review_start": 50,
+        "review_end": 66,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 50,
+        "end": 66,
+        "text": "Napakahina.grabe",
+        "review_start": 50,
+        "review_end": 66,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Very weak output, weaker than the reviewer blowing air; wasted-money complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 3,
+    "review_id": "110271484568",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Ordered Vone, received another brand; explicit not as described.",
+    "review_excerpt": "Parcel received in good condition the product was checked physically and surpriced not as described, ang order ko is Vone, ang nareceived ko ibang brand, seller naman wag na kayo magbenta kong di nyo kaya gampanan ang pagka seller ninyo panluluko na ito",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Parcel received in good condition the product was checked physically and surpriced not as described, ang order ko is Vone, ang nareceived ko ibang brand, seller naman wag na kayo magbenta kong di nyo kaya gampanan ang pagka seller ninyo panluluko na ito"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 83,
+        "end": 100,
+        "text": "not as described,",
+        "review_start": 83,
+        "review_end": 100,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 0,
+        "start": 141,
+        "end": 153,
+        "text": "ibang brand,",
+        "review_start": 141,
+        "review_end": 153,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 83,
+        "end": 100,
+        "text": "not as described,",
+        "review_start": 83,
+        "review_end": 100,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Ordered Vone, received another brand; explicit not as described."
+      },
+      {
+        "sentence": 0,
+        "start": 141,
+        "end": 153,
+        "text": "ibang brand,",
+        "review_start": 141,
+        "review_end": 153,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Ordered Vone, received another brand; explicit not as described."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 4,
+    "review_id": "113634983103",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Different received item/quality compared with the previous order and wire length.",
+    "review_excerpt": "Iba ang item na dumating this is my second order kaya nag order ako ulit kasi first order ko 3meters ang wire pero itong dumating ibang quality na",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      },
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Iba ang item na dumating this is my second order kaya nag order ako ulit kasi first order ko 3meters ang wire",
+      "pero itong dumating ibang quality na"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 12,
+        "text": "Iba ang item",
+        "review_start": 0,
+        "review_end": 12,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 33,
+        "text": "dumating ibang quality",
+        "review_start": 121,
+        "review_end": 143,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 12,
+        "text": "Iba ang item",
+        "review_start": 0,
+        "review_end": 12,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Different received item/quality compared with the previous order and wire length."
+      },
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 33,
+        "text": "dumating ibang quality",
+        "review_start": 121,
+        "review_end": 143,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Different received item/quality compared with the previous order and wire length."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 5,
+    "review_id": "100691479357",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Explicit not as described and not Vone. The weak-output complaint also remains in the full review.",
+    "review_excerpt": "Performance:4/10. Quality:Yes, the design looks good. But it's performance? Bruh. It cannot even provide moderate wind strength. Scamm!! Don't order from this shop!The cord is already short and the wind is still very weak. And the one I recieved is not as described cus it's not Vone, and was made in China. This is just a waste of money. I was very excited and expecting the quality to be good because I checked the ratings. Bruh. 1 star👎👎 There should be no star. Garbage.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 7,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "And the one I recieved is not as described cus it's not Vone, and was made in China."
+    ],
+    "spans": [
+      {
+        "sentence": 7,
+        "start": 26,
+        "end": 42,
+        "text": "not as described",
+        "review_start": 249,
+        "review_end": 265,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 7,
+        "start": 26,
+        "end": 42,
+        "text": "not as described",
+        "review_start": 249,
+        "review_end": 265,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Explicit not as described and not Vone. The weak-output complaint also remains in the full review."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 6,
+    "review_id": "105830295361",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Repeated received-brand denial and misleading-listing complaint.",
+    "review_excerpt": "Quiet:Not VONE brand. Very misleading! Quality:Not VONE brand. Very misleading! NOT VONE BRAND. VERY MISLEADING!",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      },
+      {
+        "sentence": 3,
+        "score": null
+      },
+      {
+        "sentence": 5,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Very misleading!",
+      "Very misleading!",
+      "VERY MISLEADING!"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 27,
+        "review_end": 38,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 3,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 68,
+        "review_end": 79,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 5,
+        "start": 5,
+        "end": 16,
+        "text": "MISLEADING!",
+        "review_start": 101,
+        "review_end": 112,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 27,
+        "review_end": 38,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      },
+      {
+        "sentence": 3,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 68,
+        "review_end": 79,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      },
+      {
+        "sentence": 5,
+        "start": 5,
+        "end": 16,
+        "text": "MISLEADING!",
+        "review_start": 101,
+        "review_end": 112,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 7,
+    "review_id": "106502929373",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Received item explicitly differs from the displayed listing.",
+    "review_excerpt": "Airflow:tingnan nyo, iba Yung na received ko at ang nasa display. nkaka disappoint talaga.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Airflow:tingnan nyo, iba Yung na received ko at ang nasa display."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 21,
+        "end": 41,
+        "text": "iba Yung na received",
+        "review_start": 21,
+        "review_end": 41,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 21,
+        "end": 41,
+        "text": "iba Yung na received",
+        "review_start": 21,
+        "review_end": 41,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Received item explicitly differs from the displayed listing."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 9,
+    "review_id": "94905414170",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow explicitly napakahina.",
+    "review_excerpt": "Airflow:napakahina 🫩",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Airflow:napakahina 🫩"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Airflow:napakahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Airflow:napakahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow explicitly napakahina."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 10,
+    "review_id": "97419403710",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Mahina sayang: weak output and regret.",
+    "review_excerpt": "Mahina sayang.,...",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Mahina sayang.,..."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Mahina sayang: weak output and regret."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 12,
+    "review_id": "107076151502",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Walang hangin explicitly reports no airflow; retain comparison and full review.",
+    "review_excerpt": "Parang pang bugaw lang ng langaw. Walang hangin",
+    "detector_source": [
+      "learned_classifier"
+    ],
+    "detector_name": "learned extra-label classifier",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.9394
+      }
+    ],
+    "evidence_state": "model_only",
+    "evidence_sentences": [
+      "Parang pang bugaw lang ng langaw."
+    ],
+    "spans": [],
+    "span_audit": [],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 13,
+    "review_id": "90399997175",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "ambiguous",
+    "judgment": "Not sure if it defective is speculative. Actual weak/no airflow supports quality, not a confirmed fault.",
+    "review_excerpt": "Performance:3/10 Not sure if it defective, its working but the fan air is weak and no air is blowing out",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.9209
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:3/10 Not sure if it defective, its working"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 32,
+        "end": 42,
+        "text": "defective,",
+        "review_start": 32,
+        "review_end": 42,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 32,
+        "end": 42,
+        "text": "defective,",
+        "review_start": 32,
+        "review_end": 42,
+        "source": "keyword_rule",
+        "status": "ambiguous",
+        "judgment": "Not sure if it defective is speculative. Actual weak/no airflow supports quality, not a confirmed fault."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 15,
+    "review_id": "95205564792",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Listing shows Vone but another brand was delivered.",
+    "review_excerpt": "vone yung brand na pinapakita nila,pero pg deliver n sau ,ibang brand na china pa",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero pg deliver n sau ,ibang brand na china pa"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 34,
+        "text": ",ibang brand",
+        "review_start": 57,
+        "review_end": 69,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 34,
+        "text": ",ibang brand",
+        "review_start": 57,
+        "review_end": 69,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Listing shows Vone but another brand was delivered."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 16,
+    "review_id": "97760951966",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Mahina reports weak output in this fan review.",
+    "review_excerpt": "Mahina",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Mahina"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Mahina reports weak output in this fan review."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 21,
+    "review_id": "99129066219",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Fan is weak even on mains power; actual output complaint.",
+    "review_excerpt": "mahina ang electricfan kahit sa kuryente realtalk sa nabudol kahit aq haha",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina ang electricfan kahit sa kuryente realtalk sa nabudol kahit aq haha"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Fan is weak even on mains power; actual output complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 23,
+    "review_id": "106990258241",
+    "product_category": "small_appliance",
+    "flag": "counterfeit",
+    "status": "supported",
+    "judgment": "Reviewer explicitly reports receiving a fake instead of the described Vone brand.",
+    "review_excerpt": "Quality:more soft than Vone the description said it's Vone but I received a fake one. I refuse to buy in other stores because of the product name even its cheaper.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "but I received a fake one."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 17,
+        "end": 21,
+        "text": "fake",
+        "review_start": 76,
+        "review_end": 80,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 17,
+        "end": 21,
+        "text": "fake",
+        "review_start": 76,
+        "review_end": 80,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reviewer explicitly reports receiving a fake instead of the described Vone brand."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 24,
+    "review_id": "113457710511",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "ambiguous",
+    "judgment": "Kahapon kulang na order received na agad is ambiguous order-timing wording, not an unambiguous shortage claim.",
+    "review_excerpt": "Product Quality:good Performance:working siya Best Feature:maigsi lang yung wire dahil siguro mura kulang nakuha hahahh Ok nmn at gumagana siya,mabilis din talaga kahapon kulang na order received na agad nung 10,10 ko siya na order",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Product Quality:good Performance:working siya Best Feature:maigsi lang yung wire dahil siguro mura kulang nakuha hahahh Ok nmn at gumagana siya,mabilis din talaga kahapon kulang na order received na agad nung 10,10 ko siya na order"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 171,
+        "end": 186,
+        "text": "kulang na order",
+        "review_start": 171,
+        "review_end": 186,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 171,
+        "end": 186,
+        "text": "kulang na order",
+        "review_start": 171,
+        "review_end": 186,
+        "source": "keyword_rule",
+        "status": "ambiguous",
+        "judgment": "Kahapon kulang na order received na agad is ambiguous order-timing wording, not an unambiguous shortage claim."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 25,
+    "review_id": "101239025514",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Works on USB/power bank, but airflow weak; short wire also described.",
+    "review_excerpt": "Performance:Mahina lang siya USB Charging:USB plug, kaya pwede sa powerbank Gumagana naman, kaso mahina lang yung hangin, tapos sa iba mukhang mahahaba yung wire, pero yung sakin maikli lang.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      },
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:Mahina lang siya USB Charging:USB plug, kaya pwede sa powerbank Gumagana naman,",
+      "kaso mahina lang yung hangin, tapos sa iba mukhang mahahaba yung wire,"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Performance:Mahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 97,
+        "review_end": 103,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Performance:Mahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Works on USB/power bank, but airflow weak; short wire also described."
+      },
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 97,
+        "review_end": 103,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Works on USB/power bank, but airflow weak; short wire also described."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 28,
+    "review_id": "97643481409",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Actual 1.5-metre wire explicitly shorter than the description, plus wrong-brand complaint.",
+    "review_excerpt": "Performance:Average Quality:Okay Not the real Vone brand. Actual wire length is 1.5 meters only, shorter than the description. Not satisfied",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Actual wire length is 1.5 meters only, shorter than the description."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 38,
+        "text": "1.5 meters only,",
+        "review_start": 80,
+        "review_end": 96,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 38,
+        "text": "1.5 meters only,",
+        "review_start": 80,
+        "review_end": 96,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Actual 1.5-metre wire explicitly shorter than the description, plus wrong-brand complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 29,
+    "review_id": "97646993143",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Another brand was sent instead of Vone, with short wire.",
+    "review_excerpt": "Ibang brand ang pinadala hindi vone kaya maikli ung wire nya..",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Ibang brand ang pinadala hindi vone kaya maikli ung wire nya.."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 24,
+        "text": "Ibang brand ang pinadala",
+        "review_start": 0,
+        "review_end": 24,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 24,
+        "text": "Ibang brand ang pinadala",
+        "review_start": 0,
+        "review_end": 24,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Another brand was sent instead of Vone, with short wire."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 31,
+    "review_id": "107076151491",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow, qualified by acceptance rather than denied.",
+    "review_excerpt": "mahina ang hangen,ok ndin kysa wla",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina ang hangen,ok ndin kysa wla"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow, qualified by acceptance rather than denied."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 34,
+    "review_id": "107076151443",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Reviewer tested it and found output weak; future camping usefulness remains uncertain.",
+    "review_excerpt": "Ang bilis dumating. ayos! magagamit ko sa upcoming camping namin. nasubukan ko kanina parang ang hina nya pala huhu pero matingnan sa camping namin kung keri",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "nasubukan ko kanina parang ang hina nya pala huhu"
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 31,
+        "end": 35,
+        "text": "hina",
+        "review_start": 97,
+        "review_end": 101,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 31,
+        "end": 35,
+        "text": "hina",
+        "review_start": 97,
+        "review_end": 101,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reviewer tested it and found output weak; future camping usefulness remains uncertain."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 36,
+    "review_id": "107076151447",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "Only 5 W explains modest output; no advertised/actual rating discrepancy.",
+    "review_excerpt": "Performance:the fan works either power bank and main oulet Quality:materials are soft and the machine component is heavy 4 stars only, not too strong since its only 5w. Need to be near the fan to feel the breeze. But still a good product. Probably will get higher watts.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:the fan works either power bank and main oulet Quality:materials are soft and the machine component is heavy 4 stars only, not too strong since its only 5w."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 160,
+        "end": 168,
+        "text": "only 5w.",
+        "review_start": 160,
+        "review_end": 168,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 160,
+        "end": 168,
+        "text": "only 5w.",
+        "review_start": 160,
+        "review_end": 168,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Only 5 W explains modest output; no advertised/actual rating discrepancy."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 40,
+    "review_id": "107076151439",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak reach through mosquito net; comparison/acceptance does not retract limitation.",
+    "review_excerpt": "yung tipong pang emergency lng talaga to, tuwing walang kuryente. Honest review, iba pa Rin lakas ng 25w n di kuryente. though ok naman sya, kaso tingin ko Hina ng tagos neto pag naka mosquito net.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "kaso tingin ko Hina ng tagos neto pag naka mosquito net."
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 15,
+        "end": 19,
+        "text": "Hina",
+        "review_start": 156,
+        "review_end": 160,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 15,
+        "end": 19,
+        "text": "Hina",
+        "review_start": 156,
+        "review_end": 160,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak reach through mosquito net; comparison/acceptance does not retract limitation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 41,
+    "review_id": "100564517760",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "supported",
+    "judgment": "Reported failure on one cheap low-capacity power bank; works on two branded ones. Supports a source-dependent operation limitation, not a diagnosis of a broken motor.",
+    "review_excerpt": "Quality:fair Performance:fair (see note sa dulo) Not bad para sa presyo. Hindi pareho ang lakas as usual na electeic fan pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity. Gumana lang sa dalawang original/branded ko na powerbank",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 2,
+        "score": 0.883
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity."
+    ],
+    "spans": [
+      {
+        "sentence": 2,
+        "start": 63,
+        "end": 75,
+        "text": "hindi gumana",
+        "review_start": 184,
+        "review_end": 196,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 2,
+        "start": 63,
+        "end": 75,
+        "text": "hindi gumana",
+        "review_start": 184,
+        "review_end": 196,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reported failure on one cheap low-capacity power bank; works on two branded ones. Supports a source-dependent operation limitation, not a diagnosis of a broken motor."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 41,
+    "review_id": "100564517760",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Lower output than a usual fan is stated and accepted. Mumurahin describes the external power bank, not fan quality.",
+    "review_excerpt": "Quality:fair Performance:fair (see note sa dulo) Not bad para sa presyo. Hindi pareho ang lakas as usual na electeic fan pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity. Gumana lang sa dalawang original/branded ko na powerbank",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      },
+      {
+        "sentence": 2,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi pareho ang lakas as usual na electeic fan",
+      "pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 12,
+        "text": "Hindi pareho",
+        "review_start": 73,
+        "review_end": 85,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 2,
+        "start": 79,
+        "end": 88,
+        "text": "mumurahin",
+        "review_start": 200,
+        "review_end": 209,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 12,
+        "text": "Hindi pareho",
+        "review_start": 73,
+        "review_end": 85,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Lower output than a usual fan is stated and accepted. Mumurahin describes the external power bank, not fan quality."
+      },
+      {
+        "sentence": 2,
+        "start": 79,
+        "end": 88,
+        "text": "mumurahin",
+        "review_start": 200,
+        "review_end": 209,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Cheap describes the power bank, not the fan."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 42,
+    "review_id": "107076151427",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow requiring aim at one person.",
+    "review_excerpt": "Performance:mdyo mahina un buga ng hangin dapat nkatutuk lng sa 1 tao",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:mdyo mahina un buga ng hangin dapat nkatutuk lng sa 1 tao"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 17,
+        "end": 23,
+        "text": "mahina",
+        "review_start": 17,
+        "review_end": 23,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 17,
+        "end": 23,
+        "text": "mahina",
+        "review_start": 17,
+        "review_end": 23,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow requiring aim at one person."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 44,
+    "review_id": "97343678509",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak output requiring closer placement.",
+    "review_excerpt": "Okay naman siya pero mahina buga kailngan lapit pa",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero mahina buga kailngan lapit pa"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 21,
+        "review_end": 27,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 21,
+        "review_end": 27,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak output requiring closer placement."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 46,
+    "review_id": "108576685121",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow despite useful operation; cord also too short to hang.",
+    "review_excerpt": "Quiet:Although it is not noisy pero masyadong maikli Ang cord kaya Hindi ko siya masabit. Ginamit ko nalang Ang stand ng speaker namin para maging electric fan Quality:Serves its purpose Naman. Gamit Lalo na kung brownout Yun nga lang mahina Ang hangin.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Gamit Lalo na kung brownout Yun nga lang mahina Ang hangin."
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 41,
+        "end": 47,
+        "text": "mahina",
+        "review_start": 235,
+        "review_end": 241,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 41,
+        "end": 47,
+        "text": "mahina",
+        "review_start": 235,
+        "review_end": 241,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow despite useful operation; cord also too short to hang."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 47,
+    "review_id": "104704184631",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Moderately weak airflow despite acceptance; possible adaptor explanation is retained.",
+    "review_excerpt": "Quality:parang ok naman ung quality ng fan.. walang sira, sana magtagal Performance:medjo mahina ang hangin pero ayos lang naman.. siguro need ko ng mas mataas na watt ng adaptor.. mamaya pa tlga naming magagamit kasi wala pang mag kakabit, hehe maybe mag update nlng next time :)",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "walang sira, sana magtagal Performance:medjo mahina ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 45,
+        "end": 51,
+        "text": "mahina",
+        "review_start": 90,
+        "review_end": 96,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 45,
+        "end": 51,
+        "text": "mahina",
+        "review_start": 90,
+        "review_end": 96,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Moderately weak airflow despite acceptance; possible adaptor explanation is retained."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 53,
+    "review_id": "103439074108",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Performance explicitly mahina despite good quality.",
+    "review_excerpt": "Quality:maganda Performance:mahina nga lang",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quality:maganda Performance:mahina nga lang"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 34,
+        "text": "Performance:mahina",
+        "review_start": 16,
+        "review_end": 34,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 34,
+        "text": "Performance:mahina",
+        "review_start": 16,
+        "review_end": 34,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Performance explicitly mahina despite good quality."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 84,
+    "review_id": "116136506713",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak daytime airflow on hot days. This is quality feedback, not device overheating.",
+    "review_excerpt": "Best Feature:ok naman sya SA Gabi gamitin bago ramdam Ang hangin😁 Performance:sakto lang ung hangin pag Gabi lang..pag araw Kasi talo Ng init,mahina lang e.. Product Quality:10/10 Thank you for being responsible seller 😍",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:sakto lang ung hangin pag Gabi lang..pag araw Kasi talo Ng init,mahina lang e.."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 71,
+        "end": 82,
+        "text": "init,mahina",
+        "review_start": 137,
+        "review_end": 148,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 71,
+        "end": 82,
+        "text": "init,mahina",
+        "review_start": 137,
+        "review_end": 148,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak daytime airflow on hot days. This is quality feedback, not device overheating."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 122,
+    "review_id": "116136506808",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "Minimal 5-watt consumption is described as energy efficient, not a false specification.",
+    "review_excerpt": "Very useful, especially during a power outage. Just plug it into a power bank, and it starts right away. You can also plug it into an electrical outlet using your cellphone charger’s adapter. The power consumption is minimal, only 5 watts, so it’s energy efficient too.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "The power consumption is minimal, only 5 watts, so it’s energy efficient too."
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 34,
+        "end": 47,
+        "text": "only 5 watts,",
+        "review_start": 226,
+        "review_end": 239,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 34,
+        "end": 47,
+        "text": "only 5 watts,",
+        "review_start": 226,
+        "review_end": 239,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Minimal 5-watt consumption is described as energy efficient, not a false specification."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 238,
+    "review_id": "116136509938",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "5 watts lang describes low consumption and power-bank use, not a mismatch.",
+    "review_excerpt": "Thanks seller gusto ko tlga itong USB fan KC tipid s kuryente 5watts lang eh pwde sa power bank Hanggang sa next order ko ulit.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Thanks seller gusto ko tlga itong USB fan KC tipid s kuryente 5watts lang eh pwde sa power bank Hanggang sa next order ko ulit."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 62,
+        "end": 73,
+        "text": "5watts lang",
+        "review_start": 62,
+        "review_end": 73,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 62,
+        "end": 73,
+        "text": "5watts lang",
+        "review_start": 62,
+        "review_end": 73,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "5 watts lang describes low consumption and power-bank use, not a mismatch."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 244,
+    "review_id": "116136509947",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong airflow, but accepted for outages; limitation remains.",
+    "review_excerpt": "Okay naman working,sana matagal masira. Hindi ganun kalakas ang hangin pero oks na din if brownout",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi ganun kalakas ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 40,
+        "review_end": 59,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 40,
+        "review_end": 59,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong airflow, but accepted for outages; limitation remains."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 258,
+    "review_id": "116136510061",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong, not very weak: qualified output limitation, not a mechanical failure.",
+    "review_excerpt": "Worth th price. Hindi ganun kalakas hangin. Hindi rin ganun kahina. This is passive lng, power bank is thr main source para gumana.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi ganun kalakas hangin."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 16,
+        "review_end": 35,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 16,
+        "review_end": 35,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong, not very weak: qualified output limitation, not a mechanical failure."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 276,
+    "review_id": "97340314983",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong but sufficient: qualified output limitation, not a mechanical failure.",
+    "review_excerpt": "Working ang product. Very secure. Sakto lang naman ang hangin nya. Di sya ganun kalakas pero sapat na. 🙂",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Di sya ganun kalakas"
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 0,
+        "end": 20,
+        "text": "Di sya ganun kalakas",
+        "review_start": 67,
+        "review_end": 87,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 0,
+        "end": 20,
+        "text": "Di sya ganun kalakas",
+        "review_start": 67,
+        "review_end": 87,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong but sufficient: qualified output limitation, not a mechanical failure."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 289,
+    "review_id": "104364493475",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "5 watts lang explains modest output; no promised different wattage.",
+    "review_excerpt": "Performance:8/10 Product Quality:10/10 Best Feature:Di kana hahawak ng pamaypay don't expect too much, 5watts lang to sakto lang na di ka mangangalay kaka paypay, pwde si kuryente using charger adpter and ung tagal nito sa gamit battery dpende padin sa capacity ng battery nyo, salamat",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:8/10 Product Quality:10/10 Best Feature:Di kana hahawak ng pamaypay don't expect too much, 5watts lang to sakto lang na di ka mangangalay kaka paypay, pwde si kuryente using charger adpter and ung tagal nito sa gamit battery dpende padin sa capacity ng battery nyo, salamat"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 103,
+        "end": 114,
+        "text": "5watts lang",
+        "review_start": 103,
+        "review_end": 114,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 103,
+        "end": 114,
+        "text": "5watts lang",
+        "review_start": 103,
+        "review_end": 114,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "5 watts lang explains modest output; no promised different wattage."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 317,
+    "review_id": "104364493323",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "Since 5w lang explains expectations; no seller specification is disputed.",
+    "review_excerpt": "Maganda po,matibay,pero since 5w lang siya,dont expect po na malakas,",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero since 5w lang siya,dont expect po na malakas,"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 18,
+        "text": "5w lang",
+        "review_start": 30,
+        "review_end": 37,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 18,
+        "text": "5w lang",
+        "review_start": 30,
+        "review_end": 37,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Since 5w lang explains expectations; no seller specification is disputed."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 327,
+    "review_id": "104364493696",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow requiring closer installation despite recommendation.",
+    "review_excerpt": "Product Quality:9/10 i dont know kung tatagal sya but convinient to use specially pag brownout Performance:7/10 medyo mahina lang talaga sya ng buga ng hangin kailangan mas malapitan ang install pero atleast goods narin dahil nga 5v na xa any powerbank magagamit sya.. Best Feature:magagamit sya for camping outdoor specially sa mainit na panahon at mostly usefull talaga sya pag brownout highly recommended for emergency use..thank you seller",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "but convinient to use specially pag brownout Performance:7/10 medyo mahina lang talaga sya ng buga ng hangin kailangan mas malapitan ang install"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 68,
+        "end": 74,
+        "text": "mahina",
+        "review_start": 118,
+        "review_end": 124,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 68,
+        "end": 74,
+        "text": "mahina",
+        "review_start": 118,
+        "review_end": 124,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow requiring closer installation despite recommendation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 355,
+    "review_id": "109606255889",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "unsupported",
+    "judgment": "The reviewer compares its price with other similar products, not received-item identity.",
+    "review_excerpt": "Quiet:The fan runs quietly and never make a sound. It is very bagay sa mga gusto ng tahimik when sleeping. Kung night shift and gusto ng quality sleep na walang ingay sa paligid. Perfect ito. For me gusto q xa kasi minimalist and chill lang na klasexng fan haha.. Quality:The plastic is safe and reliable. Very strong and sturdy din. Like ko yung very safe ka kahit sa may head mo ilagay kasi di lilipad yung mga wings or malalaglag. Must try. Very useful to specially sa mga brown out kasi isaksak mo lang sa powerbank may instant electric fan ka na also di pa maingay. Gusto q rin yung design and built nia. Very like ko xa mas mahal sia sa ibang same product online peri keri labg kasi sulit and worth it naman.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 11,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Very like ko xa mas mahal sia sa ibang same product online peri keri labg kasi sulit and worth it naman."
+    ],
+    "spans": [
+      {
+        "sentence": 11,
+        "start": 33,
+        "end": 51,
+        "text": "ibang same product",
+        "review_start": 643,
+        "review_end": 661,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 11,
+        "start": 33,
+        "end": 51,
+        "text": "ibang same product",
+        "review_start": 643,
+        "review_end": 661,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "The reviewer compares its price with other similar products, not received-item identity."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 356,
+    "review_id": "93799823182",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not strong airflow but sufficient for sleep; expectation and price qualifications retained.",
+    "review_excerpt": "Performance:steady and quiet siya. . gusto ko yung of nags start hehe Quality:ok naman quality Hindi siya malakas ang hangin pero sapat na para makatulog ka. .. Manage your expectation sa presyo. .. Pero for me, ok siya pang backup. ..",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "gusto ko yung of nags start hehe Quality:ok naman quality Hindi siya malakas ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 58,
+        "end": 76,
+        "text": "Hindi siya malakas",
+        "review_start": 95,
+        "review_end": 113,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 58,
+        "end": 76,
+        "text": "Hindi siya malakas",
+        "review_start": 95,
+        "review_end": 113,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not strong airflow but sufficient for sleep; expectation and price qualifications retained."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 359,
+    "review_id": "104229780014",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "unsupported",
+    "judgment": "The location frequently loses power; the fan is explicitly working well.",
+    "review_excerpt": "Quality:The Blades feel soft and the product seems durable . Performance:The airflow is just right and works well in many cases. Gabit na gabit lalu na dito sa lugarnmin laging walang power 🥰 Thank you seller and rider for the fast delivery 🥰",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 2,
+        "score": 0.8713
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Gabit na gabit lalu na dito sa lugarnmin laging walang power 🥰"
+    ],
+    "spans": [
+      {
+        "sentence": 2,
+        "start": 48,
+        "end": 60,
+        "text": "walang power",
+        "review_start": 177,
+        "review_end": 189,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 2,
+        "start": 48,
+        "end": 60,
+        "text": "walang power",
+        "review_start": 177,
+        "review_end": 189,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "The location frequently loses power; the fan is explicitly working well."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 367,
+    "review_id": "113469871696",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Only one of two ordered units has arrived; the other remains in delivery tracking. Delivery concern, not proven product defect.",
+    "review_excerpt": "Maganda Ang item Wala Ako masabi sa products, kaso lang dalawa order ko nito hiwalay Sila same date minoto lang Ang pagitan kaso Isa lang dumating Ang Isa naka assign delivery rider parin till now sabi Ng rider kanina Wala daw hub nila nakita ko sa tracking e andyan na sya ano Kaya nangyare",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 2,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "kaso Isa lang dumating Ang Isa naka assign delivery rider parin till now sabi Ng rider kanina Wala daw hub nila nakita ko sa tracking e andyan na sya ano Kaya nangyare"
+    ],
+    "spans": [
+      {
+        "sentence": 2,
+        "start": 5,
+        "end": 22,
+        "text": "Isa lang dumating",
+        "review_start": 129,
+        "review_end": 146,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 2,
+        "start": 5,
+        "end": 22,
+        "text": "Isa lang dumating",
+        "review_start": 129,
+        "review_end": 146,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Only one of two ordered units has arrived; the other remains in delivery tracking. Delivery concern, not proven product defect."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 374,
+    "review_id": "93435233141",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak but usable during outages; qualified output complaint remains.",
+    "review_excerpt": "ok na ok mahina sya pero pwede na sa brown out kaysa mag paypay",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "ok na ok mahina sya"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 9,
+        "end": 15,
+        "text": "mahina",
+        "review_start": 9,
+        "review_end": 15,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 9,
+        "end": 15,
+        "text": "mahina",
+        "review_start": 9,
+        "review_end": 15,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak but usable during outages; qualified output complaint remains."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 376,
+    "review_id": "98401434626",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not strong airflow despite usefulness and quiet operation.",
+    "review_excerpt": "Quality is good. Hindi malakas masyado hangin pero its useful as ceiling fan lalo na kung brownout. Very quiet, wala halos tunog. Mabilis lang iset up",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi malakas masyado hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Hindi malakas",
+        "review_start": 17,
+        "review_end": 30,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Hindi malakas",
+        "review_start": 17,
+        "review_end": 30,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not strong airflow despite usefulness and quiet operation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 398,
+    "review_id": "105078740719",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow explicitly hindi kalakasan.",
+    "review_excerpt": "Quiet:Yes quiet Quality:Hopefully tumagal sya Hindi kalakasan yung buga ng hangin nya",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quiet:Yes quiet Quality:Hopefully tumagal sya Hindi kalakasan yung buga ng hangin nya"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 46,
+        "end": 61,
+        "text": "Hindi kalakasan",
+        "review_start": 46,
+        "review_end": 61,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 46,
+        "end": 61,
+        "text": "Hindi kalakasan",
+        "review_start": 46,
+        "review_end": 61,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow explicitly hindi kalakasan."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 408,
+    "review_id": "101604410004",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "unsupported",
+    "judgment": "Mahina kumain ng charge means low battery consumption, not low airflow.",
+    "review_excerpt": "Quality:10 Performance:10 Ang Ganda nya mahina din sya Kumain Ng charge thanks po order Po Ako ulit",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quality:10 Performance:10 Ang Ganda nya mahina din sya Kumain Ng charge thanks po order Po Ako ulit"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 40,
+        "end": 46,
+        "text": "mahina",
+        "review_start": 40,
+        "review_end": 46,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 40,
+        "end": 46,
+        "text": "mahina",
+        "review_start": 40,
+        "review_end": 46,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Mahina kumain ng charge means low battery consumption, not low airflow."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 411,
+    "review_id": "107307134273",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow weaker than a clip fan, accepted for outages.",
+    "review_excerpt": "mahina lang ang buga ng hangin kumpara sa clip fan . pero ok na sya pang brown out . salamat po",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina lang ang buga ng hangin kumpara sa clip fan ."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow weaker than a clip fan, accepted for outages."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 415,
+    "review_id": "83944516707",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Very weak airflow and wasted-money complaint.",
+    "review_excerpt": "Maganda ung items kaya lang super Hina ng hangin 5v at 5wattslang Pala sayang lang Pera ko",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Maganda ung items kaya lang super Hina ng hangin 5v at 5wattslang Pala sayang lang Pera ko"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 34,
+        "end": 38,
+        "text": "Hina",
+        "review_start": 34,
+        "review_end": 38,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 34,
+        "end": 38,
+        "text": "Hina",
+        "review_start": 34,
+        "review_end": 38,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Very weak airflow and wasted-money complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 427,
+    "review_id": "107059347538",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "unsupported",
+    "judgment": "The Quiet field praises almost no sound, not missing intended audio.",
+    "review_excerpt": "Quiet:it almost no sound .bot disturbing. Quality:it is good .",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.7266
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quiet:it almost no sound .bot disturbing."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 24,
+        "text": "no sound",
+        "review_start": 16,
+        "review_end": 24,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 24,
+        "text": "no sound",
+        "review_start": 16,
+        "review_end": 24,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "The Quiet field praises almost no sound, not missing intended audio."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 435,
+    "review_id": "98405110252",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "unsupported",
+    "judgment": "Mahina consume ng kuryente means low electricity consumption; airflow is just right.",
+    "review_excerpt": "Quality:sturdy Performance:airflow just right Very convenient lalo kapag brownout. Mahina lang ang consume ng kuryente. Useful sa brownout.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Mahina lang ang consume ng kuryente."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 83,
+        "review_end": 89,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 83,
+        "review_end": 89,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "Mahina consume ng kuryente means low electricity consumption; airflow is just right."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 441,
+    "review_id": "94900049613",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "unsupported",
+    "judgment": "The initial expectation of weak airflow is retracted: malakas Pala.",
+    "review_excerpt": "Quality:maganda kala ko mahina lang malakas Pala. tipid sa kuryente, kahit powerbank lang gamit gumagana. Performance:maganda Thank you shopee, thank you seller, thank you rider.❤️",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quality:maganda kala ko mahina lang malakas Pala."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 24,
+        "end": 30,
+        "text": "mahina",
+        "review_start": 24,
+        "review_end": 30,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 24,
+        "end": 30,
+        "text": "mahina",
+        "review_start": 24,
+        "review_end": 30,
+        "source": "keyword_rule",
+        "status": "unsupported",
+        "judgment": "The initial expectation of weak airflow is retracted: malakas Pala."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "prior",
+    "review_index": 457,
+    "review_id": "110259028846",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow slightly weaker than clip fan, qualified as good value; comparison retained.",
+    "review_excerpt": "Nawalan kame ng kuryente bandang 12am gang 4 am nakasalpak sya sa romoss powerbank ko 20k mAh straight 1 bar lng naibawas nia ang lakas ng hangin nia ay mahina ng kaunti sa clip fan pero para sa tulad Kong budget lng dn sobrang sulit na nito Lalo pag may Bata",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Nawalan kame ng kuryente bandang 12am gang 4 am nakasalpak sya sa romoss powerbank ko 20k mAh straight 1 bar lng naibawas nia ang lakas ng hangin nia ay mahina ng kaunti sa clip fan"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 153,
+        "end": 159,
+        "text": "mahina",
+        "review_start": 153,
+        "review_end": 159,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 153,
+        "end": 159,
+        "text": "mahina",
+        "review_start": 153,
+        "review_end": 159,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow slightly weaker than clip fan, qualified as good value; comparison retained."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 0,
+    "review_id": "107076151507",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "supported",
+    "judgment": "Explicit broken item received: Sira Yong pinadala.",
+    "review_excerpt": "Product Quality:0 Best Feature:0 Performance:0 Sira Yong pinadala na product",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.5545
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Product Quality:0 Best Feature:0 Performance:0 Sira Yong pinadala na product"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 47,
+        "end": 51,
+        "text": "Sira",
+        "review_start": 47,
+        "review_end": 51,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 47,
+        "end": 51,
+        "text": "Sira",
+        "review_start": 47,
+        "review_end": 51,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Explicit broken item received: Sira Yong pinadala."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 1,
+    "review_id": "107076151505",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Very weak output, weaker than the reviewer blowing air; wasted-money complaint.",
+    "review_excerpt": "Performance:1/10 Best Feature:0 Product Quality:0 Napakahina.grabe malakas pa buga ng hininga q.sayang ang pera cnungaling nagsav dto na malakas.ilang arw pang dineliver tapos eto lng matatanggap mo.bili ka na lng ng fan na maliit masulit ka pa kesa dto",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:1/10 Best Feature:0 Product Quality:0 Napakahina.grabe malakas pa buga ng hininga q.sayang ang pera cnungaling nagsav dto na malakas.ilang arw pang dineliver tapos eto lng matatanggap mo.bili ka na lng ng fan na maliit masulit ka pa kesa dto"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 50,
+        "end": 66,
+        "text": "Napakahina.grabe",
+        "review_start": 50,
+        "review_end": 66,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 50,
+        "end": 66,
+        "text": "Napakahina.grabe",
+        "review_start": 50,
+        "review_end": 66,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Very weak output, weaker than the reviewer blowing air; wasted-money complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 3,
+    "review_id": "110271484568",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Ordered Vone, received another brand; explicit not as described.",
+    "review_excerpt": "Parcel received in good condition the product was checked physically and surpriced not as described, ang order ko is Vone, ang nareceived ko ibang brand, seller naman wag na kayo magbenta kong di nyo kaya gampanan ang pagka seller ninyo panluluko na ito",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Parcel received in good condition the product was checked physically and surpriced not as described, ang order ko is Vone, ang nareceived ko ibang brand, seller naman wag na kayo magbenta kong di nyo kaya gampanan ang pagka seller ninyo panluluko na ito"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 83,
+        "end": 100,
+        "text": "not as described,",
+        "review_start": 83,
+        "review_end": 100,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 0,
+        "start": 141,
+        "end": 153,
+        "text": "ibang brand,",
+        "review_start": 141,
+        "review_end": 153,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 83,
+        "end": 100,
+        "text": "not as described,",
+        "review_start": 83,
+        "review_end": 100,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Ordered Vone, received another brand; explicit not as described."
+      },
+      {
+        "sentence": 0,
+        "start": 141,
+        "end": 153,
+        "text": "ibang brand,",
+        "review_start": 141,
+        "review_end": 153,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Ordered Vone, received another brand; explicit not as described."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 4,
+    "review_id": "113634983103",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Different received item/quality compared with the previous order and wire length.",
+    "review_excerpt": "Iba ang item na dumating this is my second order kaya nag order ako ulit kasi first order ko 3meters ang wire pero itong dumating ibang quality na",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      },
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Iba ang item na dumating this is my second order kaya nag order ako ulit kasi first order ko 3meters ang wire",
+      "pero itong dumating ibang quality na"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 12,
+        "text": "Iba ang item",
+        "review_start": 0,
+        "review_end": 12,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 33,
+        "text": "dumating ibang quality",
+        "review_start": 121,
+        "review_end": 143,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 12,
+        "text": "Iba ang item",
+        "review_start": 0,
+        "review_end": 12,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Different received item/quality compared with the previous order and wire length."
+      },
+      {
+        "sentence": 1,
+        "start": 11,
+        "end": 33,
+        "text": "dumating ibang quality",
+        "review_start": 121,
+        "review_end": 143,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Different received item/quality compared with the previous order and wire length."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 5,
+    "review_id": "100691479357",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Explicit not as described and not Vone. The weak-output complaint also remains in the full review.",
+    "review_excerpt": "Performance:4/10. Quality:Yes, the design looks good. But it's performance? Bruh. It cannot even provide moderate wind strength. Scamm!! Don't order from this shop!The cord is already short and the wind is still very weak. And the one I recieved is not as described cus it's not Vone, and was made in China. This is just a waste of money. I was very excited and expecting the quality to be good because I checked the ratings. Bruh. 1 star👎👎 There should be no star. Garbage.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 7,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "And the one I recieved is not as described cus it's not Vone, and was made in China."
+    ],
+    "spans": [
+      {
+        "sentence": 7,
+        "start": 26,
+        "end": 42,
+        "text": "not as described",
+        "review_start": 249,
+        "review_end": 265,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 7,
+        "start": 26,
+        "end": 42,
+        "text": "not as described",
+        "review_start": 249,
+        "review_end": 265,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Explicit not as described and not Vone. The weak-output complaint also remains in the full review."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 6,
+    "review_id": "105830295361",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Repeated received-brand denial and misleading-listing complaint.",
+    "review_excerpt": "Quiet:Not VONE brand. Very misleading! Quality:Not VONE brand. Very misleading! NOT VONE BRAND. VERY MISLEADING!",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      },
+      {
+        "sentence": 3,
+        "score": null
+      },
+      {
+        "sentence": 5,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Very misleading!",
+      "Very misleading!",
+      "VERY MISLEADING!"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 27,
+        "review_end": 38,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 3,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 68,
+        "review_end": 79,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 5,
+        "start": 5,
+        "end": 16,
+        "text": "MISLEADING!",
+        "review_start": 101,
+        "review_end": 112,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 27,
+        "review_end": 38,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      },
+      {
+        "sentence": 3,
+        "start": 5,
+        "end": 16,
+        "text": "misleading!",
+        "review_start": 68,
+        "review_end": 79,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      },
+      {
+        "sentence": 5,
+        "start": 5,
+        "end": 16,
+        "text": "MISLEADING!",
+        "review_start": 101,
+        "review_end": 112,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Repeated received-brand denial and misleading-listing complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 7,
+    "review_id": "106502929373",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Received item explicitly differs from the displayed listing.",
+    "review_excerpt": "Airflow:tingnan nyo, iba Yung na received ko at ang nasa display. nkaka disappoint talaga.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Airflow:tingnan nyo, iba Yung na received ko at ang nasa display."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 21,
+        "end": 41,
+        "text": "iba Yung na received",
+        "review_start": 21,
+        "review_end": 41,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 21,
+        "end": 41,
+        "text": "iba Yung na received",
+        "review_start": 21,
+        "review_end": 41,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Received item explicitly differs from the displayed listing."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 9,
+    "review_id": "94905414170",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow explicitly napakahina.",
+    "review_excerpt": "Airflow:napakahina 🫩",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Airflow:napakahina 🫩"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Airflow:napakahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Airflow:napakahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow explicitly napakahina."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 10,
+    "review_id": "97419403710",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Mahina sayang: weak output and regret.",
+    "review_excerpt": "Mahina sayang.,...",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Mahina sayang.,..."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Mahina sayang: weak output and regret."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 11,
+    "review_id": "101835007348",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Walang hangin explicitly reports no airflow; previously missed by both keyword and learned paths.",
+    "review_excerpt": "Walang hangin",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Walang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 13,
+        "text": "Walang hangin",
+        "review_start": 0,
+        "review_end": 13,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 13,
+        "text": "Walang hangin",
+        "review_start": 0,
+        "review_end": 13,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Walang hangin explicitly reports no airflow; previously missed by both keyword and learned paths."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 12,
+    "review_id": "107076151502",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Walang hangin explicitly reports no airflow; retain comparison and full review.",
+    "review_excerpt": "Parang pang bugaw lang ng langaw. Walang hangin",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": 0.9394
+      },
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Parang pang bugaw lang ng langaw.",
+      "Walang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Walang hangin",
+        "review_start": 34,
+        "review_end": 47,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Walang hangin",
+        "review_start": 34,
+        "review_end": 47,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Walang hangin explicitly reports no airflow; retain comparison and full review."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 13,
+    "review_id": "90399997175",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Actual weak fan air and no air blowing out; quality concern, without asserting the speculative defect.",
+    "review_excerpt": "Performance:3/10 Not sure if it defective, its working but the fan air is weak and no air is blowing out",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "but the fan air is weak and no air is blowing out"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 8,
+        "end": 23,
+        "text": "fan air is weak",
+        "review_start": 63,
+        "review_end": 78,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 1,
+        "start": 28,
+        "end": 49,
+        "text": "no air is blowing out",
+        "review_start": 83,
+        "review_end": 104,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 8,
+        "end": 23,
+        "text": "fan air is weak",
+        "review_start": 63,
+        "review_end": 78,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Actual weak fan air and no air blowing out; quality concern, without asserting the speculative defect."
+      },
+      {
+        "sentence": 1,
+        "start": 28,
+        "end": 49,
+        "text": "no air is blowing out",
+        "review_start": 83,
+        "review_end": 104,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Actual weak fan air and no air blowing out; quality concern, without asserting the speculative defect."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 15,
+    "review_id": "95205564792",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Listing shows Vone but another brand was delivered.",
+    "review_excerpt": "vone yung brand na pinapakita nila,pero pg deliver n sau ,ibang brand na china pa",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero pg deliver n sau ,ibang brand na china pa"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 34,
+        "text": ",ibang brand",
+        "review_start": 57,
+        "review_end": 69,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 34,
+        "text": ",ibang brand",
+        "review_start": 57,
+        "review_end": 69,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Listing shows Vone but another brand was delivered."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 16,
+    "review_id": "97760951966",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Mahina reports weak output in this fan review.",
+    "review_excerpt": "Mahina",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Mahina"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "Mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Mahina reports weak output in this fan review."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 21,
+    "review_id": "99129066219",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Fan is weak even on mains power; actual output complaint.",
+    "review_excerpt": "mahina ang electricfan kahit sa kuryente realtalk sa nabudol kahit aq haha",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina ang electricfan kahit sa kuryente realtalk sa nabudol kahit aq haha"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Fan is weak even on mains power; actual output complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 23,
+    "review_id": "106990258241",
+    "product_category": "small_appliance",
+    "flag": "counterfeit",
+    "status": "supported",
+    "judgment": "Reviewer explicitly reports receiving a fake instead of the described Vone brand.",
+    "review_excerpt": "Quality:more soft than Vone the description said it's Vone but I received a fake one. I refuse to buy in other stores because of the product name even its cheaper.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "but I received a fake one."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 17,
+        "end": 21,
+        "text": "fake",
+        "review_start": 76,
+        "review_end": 80,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 17,
+        "end": 21,
+        "text": "fake",
+        "review_start": 76,
+        "review_end": 80,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reviewer explicitly reports receiving a fake instead of the described Vone brand."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 25,
+    "review_id": "101239025514",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Works on USB/power bank, but airflow weak; short wire also described.",
+    "review_excerpt": "Performance:Mahina lang siya USB Charging:USB plug, kaya pwede sa powerbank Gumagana naman, kaso mahina lang yung hangin, tapos sa iba mukhang mahahaba yung wire, pero yung sakin maikli lang.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      },
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:Mahina lang siya USB Charging:USB plug, kaya pwede sa powerbank Gumagana naman,",
+      "kaso mahina lang yung hangin, tapos sa iba mukhang mahahaba yung wire,"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Performance:Mahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule"
+      },
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 97,
+        "review_end": 103,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 18,
+        "text": "Performance:Mahina",
+        "review_start": 0,
+        "review_end": 18,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Works on USB/power bank, but airflow weak; short wire also described."
+      },
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 97,
+        "review_end": 103,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Works on USB/power bank, but airflow weak; short wire also described."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 28,
+    "review_id": "97643481409",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Actual 1.5-metre wire explicitly shorter than the description, plus wrong-brand complaint.",
+    "review_excerpt": "Performance:Average Quality:Okay Not the real Vone brand. Actual wire length is 1.5 meters only, shorter than the description. Not satisfied",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Actual wire length is 1.5 meters only, shorter than the description."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 38,
+        "text": "1.5 meters only,",
+        "review_start": 80,
+        "review_end": 96,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 22,
+        "end": 38,
+        "text": "1.5 meters only,",
+        "review_start": 80,
+        "review_end": 96,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Actual 1.5-metre wire explicitly shorter than the description, plus wrong-brand complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 29,
+    "review_id": "97646993143",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Another brand was sent instead of Vone, with short wire.",
+    "review_excerpt": "Ibang brand ang pinadala hindi vone kaya maikli ung wire nya..",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Ibang brand ang pinadala hindi vone kaya maikli ung wire nya.."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 24,
+        "text": "Ibang brand ang pinadala",
+        "review_start": 0,
+        "review_end": 24,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 24,
+        "text": "Ibang brand ang pinadala",
+        "review_start": 0,
+        "review_end": 24,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Another brand was sent instead of Vone, with short wire."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 31,
+    "review_id": "107076151491",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow, qualified by acceptance rather than denied.",
+    "review_excerpt": "mahina ang hangen,ok ndin kysa wla",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina ang hangen,ok ndin kysa wla"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow, qualified by acceptance rather than denied."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 34,
+    "review_id": "107076151443",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Reviewer tested it and found output weak; future camping usefulness remains uncertain.",
+    "review_excerpt": "Ang bilis dumating. ayos! magagamit ko sa upcoming camping namin. nasubukan ko kanina parang ang hina nya pala huhu pero matingnan sa camping namin kung keri",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "nasubukan ko kanina parang ang hina nya pala huhu"
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 31,
+        "end": 35,
+        "text": "hina",
+        "review_start": 97,
+        "review_end": 101,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 31,
+        "end": 35,
+        "text": "hina",
+        "review_start": 97,
+        "review_end": 101,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reviewer tested it and found output weak; future camping usefulness remains uncertain."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 40,
+    "review_id": "107076151439",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak reach through mosquito net; comparison/acceptance does not retract limitation.",
+    "review_excerpt": "yung tipong pang emergency lng talaga to, tuwing walang kuryente. Honest review, iba pa Rin lakas ng 25w n di kuryente. though ok naman sya, kaso tingin ko Hina ng tagos neto pag naka mosquito net.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "kaso tingin ko Hina ng tagos neto pag naka mosquito net."
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 15,
+        "end": 19,
+        "text": "Hina",
+        "review_start": 156,
+        "review_end": 160,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 15,
+        "end": 19,
+        "text": "Hina",
+        "review_start": 156,
+        "review_end": 160,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak reach through mosquito net; comparison/acceptance does not retract limitation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 41,
+    "review_id": "100564517760",
+    "product_category": "small_appliance",
+    "flag": "defect",
+    "status": "supported",
+    "judgment": "Reported failure on one cheap low-capacity power bank; works on two branded ones. Supports a source-dependent operation limitation, not a diagnosis of a broken motor.",
+    "review_excerpt": "Quality:fair Performance:fair (see note sa dulo) Not bad para sa presyo. Hindi pareho ang lakas as usual na electeic fan pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity. Gumana lang sa dalawang original/branded ko na powerbank",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 2,
+        "score": 0.883
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity."
+    ],
+    "spans": [
+      {
+        "sentence": 2,
+        "start": 63,
+        "end": 75,
+        "text": "hindi gumana",
+        "review_start": 184,
+        "review_end": 196,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 2,
+        "start": 63,
+        "end": 75,
+        "text": "hindi gumana",
+        "review_start": 184,
+        "review_end": 196,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Reported failure on one cheap low-capacity power bank; works on two branded ones. Supports a source-dependent operation limitation, not a diagnosis of a broken motor."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 41,
+    "review_id": "100564517760",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Lower output than a usual fan is stated and accepted. Mumurahin describes the external power bank, not fan quality.",
+    "review_excerpt": "Quality:fair Performance:fair (see note sa dulo) Not bad para sa presyo. Hindi pareho ang lakas as usual na electeic fan pero ok na ok na to create breeze, pwede na for brownout Note: hindi gumana sa mumurahin ko na powerbank na low capacity. Gumana lang sa dalawang original/branded ko na powerbank",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi pareho ang lakas as usual na electeic fan"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 12,
+        "text": "Hindi pareho",
+        "review_start": 73,
+        "review_end": 85,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 12,
+        "text": "Hindi pareho",
+        "review_start": 73,
+        "review_end": 85,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Lower output than a usual fan is stated and accepted. Mumurahin describes the external power bank, not fan quality."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 42,
+    "review_id": "107076151427",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow requiring aim at one person.",
+    "review_excerpt": "Performance:mdyo mahina un buga ng hangin dapat nkatutuk lng sa 1 tao",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:mdyo mahina un buga ng hangin dapat nkatutuk lng sa 1 tao"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 17,
+        "end": 23,
+        "text": "mahina",
+        "review_start": 17,
+        "review_end": 23,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 17,
+        "end": 23,
+        "text": "mahina",
+        "review_start": 17,
+        "review_end": 23,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow requiring aim at one person."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 44,
+    "review_id": "97343678509",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak output requiring closer placement.",
+    "review_excerpt": "Okay naman siya pero mahina buga kailngan lapit pa",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "pero mahina buga kailngan lapit pa"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 21,
+        "review_end": 27,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 5,
+        "end": 11,
+        "text": "mahina",
+        "review_start": 21,
+        "review_end": 27,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak output requiring closer placement."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 46,
+    "review_id": "108576685121",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow despite useful operation; cord also too short to hang.",
+    "review_excerpt": "Quiet:Although it is not noisy pero masyadong maikli Ang cord kaya Hindi ko siya masabit. Ginamit ko nalang Ang stand ng speaker namin para maging electric fan Quality:Serves its purpose Naman. Gamit Lalo na kung brownout Yun nga lang mahina Ang hangin.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Gamit Lalo na kung brownout Yun nga lang mahina Ang hangin."
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 41,
+        "end": 47,
+        "text": "mahina",
+        "review_start": 235,
+        "review_end": 241,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 41,
+        "end": 47,
+        "text": "mahina",
+        "review_start": 235,
+        "review_end": 241,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow despite useful operation; cord also too short to hang."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 47,
+    "review_id": "104704184631",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Moderately weak airflow despite acceptance; possible adaptor explanation is retained.",
+    "review_excerpt": "Quality:parang ok naman ung quality ng fan.. walang sira, sana magtagal Performance:medjo mahina ang hangin pero ayos lang naman.. siguro need ko ng mas mataas na watt ng adaptor.. mamaya pa tlga naming magagamit kasi wala pang mag kakabit, hehe maybe mag update nlng next time :)",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "walang sira, sana magtagal Performance:medjo mahina ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 45,
+        "end": 51,
+        "text": "mahina",
+        "review_start": 90,
+        "review_end": 96,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 45,
+        "end": 51,
+        "text": "mahina",
+        "review_start": 90,
+        "review_end": 96,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Moderately weak airflow despite acceptance; possible adaptor explanation is retained."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 53,
+    "review_id": "103439074108",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Performance explicitly mahina despite good quality.",
+    "review_excerpt": "Quality:maganda Performance:mahina nga lang",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quality:maganda Performance:mahina nga lang"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 34,
+        "text": "Performance:mahina",
+        "review_start": 16,
+        "review_end": 34,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 16,
+        "end": 34,
+        "text": "Performance:mahina",
+        "review_start": 16,
+        "review_end": 34,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Performance explicitly mahina despite good quality."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 84,
+    "review_id": "116136506713",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak daytime airflow on hot days. This is quality feedback, not device overheating.",
+    "review_excerpt": "Best Feature:ok naman sya SA Gabi gamitin bago ramdam Ang hangin😁 Performance:sakto lang ung hangin pag Gabi lang..pag araw Kasi talo Ng init,mahina lang e.. Product Quality:10/10 Thank you for being responsible seller 😍",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Performance:sakto lang ung hangin pag Gabi lang..pag araw Kasi talo Ng init,mahina lang e.."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 71,
+        "end": 82,
+        "text": "init,mahina",
+        "review_start": 137,
+        "review_end": 148,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 71,
+        "end": 82,
+        "text": "init,mahina",
+        "review_start": 137,
+        "review_end": 148,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak daytime airflow on hot days. This is quality feedback, not device overheating."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 244,
+    "review_id": "116136509947",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong airflow, but accepted for outages; limitation remains.",
+    "review_excerpt": "Okay naman working,sana matagal masira. Hindi ganun kalakas ang hangin pero oks na din if brownout",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi ganun kalakas ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 40,
+        "review_end": 59,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 40,
+        "review_end": 59,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong airflow, but accepted for outages; limitation remains."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 258,
+    "review_id": "116136510061",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong, not very weak: qualified output limitation, not a mechanical failure.",
+    "review_excerpt": "Worth th price. Hindi ganun kalakas hangin. Hindi rin ganun kahina. This is passive lng, power bank is thr main source para gumana.",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi ganun kalakas hangin."
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 16,
+        "review_end": 35,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Hindi ganun kalakas",
+        "review_start": 16,
+        "review_end": 35,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong, not very weak: qualified output limitation, not a mechanical failure."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 276,
+    "review_id": "97340314983",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not very strong but sufficient: qualified output limitation, not a mechanical failure.",
+    "review_excerpt": "Working ang product. Very secure. Sakto lang naman ang hangin nya. Di sya ganun kalakas pero sapat na. 🙂",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 3,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Di sya ganun kalakas"
+    ],
+    "spans": [
+      {
+        "sentence": 3,
+        "start": 0,
+        "end": 20,
+        "text": "Di sya ganun kalakas",
+        "review_start": 67,
+        "review_end": 87,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 3,
+        "start": 0,
+        "end": 20,
+        "text": "Di sya ganun kalakas",
+        "review_start": 67,
+        "review_end": 87,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not very strong but sufficient: qualified output limitation, not a mechanical failure."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 327,
+    "review_id": "104364493696",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak airflow requiring closer installation despite recommendation.",
+    "review_excerpt": "Product Quality:9/10 i dont know kung tatagal sya but convinient to use specially pag brownout Performance:7/10 medyo mahina lang talaga sya ng buga ng hangin kailangan mas malapitan ang install pero atleast goods narin dahil nga 5v na xa any powerbank magagamit sya.. Best Feature:magagamit sya for camping outdoor specially sa mainit na panahon at mostly usefull talaga sya pag brownout highly recommended for emergency use..thank you seller",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "but convinient to use specially pag brownout Performance:7/10 medyo mahina lang talaga sya ng buga ng hangin kailangan mas malapitan ang install"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 68,
+        "end": 74,
+        "text": "mahina",
+        "review_start": 118,
+        "review_end": 124,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 68,
+        "end": 74,
+        "text": "mahina",
+        "review_start": 118,
+        "review_end": 124,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak airflow requiring closer installation despite recommendation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 356,
+    "review_id": "93799823182",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not strong airflow but sufficient for sleep; expectation and price qualifications retained.",
+    "review_excerpt": "Performance:steady and quiet siya. . gusto ko yung of nags start hehe Quality:ok naman quality Hindi siya malakas ang hangin pero sapat na para makatulog ka. .. Manage your expectation sa presyo. .. Pero for me, ok siya pang backup. ..",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "gusto ko yung of nags start hehe Quality:ok naman quality Hindi siya malakas ang hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 58,
+        "end": 76,
+        "text": "Hindi siya malakas",
+        "review_start": 95,
+        "review_end": 113,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 58,
+        "end": 76,
+        "text": "Hindi siya malakas",
+        "review_start": 95,
+        "review_end": 113,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not strong airflow but sufficient for sleep; expectation and price qualifications retained."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 367,
+    "review_id": "113469871696",
+    "product_category": "small_appliance",
+    "flag": "not_as_described",
+    "status": "supported",
+    "judgment": "Only one of two ordered units has arrived; the other remains in delivery tracking. Delivery concern, not proven product defect.",
+    "review_excerpt": "Maganda Ang item Wala Ako masabi sa products, kaso lang dalawa order ko nito hiwalay Sila same date minoto lang Ang pagitan kaso Isa lang dumating Ang Isa naka assign delivery rider parin till now sabi Ng rider kanina Wala daw hub nila nakita ko sa tracking e andyan na sya ano Kaya nangyare",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 2,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "kaso Isa lang dumating Ang Isa naka assign delivery rider parin till now sabi Ng rider kanina Wala daw hub nila nakita ko sa tracking e andyan na sya ano Kaya nangyare"
+    ],
+    "spans": [
+      {
+        "sentence": 2,
+        "start": 5,
+        "end": 22,
+        "text": "Isa lang dumating",
+        "review_start": 129,
+        "review_end": 146,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 2,
+        "start": 5,
+        "end": 22,
+        "text": "Isa lang dumating",
+        "review_start": 129,
+        "review_end": 146,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Only one of two ordered units has arrived; the other remains in delivery tracking. Delivery concern, not proven product defect."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 374,
+    "review_id": "93435233141",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Weak but usable during outages; qualified output complaint remains.",
+    "review_excerpt": "ok na ok mahina sya pero pwede na sa brown out kaysa mag paypay",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "ok na ok mahina sya"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 9,
+        "end": 15,
+        "text": "mahina",
+        "review_start": 9,
+        "review_end": 15,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 9,
+        "end": 15,
+        "text": "mahina",
+        "review_start": 9,
+        "review_end": 15,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Weak but usable during outages; qualified output complaint remains."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 376,
+    "review_id": "98401434626",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Not strong airflow despite usefulness and quiet operation.",
+    "review_excerpt": "Quality is good. Hindi malakas masyado hangin pero its useful as ceiling fan lalo na kung brownout. Very quiet, wala halos tunog. Mabilis lang iset up",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 1,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Hindi malakas masyado hangin"
+    ],
+    "spans": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Hindi malakas",
+        "review_start": 17,
+        "review_end": 30,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 1,
+        "start": 0,
+        "end": 13,
+        "text": "Hindi malakas",
+        "review_start": 17,
+        "review_end": 30,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Not strong airflow despite usefulness and quiet operation."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 398,
+    "review_id": "105078740719",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow explicitly hindi kalakasan.",
+    "review_excerpt": "Quiet:Yes quiet Quality:Hopefully tumagal sya Hindi kalakasan yung buga ng hangin nya",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Quiet:Yes quiet Quality:Hopefully tumagal sya Hindi kalakasan yung buga ng hangin nya"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 46,
+        "end": 61,
+        "text": "Hindi kalakasan",
+        "review_start": 46,
+        "review_end": 61,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 46,
+        "end": 61,
+        "text": "Hindi kalakasan",
+        "review_start": 46,
+        "review_end": 61,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow explicitly hindi kalakasan."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 411,
+    "review_id": "107307134273",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow weaker than a clip fan, accepted for outages.",
+    "review_excerpt": "mahina lang ang buga ng hangin kumpara sa clip fan . pero ok na sya pang brown out . salamat po",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "mahina lang ang buga ng hangin kumpara sa clip fan ."
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 0,
+        "end": 6,
+        "text": "mahina",
+        "review_start": 0,
+        "review_end": 6,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow weaker than a clip fan, accepted for outages."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 415,
+    "review_id": "83944516707",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Very weak airflow and wasted-money complaint.",
+    "review_excerpt": "Maganda ung items kaya lang super Hina ng hangin 5v at 5wattslang Pala sayang lang Pera ko",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Maganda ung items kaya lang super Hina ng hangin 5v at 5wattslang Pala sayang lang Pera ko"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 34,
+        "end": 38,
+        "text": "Hina",
+        "review_start": 34,
+        "review_end": 38,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 34,
+        "end": 38,
+        "text": "Hina",
+        "review_start": 34,
+        "review_end": 38,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Very weak airflow and wasted-money complaint."
+      }
+    ],
+    "model_score": null
+  },
+  {
+    "version": "candidate",
+    "review_index": 457,
+    "review_id": "110259028846",
+    "product_category": "small_appliance",
+    "flag": "quality",
+    "status": "supported",
+    "judgment": "Airflow slightly weaker than clip fan, qualified as good value; comparison retained.",
+    "review_excerpt": "Nawalan kame ng kuryente bandang 12am gang 4 am nakasalpak sya sa romoss powerbank ko 20k mAh straight 1 bar lng naibawas nia ang lakas ng hangin nia ay mahina ng kaunti sa clip fan pero para sa tulad Kong budget lng dn sobrang sulit na nito Lalo pag may Bata",
+    "detector_source": [
+      "keyword_rule"
+    ],
+    "detector_name": "category/general keyword rules",
+    "sentence_detector_scores": [
+      {
+        "sentence": 0,
+        "score": null
+      }
+    ],
+    "evidence_state": "keyword_span",
+    "evidence_sentences": [
+      "Nawalan kame ng kuryente bandang 12am gang 4 am nakasalpak sya sa romoss powerbank ko 20k mAh straight 1 bar lng naibawas nia ang lakas ng hangin nia ay mahina ng kaunti sa clip fan"
+    ],
+    "spans": [
+      {
+        "sentence": 0,
+        "start": 153,
+        "end": 159,
+        "text": "mahina",
+        "review_start": 153,
+        "review_end": 159,
+        "source": "keyword_rule"
+      }
+    ],
+    "span_audit": [
+      {
+        "sentence": 0,
+        "start": 153,
+        "end": 159,
+        "text": "mahina",
+        "review_start": 153,
+        "review_end": 159,
+        "source": "keyword_rule",
+        "status": "supported",
+        "judgment": "Airflow slightly weaker than clip fan, qualified as good value; comparison retained."
+      }
+    ],
+    "model_score": null
+  }
+]

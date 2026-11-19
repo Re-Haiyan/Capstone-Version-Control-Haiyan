@@ -545,7 +545,8 @@ def sentence_exempt(category: str | None, label: str, normalized: str) -> str | 
     return None
 
 
-def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3) -> str | None:
+def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3,
+              *, review_context: str | None = None) -> str | None:
     """The reason a flagged phrase is not a complaint in this category, or None.
 
     `normalized` is the sentence the span was found in. Words within `reach`
@@ -554,6 +555,10 @@ def exemption(category: str | None, label: str, normalized: str, span: tuple[int
     if not category or PRODUCT_CATEGORY_OFF:
         return None
     start, end = span
+    from .concern_context import phrase_reason
+    interpreted = phrase_reason(category, label, normalized, span, review_context)
+    if interpreted:
+        return interpreted
     reason = denied(category, label, normalized, span)
     if reason:
         return reason

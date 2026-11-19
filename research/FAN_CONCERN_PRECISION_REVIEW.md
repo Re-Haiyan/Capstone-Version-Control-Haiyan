@@ -1,5 +1,7 @@
 # Fan concern precision review — NO-GO
 
+> Historical audit of 73646d0. Its remaining-fan blockers are addressed and re-audited in the [follow-up review](FAN_REMAINING_EVIDENCE_REVIEW.md); this document preserves the earlier findings.
+
 Production was read-only: `4eab8ea1b3d7ffa7660343a82cfe969436cbd80b`, systemd `defaketive` active, PID 322622. Work starts at `23b1090627c0c42900b81ecac6f911371800b7a5`, on `feature/fan-concern-precision-23b1090`. Resolve the tested candidate with `git rev-parse HEAD`; the VM rollback manifest records that exact commit after publication. No merge, deployment, restart or saved-report rewrite is authorized or performed.
 
 ## Exact audit reconciliation

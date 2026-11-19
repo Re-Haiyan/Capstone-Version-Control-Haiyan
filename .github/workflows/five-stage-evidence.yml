@@ -1,7 +1,7 @@
 ﻿name: Five-stage evidence regression
 on:
   push:
-    branches: [feature/five-stage-evidence-4eab8ea, feature/fan-concern-precision-23b1090]
+    branches: [feature/five-stage-evidence-4eab8ea, feature/fan-concern-precision-23b1090, feature/fan-remaining-evidence-73646d0]
   pull_request:
     branches: [feature/validated-category-release-ed91291]
 permissions:
