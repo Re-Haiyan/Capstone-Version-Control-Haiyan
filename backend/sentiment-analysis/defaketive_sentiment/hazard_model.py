@@ -160,7 +160,7 @@ NEGATION_D_04_REVISION = "f9"
 # the raw word the reviewer wrote can. A bare "kuryente" is excluded unless
 # "amoy" (smells of electricity) stands in the two words before it.
 POWER_SUPPLY_WORD = "kuryente"
-POWER_SUPPLY_REVISION = "f10"
+POWER_SUPPLY_REVISION = "f10a"
 # o1 (2 Nov 2026): "the battery lasts so long that I do not charge it for 2 days" is the reviewer's own habit, not a
 # charging fault. A "not charge" term right after a first-person "I/we do/did", with "it/them" after it, is left out.
 OWN_ACTION_REVISION = "o1"
@@ -1090,7 +1090,17 @@ class LexiconHazardTagger:
                         and term == POWER_SUPPLY_WORD
                         and raw_span
                         # The raw span can carry the punctuation after the word ("kuryente.").
-                        and re.sub(r"\W+", "", raw[raw_span[0] : raw_span[1]].casefold()) == POWER_SUPPLY_WORD
+                        and (
+                            re.sub(r"\W+", "", raw[raw_span[0] : raw_span[1]].casefold()) == POWER_SUPPLY_WORD
+                            # Provenance can include punctuation-joined words.
+                            # Only extend the exclusion for explicit savings;
+                            # nakuryente and separate hazards still count.
+                            or (
+                                re.match(r"kuryente\b", raw[raw_span[0] : raw_span[1]], re.I)
+                                and re.search(r"\b(?:tipid|matipid)\s+(?:a|sa|ang|ng)?\s*$",
+                                              raw[max(0, raw_span[0] - 30) : raw_span[0]], re.I)
+                            )
+                        )
                         and "amoy" not in re.findall(r"[\w']+", normalized[: match.start()])[-2:]
                     ):
                         reason = "power_supply"
@@ -1955,6 +1965,7 @@ class HazardBadgeModel:
         # what they are matched against; the baseline's own version joins
         # model_version so saved reports are redone when the line moves.
         self.checker_version = self.model_version
+        self.model_version += "+context-evidence-1"
         baselines_version = (getattr(self.aggregator, "baselines", None) or {}).get("version")
         if baselines_version:
             self.model_version = f"{self.model_version}+{baselines_version}"

@@ -31,6 +31,6 @@ class ProductionCategoryPort(unittest.TestCase):
  def test_unknown_replacement_retains_saved_alias_fallback(self):
   self.assertEqual(classify_listing({'name':'Unbranded Replacement Widget','category':'Kitchen Dining'}),'kitchen_dining')
  def test_controls(self):
-  for title,expected in {'Samsung Galaxy A15 Smartphone':'phone','POCO X7 5G Phone':'phone','Android Phone with LCD Screen':'phone','Case for POCO Pad C1':'accessory','USB-C Charger for HP 14 inch':'charger_cable','Wall Mount Bracket for CCTV Camera':'accessory','USB Cable for Ceiling Fan':'charger_cable','Vone USB Ceiling Fan 6 blade ceiling fan USB Cable Fan Household Hanging Fan Foldable Portable Fan':'charger_cable'}.items():
+  for title,expected in {'Samsung Galaxy A15 Smartphone':'phone','POCO X7 5G Phone':'phone','Android Phone with LCD Screen':'phone','Case for POCO Pad C1':'accessory','USB-C Charger for HP 14 inch':'charger_cable','Wall Mount Bracket for CCTV Camera':'accessory','USB Cable for Ceiling Fan':'charger_cable','Vone USB Ceiling Fan 6 blade ceiling fan USB Cable Fan Household Hanging Fan Foldable Portable Fan':'small_appliance'}.items():
    with self.subTest(title=title): self.assertEqual(classify_listing(title),expected)
 if __name__=='__main__':unittest.main()

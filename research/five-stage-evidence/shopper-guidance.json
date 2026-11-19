@@ -1,0 +1,18 @@
+{
+  "reports": 65,
+  "grounded_highlight_quotes": 397,
+  "guidance_changes": [
+    {
+      "set": "candidate",
+      "index": 202,
+      "before": {
+        "kind": "caution",
+        "headline": "Based on the analyzed reviews, we recommend buying with caution because some reviewers mentioned possible safety concerns."
+      },
+      "after": {
+        "kind": "consider",
+        "headline": "Based on the analyzed reviews, we recommend considering this product because most feedback is positive and no warning-level concerns were detected."
+      }
+    }
+  ]
+}

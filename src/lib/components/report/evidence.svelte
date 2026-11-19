@@ -140,8 +140,17 @@
 				{#if context}
 					<details class="text-muted-foreground text-xs" data-review-stages>
 						<summary class="cursor-pointer">Sentiment and product context</summary>
-						<p class="mt-2">Initial model sentiment: {context.initial_label}. Category interpretation: {context.context_signal ?? (context.status === 'expected_behavior' ? 'normal product behavior' : context.status === 'unclassified' ? 'generic interpretation' : 'no clear adjustment')}.</p>
-						{#if context.matched_profile_phrase}<p>Matched wording: “{context.matched_profile_phrase}”.</p>{/if}
+						<p class="mt-2">Initial model sentiment: {context.initial_label}. Category interpretation: {context.mixed_feedback ? 'mixed feedback; no single interpretation' : context.context_signal ?? (context.status === 'expected_behavior' ? 'normal product behavior' : context.status === 'unclassified' ? 'Unclassified; generic interpretation' : 'unclear; abstained')}.</p>
+						{#if review.sentiment_analysis?.sentiment?.probabilities}
+							<p>Initial model scores: {Object.entries(review.sentiment_analysis.sentiment.probabilities).map(([label, value]) => `${label}: ${(value * 100).toFixed(1)}%`).join(', ')}.</p>
+						{/if}
+						{#if context.observations?.length}
+							<ul class="list-disc pl-4">
+								{#each context.observations as observation}
+									<li>{observation.negated ? 'Negated wording; abstained' : observation.interpretation.replaceAll('_', ' ')}: “{observation.text}”.</li>
+								{/each}
+							</ul>
+						{:else if context.matched_profile_phrase}<p>Earlier matched wording: “{context.matched_profile_phrase}”.</p>{/if}
 						<p>The original sentiment is retained. Concern checks run independently on this review.</p>
 					</details>
 				{/if}
