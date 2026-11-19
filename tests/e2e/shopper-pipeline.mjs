@@ -27,10 +27,10 @@ try {
 		if (card.name === 'Acceptance Phone Charger Positive Hazard') {
 			assert.match(await page.locator('main').innerText(), /possible safety concern|safety concern/i);
 			await page.getByRole('button', { name: 'Read the flagged review', exact: true }).click();
-			await page.locator('[data-review-stages] summary').click();
-			assert.match(await page.locator('[data-review-stages]').innerText(), /Initial model sentiment: positive/);
-			assert.match(await page.getByRole('tabpanel', { name: 'Reviews' }).innerText(), /cable sparked once/);
-			assert.match(await page.locator('main').innerText(), /Review-reported signals/);
+			const review = await page.locator('#report-evidence article').filter({ hasText: 'cable sparked once' }).innerText();
+			assert.match(review, /Positive/);
+			assert.match(review, /safety/i);
+			assert.doesNotMatch(review, /Sentiment and product context|Review-reported signals/);
 			const [download] = await Promise.all([
 				page.waitForEvent('download'), page.getByRole('button', { name: 'Download report', exact: true }).click()
 			]);

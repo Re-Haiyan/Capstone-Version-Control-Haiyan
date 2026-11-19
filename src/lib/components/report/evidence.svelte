@@ -129,7 +129,6 @@
 			{@const reported = reviewTags(review).map((t) => ({ category: t, label: labelNames[t] })).filter((t) => t.label).sort((a, b) => categoryPlace(a.category) - categoryPlace(b.category))}
 			{@const matched = [...matchedWords(review).keys()].slice(0, 4)}
 			{@const sentiment = sentimentLabel(review)}
-			{@const context = review.sentiment_analysis?.sentiment?.category_context}
 			<article class="reveal grid gap-2 rounded-lg border p-4" style="--i:{index % 6}">
 				<header class="flex flex-wrap items-center gap-3 text-xs">
 					<Stars value={review.rating} />
@@ -137,37 +136,12 @@
 					{#if review.time || review.date}<time class="text-muted-foreground">{review.time || review.date}</time>{/if}
 				</header>
 				<p class="text-sm"><Highlighted pieces={highlightReview(review)} /></p>
-				{#if context}
-					<details class="text-muted-foreground text-xs" data-review-stages>
-						<summary class="cursor-pointer">Sentiment and product context</summary>
-						<p class="mt-2">Initial model sentiment: {context.initial_label}. Category interpretation: {context.mixed_feedback ? 'mixed feedback; no single interpretation' : context.context_signal ?? (context.status === 'expected_behavior' ? 'normal product behavior' : context.status === 'unclassified' ? 'Unclassified; generic interpretation' : 'unclear; abstained')}.</p>
-						{#if review.sentiment_analysis?.sentiment?.probabilities}
-							<p>Initial model scores: {Object.entries(review.sentiment_analysis.sentiment.probabilities).map(([label, value]) => `${label}: ${(value * 100).toFixed(1)}%`).join(', ')}.</p>
-						{/if}
-						{#if context.observations?.length}
-							<ul class="list-disc pl-4">
-								{#each context.observations as observation}
-									<li>{observation.negated ? 'Negated wording; abstained' : observation.interpretation.replaceAll('_', ' ')}: “{observation.text}”.</li>
-								{/each}
-							</ul>
-						{:else if context.matched_profile_phrase}<p>Earlier matched wording: “{context.matched_profile_phrase}”.</p>{/if}
-						<p>The original sentiment is retained. Concern checks run independently on this review.</p>
-						{#if review.sentiment_analysis?.concern_interpretations?.length}
-							<ul class="mt-2 list-disc pl-4">
-								{#each review.sentiment_analysis.concern_interpretations as observation}
-									<li>Concern interpretation ({observation.category}): “{observation.text}” — {observation.reason}.</li>
-								{/each}
-							</ul>
-						{/if}
-					</details>
-				{/if}
 				{#if reported.length || matched.length}
 					<div class="flex flex-wrap gap-1.5">
 						{#each reported as tag (tag.category)}<Badge variant="outline" class="{tag.category === 'safety' && serious ? 'tone-safety' : 'tone-caution'} border-(--tone)/45 bg-(--tone-soft) text-foreground [&>svg]:text-(--tone)">{tag.label}</Badge>{/each}
 						{#each matched as text (text)}<Badge variant="secondary">{text}</Badge>{/each}
 					</div>
 				{/if}
-				{#if reported.length}<p class="text-muted-foreground text-xs">Review-reported signals; these incidents have not been independently verified.</p>{/if}
 			</article>
 		{:else}
 			<p class="text-muted-foreground text-sm">No reviews match these filters.</p>

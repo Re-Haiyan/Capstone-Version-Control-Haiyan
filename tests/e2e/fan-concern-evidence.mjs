@@ -32,9 +32,10 @@ try {
    assert.match(await page.locator('section[aria-labelledby=reported-concerns-title]').innerText(),/safety/i);
    await page.getByRole('tab',{name:/Reviews/}).click();
    const article=page.locator('#report-evidence article').filter({hasText:'natunaw ang plug'}).first();
-   assert.match(await article.innerText(),/Review-reported signals/);
-   await article.locator('details').evaluate(el=>{el.open=true;});
-   const text=await article.innerText();assert.match(text,/Initial model sentiment: neutral/);assert.match(text,/Initial model scores:/);
+   const text=await article.innerText();
+   assert.match(text,/natunaw ang plug/i);
+   assert.match(text,/safety/i);
+   assert.doesNotMatch(text,/Sentiment and product context|Review-reported signals/);
   }
   if(kind==='current'){
    await page.getByRole('tab',{name:/Reviews/}).click();
@@ -45,8 +46,6 @@ try {
     await page.getByRole('searchbox',{name:'Filter reviews by word'}).fill(needle);
     const article=page.locator('#report-evidence article').filter({hasText:needle}).first();
     await article.waitFor();assert.equal(await article.locator('.tone-caution,.tone-safety').count(),0,needle);
-    await article.locator('details').evaluate(el=>{el.open=true;});const text=await article.innerText();
-    assert.match(text,/Concern interpretation/);assert.match(text,/Initial model scores:/);
    }
   }
   const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Download report',exact:true}).click();const download=await downloadPromise;

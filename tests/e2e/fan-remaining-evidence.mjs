@@ -35,9 +35,10 @@ try {
    assert.match(await page.locator('section[aria-labelledby=reported-concerns-title]').innerText(),/safety/i);
    await page.getByRole('tab',{name:/Reviews/}).click();
    const article=page.locator('#report-evidence article').filter({hasText:'natunaw ang plug'}).first();
-   assert.match(await article.innerText(),/Review-reported signals/);
-   await article.locator('details').evaluate(el=>{el.open=true;});
-   const text=await article.innerText();assert.match(text,/Initial model sentiment: neutral/);assert.match(text,/Initial model scores:/);
+   const text=await article.innerText();
+   assert.match(text,/natunaw ang plug/i);
+   assert.match(text,/safety/i);
+   assert.doesNotMatch(text,/Sentiment and product context|Review-reported signals/);
   }
   if(kind==='current'){
    await page.getByRole('tab',{name:/Reviews/}).click();
@@ -48,8 +49,6 @@ try {
     await page.getByRole('searchbox',{name:'Filter reviews by word'}).fill(needle);
     const article=page.locator('#report-evidence article').filter({hasText:needle}).first();
     await article.waitFor();assert.equal(await article.locator('.tone-caution,.tone-safety').count(),0,needle);
-    await article.locator('details').evaluate(el=>{el.open=true;});const text=await article.innerText();
-    assert.match(text,/Concern interpretation/);assert.match(text,/Initial model scores:/);
    }
   }
   if(kind==='current'){
@@ -62,7 +61,7 @@ try {
     await article.waitFor();
     assert.equal(await article.locator('.tone-caution,.tone-safety').count(),flags.length,review.content);
     const text=await article.innerText();
-    assert.match(text,/Review-reported signals/);
+    assert.doesNotMatch(text,/Sentiment and product context|Review-reported signals/);
     for(const flag of flags){
      const evidence=review.sentiment_analysis.review_evidence[flag];
      assert(evidence.spans.length>0,flag+' requires literal supporting evidence');
