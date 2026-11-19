@@ -161,6 +161,19 @@ class RealCheckpointMatrix(unittest.TestCase):
 
 
 class ShopperRoutes(unittest.TestCase):
+    def test_inventory_unwraps_seed_products_and_counts_their_reviews(self):
+        import gzip
+        sys.path.insert(0, str(ROOT / "research"))
+        from shopper_inventory import inventory
+        with tempfile.TemporaryDirectory() as folder:
+            seed = Path(folder) / "saved.json.gz"
+            with gzip.open(seed, "wt", encoding="utf-8") as stream:
+                json.dump([{"product": product(texts=["Works perfectly."])}], stream)
+            result = inventory(Path(folder) / "absent.db", [seed])
+        self.assertEqual(result["counts"]["reviews"], 1)
+        self.assertEqual(result["counts"]["zero_review_products"], 0)
+        self.assertEqual(result["categories"], {"powerbank": 1})
+
     def test_keyword_product_and_category_commands(self):
         from server_under_test import webapp
         cases = (("power bank", None), ("https://www.lazada.com.ph/products/example-i123456.html", "--product-url"),

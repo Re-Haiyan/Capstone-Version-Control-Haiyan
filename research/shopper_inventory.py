@@ -27,6 +27,10 @@ def inventory(database: Path, results: list[Path], scraper_root: Path | None = N
         for product in products:
             if not isinstance(product, dict):
                 continue
+            # Starter exports wrap each saved product with its source metadata.
+            # Count the actual listing and reviews rather than the wrapper.
+            if isinstance(product.get("product"), dict):
+                product = product["product"]
             canonical = classify_listing(product)
             categories[canonical] += 1
             for field in ("category", "product_category", "product_type"):
