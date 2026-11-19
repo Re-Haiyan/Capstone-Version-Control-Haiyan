@@ -126,7 +126,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     ("laptop", "electronics",
      r"\b(?:laptops?|macbook|chromebook|ultrabook|thinkpad|ideapad|vivobook|zenbook|notebook pc|desktop pc|"
      r"all-in-one pc)\b"),
-    ("tablet", "electronics", r"\b(?:tablets?|ipad|galaxy tab|redmi pad|mi pad)\b"),
+    ("tablet", "electronics", r"\b(?:tablets?|ipad|galaxy tab|redmi pad|mi pad|poco pad)\b"),
     ("computer_peripheral", "electronics",
      r"\b(?:keyboards?|mouse|mice|printers?|scanners?|routers?|modems?|flash ?drives?|pen ?drives?|usb drives?|"
      r"memory cards?|sd cards?|micro ?sd|hard (?:disk|drive)s?|hdd|ssd|webcam|graphics cards?|gpu|motherboards?|"
@@ -315,6 +315,9 @@ def classify_listing(listing: Any) -> str:
             if name == "haircare" and re.search(r"\bair[- ]?conditioners?\b", head, re.I):
                 continue
             return name
+    # LCD parts named before the compatible phone are accessories.
+    if re.match(r"\s*(?:(?:original|oem|replacement)\s+)?lcd(?:\s+(?:display|screen))?\s+for\b", title, re.I):
+        return "accessory"
     # HP notebook listings can omit the word laptop and list only the display, CPU and OS.
     if (
         re.match(r"""\s*hp\s+(?:1[3-7](?:[.]\d)?)(?:["″]|\s*-?\s*inch\b)""", head, re.I)
@@ -339,7 +342,13 @@ def classify_listing(listing: Any) -> str:
             return "audio"
     for text in (*segments, title):
         for name, pattern in _COMPILED:
-            if pattern.search(text):
+            match = pattern.search(text)
+            if match:
+                # An explicit surveillance camera may mention a phone for viewing.
+                if name == "phone":
+                    camera = re.search(r"\b(?:cctv|ip security)\b.{0,45}\bcameras?\b", text, re.I)
+                    if camera and camera.start() < match.start():
+                        return "camera"
                 return name
     # Fill clear gaps without changing labels already assigned by the main rules.
     if re.search(r"\b(?:replacement|spare|cases?|covers?|mounts?|handles?|lids?)\b", head, re.I):

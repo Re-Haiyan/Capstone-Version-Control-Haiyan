@@ -106,6 +106,22 @@ class PanelCategoryRefinementTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(product_category.classify_listing(title), expected)
 
+    def test_device_names_take_priority_over_compatibility_words(self) -> None:
+        cases = {
+            'POCO Pad C1 | 4+64GB/6+128GB | 9.7" display Snapdragon': "tablet",
+            "POCO Pad C1 Protective Case": "accessory",
+            "TP-Link Official Store | Tapo C200C | WiFi IP Security CCTV Hidden Camera Connect to Cellphone": "camera",
+            "V380 PRO Dual Lens CCTV Camera connect to cellphone": "camera",
+            "Android Smartphone with CCTV Camera Viewer": "phone",
+            "Wall Mount Bracket for CCTV Camera": "accessory",
+            "Original LCD For Infinix Smart 8 / Smart 8 HD LCD Display With Frame Replacement": "accessory",
+            "OEM LCD Screen for iPhone 15": "accessory",
+            "Android Phone with LCD Screen": "phone",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing(title), expected)
+
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
         self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc8")
