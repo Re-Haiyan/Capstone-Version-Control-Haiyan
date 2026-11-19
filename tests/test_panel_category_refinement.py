@@ -57,9 +57,38 @@ class PanelCategoryRefinementTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(product_category.classify_listing({"name": title}), expected)
 
+    def test_hp_notebook_specs_without_laptop_keyword(self) -> None:
+        cases = {
+            'HP 14" HD AMD Athlon 7120 4GB RAM / 128GB UFS AMD Radeon Graphics Win 11 Home Moonlight Blue': "laptop",
+            'HP 15.6" Intel Core i5 8GB RAM Windows 11': "laptop",
+            'Sleeve for HP 14" AMD Athlon 4GB RAM Windows 11': "accessory",
+            'USB-C Charger for HP 14" AMD Athlon Windows 11': "charger_cable",
+            "Android Dual SIM 4GB RAM 128GB UFS": "phone",
+            "HP 14 inch Monitor": "tv_display",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing(title), expected)
+
+    def test_device_names_take_priority_over_compatibility_words(self) -> None:
+        cases = {
+            'POCO Pad C1 | 4+64GB/6+128GB | 9.7" display Snapdragon': "tablet",
+            "POCO Pad C1 Protective Case": "accessory",
+            "TP-Link Official Store | Tapo C200C | WiFi IP Security CCTV Hidden Camera Connect to Cellphone": "camera",
+            "V380 PRO Dual Lens CCTV Camera connect to cellphone": "camera",
+            "Android Smartphone with CCTV Camera Viewer": "phone",
+            "Wall Mount Bracket for CCTV Camera": "accessory",
+            "Original LCD For Infinix Smart 8 / Smart 8 HD LCD Display With Frame Replacement": "accessory",
+            "OEM LCD Screen for iPhone 15": "accessory",
+            "Android Phone with LCD Screen": "phone",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing(title), expected)
+
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
-        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc7")
+        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc8")
 
     def test_descriptions_do_not_choose_category(self) -> None:
         self.assertEqual(product_category.classify_listing(

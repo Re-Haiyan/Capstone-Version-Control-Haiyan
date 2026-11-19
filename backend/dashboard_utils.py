@@ -1436,15 +1436,11 @@ def _pc4_report_compatible(product: dict[str, Any], expected_version: str) -> bo
     return True
 
 
-def _pc7_report_compatible(product: dict[str, Any], expected_version: str) -> bool:
-    """Narrowly accept pc4/pc6 reports under pc7 only for unchanged categories.
-
-    pc7 disambiguates "air conditioner" vs "hair conditioner"; it changes no
-    model weights, hazard words or thresholds. Identical title-derived category
-    and group ensure the same category-specific hazard rule path. A changed
-    category MUST remain historical and require an explicit recheck.
-    """
-    if "+pc7+" not in expected_version:
+def _category_revision_report_compatible(product: dict[str, Any], expected_version: str) -> bool:
+    """Reuse older reports only when their title still takes the same hazard path."""
+    revisions = {"pc8": ("pc7", "pc6", "pc4"), "pc7": ("pc6", "pc4")}
+    current = next((revision for revision in revisions if f"+{revision}+" in expected_version), None)
+    if current is None:
         return False
     category = product.get("product_category")
     if not isinstance(category, str) or not category:
@@ -1471,19 +1467,19 @@ def _pc7_report_compatible(product: dict[str, Any], expected_version: str) -> bo
     ]
     if not versions:
         return False
-    for earlier in ("pc6", "pc4"):
-        previous = expected_version.replace("+pc7+", f"+{earlier}+", 1)
+    for earlier in revisions[current]:
+        previous = expected_version.replace(f"+{current}+", f"+{earlier}+", 1)
         if previous != expected_version and all(value == previous for value in versions):
             return True
     return False
 
 
 def analysis_is_current(products: list[dict[str, Any]]) -> bool:
-    """Check exact-model matches or narrowly validated pc4/pc6/pc7 equivalence.
+    """Check exact-model matches or narrowly validated category revision equivalence.
 
     All previously generated outputs remain byte-identical. An unchanged title
-    category under pc7 can safely follow the same hazard path; changed or
-    unknown categories remain stale until explicitly checked with pc7.
+    category can safely follow the same hazard path. Changed categories
+    remain stale until explicitly rechecked.
     """
     if not products:
         return False
@@ -1503,7 +1499,7 @@ def analysis_is_current(products: list[dict[str, Any]]) -> bool:
             continue
         if not (
             _pc4_report_compatible(product, expected_version)
-            or _pc7_report_compatible(product, expected_version)
+            or _category_revision_report_compatible(product, expected_version)
         ):
             return False
     return True
