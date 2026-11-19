@@ -30,7 +30,7 @@ try {
 			await page.locator('[data-review-stages] summary').click();
 			assert.match(await page.locator('[data-review-stages]').innerText(), /Initial model sentiment: positive/);
 			assert.match(await page.getByRole('tabpanel', { name: 'Reviews' }).innerText(), /cable sparked once/);
-			assert.match(await page.locator('main').innerText(), /Review-reported signals/);
+			assert.doesNotMatch(await page.getByRole('tabpanel', { name: 'Reviews' }).innerText(), /Review-reported signals/);
 			const [download] = await Promise.all([
 				page.waitForEvent('download'), page.getByRole('button', { name: 'Download report', exact: true }).click()
 			]);
@@ -43,6 +43,7 @@ try {
 			assert.ok(saved.comments[0].sentiment_analysis.review_evidence.safety.spans.length);
 			await page.getByRole('button', { name: 'How was this result reached?', exact: true }).click();
 			assert.equal(await page.getByRole('list', { name: 'Five stages of the product review analysis' }).locator('li').count(), 5);
+			assert.match(await page.getByRole('dialog').innerText(), /Reported concerns are not verified incidents/);
 			await page.keyboard.press('Escape');
 		} else if (card.name === 'Acceptance Empty Charger') {
 			assert.match(await page.getByRole('group', { name: 'Product review result' }).innerText(), /not enough|limited|too few/i);

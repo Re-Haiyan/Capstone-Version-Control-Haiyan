@@ -151,7 +151,6 @@
 						{#each matched as text (text)}<Badge variant="secondary">{text}</Badge>{/each}
 					</div>
 				{/if}
-				{#if reported.length}<p class="text-muted-foreground text-xs">Review-reported signals; these incidents have not been independently verified.</p>{/if}
 			</article>
 		{:else}
 			<p class="text-muted-foreground text-sm">No reviews match these filters.</p>
