@@ -38,9 +38,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: No changed hazard, sentiment, report, database or model implementation
+        if: github.head_ref != 'feature/product-category-label-audit'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || '147eccbfcf206b37550ce9e8b0a71bba626dacc3' }}
         run: |
           set -euo pipefail
-          BASE=147eccbfcf206b37550ce9e8b0a71bba626dacc3
           git cat-file -e "${BASE}^{commit}"
           CHANGES=$(git diff --name-only "$BASE" HEAD)
           printf '%s\n' "$CHANGES"

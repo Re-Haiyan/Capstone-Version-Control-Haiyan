@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only pc7 compatibility preflight on the VM's saved product database.
+"""Read-only category revision compatibility preflight on the VM's saved product database.
 
 Never rewrites saved reports. Counts potential category changes, exact legacy
 version matches, current vs stale, and unsafe compatibility. Suppresses titles,
@@ -18,6 +18,7 @@ def main() -> int:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkout",type=Path,required=True)
     parser.add_argument("--database",type=Path,required=True)
+    parser.add_argument("--expected-revision", choices=("pc7", "pc8"), default="pc7")
     parser.add_argument("--strict",action="store_true")
     args=parser.parse_args()
     root=args.checkout.resolve(strict=True)
@@ -27,11 +28,12 @@ def main() -> int:
     from defaketive_sentiment.product_category import classify_listing  # noqa: E402
 
     current=dashboard_utils.sentiment_model_version()
-    if "+pc7+" not in current:
-        raise RuntimeError("pc7 model-version stamp is missing; stop")
-    previous_versions=[
-        current.replace("+pc7+","+"+old+"+",1) for old in ("pc6","pc4")
-    ]
+    revision = args.expected_revision
+    stamp = f"+{revision}+"
+    if stamp not in current:
+        raise RuntimeError(f"{revision} model-version stamp is missing; stop")
+    legacy_revisions = ("pc7", "pc6", "pc4") if revision == "pc8" else ("pc6", "pc4")
+    previous_versions = [current.replace(stamp, f"+{old}+", 1) for old in legacy_revisions]
     summary=Counter()
     con=sqlite3.connect(f"file:{db.as_posix()}?mode=ro",uri=True)
     try:
@@ -63,7 +65,7 @@ def main() -> int:
         is_current=dashboard_utils.analysis_is_current([product])
         summary["current" if is_current else "stale"]+=1
         if legacy:
-            summary["legacy_pc4_pc6"]+=1
+            summary["legacy_reports"]+=1
             if mismatch and is_current:
                 summary["unsafe_mismatch_accepted"]+=1
             if not mismatch and not is_current:
@@ -76,7 +78,7 @@ def main() -> int:
         summary["unsafe_mismatch_accepted"] or
         summary["unexplained_legacy_stale"]
     ):
-        raise RuntimeError("pc7 saved-report compatibility: NO-GO")
+        raise RuntimeError(f"{revision} saved-report compatibility: NO-GO")
     return 0
 
 

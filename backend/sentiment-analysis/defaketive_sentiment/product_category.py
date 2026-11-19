@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc7"  # pc7: distinguish air conditioner from hair conditioner; older matching reports may be read as compatible
+PRODUCT_CATEGORY_REVISION = "pc8"  # Refine title matches for products and accessories.
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -67,7 +67,7 @@ OTHER = "other"
 _RULES: tuple[tuple[str, str, str], ...] = (
     # --- not a physical product at all ---
     ("digital_goods", "digital_services",
-     r"\b(?:e-?load|gift cards?|vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
+     r"\b(?:e-?load|gift cards?|(?:e[- ]?)?vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
      r"online course|event tickets?|concert tickets?|load promo|gcash)\b"),
     # --- things that are not the device they name ---
     ("stationery_books", "office_media",
@@ -126,7 +126,7 @@ _RULES: tuple[tuple[str, str, str], ...] = (
     ("laptop", "electronics",
      r"\b(?:laptops?|macbook|chromebook|ultrabook|thinkpad|ideapad|vivobook|zenbook|notebook pc|desktop pc|"
      r"all-in-one pc)\b"),
-    ("tablet", "electronics", r"\b(?:tablets?|ipad|galaxy tab|redmi pad|mi pad)\b"),
+    ("tablet", "electronics", r"\b(?:tablets?|ipad|galaxy tab|redmi pad|mi pad|poco pad)\b"),
     ("computer_peripheral", "electronics",
      r"\b(?:keyboards?|mouse|mice|printers?|scanners?|routers?|modems?|flash ?drives?|pen ?drives?|usb drives?|"
      r"memory cards?|sd cards?|micro ?sd|hard (?:disk|drive)s?|hdd|ssd|webcam|graphics cards?|gpu|motherboards?|"
@@ -258,6 +258,9 @@ _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in
 _SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
     (name, re.compile(pattern, re.I))
     for name, pattern in (
+        ("collectibles_hobbies", r"\bcollectible cards? booster (?:box(?:es)?|packs?)\b"),
+        ("electrical_supplies", r"\b(?:circuit breaker distribution (?:protection )?|electrical junction )(?:box(?:es)?|enclosures?)\b"),
+        ("household_cleaning", r"\b(?:liquid |laundry )detergent (?:refill )?kits?\b"),
         ("toys", r"\b(?:toy\s+cars?|rc\s+cars?|remote[- ]control(?:led)?\s+cars?|diecast(?:\s+cars?)?|hot\s+wheels)\b"),
         ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
         ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),
@@ -312,10 +315,48 @@ def classify_listing(listing: Any) -> str:
             if name == "haircare" and re.search(r"\bair[- ]?conditioners?\b", head, re.I):
                 continue
             return name
+    # LCD parts named before the compatible phone are accessories.
+    if re.match(r"\s*(?:(?:original|oem|replacement)\s+)?lcd(?:\s+(?:display|screen))?\s+for\b", title, re.I):
+        return "accessory"
+    # HP notebook listings can omit the word laptop and list only the display, CPU and OS.
+    if (
+        re.match(r"""\s*hp\s+(?:1[3-7](?:[.]\d)?)(?:["″]|\s*-?\s*inch\b)""", head, re.I)
+        and re.search(r"\b(?:amd (?:athlon|ryzen)|intel (?:core|celeron|pentium))\b", head, re.I)
+        and re.search(r"\bwin(?:dows)?\s*(?:10|11)\b", head, re.I)
+        and not re.search(r"\b(?:replacement|skins?|sleeves?|covers?|chargers?|adapters?|cases?)\b", head, re.I)
+    ):
+        return "laptop"
+    # USB power describes the ceiling fan; a replacement part still follows the standard rules.
+    if re.search(r"\busb[- ]ceiling fans?\b", head, re.I) and not re.search(
+        r"\b(?:replacement|spare|adapters?|covers?|mounts?|motors?|controllers?)\b", head, re.I
+    ):
+        return "small_appliance"
+    # A soundbar described as a speaker or stereo can include a cable in its title.
+    if re.match(
+        r"\s*(?:bluetooth\s+)?sound[- ]?bars?\s+(?:stereo|speakers?)\b"
+        r"(?!\s+(?:(?:audio|aux|usb|power)\s+)*(?:cables?|cords?)\b)",
+        head,
+        re.I,
+    ):
+        if not re.search(r"\b(?:replacement|spare|mounts?|brackets?|covers?|cases?)\b", head, re.I):
+            return "audio"
     for text in (*segments, title):
         for name, pattern in _COMPILED:
-            if pattern.search(text):
+            match = pattern.search(text)
+            if match:
+                # An explicit surveillance camera may mention a phone for viewing.
+                if name == "phone":
+                    camera = re.search(r"\b(?:cctv|ip security)\b.{0,45}\bcameras?\b", text, re.I)
+                    if camera and camera.start() < match.start():
+                        return "camera"
                 return name
+    # Fill clear gaps without changing labels already assigned by the main rules.
+    if re.search(r"\b(?:replacement|spare|cases?|covers?|mounts?|handles?|lids?)\b", head, re.I):
+        return OTHER
+    if re.search(r"\bsound[- ]bars?\b", head, re.I):
+        return "audio"
+    if re.search(r"\b(?:cast[- ]iron|non[- ]stick(?: (?:cast[- ])?iron)?) skillets?\b", head, re.I):
+        return "kitchen_dining"
     return OTHER
 
 
