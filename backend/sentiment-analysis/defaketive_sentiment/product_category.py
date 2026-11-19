@@ -315,6 +315,14 @@ def classify_listing(listing: Any) -> str:
             if name == "haircare" and re.search(r"\bair[- ]?conditioners?\b", head, re.I):
                 continue
             return name
+    # HP notebook listings can omit the word laptop and list only the display, CPU and OS.
+    if (
+        re.match(r"""\s*hp\s+(?:1[3-7](?:[.]\d)?)(?:["″]|\s*-?\s*inch\b)""", head, re.I)
+        and re.search(r"\b(?:amd (?:athlon|ryzen)|intel (?:core|celeron|pentium))\b", head, re.I)
+        and re.search(r"\bwin(?:dows)?\s*(?:10|11)\b", head, re.I)
+        and not re.search(r"\b(?:replacement|skins?|sleeves?|covers?|chargers?|adapters?|cases?)\b", head, re.I)
+    ):
+        return "laptop"
     # USB power describes the ceiling fan; a replacement part still follows the standard rules.
     if re.search(r"\busb[- ]ceiling fans?\b", head, re.I) and not re.search(
         r"\b(?:replacement|spare|adapters?|covers?|mounts?|motors?|controllers?)\b", head, re.I
