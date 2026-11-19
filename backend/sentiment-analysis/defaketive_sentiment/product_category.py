@@ -320,6 +320,15 @@ def classify_listing(listing: Any) -> str:
         r"\b(?:replacement|spare|adapters?|covers?|mounts?|motors?|controllers?)\b", head, re.I
     ):
         return "small_appliance"
+    # A soundbar described as a speaker or stereo can include a cable in its title.
+    if re.match(
+        r"\s*(?:bluetooth\s+)?sound[- ]?bars?\s+(?:stereo|speakers?)\b"
+        r"(?!\s+(?:(?:audio|aux|usb|power)\s+)*(?:cables?|cords?)\b)",
+        head,
+        re.I,
+    ):
+        if not re.search(r"\b(?:replacement|spare|mounts?|brackets?|covers?|cases?)\b", head, re.I):
+            return "audio"
     for text in (*segments, title):
         for name, pattern in _COMPILED:
             if pattern.search(text):
@@ -329,7 +338,7 @@ def classify_listing(listing: Any) -> str:
         return OTHER
     if re.search(r"\bsound[- ]bars?\b", head, re.I):
         return "audio"
-    if re.search(r"\b(?:cast[- ]iron|non[- ]stick) skillets?\b", head, re.I):
+    if re.search(r"\b(?:cast[- ]iron|non[- ]stick(?: (?:cast[- ])?iron)?) skillets?\b", head, re.I):
         return "kitchen_dining"
     return OTHER
 
