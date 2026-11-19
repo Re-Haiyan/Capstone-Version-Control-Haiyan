@@ -160,7 +160,7 @@ NEGATION_D_04_REVISION = "f9"
 # the raw word the reviewer wrote can. A bare "kuryente" is excluded unless
 # "amoy" (smells of electricity) stands in the two words before it.
 POWER_SUPPLY_WORD = "kuryente"
-POWER_SUPPLY_REVISION = "f10"
+POWER_SUPPLY_REVISION = "f10a"
 # o1 (2 Nov 2026): "the battery lasts so long that I do not charge it for 2 days" is the reviewer's own habit, not a
 # charging fault. A "not charge" term right after a first-person "I/we do/did", with "it/them" after it, is left out.
 OWN_ACTION_REVISION = "o1"
@@ -1021,7 +1021,8 @@ class LexiconHazardTagger:
                 return cue_class
         return None
 
-    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None) -> dict[str, Any]:
+    def tag_sentence(self, raw: str, rating: object = None, product_kind: str | None = None,
+                     *, review_context: str | None = None) -> dict[str, Any]:
         normalized, spans = text_norm.normalize_with_spans(raw)
         scores: dict[str, float] = {}
         tags: list[str] = []
@@ -1066,13 +1067,14 @@ class LexiconHazardTagger:
                     repeated = {"end": match.end(), "negated": negated}
                     raw_span = self._raw_span(match.span(), spans)
                     reason = self._excluded(category, term, normalized, match.span(), name_spans)
+                    category_reason = None
                     # Rules pc3: a phrase the product category's file lists is not a report on that kind of product
                     # ("init" is a heat hazard on a power bank and the weather on a shirt).
                     if (
                         reason is None
                         and product_kind
                         and self.rules == "0.4"
-                        and category_exemption(product_kind, category, normalized, match.span())
+                        and (category_reason := category_exemption(product_kind, category, normalized, match.span()))
                     ):
                         reason = "category"
                     if (
@@ -1090,7 +1092,17 @@ class LexiconHazardTagger:
                         and term == POWER_SUPPLY_WORD
                         and raw_span
                         # The raw span can carry the punctuation after the word ("kuryente.").
-                        and re.sub(r"\W+", "", raw[raw_span[0] : raw_span[1]].casefold()) == POWER_SUPPLY_WORD
+                        and (
+                            re.sub(r"\W+", "", raw[raw_span[0] : raw_span[1]].casefold()) == POWER_SUPPLY_WORD
+                            # Provenance can include punctuation-joined words.
+                            # Only extend the exclusion for explicit savings;
+                            # nakuryente and separate hazards still count.
+                            or (
+                                re.match(r"kuryente\b", raw[raw_span[0] : raw_span[1]], re.I)
+                                and re.search(r"\b(?:tipid|matipid)\s+(?:a|sa|ang|ng)?\s*$",
+                                              raw[max(0, raw_span[0] - 30) : raw_span[0]], re.I)
+                            )
+                        )
                         and "amoy" not in re.findall(r"[\w']+", normalized[: match.start()])[-2:]
                     ):
                         reason = "power_supply"
@@ -1102,6 +1114,7 @@ class LexiconHazardTagger:
                             "negated": negated,
                             "span": list(raw_span) if raw_span else None,
                             **({"excluded": reason} if reason else {}),
+                            **({"interpretation_reason": category_reason} if category_reason else {}),
                         }
                     )
                     if reason and not negated:
@@ -1145,6 +1158,7 @@ class LexiconHazardTagger:
 
         learned: dict[str, float] = {}
         gated: dict[str, str] = {}
+        concern_interpretations: list[dict[str, Any]] = []
         if self.learned is not None:
             from .hazard_learned import is_high_star, keyword_features
 
@@ -1169,6 +1183,13 @@ class LexiconHazardTagger:
                     # never to a sentence read as praise. The sentiment model
                     # runs only for the sentences where that is in question.
                     if on and category not in tags:
+                        from .concern_context import operation_reason
+                        operation = operation_reason(product_kind, category, normalized)
+                        if operation:
+                            gated[category] = "normal_operation_clause"
+                            concern_interpretations.append({"category": category, "text": raw,
+                                "reason": operation, "product_category": product_kind})
+                            continue
                         # Rules pc4: a sentence the keywords read as a fake is not also a defect the model may add (the team
                         # labels 1 in 10 fakes as a defect too); a lexicon defect word still counts.
                         if (
@@ -1347,8 +1368,9 @@ class LexiconHazardTagger:
             **({"excluded": excluded} if excluded else {}),
             **({"learned": learned} if learned else {}),
             **({"gate_sentiment": gated} if gated else {}),
+            **({"concern_interpretations": concern_interpretations} if concern_interpretations else {}),
             **(
-                self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind)
+                self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind, review_context=review_context)
                 if self.counterfeit_rules == EXTRA_RULES
                 else {}
             ),
@@ -1568,6 +1590,7 @@ class LexiconHazardTagger:
         spans: Sequence[text_norm.TokenSpan],
         extra_kw: Any = None,
         product_kind: str | None = None,
+        *, review_context: str | None = None,
     ) -> dict[str, Any]:
         """The two labels of guide 1.4 for one sentence, with the words behind
         them. Kept apart from "tags" and "terms": the badge categories, the
@@ -1591,7 +1614,7 @@ class LexiconHazardTagger:
         ):
             for start, end in _merged(found):
                 where = self._raw_span((start, end), spans)
-                reason = category_exemption(product_kind, label, normalized, (start, end))
+                reason = category_exemption(product_kind, label, normalized, (start, end), review_context=review_context)
                 if reason:
                     exempt.append(
                         {"ngram": normalized[start:end], "category": label, "product_category": product_kind,
@@ -1617,6 +1640,13 @@ class LexiconHazardTagger:
         if addon is not None and extra_kw is not None:
             for category, (on, probability) in addon.decide(normalized, extra_kw, None).items():
                 if on and category not in present:
+                    from .concern_context import operation_reason
+                    operation = operation_reason(product_kind, category, normalized)
+                    if operation:
+                        exempt.append({"ngram": normalized, "category": category,
+                            "product_category": product_kind, "reason": operation,
+                            "span": [0, len(raw)], "source": "normal_operation_clause"})
+                        continue
                     if category == NOT_AS_DESCRIBED and CHARGING_TIER_LIMITATION.search(normalized):
                         continue
                     # q1 (2 Nov 2026): the model adds "poor quality" to praise headed "Sound Quality:" (the word
@@ -1678,7 +1708,7 @@ class LexiconHazardTagger:
         kind = classify_listing(listing) if listing is not None and self.listing_context else None
         tagged = []
         for index, sentence in enumerate(segments):
-            result = self.tag_sentence(sentence, rating, product_kind=kind) if kind else self.tag_sentence(sentence, rating)
+            result = self.tag_sentence(sentence, rating, product_kind=kind, review_context=str(text or '')) if kind else self.tag_sentence(sentence, rating)
             result["index"] = index
             tagged.append(result)
         if self.rules == "0.4":
@@ -1954,7 +1984,10 @@ class HazardBadgeModel:
         # checker (research/build_reference_baselines.py). `checker_version` is
         # what they are matched against; the baseline's own version joins
         # model_version so saved reports are redone when the line moves.
+        from .concern_context import REVISION as concern_context_revision
+        self.model_version += f"+{concern_context_revision}"
         self.checker_version = self.model_version
+        self.model_version += "+context-evidence-1"
         baselines_version = (getattr(self.aggregator, "baselines", None) or {}).get("version")
         if baselines_version:
             self.model_version = f"{self.model_version}+{baselines_version}"
@@ -2023,6 +2056,15 @@ class HazardBadgeModel:
         if dropped:
             confident = [tag for tag in confident if tag in review_tags]
             evidence = {flag: entry for flag, entry in evidence.items() if flag in review_tags or flag in extra_tags}
+        interpretations = []
+        for item in sentences:
+            interpretations.extend(item.get("concern_interpretations") or [])
+            interpretations.extend({"category": term["category"], "text": item["text_raw"],
+                "reason": term["interpretation_reason"], "product_category": classify_listing(listing) if listing else None}
+                for term in item.get("terms") or [] if term.get("interpretation_reason"))
+            interpretations.extend({"category": entry["category"], "text": item["text_raw"],
+                "reason": entry["reason"], "product_category": entry.get("product_category")}
+                for entry in item.get("category_exempt") or [] if entry.get("reason"))
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
@@ -2033,6 +2075,7 @@ class HazardBadgeModel:
             "review_tags": review_tags,
             **({"review_extra_tags": extra_tags} if five_labels else {}),
             "review_evidence": evidence,
+            **({"concern_interpretations": interpretations} if interpretations else {}),
             **({"review_evidence_dropped": dropped} if dropped else {}),
             **({"review_evidence_would_drop": shadow_drop} if shadow_drop else {}),
             "review_high_confidence": confident,

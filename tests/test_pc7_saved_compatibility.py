@@ -30,7 +30,7 @@ class TestPc7Compatibility(unittest.TestCase):
             return dashboard_utils.analysis_is_current([product])
 
     def test_hair_and_air_conditioners_are_not_conflated(self):
-        self.assertEqual(PRODUCT_CATEGORY_REVISION,"pc8")
+        self.assertEqual(PRODUCT_CATEGORY_REVISION,"pc9")
         self.assertEqual(classify_listing("Window Air Conditioner 1HP"),"small_appliance")
         self.assertEqual(classify_listing("Portable Air-Conditioner 1HP"),"small_appliance")
         self.assertEqual(classify_listing("Portable Air Conditioner 12000BTU"),"small_appliance")

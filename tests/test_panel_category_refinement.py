@@ -88,7 +88,7 @@ class PanelCategoryRefinementTests(unittest.TestCase):
 
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
-        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc8")
+        self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc9")
 
     def test_descriptions_do_not_choose_category(self) -> None:
         self.assertEqual(product_category.classify_listing(

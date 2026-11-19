@@ -1,0 +1,7 @@
+# term | label | severity | reason (tab-separated)
+(?:natunaw|natutunaw|tunaw)\s+(?:(?:ang|yung|ung)\s+)?(?:plug|saksakan|socket|kordon|cord|wire|cable)\b	safety	3	an electrical part melted
+(?:plug|saksakan|socket|kordon|cord|wire|cable)\s+(?:(?:has|had|got)\s+)?(?:melted|natunaw|natutunaw)\b	safety	3	an electrical part melted
+(?:air\s*flow|hangin)\s+(?:(?:is|ay|ang)\s+)?(?:weak|poor|mahina)\b|(?:weak|poor|mahinang)\s+(?:(?:ang|yung|ung)\s+)?(?:air\s*flow|hangin)\b	quality	1	explicit weak airflow, including mixed operation reviews
+(?:keeps?|kept)\s+(?:cutting|shutting|switching)\s+(?:out|off)\b	defect	2	explicit intermittent operation, not successful power-bank use
+(?:walang\s+hangin|no\s+air\s+is\s+blowing\s+out|barely\s+moves?\s+air|(?:wind|fan\s+air)\s+is\s+(?:very\s+)?weak)\b	quality	1	explicit missing or barely moving air, not normal power-bank use
+only\s+one\s+arrived\s+(?:although|but)\s+i\s+ordered\s+two\b	not_as_described	1	explicit delivered quantity differs from ordered quantity

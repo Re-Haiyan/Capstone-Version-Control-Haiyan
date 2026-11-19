@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc8"  # Refine title matches for products and accessories.
+PRODUCT_CATEGORY_REVISION = "pc9"  # Prefer explicit sold-item identity over incidental compatibility/specification words.
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -67,7 +67,7 @@ OTHER = "other"
 _RULES: tuple[tuple[str, str, str], ...] = (
     # --- not a physical product at all ---
     ("digital_goods", "digital_services",
-     r"\b(?:e-?load|gift cards?|vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
+     r"\b(?:e-?load|gift cards?|(?:e[- ]?)?vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
      r"online course|event tickets?|concert tickets?|load promo|gcash)\b"),
     # --- things that are not the device they name ---
     ("stationery_books", "office_media",
@@ -258,6 +258,11 @@ _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in
 _SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
     (name, re.compile(pattern, re.I))
     for name, pattern in (
+        ("computer_peripheral", r"^(?!.*\b(?:replacement|covers?|cases?|holders?)\b).*?\b(?:wired|wireless)\s+mouse\b"),
+        ("laptop", r"^(?!.*\b(?:replacement|stands?|cases?|covers?|skins?|chargers?|adapters?|mouse|keyboards?|batter(?:y|ies))\b)(?=.*\b(?:laptop|thinkpad)\b)(?=.*\b(?:intel|amd)\b)(?=.*\b(?:windows\s*\d+|win\s*\d+)\b).*"),
+        ("skincare", r"^(?!.*\b(?:cases?|holders?|books?)\b).*?\beye\s+balm\b"),
+        ("crafts_diy", r"^(?!.*\b(?:books?|patterns?|cases?|bags?)\b).*?\b(?:cotton|crochet|knitting|acrylic|wool)\s+yarn\b"),
+        ("electrical_supplies", r"^(?!.*\b(?:covers?|cases?|mounts?|brackets?)\b).*?\bcircuit breakers?\b"),
         ("toys", r"\b(?:toy\s+cars?|rc\s+cars?|remote[- ]control(?:led)?\s+cars?|diecast(?:\s+cars?)?|hot\s+wheels)\b"),
         ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
         ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),
@@ -303,6 +308,20 @@ def classify_listing(listing: Any) -> str:
         return OTHER
     title = listing.get("name") if isinstance(listing, dict) else listing
     title = _PROMO.sub(" ", str(title or ""))
+    if re.match(r"\s*replacement\s+(?:lcd\s+)?screens?\s+for\s+(?:lenovo\s+)?(?:laptop|thinkpad)\b", title, re.I):
+        return "accessory"
+    # The ampersand is inside the sold object's name, not a bundle separator.
+    # Preserve the object before the usual head splitter sees "juice & ...".
+    if re.search(r"\bjuice\s*(?:&|and)\s*vegetable\s+extractor\b", title, re.I) and not re.search(
+        r"\b(?:replacement|spare|jars?|blades?|covers?|books?)\b", title, re.I
+    ):
+        return "small_appliance"
+    # Read the sold item before splitting at "for": a ride-on car for kids is
+    # a toy, while its replacement battery or charger is a separate listing.
+    if re.match(r"\s*electric\s+cars?\s+for\s+(?:kids|children)\b", title, re.I) and re.search(r"\bride[- ]on\b", title, re.I) and not re.search(
+        r"\b(?:replacement|spare)\b", title, re.I
+    ):
+        return "toys"
     # A wash-and-shampoo listing should not turn into "baby" when "&" splits its title.
     if re.search(r"\bwash\s*(?:&|and)\s*shampoo\b", title, re.I):
         return "haircare"
@@ -325,6 +344,11 @@ def classify_listing(listing: Any) -> str:
     # LCD parts named before the compatible phone are accessories.
     if re.match(r"\s*(?:(?:original|oem|replacement)\s+)?lcd(?:\s+(?:display|screen))?\s+for\b", title, re.I):
         return "accessory"
+    # USB power and an included cable do not turn a ceiling fan into a charger.
+    if re.search(r"\busb[- ]ceiling fans?\b", head, re.I) and not re.search(
+        r"\b(?:replacement|spare|adapters?|covers?|mounts?|motors?|controllers?)\b", head, re.I
+    ):
+        return "small_appliance"
     # HP notebook listings can omit the word laptop and list only the display, CPU and OS.
     if (
         re.match(r"""\s*hp\s+(?:1[3-7](?:[.]\d)?)(?:["″]|\s*-?\s*inch\b)""", head, re.I)
@@ -521,7 +545,8 @@ def sentence_exempt(category: str | None, label: str, normalized: str) -> str | 
     return None
 
 
-def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3) -> str | None:
+def exemption(category: str | None, label: str, normalized: str, span: tuple[int, int], reach: int = 3,
+              *, review_context: str | None = None) -> str | None:
     """The reason a flagged phrase is not a complaint in this category, or None.
 
     `normalized` is the sentence the span was found in. Words within `reach`
@@ -530,6 +555,10 @@ def exemption(category: str | None, label: str, normalized: str, span: tuple[int
     if not category or PRODUCT_CATEGORY_OFF:
         return None
     start, end = span
+    from .concern_context import phrase_reason
+    interpreted = phrase_reason(category, label, normalized, span, review_context)
+    if interpreted:
+        return interpreted
     reason = denied(category, label, normalized, span)
     if reason:
         return reason

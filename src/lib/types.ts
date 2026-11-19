@@ -153,14 +153,19 @@ export interface Review {
 		review_tags?: string[];
 		review_extra_tags?: string[];
 		sentences?: Sentence[];
+		concern_interpretations?: {category: string; text: string; reason: string; product_category?: string | null}[];
 		sentiment?: {
 			initial_label?: string;
+			probabilities?: Record<string, number>;
 			category_context?: {
 				revision: string;
 				status: 'agrees' | 'differs' | 'ambiguous' | 'no_signal' | 'unclassified' | 'unavailable' | 'expected_behavior';
 				initial_label: string;
 				context_signal: 'positive' | 'negative' | null;
 				matched_profile_phrase?: string | null;
+				observations?: {interpretation: string; phrase: string; text: string; start: number; end: number; negated: boolean}[];
+				mixed_feedback?: boolean;
+				abstained?: boolean;
 				interpretation?: string | null;
 				used_for_decision: false;
 				sentiment_overridden: false;

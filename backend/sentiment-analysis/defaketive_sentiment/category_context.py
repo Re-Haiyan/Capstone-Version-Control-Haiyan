@@ -28,7 +28,6 @@ _NEGATORS = frozenset((
     "wlang", "hinde", "hnd", "huwag", "wag", "dont", "doesnt", "didnt", "isnt",
     "don", "doesn", "didn", "isn", "wasn", "weren", "aren", "cant", "cannot",
 ))
-_MAX_REVIEW = 5000
 # These are reasons to abstain from treating an otherwise expected feature
 # as harmless. They NEVER suppress the independent safety detector.
 _SAFETY_WORDS = frozenset((
@@ -146,7 +145,7 @@ def _unsafe_context(text: str) -> bool:
     )
 
 
-def check(
+def _summary(
     review: Any,
     listing: Mapping[str, Any] | None,
     initial_label: str | None,
@@ -178,7 +177,7 @@ def check(
     if category == OTHER:
         return {**base, "status": "unclassified"}
     review_text = str(review or "")
-    if not review_text.strip() or len(review_text) > _MAX_REVIEW:
+    if not review_text.strip():
         return base
     text = _normalize(review_text)
     if not text:
@@ -234,3 +233,56 @@ def check(
             "matched_profile_phrase": _normalize(profile["ambiguous_term"]),
         }
     return base
+
+
+def check(review: Any, listing: Mapping[str, Any] | None, initial_label: str | None) -> dict[str, Any] | None:
+    """Keep every supported observation with a literal, verifiable source span.
+
+    The summary remains advisory. Mixed observations never collapse into a
+    replacement sentiment, and no observation is an input to hazard detection.
+    """
+    result = _summary(review, listing, initial_label)
+    if result is None:
+        return None
+    result = {**result, "evidence_revision": "context-evidence-1", "observations": [],
+              "mixed_feedback": False, "abstained": result["context_signal"] is None}
+    if result["status"] in {"unclassified", "unavailable"}:
+        return result
+    raw = str(review or "")
+    payload = _profiles()
+    profile = payload["profiles"][result["product_category"]]
+    subtype = _subproduct(_normalize(str((listing or {}).get("name") or "")), result["product_category"], payload)
+    observations = []
+    for kind, field in (("explicit_praise", "positive_phrases"),
+                        ("explicit_complaint", "negative_phrases"),
+                        ("intended_product_behavior", "expected_behavior_phrases"),
+                        ("context_dependent_trait", "ambiguous_term")):
+        phrases = ([profile[field]] if field == "ambiguous_term" else
+                   list(profile[field]) + (list(subtype[field]) if subtype else []))
+        for phrase in dict.fromkeys(_normalize(p) for p in phrases):
+            pattern = r"(?<!\w)" + r"[\W_]+".join(re.escape(t) for t in phrase.split()) + r"(?!\w)"
+            for hit in re.finditer(pattern, raw, re.I):
+                # A quote must be an exact substring, never normalized wording
+                # presented as if the shopper wrote it.
+                if _normalize(hit.group()) != phrase:
+                    continue
+                prefix = re.split(r"[.!?;]|\b(?:but|pero|ngunit|subalit)\b", raw[:hit.start()], flags=re.I)[-1]
+                denied = any(w in _NEGATORS for w in _normalize(prefix).split()[-4:])
+                observations.append({"interpretation": kind, "phrase": phrase,
+                                     "text": hit.group(), "start": hit.start(), "end": hit.end(),
+                                     "negated": denied})
+    # Different profile phrases can name the same occurrence. Preserve distinct
+    # meanings, but count each quote once per interpretation.
+    unique = {(o["interpretation"], o["start"], o["end"]): o for o in observations}
+    result["observations"] = sorted(unique.values(), key=lambda o: (o["start"], o["end"], o["interpretation"]))
+    asserted = {o["interpretation"] for o in result["observations"] if not o["negated"]}
+    result["mixed_feedback"] = {"explicit_praise", "explicit_complaint"} <= asserted
+    if result["mixed_feedback"]:
+        result.update(status="ambiguous", context_signal=None, interpretation="mixed_feedback", abstained=True)
+    elif result["context_signal"] is not None:
+        needed = "explicit_praise" if result["context_signal"] == "positive" else "explicit_complaint"
+        if needed not in asserted:
+            result.update(status="ambiguous", context_signal=None, interpretation="source_evidence_unavailable", abstained=True)
+    elif result["status"] == "expected_behavior" and "intended_product_behavior" not in asserted:
+        result.update(status="ambiguous", interpretation="source_evidence_unavailable", matched_profile_phrase=None)
+    return result

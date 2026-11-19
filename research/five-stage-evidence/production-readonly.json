@@ -1,0 +1,68 @@
+{
+  "running_sha": "4eab8ea1b3d7ffa7660343a82cfe969436cbd80b",
+  "tracked_changes": "",
+  "service": {
+    "MainPID": "322622",
+    "NRestarts": "0",
+    "ExecMainStartTimestamp": "Thu 2026-11-19 09:24:10 UTC",
+    "ActiveState": "active"
+  },
+  "environment": {
+    "DEFAKETIVE_MODEL_MODE": "<unset: default>",
+    "DEFAKETIVE_SENTIMENT_MODEL": "<unset: default>",
+    "DEFAKETIVE_HAZARD_MODEL": "<unset: default>",
+    "DEFAKETIVE_SENTIMENT_CALIBRATOR": "<unset: default>",
+    "DEFAKETIVE_CATEGORY_SENTIMENT_ADAPTER": "<unset: default>",
+    "DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW": "<unset: default>"
+  },
+  "classifier_revision": "pc8",
+  "model_manifest": {
+    "model_version": "defaketive-xlmr-firecs-v1-onnx-int8-e04da4c2",
+    "name": "xlmr_firecs_v1",
+    "stage": "onnx_int8",
+    "labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ],
+    "max_length": 128,
+    "text": "raw",
+    "expects_raw_text": true,
+    "files": {
+      "model.onnx": "e04da4c268bc8ab94e27da2e0fb4206f38dadc43e9cfb52050818a5bb40c3478",
+      "tokenizer.json": "27dea7a8dd6fe22d3913c719dd962f283f7bb2d91f023abf3b1e644df39ca49e"
+    },
+    "source_checkpoint": "sentiment-analysis\\models\\transformers\\cardiffnlp__twitter-xlm-roberta-base-sentiment",
+    "slimming_report": "research/slimming_xlmr_firecs_v1.json",
+    "gate": "FiReCS test macro F1 >= incumbent TF-IDF; marketplace macro F1 >= incumbent + 0.02; stage passed the slimming acceptance rule",
+    "scores": {
+      "firecs_test_macro_f1": 0.833,
+      "marketplace_macro_f1": 0.7064
+    },
+    "incumbent": {
+      "firecs_test_macro_f1": 0.8138,
+      "marketplace_macro_f1": 0.5627
+    },
+    "qualified_for_integration": true,
+    "built_at": "2026-09-27T06:07:39+00:00",
+    "outputs": [
+      "logits",
+      "hidden_states"
+    ],
+    "embedding": {
+      "output": "hidden_states",
+      "source_tensor": "/inner/roberta/encoder/layer.11/output/LayerNorm/LayerNormalization_output_0",
+      "pooling": "mean over all tokens of one unpadded text",
+      "added_at": "2026-10-03T02:38:35+00:00",
+      "previous_model_sha256": "720cc1ec78843a7fc69e07cbe0c95f46ec81441e0c848a0690fe4c23f276cb20",
+      "sentiment_unchanged_check": {
+        "texts": 3617,
+        "max_logit_difference": 0.0,
+        "label_changes": 0,
+        "hidden_width": 768
+      }
+    }
+  },
+  "model_sha256": "e04da4c268bc8ab94e27da2e0fb4206f38dadc43e9cfb52050818a5bb40c3478",
+  "tokenizer_sha256": "27dea7a8dd6fe22d3913c719dd962f283f7bb2d91f023abf3b1e644df39ca49e"
+}

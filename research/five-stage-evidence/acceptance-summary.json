@@ -1,0 +1,82 @@
+{
+  "baseline": "4eab8ea1b3d7ffa7660343a82cfe969436cbd80b",
+  "backup_sha256": "53f0b8f6dc7291cc3082afe37d8381e6d17db3ab8a6375148995344ca51df678",
+  "synthetic_categories": 49,
+  "synthetic_cases": 833,
+  "synthetic_gaps": [],
+  "paired_report_observations": 65,
+  "paired_review_observations": 7421,
+  "initial_sentiment_and_scores_unchanged_in_paired_replays": true,
+  "removed_safety": [
+    {
+      "report_index": 182,
+      "review_index": 1096
+    },
+    {
+      "report_index": 182,
+      "review_index": 1213
+    },
+    {
+      "report_index": 182,
+      "review_index": 3531
+    },
+    {
+      "report_index": 202,
+      "review_index": 48
+    },
+    {
+      "report_index": 202,
+      "review_index": 84
+    },
+    {
+      "report_index": 202,
+      "review_index": 260
+    }
+  ],
+  "backend_changes": [
+    {
+      "index": 202,
+      "state": [
+        "possible_safety_issue",
+        "no_warning_signs"
+      ],
+      "decision": [
+        "caution",
+        "recommended"
+      ]
+    }
+  ],
+  "heldout_rows": 947,
+  "heldout_products": 120,
+  "heldout_sentiment_label_agreement": 687,
+  "heldout_five_flag_exact_agreement": 807,
+  "holdout_limit": "Repository labels, not newly adjudicated gold. Current-fix product-disjoint; model-training disjointness unknown. Late title-only discoveries were removed from the final validation split.",
+  "five_flag_disagreements": {
+    "safety": {
+      "predicted_without_label": 18,
+      "labeled_without_prediction": 3
+    },
+    "defect": {
+      "predicted_without_label": 33,
+      "labeled_without_prediction": 14
+    },
+    "counterfeit": {
+      "predicted_without_label": 8,
+      "labeled_without_prediction": 3
+    },
+    "quality": {
+      "predicted_without_label": 32,
+      "labeled_without_prediction": 6
+    },
+    "not_as_described": {
+      "predicted_without_label": 21,
+      "labeled_without_prediction": 23
+    }
+  },
+  "positive_model_predictions_with_safety_in_matrix": 99,
+  "real_review_gaps": [
+    "health_supplements",
+    "medical_devices"
+  ],
+  "empirical_certification": "UNRESOLVED for every category; synthetic regressions pass but the historical labels cannot certify all requested semantic/language cases."
+}

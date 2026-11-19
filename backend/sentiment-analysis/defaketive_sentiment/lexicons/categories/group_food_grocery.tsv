@@ -1,10 +1,5 @@
-# Phrases that are NOT a report for this kind of product (rules pc3; read by product_category.py).
-# Columns, separated by TABS: term | label | unless | reason | when
-#   term    regular expression that must match the whole flagged phrase
-#   label   quality, defect, counterfeit, safety or not_as_described
-#   unless  optional regular expression, matched as whole words; if a word within 3 words either side of the phrase matches, the exception is cancelled
-#   reason  shown in the audit trail
-#   when    optional regular expression, matched as whole words; the exception applies ONLY when one of the 3 words either side matches it
-# A file named group_<group>.tsv applies to every category of the group. Restart the server after editing.
-burn|sunog|amoy sunog|burn smell|smell of burn|smoke|usok|spark|explode|amoy keso|init|ang init|sobrang init|very hot|too hot|gets? hot|burn hot|paso|grounded	safety	packaging|plastic|plastik|balot|box|kahon|seal|wrapper|bote|lata|expired|panis|amag|uod|ipis|sakit|tiyan|suka|lbm|nasuka|nagtae	burnt or smoky is the taste of food, spicy is hot, and cheese smells; still a hazard beside packaging or illness
+# Food flavor descriptions are not incidents; sparks/explosions are never flavors.
+# term<TAB>label<TAB>unless<TAB>reason<TAB>when
+burn|sunog|amoy sunog|burn smell|smell of burn|smoke|usok|amoy keso|paso	safety	packaging|plastic|plastik|balot|box|kahon|seal|wrapper|bote|lata|expired|panis|amag|uod|ipis|sakit|tiyan|suka|lbm|nasuka|nagtae|hand|hands|finger|fingers|skin|mouth|lips|kamay|daliri|balat|bibig|napaso|nasunog|umusok|spark\w*|fire|apoy	an explicit burnt taste or smoked-food flavor, not an incident	taste|tastes|tasted|flavo\w*|lasa|lasang|smoky|smoked|cheese|keso|coffee|kape|barbecue|bbq|bacon
+init|ang init|sobrang init|very hot|too hot|gets? hot|burn hot	safety	packaging|plastic|plastik|balot|box|kahon|seal|wrapper|bote|lata|sakit|hand|hands|finger|fingers|skin|mouth|lips|kamay|daliri|balat|bibig|napaso|paso|burn\w*|fire|apoy	heat alone can be the food's serving temperature, not an injury
 dents?|dented|crack(?:ed|s)?|damage\w*|basag|yupi	quality		damage on arrival is a defect, not poor build quality
