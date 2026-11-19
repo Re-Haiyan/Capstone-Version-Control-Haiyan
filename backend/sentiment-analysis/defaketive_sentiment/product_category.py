@@ -55,7 +55,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-PRODUCT_CATEGORY_REVISION = "pc8"  # Correct explicit ceiling fan, soundbar and skillet titles.
+PRODUCT_CATEGORY_REVISION = "pc8"  # Refine title matches for products and accessories.
 PRODUCT_CATEGORY_OFF = False
 CATEGORY_DIR = Path(__file__).with_name("lexicons") / "categories"
 
@@ -67,7 +67,7 @@ OTHER = "other"
 _RULES: tuple[tuple[str, str, str], ...] = (
     # --- not a physical product at all ---
     ("digital_goods", "digital_services",
-     r"\b(?:e-?load|gift cards?|vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
+     r"\b(?:e-?load|gift cards?|(?:e[- ]?)?vouchers?|top-?up|game credits?|prepaid|subscriptions?|netflix (?:premium|subscription|account)|spotify premium|e-?books?|"
      r"online course|event tickets?|concert tickets?|load promo|gcash)\b"),
     # --- things that are not the device they name ---
     ("stationery_books", "office_media",
@@ -258,6 +258,9 @@ _COMPILED = tuple((name, re.compile(pattern, re.I)) for name, _group, pattern in
 _SPECIFIC_TITLE_RULES: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
     (name, re.compile(pattern, re.I))
     for name, pattern in (
+        ("collectibles_hobbies", r"\bcollectible cards? booster (?:box(?:es)?|packs?)\b"),
+        ("electrical_supplies", r"\b(?:circuit breaker distribution (?:protection )?|electrical junction )(?:box(?:es)?|enclosures?)\b"),
+        ("household_cleaning", r"\b(?:liquid |laundry )detergent (?:refill )?kits?\b"),
         ("toys", r"\b(?:toy\s+cars?|rc\s+cars?|remote[- ]control(?:led)?\s+cars?|diecast(?:\s+cars?)?|hot\s+wheels)\b"),
         ("makeup", r"\b(?:lip\s?(?:sticks?|tints?|gloss(?:es)?|balms?|stains?)|eyeshadows?|mascaras?|foundations?|concealers?|blushers?)\b"),
         ("haircare", r"\b(?:shampoos?|conditioners?|hair\s+(?:serum|oil|treatment|mask|wax|gel)s?)\b"),

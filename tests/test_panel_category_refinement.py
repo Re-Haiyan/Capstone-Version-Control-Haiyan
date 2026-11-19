@@ -70,6 +70,20 @@ class PanelCategoryRefinementTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(product_category.classify_listing(title), expected)
 
+    def test_specific_matches_do_not_capture_nearby_products(self) -> None:
+        cases = {
+            "Collectible Card Booster Box Esports Tournament": "collectibles_hobbies",
+            "Protective Case for Collectible Card Booster Box": "accessory",
+            "Store P300 eVoucher (via email)": "digital_goods",
+            "Circuit Breaker Distribution Protection Box With Cover": "electrical_supplies",
+            "Phone Case With Transparent Cover": "accessory",
+            "DIY Liquid Detergent Kit for Home Laundry": "household_cleaning",
+            "Laptop Screen Cleaner Kit": "accessory",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(product_category.classify_listing(title), expected)
+
     def test_taxonomy_size_and_explicit_revision(self) -> None:
         self.assertEqual(len(product_category.CATEGORIES), 50)  # 49 + Other
         self.assertEqual(product_category.PRODUCT_CATEGORY_REVISION, "pc8")
