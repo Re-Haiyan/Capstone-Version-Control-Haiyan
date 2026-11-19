@@ -158,11 +158,19 @@ def scan(args: argparse.Namespace) -> int:
         if index % 100 == 0:
             print(f"Scanned {index}/{len(selections)} without writing review text", flush=True)
 
+    from dashboard_utils import badge_view  # noqa: E402
+
     product_verdicts = {}
     for product_key, results in by_product.items():
         cat = mapped[product_key]["category"]
         summary = model.summarize(results, reviews_available=len(results), product_type=cat)
-        product_verdicts[product_key] = (summary.get("verdict") or {}).get("state")
+        state = (summary.get("verdict") or {}).get("state")
+        if args.include_decisions:
+            view = badge_view({"product_category": cat, "sentiment_summary": summary})
+            decision = (view.get("conclusion") or {}).get("decision")
+            product_verdicts[product_key] = {"state": state, "purchase_decision": decision}
+        else:
+            product_verdicts[product_key] = state
 
     model_asset = root / "backend/sentiment-analysis/models/sentiment_onnx/xlmr_firecs_v1/model.onnx"
     if not model_asset.is_file():
@@ -263,6 +271,7 @@ def main() -> int:
     scan_cmd = sub.add_parser("scan")
     scan_cmd.add_argument("--checkout", required=True)
     scan_cmd.add_argument("--out", required=True)
+    scan_cmd.add_argument("--include-decisions", action="store_true")
     scan_cmd.add_argument("--limit", type=int, default=600)
     scan_cmd.add_argument("--database", default=None,
                           help="Optional absolute path to VM SQLite review DB, read only; no raw review output")

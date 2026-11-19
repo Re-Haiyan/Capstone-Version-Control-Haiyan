@@ -27,6 +27,27 @@ jobs:
           test -z "$(git diff --name-only "$BASE" HEAD -- backend/sentiment-analysis/models backend/sentiment-analysis/defaketive_sentiment/hazard_model.py backend/sentiment-analysis/defaketive_sentiment/product_badges.py backend/sentiment-analysis/defaketive_sentiment/lexicons backend/requirements.txt backend/category_copy.py backend/webapp.py backend/data_store.py)"
           echo 'Original XLM-R and hazard engines, weights, thresholds, dependencies and database handling unchanged; pc7 category rule audited separately.'
 
+  pc8_scope:
+    if: github.head_ref == 'feature/product-category-label-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Restrict pc8 to the classifier, compatibility, and validation
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$BASE" HEAD |
+            while IFS= read -r path; do
+              case "$path" in
+                backend/dashboard_utils.py|backend/sentiment-analysis/defaketive_sentiment/product_category.py|research/fixtures/product-category-title-audit.csv|research/pc7_saved_compat_audit.py|research/panel_category_release_audit.py|tests/test_panel_category_refinement.py|tests/test_pc7_saved_compatibility.py|.github/workflows/clean-review-summary.yml|.github/workflows/panel-flow-clarity.yml|.github/workflows/cross-category-context-v2.yml) ;;
+                *) printf 'Unexpected pc8 change: %s\n' "$path" >&2; exit 1 ;;
+              esac
+            done
+
   backend:
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -50,6 +71,7 @@ jobs:
       - name: Verify all 49 contexts and 10 product subtypes with hazard equivalence
         env:
           PYTHONPATH: backend:backend/sentiment-analysis
+          EXPECTED_REVISION: ${{ github.head_ref == 'feature/product-category-label-audit' && 'pc8' || '' }}
           DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
           DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
         run: |
@@ -61,7 +83,10 @@ jobs:
           python -m unittest discover -s tests -p 'test_panel_category_context_flow.py' -v
           python -m unittest discover -s tests -p 'test_category_wording.py' -q
           python -m unittest discover -s tests -p 'test_product_category.py' -q
-          python research/pc7_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --strict
+          if [ -z "$EXPECTED_REVISION" ]; then
+            EXPECTED_REVISION=$(python -c 'from defaketive_sentiment.product_category import PRODUCT_CATEGORY_REVISION; print(PRODUCT_CATEGORY_REVISION)')
+          fi
+          python research/pc7_saved_compat_audit.py --checkout "$GITHUB_WORKSPACE" --database backend/defaketive.db --expected-revision "$EXPECTED_REVISION" --strict
 
   historical_marketplace_audit:
     name: Read-only paired real-review audit (development data; not accuracy)
@@ -81,10 +106,10 @@ jobs:
         run: |
           python -m pip install -r backend/requirements.txt
           python -m nltk.downloader vader_lexicon
-      - name: Prepare isolated pc6 production baseline
-        run: |
-          git cat-file -e 'dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26^{commit}'
-          git worktree add --detach "$RUNNER_TEMP/context-pc6-baseline" dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26
+      - name: Prepare isolated production baseline
+        env:
+          BASELINE_SHA: ${{ github.head_ref == 'feature/product-category-label-audit' && 'f4612f9a2e6f27717e6a724f617d92677d8abd88' || github.event.pull_request.base.sha || 'dc196d5f8435f6b33bfac65ec7ba7d1c82b8cc26' }}
+        run: git worktree add --detach "$RUNNER_TEMP/context-baseline" "$BASELINE_SHA"
       - name: Real historical marketplace review paired baseline/candidate
         env:
           OMP_NUM_THREADS: '1'
@@ -93,9 +118,9 @@ jobs:
           DEFAKETIVE_CATEGORY_SENTIMENT_SHADOW: ''
           DEFAKETIVE_SENTIMENT_CALIBRATOR: ''
         run: |
-          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/context-pc6-baseline" --out "$RUNNER_TEMP/pc6-paired.json" --limit 800
-          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/pc7-paired.json" --limit 800
-          python research/panel_category_release_audit.py compare --baseline "$RUNNER_TEMP/pc6-paired.json" --candidate "$RUNNER_TEMP/pc7-paired.json" --out "$RUNNER_TEMP/pc7-compare.json" --strict
+          python research/panel_category_release_audit.py scan --checkout "$RUNNER_TEMP/context-baseline" --out "$RUNNER_TEMP/baseline-paired.json" --limit 800 --include-decisions
+          python research/panel_category_release_audit.py scan --checkout "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/candidate-paired.json" --limit 800 --include-decisions
+          python research/panel_category_release_audit.py compare --baseline "$RUNNER_TEMP/baseline-paired.json" --candidate "$RUNNER_TEMP/candidate-paired.json" --out "$RUNNER_TEMP/category-compare.json" --strict
           python research/category_context_v2_real_review_audit.py --checkout "$GITHUB_WORKSPACE" --limit 800 --out "$GITHUB_WORKSPACE/context-v2-aggregate.json"
       - name: Upload ONLY aggregate context audit (no review text)
         if: always()

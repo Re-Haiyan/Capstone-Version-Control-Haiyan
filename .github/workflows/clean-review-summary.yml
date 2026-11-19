@@ -29,9 +29,11 @@ jobs:
           npm run check
           npm run build
       - name: No backend, classifier, data, or context aggregation edits
+        if: github.head_ref != 'feature/product-category-label-audit'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || '38b551ae60bbe7cf84bc7d1518fbfee88442a38f' }}
         run: |
           set -euo pipefail
-          BASE=38b551ae60bbe7cf84bc7d1518fbfee88442a38f
           git cat-file -e "${BASE}^{commit}"
           CHANGED="$(git diff --name-only "$BASE" HEAD)"
           printf '%s\n' "$CHANGED"
