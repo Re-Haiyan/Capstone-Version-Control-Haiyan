@@ -1319,6 +1319,8 @@ def review_rows(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if review.get("included_in_analysis") is False:
                 continue
             analysis = review.get("sentiment_analysis") or {}
+            sentiment = analysis.get("sentiment") or {}
+            context = sentiment.get("category_context") or {}
             risk = analysis.get("risk") or {}
             scores = analysis.get("scores") or {}
             rows.append(
@@ -1330,6 +1332,15 @@ def review_rows(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "Review": review.get("content", ""),
                     "Likes": int(review.get("like_count") or 0),
                     "Sentiment": analysis.get("label", "unanalyzed"),
+                    "Initial sentiment": sentiment.get("initial_label") or context.get("initial_label") or analysis.get("label", "unanalyzed"),
+                    "Product category": product.get("product_category", ""),
+                    "Category interpretation": context.get("interpretation") or context.get("status", "not_recorded"),
+                    "Category signal": context.get("context_signal"),
+                    "Category evidence": context.get("matched_profile_phrase"),
+                    "Sentiment adjusted": context.get("sentiment_overridden", False),
+                    "Review-reported concerns": ", ".join(list(analysis.get("review_tags") or []) + list(analysis.get("review_extra_tags") or [])),
+                    "Concern evidence": json.dumps(analysis.get("review_evidence") or {}, ensure_ascii=False),
+                    "Model version": analysis.get("model_version", ""),
                     "Compound": scores.get("compound"),
                     "Risk": bool(risk.get("detected", False)),
                     "Risk categories": ", ".join(risk.get("categories") or []),
@@ -1508,10 +1519,16 @@ def analyze_products(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     _ensure_sentiment_path()
     from defaketive_sentiment.analyze_reviews import analyze_product_json
-    from defaketive_sentiment.registry import load_model
+    from defaketive_sentiment.registry import load_model, ModelUnavailableError
 
     analyzed = copy.deepcopy(products)
-    return analyze_product_json(analyzed, load_model())
+    model = load_model()
+    try:
+        return analyze_product_json(analyzed, model)
+    except ModelUnavailableError:
+        raise
+    except Exception as exc:
+        raise ModelUnavailableError(f"Review inference failed; no new report was produced: {exc}") from exc
 
 
 def json_bytes(products: list[dict[str, Any]]) -> bytes:

@@ -124,7 +124,7 @@ _lock = threading.RLock()
 
 ModelUnavailableError = model_unavailable_error()
 MODEL_UNAVAILABLE_MESSAGE = (
-    "Review analysis is unavailable: the model is not installed on this server, "
+    "Review analysis is unavailable: the model could not load or complete inference, "
     "so no report can be produced. Nothing was analyzed with a substitute model."
 )
 
@@ -386,7 +386,10 @@ def _command_for_scrape(keyword: str, platform: str, product_count: int, review_
         command.extend(["--product-url", keyword] if direct_url else ["-k", keyword])
     elif platform == "lazada":
         command = [sys.executable, str(ROOT / "lazada-scraper" / "src" / "lazada_scraper.py"), "-n", str(product_count), "-r", str(review_count), "--all-star-types", "--star-limit-per-type", str(LAZADA_REVIEWS_PER_STAR), "--output", str(target), "--no-verification-pause", "--verification-timeout", "600", "--window", LAZADA_WINDOW_MODE, "--reviews-from", LAZADA_REVIEWS_FROM] + (["--never-show-window"] if LAZADA_NEVER_SHOW else [])
-        command.extend(["--product-url", keyword] if direct_url else [keyword])
+        category_url = direct_url and parsed.hostname in {"lazada.com.ph", "www.lazada.com.ph"} and (
+            parsed.path.startswith("/shop-") or parsed.path.startswith("/category/") or parsed.path.rstrip("/") == "/catalog"
+        )
+        command.extend(["--category-url" if category_url else "--product-url", keyword] if direct_url else [keyword])
     else:
         profile = ROOT / ".browser_profiles" / platform
         profile.mkdir(parents=True, exist_ok=True)

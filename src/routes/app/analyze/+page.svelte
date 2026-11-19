@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { isLazadaCategoryUrl } from '#lib/lazada-route.js';
 	import { page } from '$app/state';
 	import ClearLinkButton from '#lib/components/app/clear-link-button.svelte';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
@@ -72,7 +73,7 @@
 		match
 			? { intent: 'saved', label: 'Open report' }
 			: context.platform && !otherMarket
-				? { intent: 'live', label: `Check this ${MARKETPLACES[context.platform]} product` }
+				? { intent: 'live', label: isLazadaCategoryUrl(query) ? 'Check this Lazada PH category' : `Check this ${MARKETPLACES[context.platform]} product` }
 				: { intent: 'live', label: 'Check this product' }
 	);
 	const again = $derived(Boolean(match) && !otherMarket);
@@ -100,7 +101,7 @@
 			: ({ 1: 18, 2: 68, 3: 92 } as Record<number, number>)[stage]
 	);
 	// One product from a link takes a known time. A search by name scans several products, so nothing is promised there.
-	const oneProduct = $derived(queryContext(scan.summary?.query ?? '').isUrl);
+	const oneProduct = $derived(queryContext(scan.summary?.query ?? '').isUrl && !isLazadaCategoryUrl(scan.summary?.query ?? ''));
 </script>
 
 <svelte:head><title>Check a product · DeFaketive</title></svelte:head>
@@ -114,7 +115,7 @@
 <Card>
 	<CardHeader>
 		<CardTitle>Paste a product link</CardTitle>
-		<CardDescription>Copy the address of a Lazada PH product page and paste it here.</CardDescription>
+		<CardDescription>Paste a Lazada PH product link, or a category URL to collect listings and choose a product from the results.</CardDescription>
 	</CardHeader>
 	<CardContent>
 		<form onsubmit={submit} class="grid gap-4">

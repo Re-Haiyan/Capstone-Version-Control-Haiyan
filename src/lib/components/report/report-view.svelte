@@ -247,6 +247,17 @@
 		library.toggleWishlist(product);
 	}
 
+	function downloadReport() {
+		if (!product) return;
+		const payload = { exported_at: new Date().toISOString(), product };
+		const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
+		const anchor = document.createElement('a');
+		anchor.href = url;
+		anchor.download = 'defaketive-report.json';
+		anchor.click();
+		setTimeout(() => URL.revokeObjectURL(url), 1000);
+	}
+
 	let photoOpen = $state(false);
 	let explanationOpen = $state(false);
 
@@ -393,6 +404,7 @@
 					<Button variant="outline" size="sm" aria-pressed={saved} disabled={!listing} onclick={save}>
 						<HeartIcon class={saved ? 'fill-current' : ''} /> {saved ? 'Saved' : 'Save'}
 					</Button>
+					<Button variant="outline" size="sm" onclick={downloadReport}>Download report</Button>
 					{#if listing}
 						<Button variant="outline" size="sm" href={listing} target="_blank" rel="noreferrer">
 							{listingLabel(product)} <ExternalLinkIcon />

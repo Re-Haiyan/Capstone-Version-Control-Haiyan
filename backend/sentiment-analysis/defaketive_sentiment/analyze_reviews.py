@@ -393,9 +393,9 @@ def analyze_product_json(
     for product in products:
         if not isinstance(product, dict):
             continue
-        comments = product.get("comments", [])
+        comments = product.get("comments") or []
         if not isinstance(comments, list):
-            continue
+            raise ValueError("Product comments must be a list")
 
         if review_limit and review_limit > 0:
             selected, usable_count = representative_review_sample(
@@ -440,14 +440,16 @@ def analyze_product_json(
         # removed a single product can carry thousands of reviews, and scoring
         # them one at a time is about twelve times slower.
         # Rules pc1: the category the checker read from the title, kept so a report can show it.
-        product["product_category"] = classify_listing({"name": str(product.get("name") or "")})
+        product["product_category"] = classify_listing(product)
         product["product_group"] = group_of(product["product_category"])
         analyses = _analyze_all(
             model,
             [text for _index, _comment, text in pending],
             [comment.get("rating") for _index, comment, _text in pending],
-            listing={"name": str(product.get("name") or ""), "description": str(product.get("description") or "")},
+            listing={"name": str(product.get("name") or ""), "description": str(product.get("description") or ""), "product_category": product["product_category"]},
         )
+        if len(analyses) != len(pending):
+            raise RuntimeError("Review inference returned incomplete results; no product conclusion was produced")
 
         unique_analyses: list[dict[str, Any]] = []
         analyzed_comments: list[dict[str, Any]] = []

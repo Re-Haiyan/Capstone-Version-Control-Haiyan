@@ -1975,7 +1975,7 @@ class HazardBadgeModel:
         explanation = self.sentiment.analyze(review, rating)
         label = explanation.get("label")
         initial_sentiment_label = label  # preserve the model's initial output for stage 3
-        sentiment_block: dict[str, Any] = {"label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
+        sentiment_block: dict[str, Any] = {"label": label, "initial_label": label, "probabilities": (explanation.get("classifier") or {}).get("probabilities") or {}}
         shadow = calibrated_sentiment(str(review or ""), rating, sentiment_block["probabilities"])
         if shadow:  # opt-in (DEFAKETIVE_SENTIMENT_CALIBRATOR); "shadow" records it, "on" lets it decide
             sentiment_block["calibrated"] = shadow["calibrated"]

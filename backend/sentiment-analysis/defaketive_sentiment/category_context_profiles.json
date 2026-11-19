@@ -64,7 +64,9 @@
       "negative_phrases": [
         "does not fit my device",
         "di kasya ang case",
-        "protector cracked easily"
+        "protector cracked easily",
+        "magaan pero marupok ang stand",
+        "magaan at madaling matumba ang stand"
       ],
       "expected_behavior_phrases": [
         "manipis ang case",
@@ -76,7 +78,8 @@
       "positive_phrases": [
         "charges my phone quickly",
         "mabilis mag charge",
-        "charges consistently"
+        "charges consistently",
+        "magaan at madaling dalhin"
       ],
       "negative_phrases": [
         "sobrang init habang nagcha-charge",

@@ -160,11 +160,11 @@ def check(
     if not isinstance(listing, Mapping) or initial_label not in _LABELS:
         return None
     title = str(listing.get("name") or "")
-    category = classify_listing({"name": title})
+    category = classify_listing(dict(listing))
     base = {
         "revision": REVISION,
         "stage": "after_initial_sentiment_before_conclusion",
-        "source": "product_title_plus_review_phrase",
+        "source": "product_title_plus_review_phrase" if classify_listing(title) != OTHER else "saved_category_plus_review_phrase",
         "product_category": category,
         "subproduct": None,
         "initial_label": initial_label,

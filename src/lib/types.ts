@@ -154,11 +154,14 @@ export interface Review {
 		review_extra_tags?: string[];
 		sentences?: Sentence[];
 		sentiment?: {
+			initial_label?: string;
 			category_context?: {
 				revision: string;
 				status: 'agrees' | 'differs' | 'ambiguous' | 'no_signal' | 'unclassified' | 'unavailable' | 'expected_behavior';
 				initial_label: string;
 				context_signal: 'positive' | 'negative' | null;
+				matched_profile_phrase?: string | null;
+				interpretation?: string | null;
 				used_for_decision: false;
 				sentiment_overridden: false;
 			};

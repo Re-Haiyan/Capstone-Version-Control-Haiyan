@@ -35,25 +35,36 @@ class AppDoesNotReanalyseSavedReports(unittest.TestCase):
             raise AssertionError("a request tried to re-analyse saved reports")
 
         client = app.test_client()
-        with mock.patch.object(dashboard_utils, "analyze_products", forbidden), mock.patch.object(webapp, "analyze_products", forbidden):
-            listing = client.get("/api/saved/products")
-            self.assertEqual(listing.status_code, 200)
-            cards = listing.get_json()["products"]
-            self.assertTrue(cards)
-            behind = [c for c in cards if c.get("checked_with_current") is False]
-            self.assertTrue(behind, "the real database holds reports made by earlier checkers; they must be marked")
-            detail = client.get("/api/saved/detail", query_string={"link": behind[0]["link"]})
-            self.assertEqual(detail.status_code, 200)
-            self.assertIs(detail.get_json()["product"]["checked_with_current"], False)
-            self.assertEqual(client.get("/api/picks").status_code, 200)
+        import server
+        from saved_pool import SavedPool
+        with tempfile.TemporaryDirectory() as folder:
+            database, _ = _fixture(Path(folder))
+            pool = SavedPool(database)
+            with mock.patch.object(server, "pool", pool), mock.patch.object(dashboard_utils, "analyze_products", forbidden), mock.patch.object(webapp, "analyze_products", forbidden):
+                self._assert_stored(client)
+
+    def _assert_stored(self, client):
+        listing = client.get("/api/saved/products")
+        self.assertEqual(listing.status_code, 200)
+        cards = listing.get_json()["products"]
+        self.assertTrue(cards)
+        behind = [c for c in cards if c.get("checked_with_current") is False]
+        self.assertTrue(behind, "historical fixture reports must be marked")
+        detail = client.get("/api/saved/detail", query_string={"link": behind[0]["link"]})
+        self.assertEqual(detail.status_code, 200)
+        self.assertIs(detail.get_json()["product"]["checked_with_current"], False)
+        self.assertEqual(client.get("/api/picks").status_code, 200)
 
 
 def _fixture(folder: Path) -> tuple[Path, list[dict]]:
     """A temporary database of three small saved products, each stamped with the previous checker's version."""
-    source = HERE / "backend" / "defaketive.db"
-    with closing(sqlite3.connect(f"file:{source.as_posix()}?mode=ro", uri=True)) as connection:
-        rows = connection.execute("SELECT raw_json FROM products WHERE review_count BETWEEN 3 AND 8 ORDER BY review_count LIMIT 3").fetchall()
-    products = [json.loads(row[0]) for row in rows]
+    products = [
+        {"name": f"Power Bank Fixture {index}", "link": f"https://www.lazada.com.ph/products/fixture-{index}.html",
+         "platform": "lazada", "review_count": 3,
+         "comments": [{"content": text, "rating": 5} for text in (
+             "Great quality and works perfectly.", "Maganda at sulit ang powerbank.", "Fast charging, very happy with it.")]}
+        for index in range(3)
+    ]
     products = dashboard_utils.analyze_products(products)
     for product in products:
         for review in product["comments"]:

@@ -283,6 +283,16 @@ def group_of(category: str | None) -> str:
     return GROUPS.get(category or OTHER, OTHER)
 
 
+def normalize_category(value: Any) -> str:
+    """Normalize saved taxonomy slugs and their spacing/case aliases.
+
+    The saved catalog uses these canonical slugs. Do not infer a category
+    from arbitrary marketplace department names or from review language.
+    """
+    key = re.sub(r"[^a-z0-9]+", "_", str(value or "").strip().casefold()).strip("_")
+    return key if key in CATEGORIES else OTHER
+
+
 def classify_listing(listing: Any) -> str:
     """The category of a product from its title; OTHER when none is recognized.
 
@@ -316,6 +326,11 @@ def classify_listing(listing: Any) -> str:
         for name, pattern in _COMPILED:
             if pattern.search(text):
                 return name
+    if isinstance(listing, dict):
+        for field in ("product_category", "category", "product_type"):
+            category = normalize_category(listing.get(field))
+            if category != OTHER:
+                return category
     return OTHER
 
 

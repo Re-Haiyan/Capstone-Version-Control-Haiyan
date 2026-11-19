@@ -3,6 +3,7 @@ import { page } from '$app/state';
 import { toast } from 'svelte-sonner';
 import { api, ApiError, json } from '#lib/api.js';
 import { reportHrefFor } from '#lib/nav.js';
+import { isLazadaCategoryUrl } from '#lib/lazada-route.js';
 import {
 	isShortLink,
 	LAZADA_ONLY,
@@ -287,7 +288,7 @@ class Scan {
 					// The session catalog now holds exactly what this scan collected. It goes into this person's own
 					// history (their account, or this browser for a guest); the products table keeps it for everyone.
 					if (loaded) library.recordScan(catalog.products);
-					const direct = queryContext(job.query ?? '').isUrl;
+					const direct = queryContext(job.query ?? '').isUrl && !isLazadaCategoryUrl(job.query ?? '');
 					// Only the product that was asked for: never "the only product there is", which opened the wrong report.
 					const wanted = listingId(job.query);
 					const product =
@@ -381,7 +382,7 @@ class Scan {
 					toast.error('Saved results are still unavailable. Please try opening the report again shortly.');
 					return;
 				}
-				const direct = queryContext(scan.query ?? '').isUrl;
+				const direct = queryContext(scan.query ?? '').isUrl && !isLazadaCategoryUrl(scan.query ?? '');
 				const product = direct
 					? (catalog.products.find((p) => linkIdentity(p.link) === linkIdentity(scan.query)) ??
 						(catalog.products.length === 1 ? catalog.products[0] : null))

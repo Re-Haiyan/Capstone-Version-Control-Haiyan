@@ -95,6 +95,8 @@ def read_manifest(model_dir: Path) -> dict[str, Any]:
         )
     if not manifest.get("labels") or not manifest.get("model_version"):
         raise TransformerModelError(f"{manifest_path} has no labels or model_version.")
+    if manifest["labels"] != ["negative", "neutral", "positive"]:
+        raise TransformerModelError(f"{manifest_path} does not match the pinned XLM-R label order: negative, neutral, positive.")
     if manifest.get("text", "raw") not in ("raw", "normalized"):
         raise TransformerModelError(f"{manifest_path} names an unknown text form {manifest.get('text')!r}.")
     return manifest
@@ -162,6 +164,8 @@ class TransformerSentimentClassifier:
                 "attention_mask": np.array([encoding.attention_mask], dtype=np.int64),
             },
         )[0][0]
+        if logits.shape != (len(self.labels),) or not np.isfinite(logits).all():
+            raise TransformerModelError("Sentiment inference returned invalid logits; no label was produced.")
         values = self._softmax(logits.astype(np.float64))
         index = int(values.argmax())
         return {
