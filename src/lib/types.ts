@@ -153,6 +153,7 @@ export interface Review {
 		review_tags?: string[];
 		review_extra_tags?: string[];
 		sentences?: Sentence[];
+		concern_interpretations?: {category: string; text: string; reason: string; product_category?: string | null}[];
 		sentiment?: {
 			initial_label?: string;
 			probabilities?: Record<string, number>;

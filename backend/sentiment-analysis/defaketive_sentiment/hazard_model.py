@@ -1155,6 +1155,7 @@ class LexiconHazardTagger:
 
         learned: dict[str, float] = {}
         gated: dict[str, str] = {}
+        concern_interpretations: list[dict[str, Any]] = []
         if self.learned is not None:
             from .hazard_learned import is_high_star, keyword_features
 
@@ -1179,6 +1180,13 @@ class LexiconHazardTagger:
                     # never to a sentence read as praise. The sentiment model
                     # runs only for the sentences where that is in question.
                     if on and category not in tags:
+                        from .concern_context import operation_reason
+                        operation = operation_reason(product_kind, category, normalized)
+                        if operation:
+                            gated[category] = "normal_operation_clause"
+                            concern_interpretations.append({"category": category, "text": raw,
+                                "reason": operation, "product_category": product_kind})
+                            continue
                         # Rules pc4: a sentence the keywords read as a fake is not also a defect the model may add (the team
                         # labels 1 in 10 fakes as a defect too); a lexicon defect word still counts.
                         if (
@@ -1357,6 +1365,7 @@ class LexiconHazardTagger:
             **({"excluded": excluded} if excluded else {}),
             **({"learned": learned} if learned else {}),
             **({"gate_sentiment": gated} if gated else {}),
+            **({"concern_interpretations": concern_interpretations} if concern_interpretations else {}),
             **(
                 self._extra_labels(raw, normalized, matches, described, spans, extra_kw, product_kind)
                 if self.counterfeit_rules == EXTRA_RULES
@@ -1627,6 +1636,13 @@ class LexiconHazardTagger:
         if addon is not None and extra_kw is not None:
             for category, (on, probability) in addon.decide(normalized, extra_kw, None).items():
                 if on and category not in present:
+                    from .concern_context import operation_reason
+                    operation = operation_reason(product_kind, category, normalized)
+                    if operation:
+                        exempt.append({"ngram": normalized, "category": category,
+                            "product_category": product_kind, "reason": operation,
+                            "span": [0, len(raw)], "source": "normal_operation_clause"})
+                        continue
                     if category == NOT_AS_DESCRIBED and CHARGING_TIER_LIMITATION.search(normalized):
                         continue
                     # q1 (2 Nov 2026): the model adds "poor quality" to praise headed "Sound Quality:" (the word
@@ -1964,6 +1980,8 @@ class HazardBadgeModel:
         # checker (research/build_reference_baselines.py). `checker_version` is
         # what they are matched against; the baseline's own version joins
         # model_version so saved reports are redone when the line moves.
+        from .concern_context import REVISION as concern_context_revision
+        self.model_version += f"+{concern_context_revision}"
         self.checker_version = self.model_version
         self.model_version += "+context-evidence-1"
         baselines_version = (getattr(self.aggregator, "baselines", None) or {}).get("version")
@@ -2034,6 +2052,12 @@ class HazardBadgeModel:
         if dropped:
             confident = [tag for tag in confident if tag in review_tags]
             evidence = {flag: entry for flag, entry in evidence.items() if flag in review_tags or flag in extra_tags}
+        interpretations = []
+        for item in sentences:
+            interpretations.extend(item.get("concern_interpretations") or [])
+            interpretations.extend({"category": entry["category"], "text": item["text_raw"],
+                "reason": entry["reason"], "product_category": entry.get("product_category")}
+                for entry in item.get("category_exempt") or [] if entry.get("reason"))
         return {
             "model_version": self.model_version,
             "schema_version": self.schema_version,
@@ -2044,6 +2068,7 @@ class HazardBadgeModel:
             "review_tags": review_tags,
             **({"review_extra_tags": extra_tags} if five_labels else {}),
             "review_evidence": evidence,
+            **({"concern_interpretations": interpretations} if interpretations else {}),
             **({"review_evidence_dropped": dropped} if dropped else {}),
             **({"review_evidence_would_drop": shadow_drop} if shadow_drop else {}),
             "review_high_confidence": confident,

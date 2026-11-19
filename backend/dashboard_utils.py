@@ -1342,6 +1342,7 @@ def review_rows(products: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "Mixed category feedback": context.get("mixed_feedback", False),
                     "Sentiment adjusted": context.get("sentiment_overridden", False),
                     "Review-reported concerns": ", ".join(list(analysis.get("review_tags") or []) + list(analysis.get("review_extra_tags") or [])),
+                    "Concern interpretations": json.dumps(analysis.get("concern_interpretations") or [], ensure_ascii=False),
                     "Concern evidence": json.dumps(analysis.get("review_evidence") or {}, ensure_ascii=False),
                     "Model version": analysis.get("model_version", ""),
                     "Compound": scores.get("compound"),

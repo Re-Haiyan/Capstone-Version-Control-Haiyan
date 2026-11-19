@@ -152,6 +152,13 @@
 							</ul>
 						{:else if context.matched_profile_phrase}<p>Earlier matched wording: “{context.matched_profile_phrase}”.</p>{/if}
 						<p>The original sentiment is retained. Concern checks run independently on this review.</p>
+						{#if review.sentiment_analysis?.concern_interpretations?.length}
+							<ul class="mt-2 list-disc pl-4">
+								{#each review.sentiment_analysis.concern_interpretations as observation}
+									<li>Concern interpretation ({observation.category}): “{observation.text}” — {observation.reason}.</li>
+								{/each}
+							</ul>
+						{/if}
 					</details>
 				{/if}
 				{#if reported.length || matched.length}
