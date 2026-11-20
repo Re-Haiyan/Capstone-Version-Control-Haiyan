@@ -1750,6 +1750,8 @@ class LexiconHazardTagger:
         if self.rules == '0.4':
             from .concern_attribution import apply
             apply(str(text or ''), tagged, kind)
+            from .safety_context import apply as safety_context
+            safety_context(str(text or ''), tagged, kind)
         return tagged
 
     @staticmethod
@@ -1990,6 +1992,8 @@ class HazardBadgeModel:
         from .concern_context import REVISION as concern_context_revision
         self.model_version += f"+{concern_context_revision}"
         from .concern_attribution import REVISION as attribution_revision
+        from .safety_context import REVISION as safety_context_revision
+        self.model_version += f"+{safety_context_revision}"
         self.model_version += f'+{attribution_revision}'
         self.checker_version = self.model_version
         self.model_version += "+context-evidence-1"

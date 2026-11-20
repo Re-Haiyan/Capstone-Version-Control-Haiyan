@@ -70,7 +70,7 @@ def evidence_for_review(
             carrying.append(index)
             raw = str(sentence.get("text_raw") or "")
             for term in [*(sentence.get("terms") or ()), *(sentence.get("extra_terms") or ())]:
-                if term.get("category") != flag or term.get("excluded") or term.get("negated"):
+                if term.get("category") != flag or term.get("excluded") or term.get("negated") or term.get('evidence_excluded') or term.get('evidence_contextualized'):
                     continue
                 span = term.get("span")
                 if not _valid(span, raw):
