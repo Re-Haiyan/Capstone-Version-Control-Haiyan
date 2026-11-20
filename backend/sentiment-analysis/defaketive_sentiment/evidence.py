@@ -87,6 +87,14 @@ def evidence_for_review(
                         "source": "keyword_rule",
                     }
                 )
+            for context in sentence.get('evidence_context') or []:
+                if context.get('category') != flag:
+                    continue
+                left, right = context['review_start'], context['review_end']
+                if str(review or '')[left:right] == context['text']:
+                    spans.append({'sentence': index, 'start': None, 'end': None,
+                                  'text': context['text'], 'review_start': left,
+                                  'review_end': right, 'source': context['source']})
             parts = (sentence.get("extra_context") or {}).get(flag)
             if parts:
                 listing_parts[str(index)] = sorted(parts)

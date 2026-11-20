@@ -387,7 +387,7 @@ export function matchedWords(review: Review): Map<string, string> {
 	for (const sentence of review?.sentiment_analysis?.sentences ?? []) {
 		const tags = new Set(sentenceTags(sentence));
 		for (const term of sentenceTerms(sentence)) {
-			if (term.negated || !term.category || !tags.has(term.category)) continue;
+			if (term.negated || term.excluded || !term.category || !tags.has(term.category)) continue;
 			const raw = Array.isArray(term.span) ? String(sentence.text_raw ?? '').slice(term.span[0], term.span[1]) : '';
 			// A list entry can be a pattern ("makati|nangati|itch(?:y|ing)"). Show the words the review used, never the pattern;
 			// a pattern with no matched text is left out rather than shown.

@@ -126,6 +126,7 @@ export interface BadgeView {
 }
 
 export interface Term {
+	excluded?: string;
 	span?: [number, number];
 	ngram?: string;
 	category?: string;

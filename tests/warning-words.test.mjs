@@ -36,5 +36,11 @@ check(matchedWords(reviews[7]).size === 0, 'a negated match is still not a warni
 check(isPattern(ITCH) && isPattern('nag\\s?allerg') && !isPattern('sira agad') && !isPattern("doesn't work"), 'patterns are told apart from plain words and phrases');
 check(matchedWords(reviews[0]).has('nangati'), 'picking the shown word finds its review (same function gives both)');
 
+const attributed = review(sentence('old overheated but replacement sparked', [
+ { ngram: 'overheated', category: 'safety', span: [4, 14], excluded: 'attribution' },
+ { ngram: 'sparked', category: 'safety', span: [31, 38] }
+], ['safety']));
+check(!matchedWords(attributed).has('overheated') && matchedWords(attributed).has('sparked'), 'excluded other-unit cues never reappear beside a retained current-unit flag');
+
 console.log(failures ? `${failures} failed` : 'all passed');
 process.exit(failures ? 1 : 0);

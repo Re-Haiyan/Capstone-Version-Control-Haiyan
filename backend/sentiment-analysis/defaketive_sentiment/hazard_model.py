@@ -1747,6 +1747,9 @@ class LexiconHazardTagger:
                 if exempt:
                     decided = {label: value for label, value in decided.items() if label not in exempt}
                 self._transformer_labels(item, decided)
+        if self.rules == '0.4':
+            from .concern_attribution import apply
+            apply(str(text or ''), tagged, kind)
         return tagged
 
     @staticmethod
@@ -1986,6 +1989,8 @@ class HazardBadgeModel:
         # model_version so saved reports are redone when the line moves.
         from .concern_context import REVISION as concern_context_revision
         self.model_version += f"+{concern_context_revision}"
+        from .concern_attribution import REVISION as attribution_revision
+        self.model_version += f'+{attribution_revision}'
         self.checker_version = self.model_version
         self.model_version += "+context-evidence-1"
         baselines_version = (getattr(self.aggregator, "baselines", None) or {}).get("version")
