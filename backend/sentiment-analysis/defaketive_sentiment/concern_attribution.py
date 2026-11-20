@@ -6,7 +6,7 @@ independent current-unit cues and other concern categories remain untouched.
 from __future__ import annotations
 import re
 
-REVISION = 'attribution-1'
+REVISION = 'attribution-2'
 _COMPARISON = re.compile(r'\b(?:unlike|compared to|kumpara sa|di gaya ng|hindi tulad ng)\s+(?:(?:some|other|my old|the old|ibang|dati kong)\b)[^,.;!?]*?(?=[,.;!?]|\b(?:but|pero|this one|this replacement|this cube|this item|itong|ito)\b|$)', re.I)
 _OLD = re.compile(r'\b(?:(?:my|the|our)\s+old\s+(?:charger|unit|fan|cube|speaker|cable|power bank)|(?:dati|luma)\s+(?:kong|naming|na)\s+(?:charger|unit|fan|cube|speaker|cable))\b[^,.;!?]*?(?=[,.;!?]|\b(?:but|pero|this replacement|the replacement|itong bago)\b|$)', re.I)
 _FEAR = re.compile(r'\b(?:akala|kala|inakala)\s+ko\s+(?:fake|peke)\b|\bi thought (?:it was |this was )?(?:fake|counterfeit)\b', re.I)
@@ -16,6 +16,19 @@ def _reason(raw, span, following, review):
     start,end=span
     # Existing token provenance can include trailing punctuation.
     while end>start and not raw[end-1].isalnum():end-=1
+    for m in re.finditer(r'\b(?:the\s+)?other\s+(?:charger|unit|fan|camera|item|product)\b[^,.;!?]*',raw,re.I):
+        if m.start()<=start and end<=m.end():
+            return 'explicit other-product subject, not the reviewed item'
+    for m in re.finditer(r'\b(?:the\s+)?(?:magnetic\s+part|magnet)\s+is\s+not\s+weak\b',raw,re.I):
+        if m.start()<=start and end<=m.end():
+            return 'magnetic weakness explicitly negated'
+    # A conditional lyric fragment plus an explicit chorus marker identifies
+    # quoted speech, not a reported burn. Only remove the located lyric cue;
+    # a real incident elsewhere in the same sentence remains independent.
+    if re.search(r'\[chorus\b', review, re.I):
+        lyric = re.compile(r'\bif\s+(?:i|you)\s+(?:warned|told)\s+you\b[^.!?]{0,90}?\b(?:burn|hurt)\b', re.I)
+        if any(m.start()<=start and end<=m.end() for m in lyric.finditer(raw)):
+            return 'conditional quoted lyric with chorus attribution, not a product incident'
     for p,reason in [(_COMPARISON,'comparison describes another product, not the reviewed item'),(_OLD,'explicit old-unit subject, not the current replacement')]:
         if p is _OLD and not re.search(r'\b(?:this replacement|the replacement|itong bago|yung bago|this one)\b', review, re.I):continue
         if any(m.start()<=start and end<=m.end() for m in p.finditer(raw)):
@@ -42,6 +55,13 @@ def apply(review, tagged, category):
     for index,item in enumerate(tagged):
         raw=item['text_raw'];at=review.find(raw,cursor);cursor=at+len(raw) if at>=0 else cursor
         following=tagged[index+1]['text_raw'] if index+1<len(tagged) else ''
+        # A model-only decision can be contradicted by an explicit full-clause
+        # subject/negation. Preserve a provenance record; missing evidence alone
+        # is never grounds for removing a flag.
+        for flag in [*item.get('tags',[]),*item.get('extra_tags',[])]:
+            if any(t['category']==flag for t in [*item.get('terms',[]),*item.get('extra_terms',[])]):continue
+            if _reason(raw,[0,len(raw)],following,review):
+                item.setdefault('extra_terms' if flag in {'quality','not_as_described'} else 'terms',[]).append({'category':flag,'span':[0,len(raw)],'source':'model_only_attributed_clause'})
         terms=[*item.get('terms',[]),*item.get('extra_terms',[])]
         removed=set()
         for term in terms:
@@ -60,7 +80,7 @@ def apply(review, tagged, category):
             for key in ['scores','high_confidence']:item.get(key,{}).pop(flag,None)
             item.setdefault('suppressed',{})[flag]=REVISION
         if category in {'charger_cable','powerbank','small_appliance','electrical_supplies'}:
-            for m in re.finditer(r'\b(?:natunaw|tunaw)\s+(?:(?:ang|yung|mga)\s+){0,2}(?:plug|cable|kable|charger|adapter)\b',raw,re.I):
+            for m in re.finditer(r'\b(?:natunaw|tunaw)\s+(?:(?:ang|yung|mga)\s+){0,2}(?:plug|cable|kable|charger|adapter)\b|\b(?:plug|cable|charger|adapter)\s+melted\b',raw,re.I):
                 if re.search(r'\b(?:hindi|di|walang)\s*$',raw[max(0,m.start()-20):m.start()],re.I):continue
                 if _reason(raw,m.span(),following,review):continue
                 item['tags']=list(dict.fromkeys([*item.get('tags',[]),'safety']))
@@ -74,6 +94,8 @@ def apply(review, tagged, category):
                 item['tags']=list(dict.fromkeys([*item.get('tags',[]),'defect']))
                 item.setdefault('terms',[]).append({'ngram':m.group().lower(),'category':'defect','severity':2,'negated':False,'span':list(m.span()),'rule':REVISION})
                 item.setdefault('scores',{})['defect']=2.;item.setdefault('high_confidence',{})['defect']=True
+    from .concern_development import add_supported_concerns
+    add_supported_concerns(review, tagged, category, _reason)
     # A listing claim and an omitted accessory form one claim across split clauses.
     for m in _MISSING.finditer(review):
         cursor=0

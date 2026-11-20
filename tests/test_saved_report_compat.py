@@ -119,6 +119,7 @@ class GradualRecheck(unittest.TestCase):
         self.assertEqual(_digest(self.database), before)
         self.assertFalse(self.backups.exists() and list(self.backups.glob("*")))
 
+    @unittest.skipIf(os.name == "nt", "POSIX signal-0 lock probe terminates its target on Windows")
     def test_3_a_running_lock_stops_a_second_run_and_changes_nothing(self):
         self.backups.mkdir(exist_ok=True)
         lock = self.backups / "recheck.lock"

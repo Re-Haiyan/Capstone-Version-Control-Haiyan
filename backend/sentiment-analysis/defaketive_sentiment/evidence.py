@@ -28,9 +28,14 @@ def sentence_offsets(review: object, sentences: Sequence[Mapping[str, Any]]) -> 
     """Where each sentence starts in the original review (None when it cannot be located exactly)."""
     text = str(review or "")
     cursor, starts = 0, []
+    # The sentence splitter folds typographic quotation marks. These are
+    # one-character substitutions, so offsets remain in the original review.
+    quotes = str.maketrans({'\u2019': "'", '\u2018': "'", '\u201c': '"', '\u201d': '"'})
     for sentence in sentences:
         raw = str(sentence.get("text_raw") or "")
         at = text.find(raw, cursor) if raw else -1
+        if at < 0 and raw:
+            at = text.translate(quotes).find(raw.translate(quotes), cursor)
         if at < 0:
             starts.append(None)
             continue
@@ -76,14 +81,26 @@ def evidence_for_review(
                 if not _valid(span, raw):
                     continue
                 start = starts[position]
+                left = None if start is None else start + int(span[0])
+                right = None if start is None else start + int(span[1])
+                if start is None:
+                    # Some segmenters insert whitespace around emoji. Locate
+                    # only a unique literal cue between neighbouring located
+                    # sentences; never guess across repeated or other clauses.
+                    lower = next((starts[j]+len(str(sentences[j].get('text_raw') or '')) for j in range(position-1,-1,-1) if starts[j] is not None),0)
+                    upper = next((starts[j] for j in range(position+1,len(starts)) if starts[j] is not None),len(str(review or '')))
+                    quote = raw[span[0]:span[1]]
+                    found = str(review or '').find(quote,lower,upper)
+                    if found>=0 and str(review or '').find(quote,found+1,upper)<0:
+                        left,right=found,found+len(quote)
                 spans.append(
                     {
                         "sentence": index,
                         "start": int(span[0]),
                         "end": int(span[1]),
-                        "text": raw[span[0] : span[1]],
-                        "review_start": None if start is None else start + int(span[0]),
-                        "review_end": None if start is None else start + int(span[1]),
+                        "text": raw[span[0] : span[1]] if left is None else str(review or '')[left:right],
+                        "review_start": left,
+                        "review_end": right,
                         "source": "keyword_rule",
                     }
                 )
